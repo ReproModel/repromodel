@@ -23,12 +23,16 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 # Demo
-You can watch our demo video here:   
-<br>
-<div align="center">
-[![Watch the Video](http://img.youtube.com/vi/MQHZMEloUps/0.jpg)](https://www.youtube.com/watch?v=MQHZMEloUps)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.youtube.com/watch?v=MQHZMEloUps">
+        <img src="http://img.youtube.com/vi/MQHZMEloUps/0.jpg" alt="Watch the Video">
+      </a>
+    </td>
+  </tr>
+</table>
 
-</div>
 # License 
 
 
