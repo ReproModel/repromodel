@@ -1,10 +1,10 @@
 import React from "react";
 import { Formik, Form, Field, useFormikContext } from "formik";
 
-import questionsData from "./questionsList.json"; // Importing local JSON file
+
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField";
 import "./FormComponents/Field.css";
-import newQuestions from "./newQuestionsFormat.json";
+import newQuestions from "../choicesJSON/newQuestionsFormat.json";
 
 const DynamicFormBuilder = () => {
   // Generate initial values from questions data

@@ -75,7 +75,7 @@ function FlexibleFormField({
   const renderSwitch = () => {
     switch (type) {
       case "str":
-        return <SmartFreeTextField id={id} label={label} name={label}   />;
+        return <SmartFreeTextField id={id} label={label} name={label} object={object}  />;
       case "float":
         return <SmartFloatField id={id} label={label} name={label} object={object} />;
       case "int":
