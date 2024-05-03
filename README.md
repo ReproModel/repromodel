@@ -25,8 +25,9 @@ Currently, two official plugins are available:
 # Demo
 You can watch our demo video here:   
 <br>
+<div align="center">
 [![Watch the Video](http://img.youtube.com/vi/MQHZMEloUps/0.jpg)](https://www.youtube.com/watch?v=MQHZMEloUps)
-
+</div>
 # License 
 
 
