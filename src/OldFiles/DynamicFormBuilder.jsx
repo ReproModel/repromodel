@@ -1,8 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, useFormikContext } from "formik";
 
-import questionsData from "./questionsList.json"; // Importing local JSON file
-import FlexibleFormField from "./FormComponents/FlexibleFormField";
+import questionsData from "../choicesJSON/questionsList.json"
+import FlexibleFormField from "../UI/FormComponents/FlexibleFormField";
 import "./FormComponents/Field.css";
 
 const DynamicFormBuilder = () => {
