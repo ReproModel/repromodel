@@ -25,8 +25,16 @@ Currently, two official plugins are available:
 # Demo
 
 You can watch the demo video here: 
-<br>
-[<img src="http://img.youtube.com/vi/MQHZMEloUps/0.jpg" alt="Watch the Video" align="center">](https://www.youtube.com/watch?v=MQHZMEloUps)
+<br> <br>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.youtube.com/watch?v=MQHZMEloUps">
+        <img src="http://img.youtube.com/vi/MQHZMEloUps/0.jpg" alt="Watch the Video">
+      </a>
+    </td>
+  </tr>
+</table>
 
 
 # License 
