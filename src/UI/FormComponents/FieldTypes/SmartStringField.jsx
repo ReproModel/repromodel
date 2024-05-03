@@ -26,7 +26,6 @@ function SmartFreeTextField({ id, label, object }) {
           type="text"
           id={id}
           name={label}
-          placeholder="not a dropdown"
         />
       )}
     </>
