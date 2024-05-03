@@ -39,6 +39,7 @@ You can watch the demo video here:
 
 # License 
 
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 
 # Contributors
