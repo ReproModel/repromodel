@@ -25,7 +25,7 @@ Currently, two official plugins are available:
 # Demo
 You can watch our demo video here: 
 <video width="720" height="480" controls>
-  <source src="Readme Files/vid1.mp4" type="video/mp4">
+  <source src="Readme Files/Vid1.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
