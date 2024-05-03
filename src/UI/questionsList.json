@@ -1,0 +1,156 @@
+[{
+  "id": "TrainingMode",
+  "label": "Select Training Mode",
+  "type": "dropdown",
+  "options":[{
+    "name": "From Scratch"
+  },{
+    "name": "From Checkpoint",
+    "moreQuestions": [
+      {
+        "id": "TBD",
+        "type": "text",
+        "name": "TBD"
+      }
+    ]
+  }]
+},{
+  "id": "Preprocessing",
+  "label": "Select Preprocessing",
+  "type": "dropdown",
+  "options":[{
+    "name": "No Preprocessing"
+  },{
+    "name": "DRRPreprocessor",
+    "moreQuestions": [
+      {
+        "id": "DRRPreprocessorAngle",
+        "type": "integer",
+        "name": "Angle"
+      },
+      {
+        "id": "DRRPreprocessorDataPath",
+        "type": "text",
+        "name": "Data Path"
+      },{
+        "id": "DRRPreprocessorNumWorkers",
+        "type": "text",
+        "name": "Number of workers"
+      },{
+        "id": "DRRPreprocessorOutputPath",
+        "type": "text",
+        "name": "Output Path"
+      }
+    ]
+  }]
+},
+  {
+    "id": "Type",
+    "label": "Dropdown with Options",
+    "type": "dropdown",
+    "options": [
+      {
+        "name": "CTDataAugmentation",
+        "moreQuestions": [
+          {
+            "id": "type13",
+            "type": "text",
+            "name": "CTDataAugmentation Param1"
+          },
+          {
+            "id": "type24",
+            "type": "text",
+            "name": "CTDataAugmentation Param1"
+          }
+        ]
+      },
+      {
+        "name": "CustomAugmentations",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "RotateAugmentation",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "CropAugmentation",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "SmallHealthyCropper",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "UnitAugmentation",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "MonaiDomainTranslatedAugmentation",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "RandomCrop2D",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      },
+      {
+        "name": "DRRRandomCrop2D",
+        "moreQuestions": [
+          { "id": "type1", "type": "text", "name": "name1" },
+          { "id": "type2", "type": "text", "name": "name2" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Modus",
+    "label": "Free Text",
+    "type": "text"
+  },
+  {
+    "id": "Integer",
+    "label": "Integer",
+    "type": "integer"
+  },
+  {
+    "id": "Decimal",
+    "label": "Decimal",
+    "type": "decimal"
+  },
+  {
+    "id": "Slider",
+    "label": "Slider",
+    "type": "slider"
+  },
+  {
+    "id": "question5",
+    "label": "Dropdown no Params",
+    "type": "dropdown",
+    "options": [
+      { "name": "First Option" },
+      { "name": "Second Option" },
+      { "name": "Third Option" },
+      { "name": "Forth Option" }
+    ]
+  }
+]

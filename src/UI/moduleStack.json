@@ -1,0 +1,15 @@
+[
+    {
+      "name": "Preprocessing",
+      "status": "completed"
+    },
+    {
+      "name": "Model",
+      "status": "active"
+    },
+    {
+      "name": "Augmentation",
+      "status": "passive"
+    }
+  ]
+  
