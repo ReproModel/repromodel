@@ -24,7 +24,7 @@ Currently, two official plugins are available:
 
 # Demo
 You can watch our demo video here: 
-[![Watch the Video]](https://www.youtube.com/watch?v=MQHZMEloUps)
+[![Watch the Video](https://www.youtube.com/watch?v=MQHZMEloUps)]
 
 # License 
 
