@@ -1,6 +1,6 @@
 import { Field } from "formik";
 import React from "react";
-import "./Field.css";
+import "./Form.css";
 import SmartIntegerField from "./FieldTypes/SmartIntegerField";
 import SmartFreeTextField from "./FieldTypes/SmartStringField";
 import FormulaField from "./FieldTypes/FormulaField";
