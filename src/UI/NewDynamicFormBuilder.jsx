@@ -89,19 +89,22 @@ const DynamicFormBuilder = () => {
             {Object.entries(newQuestions).map(([folder, folderContent]) => (
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h4> {capitalizeFirstLetter(folder)}</h4>
-                <Field key={folder} as="select" id={folder} name={folder}>
-                  <option value="">Select an option</option>
+                
+                  
                   {Object.entries(folderContent).map(([file, fileContent]) => (
                     <>
                       {" "}
                       {Object.entries(fileContent).map(
                         ([className, fileContent]) => (
-                          <option value={className}>{className}</option>
+                          <label>
+                          <Field type="checkbox" name={folder} value={className}></Field>
+                          {className}
+                          </label>
                         )
                       )}
                     </>
                   ))}
-                </Field>
+               
                 {/* For each Filename */}
                 {Object.entries(folderContent).map(([file, fileContent]) => (
                   <>
@@ -109,8 +112,12 @@ const DynamicFormBuilder = () => {
                     {Object.entries(fileContent).map(
                       ([className, classContent]) => (
                         <div style={{ paddingLeft: "16px" }}>
-                          {values[folder] === className && (
-                            <div style={{ display: "flex", flexDirection: "column" }}>
+                          
+                       
+                          {values[folder] && values[folder].includes(className) && (
+                            <div style={{ display: "flex", flexDirection: "column" ,border: "2px solid #000000",
+                            borderRadius: "10px", padding:"8px" , margin:"8px" }}>
+                              <p>{className} Params</p>
 
                               {/* Conditionally renders Param Questions if the class is selected */}
                               
