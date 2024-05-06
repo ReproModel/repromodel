@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack, Paper, List, ListItem, ListItemText, Typography, Container } from '@mui/material';
 import moduleStackData from '../choicesJSON/moduleStack.json';
+import questions from '../choicesJSON/newQuestionsFormat.json';
 import FlexibleBlock from './ModuleStackComponents/FlexibleBlock';
 
 function ModuleStack() {
@@ -10,10 +11,12 @@ function ModuleStack() {
         Your ReproModel Structure
       </Typography>
       <Stack spacing={2} >
-        {moduleStackData.map((block, index) => (
-          <FlexibleBlock key={index} status={block.status} name={block.name}/>
+      {Object.entries(questions).map(
+                      ([folder, folderContent]) => (
+                        <FlexibleBlock key={folder} status={"active"} name={folder}/>
+                      )
+                    )}
         
-        ))}
       </Stack>
     </Container>
   );
