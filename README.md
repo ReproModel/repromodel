@@ -10,10 +10,10 @@ For more details, read our blog article at: , or visit our website at Repromodel
 ---
 
 # Tech Stack: 
-## Javascript
-## Python
-## Django
-## React + Vite
+### Javascript
+### Python
+### Django
+### React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -36,6 +36,11 @@ You can watch the demo video here:
   </tr>
 </table>
 
+# How to Run
+For running the frontend you can either run locally<br>
+<code> npm install<br>npm run dev </code> <br>
+Or you can look at the latest live version here: <br>
+https://repromodel.netlify.app/
 
 # License 
 
