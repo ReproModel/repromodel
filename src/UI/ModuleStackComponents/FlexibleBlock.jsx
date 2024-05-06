@@ -1,5 +1,7 @@
 import React from "react";
 import { Paper, Typography } from "@mui/material";
+import { capitalizeFirstLetter } from "../../helperFunctions/OtherHelper";
+
 
 function ActiveBlock({ id, name, status }) {
   return (
@@ -8,12 +10,12 @@ function ActiveBlock({ id, name, status }) {
       variant="outlined"
       sx={{
         backgroundColor: "#95e9fb",
-        p: 2,
+        p: 0.5,
         boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)",
       }}
     >
       <Typography align="center" variant="h6" gutterBottom>
-        {name}
+      {capitalizeFirstLetter(name)}
       </Typography>
     </Paper>
   );
@@ -24,10 +26,10 @@ function CompletedBlock({ id, name, status }) {
     <Paper
       key={id}
       variant="outlined"
-      sx={{ backgroundColor: "#dff9fe", p: 2 }}
+      sx={{ backgroundColor: "#dff9fe", p: 0.5 }}
     >
       <Typography align="center" variant="h6" gutterBottom>
-        {name}
+        {capitalizeFirstLetter(name)}
       </Typography>
     </Paper>
   );
@@ -38,10 +40,10 @@ function PassivBlock({ id, name, status }) {
     <Paper
       key={id}
       variant="outlined"
-      sx={{ backgroundColor: "#e6f0f1", p: 2 }}
+      sx={{ backgroundColor: "#e6f0f1", p: 0.5 }}
     >
       <Typography align="center" variant="h6" gutterBottom>
-        {name}
+      {capitalizeFirstLetter(name)}
       </Typography>
     </Paper>
   );
