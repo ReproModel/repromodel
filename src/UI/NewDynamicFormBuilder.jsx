@@ -5,6 +5,19 @@ import { Formik, Form, Field } from "formik";
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField";
 import "./FormComponents/Field.css";
 import newQuestions from "../choicesJSON/newQuestionsFormat.json";
+import { Typography } from "@mui/material";
+
+
+function validateJSON(text) {
+  try {
+    JSON.parse(text);
+    return true;  // valid JSON
+  } catch (error) {
+    return false;  // invalid JSON
+  }
+}
+
+
 
 const DynamicFormBuilder = () => {
   // Generate initial values from questions data
@@ -18,6 +31,24 @@ const DynamicFormBuilder = () => {
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  const handleFileChange = (event) => {
+    const file = event.currentTarget.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = e.target.result;
+        if (validateJSON(text)) {
+         
+          alert('Valid JSON file');
+          
+        } else {
+          alert('Invalid JSON file');
+         
+        }
+      };
+      reader.readAsText(file);
+    }
+  };
 
    // Function to handle form submission
    const handleSubmit = (values) => {
@@ -51,6 +82,9 @@ const DynamicFormBuilder = () => {
       >
         {({ values }) => (
           <Form>
+            {/* Optional JSON File upload */}
+            <Typography>Optionally upload existing config File</Typography>
+            <input type="file" id="uploadedJson" accept=".json" onChange={handleFileChange}/>
             {/* For each Folder */}
             {Object.entries(newQuestions).map(([folder, folderContent]) => (
               <div style={{ display: "flex", flexDirection: "column" }}>
