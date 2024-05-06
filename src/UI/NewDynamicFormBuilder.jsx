@@ -124,8 +124,8 @@ const DynamicFormBuilder = () => {
                               {Object.entries(classContent).map(
                                 ([Param, value]) => (
                                     <>
-                                   <label htmlFor={Param}>{Param}:</label>
-                                  <NewFlexibleFormField id={Param} object={value} type={value.type} name={Param} label={Param}/>
+                                   <label htmlFor={`${className}:${Param}`}>{Param}:</label>
+                                  <NewFlexibleFormField id={`${className}:${Param}`} object={value} type={value.type} name={`${className}:${Param}`} label={Param}/>
                                   </>
                                 )
                               )}

@@ -18,7 +18,7 @@ function DefaultTextField({ id, label, name }) {
   );
 }
 
-function FlexibleFormField({ id, label, type, object }) {
+function FlexibleFormField({ id, label, type, name, object }) {
   const renderSwitch = () => {
     switch (type) {
       case "str":
@@ -26,30 +26,30 @@ function FlexibleFormField({ id, label, type, object }) {
           <SmartFreeTextField
             id={id}
             label={label}
-            name={label}
+            name={name}
             object={object}
           />
         );
       case "float":
         return (
-          <SmartFloatField id={id} label={label} name={label} object={object} />
+          <SmartFloatField id={id} label={label} name={name} object={object} />
         );
       case "int":
         return (
           <SmartIntegerField
             id={id}
             label={label}
-            name={label}
+            name={name}
             object={object}
           />
         );
       case "slider":
-        return <SliderField id={id} label={label} name={label} />;
+        return <SliderField id={id} label={label} name={name} />;
       case "type(lambda x: x)":
-        return <FormulaField id={id} label={label} name={label} />;
+        return <FormulaField id={id} label={label} name={name} />;
       default:
         return (
-          <DefaultTextField id={id} label={label} name={label} type={type} />
+          <DefaultTextField id={id} label={label} name={name} type={type} />
         );
     }
   };

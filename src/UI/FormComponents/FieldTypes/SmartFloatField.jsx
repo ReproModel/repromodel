@@ -1,7 +1,7 @@
 import React from "react";
 import { Field } from "formik";
 
-function SmartFloatField({ id, label, object }) {
+function SmartFloatField({ id, label, object, name }) {
     // Extract and parse the range from the object, if it exists
     const rangeString = object?.range;  // Using optional chaining
     let min, max;
@@ -21,7 +21,7 @@ function SmartFloatField({ id, label, object }) {
           className="inputField"
           type="number"
           id={id}
-          name={label}
+          name={name}
           step="0.0001"
         />
         {/* Conditionally render the slider if min and max are available */}
@@ -30,7 +30,7 @@ function SmartFloatField({ id, label, object }) {
             className="sliderField"
             type="range"
             id={id}
-            name={label}
+            name={name}
             min={min}
             max={max}
             step="0.0001"
