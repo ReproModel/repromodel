@@ -1,6 +1,5 @@
 import React from 'react';
 import { Stack, Paper, List, ListItem, ListItemText, Typography, Container } from '@mui/material';
-import moduleStackData from '../choicesJSON/moduleStack.json';
 import questions from '../choicesJSON/newQuestionsFormat.json';
 import FlexibleBlock from './ModuleStackComponents/FlexibleBlock';
 
