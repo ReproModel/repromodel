@@ -41,6 +41,11 @@ export const handleFileChange = (event, setFieldValue) => {
               Object.keys(flatJson).forEach(key => {
                 setFieldValue(key, flatJson[key], false);  // Set field value without triggering validation
               });
+              
+              
+              {/** 
+              // Optionally download the flattened json for easier troubleshooting
+
               const flatJsonString = JSON.stringify(flatJson, null, 2);
              
               // Create a Blob for download
@@ -55,6 +60,7 @@ export const handleFileChange = (event, setFieldValue) => {
               // Clean up: remove the link and revoke the blob URL
               document.body.removeChild(link);
               URL.revokeObjectURL(url);
+              */}
           } else {
               alert("Invalid JSON file");
           }
