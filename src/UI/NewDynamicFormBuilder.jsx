@@ -7,10 +7,12 @@ import newQuestions from "../choicesJSON/newQuestionsFormat.json";
 import { Typography } from "@mui/material";
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper";
 
+
 const DynamicFormBuilder = ({
   FormikProps,
   handleFileChange,
   newQuestions,
+  setFieldValue
 }) => {
   return (
     <Form>
@@ -20,7 +22,7 @@ const DynamicFormBuilder = ({
         type="file"
         id="uploadedJson"
         accept=".json"
-        onChange={handleFileChange}
+        onChange={(event) => handleFileChange(event, setFieldValue)}
       />
       {/* For each Folder */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
@@ -58,14 +60,14 @@ const DynamicFormBuilder = ({
 
                         {Object.entries(classContent).map(([Param, value]) => (
                           <>
-                            <label htmlFor={`${className}:${Param}`}>
+                            <label htmlFor={`${folder}_params:${className}:${Param}`}>
                               {Param}:
                             </label>
                             <NewFlexibleFormField
-                              id={`${className}:${Param}`}
+                              id={`${folder}_params:${className}:${Param}`}
                               object={value}
                               type={value.type}
-                              name={`${className}:${Param}`}
+                              name={`${folder}_params:${className}:${Param}`}
                               label={Param}
                             />
                           </>

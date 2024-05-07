@@ -39,6 +39,7 @@ function App() {
                   <h1>Experiment Builder</h1>
                   <DynamicFormBuilder
                     FormikProps={FormikProps}
+                    setFieldValue={FormikProps.setFieldValue}
                     handleFileChange={handleFileChange}
                     newQuestions={newQuestions}
                   />
