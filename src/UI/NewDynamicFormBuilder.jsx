@@ -6,6 +6,7 @@ import "./FormComponents/Form.css";
 import newQuestions from "../choicesJSON/newQuestionsFormat.json";
 import { Typography } from "@mui/material";
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper";
+import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion";
 
 
 const DynamicFormBuilder = ({
@@ -29,22 +30,9 @@ const DynamicFormBuilder = ({
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h4> {capitalizeFirstLetter(folder)}</h4>
 
-          {Object.entries(folderContent).map(([file, fileContent]) => (
-            <>
-              {" "}
-              {Object.entries(fileContent).map(([className, fileContent]) => (
-                <label>
-                  <Field
-                    type="checkbox"
-                    name={folder}
-                    value={className}
-                  ></Field>
-                  {className}
-                </label>
-              ))}
-            </>
-          ))}
+          <SmartFolderField folder={folder} folderContent={folderContent}/>
 
+          
           {/* For each Filename */}
           {Object.entries(folderContent).map(([file, fileContent]) => (
             <>
