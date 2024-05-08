@@ -13,9 +13,9 @@ For more details, read our blog article at: , or visit our website at Repromodel
 ### Javascript
 ### Python
 ### Django
-### React + Vite
+### React + Vit
 
-This templatefdgfgdfgf provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 
 # Demo
