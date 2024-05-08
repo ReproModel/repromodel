@@ -10,12 +10,10 @@ For more details, read our blog article at: , or visit our website at Repromodel
 ---
 
 # Tech Stack: 
-### Javascript
-### Python
-### Django
-### React + Vit
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Python
+- Django
+- Javascript
+- React + Vite
 
 
 # Demo
