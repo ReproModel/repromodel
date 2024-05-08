@@ -10,7 +10,7 @@ function DecimalField({ id, label }) {
   return <Field className = "inputField"type="number" id={id} name={label} step="0.01" />;
 }
 
-function IntegerField({ id, label }) {
+function IntegerFidfgdfgeld({ id, label }) {
   return <Field className = "inputField" type="number" id={id} name={label} step="1" />;
 }
 
