@@ -32,7 +32,8 @@ You can watch the demo video here:
 
 # How to Run
 For running the frontend you can either run locally<br>
-<code> npm install<br>npm run dev </code> <br>
+<code> npm install </code> <br>
+<code> npm run dev </code> <br>
 Or you can look at the latest live version here: <br>
 https://repromodel.netlify.app/
 
