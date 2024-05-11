@@ -1,0 +1,408 @@
+{
+    "load_from_checkpoint": {
+        "type": "bool",
+        "default": false
+    },
+    "models": {
+        "convAE_2D": {
+            "ConvAE_2D": {
+                "n_layers": {
+                    "type": "int",
+                    "range": "(1, 10)"
+                },
+                "input_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "output_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "activation": {
+                    "type": "str",
+                    "options": "['relu', 'sigmoid', 'tanh', 'softmax', 'leaky_relu']"
+                }
+            }
+        },
+        "customModel": {
+            "CustomModel": {
+                "lr": {
+                    "type": "float",
+                    "default": "0.01",
+                    "range": "(0.0001, 1.0)"
+                },
+                "activation": {
+                    "type": "str",
+                    "default": "'relu'",
+                    "options": "['relu', 'sigmoid', 'tanh']"
+                }
+            }
+        },
+        "CAE_3D": {
+            "Conv3dEncoder": {
+                "n_layers": {
+                    "type": "int",
+                    "range": "(1, 10)"
+                },
+                "input_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                }
+            },
+            "Conv3dDecoder": {
+                "n_layers": {
+                    "type": "int",
+                    "range": "(1, 10)"
+                },
+                "in_channels": {
+                    "type": "int",
+                    "range": "(1, 1024)"
+                },
+                "output_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "activation": {
+                    "type": "str",
+                    "options": "['relu', 'sigmoid']"
+                }
+            },
+            "Conv3dAutoencoder": {
+                "n_layers": {
+                    "type": "int",
+                    "range": "(1, 10)"
+                },
+                "input_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "output_channels": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "activation": {
+                    "type": "str",
+                    "options": "['relu', 'sigmoid']"
+                },
+                "fusion": {
+                    "type": "str",
+                    "options": "['intermediate', 'final']"
+                }
+            }
+        }
+    },
+    "datasets": {
+        "cifar100Dataset": {
+            "CIFAR100Dataset": {
+                "root": {
+                    "type": "str"
+                },
+                "train": {
+                    "type": "bool"
+                },
+                "transform": {
+                    "type": "type(lambda x: x)",
+                    "default": "None"
+                },
+                "target_transform": {
+                    "type": "type(lambda x: x)",
+                    "default": "None"
+                },
+                "download": {
+                    "type": "bool"
+                }
+            }
+        },
+        "customDataset": {
+            "CustomDataset": {
+                "input_path": {
+                    "type": "str"
+                },
+                "target_path": {
+                    "type": "str"
+                },
+                "in_channel": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "mode": {
+                    "type": "str",
+                    "options": "['train', 'val', 'test']"
+                },
+                "transforms": {
+                    "type": "type(lambda x: x)",
+                    "default": "None"
+                },
+                "extension": {
+                    "type": "str"
+                }
+            }
+        },
+        "cifar10Dataset": {
+            "CIFAR10Dataset": {
+                "root": {
+                    "type": "str"
+                },
+                "train": {
+                    "type": "bool"
+                },
+                "transform": {
+                    "type": "Compose",
+                    "default": "None"
+                },
+                "target_transform": {
+                    "type": "Compose",
+                    "default": "None"
+                },
+                "download": {
+                    "type": "bool"
+                }
+            }
+        },
+        "dummyDataset": {
+            "DummyDataset": {
+                "input_path": {
+                    "type": "str"
+                },
+                "target_path": {
+                    "type": "str"
+                },
+                "in_channel": {
+                    "type": "int",
+                    "range": "(1, 1000)"
+                },
+                "mode": {
+                    "type": "str",
+                    "options": "['train', 'val', 'test']"
+                },
+                "transforms": {
+                    "type": "type(lambda x: x)",
+                    "default": "None"
+                },
+                "extension": {
+                    "type": "str"
+                }
+            }
+        }
+    },
+    "metrics": {
+        "customMetrics": {
+            "CustomMetric": {
+                "weight": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "diceScore": {
+            "DiceScore": {
+                "threshold": {
+                    "type": "float",
+                    "default": "0.5",
+                    "range": "(0.0, 1.0)"
+                },
+                "smooth": {
+                    "type": "float",
+                    "default": "1",
+                    "range": "(1e-05, 1)"
+                }
+            }
+        }
+    },
+    "preprocessing": {
+        "dummyPreprocessor": {
+            "DummyPreprocessor": {
+                "parent_input_path": {
+                    "type": "str"
+                },
+                "parent_output_path": {
+                    "type": "str"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "range": "(1, 32)"
+                }
+            }
+        },
+        "customPreprocessor": {
+            "CustomPreprocessor": {
+                "data_path": {
+                    "type": "str"
+                },
+                "output_path": {
+                    "type": "str"
+                },
+                "input_type": {
+                    "type": "str",
+                    "options": "['input', 'output', 'temp']"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "range": "(1, 32)"
+                }
+            }
+        }
+    },
+    "postprocessing": {
+        "imageToGrayscale": {
+            "ImageToGrayscale": {
+                "data_path": {
+                    "type": "str"
+                },
+                "output_path": {
+                    "type": "str"
+                },
+                "output_type": {
+                    "type": "str",
+                    "options": "['final', 'intermediate']"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": "1",
+                    "range": "(1, 100)"
+                }
+            }
+        },
+        "customPostprocessor": {
+            "CustomPostprocessor": {
+                "data_path": {
+                    "type": "str"
+                },
+                "output_path": {
+                    "type": "str"
+                },
+                "output_type": {
+                    "type": "str",
+                    "options": "['final', 'intermediate', 'logs']"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "range": "(1, 32)"
+                }
+            }
+        }
+    },
+    "losses": {
+        "diceLoss": {
+            "DiceLoss": {
+                "smooth": {
+                    "type": "float",
+                    "default": "1",
+                    "range": "(1e-05, 1.0)"
+                }
+            }
+        },
+        "customLoss": {
+            "CustomLoss": {
+                "weight": {
+                    "type": "float",
+                    "range": "(0.1, 1.0)"
+                }
+            }
+        }
+    },
+    "augmentations": {
+        "customAugmentation": {
+            "CustomAugmentations": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "shiftScaleRotateFlip": {
+            "ShiftScaleRotateFlip": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                },
+                "shift_limit": {
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
+                },
+                "scale_limit": {
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
+                },
+                "rotate_limit": {
+                    "type": "int",
+                    "range": "(0, 360)"
+                }
+            }
+        }
+    },
+    "early_stopping": {
+        "noImprovementAfter": {
+            "NoImprovementAfter": {
+                "patience": {
+                    "type": "int",
+                    "default": "10",
+                    "range": "(1, 50)"
+                },
+                "delta": {
+                    "type": "float",
+                    "default": "0.001",
+                    "range": "(0.0, 1.0)"
+                },
+                "min_lr": {
+                    "type": "float",
+                    "default": "1e-06",
+                    "range": "(0.0, 1e-06)"
+                }
+            }
+        },
+        "customEarlyStopping": {
+            "CustomEarlyStopping": {}
+        },
+        "scheduledStop": {
+            "ScheduledStop": {
+                "max_epochs": {
+                    "type": "int",
+                    "range": "(1, 1000000)"
+                }
+            }
+        }
+    },
+    "device": {
+        "type": "str",
+        "default": "cpu",
+        "options": "['cpu', 'cuda']"
+    },
+    "batch_size": {
+        "type": "int",
+        "default": 1,
+        "range": [
+            1,
+            1024
+        ]
+    },
+    "val_loss": {
+        "type": "str",
+        "default": "val_loss",
+        "options": "['train_loss', 'val_loss']"
+    },
+    "data_splits": {
+        "k": {
+            "type": "int",
+            "default": 5,
+            "range": [
+                1,
+                20
+            ]
+        },
+        "random_seed": {
+            "type": "int"
+        }
+    },
+    "model_save_path": {
+        "type": "str"
+    },
+    "tensorboard_log_path": {
+        "type": "str",
+        "default": "logs"
+    },
+    "metadata_path": {
+        "type": "str",
+        "default": "logs/metadata.json"
+    }
+}

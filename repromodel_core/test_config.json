@@ -1,0 +1,64 @@
+{
+    "model": ["ConvAE_2D"],
+    "model_params": [{
+        "n_layers": 4,
+        "input_channels": 3,
+        "output_channels": 2,
+        "activation": "softmax"
+    }],
+    "preprocessor": "DummyPreprocessor",
+    "preprocessor_params": {
+      "parent_input_path": "./data/dummyData",
+      "parent_output_path": "./data/dummyData_preprocessed",
+      "num_workers": 10
+    },
+    "augmentation": "ShiftScaleRotateFlip",
+    "augmentation_params": {
+      "p": 0.5,
+      "shift_limit": 0.2,
+      "scale_limit": 0.2,
+      "rotate_limit": 60
+    },
+    "dataset": "DummyDataset",
+    "dataset_params": {
+      "input_path": "data/dummyData_preprocessed/input",
+      "target_path": "data/dummyData_preprocessed/target",
+      "extension": ".npy"
+    },
+    "optimizer": "Adam",
+    "optimizer_params": {
+      "lr": 0.001,
+      "betas": [0.9, 0.999],
+      "eps": 1e-08,
+      "weight_decay": 0,
+      "amsgrad": false
+    },
+    "lr_scheduler": "ReduceLROnPlateau",
+    "lr_scheduler_params": {"factor": 0.5,
+                            "patience": 10
+    },
+    "loss_function": "BCELoss",
+    "loss_function_params": {},
+    "early_stopping": "ScheduledStop",
+    "early_stopping_params": {
+      "max_epochs": 10
+    },
+    "metric": ["DiceScore"],
+    "metric_params": [{
+      "threshold": 0.5,
+      "smooth": 0.001  
+    }],
+    
+    "device": "cpu",
+    "batch_size": 8,
+    "monitor": "val_loss",
+    "data_splits": {
+      "k": 5,
+      "random_seed": 42
+    },
+    "model_save_path": "ckpts/",
+    "tensorboard_log_path": "logs",
+    "metadata_path": "logs/metadata.json",
+    "load_from_checkpoint": false
+  }
+  
