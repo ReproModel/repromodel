@@ -6,13 +6,21 @@ function SmartIntegerField({ id, label, object, name}) {
     const rangeString = object?.range;  // Using optional chaining
     let min, max;
   
-    if (rangeString) {
-      const match = rangeString.match(/\((\d+),\s*(\d+)\)/);
-      if (match) {
-        min = parseInt(match[1], 10);
-        max = parseInt(match[2], 10);
+    try {
+      if (rangeString) {
+        const match = rangeString.match(/\((\d+),\s*(\d+)\)/);
+        if (match) {
+          min = parseInt(match[1], 10);
+          max = parseInt(match[2], 10);
+        }
       }
+  
+     
+  
+    } catch (error) {
+      console.error('An error occurred while parsing the range:', error);
     }
+  
   
     return (
       <>
@@ -29,6 +37,7 @@ function SmartIntegerField({ id, label, object, name}) {
             className="sliderField"
             type="range"
             id={id}
+            label={label}
             name={name}
             min={min}
             max={max}
