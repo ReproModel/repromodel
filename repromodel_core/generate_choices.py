@@ -69,7 +69,7 @@ all_definitions["device"] = {
 all_definitions["batch_size"] = {
                     "type": "int",
                     "default": 1,
-                    "range": (1, 1024)
+                    "range": "(1, 1024)"
                 }
 
 all_definitions["val_loss"] = {
@@ -82,7 +82,7 @@ all_definitions["data_splits"] = {
                     "k": {
                         "type": "int",
                         "default": 5,
-                        "range": (1, 20)
+                        "range": "(1, 20)"
                     },
                     "random_seed": {
                         "type": "int",
