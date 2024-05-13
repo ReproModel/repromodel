@@ -7,7 +7,7 @@ import NewFlexibleFormField from "./UI/FormComponents/NewFlexibleFormField";
 
 import ModuleStack from "./UI/ModuleStack";
 import NewDynamicFormBuilder from "./UI/NewDynamicFormBuilder";
-import newQuestions from "./choicesJSON/newQuestionsFormat.json";
+import newQuestions from "../repromodel_core/choices.json";
 import { capitalizeFirstLetter } from "./helperFunctions/OtherHelper";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
 import DynamicFormBuilder from "./UI/NewDynamicFormBuilder";
