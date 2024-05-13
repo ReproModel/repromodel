@@ -37,6 +37,9 @@ For running the frontend you can either run locally<br>
 Or you can look at the latest live version here: <br>
 https://repromodel.netlify.app/
 
+[OPTIONAL] If needed prepare your dummy dataset for testing the training procedure:<br>
+<code> python3 repromodel_core/data/dummyDataset/generate_data.py </code> <br>
+
 For running the training script from the CLI, prepare your config file and run the code from the root folder (repromodel): <br>
 <code> python3 repromodel_core/trainer.py repromodel_core/test_config.json </code> <br>
 
