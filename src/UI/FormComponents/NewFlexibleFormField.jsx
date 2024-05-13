@@ -6,7 +6,7 @@ import SmartFreeTextField from "./FieldTypes/SmartStringField";
 import FormulaField from "./FieldTypes/FormulaField";
 import SmartFloatField from "./FieldTypes/SmartFloatField";
 
-function DefaultTextField({ id, label, name }) {
+function DefaultTextField({ id, label, name, type }) {
   return (
     <Field
       className="inputField"
@@ -15,6 +15,15 @@ function DefaultTextField({ id, label, name }) {
       label={label}
       placeholder={`Please enter ${type}`}
     />
+  );
+}
+
+function BooleanField({ id, label, name }) {
+  return (
+    <label>
+      <Field type="checkbox" id={id} name={name} label={label} />
+      {label}
+    </label>
   );
 }
 
@@ -47,6 +56,8 @@ function FlexibleFormField({ id, label, type, name, object }) {
         return <SliderField id={id} label={label} name={name} />;
       case "type(lambda x: x)":
         return <FormulaField id={id} label={label} name={name} />;
+      case "bool":
+        return <BooleanField id={id} label={label} name={name} />;
       default:
         return (
           <DefaultTextField id={id} label={label} name={name} type={type} />
