@@ -38,7 +38,7 @@ Or you can look at the latest live version here: <br>
 https://repromodel.netlify.app/
 
 For running the training script from the CLI, prepare your config file and run the code from the root folder (repromodel): <br>
-<code> python3 repromodel_core/trainer.py test_config.json </code> <br>
+<code> python3 repromodel_core/trainer.py repromodel_core/test_config.json </code> <br>
 
 # License 
 

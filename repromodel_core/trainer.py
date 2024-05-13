@@ -17,6 +17,7 @@ def train(input_data):
     if isinstance(input_data, str) and os.path.isfile(input_data):
         cfg = edict(load_json(input_data))
     else:
+        print(input_data)
         cfg = edict(input_data)
 
     # Set training parameters
