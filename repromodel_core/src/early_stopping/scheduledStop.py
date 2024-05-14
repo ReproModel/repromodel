@@ -1,6 +1,6 @@
 from .customEarlyStopping import CustomEarlyStopping
 from ..decorators import enforce_types_and_ranges
-
+from ..utils import print_to_file
 class ScheduledStop(CustomEarlyStopping):
     @enforce_types_and_ranges({
         'max_epochs': {'type': int, 'range': (1, 1000000)}  # Specifying validation rules for max_epochs
@@ -15,4 +15,4 @@ class ScheduledStop(CustomEarlyStopping):
     def _handle_scheduled_stopping(self, current_epoch):
         if current_epoch >= self.max_epochs:
             self.should_stop = True
-            print(f"Early stopping triggered due to reaching the maximum number of epochs: {self.max_epochs + 1}")
+            print_to_file(f"Early stopping triggered due to reaching the maximum number of epochs: {self.max_epochs + 1}")

@@ -6,18 +6,19 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model
+from src.utils import save_model, print_to_file, delete_command_outputs, TqdmFile
 from copy import deepcopy
 
 SRC_DIR = "src."
 
 # Main training function
 def train(input_data):
+    #restart command outputs file
+    delete_command_outputs()
     # Load config
     if isinstance(input_data, str) and os.path.isfile(input_data):
         cfg = edict(load_json(input_data))
     else:
-        print(input_data)
         cfg = edict(input_data)
 
     # Set training parameters
@@ -32,7 +33,7 @@ def train(input_data):
         model_min = cfg.model.index(metadata['model_name'])
         k_min = metadata['fold']
         epoch_min = metadata['epoch']
-        print(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.model[model_min]}).")
+        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.model[model_min]}).", config=cfg)
 
     # Get preprocessing, augmentation, and dataset configurations
     preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessor[0].lower() + cfg.preprocessor[1:]
@@ -65,7 +66,11 @@ def train(input_data):
 
     #preprocess the dataset
     preprocessor.preprocess()
+
     for i in range(model_min, len(cfg.model)):
+        print_to_file("Training model " + cfg.model[i], config=cfg, model_num = i)
+        # Custom file object for TQDM
+        tqdm_file = TqdmFile(config=cfg, model_num = i) 
 
         # Training loop for each fold
         for k in range(k_min, cfg.data_splits.k):
@@ -101,7 +106,7 @@ def train(input_data):
                 total_train_loss = 0.0
                 total_samples = 0
 
-                progress_bar = tqdm(enumerate(train_dataloader), total=len(train_dataloader))
+                progress_bar = tqdm(enumerate(train_dataloader), total=len(train_dataloader), file=tqdm_file)
                 for batch_idx, (inputs, labels) in progress_bar:
                     inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
                     optimizer.zero_grad()
@@ -127,7 +132,8 @@ def train(input_data):
                 model.eval()
                 total_val_loss = 0.0
                 total_samples = 0
-                progress_bar = tqdm(enumerate(val_dataloader), total=len(val_dataloader))
+                progress_bar = tqdm(enumerate(val_dataloader), total=len(val_dataloader), file=tqdm_file)
+
                 with torch.no_grad():
                     for batch_idx, (inputs, labels) in progress_bar:
                         inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
@@ -152,7 +158,7 @@ def train(input_data):
                 # Early stopping
                 early_stopper.step(epoch)
                 if early_stopper.should_stop:
-                    print(f"Early stopping at epoch {epoch+1}")
+                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = i)
                     writer.close()
                     break
 

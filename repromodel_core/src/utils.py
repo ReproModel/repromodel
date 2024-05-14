@@ -46,8 +46,15 @@ def save_model(model, path, metadata=None):
         with open(path + '_metadata.json', 'w') as f:
             json.dump(metadata, f, indent=4)
 
-def print_to_file(string, file_name="command_output.txt", tqdm=False):
+def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
+    if config is not None:
+        file_name = f"{config.tensorboard_log_path}/{config.model[model_num]}_{config.dataset}_" + "command_output.txt"
+    else:
+        file_name = "repromodel_core/logs/command_output.txt"
+
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)
     with open(file_name, "a") as file:
         if tqdm:
             file.write("\r" + string)
@@ -65,3 +72,29 @@ def handle_saving_logic(config, model, optimizer, lr_scheduler, path_prefix):
         save_model(model, f'{path_prefix}.pt')
     save_model(optimizer, f'{path_prefix}_optimizer.pt')
     save_model(lr_scheduler, f'{path_prefix}_lr_scheduler.pt')
+
+def delete_command_outputs():
+    file_path = "logs/command_output.txt"
+
+    try:
+        os.remove(file_path)
+        print_to_file(f"Command output {file_path} successfully restarted.")
+    except FileNotFoundError:
+        print_to_file(f"Old command output file {file_path} not found.")
+    except PermissionError:
+        print_to_file(f"Permission denied to delete {file_path}.")
+    except Exception as e:
+        print_to_file(f"Error occurred while deleting {file_path}: {e}")
+
+class TqdmFile:
+    def __init__(self, config=None, model_num = None):
+        self.config = config
+        self.model_num = model_num
+
+    def write(self, msg):
+        # Append to the file in a TQDM-compatible way
+        print_to_file(msg, config=self.config, tqdm=True, model_num=self.model_num)
+
+    def flush(self):
+        pass  # No-op to conform to file interface
+

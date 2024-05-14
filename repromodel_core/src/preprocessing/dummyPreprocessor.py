@@ -4,6 +4,7 @@ from PIL import Image
 import numpy as np
 from tqdm import tqdm
 from ..decorators import enforce_types_and_ranges
+from ..utils import print_to_file
 
 class DummyPreprocessor:
     @enforce_types_and_ranges({
@@ -42,8 +43,7 @@ class DummyPreprocessor:
             self.create_paths(input_type)
 
             input_paths = list(self.data_path.glob('*'))  # List all files in data_path
-            log_message = f"Starting preprocessing of {len(input_paths)} files."
-            print(log_message)
+            print_to_file(f"Starting preprocessing of {len(input_paths)} files for {input_type}")
 
             if self.num_workers > 1:
                 with ProcessPoolExecutor(max_workers=self.num_workers) as executor:
@@ -51,6 +51,7 @@ class DummyPreprocessor:
             else:
                 for file_path in tqdm(input_paths):
                     self._process_file(file_path)
+        print_to_file(f"Finished preprocessing of {input_type} files")
 
 def main():
     preprocessor = DummyPreprocessor(
