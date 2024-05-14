@@ -13,7 +13,7 @@ def update_progress_bar(file_path, total_time=10, update_interval=2):
             time.sleep(update_interval)
 
 def main():
-    file_path = '/Users/julien/Documents/1_Repos/1_Private/repromodel/logs/Training_logs/progress.txt'
+    file_path = '/Users/julien/Documents/1_Repos/1_Private/repromodel/repromodel_core/logs/Training_logs/progress.txt'
     total_time = 30
     update_interval = 1
     update_progress_bar(file_path, total_time, update_interval)

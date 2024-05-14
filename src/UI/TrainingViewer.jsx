@@ -6,8 +6,6 @@ import ProgressFileReader from "./ViewerComponents/ProgressFileReader";
 
 
 
-
-
 const RunPythonScript = () => {
   const runScript = async () => {
     try {
