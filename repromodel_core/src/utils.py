@@ -2,8 +2,7 @@ import os
 import json
 import ast
 import torch
-from scipy.ndimage import zoom
-from easydict import EasyDict as edict
+from datetime import datetime
 
 def parse_constructor_params(node):
     """Extract constructor parameters and type annotations from a class node."""
@@ -59,11 +58,17 @@ def print_to_file(string, config = None, tqdm=False, model_num = None):
     # Open the file in write mode if tqdm is True, otherwise append
     mode = "w" if tqdm else "a"
     
+    # Get the current timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Prepare the string with the timestamp
+    timestamped_string = f"[{timestamp}] {string}"
+
     with open(file_name, mode) as file:
         if tqdm:
-            file.write(string)  
+            file.write(timestamped_string)  
         else:
-            file.write(string + '\n')
+            file.write(timestamped_string + '\n')
         file.flush()
 
 # Example of refactoring save_model for different configurations
@@ -78,7 +83,7 @@ def handle_saving_logic(config, model, optimizer, lr_scheduler, path_prefix):
     save_model(lr_scheduler, f'{path_prefix}_lr_scheduler.pt')
 
 def delete_command_outputs():
-    file_path = "logs/command_output.txt"
+    file_path = "repromodel_core/logs/command_output.txt"
 
     try:
         os.remove(file_path)
