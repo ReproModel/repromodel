@@ -28,7 +28,7 @@ def run_script():
 @app.route('/api/files', methods=['GET'])
 def get_txt_files():
     try:
-        relative_path = 'logs/Training_logs'  # Replace with your folder path
+        relative_path = 'test_logs/Training_logs'  # Replace with your folder path
          # Get the path of the script itself
         script_path = os.path.abspath(__file__) 
         # Get the directory of the script

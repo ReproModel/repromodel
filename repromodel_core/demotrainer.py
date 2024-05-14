@@ -21,7 +21,7 @@ def main():
     script_dir = os.path.dirname(script_path)
 
     # Define the relative path
-    relative_path = "logs/Training_logs/progress.txt"
+    relative_path = "test_logs/Training_logs/progress.txt"
 
     # Combine the script's directory with the relative path to get the absolute path
     absolute_path = os.path.join(script_dir, relative_path)

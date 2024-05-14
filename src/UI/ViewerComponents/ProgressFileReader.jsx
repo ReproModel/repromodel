@@ -8,7 +8,7 @@ const ProgressFileReader = ({ fileName }) => {
   useEffect(() => {
     const fetchFileContent = async () => {
       try {
-        const response = await fetch(`repromodel_core/logs/Training_logs/${fileName}`);
+        const response = await fetch(`repromodel_core/test_logs/Training_logs/${fileName}`);
         const text = await response.text();
         setFileContent(text);
       } catch (error) {
