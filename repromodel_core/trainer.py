@@ -26,7 +26,7 @@ def train(input_data):
 
     # load model from last checkpoint
     if cfg.load_from_checkpoint:
-        cfg, metadata = load_json(cfg.metadata_path)
+        metadata = load_json(cfg.metadata_path)
         cfg = edict(cfg)
 
         # Get model index, fold, and epoch from metadata
@@ -38,6 +38,9 @@ def train(input_data):
     # Get preprocessing, augmentation, and dataset configurations
     preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessor[0].lower() + cfg.preprocessor[1:]
     preprocessor = configure_component(preprocessor_path, cfg.preprocessor, cfg.preprocessor_params)
+    #preprocess the dataset
+    preprocessor.preprocess()
+
     augmentor_path = SRC_DIR + "augmentations." + cfg.augmentation[0].lower() + cfg.augmentation[1:]
     augmentor = configure_component(augmentor_path, cfg.augmentation, cfg.augmentation_params)
     dataset_path = SRC_DIR + "datasets." + cfg.dataset[0].lower() + cfg.dataset[1:]
@@ -63,9 +66,6 @@ def train(input_data):
 
     # Initialize TensorBoard
     writer = init_tensorboard_logging(cfg, k_min, model_min)
-
-    #preprocess the dataset
-    preprocessor.preprocess()
 
     for i in range(model_min, len(cfg.model)):
         print_to_file("Training model " + cfg.model[i], config=cfg, model_num = i)
@@ -167,7 +167,7 @@ def train(input_data):
                 # Save best model
                 if average_val_loss < best_val_loss:
                     best_val_loss = average_val_loss
-                    save_model(model, os.path.join(cfg.model_save_path, f"best_model_fold{k}.pt"))
+                    save_model(model, os.path.join(cfg.model_save_path, f"best_model_fold{k}.pt"), metadata=True)
 
 
 # Example usage
