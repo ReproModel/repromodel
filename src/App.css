@@ -33,6 +33,7 @@
 .questionairContainer {
   padding: 16px;
   padding-left: 0px;
+  position: relative;
   
 
 }
@@ -46,6 +47,7 @@
   border-radius: 8px;
   padding: 64px;
   overflow-y: scroll;
+ 
   
 }
 .container{
