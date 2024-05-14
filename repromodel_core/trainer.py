@@ -1,4 +1,6 @@
 import os
+import sys
+import json
 import torch
 import torchmetrics
 from torch.utils.data import DataLoader
@@ -16,10 +18,14 @@ def train(input_data):
     #restart command outputs file
     delete_command_outputs()
     # Load config
-    if isinstance(input_data, str) and os.path.isfile(input_data):
-        cfg = edict(load_json(input_data))
+    if os.path.isfile(input_data):
+        with open(input_data, 'r') as file:
+            data = json.load(file)
     else:
-        cfg = edict(input_data)
+        # Assume input is a JSON string
+        data = json.loads(input_data)
+
+    cfg = edict(data)    
 
     # Set training parameters
     k_min, epoch_min, model_min = 0, 0, 0
@@ -173,6 +179,6 @@ def train(input_data):
 # Example usage
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Train a PyTorch model')
-    parser.add_argument('json_path', type=str, help='Path to the JSON request file')
+    parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
     args = parser.parse_args()
-    train(args.json_path)
+    train(args.input_data)
