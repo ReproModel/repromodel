@@ -1,4 +1,5 @@
 import time
+import os
 
 def update_progress_bar(file_path, total_time=10, update_interval=2):
     progress_length = 50  # Length of the progress bar
@@ -13,7 +14,20 @@ def update_progress_bar(file_path, total_time=10, update_interval=2):
             time.sleep(update_interval)
 
 def main():
-    file_path = '/Users/julien/Documents/1_Repos/1_Private/repromodel/repromodel_core/logs/Training_logs/progress.txt'
+    # Get the path of the script itself
+    script_path = os.path.abspath(__file__)
+
+    # Get the directory of the script
+    script_dir = os.path.dirname(script_path)
+
+    # Define the relative path
+    relative_path = "logs/Training_logs/progress.txt"
+
+    # Combine the script's directory with the relative path to get the absolute path
+    absolute_path = os.path.join(script_dir, relative_path)
+
+
+    file_path = absolute_path
     total_time = 30
     update_interval = 1
     update_progress_bar(file_path, total_time, update_interval)
