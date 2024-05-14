@@ -29,8 +29,7 @@ def get_optimizer(model, optimizer_name, optimizer_params):
 
     optimizer_class = getattr(torch.optim, optimizer_name, None)
     if not optimizer_class:
-        raise ValueError(
-            f"Optimizer '{optimizer_name}' not found in torch.optim")
+        raise ValueError(f"Optimizer '{optimizer_name}' not found in torch.optim")
 
     return optimizer_class(params=model.parameters(), **optimizer_params)
 
@@ -61,6 +60,7 @@ def configure_device_specific(component, device):
     return component
 
 def init_tensorboard_logging(config, fold, model_num, base_dir="logs"):
+    base_dir = config.tensorboard_log_path
     ensure_folder_exists(base_dir)
     subdir = f"{base_dir}/{config['model'][model_num]}_{config['dataset']}_{fold}"
     ensure_folder_exists(subdir)
