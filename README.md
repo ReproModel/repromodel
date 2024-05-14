@@ -34,7 +34,7 @@ For more details, read our blog article at: , or visit our website at Repromodel
 
 <br>  <br>
 
-![Gif](Readme Files/gif1.gif) 
+![Gif](gif1) 
 
 
   
