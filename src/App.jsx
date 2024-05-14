@@ -44,6 +44,9 @@ function App() {
                   >
                     Experiment Builder
                   </Button>
+                  <Button onClick={() => setSelectedSection("Model Testing")}>
+                    Model Testing
+                  </Button>
                   <Button onClick={() => setSelectedSection("Training Viewer")}>
                     Training Viewer
                   </Button>
@@ -66,6 +69,12 @@ function App() {
                   <>
                     <Typography variant="h4">Training Viewer</Typography>
                     <TrainingViewer />
+                  </>
+                )}
+                {selectedSection === "Model Testing" && (
+                  <>
+                    <Typography variant="h4">Here comes the Training Viewer</Typography>
+                    
                   </>
                 )}
               </Grid>
