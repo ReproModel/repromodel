@@ -8,14 +8,14 @@ const ProgressFileReader = ({ fileName }) => {
   useEffect(() => {
     const fetchFileContent = async () => {
       try {
-        const response = await fetch(`logs/Training_logs/${fileName}`);
+        const response = await fetch(`repromodel_core/logs/Training_logs/${fileName}`);
         const text = await response.text();
         setFileContent(text);
       } catch (error) {
         console.error("Error fetching the file:", error);
       }
     };
-
+    
     fetchFileContent();
     const interval = setInterval(fetchFileContent, 1000); // Update every XX ms
 

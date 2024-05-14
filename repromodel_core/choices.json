@@ -398,5 +398,8 @@
     "metadata_path": {
         "type": "str",
         "default": "logs/metadata.json"
+    },
+    "training_name": {
+        "type": "str"
     }
 }

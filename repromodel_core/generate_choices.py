@@ -105,6 +105,11 @@ all_definitions["metadata_path"] = {
                         "default": "logs/metadata.json"
                     }
 
+all_definitions["training_name"] = {
+                        "type": "str",
+                       
+                    }
+
 # Save the collected data to a JSON file
 with open('choices.json', 'w') as json_file:
     json.dump(all_definitions, json_file, indent=4)
