@@ -24,7 +24,7 @@ For more details, read our blog article at: , or visit our website at Repromodel
 
 ### Python
 
-### Django
+### Flask
 
 ### React + Vit  
 
