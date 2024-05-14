@@ -55,11 +55,15 @@ def print_to_file(string, config = None, tqdm=False, model_num = None):
 
     # Ensure the directory exists
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
-    with open(file_name, "a") as file:
+
+    # Open the file in write mode if tqdm is True, otherwise append
+    mode = "w" if tqdm else "a"
+    
+    with open(file_name, mode) as file:
         if tqdm:
-            file.write("\r" + string)
+            file.write(string)  
         else:
-            file.write(string + "\n")
+            file.write(string + '\n')
         file.flush()
 
 # Example of refactoring save_model for different configurations
