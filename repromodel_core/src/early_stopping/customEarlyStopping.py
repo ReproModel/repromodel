@@ -1,5 +1,5 @@
 from ..decorators import enforce_types_and_ranges
-
+from ..utils import print_to_file
 class CustomEarlyStopping:
     def __init__(self):
         # Common attributes
@@ -32,5 +32,5 @@ class CustomEarlyStopping:
             self.should_stop = state_dict['should_stop']
             self.current_epoch = state_dict['current_epoch']
         except KeyError as e:
-            print(f'Error {e} occurred. State_dict not loaded')
+            print_to_file(f'Error {e} occurred. State_dict not loaded')
 

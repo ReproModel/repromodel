@@ -168,7 +168,7 @@ def train(input_data):
                 if average_val_loss < best_val_loss:
                     best_val_loss = average_val_loss
                     save_model(model, os.path.join(cfg.model_save_path, f"best_model_fold{k}.pt"), metadata=True)
-
+        print_to_file(f"Model {cfg.model[i]} training finished", config=cfg, model_num=i)
 
 # Example usage
 if __name__ == '__main__':
