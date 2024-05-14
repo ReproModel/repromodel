@@ -130,6 +130,8 @@ export const handleSubmit = async (values) => {
     const response = await axios.post('http://127.0.0.1:5005/submit-config-start-training', values);
     console.log('Script Output:', response.data);
   } catch (error) {
-    console.error('Error running script:', error);
-  } 
+    const errorMessage = error.response ? JSON.stringify(error.response.data) : error.message;
+    console.warn('Warning: Error running script:', errorMessage);
+    alert('Warning: Error running script: ' + errorMessage);
+  }
 };

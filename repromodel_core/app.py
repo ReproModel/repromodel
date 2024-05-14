@@ -54,12 +54,13 @@ def submit_config_start_training_():
         # Get JSON data from the request
         data = request.get_json()
         if not data:
-            app.logger.error("No data provided in request")
-            return jsonify({'error': 'No data provided'}), 400
+            error_message = "No data provided in request"
+            app.logger.error(error_message)
+            return jsonify({'error': error_message}), 400
         
         # Convert the JSON data to a string to pass as an argument
         json_data = json.dumps(data)
-        app.logger.info(f"JSON data to be passed to the script")
+        app.logger.info("Received JSON data for processing.")
         
         # Path to the Python script you want to run
         script_path = 'repromodel_core/trainer.py'
@@ -73,15 +74,17 @@ def submit_config_start_training_():
         
         # Check subprocess result
         if result.returncode == 0:
-            app.logger.info("Script executed successfully")
+            app.logger.info("Script executed successfully with output: %s", result.stdout)
             return jsonify({'output': result.stdout, 'error': None})
         else:
-            app.logger.error(f"Script execution failed: {result.stderr}")
-            return jsonify({'output': result.stdout, 'error': result.stderr}), 400
+            error_detail = f"Script execution failed with error: {result.stderr}"
+            app.logger.error(error_detail)
+            return jsonify({'output': result.stdout, 'error': error_detail}), 400
 
     except Exception as e:
-        app.logger.exception("An error occurred during the process")
-        return jsonify({'error': str(e)}), 500
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+        return jsonify({'error': error_message}), 500
 
 
 if __name__ == '__main__':
