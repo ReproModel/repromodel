@@ -45,7 +45,7 @@ export const handleFileChange = (event, setFieldValue) => {
         const nestedJson = JSON.parse(text);
         const flatJson = flattenJson(nestedJson);
         Object.keys(flatJson).forEach((key) => {
-          setFieldValue(key, flatJson[key], false); // Set field value without triggering validation
+          setFieldValue(key, flatJson[key], false); // Set field value without triggering validatio±n
         });
 
         {
