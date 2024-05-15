@@ -25,7 +25,7 @@ def train(input_data):
         # Assume input is a JSON string
         data = json.loads(input_data)
 
-    cfg = edict(data)    
+    cfg = edict(data)
 
     # Set training parameters
     k_min, epoch_min, model_min = 0, 0, 0
@@ -39,7 +39,7 @@ def train(input_data):
         model_min = cfg.models.index(metadata['model_name'])
         k_min = metadata['fold']
         epoch_min = metadata['epoch']
-        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg)
+        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
     # Get preprocessing, augmentation, and dataset configurations
     preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing[0].lower() + cfg.preprocessing[1:]
@@ -55,10 +55,12 @@ def train(input_data):
     dataset.set_transforms(augmentor)
 
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
-    metrics = []
+    train_metrics, val_metrics = [], []
+    
     for metric, params in zip(cfg.metrics, cfg.metrics_params):
         metric_path = SRC_DIR + "metrics." + metric[0].lower() + metric[1:]
-        metrics.append(configure_component(metric_path, metric, params))
+        train_metrics.append(configure_component(metric_path, metric, params))
+        val_metrics.append(configure_component(metric_path, metric, params))
 
     models = []
     for model, params in zip(cfg.models, cfg.models_params):
@@ -112,6 +114,7 @@ def train(input_data):
                 # Training phase
                 model.train()
                 total_train_loss = 0.0
+                total_train_metrics = [0]*len(cfg.metrics)
                 total_samples = 0
 
                 progress_bar = tqdm(enumerate(train_dataloader), total=len(train_dataloader), file=tqdm_file)
@@ -123,10 +126,11 @@ def train(input_data):
                     train_loss.backward()
                     optimizer.step()
 
-                    for metric in metrics:
+                    #caluclate and save train metrics
+                    for i, metric in enumerate(train_metrics):
                         if isinstance(metric, torchmetrics.Dice):
                             labels = labels.long()
-                        metric(outputs, labels)
+                        total_train_metrics[i] += metric(outputs, labels)
 
                     total_train_loss += train_loss.item() * inputs.size(0)
                     total_samples += inputs.size(0)
@@ -136,13 +140,20 @@ def train(input_data):
 
                 average_train_loss = total_train_loss / total_samples
 
+                #average metrics calculation
+                average_train_metrics = []
+                for train_m in total_train_metrics:
+                    average_train_metrics.append(train_m / total_samples)
+
                 # Validation phase
                 model.eval()
                 total_val_loss = 0.0
+                total_val_metrics = [0]*len(cfg.metrics)
                 total_samples = 0
                 progress_bar = tqdm(enumerate(val_dataloader), total=len(val_dataloader), file=tqdm_file)
 
                 with torch.no_grad():
+
                     for batch_idx, (inputs, labels) in progress_bar:
                         inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
                         outputs = model(inputs)
@@ -150,7 +161,19 @@ def train(input_data):
                         total_val_loss += val_loss.item() * inputs.size(0)
                         total_samples += inputs.size(0)
 
+                        #caluclate and save val metrics
+                        for i, metric in enumerate(val_metrics):
+                            if isinstance(metric, torchmetrics.Dice):
+                                labels = labels.long()
+                            total_val_metrics[i] += metric(outputs, labels)
+                
+                #average loss calculation
                 average_val_loss = total_val_loss / total_samples
+
+                #average metrics calculation
+                average_val_metrics = []
+                for val_m in total_val_metrics:
+                    average_val_metrics.append(val_m / total_samples)
 
                 # Learning rate adjustment
                 current_lr = optimizer.param_groups[0]['lr']
@@ -159,10 +182,18 @@ def train(input_data):
                 elif cfg.monitor == 'train_loss':
                     lr_scheduler.step(average_train_loss, current_lr)
 
+                #log learning rate
+                lr = optimizer.param_groups[0]['lr']
+                writer.add_scalar('Learning Rate', lr, epoch)
+
+                #log losses
+                writer.add_scalar('Loss/Train', average_train_loss, epoch)
+                writer.add_scalar('Loss/Validation', average_val_loss, epoch)
+
                 # Log metrics
-                for metric in cfg.metrics:
-                    writer.add_scalar(f'{cfg.metrics}/Train', average_train_loss, epoch)
-                    writer.add_scalar('Loss/Validation', average_val_loss, epoch)
+                for i, metric in enumerate(cfg.metrics):
+                    writer.add_scalar(f'{metric}/Train', average_train_metrics[i], epoch)
+                    writer.add_scalar(f'{metric}/Validation', average_val_metrics[i], epoch)
 
                 # Early stopping
                 early_stopper.step(epoch)

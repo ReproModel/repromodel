@@ -59,6 +59,5 @@
     "model_save_path": "repromodel_core/ckpts",
     "tensorboard_log_path": "repromodel_core/logs",
     "metadata_path": "repromodel_core/logs/metadata.json",
-    "load_from_checkpoint": false
+    "load_from_checkpoint": true
   }
-  

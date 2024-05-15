@@ -75,10 +75,7 @@ def save_model(config, model, model_name, fold, epoch,
         'val_loss': val_loss
     }
 
-    # Save metadata
-    metadata_path = f'{experiment_folder}/{model_name}{suffix}_metadata.json'
-
-    with open(metadata_path, 'w') as f:
+    with open(config.metadata_path, 'w') as f:
         json.dump(metadata, f, indent=4)
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
@@ -101,10 +98,7 @@ def print_to_file(string, config = None, tqdm=False, model_num = None):
     timestamped_string = f"[{timestamp}] {string}"
 
     with open(file_name, mode) as file:
-        if tqdm:
-            file.write(timestamped_string)  
-        else:
-            file.write(timestamped_string + '\n')
+        file.write(timestamped_string + ('\n' if not tqdm else ''))
         file.flush()
 
 def delete_command_outputs():
