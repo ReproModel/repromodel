@@ -2,8 +2,7 @@ import os
 import json
 import ast
 import torch
-from scipy.ndimage import zoom
-from easydict import EasyDict as edict
+from datetime import datetime
 
 def parse_constructor_params(node):
     """Extract constructor parameters and type annotations from a class node."""
@@ -37,44 +36,73 @@ def ensure_folder_exists(folder_path):
     """Ensure a folder exists, and if not, create it."""
     os.makedirs(folder_path, exist_ok=True)
 
-def save_model(model, path, metadata=None):
-    """Save a model and its metadata."""
-    directory_path = os.path.dirname(path)
-    ensure_folder_exists(directory_path)
-    torch.save(model.state_dict(), path)
-    if metadata:
-        with open(path + '_metadata.json', 'w') as f:
-            json.dump(metadata, f, indent=4)
+# Example of refactoring save_model for different configurations
+def handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stopping, experiment_folder, suffix):
+    # Save the model, optimizer, lr_scheduler, and early stopping state dictionaries
+    torch.save(model.state_dict(), f'{experiment_folder}/{model_name}{suffix}.pt')
+    torch.save(optimizer.state_dict(), f'{experiment_folder}/{model_name}{suffix}_optimizer.pt')
+    torch.save(lr_scheduler.state_dict(), f'{experiment_folder}/{model_name}{suffix}_lr_scheduler.pt')
+    if hasattr(early_stopping, 'state_dict'):
+        torch.save(early_stopping.state_dict(), f'{experiment_folder}/{model_name}{suffix}_early_stopping.pt')
+
+def save_model(config, model, model_name, fold, epoch,
+                optimizer, lr_scheduler, early_stopping, train_loss, val_loss, is_best=False):
+
+    experiment_folder = config.model_save_path
+    # Make sure that experiment folder exists
+    ensure_folder_exists(experiment_folder)
+                         
+    suffix = f'_best_fold_{fold}' if is_best else f'_fold_{fold}_epoch_{epoch}'
+
+    handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stopping, experiment_folder, suffix)
+
+    metadata_path = ""
+
+    print_to_file(f"Saving model to {experiment_folder}/{model_name}{suffix}.pt")
+
+    # Prepare metadata with conversion
+    metadata = {
+        'experiment_folder': experiment_folder,
+        'model_name': model_name,
+        'fold': fold,
+        'epoch': epoch,
+        'config': config,   
+        'model_state_dict_path': f'{experiment_folder}/{model_name}{suffix}.pt',
+        'optimizer_state_dict_path': f'{experiment_folder}/{model_name}{suffix}_optimizer.pt',
+        'lr_scheduler_state_dict_path': f'{experiment_folder}/{model_name}{suffix}_lr_scheduler.pt',
+        'early_stopping_state_dict_path': f'{experiment_folder}/{model_name}{suffix}_early_stopping.pt' if hasattr(early_stopping, 'state_dict') else '',
+        'train_loss': train_loss,
+        'val_loss': val_loss
+    }
+
+    with open(config.metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=4)
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
     if config is not None:
-        file_name = f"{config.tensorboard_log_path}/{config.model[model_num]}_{config.dataset}_" + "command_output.txt"
+        file_name = f"{config.tensorboard_log_path}/{config.models[model_num]}_{config.datasets}_" + "command_output.txt"
     else:
         file_name = "repromodel_core/logs/command_output.txt"
 
     # Ensure the directory exists
     os.makedirs(os.path.dirname(file_name), exist_ok=True)
-    with open(file_name, "a") as file:
-        if tqdm:
-            file.write("\r" + string)
-        else:
-            file.write(string + "\n")
+
+    # Open the file in write mode if tqdm is True, otherwise append
+    mode = "w" if tqdm else "a"
+    
+    # Get the current timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Prepare the string with the timestamp
+    timestamped_string = f"[{timestamp}] {string}"
+
+    with open(file_name, mode) as file:
+        file.write(timestamped_string + ('\n' if not tqdm else ''))
         file.flush()
 
-# Example of refactoring save_model for different configurations
-def handle_saving_logic(config, model, optimizer, lr_scheduler, path_prefix):
-    """Handle the saving logic for different model configurations."""
-    if config.model_type == "gan":
-        save_model(model['generator'], f'{path_prefix}_generator.pt')
-        save_model(model['discriminator'], f'{path_prefix}_discriminator.pt')
-    else:
-        save_model(model, f'{path_prefix}.pt')
-    save_model(optimizer, f'{path_prefix}_optimizer.pt')
-    save_model(lr_scheduler, f'{path_prefix}_lr_scheduler.pt')
-
 def delete_command_outputs():
-    file_path = "logs/command_output.txt"
+    file_path = "repromodel_core/logs/command_output.txt"
 
     try:
         os.remove(file_path)

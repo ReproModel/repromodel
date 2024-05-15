@@ -36,8 +36,8 @@ For more details, read our blog article at: , or visit our website at Repromodel
 
 ![Gif](gif1.gif) 
 
-
-  
+<br> <br>
+You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte1hJM).  
 
 # :bulb: How to Run
 
@@ -113,4 +113,5 @@ If you have a suggestion that would make this better, please read our contributi
     </td>
   </tr>
 </table>
+
 

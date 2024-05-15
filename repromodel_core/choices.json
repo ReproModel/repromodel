@@ -91,6 +91,40 @@
             }
         }
     },
+    "preprocessing": {
+        "dummyPreprocessor": {
+            "DummyPreprocessor": {
+                "parent_input_path": {
+                    "type": "str"
+                },
+                "parent_output_path": {
+                    "type": "str"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "range": "(1, 32)"
+                }
+            }
+        },
+        "customPreprocessor": {
+            "CustomPreprocessor": {
+                "data_path": {
+                    "type": "str"
+                },
+                "output_path": {
+                    "type": "str"
+                },
+                "input_type": {
+                    "type": "str",
+                    "options": "['input', 'output', 'temp']"
+                },
+                "num_workers": {
+                    "type": "int",
+                    "range": "(1, 32)"
+                }
+            }
+        }
+    },
     "datasets": {
         "cifar100Dataset": {
             "CIFAR100Dataset": {
@@ -185,6 +219,36 @@
             }
         }
     },
+    "augmentations": {
+        "customAugmentation": {
+            "CustomAugmentations": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "shiftScaleRotateFlip": {
+            "ShiftScaleRotateFlip": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                },
+                "shift_limit": {
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
+                },
+                "scale_limit": {
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
+                },
+                "rotate_limit": {
+                    "type": "int",
+                    "range": "(0, 360)"
+                }
+            }
+        }
+    },
     "metrics": {
         "customMetrics": {
             "CustomMetric": {
@@ -209,36 +273,53 @@
             }
         }
     },
-    "preprocessing": {
-        "dummyPreprocessor": {
-            "DummyPreprocessor": {
-                "parent_input_path": {
-                    "type": "str"
-                },
-                "parent_output_path": {
-                    "type": "str"
-                },
-                "num_workers": {
-                    "type": "int",
-                    "range": "(1, 32)"
+    "losses": {
+        "diceLoss": {
+            "DiceLoss": {
+                "smooth": {
+                    "type": "float",
+                    "default": "1",
+                    "range": "(1e-05, 1.0)"
                 }
             }
         },
-        "customPreprocessor": {
-            "CustomPreprocessor": {
-                "data_path": {
-                    "type": "str"
-                },
-                "output_path": {
-                    "type": "str"
-                },
-                "input_type": {
-                    "type": "str",
-                    "options": "['input', 'output', 'temp']"
-                },
-                "num_workers": {
+        "customLoss": {
+            "CustomLoss": {
+                "weight": {
+                    "type": "float",
+                    "range": "(0.1, 1.0)"
+                }
+            }
+        }
+    },
+    "early_stopping": {
+        "noImprovementAfter": {
+            "NoImprovementAfter": {
+                "patience": {
                     "type": "int",
-                    "range": "(1, 32)"
+                    "default": "10",
+                    "range": "(1, 50)"
+                },
+                "delta": {
+                    "type": "float",
+                    "default": "0.001",
+                    "range": "(0.0, 1.0)"
+                },
+                "min_lr": {
+                    "type": "float",
+                    "default": "1e-06",
+                    "range": "(0.0, 1e-06)"
+                }
+            }
+        },
+        "customEarlyStopping": {
+            "CustomEarlyStopping": {}
+        },
+        "scheduledStop": {
+            "ScheduledStop": {
+                "max_epochs": {
+                    "type": "int",
+                    "range": "(1, 1000000)"
                 }
             }
         }
@@ -282,87 +363,6 @@
             }
         }
     },
-    "losses": {
-        "diceLoss": {
-            "DiceLoss": {
-                "smooth": {
-                    "type": "float",
-                    "default": "1",
-                    "range": "(1e-05, 1.0)"
-                }
-            }
-        },
-        "customLoss": {
-            "CustomLoss": {
-                "weight": {
-                    "type": "float",
-                    "range": "(0.1, 1.0)"
-                }
-            }
-        }
-    },
-    "augmentations": {
-        "customAugmentation": {
-            "CustomAugmentations": {
-                "p": {
-                    "type": "float",
-                    "range": "(0.0, 1.0)"
-                }
-            }
-        },
-        "shiftScaleRotateFlip": {
-            "ShiftScaleRotateFlip": {
-                "p": {
-                    "type": "float",
-                    "range": "(0.0, 1.0)"
-                },
-                "shift_limit": {
-                    "type": "float",
-                    "range": "(-1.0, 1.0)"
-                },
-                "scale_limit": {
-                    "type": "float",
-                    "range": "(-1.0, 1.0)"
-                },
-                "rotate_limit": {
-                    "type": "int",
-                    "range": "(0, 360)"
-                }
-            }
-        }
-    },
-    "early_stopping": {
-        "noImprovementAfter": {
-            "NoImprovementAfter": {
-                "patience": {
-                    "type": "int",
-                    "default": "10",
-                    "range": "(1, 50)"
-                },
-                "delta": {
-                    "type": "float",
-                    "default": "0.001",
-                    "range": "(0.0, 1.0)"
-                },
-                "min_lr": {
-                    "type": "float",
-                    "default": "1e-06",
-                    "range": "(0.0, 1e-06)"
-                }
-            }
-        },
-        "customEarlyStopping": {
-            "CustomEarlyStopping": {}
-        },
-        "scheduledStop": {
-            "ScheduledStop": {
-                "max_epochs": {
-                    "type": "int",
-                    "range": "(1, 1000000)"
-                }
-            }
-        }
-    },
     "device": {
         "type": "str",
         "default": "cpu",
@@ -373,7 +373,7 @@
         "default": 1,
         "range": "(1, 1024)"
     },
-    "val_loss": {
+    "monitor": {
         "type": "str",
         "default": "val_loss",
         "options": "['train_loss', 'val_loss']"

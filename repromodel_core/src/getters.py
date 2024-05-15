@@ -62,7 +62,7 @@ def configure_device_specific(component, device):
 def init_tensorboard_logging(config, fold, model_num, base_dir="logs"):
     base_dir = config.tensorboard_log_path
     ensure_folder_exists(base_dir)
-    subdir = f"{base_dir}/{config['model'][model_num]}_{config['dataset']}_{fold}"
+    subdir = f"{base_dir}/{config['models'][model_num]}_{config['datasets']}_{fold}"
     ensure_folder_exists(subdir)
     writer = SummaryWriter(subdir)
     config_path = f"{subdir}/config.json"

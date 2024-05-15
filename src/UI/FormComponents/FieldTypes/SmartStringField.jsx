@@ -7,6 +7,8 @@ function SmartFreeTextField({ id, label, object, name }) {
     ? JSON.parse(object.options.replace(/'/g, '"'))
     : [];
 
+  const defaultValue = object?.default ? `Standard would be: ${object.default}` : "";  
+
   return (
     <>
       {optionsArray.length > 0 ? (
@@ -26,6 +28,7 @@ function SmartFreeTextField({ id, label, object, name }) {
           type="text"
           id={id}
           name={name}
+          placeholder={defaultValue}
         />
       )}
     </>
