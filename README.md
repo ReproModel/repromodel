@@ -84,3 +84,33 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 # :email:  Questions and Support
 
 For questions or any type of support, you can reach out to me via sitnik.dario@gmail.com
+
+# :link:  Contributors
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+If you have a suggestion that would make this better, please read our contribution guidelines [here](). 
+ <br>
+ <br>
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/13439539?v=4https://avatars.githubusercontent.com/u/168830779?s=96&v=4" width="100px;" alt=""/><br />
+      <sub><b>Dario Sitnik</b></sub><br />
+      <sub>AI Scientist</sub><br />
+      <a href="https://github.com/dsitnik">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/168817578?v=4" width="100px;" alt=""/><br />
+      <sub><b>Mint Owl</b></sub><br />
+      <sub>ML Engineer</sub><br />
+      <a href="https://github.com/mintowltech">GitHub</a>
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/168830779?s=96&v=4" width="100px;" alt=""/><br />
+      <sub><b>Martin Schumakher</b></sub><br />
+      <sub>Developer</sub><br />
+      <a href="https://github.com/martinschum">GitHub</a>
+    </td>
+  </tr>
+</table>
+
