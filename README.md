@@ -88,7 +88,7 @@ For questions or any type of support, you can reach out to me via sitnik.dario@g
 # :link:  Contributors
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-If you have a suggestion that would make this better, please read our contribution guidelines [here](). 
+If you have a suggestion that would make this better, please read our contribution guidelines [here](Contributing.md). 
  <br>
  <br>
 <table>
