@@ -6,8 +6,9 @@ import inspect
 import pkgutil
 import importlib
 from torch.optim import lr_scheduler
-from typing import Union, get_type_hints, Literal, Optional, List
+from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
+from torch import optim
 
 # Base path for your project
 base_path = 'repromodel_core/src/'
@@ -84,69 +85,56 @@ def parse_parameter_details(param):
         details['default'] = param.default  # Capture default values for all parameters, including Unions
     return details
 
-def find_functions_in_submodules(module, prefix=""):
-    """
-    Recursively finds all functions in the submodules of the given module, including nested submodules.
-    """
-    function_dict = {}
-    if hasattr(module, "__path__"):
-        for _, modname, ispkg in pkgutil.iter_modules(module.__path__):
-            submodule = importlib.import_module(module.__name__ + "." + modname)
-            for name, obj in inspect.getmembers(submodule):
-                if inspect.isfunction(obj) and not name.startswith('_'):
-                    try:
-                        params = get_type_hints(obj, globalns=vars(submodule))
-                    except Exception as e:
-                        print(f"Could not get type hints for function {name} in module {submodule}: {e}")
-                        params = {}
-                    formatted_params = {
-                        p: parse_parameter_details(inspect.Parameter(p, inspect.Parameter.POSITIONAL_OR_KEYWORD, annotation=params.get(p)))
-                        for p in obj.__code__.co_varnames
-                        if p in params and p != 'kwargs'
-                    }
-                    function_dict[prefix + modname + "." + name] = formatted_params
-            # Recursive call to handle further nested submodules
-            nested_functions = find_functions_in_submodules(submodule, prefix + modname + ".")
-            function_dict.update(nested_functions)
-    return function_dict
-
 # Function to extract class definitions with __init__ parameters
-def extract_classes_with_init_params(module, class_names: Optional[List[str]] = None):
+def extract_classes_with_init_params(module, class_names: Optional[List[str]] = None) -> Dict[str, Dict[str, Any]]:
     classes = {}
-    for name, obj in inspect.getmembers(module, inspect.isclass):
-        if obj.__module__ == module.__name__ and not name.startswith('_'):
-            if class_names and name not in class_names:
-                continue
-            init = obj.__init__
-            if init:
-                params = inspect.signature(init).parameters
-                param_info = {}
-                for param_name, param in params.items():    
-                    if param_name == 'self' or param_name == 'optimizer':
-                        continue
-                    try:
-                        param_type = get_type_hints(init).get(param_name, param.annotation)
-                        if param_type is inspect._empty:
-                            if param.default is not inspect.Parameter.empty:
-                                # Attempt to infer the type from the default value
-                                if param.default == 0:
-                                    param_type = "int, float"
-                                else:
-                                    param_type = type(param.default).__name__
-                        elif isinstance(param_type, type):
-                            param_type = param_type.__name__
-                    except Exception as e:
-                        print(f"Failed to get type hint for {param_name} in {name}: {e}")
-                        param_type = str(param.annotation)
-                    param_info[param_name] = {
-                        "type": param_type if param_type is not inspect._empty else "unknown",
-                        "default": param.default if param.default is not inspect.Parameter.empty else None
-                    }
-                classes[name] = param_info
-                if not param_info:
-                    print(f"No parameters found for {name}'s __init__ method")
-            else:
-                print(f"No __init__ method found for {name}")
+
+    def inspect_module(mod):
+        for name, obj in inspect.getmembers(mod, inspect.isclass):
+            if obj.__module__.startswith(mod.__name__) and not name.startswith('_'):
+                if class_names and name not in class_names:
+                    continue
+                if name.startswith('_'):
+                    continue
+                init = obj.__init__
+                if init:
+                    params = inspect.signature(init).parameters
+                    param_info = {}
+                    for param_name, param in params.items():    
+                        if param_name == 'self' or param_name == 'optimizer':
+                            continue
+                        try:
+                            param_type = get_type_hints(init).get(param_name, param.annotation)
+                            if param_type is inspect._empty:
+                                if param.default is not inspect.Parameter.empty:
+                                    # Attempt to infer the type from the default value
+                                    if param.default == 0:
+                                        param_type = "int, float"
+                                    else:
+                                        param_type = type(param.default).__name__
+                            elif isinstance(param_type, type):
+                                param_type = param_type.__name__
+                        except Exception as e:
+                            print(f"Failed to get type hint for {param_name} in {name}: {e}")
+                            param_type = str(param.annotation)
+                        param_info[param_name] = {
+                            "type": param_type if param_type is not inspect._empty else "unknown",
+                            "default": param.default if param.default is not inspect.Parameter.empty else None
+                        }
+                    classes[name] = param_info
+                    if not param_info:
+                        print(f"No parameters found for {name}'s __init__ method")
+                else:
+                    print(f"No __init__ method found for {name}")
+
+        # Recursively inspect submodules if the module has a __path__ attribute
+        if hasattr(mod, '__path__'):
+            for importer, submodname, ispkg in pkgutil.iter_modules(mod.__path__):
+                full_submodname = f"{mod.__name__}.{submodname}"
+                submod = __import__(full_submodname, fromlist=[submodname])
+                inspect_module(submod)
+
+    inspect_module(module)
     return classes
 
 def make_json_serializable(obj):
@@ -168,12 +156,6 @@ def make_json_serializable(obj):
         except TypeError:
             return str(obj)
 
-def create_functions_json(module_name):
-    module = importlib.import_module(module_name)
-    all_functions = find_functions_in_submodules(module)
-    serializable_functions = make_json_serializable(all_functions)
-    return serializable_functions
-    
 # Collect all definitions from specified directories
 all_definitions = {}
 
@@ -196,13 +178,13 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
     if directory_definitions:
         all_definitions[directory] = directory_definitions
 
-all_torchmetrics = find_functions_in_submodules(torchmetrics)
-serializable_torchmetrics = make_json_serializable(all_torchmetrics)
-all_definitions['metrics']['torchmetrics'] = serializable_torchmetrics
+all_torchmetrics = extract_classes_with_init_params(torchmetrics)
+all_definitions['metrics']['torchmetrics'] = make_json_serializable(all_torchmetrics)
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
-all_definitions['lr_schedulers'] = lr_scheduler_classes
+all_definitions['lr_schedulers'] = {}
+all_definitions['lr_schedulers']['torch.optim'] = make_json_serializable(lr_scheduler_classes)
 
 loss_classes = [
     "L1Loss", "MSELoss", "CrossEntropyLoss", "CTCLoss", "NLLLoss", "PoissonNLLLoss",
@@ -215,6 +197,17 @@ loss_classes = [
 # Extract classes from torch.nn for the specified loss classes
 loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
 all_definitions['losses']['torch.nn.modules.loss'] = make_json_serializable(loss_classes_extracted)
+
+# List of specific class names to extract from torch.optim
+optimizer_classes = [
+    "Adadelta", "Adagrad", "Adam", "AdamW", "SparseAdam", "Adamax", "ASGD", "LBFGS",
+    "NAdam", "RAdam", "RMSprop", "Rprop", "SGD"
+]
+
+# Extract classes from torch.nn for the specified loss classes
+optimizer_classes_extracted = extract_classes_with_init_params(optim, optimizer_classes)
+all_definitions['optimizers'] = {}
+all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) #make_json_serializable(optimizer_classes_extracted)
 
 # Static choices 
 all_definitions["device"] = {
