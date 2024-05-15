@@ -1,4 +1,4 @@
-import { Field } from "formik";
+import { Field, useFormikContext } from "formik";
 import React from "react";
 import "./Form.css";
 import SmartIntegerField from "./FieldTypes/SmartIntegerField";
@@ -28,30 +28,24 @@ function BooleanField({ id, label, name }) {
 }
 
 function FlexibleFormField({ id, label, type, name, object }) {
+  const { setFieldValue } = useFormikContext();
+  const defaultValue = object?.default;
+
+  // Set the default value when it's defined and different from the current value
+  React.useEffect(() => {
+    if (defaultValue !== undefined && defaultValue !== null) {
+      setFieldValue(name, defaultValue);
+    }
+  }, [name, defaultValue, setFieldValue]);
+
   const renderSwitch = () => {
     switch (type) {
       case "str":
-        return (
-          <SmartFreeTextField
-            id={id}
-            label={label}
-            name={name}
-            object={object}
-          />
-        );
+        return <SmartFreeTextField id={id} label={label} name={name} object={object} />;
       case "float":
-        return (
-          <SmartFloatField id={id} label={label} name={name} object={object} />
-        );
+        return <SmartFloatField id={id} label={label} name={name} object={object} />;
       case "int":
-        return (
-          <SmartIntegerField
-            id={id}
-            label={label}
-            name={name}
-            object={object}
-          />
-        );
+        return <SmartIntegerField id={id} label={label} name={name} object={object} />;
       case "slider":
         return <SliderField id={id} label={label} name={name} />;
       case "type(lambda x: x)":
@@ -59,12 +53,14 @@ function FlexibleFormField({ id, label, type, name, object }) {
       case "bool":
         return <BooleanField id={id} label={label} name={name} />;
       default:
-        return (
-          <DefaultTextField id={id} label={label} name={name} type={type} />
-        );
+        return <DefaultTextField id={id} label={label} name={name} type={type} />;
     }
   };
+
   return <>{renderSwitch()}</>;
 }
+
+
+
 
 export default FlexibleFormField;

@@ -1,5 +1,5 @@
 import React from "react";
-import { Field } from "formik";
+import { Field} from "formik";
 
 function SmartFreeTextField({ id, label, object, name }) {
   // Attempt to parse the options from the object, if they exist
@@ -8,6 +8,8 @@ function SmartFreeTextField({ id, label, object, name }) {
     : [];
 
   const defaultValue = object?.default ? `Standard would be: ${object.default}` : "";  
+
+ 
 
   return (
     <>
@@ -28,7 +30,6 @@ function SmartFreeTextField({ id, label, object, name }) {
           type="text"
           id={id}
           name={name}
-          placeholder={defaultValue}
         />
       )}
     </>
