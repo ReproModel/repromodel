@@ -3,7 +3,7 @@ import { Field } from "formik";
 
 export function SmartFolderField({ folder, folderContent }) {
     // Define the array of specific folder names
-    const multipleSelectFolders = ["models", "metrics"];
+    const multipleSelectFolders = ["models"];
 
     // Check if the folder name is within the specific folders array
     const isMultipleFolder = multipleSelectFolders.includes(folder);
