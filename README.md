@@ -43,29 +43,30 @@ You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte
 
 For running the frontend you can either run locally<br>
 
-<code> npm install<br>npm run dev </code>  <br>
+<code> npm install</code> <br><code> npm run dev </code>  <br>
 
 Or you can look at the latest live version here: <br>
 
 https://repromodel.netlify.app/
-
   
 # :calendar: Roadmap
-
-:ballot_box_with_check: Metrics
+:ballot_box_with_check: Preprocessors
+<br>:ballot_box_with_check: Datasets
 <br>:ballot_box_with_check: Augmentations
-<br>:ballot_box_with_check: Preprocessors
 <br>:ballot_box_with_check: Postprocessors
+<br>:ballot_box_with_check: Metrics
+<br>:ballot_box_with_check: LR Schedulers
 <br>:ballot_box_with_check: Optimizers
 <br>:ballot_box_with_check: Trainer Script
-<br>:black_square_button: Training from checkpoints
-<br>:black_square_button: A running tensor board
+<br>:ballot_box_with_check: Continuing training from checkpoint
+<br>:ballot_box_with_check: Tensorboard
+<br>:black_square_button: Command output viewer
 <br>:black_square_button: Training device selection
+<br>:black_square_button: Test script
 <br>:black_square_button: Code extractor
 <br>:black_square_button: LLM descriptor
 <br>:black_square_button: Custom script editor
-<br>:black_square_button: Training viewer
-<br>:black_square_button: Json console output
+<br>:black_square_button: Statistical testing
 
 
 
