@@ -86,6 +86,24 @@ def submit_config_start_training_():
         app.logger.exception(error_message)
         return jsonify({'error': error_message}), 500
 
+# Function to start TensorBoard
+def start_tensorboard(logdir="logs"):
+    # Kill any existing TensorBoard instances
+    subprocess.run(['pkill', '-f', 'tensorboard'])
+    
+    # Start a new TensorBoard instance
+    command = ['tensorboard', '--logdir', logdir]
+    tensorboard_proc = subprocess.Popen(command)
+    
+    return f"TensorBoard started at http://localhost:6006 with logdir {logdir}"
+
+# Route to start TensorBoard
+@app.route('/start-tensorboard')
+def tensorboard():
+    log_dir = "repromodel_core/logs"  # Customize this path to where your logs are
+    message = start_tensorboard(log_dir)
+    return jsonify({"message": message})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5005,threaded=True, debug=True)
