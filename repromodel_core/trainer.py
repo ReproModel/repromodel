@@ -43,35 +43,36 @@ def train(input_data):
 
     # Get preprocessing, augmentation, and dataset configurations
     preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing[0].lower() + cfg.preprocessing[1:]
-    preprocessor = configure_component(preprocessor_path, cfg.preprocessing, cfg.preprocessing_params)
+    preprocessor = configure_component(preprocessor_path, cfg.preprocessing, cfg.preprocessing_params[cfg.preprocessing])
     #preprocess the dataset
     preprocessor.preprocess()
 
     augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations[0].lower() + cfg.augmentations[1:]
-    augmentor = configure_component(augmentor_path, cfg.augmentations, cfg.augmentations_params)
+    augmentor = configure_component(augmentor_path, cfg.augmentations, cfg.augmentations_params[cfg.augmentations])
     dataset_path = SRC_DIR + "datasets." + cfg.datasets[0].lower() + cfg.datasets[1:]
-    dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params)
+    dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params[cfg.datasets])
     dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     dataset.set_transforms(augmentor)
 
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
     train_metrics, val_metrics = [], []
     
-    for metric, params in zip(cfg.metrics, cfg.metrics_params):
+    for metric in cfg.metrics:
+        params = cfg.metrics_params[metric]
         metric_path = SRC_DIR + "metrics." + metric[0].lower() + metric[1:]
         train_metrics.append(configure_component(metric_path, metric, params))
         val_metrics.append(configure_component(metric_path, metric, params))
 
     models = []
-    for model, params in zip(cfg.models, cfg.models_params):
+    for model in cfg.models:
+        params = cfg.models_params[model]
         model_path = SRC_DIR + "models." + model[0].lower() + model[1:]
         models.append(configure_component(model_path, model, params))
 
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping[0].lower() + cfg.early_stopping[1:]
 
     #TODO make custom possible and refactor getters
-    criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params)
-
+    criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params[cfg.losses])
 
     for i in range(model_min, len(cfg.models)):
 
@@ -85,9 +86,9 @@ def train(input_data):
             writer = init_tensorboard_logging(cfg, k, i)
             
             model = deepcopy(models[i])
-            optimizer = get_optimizer(model, "torch." + cfg.optimizers, cfg.optimizers_params)
-            lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_schedulers, cfg.lr_schedulers_params)
-            early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params)
+            optimizer = get_optimizer(model, "torch." + cfg.optimizers, cfg.optimizers_params[cfg.optimizers])
+            lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_schedulers, cfg.lr_schedulers_params[cfg.lr_schedulers])
+            early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params[cfg.early_stopping])
             
             # Configure device specifics
             model = configure_device_specific(model, cfg.device)
