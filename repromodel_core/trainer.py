@@ -30,53 +30,55 @@ def train(input_data):
         cfg = edict(cfg)
 
         # Get model index, fold, and epoch from metadata
-        model_min = cfg.model.index(metadata['model_name'])
+        model_min = cfg.models.index(metadata['model_name'])
         k_min = metadata['fold']
         epoch_min = metadata['epoch']
-        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.model[model_min]}).", config=cfg)
+        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg)
 
     # Get preprocessing, augmentation, and dataset configurations
-    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessor[0].lower() + cfg.preprocessor[1:]
-    preprocessor = configure_component(preprocessor_path, cfg.preprocessor, cfg.preprocessor_params)
+    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing[0].lower() + cfg.preprocessing[1:]
+    preprocessor = configure_component(preprocessor_path, cfg.preprocessing, cfg.preprocessing_params)
     #preprocess the dataset
     preprocessor.preprocess()
 
-    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentation[0].lower() + cfg.augmentation[1:]
-    augmentor = configure_component(augmentor_path, cfg.augmentation, cfg.augmentation_params)
-    dataset_path = SRC_DIR + "datasets." + cfg.dataset[0].lower() + cfg.dataset[1:]
-    dataset = configure_component(dataset_path, cfg.dataset, cfg.dataset_params)
+    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations[0].lower() + cfg.augmentations[1:]
+    augmentor = configure_component(augmentor_path, cfg.augmentations, cfg.augmentations_params)
+    dataset_path = SRC_DIR + "datasets." + cfg.datasets[0].lower() + cfg.datasets[1:]
+    dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params)
     dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     dataset.set_transforms(augmentor)
 
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
     metrics = []
-    for metric, params in zip(cfg.metric, cfg.metric_params):
+    for metric, params in zip(cfg.metrics, cfg.metrics_params):
         metric_path = SRC_DIR + "metrics." + metric[0].lower() + metric[1:]
         metrics.append(configure_component(metric_path, metric, params))
 
     models = []
-    for model, params in zip(cfg.model, cfg.model_params):
+    for model, params in zip(cfg.models, cfg.models_params):
         model_path = SRC_DIR + "models." + model[0].lower() + model[1:]
         models.append(configure_component(model_path, model, params))
 
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping[0].lower() + cfg.early_stopping[1:]
 
     #TODO make custom possible and refactor getters
-    criterion = configure_component("torch.losses", cfg.loss_function, cfg.loss_function_params)
+    criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params)
 
-    # Initialize TensorBoard
-    writer = init_tensorboard_logging(cfg, k_min, model_min)
 
-    for i in range(model_min, len(cfg.model)):
-        print_to_file("Training model " + cfg.model[i], config=cfg, model_num = i)
+    for i in range(model_min, len(cfg.models)):
+
+        print_to_file("Training model " + cfg.models[i], config=cfg, model_num = i)
         # Custom file object for TQDM
         tqdm_file = TqdmFile(config=cfg, model_num = i) 
 
         # Training loop for each fold
         for k in range(k_min, cfg.data_splits.k):
+            # Initialize TensorBoard
+            writer = init_tensorboard_logging(cfg, k, i)
+            
             model = deepcopy(models[i])
-            optimizer = get_optimizer(model, "torch." + cfg.optimizer, cfg.optimizer_params)
-            lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_scheduler, cfg.lr_scheduler_params)
+            optimizer = get_optimizer(model, "torch." + cfg.optimizers, cfg.optimizers_params)
+            lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_schedulers, cfg.lr_schedulers_params)
             early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params)
             
             # Configure device specifics
@@ -144,16 +146,17 @@ def train(input_data):
 
                 average_val_loss = total_val_loss / total_samples
 
-                # Log metrics
-                writer.add_scalar('Loss/Train', average_train_loss, epoch)
-                writer.add_scalar('Loss/Validation', average_val_loss, epoch)
-
                 # Learning rate adjustment
                 current_lr = optimizer.param_groups[0]['lr']
                 if cfg.monitor == 'val_loss':
                     lr_scheduler.step(average_val_loss, current_lr)
                 elif cfg.monitor == 'train_loss':
                     lr_scheduler.step(average_train_loss, current_lr)
+
+                # Log metrics
+                for metric in cfg.metrics:
+                    writer.add_scalar(f'{cfg.metrics}/Train', average_train_loss, epoch)
+                    writer.add_scalar('Loss/Validation', average_val_loss, epoch)
 
                 # Early stopping
                 early_stopper.step(epoch)
@@ -167,8 +170,18 @@ def train(input_data):
                 # Save best model
                 if average_val_loss < best_val_loss:
                     best_val_loss = average_val_loss
-                    save_model(model, os.path.join(cfg.model_save_path, f"best_model_fold{k}.pt"), metadata=True)
-        print_to_file(f"Model {cfg.model[i]} training finished", config=cfg, model_num=i)
+                    save_model(config=cfg, 
+                               model = model, 
+                               model_name=cfg.models[i], 
+                               fold=k, 
+                               epoch=epoch, 
+                               optimizer=optimizer, 
+                               lr_scheduler=lr_scheduler, 
+                               early_stopping=early_stopper, 
+                               train_loss=average_train_loss, 
+                               val_loss=best_val_loss, 
+                               is_best=True)
+        print_to_file(f"Model {cfg.models[i]} training finished", config=cfg, model_num=i)
 
 # Example usage
 if __name__ == '__main__':
