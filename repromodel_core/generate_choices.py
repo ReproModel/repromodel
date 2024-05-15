@@ -1,6 +1,11 @@
 import os
 import ast
 import json
+import torchmetrics
+import inspect
+import pkgutil
+import importlib
+from typing import Union, get_type_hints, Literal
 
 # Base path for your project
 base_path = 'repromodel_core/src/'
@@ -36,6 +41,92 @@ def parse_python_file(file_path):
                     class_definitions[n.name] = params
     return class_definitions
 
+def format_type(annotation):
+    """
+    Format complex type annotations into a more readable form, handling Union and Literal types.
+    """
+    if isinstance(annotation, type):
+        return annotation.__name__
+    if hasattr(annotation, '__origin__'):
+        if annotation.__origin__ is Union:
+            valid_types = [arg for arg in annotation.__args__ if arg is not type(None)]
+            return ", ".join(format_type(t) for t in valid_types)  # Simplify Union types
+        if annotation.__origin__ is Literal or 'Literal' in str(annotation):
+            return "str"  # Simplify Literal types to 'str'
+        base = annotation.__origin__.__name__ if hasattr(annotation.__origin__, '__name__') else repr(annotation.__origin__).split(' ')[0].split('.')[-1]
+        if hasattr(annotation, '__args__'):
+            args = ", ".join([format_type(arg) for arg in annotation.__args__])
+            return f"{base}[{args}]"
+        else:
+            return base
+    elif hasattr(annotation, '__args__'):
+        # Handle generic types that are not covered above (e.g., List[int])
+        args = ", ".join([format_type(arg) for arg in annotation.__args__])
+        base = annotation.__origin__.__name__ if hasattr(annotation.__origin__, '__name__') else str(annotation)
+        return f"{base}[{args}]"
+    elif hasattr(annotation, '__name__'):
+        return annotation.__name__
+    else:
+        return str(annotation)  # Fallback for unhandled types
+
+def parse_parameter_details(param):
+    """
+    Parse details of a parameter including type, default (if not None), and options if Literal.
+    """
+    details = {}
+    if param.annotation != inspect.Parameter.empty:
+        details['type'] = format_type(param.annotation)
+        if 'Literal' in str(param.annotation) and hasattr(param.annotation, '__args__'):
+            details['options'] = [arg for arg in param.annotation.__args__]
+    if param.default != inspect.Parameter.empty:
+        details['default'] = param.default  # Capture default values for all parameters, including Unions
+    return details
+
+def find_functions_in_submodules(module, prefix=""):
+    """
+    Recursively finds all functions in the submodules of the given module, including nested submodules.
+    """
+    function_dict = {}
+    if hasattr(module, "__path__"):
+        for _, modname, ispkg in pkgutil.iter_modules(module.__path__):
+            submodule = importlib.import_module(module.__name__ + "." + modname)
+            for name, obj in inspect.getmembers(submodule):
+                if inspect.isfunction(obj) and not name.startswith('_'):
+                    try:
+                        params = get_type_hints(obj, globalns=vars(submodule))
+                    except Exception as e:
+                        print(f"Could not get type hints for function {name} in module {submodule}: {e}")
+                        params = {}
+                    formatted_params = {
+                        p: parse_parameter_details(inspect.Parameter(p, inspect.Parameter.POSITIONAL_OR_KEYWORD, annotation=params.get(p)))
+                        for p in obj.__code__.co_varnames
+                        if p in params and p != 'kwargs'
+                    }
+                    function_dict[prefix + modname + "." + name] = formatted_params
+            # Recursive call to handle further nested submodules
+            nested_functions = find_functions_in_submodules(submodule, prefix + modname + ".")
+            function_dict.update(nested_functions)
+    return function_dict
+
+def make_json_serializable(obj):
+    """
+    Recursively convert non-serializable objects to their string representations.
+    """
+    if isinstance(obj, dict):
+        return {k: make_json_serializable(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [make_json_serializable(i) for i in obj]
+    elif isinstance(obj, tuple):
+        return tuple(make_json_serializable(i) for i in obj)
+    elif isinstance(obj, set):
+        return {make_json_serializable(i) for i in obj}
+    else:
+        try:
+            json.dumps(obj)
+            return obj
+        except TypeError:
+            return str(obj)
+
 # Collect all definitions from specified directories
 all_definitions = {}
 
@@ -43,8 +134,7 @@ all_definitions["load_from_checkpoint"] = {
                         "type": "bool",
                         "default": False
                     }
-
-for directory in ['models','preprocessing', 'datasets',  'augmentations', 'metrics',  'losses', 'early_stopping' , 'postprocessing']:
+for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metrics', 'losses', 'early_stopping', 'postprocessing']:
     full_path = os.path.join(base_path, directory)
     directory_definitions = {}
     for root, dirs, files in os.walk(full_path, topdown=True):
@@ -58,6 +148,10 @@ for directory in ['models','preprocessing', 'datasets',  'augmentations', 'metri
                     directory_definitions[file_name_without_extension] = definitions
     if directory_definitions:
         all_definitions[directory] = directory_definitions
+
+all_functions = find_functions_in_submodules(torchmetrics)
+serializable_functions = make_json_serializable(all_functions)
+all_definitions['metrics']['torchmetrics'] = serializable_functions
 
 # Static choices 
 all_definitions["device"] = {
@@ -88,7 +182,6 @@ all_definitions["data_splits"] = {
                         "type": "int",
                     },
                 }
-
 
 all_definitions["model_save_path"] = {
                         "type": "str"
