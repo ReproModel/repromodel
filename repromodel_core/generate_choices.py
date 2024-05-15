@@ -3,7 +3,7 @@ import ast
 import json
 
 # Base path for your project
-base_path = 'src/'
+base_path = 'repromodel_core/src/'
 
 # Function to parse the decorator for types, default values, ranges, and options
 def parse_decorator(decorator):
@@ -44,7 +44,7 @@ all_definitions["load_from_checkpoint"] = {
                         "default": False
                     }
 
-for directory in ['models', 'datasets', 'metrics', 'preprocessing', 'postprocessing', 'losses', 'augmentations', 'early_stopping']:
+for directory in ['models','preprocessing', 'datasets',  'augmentations', 'metrics',  'losses', 'early_stopping' , 'postprocessing']:
     full_path = os.path.join(base_path, directory)
     directory_definitions = {}
     for root, dirs, files in os.walk(full_path, topdown=True):
@@ -72,7 +72,7 @@ all_definitions["batch_size"] = {
                     "range": "(1, 1024)"
                 }
 
-all_definitions["val_loss"] = {
+all_definitions["monitor"] = {
                     "type": "str",
                     "default": "val_loss",
                     "options": "['train_loss', 'val_loss']"
@@ -111,7 +111,7 @@ all_definitions["training_name"] = {
                     }
 
 # Save the collected data to a JSON file
-with open('choices.json', 'w') as json_file:
+with open('repromodel_core/choices.json', 'w') as json_file:
     json.dump(all_definitions, json_file, indent=4)
 
 print("Class definitions with __init__ parameters, types, and default values have been extracted and grouped by directory in choices.json")
