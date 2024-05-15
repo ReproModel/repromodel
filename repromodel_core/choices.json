@@ -14448,6 +14448,398 @@
                     "range": "(0.1, 1.0)"
                 }
             }
+        },
+        "torch.nn.modules.loss": {
+            "BCELoss": {
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "BCEWithLogitsLoss": {
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "pos_weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                }
+            },
+            "CTCLoss": {
+                "blank": {
+                    "type": "int",
+                    "default": 0
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "zero_infinity": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "CosineEmbeddingLoss": {
+                "margin": {
+                    "type": "float",
+                    "default": 0.0
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "CrossEntropyLoss": {
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "ignore_index": {
+                    "type": "int",
+                    "default": -100
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "label_smoothing": {
+                    "type": "float",
+                    "default": 0.0
+                }
+            },
+            "GaussianNLLLoss": {
+                "full": {
+                    "type": "bool",
+                    "default": false
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 1e-06
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "HingeEmbeddingLoss": {
+                "margin": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "HuberLoss": {
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "delta": {
+                    "type": "float",
+                    "default": 1.0
+                }
+            },
+            "KLDivLoss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "log_target": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "L1Loss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "MSELoss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "MarginRankingLoss": {
+                "margin": {
+                    "type": "float",
+                    "default": 0.0
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "MultiLabelMarginLoss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "MultiLabelSoftMarginLoss": {
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "MultiMarginLoss": {
+                "p": {
+                    "type": "int",
+                    "default": 1
+                },
+                "margin": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "NLLLoss": {
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "ignore_index": {
+                    "type": "int",
+                    "default": -100
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "PoissonNLLLoss": {
+                "log_input": {
+                    "type": "bool",
+                    "default": true
+                },
+                "full": {
+                    "type": "bool",
+                    "default": false
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 1e-08
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "SmoothL1Loss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "beta": {
+                    "type": "float",
+                    "default": 1.0
+                }
+            },
+            "SoftMarginLoss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "TripletMarginLoss": {
+                "margin": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "p": {
+                    "type": "float",
+                    "default": 2.0
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 1e-06
+                },
+                "swap": {
+                    "type": "bool",
+                    "default": false
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "TripletMarginWithDistanceLoss": {
+                "distance_function": {
+                    "type": "typing.Optional[typing.Callable[[torch.Tensor, torch.Tensor], torch.Tensor]]",
+                    "default": null
+                },
+                "margin": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "swap": {
+                    "type": "bool",
+                    "default": false
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            }
         }
     },
     "early_stopping": {
@@ -14518,6 +14910,368 @@
                     "type": "int",
                     "range": "(1, 32)"
                 }
+            }
+        }
+    },
+    "lr_schedulers": {
+        "ChainedScheduler": {
+            "schedulers": {
+                "type": "unknown",
+                "default": null
+            }
+        },
+        "ConstantLR": {
+            "factor": {
+                "type": "float",
+                "default": 0.3333333333333333
+            },
+            "total_iters": {
+                "type": "int",
+                "default": 5
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "CosineAnnealingLR": {
+            "T_max": {
+                "type": "unknown",
+                "default": null
+            },
+            "eta_min": {
+                "type": "int, float",
+                "default": 0
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "CosineAnnealingWarmRestarts": {
+            "T_0": {
+                "type": "unknown",
+                "default": null
+            },
+            "T_mult": {
+                "type": "int",
+                "default": 1
+            },
+            "eta_min": {
+                "type": "int, float",
+                "default": 0
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "CyclicLR": {
+            "base_lr": {
+                "type": "unknown",
+                "default": null
+            },
+            "max_lr": {
+                "type": "unknown",
+                "default": null
+            },
+            "step_size_up": {
+                "type": "int",
+                "default": 2000
+            },
+            "step_size_down": {
+                "type": "NoneType",
+                "default": null
+            },
+            "mode": {
+                "type": "str",
+                "default": "triangular"
+            },
+            "gamma": {
+                "type": "float",
+                "default": 1.0
+            },
+            "scale_fn": {
+                "type": "NoneType",
+                "default": null
+            },
+            "scale_mode": {
+                "type": "str",
+                "default": "cycle"
+            },
+            "cycle_momentum": {
+                "type": "bool",
+                "default": true
+            },
+            "base_momentum": {
+                "type": "float",
+                "default": 0.8
+            },
+            "max_momentum": {
+                "type": "float",
+                "default": 0.9
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "ExponentialLR": {
+            "gamma": {
+                "type": "unknown",
+                "default": null
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "LRScheduler": {
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "LambdaLR": {
+            "lr_lambda": {
+                "type": "unknown",
+                "default": null
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "LinearLR": {
+            "start_factor": {
+                "type": "float",
+                "default": 0.3333333333333333
+            },
+            "end_factor": {
+                "type": "float",
+                "default": 1.0
+            },
+            "total_iters": {
+                "type": "int",
+                "default": 5
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "MultiStepLR": {
+            "milestones": {
+                "type": "unknown",
+                "default": null
+            },
+            "gamma": {
+                "type": "float",
+                "default": 0.1
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "MultiplicativeLR": {
+            "lr_lambda": {
+                "type": "unknown",
+                "default": null
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "OneCycleLR": {
+            "max_lr": {
+                "type": "unknown",
+                "default": null
+            },
+            "total_steps": {
+                "type": "NoneType",
+                "default": null
+            },
+            "epochs": {
+                "type": "NoneType",
+                "default": null
+            },
+            "steps_per_epoch": {
+                "type": "NoneType",
+                "default": null
+            },
+            "pct_start": {
+                "type": "float",
+                "default": 0.3
+            },
+            "anneal_strategy": {
+                "type": "str",
+                "default": "cos"
+            },
+            "cycle_momentum": {
+                "type": "bool",
+                "default": true
+            },
+            "base_momentum": {
+                "type": "float",
+                "default": 0.85
+            },
+            "max_momentum": {
+                "type": "float",
+                "default": 0.95
+            },
+            "div_factor": {
+                "type": "float",
+                "default": 25.0
+            },
+            "final_div_factor": {
+                "type": "float",
+                "default": 10000.0
+            },
+            "three_phase": {
+                "type": "int, float",
+                "default": false
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "PolynomialLR": {
+            "total_iters": {
+                "type": "int",
+                "default": 5
+            },
+            "power": {
+                "type": "float",
+                "default": 1.0
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "ReduceLROnPlateau": {
+            "mode": {
+                "type": "str",
+                "default": "min"
+            },
+            "factor": {
+                "type": "float",
+                "default": 0.1
+            },
+            "patience": {
+                "type": "int",
+                "default": 10
+            },
+            "threshold": {
+                "type": "float",
+                "default": 0.0001
+            },
+            "threshold_mode": {
+                "type": "str",
+                "default": "rel"
+            },
+            "cooldown": {
+                "type": "int, float",
+                "default": 0
+            },
+            "min_lr": {
+                "type": "int, float",
+                "default": 0
+            },
+            "eps": {
+                "type": "float",
+                "default": 1e-08
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "SequentialLR": {
+            "schedulers": {
+                "type": "unknown",
+                "default": null
+            },
+            "milestones": {
+                "type": "unknown",
+                "default": null
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
+            }
+        },
+        "StepLR": {
+            "step_size": {
+                "type": "unknown",
+                "default": null
+            },
+            "gamma": {
+                "type": "float",
+                "default": 0.1
+            },
+            "last_epoch": {
+                "type": "int",
+                "default": -1
+            },
+            "verbose": {
+                "type": "str",
+                "default": "deprecated"
             }
         }
     },
