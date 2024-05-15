@@ -60,7 +60,7 @@ https://repromodel.netlify.app/
 <br>:ballot_box_with_check: Trainer Script
 <br>:ballot_box_with_check: Continuing training from checkpoint
 <br>:ballot_box_with_check: Tensorboard
-<br>:black_square_button: Command output viewer
+<br>:ballot_box_with_check: Command output viewer
 <br>:black_square_button: Training device selection
 <br>:black_square_button: Test script
 <br>:black_square_button: Code extractor
