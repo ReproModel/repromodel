@@ -41,13 +41,15 @@ For more details, read our blog article at: , or visit our website at Repromodel
 
 # :bulb: How to Run
 
-For running the frontend you can either run locally<br>
+For an easy running of both the frontend and the backend the following terminal script performs every needed step<br>
 
-<code> npm install<br>npm run dev </code>  <br>
+<code> npm run repromodel</code>  <br>
 
-Or you can look at the latest live version here: <br>
+Or you can look at the latest frontend live version here: <br>
 
 https://repromodel.netlify.app/
+
+(Note this is not connected to a backend)
 
   
 # :calendar: Roadmap
