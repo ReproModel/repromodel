@@ -4,7 +4,6 @@ import json
 import torchmetrics
 import inspect
 import pkgutil
-import importlib
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
@@ -12,6 +11,47 @@ from torch import optim
 
 # Base path for your project
 base_path = 'repromodel_core/src/'
+
+# Function to safely evaluate AST literals to their respective Python types
+def evaluate_ast_literal(node):
+    if isinstance(node, ast.Constant):  # For Python 3.8+
+        return node.value
+    elif isinstance(node, (ast.Str, ast.Num, ast.NameConstant)):  # For older versions of Python
+        return node.n if isinstance(node, ast.Num) else node.s if isinstance(node, ast.Str) else node.value
+    elif isinstance(node, ast.Tuple):
+        return tuple(evaluate_ast_literal(el) for el in node.elts)
+    elif isinstance(node, ast.List):
+        return [evaluate_ast_literal(el) for el in node.elts]
+    elif isinstance(node, ast.Dict):
+        return {evaluate_ast_literal(k): evaluate_ast_literal(v) for k, v in zip(node.keys, node.values)}
+    elif isinstance(node, ast.Name):
+        # Handle the case where the value is a named constant or type, e.g., `None`, `True`, `False`, `float`, `int`
+        if node.id in ['None', 'True', 'False']:
+            return eval(node.id)
+        elif node.id in ['float', 'int', 'str', 'bool', 'Compose']:
+            return node.id
+        else:
+            return node.id  # Return the name as a string if it's not a recognized built-in type
+    elif isinstance(node, ast.Call):
+        # Handle function calls, assume they return literals or types for simplicity
+        if isinstance(node.func, ast.Name):
+            if node.func.id in ['float', 'int', 'str', 'bool', 'Compose']:
+                return eval(node.func.id)(*[evaluate_ast_literal(arg) for arg in node.args])
+            elif node.func.id == 'type':
+                # Handle type() function call
+                return type(*[evaluate_ast_literal(arg) for arg in node.args])
+        return "<function>"  # Return a placeholder for function calls
+    elif isinstance(node, ast.Lambda):
+        # Handle lambda functions
+        return eval(compile(ast.Expression(node), '<string>', 'eval'))
+    elif isinstance(node, ast.UnaryOp):
+        # Handle unary operations (e.g., -1)
+        if isinstance(node.op, ast.USub):
+            return -evaluate_ast_literal(node.operand)
+        else:
+            return evaluate_ast_literal(node.operand)
+    else:
+        return "<unsupported>"  # Generic placeholder for unsupported node types
 
 # Function to parse the decorator for types, default values, ranges, and options
 def parse_decorator(decorator):
@@ -25,7 +65,8 @@ def parse_decorator(decorator):
                         for k, v in zip(val.keys, val.values):
                             if isinstance(k, ast.Str):
                                 if k.s in ['type', 'default', 'range', 'options']:
-                                    properties[k.s] = ast.unparse(v)
+                                    evaluated_value = evaluate_ast_literal(v)
+                                    properties[k.s] = evaluated_value
                     param_info[key.s] = properties
     return param_info
 
@@ -261,6 +302,6 @@ all_definitions["training_name"] = {
 
 # Save the collected data to a JSON file
 with open('repromodel_core/choices.json', 'w') as json_file:
-    json.dump(all_definitions, json_file, indent=4)
+    json.dump(all_definitions, json_file, indent=4, default=str)
 
 print("Class definitions with __init__ parameters, types, and default values have been extracted and grouped by directory in choices.json")
