@@ -5984,6 +5984,6 @@
     "device": {
         "type": "str",
         "default": "cpu",
-        "options": "['cpu']"
+        "options": "['cpu', 'cuda:0', 'cuda:1']"
     }
 }
