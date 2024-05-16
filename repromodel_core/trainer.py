@@ -74,18 +74,17 @@ def train(input_data):
     #TODO make custom possible and refactor getters
     criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params[cfg.losses])
 
-    for i in range(model_min, len(cfg.models)):
+    for m in range(model_min, len(cfg.models)):
 
-        print_to_file("Training model " + cfg.models[i], config=cfg, model_num = i)
+        print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
         # Custom file object for TQDM
-        tqdm_file = TqdmFile(config=cfg, model_num = i) 
+        tqdm_file = TqdmFile(config=cfg, model_num = m) 
 
         # Training loop for each fold
         for k in range(k_min, cfg.data_splits.k):
             # Initialize TensorBoard
-            writer = init_tensorboard_logging(cfg, k, i)
-            
-            model = deepcopy(models[i])
+            writer = init_tensorboard_logging(cfg, k, m)
+            model = deepcopy(models[m])
             optimizer = get_optimizer(model, "torch." + cfg.optimizers, cfg.optimizers_params[cfg.optimizers])
             lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_schedulers, cfg.lr_schedulers_params[cfg.lr_schedulers])
             early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params[cfg.early_stopping])
@@ -199,7 +198,7 @@ def train(input_data):
                 # Early stopping
                 early_stopper.step(epoch)
                 if early_stopper.should_stop:
-                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = i)
+                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = m)
                     writer.close()
                     break
 
@@ -210,7 +209,7 @@ def train(input_data):
                     best_val_loss = average_val_loss
                     save_model(config=cfg, 
                                model = model, 
-                               model_name=cfg.models[i], 
+                               model_name=cfg.models[m], 
                                fold=k, 
                                epoch=epoch, 
                                optimizer=optimizer, 
@@ -219,7 +218,7 @@ def train(input_data):
                                train_loss=average_train_loss, 
                                val_loss=best_val_loss, 
                                is_best=True)
-        print_to_file(f"Model {cfg.models[i]} training finished", config=cfg, model_num=i)
+        print_to_file(f"Model {cfg.models[m]} training finished", config=cfg, model_num=m)
 
 # Example usage
 if __name__ == '__main__':
