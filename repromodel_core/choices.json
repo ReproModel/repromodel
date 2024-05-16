@@ -7,16 +7,20 @@
         "convAE_2D": {
             "ConvAE_2D": {
                 "n_layers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 10)"
                 },
                 "input_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "output_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "activation": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['relu', 'sigmoid', 'tanh', 'softmax', 'leaky_relu']"
                 }
             }
         },
@@ -24,52 +28,65 @@
             "CustomModel": {
                 "lr": {
                     "type": "float",
-                    "default": 0.01
+                    "default": 0.01,
+                    "range": "(0.0001, 1.0)"
                 },
                 "activation": {
                     "type": "str",
-                    "default": "relu"
+                    "default": "relu",
+                    "options": "['relu', 'sigmoid', 'tanh']"
                 }
             }
         },
         "CAE_3D": {
             "Conv3dEncoder": {
                 "n_layers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 10)"
                 },
                 "input_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 }
             },
             "Conv3dDecoder": {
                 "n_layers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 10)"
                 },
                 "in_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1024)"
                 },
                 "output_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "activation": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['relu', 'sigmoid']"
                 }
             },
             "Conv3dAutoencoder": {
                 "n_layers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 10)"
                 },
                 "input_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "output_channels": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "activation": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['relu', 'sigmoid']"
                 },
                 "fusion": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['intermediate', 'final']"
                 }
             }
         }
@@ -84,7 +101,8 @@
                     "type": "str"
                 },
                 "num_workers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 32)"
                 }
             }
         },
@@ -97,10 +115,12 @@
                     "type": "str"
                 },
                 "input_type": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['input', 'output', 'temp']"
                 },
                 "num_workers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 32)"
                 }
             }
         }
@@ -136,10 +156,12 @@
                     "type": "str"
                 },
                 "in_channel": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "mode": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['train', 'val', 'test']"
                 },
                 "transforms": {
                     "type": "<class 'function'>",
@@ -180,10 +202,12 @@
                     "type": "str"
                 },
                 "in_channel": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000)"
                 },
                 "mode": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['train', 'val', 'test']"
                 },
                 "transforms": {
                     "type": "<class 'function'>",
@@ -199,23 +223,28 @@
         "customAugmentation": {
             "CustomAugmentations": {
                 "p": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
                 }
             }
         },
         "shiftScaleRotateFlip": {
             "ShiftScaleRotateFlip": {
                 "p": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
                 },
                 "shift_limit": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
                 },
                 "scale_limit": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(-1.0, 1.0)"
                 },
                 "rotate_limit": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(0, 360)"
                 }
             }
         }
@@ -224,7 +253,8 @@
         "customMetrics": {
             "CustomMetric": {
                 "weight": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
                 }
             }
         },
@@ -232,11 +262,13 @@
             "DiceScore": {
                 "threshold": {
                     "type": "float",
-                    "default": 0.5
+                    "default": 0.5,
+                    "range": "(0.0, 1.0)"
                 },
                 "smooth": {
                     "type": "float",
-                    "default": 1
+                    "default": 1,
+                    "range": "(1e-05, 1)"
                 }
             }
         },
@@ -3833,7 +3865,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x1359355e0>"
+                    "default": "<function _preprocess_text at 0x13011e550>"
                 },
                 "idf": {
                     "type": "bool",
@@ -4552,14 +4584,16 @@
             "DiceLoss": {
                 "smooth": {
                     "type": "float",
-                    "default": 1
+                    "default": 1,
+                    "range": "(1e-05, 1.0)"
                 }
             }
         },
         "customLoss": {
             "CustomLoss": {
                 "weight": {
-                    "type": "float"
+                    "type": "float",
+                    "range": "(0.1, 1.0)"
                 }
             }
         },
@@ -4961,15 +4995,18 @@
             "NoImprovementAfter": {
                 "patience": {
                     "type": "int",
-                    "default": 10
+                    "default": 10,
+                    "range": "(1, 50)"
                 },
                 "delta": {
                     "type": "float",
-                    "default": 0.001
+                    "default": 0.001,
+                    "range": "(0.0, 1.0)"
                 },
                 "min_lr": {
                     "type": "float",
-                    "default": 1e-06
+                    "default": 1e-06,
+                    "range": "(0.0, 1e-06)"
                 }
             }
         },
@@ -4979,7 +5016,8 @@
         "scheduledStop": {
             "ScheduledStop": {
                 "max_epochs": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 1000000)"
                 }
             }
         }
@@ -4994,11 +5032,13 @@
                     "type": "str"
                 },
                 "output_type": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['final', 'intermediate']"
                 },
                 "num_workers": {
                     "type": "int",
-                    "default": 1
+                    "default": 1,
+                    "range": "(1, 100)"
                 }
             }
         },
@@ -5011,10 +5051,12 @@
                     "type": "str"
                 },
                 "output_type": {
-                    "type": "str"
+                    "type": "str",
+                    "options": "['final', 'intermediate', 'logs']"
                 },
                 "num_workers": {
-                    "type": "int"
+                    "type": "int",
+                    "range": "(1, 32)"
                 }
             }
         }
@@ -5905,11 +5947,6 @@
             }
         }
     },
-    "device": {
-        "type": "str",
-        "default": "cpu",
-        "options": "['cpu']"
-    },
     "batch_size": {
         "type": "int",
         "default": 1,
@@ -5943,5 +5980,10 @@
     },
     "training_name": {
         "type": "str"
+    },
+    "device": {
+        "type": "str",
+        "default": "cpu",
+        "options": "['cpu']"
     }
 }

@@ -66,9 +66,12 @@ def parse_decorator(decorator):
                     if isinstance(val, ast.Dict):
                         for k, v in zip(val.keys, val.values):
                             if isinstance(k, ast.Str):
-                                if k.s in ['type', 'default']:#, 'range', 'options']:
+                                if k.s in ['type', 'default']:
                                     evaluated_value = evaluate_ast_literal(v)
                                     properties[k.s] = evaluated_value
+                                elif k.s in ['range', 'options']:
+                                    evaluated_value = evaluate_ast_literal(v)
+                                    properties[k.s] = str(evaluated_value)
                     param_info[key.s] = properties
     return param_info
 
@@ -270,7 +273,6 @@ all_definitions['optimizers'] = {}
 all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) #make_json_serializable(optimizer_classes_extracted)
 
 # Static choices 
-all_definitions["device"] = get_devices()
 
 all_definitions["batch_size"] = {
                     "type": "int",
@@ -312,6 +314,9 @@ all_definitions["metadata_path"] = {
 all_definitions["training_name"] = {
                         "type": "str",
                     }
+
+# choose device
+all_definitions["device"] = get_devices()
 
 # Save the collected data to a JSON file
 with open('repromodel_core/choices.json', 'w') as json_file:
