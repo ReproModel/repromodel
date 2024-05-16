@@ -20,13 +20,12 @@ For more details, read our blog article at: , or visit our website at Repromodel
 
 # :wrench: Tech Stack
 
-### Javascript
+<img src="public/javascript.png" alt="JavaScript Icon" width="20" height="20"> JavaScript <br>
+<img src="public/react.png" alt="React Icon" width="20" height="20"> React <br>
+<img src="public/vite.svg" alt="Vite Icon" width="20" height="20"> Vite <br>
+<img src="public/python.png" alt="Python Icon" width="20" height="20"> Python <br>
+<img src="public/flask.svg" alt="Flask Icon" width="20" height="20"> Flask <br>
 
-### Python
-
-### Django
-
-### React + Vit  
 
 # :tv: Demo
 
