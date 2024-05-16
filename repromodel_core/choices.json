@@ -89,6 +89,26 @@
                     "options": "['intermediate', 'final']"
                 }
             }
+        },
+        "uNet_2D": {
+            "UNet_2D": {
+                "in_channels": {
+                    "type": "int",
+                    "range": "(1, inf)"
+                },
+                "out_channels": {
+                    "type": "int",
+                    "range": "(1, inf)"
+                },
+                "num_layers": {
+                    "type": "int",
+                    "range": "(1, inf)"
+                },
+                "activation": {
+                    "type": "str",
+                    "default": "sigmoid"
+                }
+            }
         }
     },
     "preprocessing": {
@@ -254,6 +274,15 @@
             "CustomMetric": {
                 "weight": {
                     "type": "float",
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "accuracyScore": {
+            "AccuracyScore": {
+                "threshold": {
+                    "type": "float",
+                    "default": 0.5,
                     "range": "(0.0, 1.0)"
                 }
             }
@@ -3865,7 +3894,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x13011e550>"
+                    "default": "<function _preprocess_text at 0x123ab3550>"
                 },
                 "idf": {
                     "type": "bool",
@@ -5984,6 +6013,6 @@
     "device": {
         "type": "str",
         "default": "cpu",
-        "options": "['cpu', 'cuda:0', 'cuda:1']"
+        "options": "['cpu']"
     }
 }

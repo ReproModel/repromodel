@@ -81,7 +81,7 @@ def parse_python_file(file_path):
         node = ast.parse(file.read(), filename=file_path)
     class_definitions = {}
     for n in node.body:
-        if isinstance(n, ast.ClassDef):
+        if isinstance(n, ast.ClassDef) and not n.name.startswith('_'):
             for item in n.body:
                 if isinstance(item, ast.FunctionDef) and item.name == '__init__':
                     params = {}
