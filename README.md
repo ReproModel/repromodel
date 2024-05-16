@@ -61,21 +61,14 @@ https://repromodel.netlify.app/
 <br>:ballot_box_with_check: Continuing training from checkpoint
 <br>:ballot_box_with_check: Tensorboard
 <br>:ballot_box_with_check: Command output viewer
-<br>:black_square_button: Training device selection
+<br>:ballot_box_with_check: Training device selection
 <br>:black_square_button: Test script
-<br>:black_square_button: Code extractor
 <br>:black_square_button: LLM descriptor
+<br>:black_square_button: Code extractor
 <br>:black_square_button: Custom script editor
 <br>:black_square_button: Statistical testing
 
-
-
- 
-
-
 # :page_facing_up: License
-
-  
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 

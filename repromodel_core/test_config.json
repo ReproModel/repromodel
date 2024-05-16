@@ -57,7 +57,6 @@
       "smooth": 0.001  
       }
     },
-    "device": "cpu",
     "batch_size": 8,
     "monitor": "val_loss",
     "data_splits": {
@@ -67,5 +66,6 @@
     "model_save_path": "repromodel_core/ckpts",
     "tensorboard_log_path": "repromodel_core/logs",
     "metadata_path": "repromodel_core/logs/metadata.json",
-    "load_from_checkpoint": false
+    "load_from_checkpoint": false,
+    "device": "cpu"
   }
