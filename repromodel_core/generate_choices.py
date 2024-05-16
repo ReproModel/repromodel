@@ -4,6 +4,8 @@ import json
 import torchmetrics
 import inspect
 import pkgutil
+import torch
+import platform
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
@@ -64,7 +66,7 @@ def parse_decorator(decorator):
                     if isinstance(val, ast.Dict):
                         for k, v in zip(val.keys, val.values):
                             if isinstance(k, ast.Str):
-                                if k.s in ['type', 'default', 'range', 'options']:
+                                if k.s in ['type', 'default']:#, 'range', 'options']:
                                     evaluated_value = evaluate_ast_literal(v)
                                     properties[k.s] = evaluated_value
                     param_info[key.s] = properties
@@ -196,6 +198,23 @@ def make_json_serializable(obj):
             return obj
         except TypeError:
             return str(obj)
+        
+def get_devices():
+    device_definitions = {
+        "type": "str",
+        "default": "cpu",
+        "options": "['cpu']"
+    }
+    
+    # Check if CUDA is available and add CUDA devices
+    if torch.cuda.is_available():
+        device_count = torch.cuda.device_count()
+        for i in range(device_count):
+            cuda_key = 'cuda:{}'.format(i)
+            device_definitions["options"].append(cuda_key)
+    
+    # Convert options list to string format    
+    return device_definitions
 
 # Collect all definitions from specified directories
 all_definitions = {}
@@ -251,11 +270,7 @@ all_definitions['optimizers'] = {}
 all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) #make_json_serializable(optimizer_classes_extracted)
 
 # Static choices 
-all_definitions["device"] = {
-                    "type": "str",
-                    "default": "cpu",
-                    "options": "['cpu', 'cuda']"
-                }
+all_definitions["device"] = get_devices()
 
 all_definitions["batch_size"] = {
                     "type": "int",
@@ -284,7 +299,6 @@ all_definitions["model_save_path"] = {
                         "type": "str"
                     }
 
-
 all_definitions["tensorboard_log_path"] = {
                         "type": "str",
                         "default": "logs"
@@ -297,7 +311,6 @@ all_definitions["metadata_path"] = {
 
 all_definitions["training_name"] = {
                         "type": "str",
-                       
                     }
 
 # Save the collected data to a JSON file
