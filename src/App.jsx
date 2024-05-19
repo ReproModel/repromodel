@@ -37,7 +37,7 @@ function App() {
               </Grid>
             </Grid>
             <Grid item xs={8} className="questionairContainer">
-              <Box sx={{ position: "absolute", top: 32, right: 48 }}>
+              <Box sx={{ position: "absolute", top: 32, right: 48 , zIndex: 100}}>
                 <ButtonGroup variant="contained">
                   <Button
                     onClick={() => setSelectedSection("Experiment Builder")}
