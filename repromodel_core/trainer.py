@@ -184,16 +184,16 @@ def train(input_data):
 
                 #log learning rate
                 lr = optimizer.param_groups[0]['lr']
-                writer.add_scalar('Learning Rate', lr, epoch)
+                writer.add_scalar('Train/Learning Rate', lr, epoch)
 
                 #log losses
-                writer.add_scalar('Loss/Train', average_train_loss, epoch)
-                writer.add_scalar('Loss/Validation', average_val_loss, epoch)
+                writer.add_scalar('Train/Loss', average_train_loss, epoch)
+                writer.add_scalar('Validation/Loss', average_val_loss, epoch)
 
                 # Log metrics
                 for i, metric in enumerate(cfg.metrics):
-                    writer.add_scalar(f'{metric}/Train', average_train_metrics[i], epoch)
-                    writer.add_scalar(f'{metric}/Validation', average_val_metrics[i], epoch)
+                    writer.add_scalar(f'Train/{metric}', average_train_metrics[i], epoch)
+                    writer.add_scalar(f'Validation/{metric}', average_val_metrics[i], epoch)
 
                 # Early stopping
                 early_stopper.step(epoch)
