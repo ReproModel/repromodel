@@ -56,12 +56,12 @@ https://repromodel.netlify.app/
 <br>:ballot_box_with_check: Metrics
 <br>:ballot_box_with_check: LR Schedulers
 <br>:ballot_box_with_check: Optimizers
-<br>:ballot_box_with_check: Trainer Script
+<br>:ballot_box_with_check: Trainer
 <br>:ballot_box_with_check: Continuing training from checkpoint
 <br>:ballot_box_with_check: Tensorboard
 <br>:ballot_box_with_check: Command output viewer
 <br>:ballot_box_with_check: Training device selection
-<br>:black_square_button: Test script
+<br>:ballot_box_with_check: Tester
 <br>:black_square_button: LLM descriptor
 <br>:black_square_button: Code extractor
 <br>:black_square_button: Custom script editor
