@@ -33,6 +33,8 @@ class DummyDataset(Dataset):
         """
         if mode not in ['train', 'val', 'test']:
             raise ValueError("Mode should be 'train', 'val', or 'test'")
+        if mode == 'test':
+            self.set_fold(0)
         self.mode = mode
 
     def set_transforms(self, transforms):
@@ -61,26 +63,29 @@ class DummyDataset(Dataset):
             raise RuntimeError(f"Found 0 files in: {abs_dir}\nSupported extension is: {self.extension}")
         return sorted(data_list)
 
-    def generate_indices(self, k=5, random_seed=42):
+    def generate_indices(self, k=5, test_size=0.2, random_seed=42):
         """
-        Generate indices for KFold cross-validation, and split training data for validation.
+        Generate indices for train/test split, then apply KFold cross-validation on the training set.
 
         Parameters:
         - k: Number of folds.
+        - test_size: Proportion of the dataset to include in the test split.
         - random_seed: Seed for randomness.
         """
         np.random.seed(random_seed)
         full_indices = np.random.permutation(len(self.input_list))
-        kfold = KFold(n_splits=k, shuffle=True, random_state=random_seed)
+        
+        # Initial train/test split
+        train_val_indices, test_indices = train_test_split(full_indices, test_size=test_size, random_state=random_seed)
 
+        kfold = KFold(n_splits=k, shuffle=True, random_state=random_seed)
+        
         self.indices = {}
-        for i, (train_val_idx, test_idx) in enumerate(kfold.split(full_indices)):
-            # Further split the training indices into actual train and validation sets
-            train_idx, val_idx = train_test_split(train_val_idx, test_size=0.2, random_state=random_seed)
+        for i, (train_idx, val_idx) in enumerate(kfold.split(train_val_indices)):
             self.indices[i] = {
                 'train': train_idx,
                 'val': val_idx,
-                'test': test_idx
+                'test': test_indices
             }
 
     def set_fold(self, fold):
