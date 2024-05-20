@@ -8,15 +8,15 @@
             "activation": "softmax"
         },
         "UNet_2D": {
-            "n_layers": 4,
-            "input_channels": 3,
-            "output_channels": 2,
+            "num_layers": 4,
+            "in_channels": 3,
+            "out_channels": 2,
             "activation": "softmax"
         }
     },
     "checkpoints": {
         "ConvAE_2D": "repromodel_core/ckpts/ConvAE_2D_best_fold_0.pt",
-        "AnotherModel": "path/to/AnotherModel_checkpoint.pth"
+        "UNet_2D": "repromodel_core/ckpts/UNet_2D_best_fold_0.pt"
     },
     "preprocessing": "DummyPreprocessor",
     "preprocessing_params": {

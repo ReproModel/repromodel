@@ -7,7 +7,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file
+from src.utils import print_to_file, load_state
 
 SRC_DIR = "src."
 
@@ -35,15 +35,15 @@ def test(input_data):
 
     for model_name in cfg.models:
         print_to_file(f"Testing model: {model_name}")
+        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:]
         model_params = cfg.models_params[model_name]
         checkpoint_path = cfg.checkpoints[model_name]
-
         # Load model
-        model = configure_component(model_name, **model_params).to(cfg.device)
+        model = configure_component(model_path, model_name, model_params).to(cfg.device)
 
         # Load model from checkpoint
         checkpoint = torch.load(checkpoint_path, map_location=cfg.device)
-        model.load_state_dict(checkpoint['model_state_dict'])
+        model = load_state(model, checkpoint)
 
         # Configure metrics
         metrics = {}
@@ -82,6 +82,6 @@ def test(input_data):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test multiple models")
-    parser.add_argument("--config", type=str, required=True, help="Path to the config file or JSON string")
+    parser.add_argument("config", type=str, help="Path to the config file or JSON string")
     args = parser.parse_args()
     test(args.config)
