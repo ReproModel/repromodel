@@ -68,7 +68,6 @@ const DynamicFormBuilder = ({
                               FormikProps.values[folder] === className)) && (
                             <div className="paramBox">
                               <p>{className} Params</p>
-                              <p>{typeof FormikProps.values[folder]}</p>
 
                               {/* Conditionally renders Param Questions if the class is selected */}
 
