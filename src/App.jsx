@@ -1,17 +1,15 @@
 import { useState } from "react";
-import "./App.css";
 import { Box, Grid, Typography } from "@mui/material";
-import Header from "./UI/Header";
-import { Formik, Form, Field } from "formik";
-import NewFlexibleFormField from "./UI/FormComponents/NewFlexibleFormField";
+import { Formik } from "formik";
 import { Button, ButtonGroup } from "@mui/material";
 
+import "./App.css";
+
+import Header from "./UI/Header";
 import ModuleStack from "./UI/ModuleStack";
-import NewDynamicFormBuilder from "./UI/NewDynamicFormBuilder";
 import newQuestions from "../repromodel_core/choices.json";
-import { capitalizeFirstLetter } from "./helperFunctions/OtherHelper";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
-import DynamicFormBuilder from "./UI/NewDynamicFormBuilder";
+import DynamicFormBuilder from "./UI/DynamicFormBuilder";
 import TrainingViewer from "./UI/TrainingViewer";
 
 function App() {
@@ -37,7 +35,9 @@ function App() {
               </Grid>
             </Grid>
             <Grid item xs={8} className="questionairContainer">
-              <Box sx={{ position: "absolute", top: 32, right: 48 , zIndex: 100}}>
+              <Box
+                sx={{ position: "absolute", top: 32, right: 48, zIndex: 100 }}
+              >
                 <ButtonGroup variant="contained">
                   <Button
                     onClick={() => setSelectedSection("Experiment Builder")}
@@ -73,8 +73,9 @@ function App() {
                 )}
                 {selectedSection === "Model Testing" && (
                   <>
-                    <Typography variant="h4">Here comes the Training Viewer</Typography>
-                    
+                    <Typography variant="h4">
+                      Here comes the Training Viewer
+                    </Typography>
                   </>
                 )}
               </Grid>
