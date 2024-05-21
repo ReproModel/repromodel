@@ -126,12 +126,35 @@ export const handleSubmit = async (values) => {
   document.body.removeChild(link);
   URL.revokeObjectURL(url);
 
-  try {
-    const response = await axios.post('http://127.0.0.1:5005/submit-config-start-training', jsonTransformed);
-    console.log('Script Output:', response.data);
-  } catch (error) {
-    const errorMessage = error.response ? JSON.stringify(error.response.data) : error.message;
-    console.warn('Warning: Error running script:', errorMessage);
-    alert('Warning: Error running script: ' + errorMessage);
+  if (values.submitType === "training") {
+    // Handle training submit action
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5005/submit-config-start-training",
+        jsonTransformed
+      );
+      console.log("Script Output:", response.data);
+    } catch (error) {
+      const errorMessage = error.response
+        ? JSON.stringify(error.response.data)
+        : error.message;
+      console.warn("Warning: Error running script:", errorMessage);
+      alert("Warning: Error running script: " + errorMessage);
+    }
+  } else if (values.submitType === "testing") {
+    // Handle testing submit action
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5005/submit-config-start-testing",
+        jsonTransformed
+      );
+      console.log("Script Output:", response.data);
+    } catch (error) {
+      const errorMessage = error.response
+        ? JSON.stringify(error.response.data)
+        : error.message;
+      console.warn("Warning: Error running script:", errorMessage);
+      alert("Warning: Error running script: " + errorMessage);
+    }
   }
 };

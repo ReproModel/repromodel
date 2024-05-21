@@ -11,6 +11,7 @@ import newQuestions from "../repromodel_core/choices.json";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
 import DynamicFormBuilder from "./UI/DynamicFormBuilder";
 import TrainingViewer from "./UI/TrainingViewer";
+import TestingFormBuilder from "./UI/TestingFormBuilder";
 
 function App() {
   // Generate initial values from questions data
@@ -74,8 +75,14 @@ function App() {
                 {selectedSection === "Model Testing" && (
                   <>
                     <Typography variant="h4">
-                      Here comes the Training Viewer
+                      Model Testing
                     </Typography>
+                    <TestingFormBuilder
+                      FormikProps={FormikProps}
+                      setFieldValue={FormikProps.setFieldValue}
+                      handleFileChange={handleFileChange}
+                      newQuestions={newQuestions}
+                    />
                   </>
                 )}
               </Grid>
