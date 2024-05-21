@@ -27,6 +27,23 @@ def get_classes_from_module(file_path, exclude_params={'transforms', 'mode', 'in
                 classes[n.name] = params
     return classes
 
+def load_cfg(metadata_path):
+    """
+    Load a configuration and metadata from a metadata file.
+    
+    Args:
+    - metadata_path (str): The path to the metadata file.
+
+    Returns:
+    - config (dict): The loaded configuration.
+    - metadata (dict): The loaded metadata.
+    """
+    with open(metadata_path, 'r') as f:
+        metadata = json.load(f)
+    config = metadata['config']
+    print_to_file("Configuration and metadata loaded.")
+    return config, metadata
+
 def load_state(obj, state_dict):
     """Generic function to load a state dictionary into an object."""
     obj.load_state_dict(state_dict)
@@ -45,18 +62,27 @@ def handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stoppi
     if hasattr(early_stopping, 'state_dict'):
         torch.save(early_stopping.state_dict(), f'{experiment_folder}/{model_name}{suffix}_early_stopping.pt')
 
+def get_last_dict_paths(model_save_path, model_name, fold):
+    experiment_folder = model_save_path + model_name
+    metadata_path = f"{experiment_folder}/{model_name}_best_fold_{fold}_metadata.json"
+    _, metadata = load_cfg(metadata_path)
+    paths = {}
+    paths["model_path"] = metadata["model_state_dict_path"]
+    paths["optimizer_path"] = metadata["optimizer_state_dict_path"]
+    paths["scheduler_path"] = metadata["lr_scheduler_state_dict_path"]
+    paths["es_path"] = metadata["early_stopping_state_dict_path"]
+    return paths
+
 def save_model(config, model, model_name, fold, epoch,
                 optimizer, lr_scheduler, early_stopping, train_loss, val_loss, is_best=False):
 
-    experiment_folder = config.model_save_path
+    experiment_folder = config.model_save_path + model_name
     # Make sure that experiment folder exists
     ensure_folder_exists(experiment_folder)
                          
     suffix = f'_best_fold_{fold}' if is_best else f'_fold_{fold}_epoch_{epoch}'
 
     handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stopping, experiment_folder, suffix)
-
-    metadata_path = ""
 
     print_to_file(f"Saving model to {experiment_folder}/{model_name}{suffix}.pt")
 
@@ -75,8 +101,19 @@ def save_model(config, model, model_name, fold, epoch,
         'val_loss': val_loss
     }
 
-    with open(config.metadata_path, 'w') as f:
+    with open(f"{experiment_folder}/{model_name}{suffix}_metadata.json", 'w') as f:
         json.dump(metadata, f, indent=4)
+        print_to_file(f"Metadata saved to {experiment_folder}/{model_name}{suffix}_metadata.json")
+
+    progress = {
+        'model_name': model_name,
+        'fold': fold,
+        'epoch': epoch
+    }
+
+    with open(config.progress_path, 'w') as f:
+        json.dump(progress, f, indent=4)
+        print_to_file(f"Progress saved to {config.progress_path}")    
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""

@@ -8,7 +8,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model, print_to_file, delete_command_outputs, TqdmFile
+from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, TqdmFile
 from copy import deepcopy
 
 SRC_DIR = "src."
@@ -32,13 +32,13 @@ def train(input_data):
 
     # load model from last checkpoint
     if cfg.load_from_checkpoint:
-        metadata = load_json(cfg.metadata_path)
+        progress = load_json(cfg.progress_path)
         cfg = edict(cfg)
 
         # Get model index, fold, and epoch from metadata
-        model_min = cfg.models.index(metadata['model_name'])
-        k_min = metadata['fold']
-        epoch_min = metadata['epoch']
+        model_min = cfg.models.index(progress['model_name'])
+        k_min = progress['fold']
+        epoch_min = progress['epoch']
         print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
     # Get preprocessing, augmentation, and dataset configurations
@@ -75,8 +75,8 @@ def train(input_data):
     criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
+
         # Custom file object for TQDM
         tqdm_file = TqdmFile(config=cfg, model_num = m) 
 
@@ -93,6 +93,21 @@ def train(input_data):
             model = configure_device_specific(model, cfg.device)
             optimizer = configure_device_specific(optimizer, cfg.device)
             lr_scheduler = configure_device_specific(lr_scheduler, cfg.device)
+
+            if cfg.load_from_checkpoint:
+                # Load states from checkpoints
+                paths = get_last_dict_paths(cfg.model_save_path, cfg.models[m], k)
+                checkpoint_model = torch.load(paths["model_path"], map_location=cfg.device)
+                model = load_state(model, checkpoint_model)
+                checkpoint_optimizer = torch.load(paths["optimizer_path"], map_location=cfg.device)
+                optimizer = load_state(optimizer, checkpoint_optimizer)
+                checkpoint_scheduler = torch.load(paths["scheduler_path"], map_location=cfg.device)
+                lr_scheduler = load_state(lr_scheduler, checkpoint_scheduler)
+                checkpoint_es = torch.load(paths["es_path"], map_location=cfg.device)
+                early_stopper = load_state(early_stopper, checkpoint_es)
+                print_to_file("Checkpoint states loaded")
+                cfg.load_from_checkpoint = False
+
 
             dataset.set_fold(k)
 
