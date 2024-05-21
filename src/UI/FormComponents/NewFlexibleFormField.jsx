@@ -28,15 +28,19 @@ function BooleanField({ id, label, name }) {
 }
 
 function FlexibleFormField({ id, label, type, name, object }) {
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue, values } = useFormikContext();
   const defaultValue = object?.default;
-
-  // Set the default value when it's defined and different from the current value
+  
+  // Set the default value when it's defined and the field value is not already set
   React.useEffect(() => {
-    if (defaultValue !== undefined && defaultValue !== null) {
+    if (
+      defaultValue !== undefined &&
+      defaultValue !== null &&
+      (values[name] === undefined || values[name] === null || values[name] === '')
+    ) {
       setFieldValue(name, defaultValue);
     }
-  }, [name, defaultValue, setFieldValue]);
+  }, [name, defaultValue, setFieldValue, values]);
 
   const renderSwitch = () => {
     switch (type) {
