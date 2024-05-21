@@ -127,7 +127,7 @@ export const handleSubmit = async (values) => {
   URL.revokeObjectURL(url);
 
   try {
-    const response = await axios.post('http://127.0.0.1:5005/submit-config-start-training', values);
+    const response = await axios.post('http://127.0.0.1:5005/submit-config-start-training', jsonTransformed);
     console.log('Script Output:', response.data);
   } catch (error) {
     const errorMessage = error.response ? JSON.stringify(error.response.data) : error.message;
