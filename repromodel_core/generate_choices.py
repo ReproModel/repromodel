@@ -298,17 +298,18 @@ all_definitions["data_splits"] = {
                 }
 
 all_definitions["model_save_path"] = {
-                        "type": "str"
+                        "type": "str",
+                        "default": "repromodel_core/ckpts/"
                     }
 
 all_definitions["tensorboard_log_path"] = {
                         "type": "str",
-                        "default": "logs"
+                        "default": "repromodel_core/logs"
                     }
 
-all_definitions["metadata_path"] = {
+all_definitions["progress_path"] = {
                         "type": "str",
-                        "default": "logs/metadata.json"
+                        "default": "repromodel_core/ckpts/progress.json"
                     }
 
 all_definitions["training_name"] = {
