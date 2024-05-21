@@ -75,15 +75,15 @@ const DynamicFormBuilder = ({
                                 ([Param, value]) => (
                                   <>
                                     <label
-                                      htmlFor={`${folder}_params:${file}:${className}:${Param}`}
+                                      htmlFor={`${folder}_params:${className}:${Param}`}
                                     >
                                       {Param}:
                                     </label>
                                     <NewFlexibleFormField
-                                      id={`${folder}_params:${file}:${className}:${Param}`}
+                                      id={`${folder}_params:${className}:${Param}`}
                                       object={value}
                                       type={value.type}
-                                      name={`${folder}_params:${file}:${className}:${Param}`}
+                                      name={`${folder}_params:${className}:${Param}`}
                                       label={Param}
                                     />
                                   </>
