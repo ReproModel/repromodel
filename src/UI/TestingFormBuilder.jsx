@@ -8,16 +8,7 @@ import { Typography } from "@mui/material";
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper";
 import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion";
 
-const foldersPartOfTesting = [
-  "models",
-  "preprocessing",
-  "datasets",
-  "metrics",
-  "batch_size",
-  "data_splits",
-  "tensorboard_log_path",
-  "device",
-];
+const foldersPartOfTesting = ["models", "datasets", "metrics", "device"];
 
 const nestedFolders = [
   "models",
@@ -76,7 +67,7 @@ const DynamicFormBuilder = ({
                       {Object.entries(fileContent).map(
                         ([className, classContent]) => (
                           <div style={{ paddingLeft: "16px" }}>
-                            {FormikProps.values[folder] &&
+                            {FormikProps.values[folder] && folder === "metrics" &&
                               ((Array.isArray(FormikProps.values[folder]) &&
                                 FormikProps.values[folder].includes(
                                   className
@@ -116,21 +107,6 @@ const DynamicFormBuilder = ({
                     </>
                   ))}
                 </>
-              ) : folder === "data_splits" ? (
-                <div className="paramBox">
-                  {Object.entries(folderContent).map(([Param, value]) => (
-                    <>
-                      <label htmlFor={`${folder}:${Param}`}>{Param}:</label>
-                      <NewFlexibleFormField
-                        id={`${folder}:${Param}`}
-                        object={value}
-                        type={value.type}
-                        name={`${folder}:${Param}`}
-                        label={Param}
-                      />
-                    </>
-                  ))}
-                </div>
               ) : foldersPartOfTesting.includes(folder) ? (
                 <>
                   <label htmlFor={`${folder}`}>{folder}:</label>
@@ -154,9 +130,7 @@ const DynamicFormBuilder = ({
         {FormikProps.values["models"] &&
           FormikProps.values["models"].map((model, index) => (
             <>
-              <label htmlFor={`checkpoints:${model}`}>
-                {model}:
-              </label>
+              <label htmlFor={`checkpoints:${model}`}>{model}:</label>
               <Field
                 key={index}
                 placeholder="Path to Checkpoint"
