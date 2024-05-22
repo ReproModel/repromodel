@@ -131,7 +131,7 @@ const DynamicFormBuilder = ({
           )}
         </div>
       ))}
-      <ButtonGroup variant="outlined">
+      <ButtonGroup variant="outlined" sx={{marginTop: "16px"}}>
                   <Button
                     type="submit"
                     onClick={() => setFieldValue("submitType", "training")}
