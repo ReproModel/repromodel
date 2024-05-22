@@ -41,7 +41,7 @@ def load_cfg(metadata_path):
     with open(metadata_path, 'r') as f:
         metadata = json.load(f)
     config = metadata['config']
-    print_to_file("Configuration and metadata loaded.")
+    print_to_file(f"Configuration and metadata {metadata_path} loaded")
     return config, metadata
 
 def load_state(obj, state_dict):
@@ -72,6 +72,24 @@ def get_last_dict_paths(model_save_path, model_name, fold):
     paths["scheduler_path"] = metadata["lr_scheduler_state_dict_path"]
     paths["es_path"] = metadata["early_stopping_state_dict_path"]
     return paths
+
+def get_all_ckpts(model_save_path, models, num_folds):
+    ckpts = {}
+    for model_name in models:
+        ckpts[model_name] = []
+        experiment_folder = model_save_path + model_name
+        for fold in range(num_folds):
+            try:
+                metadata_path = f"{experiment_folder}/{model_name}_best_fold_{fold}_metadata.json"
+                _, metadata = load_cfg(metadata_path)
+                ckpts[model_name].append(metadata["model_state_dict_path"])
+            except FileNotFoundError:
+                raise FileNotFoundError(f"Metadata file not found: {metadata_path}")
+            except KeyError:
+                raise KeyError(f"Key 'model_state_dict_path' is missing in metadata for {metadata_path}")
+            except Exception as e:
+                raise Exception(f"An unexpected error occurred: {str(e)}")
+    return ckpts
 
 def save_model(config, model, model_name, fold, epoch,
                 optimizer, lr_scheduler, early_stopping, train_loss, val_loss, is_best=False):
