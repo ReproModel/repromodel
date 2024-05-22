@@ -44,6 +44,10 @@ const DynamicFormBuilder = ({
         accept=".json"
         onChange={(event) => handleFileChange(event, setFieldValue)}
       />
+
+      {/* Hidden field to capture the submit type */}
+      <Field type="hidden" name="submitType" />
+
       {/* For each Folder */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
         <div style={{ display: "flex", flexDirection: "column" }}>
@@ -127,7 +131,14 @@ const DynamicFormBuilder = ({
         </div>
       ))}
 
-      <button type="submit">Submit</button>
+
+      <button
+        type="submit"
+        onClick={() => setFieldValue("submitType", "training")}
+      >
+        Submit for Training
+      </button>
+
     </Form>
   );
 };
