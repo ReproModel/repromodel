@@ -48,8 +48,8 @@ function App() {
                   <Button onClick={() => setSelectedSection("Model Testing")}>
                     Model Testing
                   </Button>
-                  <Button onClick={() => setSelectedSection("Training Viewer")}>
-                    Training Viewer
+                  <Button onClick={() => setSelectedSection("Progress Viewer")}>
+                    Progress Viewer
                   </Button>
                 </ButtonGroup>
               </Box>
@@ -66,9 +66,9 @@ function App() {
                     />
                   </>
                 )}
-                {selectedSection === "Training Viewer" && (
+                {selectedSection === "Progress Viewer" && (
                   <>
-                    <Typography variant="h4">Training Viewer</Typography>
+                    <Typography variant="h4">Progress Viewer</Typography>
                     <TrainingViewer />
                   </>
                 )}
