@@ -1,10 +1,11 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
+import {Button} from "@mui/material";
 
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField";
 import "./FormComponents/Form.css";
 
-import { Typography } from "@mui/material";
+import { ButtonGroup, Typography } from "@mui/material";
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper";
 import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion";
 import CustomSelect from "./FormComponents/FieldTypes/CustomSelectComponent";
@@ -130,14 +131,19 @@ const DynamicFormBuilder = ({
           )}
         </div>
       ))}
-
-
-      <button
-        type="submit"
-        onClick={() => setFieldValue("submitType", "training")}
-      >
-        Submit for Training
-      </button>
+      <ButtonGroup variant="outlined">
+                  <Button
+                    type="submit"
+                    onClick={() => setFieldValue("submitType", "training")}
+                  >
+                    Submit for Training
+                  </Button>
+                  <Button type="submit"
+                    onClick={() => setFieldValue("submitType", "download")}>
+                    Download Config File
+                  </Button>
+                  
+                </ButtonGroup>
 
     </Form>
   );

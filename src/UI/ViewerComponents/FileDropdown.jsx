@@ -29,7 +29,7 @@ const FileDropdown = ({ onSelectFile }) => {
   return (
     <Box sx={{ width: 300, mt: 4 }}>
       <FormControl fullWidth>
-        <InputLabel id="file-select-label">Training Run</InputLabel>
+        <InputLabel id="file-select-label">Output File</InputLabel>
         <Select
           labelId="file-select-label"
           value={selectedFile}
