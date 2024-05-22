@@ -7,13 +7,13 @@
 
 **ReproModel**  helps the AI research community to reproduce and compare AI models faster.
 
-The current prototype helps them to modularize their development and compare the performance of each step in the pipeline in a reproducible way.
+The current prototype helps researchers to modularize their development and compare the performance of each step in the pipeline in a reproducible way.
 
-The next version will help researchers to build upon state-of-the-art research faster by just loading the previously published study ID. All code, experiments, and results would already be verified, and stored in the system. The prototype version helped us reduce the time for model development, computation, and writing by at least 40%.
+The following version will help researchers to build upon state-of-the-art research faster by just loading the previously published study ID. All code, experiments, and results would already be verified, and stored in the system. The prototype version helped us reduce the time for model development, computation, and writing by at least 40%.
 
   
 
-For more details, read our blog article at: , or visit our website at Repromodel.com.
+For more details visit our website at repromodel.com.
 
 
   
@@ -41,10 +41,11 @@ You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte
 # :bulb: How to Run
 
 For running the frontend you can either run locally<br>
+Install Node.js for your operating system from [here](https://nodejs.org) <br>
+and run the following commands:<br>
+<code> npm install</code> <br><code> npm run repromodel </code>  <br> <br>
 
-<code> npm install</code> <br><code> npm run dev </code>  <br>
-
-Or you can look at the latest live version here: <br>
+Or you can look at the latest live (frontend only) version here: <br>
 
 https://repromodel.netlify.app/
   
@@ -76,19 +77,19 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 # :email:  Questions and Support
 
-For questions or any type of support, you can reach out to me via sitnik.dario@gmail.com
+For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com
 
 # :link:  Contributors
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-If you have a suggestion that would make this better, please read our contribution guidelines [here](Contributing.md). 
+If you have a suggestion that would make this better, please read our contribution guidelines [here](Contributing.md) and Code of Conduct [here](CODE_OF_CONDUCT.md). 
  <br>
  <br>
 <table>
   <tr>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/13439539?v=4https://avatars.githubusercontent.com/u/168830779?s=96&v=4" width="100px;" alt=""/><br />
-      <sub><b>Dario Sitnik</b></sub><br />
+      <sub><b>Dario Sitnik, PhD</b></sub><br />
       <sub>AI Scientist</sub><br />
       <a href="https://github.com/dsitnik">GitHub</a>
     </td>
