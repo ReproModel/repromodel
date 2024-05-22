@@ -125,21 +125,7 @@ const DynamicFormBuilder = ({
           )}
         </>
       ))}
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        <h4> Model Checkpoints</h4>
-        {FormikProps.values["models"] &&
-          FormikProps.values["models"].map((model, index) => (
-            <>
-              <label htmlFor={`checkpoints:${model}`}>{model}:</label>
-              <Field
-                key={index}
-                placeholder="Path to Checkpoint"
-                name={`checkpoints:${model}`}
-                label={model}
-              />
-            </>
-          ))}
-      </div>
+  
 
       <button
         type="submit"
