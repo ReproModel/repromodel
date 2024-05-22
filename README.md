@@ -40,9 +40,15 @@ You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte
 
 # :bulb: How to Run
 
-For running the frontend you can either run locally<br>
-Install Node.js for your operating system from [here](https://nodejs.org) and run the following commands:<br><br>
-<code> npm install</code> <br><code> npm run repromodel </code>  <br> <br>
+For running the frontend locally, you need to have Node.js installed. <br> 
+If missing, install Node.js for your operating system from [here](https://nodejs.org)<br><br>
+
+Run the following commands to launch the backend and frontend locally:
+<code> npm run repromodel </code>  <br> This command combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend. <br> <br>
+
+If you want to launch the frontend instead individually you can do so with: 
+ <code> npm install</code><br>
+ <code> npm run dev</code><br>
 
 Or you can look at the latest live (frontend only) version here: <br>
 
