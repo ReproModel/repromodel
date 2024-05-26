@@ -1,5 +1,5 @@
 import FlexibleBlock from "../flexible-block/flexible-block"
-import questions from "../../choicesJSON/newQuestionsFormat.json"
+import questions from "../../choices-json/newQuestionsFormat.json"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
