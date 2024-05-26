@@ -1,5 +1,5 @@
 import FlexibleBlock from "../flexible-block/flexible-block"
-import questions from "../../choices-json/newQuestionsFormat.json"
+import choices from "../../choices-json/choices.json"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
@@ -13,7 +13,7 @@ function ModuleStack({ FormikProps }) {
       
       <Stack spacing = { 2 }>
         
-        { Object.entries(questions).map(([folder, folderContent]) => (
+        { Object.entries(choices).map(([folder, folderContent]) => (
           <>
             {
               FormikProps.touched && FormikProps.touched[folder] ? (
