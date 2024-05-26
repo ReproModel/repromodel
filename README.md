@@ -1,5 +1,5 @@
 
-![Header Image](https://github.com/ReproModel/repromodel/blob/feature/ReproModel/public/readme-files/header-image)
+![Header Image](/public/readme-files/header-image)
 
 
 # :clipboard: Description
@@ -27,7 +27,7 @@ Here's a quick overview of what our tool can do:
 
 <br><br>
 
-![Gif](https://github.com/ReproModel/ReproModel/blob/feature/ReproModel/public/readme-files/quick-overview.gif) 
+![Gif](/public/readme-files/quick-overview.gif) 
 
 <br> <br>
 You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte1hJM).  
