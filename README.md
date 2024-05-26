@@ -10,7 +10,7 @@ The current prototype helps researchers to modularize their development and comp
 
 The following version will help researchers to build upon state-of-the-art research faster by just loading the previously published study ID. All code, experiments, and results would already be verified, and stored in the system. The prototype version helped us reduce the time for model development, computation, and writing by at least 40%.
 
-For more details visit our website at repromodel.com.
+For more details visit our website at [repromodel.com](https://repromodel.com).
 
 
 # :wrench: Tech Stack
