@@ -6,12 +6,10 @@ const extractSecondLevelKeys = (obj) => {
   const options = []
 
   const traverse = (obj, level = 0) => {
-    
     if (level === 1) {
       Object.keys(obj).forEach((key) => {
         options.push({ value: key, label: key })
       })
-    
     } else {
       Object.values(obj).forEach((value) => {
         if (typeof value === "object") {

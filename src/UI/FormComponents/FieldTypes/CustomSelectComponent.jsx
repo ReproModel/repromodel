@@ -3,27 +3,6 @@ import Select from 'react-select'
 
 import { Field } from 'formik'
 
-const onChange = (option) => {
-  form.setFieldValue(
-    field.name,
-    isMulti ? option.map((item) => item.value) : option.value
-  )
-}
-
-const getValue = (options, field, isMulti) => {
-  if (options) {
-    // Ensure field.value is an array and not null or undefined.
-    const fieldValue = Array.isArray(field.value) ? field.value : []
-
-    return isMulti
-      ? options.filter(option => fieldValue.includes(option.value))
-      : options.find(option => option.value === field.value)
-  
-  } else {
-    return isMulti ? [] : ""
-  }
-}
-
 const CustomSelectComponent = ({
   className,
   placeholder,
@@ -34,11 +13,33 @@ const CustomSelectComponent = ({
   ...props
 }) => {
   
+  const onChange = (option) => {
+    form.setFieldValue(
+      field.name,
+      isMulti ? option.map((item) => item.value) : option.value
+    )
+  }
+
+  const getValue = () => {
+    if (options) {
+      
+      // Ensure field.value is an array and not null or undefined.
+      const fieldValue = Array.isArray(field.value) ? field.value : []
+  
+      return isMulti
+        ? options.filter(option => fieldValue.includes(option.value))
+        : options.find(option => option.value === field.value)
+
+    } else {
+      return isMulti ? [] : ""
+    }
+  }
+
   return (
     <Select
       className = { className }
       name = { field.name }
-      value = { getValue(options, field, isMulti) }
+      value = { getValue() }
       onChange = { onChange }
       placeholder = { placeholder }
       options = { options }
@@ -48,7 +49,7 @@ const CustomSelectComponent = ({
   )
 }
 
-// Formik field wrapper for custom select.
+// Formik Field wrapper for custom select.
 const CustomSelect = (props) => (
   <Field component = { CustomSelectComponent } { ...props } />
 )
