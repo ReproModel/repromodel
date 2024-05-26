@@ -33,7 +33,7 @@ For more details visit our website at repromodel.com.
 
 <br>  <br>
 
-![Gif](gif1.gif) 
+![Gif](https://github.com/tomonarifeehan/repromodel/blob/feature/ReproModel/public/readme-files/gif1.gif) 
 
 <br> <br>
 You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte1hJM).  
