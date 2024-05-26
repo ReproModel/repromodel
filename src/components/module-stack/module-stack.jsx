@@ -1,5 +1,5 @@
-import FlexibleBlock from "../flexible-block/flexible-block"
 import choices from "../../json/choices.json"
+import FlexibleBlock from "../flexible-block/flexible-block"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
