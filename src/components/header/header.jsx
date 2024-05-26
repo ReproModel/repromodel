@@ -1,4 +1,4 @@
-import "./Header.css"
+import "./header.css"
 
 import { Box, Typography } from "@mui/material"
 

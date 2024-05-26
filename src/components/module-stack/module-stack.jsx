@@ -1,5 +1,5 @@
-import FlexibleBlock from "./ModuleStackComponents/FlexibleBlock"
-import questions from "../choicesJSON/newQuestionsFormat.json"
+import FlexibleBlock from "../../UI/ModuleStackComponents/FlexibleBlock"
+import questions from "../../choicesJSON/newQuestionsFormat.json"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
@@ -31,4 +31,4 @@ function ModuleStack({ FormikProps }) {
   )
 }
 
-export default ModuleStack;
+export default ModuleStack

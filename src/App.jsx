@@ -5,8 +5,8 @@ import { Button, ButtonGroup } from "@mui/material";
 
 import "./App.css";
 
-import Header from "./UI/Header";
-import ModuleStack from "./UI/ModuleStack";
+import Header from "./components/header/header"
+import ModuleStack from "./components/module-stack/module-stack"
 import newQuestions from "../repromodel_core/choices.json";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
 import DynamicFormBuilder from "./UI/DynamicFormBuilder";
@@ -32,7 +32,7 @@ function App() {
           <Grid container direction={"row"}>
             <Grid item xs={4} className="stackContainer">
               <Grid item className="stackFrame">
-                <ModuleStack FormikProps={FormikProps} />
+                <ModuleStack FormikProps = { FormikProps } />
               </Grid>
             </Grid>
             <Grid item xs={8} className="questionairContainer">
