@@ -55,7 +55,7 @@ function FlexibleBlock({ status, name }) {
         return <PassiveBlock id = { name } name = { name } status = { status } />
       
       default:
-        return <div>Error occured - unsupported type.</div>
+        return <div>Error occurred - unsupported type.</div>
 
     }
 
