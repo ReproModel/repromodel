@@ -1,78 +1,70 @@
-import "./Form.css"
-
-import FormulaField from "./FieldTypes/FormulaField"
-import React from "react"
-import SmartFloatField from "./FieldTypes/SmartFloatField"
-import SmartIntegerField from "./FieldTypes/SmartIntegerField"
-import SmartStringField from "./FieldTypes/SmartStringField"
-
-import { Field, useFormikContext } from "formik"
+import { Field, useFormikContext } from "formik";
+import React from "react";
+import "./Form.css";
+import SmartIntegerField from "./FieldTypes/SmartIntegerField";
+import SmartFreeTextField from "./FieldTypes/SmartStringField";
+import FormulaField from "./FieldTypes/FormulaField";
+import SmartFloatField from "./FieldTypes/SmartFloatField";
 
 function DefaultTextField({ id, label, name, type }) {
   return (
     <Field
-      className = "inputField"
-      id = { id }
-      name = { name }
-      label = { label }
-      placeholder = { `Please enter ${type}` }
+      className="inputField"
+      id={id}
+      name={name}
+      label={label}
+      placeholder={`Please enter ${type}`}
     />
-  )
+  );
 }
 
 function BooleanField({ id, label, name }) {
   return (
     <label>
-      <Field type = "checkbox" id = { id } name = { name } label = { label } />
+      <Field type="checkbox" id={id} name={name} label={label} />
       {label}
     </label>
-  )
+  );
 }
 
 function FlexibleFormField({ id, label, type, name, object }) {
+  const { setFieldValue, values } = useFormikContext();
+  const defaultValue = object?.default;
   
-  const { setFieldValue, values } = useFormikContext()
-  const defaultValue = object?.default
-  
-  // Set the default value when it's defined and the field value is not already set.
+  // Set the default value when it's defined and the field value is not already set
   React.useEffect(() => {
     if (
       defaultValue !== undefined &&
       defaultValue !== null &&
       (values[name] === undefined || values[name] === null || values[name] === '')
     ) {
-      setFieldValue(name, defaultValue)
+      setFieldValue(name, defaultValue);
     }
-  }, [name, defaultValue, setFieldValue, values])
+  }, [name, defaultValue, setFieldValue, values]);
 
   const renderSwitch = () => {
     switch (type) {
-      
       case "str":
-        return <SmartStringField id = { id } label = { label } name = { name } object = { object } />
-      
+        return <SmartFreeTextField id={id} label={label} name={name} object={object} />;
       case "float":
-        return <SmartFloatField id = { id } label = { label } name = { name } object = { object } />
-      
+        return <SmartFloatField id={id} label={label} name={name} object={object} />;
       case "int":
-        return <SmartIntegerField id = { id } label = { label } name = { name } object = { object } />
-      
+        return <SmartIntegerField id={id} label={label} name={name} object={object} />;
       case "slider":
-        return <SliderField id = { id } label = { label } name = { name } />
-      
+        return <SliderField id={id} label={label} name={name} />;
       case "type(lambda x: x)":
-        return <FormulaField id = { id } label = { label } name = { name } />
-      
+        return <FormulaField id={id} label={label} name={name} />;
       case "bool":
-        return <BooleanField id = { id } label = { label } name = { name } />
-      
+        return <BooleanField id={id} label={label} name={name} />;
       default:
-        return <DefaultTextField id = { id } label = { label } name = { name } type = { type } />
-    
+        return <DefaultTextField id={id} label={label} name={name} type={type} />;
     }
-  }
+  };
 
-  return <>{ renderSwitch() }</>
+  return <>{renderSwitch()}</>;
 }
 
-export default FlexibleFormField
+
+
+
+export default FlexibleFormField;

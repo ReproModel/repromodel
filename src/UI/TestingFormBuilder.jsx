@@ -5,7 +5,7 @@ import React from "react"
 
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
+import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion"
 import { Typography } from "@mui/material"
 
 const foldersPartOfTesting = [
