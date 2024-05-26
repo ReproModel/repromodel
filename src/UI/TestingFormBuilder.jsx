@@ -33,7 +33,7 @@ const TestingFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
   return (
     <Form>
       
-      {/* Optional JSON File upload */}
+      {/* Optional JSON file upload. */}
       <Typography>Upload existing Training config file and reduce selections if desired</Typography>
       
       <input
