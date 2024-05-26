@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"
 
 function flattenJson(nestedJson) {
   const result = {};
@@ -158,4 +158,4 @@ export const handleSubmit = async (values) => {
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
   }
-};
+}

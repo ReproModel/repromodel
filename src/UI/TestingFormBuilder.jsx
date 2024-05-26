@@ -3,7 +3,7 @@ import "./FormComponents/Form.css"
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
 import React from "react"
 
-import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper"
+import { capitalizeFirstLetter } from "../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
 import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion"
 import { Typography } from "@mui/material"

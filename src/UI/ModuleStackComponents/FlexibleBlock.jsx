@@ -1,6 +1,6 @@
 import React from "react"
 
-import { capitalizeFirstLetter } from "../../helperFunctions/OtherHelper"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Paper, Typography } from "@mui/material"
 
 function ActiveBlock({ id, name, status }) {
