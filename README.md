@@ -27,7 +27,7 @@ Here's a quick overview of what our tool can do:
 
 <br><br>
 
-![Gif](https://github.com/tomonarifeehan/ReproModel/blob/feature/ReproModel/public/readme-files/quick-overview.gif) 
+![Gif](https://github.com/ReproModel/ReproModel/blob/feature/ReproModel/public/readme-files/quick-overview.gif) 
 
 <br> <br>
 You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte1hJM).  
