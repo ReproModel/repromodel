@@ -1,4 +1,4 @@
-import FlexibleBlock from "../../UI/ModuleStackComponents/FlexibleBlock"
+import FlexibleBlock from "../flexible-block/flexible-block"
 import questions from "../../choicesJSON/newQuestionsFormat.json"
 import React from "react"
 

@@ -1,3 +1,5 @@
+import "./flexible-block.css"
+
 import React from "react"
 
 import { capitalizeFirstLetter } from "../../helperFunctions/OtherHelper"
