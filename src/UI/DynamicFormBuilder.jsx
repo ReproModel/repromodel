@@ -5,7 +5,7 @@ import React from "react"
 
 import { Button, ButtonGroup, Typography } from "@mui/material"
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper"
-import { Field, Form } from "formik"
+import { Field, Form, Formik } from "formik"
 import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion"
 
 const nestedFolders = [
