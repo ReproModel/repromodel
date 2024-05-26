@@ -11,7 +11,7 @@ const TrainingViewer = ({}) => {
   
   const startTensorBoard = () => {
     
-    // URL of Flask endpoint.
+    // Send GET request to /start-tensorboard Flask endpoint.
     axios.get('http://localhost:5005/start-tensorboard')
       .then(response => {
         
@@ -23,7 +23,7 @@ const TrainingViewer = ({}) => {
       })
       .catch(error => {
         
-        // Log TensorBoard error.
+        // Log TensorBoard error in console.
         console.error('Error starting TensorBoard: ', error)
 
         // Display TensorBoard error occured.
