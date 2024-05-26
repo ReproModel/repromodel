@@ -1,27 +1,13 @@
 #root {
- width:100%;
- color: #38512F;
+  width:100%;
+  color: #38512F;
 }
-
-
-
-
-
-
-
-
 
 .stackContainer {
-  
   height: 85vh;
-  
-  
   padding: 16px;
-  
-  
-
-
 }
+
 .stackFrame {
   background-color: rgb(255, 255, 255);
   height: 100%;
@@ -34,10 +20,7 @@
   padding: 16px;
   padding-left: 0px;
   position: relative;
-  
-
 }
-
 
 .questionairFrame {
   background-color: rgb(255, 255, 255);
@@ -47,15 +30,10 @@
   border-radius: 8px;
   padding: 64px;
   overflow-y: scroll;
- 
-  
 }
+
 .container{
   background-color: aquamarine;
   height: 85vh;
   padding: 10px;
-
 }
-
-
-
