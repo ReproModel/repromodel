@@ -2,7 +2,7 @@ import { Field, useFormikContext } from "formik";
 import React from "react";
 import "./Form.css";
 import SmartIntegerField from "./FieldTypes/SmartIntegerField";
-import SmartFreeTextField from "./FieldTypes/SmartStringField";
+import SmartStringField from "./FieldTypes/SmartStringField";
 import FormulaField from "./FieldTypes/FormulaField";
 import SmartFloatField from "./FieldTypes/SmartFloatField";
 
@@ -45,7 +45,7 @@ function FlexibleFormField({ id, label, type, name, object }) {
   const renderSwitch = () => {
     switch (type) {
       case "str":
-        return <SmartFreeTextField id={id} label={label} name={name} object={object} />;
+        return <SmartStringField id={id} label={label} name={name} object={object} />;
       case "float":
         return <SmartFloatField id={id} label={label} name={name} object={object} />;
       case "int":

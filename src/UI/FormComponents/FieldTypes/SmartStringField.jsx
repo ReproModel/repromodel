@@ -2,7 +2,7 @@ import React from "react"
 
 import { Field } from "formik"
 
-function SmartFreeTextField({ id, label, object, name }) {
+function SmartStringField({ id, label, object, name }) {
   
   // Attempt to parse the options from the object, if they exist.
   const optionsArray = object?.options ? JSON.parse(object.options.replace(/'/g, '"')) : []
@@ -37,4 +37,4 @@ function SmartFreeTextField({ id, label, object, name }) {
   )
 }
 
-export default SmartFreeTextField
+export default SmartStringField
