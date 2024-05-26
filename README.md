@@ -1,5 +1,5 @@
 
-![Header Image](pic1)
+![Header Image](https://github.com/tomonarifeehan/repromodel/blob/feature/ReproModel/public/readme-files/header-image)
 
 # :clipboard: Description
 
