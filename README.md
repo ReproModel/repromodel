@@ -38,7 +38,7 @@ For running the frontend locally, you need to have Node.js installed.<br>
 If missing, install Node.js for your operating system from [here](https://nodejs.org)<br><br>
 
 Run the following commands to launch the backend and frontend locally:<br>
-<code>npm run repromodel</code><br>
+<code>npm run repromodel</code><br><br>
 This command combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend.<br><br>
 
 If you want to launch the frontend instead individually you can do so with:<br>
