@@ -1,4 +1,4 @@
-import "./FormComponents/Form.css"
+import "../components/experiment-builder/experiment-builder.css"
 
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
 import React from "react"
