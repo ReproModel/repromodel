@@ -1,10 +1,10 @@
-import FlexibleBlock from "../../UI/ModuleStackComponents/FlexibleBlock"
+import FlexibleBlock from "../flexible-block/flexible-block"
 import questions from "../../choicesJSON/newQuestionsFormat.json"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
 
-function ModuleStack({ FormikProps }) {
+function RepromodelStructure({ FormikProps }) {
   
   return (
     <Container maxWidth = "md">
@@ -31,4 +31,4 @@ function ModuleStack({ FormikProps }) {
   )
 }
 
-export default ModuleStack
+export default RepromodelStructure

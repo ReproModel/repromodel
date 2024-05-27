@@ -1,11 +1,11 @@
-import "./FormComponents/Form.css"
+import "../components/model-testing/model-testing.css"
 
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
 import React from "react"
 
 import { capitalizeFirstLetter } from "../helperFunctions/OtherHelper"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion"
+import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
 import { Typography } from "@mui/material"
 
 const foldersPartOfTesting = [
