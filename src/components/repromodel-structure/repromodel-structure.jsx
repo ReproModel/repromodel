@@ -4,7 +4,7 @@ import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
 
-function ModuleStack({ FormikProps }) {
+function RepromodelStructure({ FormikProps }) {
   
   return (
     <Container maxWidth = "md">
@@ -31,4 +31,4 @@ function ModuleStack({ FormikProps }) {
   )
 }
 
-export default ModuleStack
+export default RepromodelStructure

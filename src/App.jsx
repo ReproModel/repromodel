@@ -6,11 +6,11 @@ import { Button, ButtonGroup } from "@mui/material";
 import "./App.css";
 
 import Header from "./components/header/header"
-import ModuleStack from "./components/module-stack/module-stack"
+import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
 import newQuestions from "../repromodel_core/choices.json";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
 import DynamicFormBuilder from "./UI/DynamicFormBuilder";
-import TrainingViewer from "./UI/TrainingViewer";
+import ProgressViewer from "./UI/progress-viewer"
 import TestingFormBuilder from "./UI/TestingFormBuilder";
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
           <Grid container direction={"row"}>
             <Grid item xs={4} className="stackContainer">
               <Grid item className="stackFrame">
-                <ModuleStack FormikProps = { FormikProps } />
+                <RepromodelStructure FormikProps = { FormikProps } />
               </Grid>
             </Grid>
             <Grid item xs={8} className="questionairContainer">
@@ -69,7 +69,7 @@ function App() {
                 {selectedSection === "Progress Viewer" && (
                   <>
                     <Typography variant="h4">Progress Viewer</Typography>
-                    <TrainingViewer />
+                    <ProgressViewer />
                   </>
                 )}
                 {selectedSection === "Model Testing" && (
