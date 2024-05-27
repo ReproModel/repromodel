@@ -21,7 +21,7 @@ const nestedFolders = [
   "early_stopping",
 ]
 
-const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
   
   return (
     <Form>
@@ -170,4 +170,4 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
   )
 }
 
-export default DynamicFormBuilder
+export default ExperimentBuilder

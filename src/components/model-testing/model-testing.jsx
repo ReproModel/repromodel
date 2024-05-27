@@ -28,7 +28,7 @@ const nestedFolders = [
   "early_stopping",
 ]
 
-const TestingFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
   
   return (
     <Form>
@@ -152,4 +152,4 @@ const TestingFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
   )
 }
 
-export default TestingFormBuilder
+export default ModelTesting
