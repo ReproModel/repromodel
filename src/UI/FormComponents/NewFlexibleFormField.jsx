@@ -2,7 +2,7 @@ import "./Form.css"
 
 import BooleanField from "../../components/ui/boolean-field"
 import DefaultTextField from "../../components/ui/default-text-field"
-import FormulaField from "./FieldTypes/FormulaField"
+import FormulaField from "../../components/ui/formula-field"
 import React from "react"
 import SmartFloatField from "./FieldTypes/SmartFloatField"
 import SmartFreeTextField from "./FieldTypes/SmartStringField"
