@@ -53,7 +53,7 @@ git commit -m 'my-new-branch'
 ```
 git push origin my-new-branch
 ```
-5. Open a pull request from your forked repo to the main repo [here](https://github.com/ReproModel/repromodel/compare).
+5. Once done, open a pull request from your forked repo to the main repo [here](https://github.com/ReproModel/repromodel/compare).
 
 ## Ask For Help
 
