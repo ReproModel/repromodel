@@ -1,88 +1,66 @@
+<p align = "center">
+  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview-shortened.gif" width = "75%">
+</p>
 
-![Header Image](/public/readme-files/header-image)
+<h3 align = "center">ReproModel</h3>
 
+<p align = "center">Model Comparison Tool for AI Researchers</p>
 
-# :clipboard: Description
+<div align = "center">
+  <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
+  <a href = "https://twitter.com/repromodel"><img alt = "Twitter Follow" src = "https://img.shields.io/twitter/follow/ReproModel"></a>
+  <a href = "https://github.com/ReproModel/repromodel/blob/main/LICENSE"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <img alt = "Discord" src = "https://img.shields.io/discord/1151315619246002176">
+</div>
 
-**ReproModel**  helps the AI research community to reproduce and compare AI models faster.
+<br/>
 
-The current prototype helps researchers to modularize their development and compare the performance of each step in the pipeline in a reproducible way.
+**ReproModel**  helps the AI research community to <strong>reproduce and compare AI models</strong> faster.
 
-The following version will help researchers to build upon state-of-the-art research faster by just loading the previously published study ID. All code, experiments, and results would already be verified, and stored in the system. The prototype version helped us reduce the time for model development, computation, and writing by at least 40%.
+ReproModel toolbox revolutionizes research efficiency by providing standardized models, dataloaders, and processing procedures. It features a comprehensive suite of pre-existing experiments, a code extractor, and an LLM descriptor. This toolbox <strong>allows researchers to focus on new datasets and model development</strong>, significantly reducing time and computational costs.
 
-For more details visit our website at [repromodel.com](https://repromodel.com).
-
-
-# :wrench: Tech Stack
-
-<img src = "public/javascript.png" alt = "JavaScript Icon" width = "20" height = "20"> JavaScript </br>
-<img src = "public/react.png" alt = "React Icon" width = "20" height = "20"> React </br>
-<img src = "public/vite.svg" alt = "Vite Icon" width = "20" height = "20"> Vite </br>
-<img src = "public/python.png" alt = "Python Icon" width = "20" height = "20"> Python </br>
-<img src = "public/flask.svg" alt = "Flask Icon" width = "20" height = "20"> Flask </br>
-
-
-# :tv: Demo
-Here's a quick overview of what our tool can do:
-
-</br></br>
-
-![Gif](/public/readme-files/quick-overview.gif) 
-
-</br> </br>
-You can check the full video [here](https://youtu.be/MQHZMEloUps?si=_MIkB7dKsdte1hJM).  
-
-
-# :bulb: How to Run
-For running the frontend locally, you need to have Node.js installed.</br> 
-If missing, install Node.js for your operating system from [here](https://nodejs.org)</br></br>
-
-Run the following commands to launch the backend and frontend locally:</br>
-<code>npm run repromodel</code></br></br>
-This command combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend.</br></br>
-
-If you want to launch the frontend instead individually you can do so with:</br>
-<code>npm install</code></br>
-<code>npm run dev</code></br>
-
-Or you can look at the latest live (frontend only) version here:</br>
+With this <strong>no-code solution</strong>, you'll have access to a collection of benchmark and SOTA models and datasets. Dive into training visualizations, effortlessly extract code for publication, and let our LLM-powered automated methodology description writer do the heavy lifting. Watch our [demo](https://www.youtube.com/watch?v=MQHZMEloUps).
 
 https://repromodel.netlify.app
-  
 
-# :calendar: Roadmap
-:ballot_box_with_check: Preprocessors</br>
-:ballot_box_with_check: Datasets</br>
-:ballot_box_with_check: Augmentations</br>
-:ballot_box_with_check: Postprocessors</br>
-:ballot_box_with_check: Metrics</br>
-:ballot_box_with_check: LR Schedulers</br>
-:ballot_box_with_check: Optimizers</br>
-:ballot_box_with_check: Trainer</br>
-:ballot_box_with_check: Continuing training from checkpoint</br>
-:ballot_box_with_check: Tensorboard</br>
-:ballot_box_with_check: Command output viewer</br>
-:ballot_box_with_check: Training device selection</br>
-:ballot_box_with_check: Tester</br>
-:black_square_button: LLM descriptor</br>
-:black_square_button: Code extractor</br>
-:black_square_button: Custom script editor</br>
-:black_square_button: Statistical testing
+## Features
+:white_check_mark: Standard Models Included<br/>
+:white_check_mark: Known Datasets<br/>
+:white_check_mark: Metrics (100+)<br/>
+:white_check_mark: Losses (20+)<br/>
+:white_check_mark: Data Splitting<br/>
+:white_check_mark: Augmentations<br/>
+:white_check_mark: Optimizers (10+)<br/>
+:white_check_mark: Learning Rate Schedulers<br/>
+:white_check_mark: Early Stopping Criterion<br/>
+:white_check_mark: Training Device Selection<br/>
+:white_check_mark: Logging (Tensorboard, W&B, ...)<br/>
+:white_check_mark: AI Experiment Description Generator<br/>
+:white_check_mark: Code Extractor<br/>
+:white_check_mark: Custom Script Editor<br/>
 
+## Documentation
+For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
 
-# :page_facing_up: License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+## Running Locally
+You will need to have [Node.js](https://nodejs.org) installed.<br/> 
 
+**Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
+```
+npm run repromodel
+```
 
-# :email: Questions and Support
-For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com
+**Launch the frontend instead individually:**
+```
+npm install
+npm run dev
+```
 
+## Contributing
+Contributions are what make the open source community such an amazing place to learn, inspire, and create.
 
-# :link: Contributors
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](Contributing.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
-If you have a suggestion that would make this better, please read our contribution guidelines [here](Contributing.md) and Code of Conduct [here](CODE_OF_CONDUCT.md).</br></br>
- 
 <table>
   <tr>
     <td align = "center">
@@ -103,7 +81,28 @@ If you have a suggestion that would make this better, please read our contributi
       <sub>Developer</sub><br/>
       <a href = "https://github.com/martinschum">GitHub</a>
     </td>
+    <td align = "center">
+      <img src = "https://avatars.githubusercontent.com/u/20110627" width = "100px" alt = "Tomonari Feehan"/><br/>
+      <sub><b>Tomonari Feehan</b></sub><br/>
+      <sub>Developer</sub><br/>
+      <a href = "https://github.com/tomonarifeehan">GitHub</a>
+    </td>
   </tr>
 </table>
 
+## Stats
+![Alt](https://repobeats.axiom.co/api/embed/38b63c4514a8a4cd7d1307985af2889c78d67bcc.svg "Repobeats Analytics Image")
 
+## Questions & Support
+For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+<br/>
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
