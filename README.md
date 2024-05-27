@@ -97,7 +97,7 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
 For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+This project is licensed under the [MIT License](LICENSE.md).
 
 <br/>
 
