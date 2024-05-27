@@ -8,9 +8,7 @@ Every contribution is welcome, no matter how simple or sophisticated it may be, 
 
 ## How to Install Locally
 
-1. Fork this repo.
-
-You can fork this repo by [clicking here](https://github.com/ReproModel/repromodel/fork)
+1. Fork this repo. You can fork this repo by [clicking here](https://github.com/ReproModel/repromodel/fork)
 
 2. Clone on your local machine.
 ```
