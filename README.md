@@ -8,7 +8,6 @@
 
 <div align = "center">
   <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
-  <a href = "https://twitter.com/repromodel"><img alt = "Twitter Follow" src = "https://img.shields.io/twitter/follow/ReproModel"></a>
   <a href = "https://github.com/ReproModel/repromodel/blob/main/LICENSE"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
   <img alt = "Discord" src = "https://img.shields.io/discord/1151315619246002176">
 </div>
@@ -44,7 +43,7 @@ https://repromodel.netlify.app
 :white_check_mark: Custom Script Editor<br/>
 
 ## Documentation
-For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
+For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs. (COMING SOON)
 
 ## Running Locally
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
@@ -95,7 +94,7 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
 </table>
 
 ## Stats
-![Alt](https://repobeats.axiom.co/api/embed/38b63c4514a8a4cd7d1307985af2889c78d67bcc.svg "Repobeats Analytics Image")
+![Alt](https://repobeats.axiom.co/api/embed/4595dc84d9863dd36d50711c399685b444e54d0e.svg "Repobeats Analytics Image")
 
 ## Questions & Support
 For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com

@@ -7,6 +7,8 @@ const FileDropdown = ({ onSelectFile }) => {
   const [files, setFiles] = useState([]);
   const [selectedFile, setSelectedFile] = useState('');
 
+
+
   useEffect(() => {
     const fetchFiles = async () => {
       try {
@@ -14,6 +16,7 @@ const FileDropdown = ({ onSelectFile }) => {
         setFiles(response.data);
       } catch (error) {
         console.error('Error fetching files:', error);
+        setFiles(["To see files here...", "...start the backend", "...and run a training"])
       }
     };
 
