@@ -1,12 +1,12 @@
-import "../components/experiment-builder/experiment-builder.css"
+import "./experiment-builder.css"
 
-import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
+import NewFlexibleFormField from "../../UI/FormComponents/NewFlexibleFormField"
 import React from "react"
 
 import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../utils/string-helpers"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
+import { SmartFolderField } from "../../UI/FormComponents/FieldTypes/SmartFolderField"
 
 const nestedFolders = [
   "models",

@@ -9,9 +9,9 @@ import Header from "./components/header/header"
 import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
 import newQuestions from "../repromodel_core/choices.json";
 import { handleFileChange, handleSubmit } from "./utils/json-helpers";
-import DynamicFormBuilder from "./UI/DynamicFormBuilder";
-import ProgressViewer from "./UI/progress-viewer"
-import TestingFormBuilder from "./UI/TestingFormBuilder";
+import DynamicFormBuilder from "./components/experiment-builder/experiment-builder";
+import ProgressViewer from "./components/progress-viewer/progress-viewer"
+import TestingFormBuilder from "./components/model-testing/model-testing";
 
 function App() {
   // Generate initial values from questions data
