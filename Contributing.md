@@ -6,6 +6,8 @@ When contributing to this repository, please try to contact me, Dario (dario.sit
 
 Every contribution is welcome, no matter how simple or sophisticated it may be, as long as it adheres to the project's [Code of Conduct](CODE_OF_CONDUCT.md). 
 
+<br />
+
 ## How to Install Locally
 
 1. Fork this repo. You can fork this repo by [clicking here](https://github.com/ReproModel/repromodel/fork)
@@ -29,6 +31,8 @@ npm install
 ```
 npm run dev
 ```
+
+<br />
 
 ## Pull Request Process
 
