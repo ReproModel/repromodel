@@ -4,7 +4,10 @@ import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
 
+
 function RepromodelStructure({ FormikProps }) {
+
+const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "lr_schedulers", "monitor", "data_splits"]
   
   return (
     <Container maxWidth = "md">
@@ -15,14 +18,14 @@ function RepromodelStructure({ FormikProps }) {
         
         { Object.entries(choices).map(([folder, folderContent]) => (
           <>
-            {
-              FormikProps.touched && FormikProps.touched[folder] ? (
-                <FlexibleBlock key = { folder } status = { "active" } name = { folder } />
-              ) : (
-                <FlexibleBlock key = { folder } status = { "passive" } name = { folder } />
-              )
-            }
-          </>
+          {optionsToShow.includes(folder) && (
+            FormikProps.touched && FormikProps.touched[folder] ? (
+              <FlexibleBlock key={folder} status="active" name={folder} />
+            ) : (
+              <FlexibleBlock key={folder} status="passive" name={folder} />
+            )
+          )}
+        </>
         ))}
 
       </Stack>

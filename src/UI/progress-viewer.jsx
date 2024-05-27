@@ -1,6 +1,6 @@
 import axios from "axios"
-import FileDropdown from "./ViewerComponents/FileDropdown"
-import ProgressFileReader from "./ViewerComponents/ProgressFileReader"
+import FileDropdown from "../components/progress-viewer/file-dropdown"
+import ProgressFileReader from "../components/progress-viewer/progress-file-reader"
 import React from "react"
 
 import { useState } from "react"
