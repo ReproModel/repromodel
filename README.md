@@ -21,7 +21,7 @@ ReproModel toolbox revolutionizes research efficiency by providing standardized 
 
 With this <strong>no-code solution</strong>, you'll have access to a collection of benchmark and SOTA models and datasets. Dive into training visualizations, effortlessly extract code for publication, and let our LLM-powered automated methodology description writer do the heavy lifting.
 
-The current prototype helps researchers to modularize their development and compare the performance of <strong>each step in the pipeline in a reproducible way</strong>. The prototype version helped us reduce the time for model development, computation, and writing by at least 40%. Watch our [demo](https://www.youtube.com/watch?v=MQHZMEloUps).
+The current prototype helps researchers to modularize their development and compare the performance of <strong>each step in the pipeline in a reproducible way</strong>. This prototype version helped us reduce the time for model development, computation, and writing by at least 40%. Watch our [demo](https://www.youtube.com/watch?v=MQHZMEloUps).
 
 The coming versions will help researchers to build upon state-of-the-art research faster by just <strong>loading the previously published study ID</strong>. All code, experiments, and results would already be verified, and stored in the system.
 
