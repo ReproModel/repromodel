@@ -2,7 +2,7 @@ import React from "react"
 
 import { Field } from "formik"
 
-function FloatField({ id, object, name }) {
+function FloatField({ id, label, object, name }) {
     
   // Extracted and parsed the range from the object, if it exists by using optional chaining.
   const rangeString = object?.range
