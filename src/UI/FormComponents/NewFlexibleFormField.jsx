@@ -4,7 +4,7 @@ import BooleanField from "../../components/ui/boolean-field"
 import DefaultTextField from "../../components/ui/default-text-field"
 import FormulaField from "./FieldTypes/FormulaField"
 import React from "react"
-import SmartFloatField from "./FieldTypes/SmartFloatField"
+import FloatField from "../../components/ui/float-field"
 import SmartFreeTextField from "./FieldTypes/SmartStringField"
 import SmartIntegerField from "./FieldTypes/SmartIntegerField"
 
@@ -33,7 +33,7 @@ function FlexibleFormField({ id, label, type, name, object }) {
         return <SmartFreeTextField id = { id } label = { label } name = { name } object = { object } />
       
       case "float":
-        return <SmartFloatField id = { id } label = { label } name = { name } object = { object } />
+        return <FloatField id = { id } label = { label } name = { name } object = { object } />
       
       case "int":
         return <SmartIntegerField id = { id } label = { label } name = { name } object = { object } />
