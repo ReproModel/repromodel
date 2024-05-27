@@ -61,7 +61,7 @@ npm run dev
 ```
 
 ## Contributing
-Contributions are what make the open source community such an amazing place to learn, inspire, and create.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
 Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](Contributing.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
