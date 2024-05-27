@@ -1,5 +1,5 @@
+import choices from "../../json/choices.json"
 import FlexibleBlock from "../flexible-block/flexible-block"
-import questions from "../../choicesJSON/newQuestionsFormat.json"
 import React from "react"
 
 import { Container, Stack, Typography } from "@mui/material"
@@ -13,7 +13,7 @@ function RepromodelStructure({ FormikProps }) {
       
       <Stack spacing = { 2 }>
         
-        { Object.entries(questions).map(([folder, folderContent]) => (
+        { Object.entries(choices).map(([folder, folderContent]) => (
           <>
             {
               FormikProps.touched && FormikProps.touched[folder] ? (
