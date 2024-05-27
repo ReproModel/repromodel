@@ -1,4 +1,4 @@
-import choices from "../../json/choices.json"
+import choices from "../../../repromodel_core/choices.json"
 import FlexibleBlock from "../flexible-block/flexible-block"
 import React from "react"
 
