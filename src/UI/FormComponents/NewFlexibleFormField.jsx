@@ -6,7 +6,7 @@ import FormulaField from "./FieldTypes/FormulaField"
 import React from "react"
 import SmartFloatField from "./FieldTypes/SmartFloatField"
 import SmartFreeTextField from "./FieldTypes/SmartStringField"
-import SmartIntegerField from "./FieldTypes/SmartIntegerField"
+import IntegerField from "../../components/ui/integer-field"
 
 import { useFormikContext } from "formik"
 
@@ -36,7 +36,7 @@ function FlexibleFormField({ id, label, type, name, object }) {
         return <SmartFloatField id = { id } label = { label } name = { name } object = { object } />
       
       case "int":
-        return <SmartIntegerField id = { id } label = { label } name = { name } object = { object } />
+        return <IntegerField id = { id } label = { label } name = { name } object = { object } />
       
       case "slider":
         return <SliderField id = { id } label = { label } name = { name } />
