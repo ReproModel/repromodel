@@ -8,7 +8,7 @@ import "./App.css";
 import Header from "./components/header/header"
 import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
 import newQuestions from "../repromodel_core/choices.json";
-import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
+import { handleFileChange, handleSubmit } from "./utils/json-helpers";
 import DynamicFormBuilder from "./UI/DynamicFormBuilder";
 import ProgressViewer from "./UI/progress-viewer"
 import TestingFormBuilder from "./UI/TestingFormBuilder";
