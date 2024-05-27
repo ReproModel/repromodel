@@ -40,16 +40,16 @@ If you have a suggestion that would make this better, please fork the repo and c
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the project.
-2. Create your feature branch.
+2. Create a new branch for your update.
 ```
 git checkout -b my-new-branch
 ```
-3. Add and commit your changes.
+3. Add and commit your code changes.
 ```
 git add *
 git commit -m 'my-new-branch'
 ```
-4. Push to the branch.
+4. Push to the new branch.
 ```
 git push origin my-new-branch
 ```
