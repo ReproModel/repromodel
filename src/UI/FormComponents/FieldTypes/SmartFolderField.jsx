@@ -1,9 +1,9 @@
-import CustomSelect from "./CustomSelectComponent"
+import CustomSelect from "../../../components/ui/custom-select"
 import React from "react"
 
 const extractSecondLevelKeys = (obj) => {
   
-  const options = [];
+  const options = []
 
   const traverse = (obj, level = 0) => {
     if (level === 1) {
@@ -21,7 +21,7 @@ const extractSecondLevelKeys = (obj) => {
 
   traverse(obj)
 
-  return options;
+  return options
 }
 
 export function SmartFolderField({ folder, folderContent }) {
