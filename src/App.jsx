@@ -10,7 +10,7 @@ import RepromodelStructure from "./components/repromodel-structure/repromodel-st
 import newQuestions from "../repromodel_core/choices.json";
 import { handleFileChange, handleSubmit } from "./helperFunctions/FormHelper";
 import DynamicFormBuilder from "./UI/DynamicFormBuilder";
-import TrainingViewer from "./UI/TrainingViewer";
+import ProgressViewer from "./UI/progress-viewer"
 import TestingFormBuilder from "./UI/TestingFormBuilder";
 
 function App() {
@@ -69,7 +69,7 @@ function App() {
                 {selectedSection === "Progress Viewer" && (
                   <>
                     <Typography variant="h4">Progress Viewer</Typography>
-                    <TrainingViewer />
+                    <ProgressViewer />
                   </>
                 )}
                 {selectedSection === "Model Testing" && (

@@ -5,7 +5,7 @@ import React from "react"
 
 import { useState } from "react"
 
-const TrainingViewer = ({}) => {
+const ProgressViewer = ({}) => {
 
   const [selectedFile, setSelectedFile] = useState("")
   
@@ -42,4 +42,4 @@ const TrainingViewer = ({}) => {
   )
 }
 
-export default TrainingViewer
+export default ProgressViewer
