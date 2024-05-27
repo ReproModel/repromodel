@@ -1,4 +1,4 @@
-import "./FormComponents/Form.css"
+import "../components/experiment-builder/experiment-builder.css"
 
 import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
 import React from "react"
@@ -6,7 +6,7 @@ import React from "react"
 import { Button, ButtonGroup, Typography } from "@mui/material"
 import { capitalizeFirstLetter } from "../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/FolderQuestion"
+import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
 
 const nestedFolders = [
   "models",

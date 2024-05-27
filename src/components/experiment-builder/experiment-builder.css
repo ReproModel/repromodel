@@ -1,0 +1,12 @@
+.inputField {
+    max-width: 400px;
+}
+
+.paramBox {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 8px;
+}
