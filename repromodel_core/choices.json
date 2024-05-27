@@ -304,19 +304,19 @@
         "torchmetrics": {
             "AUROC": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "Accuracy": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "AveragePrecision": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -334,7 +334,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -368,7 +368,7 @@
                     "default": "poisson"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -398,13 +398,13 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CalibrationError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -414,13 +414,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CharErrorRate": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -444,7 +444,7 @@
             },
             "CohenKappa": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -454,23 +454,23 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ConfusionMatrix": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CosineSimilarity": {
                 "reduction": {
-                    "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['mean', 'sum', 'none', None]",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -484,7 +484,7 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing_extensions.Literal['replace', 'drop']",
+                    "type": "typing.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -492,7 +492,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -506,7 +506,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -524,7 +524,7 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'none']]",
                     "default": "micro"
                 },
                 "mdmc_average": {
@@ -544,7 +544,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -554,33 +554,33 @@
                     "default": 4
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ExactMatch": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ExplainedVariance": {
                 "multioutput": {
-                    "type": "typing_extensions.Literal['raw_values', 'uniform_average', 'variance_weighted']",
+                    "type": "typing.Literal['raw_values', 'uniform_average', 'variance_weighted']",
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ExtendedEditDistance": {
                 "language": {
-                    "type": "typing_extensions.Literal['en', 'ja']",
+                    "type": "typing.Literal['en', 'ja']",
                     "default": "en"
                 },
                 "return_sentence_level_score": {
@@ -604,47 +604,47 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "F1Score": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "FBetaScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "FleissKappa": {
                 "mode": {
-                    "type": "typing_extensions.Literal['counts', 'probs']",
+                    "type": "typing.Literal['counts', 'probs']",
                     "default": "counts"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "HammingDistance": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "HingeLoss": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "JaccardIndex": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -654,17 +654,17 @@
                     "default": false
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['mean', 'sum', 'none', None]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "KendallRankCorrCoef": {
                 "variant": {
-                    "type": "typing_extensions.Literal['a', 'b', 'c']",
+                    "type": "typing.Literal['a', 'b', 'c']",
                     "default": "b"
                 },
                 "t_test": {
@@ -672,7 +672,7 @@
                     "default": false
                 },
                 "alternative": {
-                    "type": "typing.Optional[typing_extensions.Literal['two-sided', 'less', 'greater']]",
+                    "type": "typing.Optional[typing.Literal['two-sided', 'less', 'greater']]",
                     "default": "two-sided"
                 },
                 "num_outputs": {
@@ -680,7 +680,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -690,19 +690,19 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MatchErrorRate": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MatthewsCorrCoef": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -712,19 +712,19 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MeanAbsoluteError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -734,7 +734,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -748,19 +748,19 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MeanSquaredLogError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "Metric": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -802,7 +802,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -812,7 +812,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -822,7 +822,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -840,7 +840,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -858,7 +858,7 @@
                     "default": 1.5
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -884,11 +884,11 @@
                     ]
                 },
                 "normalize": {
-                    "type": "typing_extensions.Literal['relu', 'simple', None]",
+                    "type": "typing.Literal['relu', 'simple', None]",
                     "default": "relu"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -942,7 +942,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -956,7 +956,7 @@
                     "default": 10.0
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "dim": {
@@ -964,7 +964,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -974,7 +974,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -984,7 +984,7 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing_extensions.Literal['replace', 'drop']",
+                    "type": "typing.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -992,7 +992,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1002,15 +1002,15 @@
                     "default": null
                 },
                 "mode": {
-                    "type": "typing_extensions.Literal['speaker-wise', 'permutation-wise']",
+                    "type": "typing.Literal['speaker-wise', 'permutation-wise']",
                     "default": "speaker-wise"
                 },
                 "eval_func": {
-                    "type": "typing_extensions.Literal['max', 'min']",
+                    "type": "typing.Literal['max', 'min']",
                     "default": "max"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1026,19 +1026,19 @@
             },
             "Precision": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "PrecisionAtFixedRecall": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "PrecisionRecallCurve": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1056,25 +1056,25 @@
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ROC": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "Recall": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "RecallAtFixedPrecision": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1098,7 +1098,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1116,11 +1116,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1138,11 +1138,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1160,11 +1160,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1182,11 +1182,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1204,11 +1204,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1230,11 +1230,11 @@
                     "default": false
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1256,11 +1256,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1274,11 +1274,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1296,11 +1296,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1326,7 +1326,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1350,7 +1350,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1364,13 +1364,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "SQuAD": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1384,7 +1384,7 @@
                     "default": false
                 },
                 "tokenize": {
-                    "type": "typing_extensions.Literal['none', '13a', 'zh', 'intl', 'char', 'ja-mecab', 'ko-mecab', 'flores101', 'flores200']",
+                    "type": "typing.Literal['none', '13a', 'zh', 'intl', 'char', 'ja-mecab', 'ko-mecab', 'flores101', 'flores200']",
                     "default": "13a"
                 },
                 "lowercase": {
@@ -1396,7 +1396,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1406,19 +1406,19 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "ScaleInvariantSignalNoiseRatio": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "SensitivityAtSpecificity": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1440,7 +1440,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1450,7 +1450,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1460,29 +1460,29 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "Specificity": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "SpecificityAtSensitivity": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "SpectralAngleMapper": {
                 "reduction": {
-                    "type": "typing.Optional[typing_extensions.Literal['elementwise_mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing.Literal['elementwise_mean', 'sum', 'none']]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1492,17 +1492,17 @@
                     "default": 1
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "StatScores": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1520,7 +1520,7 @@
                     "default": 11
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -1544,7 +1544,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1554,13 +1554,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "SymmetricMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1570,7 +1570,7 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing_extensions.Literal['replace', 'drop']",
+                    "type": "typing.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -1578,17 +1578,17 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "TotalVariation": {
                 "reduction": {
-                    "type": "typing.Optional[typing_extensions.Literal['mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing.Literal['mean', 'sum', 'none']]",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1614,7 +1614,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1628,7 +1628,7 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing_extensions.Literal['replace', 'drop']",
+                    "type": "typing.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -1636,7 +1636,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1646,7 +1646,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1666,35 +1666,35 @@
                     ]
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "WeightedMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "WordErrorRate": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "WordInfoLost": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "WordInfoPreserved": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1716,7 +1716,7 @@
                     "default": "value"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1726,7 +1726,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1740,7 +1740,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1758,7 +1758,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1792,7 +1792,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1806,7 +1806,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1828,7 +1828,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1838,7 +1838,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -1850,7 +1850,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1868,7 +1868,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1878,7 +1878,7 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing_extensions.Literal['l1', 'l2', 'max']",
+                    "type": "typing.Literal['l1', 'l2', 'max']",
                     "default": "l1"
                 },
                 "ignore_index": {
@@ -1890,7 +1890,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1904,7 +1904,7 @@
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -1912,7 +1912,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1926,7 +1926,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -1934,7 +1934,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1944,7 +1944,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -1960,7 +1960,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1974,7 +1974,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -1990,7 +1990,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2000,7 +2000,7 @@
                     "default": null
                 },
                 "task": {
-                    "type": "typing_extensions.Literal['demographic_parity', 'equal_opportunity', 'all']",
+                    "type": "typing.Literal['demographic_parity', 'equal_opportunity', 'all']",
                     "default": "all"
                 },
                 "threshold": {
@@ -2016,7 +2016,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2038,7 +2038,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2048,7 +2048,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2060,7 +2060,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2078,7 +2078,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2100,7 +2100,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2118,7 +2118,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2128,7 +2128,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2140,7 +2140,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2162,7 +2162,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2180,7 +2180,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2198,7 +2198,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2208,7 +2208,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2220,7 +2220,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2242,7 +2242,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2264,7 +2264,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2274,7 +2274,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2286,7 +2286,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2308,7 +2308,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2318,7 +2318,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2330,7 +2330,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2340,7 +2340,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -2356,7 +2356,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2370,11 +2370,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2386,7 +2386,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2396,7 +2396,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -2412,7 +2412,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2426,7 +2426,7 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing_extensions.Literal['l1', 'l2', 'max']",
+                    "type": "typing.Literal['l1', 'l2', 'max']",
                     "default": "l1"
                 },
                 "ignore_index": {
@@ -2438,7 +2438,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2452,7 +2452,7 @@
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -2460,7 +2460,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2474,7 +2474,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -2482,7 +2482,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2492,7 +2492,7 @@
                     "default": null
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2504,7 +2504,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2518,11 +2518,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2538,7 +2538,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2556,11 +2556,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2576,7 +2576,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2590,11 +2590,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2606,7 +2606,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2620,7 +2620,7 @@
                     "default": false
                 },
                 "multiclass_mode": {
-                    "type": "typing_extensions.Literal['crammer-singer', 'one-vs-all']",
+                    "type": "typing.Literal['crammer-singer', 'one-vs-all']",
                     "default": "crammer-singer"
                 },
                 "ignore_index": {
@@ -2632,7 +2632,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2642,7 +2642,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
@@ -2658,7 +2658,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2676,7 +2676,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2690,11 +2690,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2706,7 +2706,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2732,7 +2732,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2746,7 +2746,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
@@ -2758,7 +2758,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2772,7 +2772,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
@@ -2784,7 +2784,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2798,11 +2798,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2814,7 +2814,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2840,7 +2840,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2866,7 +2866,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2880,11 +2880,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2896,7 +2896,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2922,7 +2922,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2936,11 +2936,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -2952,7 +2952,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2962,7 +2962,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -2978,7 +2978,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2992,11 +2992,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3008,7 +3008,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3018,7 +3018,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -3034,7 +3034,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3052,7 +3052,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -3060,7 +3060,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3078,7 +3078,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3092,7 +3092,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3104,7 +3104,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3118,11 +3118,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3138,7 +3138,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3156,11 +3156,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3176,7 +3176,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3190,11 +3190,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3206,7 +3206,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3220,7 +3220,7 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
@@ -3236,7 +3236,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3258,7 +3258,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3272,11 +3272,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3288,7 +3288,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3314,7 +3314,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3336,7 +3336,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3358,7 +3358,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3376,7 +3376,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3394,7 +3394,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3408,11 +3408,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3424,7 +3424,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3450,7 +3450,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3476,7 +3476,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3490,11 +3490,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3506,7 +3506,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3532,7 +3532,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3546,11 +3546,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing_extensions.Literal['global', 'samplewise']",
+                    "type": "typing.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3562,7 +3562,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3572,31 +3572,31 @@
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "AdjustedRandScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CalinskiHarabaszScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CompletenessScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "DaviesBouldinScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3606,25 +3606,25 @@
                     "default": 2
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "FowlkesMallowsIndex": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "HomogeneityScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MutualInfoScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3634,13 +3634,13 @@
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "RandScore": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3650,7 +3650,7 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3672,7 +3672,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3694,7 +3694,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3716,7 +3716,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3738,17 +3738,17 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "MeanAveragePrecision": {
                 "box_format": {
-                    "type": "typing_extensions.Literal['xyxy', 'xywh', 'cxcywh']",
+                    "type": "typing.Literal['xyxy', 'xywh', 'cxcywh']",
                     "default": "xyxy"
                 },
                 "iou_type": {
-                    "type": "typing.Union[typing_extensions.Literal['bbox', 'segm'], typing.Tuple[str]]",
+                    "type": "typing.Union[typing.Literal['bbox', 'segm'], typing.Tuple[str]]",
                     "default": "bbox"
                 },
                 "iou_thresholds": {
@@ -3772,15 +3772,15 @@
                     "default": false
                 },
                 "average": {
-                    "type": "typing_extensions.Literal['macro', 'micro']",
+                    "type": "typing.Literal['macro', 'micro']",
                     "default": "macro"
                 },
                 "backend": {
-                    "type": "typing_extensions.Literal['pycocotools', 'faster_coco_eval']",
+                    "type": "typing.Literal['pycocotools', 'faster_coco_eval']",
                     "default": "pycocotools"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3885,7 +3885,7 @@
                     "default": null
                 },
                 "tokenizer": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 },
                 "max_length": {
@@ -3894,7 +3894,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x1242f5550>"
+                    "default": "<function _preprocess_text at 0x13334b560>"
                 },
                 "idf": {
                     "type": "bool",
@@ -3925,11 +3925,11 @@
             },
             "LearnedPerceptualImagePatchSimilarity": {
                 "net_type": {
-                    "type": "typing_extensions.Literal['vgg', 'alex', 'squeeze']",
+                    "type": "typing.Literal['vgg', 'alex', 'squeeze']",
                     "default": "alex"
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['sum', 'mean']",
+                    "type": "typing.Literal['sum', 'mean']",
                     "default": "mean"
                 },
                 "normalize": {
@@ -3937,7 +3937,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3959,7 +3959,7 @@
                     "default": 0.1
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -3969,7 +3969,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4011,7 +4011,7 @@
                     "default": "vgg"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4033,11 +4033,11 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4051,7 +4051,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4065,11 +4065,11 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4079,7 +4079,7 @@
                     "default": 2.0
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4105,7 +4105,7 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4137,7 +4137,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4175,7 +4175,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4209,23 +4209,23 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "CLIPScore": {
                 "model_name_or_path": {
-                    "type": "typing_extensions.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
+                    "type": "typing.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "openai/clip-vit-large-patch14"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
             "RetrievalAUROC": {
                 "empty_target_action": {
-                    "type": "typing_extensions.Literal['error', 'skip', 'neg', 'pos']",
+                    "type": "typing.Literal['error', 'skip', 'neg', 'pos']",
                     "default": "neg"
                 },
                 "ignore_index": {
@@ -4241,11 +4241,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4259,11 +4259,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4281,11 +4281,11 @@
                     "default": false
                 },
                 "weight_type": {
-                    "type": "typing_extensions.Literal['square', 'simple', 'linear']",
+                    "type": "typing.Literal['square', 'simple', 'linear']",
                     "default": "square"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4303,7 +4303,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4317,7 +4317,7 @@
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4335,7 +4335,7 @@
                     "default": null
                 },
                 "accumulate": {
-                    "type": "typing_extensions.Literal['avg', 'best']",
+                    "type": "typing.Literal['avg', 'best']",
                     "default": "best"
                 },
                 "rouge_keys": {
@@ -4348,7 +4348,7 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4422,7 +4422,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -4436,7 +4436,7 @@
                     "default": 0.25
                 },
                 "information_measure": {
-                    "type": "typing_extensions.Literal['kl_divergence', 'alpha_divergence', 'beta_divergence', 'ab_divergence', 'renyi_divergence', 'l1_distance', 'l2_distance', 'l_infinity_distance', 'fisher_rao_distance']",
+                    "type": "typing.Literal['kl_divergence', 'alpha_divergence', 'beta_divergence', 'ab_divergence', 'renyi_divergence', 'l1_distance', 'l2_distance', 'l_infinity_distance', 'fisher_rao_distance']",
                     "default": "kl_divergence"
                 },
                 "idf": {
@@ -4485,7 +4485,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4495,7 +4495,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4505,7 +4505,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4515,7 +4515,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4525,7 +4525,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4535,7 +4535,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4545,7 +4545,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -4592,7 +4592,7 @@
             },
             "WrapperMetric": {
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },

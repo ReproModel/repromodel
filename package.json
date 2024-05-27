@@ -10,8 +10,9 @@
     "preview": "vite preview",
     "check-venv": "if [ ! -d \".venv\" ]; then python3 -m venv .venv; fi",
     "install-deps": "npm install && ./.venv/bin/pip install -r repromodel_core/requirements.txt",
+    "generate-choices" :"python3 repromodel_core/generate_choices.py",
     "activate-venv": "source ./.venv/bin/activate",
-    "repromodel": "npm run check-venv && npm run install-deps && concurrently \"npm run dev-frontend\" \"npm run dev-backend\"",
+    "repromodel": "npm run check-venv && npm run install-deps && npm run generate_choices && concurrently \"npm run dev-frontend\" \"npm run dev-backend\"",
     "dev-frontend": "npm run dev",
     "dev-backend": "./.venv/bin/python3 repromodel_core/app.py"
   },
