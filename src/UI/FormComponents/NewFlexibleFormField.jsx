@@ -5,9 +5,9 @@ import DefaultTextField from "../../components/ui/default-text-field"
 import FormulaField from "../../components/ui/formula-field"
 import React from "react"
 
-import SmartFloatField from "./FieldTypes/SmartFloatField"
-import StringField from "../../components/ui/string-field"
-import SmartIntegerField from "./FieldTypes/SmartIntegerField"
+import FloatField from "../../components/ui/float-field.jsx"
+import StringField from "../../components/ui/string-field.jsx"
+import IntegerField from "../../components/ui/integer-field.jsx"
 
 
 import { useFormikContext } from "formik"
