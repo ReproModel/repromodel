@@ -1,12 +1,12 @@
-import "../components/experiment-builder/experiment-builder.css"
+import "./experiment-builder.css"
 
-import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
+import NewFlexibleFormField from "../../UI/FormComponents/NewFlexibleFormField"
 import React from "react"
 
 import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../utils/string-helpers"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
+import { SmartFolderField } from "../../UI/FormComponents/FieldTypes/SmartFolderField"
 
 const nestedFolders = [
   "models",
@@ -21,7 +21,7 @@ const nestedFolders = [
   "early_stopping",
 ]
 
-const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
   
   return (
     <Form>
@@ -170,4 +170,4 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
   )
 }
 
-export default DynamicFormBuilder
+export default ExperimentBuilder
