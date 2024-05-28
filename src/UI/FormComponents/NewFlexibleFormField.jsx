@@ -2,11 +2,13 @@ import "./Form.css"
 
 import BooleanField from "../../components/ui/boolean-field"
 import DefaultTextField from "../../components/ui/default-text-field"
-import FormulaField from "./FieldTypes/FormulaField"
+import FormulaField from "../../components/ui/formula-field"
 import React from "react"
+
 import SmartFloatField from "./FieldTypes/SmartFloatField"
 import StringField from "../../components/ui/string-field"
 import SmartIntegerField from "./FieldTypes/SmartIntegerField"
+
 
 import { useFormikContext } from "formik"
 
@@ -33,10 +35,10 @@ function FlexibleFormField({ id, label, type, name, object }) {
         return <StringField id = { id } label = { label } name = { name } object = { object } />
       
       case "float":
-        return <SmartFloatField id = { id } label = { label } name = { name } object = { object } />
+        return <FloatField id = { id } label = { label } name = { name } object = { object } />
       
       case "int":
-        return <SmartIntegerField id = { id } label = { label } name = { name } object = { object } />
+        return <IntegerField id = { id } label = { label } name = { name } object = { object } />
       
       case "slider":
         return <SliderField id = { id } label = { label } name = { name } />
