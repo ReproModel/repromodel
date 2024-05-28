@@ -62,7 +62,7 @@ npm run dev
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
-Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](Contributing.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
 <table>
   <tr>
@@ -100,7 +100,7 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
 For questions or any type of support, you can reach out to me via dario.sitnik@gmail.com
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
 
 <br/>
 
