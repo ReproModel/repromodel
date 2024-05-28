@@ -37,7 +37,7 @@ const ProgressViewer = ({}) => {
   return (
     <>
       <button className = "tensorboard-button" onClick = { startTensorBoard }>
-        <Typography fontWeight = { 800 }>Start TensorBoard</Typography>
+        <Typography>Start TensorBoard</Typography>
       </button>
       
       <FileDropdown onSelectFile = { setSelectedFile } />
