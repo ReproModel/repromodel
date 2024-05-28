@@ -36,6 +36,7 @@ const ProgressViewer = ({}) => {
       <button onClick = { startTensorBoard }>Start TensorBoard</button>
       
       <FileDropdown onSelectFile = { setSelectedFile } />
+    
       
       { selectedFile && <ProgressFileReader fileName = { selectedFile } /> }
     </>
