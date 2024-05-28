@@ -4,6 +4,7 @@ import ProgressFileReader from "./progress-file-reader"
 import React from "react"
 
 import { useState } from "react"
+import { Typography } from "@mui/material"
 
 const ProgressViewer = ({}) => {
 
@@ -33,11 +34,12 @@ const ProgressViewer = ({}) => {
 
   return (
     <>
-      <button onClick = { startTensorBoard }>Start TensorBoard</button>
+      <button className = "tensorboard-button" onClick = { startTensorBoard }>
+        <Typography>Start TensorBoard</Typography>
+      </button>
       
       <FileDropdown onSelectFile = { setSelectedFile } />
     
-      
       { selectedFile && <ProgressFileReader fileName = { selectedFile } /> }
     </>
   )

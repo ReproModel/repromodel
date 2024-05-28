@@ -34,11 +34,12 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <Typography>Upload existing Training config file and reduce selections if desired</Typography>
+      <Typography className = "json-input-file-label">Upload existing training configuration file and reduce the selections if desired.</Typography>
       
       <input
         type = "file"
         id = "uploadedJson"
+        className = "json-input-file"
         accept = ".json"
         onChange = { (event) => handleFileChange(event, setFieldValue) }
       />
@@ -77,7 +78,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
                               || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
                               
                               (
-                                <div className = "paramBox">
+                                <div className = "param-box">
                                   
                                   <p>{ className } Params</p>
 
@@ -144,8 +145,8 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       ))}
   
 
-      <button type = "submit" onClick = { () => setFieldValue("submitType", "testing") }>
-        Submit for Testing
+      <button type = "submit" className = "submit-button" onClick = { () => setFieldValue("submitType", "testing") }>
+        <Typography>Submit For Testing</Typography>
       </button>
 
     </Form>
