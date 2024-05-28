@@ -1,5 +1,5 @@
 <p align = "center">
-  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview-shortened.gif" width = "75%">
+  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview.gif" width = "75%">
 </p>
 
 <h3 align = "center">ReproModel</h3>
