@@ -1,3 +1,5 @@
+import "./progress-viewer.css"
+
 import axios from "axios"
 import FileDropdown from "./file-dropdown"
 import ProgressFileReader from "./progress-file-reader"
