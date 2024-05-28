@@ -151,7 +151,7 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
 
       ))}
 
-      <ButtonGroup sx = { { marginTop: "16px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
         
         <Button
           type = "submit"
