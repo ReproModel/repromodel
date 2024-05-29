@@ -45,9 +45,9 @@ function App() {
               
               <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
                 <ButtonGroup variant = "contained">
-                  <Button onClick={() => setSelectedSection("Experiment Builder")}>Experiment Builder</Button>
-                  <Button onClick={() => setSelectedSection("Model Testing")}>Model Testing</Button>
-                  <Button onClick={() => setSelectedSection("Progress Viewer")}>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") }>Progress Viewer</Button>
                 </ButtonGroup>
               </Box>
 
