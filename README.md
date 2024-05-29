@@ -1,5 +1,5 @@
 <p align = "center">
-  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview-shortened.gif" width = "75%">
+  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview.gif" width = "75%">
 </p>
 
 <h3 align = "center">ReproModel</h3>
@@ -62,7 +62,7 @@ npm run dev
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
-Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](Contributing.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
 <table>
   <tr>

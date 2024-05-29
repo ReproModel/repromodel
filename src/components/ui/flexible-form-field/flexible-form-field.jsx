@@ -1,13 +1,13 @@
-import "./Form.css"
+import "./flexible-form-field.css"
 
-import BooleanField from "../../components/ui/boolean-field"
-import DefaultTextField from "../../components/ui/default-text-field"
-import FormulaField from "../../components/ui/formula-field"
+import BooleanField from "../boolean-field"
+import DefaultTextField from "../default-text-field"
+import FormulaField from "../formula-field"
 import React from "react"
 
-import FloatField from "../../components/ui/float-field.jsx"
-import StringField from "../../components/ui/string-field.jsx"
-import IntegerField from "../../components/ui/integer-field.jsx"
+import FloatField from "../float-field"
+import StringField from "../string-field"
+import IntegerField from "../integer-field"
 
 
 import { useFormikContext } from "formik"

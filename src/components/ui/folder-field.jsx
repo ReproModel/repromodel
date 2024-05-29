@@ -1,4 +1,4 @@
-import CustomSelect from "../../../components/ui/custom-select"
+import CustomSelect from "./custom-select"
 import React from "react"
 
 const extractSecondLevelKeys = (obj) => {
@@ -24,7 +24,7 @@ const extractSecondLevelKeys = (obj) => {
   return options
 }
 
-export function SmartFolderField({ folder, folderContent }) {
+export function FolderField({ folder, folderContent }) {
   
   // Define the array of specific folder names.
   const multipleSelectFolders = ["models", "metrics"]
