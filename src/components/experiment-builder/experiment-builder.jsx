@@ -27,11 +27,12 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <Typography>Optionally upload existing config file</Typography>
+      <Typography className = "json-input-file-label">Optionally upload existing configuration file.</Typography>
       
       <input
         type = "file"
         id = "uploadedJson"
+        className = "json-input-file"
         accept = ".json"
         onChange = { (event) => handleFileChange(event, setFieldValue) }
       />
@@ -68,7 +69,7 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
                             || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
                             
                             (
-                              <div className = "paramBox">
+                              <div className = "param-box">
                                 
                                 <p>{ className } Params</p>
 
@@ -112,7 +113,7 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
           // Case 2: Folder is flat.
           ): folder === "data_splits" ? (
             
-            <div className = "paramBox">
+            <div className = "param-box">
               
               { Object.entries(folderContent).map(([param, value]) => (
                 <>
