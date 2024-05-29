@@ -1,11 +1,11 @@
 import "./model-testing.css"
 
-import NewFlexibleFormField from "../../UI/FormComponents/NewFlexibleFormField"
+import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
 import React from "react"
 
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "../../UI/FormComponents/FieldTypes/SmartFolderField"
+import { FolderField } from "../ui/folder-field"
 import { Typography } from "@mui/material"
 
 const foldersPartOfTesting = [
@@ -59,7 +59,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
               { foldersPartOfTesting.includes(folder) && nestedFolders.includes(folder) ? (
                 
                 <>
-                  <SmartFolderField folder = { folder } folderContent = { folderContent } />
+                  <FolderField folder = { folder } folderContent = { folderContent } />
 
                   {/* Loop each file in each folder. */}
                   { Object.entries(folderContent).map(([file, fileContent]) => ( 
@@ -90,7 +90,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
                                           { param }:
                                         </label>
                                         
-                                        <NewFlexibleFormField
+                                        <FlexibleFormField
                                           id = { `${folder}_params:${className}:${param}` }
                                           object = { value }
                                           type = { value.type }
@@ -122,7 +122,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
                   
                   <label htmlFor = { `${folder}` }>{ folder }:</label>
                   
-                  <NewFlexibleFormField
+                  <FlexibleFormField
                     id = { `${folder}` }
                     object = { folderContent }
                     type = { folderContent.type }
