@@ -3,12 +3,12 @@
   color: #38512F;
 }
 
-.stackContainer {
+.repromodal-structure-container {
   height: 85vh;
   padding: 16px;
 }
 
-.stackFrame {
+.repromodal-structure {
   background-color: rgb(255, 255, 255);
   height: 100%;
   border-radius: 8px;
@@ -17,13 +17,13 @@
   overflow-y: scroll;
 }
 
-.questionairContainer {
+.tabs-container {
   padding: 16px;
   padding-left: 0px;
   position: relative;
 }
 
-.questionairFrame {
+.tabs {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 15px 35px hsla(0, 0%, 0%, 0.3);
   height: 100%;
@@ -31,10 +31,4 @@
   border-radius: 8px;
   padding: 64px;
   overflow-y: scroll;
-}
-
-.container{
-  background-color: aquamarine;
-  height: 85vh;
-  padding: 10px;
 }
