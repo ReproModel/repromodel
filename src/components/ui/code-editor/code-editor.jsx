@@ -48,6 +48,23 @@ const CodeEditor = ({ label }) => {
           <div className = "label">
             <strong>{ label }</strong>
           </div>
+
+          <div className = "save-container">
+            
+            <label className = "save-lable" htmlFor = "save">Save Location:</label>
+            
+            <select className = "save-dropdown" id = "save" name = "save">
+              <option value = "augmentations">augmentations</option>
+              <option value = "datasets">datasets</option>
+              <option value = "early_stopping">early_stopping</option>
+              <option value = "losses">losses</option>
+              <option value = "metrics">metrics</option>
+              <option value = "models">models</option>
+              <option value = "postprocessing">postprocessing</option>
+              <option value = "preprocessing">preprocessing</option>   
+            </select>
+          
+          </div>
         
           <div className = "container-content">
             

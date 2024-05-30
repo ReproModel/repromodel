@@ -7,7 +7,26 @@
 }
 
 .label {
-    padding-top: 40px;
+    padding-top: 20px;
+    font-size: 2.2em;
+}
+
+.save-container {
+    padding-top: 20px;
+}
+
+.save-dropdown {
+    margin-left: 10px;
+    padding-left: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 30%;
+    font-size: 1.15rem;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
 }
 
 .container-content {
@@ -24,6 +43,7 @@
 }
 
 .container-editor {
+    min-height: 400px;
     font-size: 12px;
     font-variant-ligatures: common-ligatures;
     background-color: #fafafa;
