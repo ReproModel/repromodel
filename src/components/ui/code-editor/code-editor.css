@@ -21,12 +21,35 @@
     appearance: none;
     -webkit-appearance: none;
     width: 30%;
+    height: 25px;
     font-size: 1.15rem;
     background-color: #fff;
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: #000;
     cursor: pointer;
+}
+
+.save-button {
+    margin-left: 5px;
+    width: 80px;
+    height: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.775rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+    line-height: 0px;
+}
+
+.save-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
+}
+
+select, button {
+    vertical-align: top;
 }
 
 .container-content {

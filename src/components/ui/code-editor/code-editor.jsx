@@ -63,6 +63,8 @@ const CodeEditor = ({ label }) => {
               <option value = "postprocessing">postprocessing</option>
               <option value = "preprocessing">preprocessing</option>   
             </select>
+
+            <button className = "save-button">Save</button>
           
           </div>
         
