@@ -1,0 +1,58 @@
+.container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.label {
+    padding-top: 40px;
+}
+
+.container-content {
+    width: 800px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.container-editor-area {
+    max-height: 400px;
+    tab-size: 4ch;
+    overflow: auto;
+    margin: 1.67em 0;
+}
+
+.container-editor {
+    font-size: 12px;
+    font-variant-ligatures: common-ligatures;
+    background-color: #fafafa;
+    border-radius: 3px;
+    font-family: "Fira code", "Fira Mono", monospace;
+}
+
+.container-editor textarea {
+    outline: 0;
+}
+
+.button {
+    margin-top: 10px;
+    width: 150px;
+    letter-spacing: 0.02857em;
+    line-height: 1.75;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+}
+
+.button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
+}
+
+.right-button {
+    margin-left: 10px;
+}
