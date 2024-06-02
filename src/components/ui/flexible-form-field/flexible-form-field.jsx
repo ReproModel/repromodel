@@ -1,12 +1,14 @@
-import "./Form.css"
+import "./flexible-form-field.css"
 
-import BooleanField from "../../components/ui/boolean-field"
-import DefaultTextField from "../../components/ui/default-text-field"
-import FormulaField from "./FieldTypes/FormulaField"
+import BooleanField from "../boolean-field"
+import DefaultTextField from "../default-text-field"
+import FormulaField from "../formula-field"
 import React from "react"
-import SmartFloatField from "./FieldTypes/SmartFloatField"
-import SmartFreeTextField from "./FieldTypes/SmartStringField"
-import SmartIntegerField from "./FieldTypes/SmartIntegerField"
+
+import FloatField from "../float-field"
+import StringField from "../string-field"
+import IntegerField from "../integer-field"
+
 
 import { useFormikContext } from "formik"
 
@@ -30,13 +32,13 @@ function FlexibleFormField({ id, label, type, name, object }) {
     switch (type) {
       
       case "str":
-        return <SmartFreeTextField id = { id } label = { label } name = { name } object = { object } />
+        return <StringField id = { id } label = { label } name = { name } object = { object } />
       
       case "float":
-        return <SmartFloatField id = { id } label = { label } name = { name } object = { object } />
+        return <FloatField id = { id } label = { label } name = { name } object = { object } />
       
       case "int":
-        return <SmartIntegerField id = { id } label = { label } name = { name } object = { object } />
+        return <IntegerField id = { id } label = { label } name = { name } object = { object } />
       
       case "slider":
         return <SliderField id = { id } label = { label } name = { name } />

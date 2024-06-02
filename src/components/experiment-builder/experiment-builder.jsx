@@ -1,12 +1,12 @@
-import "../components/experiment-builder/experiment-builder.css"
+import "./experiment-builder.css"
 
-import NewFlexibleFormField from "./FormComponents/NewFlexibleFormField"
+import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
 import React from "react"
 
 import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../utils/string-helpers"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
-import { SmartFolderField } from "./FormComponents/FieldTypes/SmartFolderField"
+import { FolderField } from "../ui/folder-field"
 
 const nestedFolders = [
   "models",
@@ -21,17 +21,18 @@ const nestedFolders = [
   "early_stopping",
 ]
 
-const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
   
   return (
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <Typography>Optionally upload existing config file</Typography>
+      <Typography className = "json-input-file-label">Optionally upload existing configuration file.</Typography>
       
       <input
         type = "file"
         id = "uploadedJson"
+        className = "json-input-file"
         accept = ".json"
         onChange = { (event) => handleFileChange(event, setFieldValue) }
       />
@@ -49,7 +50,7 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
           {/* Case 1: Folder is nested. */}
           { nestedFolders.includes(folder) ? (
             <>
-              <SmartFolderField folder = { folder } folderContent = { folderContent } />
+              <FolderField folder = { folder } folderContent = { folderContent } />
 
               {/* Loop each file in each folder. */}
               { Object.entries(folderContent).map(([file, fileContent]) => (
@@ -68,7 +69,7 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
                             || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
                             
                             (
-                              <div className = "paramBox">
+                              <div className = "param-box">
                                 
                                 <p>{ className } Params</p>
 
@@ -81,7 +82,7 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
                                         { param }:
                                       </label>
                                       
-                                      <NewFlexibleFormField
+                                      <FlexibleFormField
                                         id = { `${folder}_params:${className}:${param}` }
                                         object = { value }
                                         type = { value.type }
@@ -112,14 +113,14 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
           // Case 2: Folder is flat.
           ): folder === "data_splits" ? (
             
-            <div className = "paramBox">
+            <div className = "param-box">
               
               { Object.entries(folderContent).map(([param, value]) => (
                 <>
                   
                   <label htmlFor = { `${folder}:${param}` }>{param}:</label>
                   
-                  <NewFlexibleFormField
+                  <FlexibleFormField
                     id = { `${folder}:${param}` }
                     object = { value }
                     type = { value.type }
@@ -135,7 +136,7 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
               
               <label htmlFor = { `${folder}` }>{ folder }:</label>
               
-              <NewFlexibleFormField
+              <FlexibleFormField
                 id = { `${folder}` }
                 object = { folderContent }
                 type = { folderContent.type }
@@ -170,4 +171,4 @@ const DynamicFormBuilder = ({ FormikProps, handleFileChange, newQuestions, setFi
   )
 }
 
-export default DynamicFormBuilder
+export default ExperimentBuilder

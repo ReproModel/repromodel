@@ -1,28 +1,38 @@
 #root {
   width:100%;
   color: #38512F;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.stackContainer {
+.repromodal-structure-container {
   height: 85vh;
   padding: 16px;
 }
 
-.stackFrame {
+.repromodal-structure {
   background-color: rgb(255, 255, 255);
   height: 100%;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0px 15px 35px hsla(0, 0%, 0%, 0.3);
+  overflow-y: scroll;
 }
 
-.questionairContainer {
+.tabs-container {
   padding: 16px;
   padding-left: 0px;
   position: relative;
 }
 
-.questionairFrame {
+.tabs {
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 15px 35px hsla(0, 0%, 0%, 0.3);
   height: 100%;
@@ -32,8 +42,45 @@
   overflow-y: scroll;
 }
 
-.container{
-  background-color: aquamarine;
-  height: 85vh;
-  padding: 10px;
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #747bff;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
 }
