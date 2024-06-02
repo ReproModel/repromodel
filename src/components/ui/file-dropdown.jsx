@@ -39,6 +39,7 @@ const FileDropdown = ({ onSelectFile }) => {
         
         <Select
           labelId = "file-select-label"
+          label="Select a file"
           value = { selectedFile }
           onChange = { handleChange }
         >
