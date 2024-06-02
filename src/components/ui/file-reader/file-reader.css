@@ -1,9 +1,9 @@
 .file-content {
-    width: "95%";
-    margin-top: "16px";
-    height: "55%";
-    border: "2px solid #000";
-    padding: "10px";
-    overflow: "auto";
-    border-radius: "10px";
+    width: 95%;
+    margin-top: 16px;
+    height: 55%;
+    border: 2px solid #000;
+    padding: 10px;
+    overflow: auto;
+    border-radius: 10px;
 }
