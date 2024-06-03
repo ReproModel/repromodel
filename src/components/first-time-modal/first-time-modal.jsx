@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import './first-time-modal.css';
 import trainConfig from "../../../repromodel_core/train_config.json"
+import { handleDownload } from '../../utils/download-helpers';
 
 const FirstTimeModal = () => {
     const [open, setOpen] = useState(false);
@@ -28,27 +29,7 @@ const FirstTimeModal = () => {
       }
     };
   
-    const handleDownload = (content, outputName, type) => {
-      let json, blob
-
-      if(type === "json"){
-        json = JSON.stringify(content, null, 2);
-        blob = new Blob([json], { type: 'application/json' });
-
-      }else{
-        console.log("Filetype currently not supported")
-        return
-      }
-     
-      const href = URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = href;
-      link.download = `${outputName}.${type}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    };
-
+    
     
 
   return (
