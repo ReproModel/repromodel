@@ -8,22 +8,8 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/run-python-script', methods=['POST'])
-def run_script():
-    try:
-        # Path to the Python script you want to run
-        script_path = 'repromodel_core/demotrainer.py'
-        
-        # Run the script and capture the output
-        result = subprocess.run(['python', script_path], capture_output=True, text=True)
-        
-        if result.returncode == 0:
-            return jsonify({'output': result.stdout, 'error': None})
-        else:
-            return jsonify({'output': result.stdout, 'error': result.stderr}), 400
+
     
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
     
 
 
