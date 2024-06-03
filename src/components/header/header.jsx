@@ -1,4 +1,4 @@
-import FirstTimeModal from "./first-time-modal"
+import FirstTimeModal from "../first-time-modal/first-time-modal"
 import "./header.css"
 
 import { Box, Typography } from "@mui/material"

@@ -28,18 +28,20 @@ const FirstTimeModal = () => {
       }
     };
   
-    const handleDownload = () => {
+    const handleJSONDownload = (trainConfig, outputFileName) => {
       
       const json = JSON.stringify(trainConfig, null, 2);
       const blob = new Blob([json], { type: 'application/json' });
       const href = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = href;
-      link.download = 'DemoTrainingConfig.json';
+      link.download = outputFileName;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     };
+
+    
 
   return (
     <div className="wrapper-position">
@@ -49,15 +51,15 @@ const FirstTimeModal = () => {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
       >
         <Box className="modal-style">
-          <Typography id="modal-modal-title" variant="h6" component="h2" className="modal-content">
+          <Typography id="modal-title" variant="h6" component="h2" className="modal-content">
             Hey, nice to have you here
           </Typography>
-          <Typography id="modal-modal-description" className="modal-content">
-            For a quick start and to try out repromodel you can load some defaults.
+          <Typography id="modal-description" className="modal-content">
+            For a quick start and to try out ReproModel you can load some defaults.
           </Typography>
           <Typography className="modal-content">
             1. Generate Dummy Data
@@ -68,7 +70,7 @@ const FirstTimeModal = () => {
           <Typography className="modal-content">
             2. Download a training script
           </Typography>
-          <Button variant="contained" className="modal-button" onClick={handleDownload}>
+          <Button variant="contained" className="modal-button" onClick={handleJSONDownload(trainConfig, 'DemoTrainingConfig.json')}>
             Download
           </Button>
           {confirmationMessage && (
@@ -77,7 +79,7 @@ const FirstTimeModal = () => {
             </Typography>
           )}
           <Typography className="modal-content">
-            Happy Developing with Repromodel
+            Happy Developing with ReproModel
           </Typography>
         </Box>
       </Modal>
