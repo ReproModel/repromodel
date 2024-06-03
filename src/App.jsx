@@ -12,6 +12,7 @@ import { Box, Grid, Typography } from "@mui/material"
 import { Formik } from "formik"
 import { handleFileChange, handleSubmit } from "./utils/json-helpers"
 import { useState } from "react"
+import CustomScript from "./components/custom-script/custom-script"
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
               
               <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
                 <ButtonGroup variant = "contained">
+                  <Button variant="outlined" onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
                   <Button onClick = { () => setSelectedSection("Experiment Builder") }>Experiment Builder</Button>
                   <Button onClick = { () => setSelectedSection("Model Testing") }>Model Testing</Button>
                   <Button onClick = { () => setSelectedSection("Progress Viewer") }>Progress Viewer</Button>
@@ -52,7 +54,13 @@ function App() {
               </Box>
 
               <Grid item className = "tabs">
-                
+              { selectedSection === "Custom Script" && (
+                  <>
+                    <Typography variant = "h4">Create Custom Script</Typography>
+                    <CustomScript/>
+                  </>
+                )}
+
                 { selectedSection === "Experiment Builder" && (
                   <>
                     <Typography variant = "h4">Experiment Builder</Typography>
