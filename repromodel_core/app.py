@@ -162,5 +162,26 @@ def tensorboard():
     return jsonify({"message": message})
 
 
+@app.route('/generate-dummy-data', methods=['GET'])
+def generate_data():
+    try:
+        # Path to the Python script you want to run
+        script_path = 'repromodel_core/data/dummyData/generate_data.py'
+        
+        # Run the script and capture the output
+        result = subprocess.run(['python', script_path], capture_output=True, text=True)
+        
+        if result.returncode == 0:
+            return jsonify({'output': result.stdout, 'error': None})
+        else:
+            return jsonify({'output': result.stdout, 'error': result.stderr}), 400
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
+
+
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5005,threaded=True, debug=True)
