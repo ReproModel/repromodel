@@ -9,6 +9,7 @@ import "./code-editor.css";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-python";
 import "prismjs/themes/prism.css";
+import { handleDownload } from "../../../utils/download-helpers";
 
 const CodeEditor = ({ label }) => {
   const [code, setCode] = React.useState(
@@ -40,7 +41,11 @@ const CodeEditor = ({ label }) => {
             What kind of Custom Script?
           </label>
 
-          <select className="category-dropdown" id="CustomScriptCategories" name="save">
+          <select
+            className="category-dropdown"
+            id="CustomScriptCategories"
+            name="save"
+          >
             <option value="augmentations">augmentations</option>
             <option value="datasets">datasets</option>
             <option value="early_stopping">early_stopping</option>
@@ -53,7 +58,9 @@ const CodeEditor = ({ label }) => {
 
           <button
             onClick={() => {
-              const selectElement = document.getElementById("CustomScriptCategories");
+              const selectElement = document.getElementById(
+                "CustomScriptCategories"
+              );
               const selectedValue = selectElement.value;
               fetchCustomScriptTemplate(selectedValue);
             }}
@@ -86,7 +93,13 @@ const CodeEditor = ({ label }) => {
           <button
             type="submit"
             className="button right-button"
-            onClick={() => console.log("Download clicked.")}
+            onClick={() => {
+              const selectElement = document.getElementById(
+                "CustomScriptCategories"
+              );
+              const selectedValue = selectElement.value;
+              handleDownload(code, `Custom${selectedValue}Script`, "py");
+            }}
           >
             Download
           </button>
