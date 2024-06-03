@@ -28,14 +28,22 @@ const FirstTimeModal = () => {
       }
     };
   
-    const handleJSONDownload = (trainConfig, outputFileName) => {
-      
-      const json = JSON.stringify(trainConfig, null, 2);
-      const blob = new Blob([json], { type: 'application/json' });
+    const handleDownload = (content, outputName, type) => {
+      let json, blob
+
+      if(type === "json"){
+        json = JSON.stringify(content, null, 2);
+        blob = new Blob([json], { type: 'application/json' });
+
+      }else{
+        console.log("Filetype currently not supported")
+        return
+      }
+     
       const href = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = href;
-      link.download = outputFileName;
+      link.download = `${outputName}.${type}`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -70,7 +78,7 @@ const FirstTimeModal = () => {
           <Typography className="modal-content">
             2. Download a training script
           </Typography>
-          <Button variant="contained" className="modal-button" onClick={handleJSONDownload(trainConfig, 'DemoTrainingConfig.json')}>
+          <Button variant="contained" className="modal-button" onClick={() => handleDownload(trainConfig, 'DemoTrainingConfig', 'json')}>
             Download
           </Button>
           {confirmationMessage && (
