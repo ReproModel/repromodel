@@ -8,6 +8,8 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+# FUNCTION: Get custom templates
+
 # Define the base directory relative to the location of this script
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
 
@@ -43,6 +45,7 @@ def get_custom_templates():
         return jsonify({'error': 'Invalid file type parameter'}), 400
 
 
+# FUNCTION: Retrieve the names of the training output files
 
 @app.route('/api/files', methods=['GET'])
 def get_txt_files():
@@ -65,7 +68,7 @@ def get_txt_files():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
     
-#Route for starting the TRAINING process from frontend    
+# FUNCTION: Route for starting the TRAINING process from frontend    
 @app.route('/submit-config-start-training', methods=['POST'])
 def submit_config_start_training_():
     try:
@@ -104,7 +107,7 @@ def submit_config_start_training_():
         app.logger.exception(error_message)
         return jsonify({'error': error_message}), 500
 
-#Route for starting the TESTING process from frontend
+#FUNCTION: for starting the TESTING process from frontend
 @app.route('/submit-config-start-testing', methods=['POST'])
 def submit_config_start_testing_():
     try:
@@ -143,7 +146,7 @@ def submit_config_start_testing_():
         app.logger.exception(error_message)
         return jsonify({'error': error_message}), 500
 
-# Function to start TensorBoard
+# FUNCTION: to start TensorBoard
 def start_tensorboard(logdir="logs"):
     # Kill any existing TensorBoard instances
     subprocess.run(['pkill', '-f', 'tensorboard'])
