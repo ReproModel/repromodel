@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS
 import subprocess
 import os
@@ -8,9 +8,40 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+# Define the base directory relative to the location of this script
+BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
+
+# Define the mapping of parameters to file paths
+file_paths = {
+    'models': os.path.join(BASE_DIR, 'models/customModel.py'),
+    'augmentations': os.path.join(BASE_DIR, 'augmentations/customAugmentation.py'),
+    'datasets': os.path.join(BASE_DIR, 'datasets/customDataset.py'),
+    'early_stopping': os.path.join(BASE_DIR, 'early_stopping/customEarlyStopping.py'),
+    'losses': os.path.join(BASE_DIR, 'losses/customLoss.py'),
+    'metrics': os.path.join(BASE_DIR, 'metrics/customMetrics.py'),
+    'preprocessing': os.path.join(BASE_DIR, 'preprocessing/customPreprocessor.py'),
+    'postprocessing': os.path.join(BASE_DIR, 'postprocessing/customPostprocessor.py')
+}
 
     
+@app.route('/get-custom-script-template', methods=['GET'])
+def get_custom_templates():
+     # Get the parameter from the request
+    file_type = request.args.get('type')
     
+    # Check if the parameter is valid and corresponds to a file path
+    if file_type in file_paths:
+        file_path = file_paths[file_type]
+        
+        # Check if the file exists
+        if os.path.exists(file_path):
+            # Return the file content
+            return send_file(file_path, as_attachment=True)
+        else:
+             return jsonify({'error': f'File not found for type: {file_type}'}), 404
+    else:
+        return jsonify({'error': 'Invalid file type parameter'}), 400
+
 
 
 @app.route('/api/files', methods=['GET'])
