@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 # Create a directory to store the images if it doesn't exist
-output_dir = 'repromodel_core/data/dummyData/input'
+output_dir = 'input'
 os.makedirs(output_dir, exist_ok=True)
 
 # Define the size of the images
@@ -23,7 +23,7 @@ for i in range(100):
 print("100 random input RGB images have been created and saved.")
 
 # Create a directory to store the images if it doesn't exist
-output_dir = 'repromodel_core/data/dummyData/target'
+output_dir = 'target'
 os.makedirs(output_dir, exist_ok=True)
 
 # Define the size of the images
