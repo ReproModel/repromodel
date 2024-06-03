@@ -11,10 +11,9 @@
     "check-venv": "if [ ! -d \".venv\" ]; then python3 -m venv .venv; fi",
     "install-deps": "npm install && ./.venv/bin/pip install -r repromodel_core/requirements.txt",
     "generate-choices": "./.venv/bin/python3 repromodel_core/generate_choices.py",
-    "activate-venv": "source ./.venv/bin/activate",
     "repromodel": "npm run check-venv && npm run install-deps && npm run generate-choices && concurrently \"npm run dev-frontend\" \"npm run dev-backend\"",
     "dev-frontend": "npm run dev",
-    "dev-backend": "./.venv/bin/python3 repromodel_core/app.py"
+    "dev-backend": "source ./.venv/bin/activate && python3 repromodel_core/app.py"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",

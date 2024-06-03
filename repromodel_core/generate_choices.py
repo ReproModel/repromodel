@@ -5,7 +5,7 @@ import torchmetrics
 import inspect
 import pkgutil
 import torch
-import platform
+import segmentation_models_pytorch 
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
@@ -241,8 +241,14 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
     if directory_definitions:
         all_definitions[directory] = directory_definitions
 
+# Extract torchmetric classes
 all_torchmetrics = extract_classes_with_init_params(torchmetrics)
 all_definitions['metrics']['torchmetrics'] = make_json_serializable(all_torchmetrics)
+
+# Extract segmentation-models-pytorch classes
+smp_classes = [ "Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
+all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
+all_definitions['models']['segmentation_models_pytorch'] = make_json_serializable(all_smp)
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
@@ -260,6 +266,19 @@ loss_classes = [
 # Extract classes from torch.nn for the specified loss classes
 loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
 all_definitions['losses']['torch.nn.modules.loss'] = make_json_serializable(loss_classes_extracted)
+
+# Extract classes from segmentation-models-pytorch losses
+smp_loss_classes = ["JaccardLoss",
+                    "DiceLoss",
+                    "FocalLoss",
+                    "LovaszLoss",
+                    "SoftBCEWithLogitsLoss",
+                    "SoftCrossEntropyLoss",
+                    "TverskyLoss",
+                    "MCCLoss"]
+
+smp_loss_classes_extracted = extract_classes_with_init_params(segmentation_models_pytorch.losses, smp_loss_classes)
+all_definitions['losses']['segmentation_models_pytorch.losses'] = make_json_serializable(smp_loss_classes_extracted)
 
 # List of specific class names to extract from torch.optim
 optimizer_classes = [
