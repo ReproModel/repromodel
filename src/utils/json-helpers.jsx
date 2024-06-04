@@ -183,6 +183,7 @@ export const handleCustomScriptSubmit = async (code, filename, type) => {
       }
     );
     console.log("Script Output:", response.data);
+    alert("New Script saved to the backend");
   } catch (error) {
     const errorMessage = error.response
       ? JSON.stringify(error.response.data)
