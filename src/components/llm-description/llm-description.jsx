@@ -5,7 +5,7 @@ import React from "react"
 import { Form } from "formik"
 import { Typography } from "@mui/material"
 
-const LLMDescription = ({ FormikProps, handleFileChange }) => {
+const LLMDescription = ({ FormikProps, handleFileChange, setFieldValue }) => {
 
   return (
     <Form>
