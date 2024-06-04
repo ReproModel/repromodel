@@ -1,0 +1,164 @@
+.card-image-container, .card-title {
+    position: relative;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1rem;
+    min-height: 120px !important;
+}
+
+.card:hover {
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,.3);
+    cursor: pointer;
+}
+
+.card-title {
+    font-size: 15px;
+    color: black;
+    font-family: Lato;
+}
+
+.card-subtitle {
+    color: #717171;
+    font-size: 12px;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-break {
+    margin-bottom: 50px;
+}
+
+/* Media Queries - Responsive Styling */
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+    .card-deck {
+        display: flex;
+        flex-flow: row wrap;
+        margin: 0 -15px;
+    }
+    .card {
+        flex: 1 0;
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .card {
+        text-align: center;
+        transition: background-color .25s,color .25s,box-shadow .25s;
+        box-shadow: 0 0 .1rem rgba(0,0,0,.1),0 .15rem .9rem rgba(0,0,0,.1);
+        border: 0;
+        min-height: 267px;
+        width: 80%;
+        flex: 0 1 auto;
+        margin: auto auto 30px;
+    }
+
+    .card-title {
+        font-size: 18px !important;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .card {
+        text-align: center;
+        transition: background-color .25s,color .25s,box-shadow .25s;
+        box-shadow: 0 0 .1rem rgba(0,0,0,.1),0 .15rem .9rem rgba(0,0,0,.1);
+        border: 0;
+        min-height: 267px;
+        max-width: 192px;
+    }
+
+    .card-title {
+        text-align: left;
+        padding-left: 18px;
+        padding-right: 18px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card-image {
+        width: 50px;
+        height: 50px;
+        opacity: .7;
+        padding: 5px;
+        background-size: 50px auto;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        margin: 15px auto;
+        border-radius: 5px;
+    }
+    
+    .card-title {
+        text-align: left;
+        padding-left: 18px;
+        padding-right: 18px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .card-image {
+        width: 50px;
+        height: 50px;
+        opacity: .7;
+        background-size: 50px auto;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        margin: 15px auto;
+        border-radius: 5px;
+    }
+
+    .card-title {
+        text-align: left;
+        padding-left: 15px;
+        padding-right: 10px;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+}
