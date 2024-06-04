@@ -57,7 +57,7 @@ const FirstTimeModal = () => {
             Generate
           </Button>
           <Typography className="modal-content">
-            2. Download a training script
+            2. Download a training config
           </Typography>
           <Button variant="contained" className="modal-button" onClick={() => handleDownload(trainConfig, 'DemoTrainingConfig', 'json')}>
             Download
