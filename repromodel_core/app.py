@@ -45,6 +45,55 @@ def get_custom_templates():
         return jsonify({'error': 'Invalid file type parameter'}), 400
 
 
+#FEATURE: Save the custom script files
+# Define base directory for file storage
+BASE_DIR = 'repromodel_core/src'
+TYPE_DIRS = {
+    'augmentations': 'augmentations',
+    'datasets': 'datasets',
+    'early_stopping': 'early_stopping',
+    'losses': 'losses',
+    'metrics': 'metrics',
+    'models': 'models',
+    'postprocessing': 'postprocessing',
+    'preprocessing': 'preprocessing'
+
+}
+
+# Ensure base directory and type directories exist
+if not os.path.exists(BASE_DIR):
+    os.makedirs(BASE_DIR)
+
+for type_dir in TYPE_DIRS.values():
+    path = os.path.join(BASE_DIR, type_dir)
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+@app.route('/save-custom-script', methods=['POST'])
+def upload_file():
+    file = request.files.get('file')
+    file_type = request.form.get('type')
+    filename = request.form.get('filename')
+
+    if not file or not file_type or not filename:
+        return jsonify({'error': 'Missing file, type or filename'}), 400
+
+    if file_type not in TYPE_DIRS:
+        return jsonify({'error': 'Invalid type'}), 400
+
+    # Create the full path for the file
+    save_path = os.path.join(BASE_DIR, TYPE_DIRS[file_type], f'{filename}.py')
+
+    try:
+        # Save the file
+        file.save(save_path)
+        # When successfull rerun generate choices
+        script_path = 'repromodel_core/generate_choices.py'
+        result = subprocess.run(['python', script_path], capture_output=True, text=True)
+        return jsonify({'message': 'File uploaded successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 # FUNCTION: Retrieve the names of the training output files
 
 @app.route('/api/files', methods=['GET'])

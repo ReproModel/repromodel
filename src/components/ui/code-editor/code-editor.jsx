@@ -10,6 +10,8 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-python";
 import "prismjs/themes/prism.css";
 import { handleDownload } from "../../../utils/download-helpers";
+import { handleCustomScriptSubmit } from "../../../utils/json-helpers";
+import { capitalizeFirstLetter } from "../../../utils/string-helpers";
 
 const CodeEditor = ({ label }) => {
   const [code, setCode] = React.useState(
@@ -85,6 +87,24 @@ const CodeEditor = ({ label }) => {
           <button
             type="submit"
             className="button"
+            onClick={() => {
+              const selectElement = document.getElementById(
+                "CustomScriptCategories"
+              );
+              const selectedValue = selectElement.value;
+              handleCustomScriptSubmit(
+                code,
+                `Custom${capitalizeFirstLetter(selectedValue)}Script`,
+                selectedValue
+              );
+            }}
+          >
+            Submit
+          </button>
+
+          <button
+            type="submit"
+            className="button right-button"
             onClick={() => navigator.clipboard.writeText(code)}
           >
             Copy
@@ -98,7 +118,7 @@ const CodeEditor = ({ label }) => {
                 "CustomScriptCategories"
               );
               const selectedValue = selectElement.value;
-              handleDownload(code, `Custom${selectedValue}Script`, "py");
+              handleDownload(code, `Custom${capitalizeFirstLetter(selectedValue)}Script`, "py");
             }}
           >
             Download
