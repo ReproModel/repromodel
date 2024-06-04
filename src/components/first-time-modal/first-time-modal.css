@@ -1,31 +1,53 @@
-.modal-style {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    background-color: white;
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 16px;
-    text-align: center; /* Center all text content */
-  }
+.modal-container {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+}
+
+.modal-title {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.modal-description {
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+
+.modal-step-one {
+  padding-bottom: 24px;
+}
+
+.modal-step-two {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
   
-  .modal-content {
-    margin-bottom: 24px;
-    padding-bottom: 24px;
-    padding-top: 12px;
-  }
-  
-  .modal-button {
-    margin-bottom: 24px;
-    padding-top: 24px;
-    padding-bottom: 24px; /* Add some margin to the buttons for spacing */
-  }
-  
-  .wrapper-position{
-    position: fixed; /* Ensure the button is positioned relative to the viewport */
-    top: 16px;
-    right: 16px;
-    z-index: 1000; /* Ensure the button is on top of other elements */
-  }
+.modal-confirmation {
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
+
+.modal-message {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.modal-button {
+  padding-top: 12px;
+  padding-bottom: 24px;
+}
