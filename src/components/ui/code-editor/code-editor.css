@@ -3,7 +3,8 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 100%;
+    width: auto;
+    margin-left: 25px;
 }
 
 .label {
@@ -11,8 +12,9 @@
     font-size: 2.2em;
 }
 
-.save-container {
+.category-container {
     padding-top: 20px;
+    margin-left: 30px;
 }
 
 .category-dropdown {
@@ -30,7 +32,26 @@
     cursor: pointer;
 }
 
-.save-button {
+.file-name-input-container {
+    margin-left: 30px;
+}
+
+.file-name-input {
+    margin-left: 10px;
+    padding-left: 5px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 35%;
+    height: 25px;
+    font-size: 1.15rem;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+    cursor: pointer;
+}
+
+.load-template-button {
     margin-left: 5px;
     width: 120px;
     height: 25px;
@@ -43,7 +64,7 @@
     line-height: 0px;
 }
 
-.save-button:hover {
+.load-template-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
 }
@@ -56,13 +77,14 @@ select, button {
     width: 800px;
     max-width: 100%;
     text-align: center;
+    padding-top: 8px;
 }
 
 .container-editor-area {
     max-height: 400px;
     tab-size: 4ch;
     overflow: auto;
-    margin: 1.67em 0;
+    margin: 2em 2em;
 }
 
 .container-editor {
@@ -76,6 +98,10 @@ select, button {
 
 .container-editor textarea {
     outline: 0;
+}
+
+.button-container {
+    margin-left: 30px;
 }
 
 .button {
