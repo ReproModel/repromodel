@@ -57,9 +57,9 @@ const CodeEditor = ({ label }) => {
           <button
             className = "load-template-button"
             onClick = { () => {
-              const selectElement = document.getElementById("category-dropdown")
-              const selectedValue = selectElement.value
-              fetchCustomScriptTemplate(selectedValue)
+              const categoryElement = document.getElementById("category-dropdown")
+              const categoryValue = categoryElement.value
+              fetchCustomScriptTemplate(categoryValue)
             }}
           >
             Load Template
