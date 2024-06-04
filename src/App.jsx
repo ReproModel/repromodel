@@ -1,7 +1,9 @@
 import "./App.css"
 
+import CustomScript from "./components/custom-script/custom-script"
 import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
 import Header from "./components/header/header"
+import LLMDescription from "./components/llm-description/llm-description"
 import ModelTesting from "./components/model-testing/model-testing"
 import newQuestions from "../repromodel_core/choices.json"
 import ProgressViewer from "./components/progress-viewer/progress-viewer"
@@ -12,7 +14,6 @@ import { Box, Grid, Typography } from "@mui/material"
 import { Formik } from "formik"
 import { handleFileChange, handleSubmit } from "./utils/json-helpers"
 import { useState } from "react"
-import CustomScript from "./components/custom-script/custom-script"
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
                   <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
                   <Button onClick = { () => setSelectedSection("Model Testing") } style = { { opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
                   <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 
@@ -90,6 +92,13 @@ function App() {
                   <>
                     <Typography variant = "h4" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
+                  </>
+                )}
+                
+                { selectedSection === "LLM Description" && (
+                  <>
+                    <Typography variant = "h4" style = { { marginTop: "20px" } }>LLM Description</Typography>
+                    <LLMDescription/>
                   </>
                 )}
 
