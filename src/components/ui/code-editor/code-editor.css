@@ -15,7 +15,7 @@
     padding-top: 20px;
 }
 
-.save-dropdown {
+.category-dropdown {
     margin-left: 10px;
     padding-left: 5px;
     appearance: none;
@@ -32,7 +32,7 @@
 
 .save-button {
     margin-left: 5px;
-    width: 80px;
+    width: 120px;
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;

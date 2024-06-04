@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios';
 import './first-time-modal.css';
 import trainConfig from "../../../repromodel_core/train_config.json"
@@ -28,13 +30,10 @@ const FirstTimeModal = () => {
         setConfirmationMessage('Failed to generate dummy data.');
       }
     };
-  
-    
-    
 
   return (
     <div className="wrapper-position">
-      <Button  variant="contained" onClick={handleOpen}>
+      <Button variant="contained" onClick={handleOpen}>
         First Time Here?
       </Button>
       <Modal
@@ -44,6 +43,13 @@ const FirstTimeModal = () => {
         aria-describedby="modal-description"
       >
         <Box className="modal-style">
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            style={{ position: 'absolute', right: 8, top: 8 }}
+          >
+            <CloseIcon />
+          </IconButton>
           <Typography id="modal-title" variant="h6" component="h2" className="modal-content">
             Hey, nice to have you here
           </Typography>
