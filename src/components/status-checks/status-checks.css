@@ -1,0 +1,32 @@
+.status-wrapper-position{
+    position: fixed; /* Ensure the button is positioned relative to the viewport */
+    top: 16px;
+    width: 166px;
+    height: 34px;
+    left: 16px;
+    z-index: 1000; /* Ensure the button is on top of other elements */
+    background: white; 
+    color: black; 
+    border-radius: 18px;
+    display: flex; 
+    align-items: center;
+   
+    
+
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .blinking {
+    animation: blink 3s infinite;
+  }

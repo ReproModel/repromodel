@@ -232,6 +232,9 @@ def generate_data():
         return jsonify({'error': str(e)}), 500
     
 
+@app.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({"message": "pong"}), 200
 
 
 
