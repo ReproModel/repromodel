@@ -1,32 +1,28 @@
 import "./modality-options.css"
 
-
-
-const ModalityOptions = ({imageModels}) => {
+const ModalityOptions = ({ cardOptions }) => {
   
   return (
 
-    
-
         <div className = "card-deck card-break">
 
-            { imageModels?.map((model, idx) => (
+            { cardOptions?.map((card, idx) => (
 
                 <div className = "card" key = { idx }>
                     
-                    <a href = { model.href }>
+                    <a href = { card.href }>
 
                         <div className = "row">
                             
                             <div className = "card-image-container">
                                             
-                                <div className = "card-image" style = { { backgroundImage: "url('" + model.image + "')"  } }/>
+                                <div className = "card-image" style = { { backgroundImage: "url('" + card.image + "')"  } }/>
         
                             </div>
                             
                             <div className = "card-title">
 
-                                <p>{ model.label }</p>
+                                <p>{ card.label }</p>
 
                             </div>
 
@@ -34,7 +30,7 @@ const ModalityOptions = ({imageModels}) => {
 
                         <div className = "card-body">
                             
-                            <div className = "card-subtitle"> { model.numPapers }</div>
+                            <div className = "card-subtitle"> { card.numPapers }</div>
                             
                         </div>
                     
@@ -45,8 +41,6 @@ const ModalityOptions = ({imageModels}) => {
             ))}
 
         </div>
-    
-    
   )
 }
 
