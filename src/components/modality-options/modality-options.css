@@ -1,4 +1,4 @@
-.col-md-12, .col-xl-4, .col-xl-8 {
+.card-image-container, .card-title {
     position: relative;
     width: 100%;
 }
@@ -119,7 +119,7 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .card-background-image {
+    .card-image {
         width: 50px;
         height: 50px;
         opacity: .7;
@@ -142,7 +142,7 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .card-background-image {
+    .card-image {
         width: 50px;
         height: 50px;
         opacity: .7;

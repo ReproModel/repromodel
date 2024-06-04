@@ -24,13 +24,13 @@ const ModalityOptions = () => {
 
                         <div className = "row">
                             
-                            <div className = "col-xl-4">
+                            <div className = "card-image-container">
                                             
-                                <div className = "card-background-image" style = { { backgroundImage: "url('" + model.image + "')"  } }/>
+                                <div className = "card-image" style = { { backgroundImage: "url('" + model.image + "')"  } }/>
         
                             </div>
                             
-                            <div className = "col-xl-8 card-title">
+                            <div className = "card-title">
 
                                 <p>{ model.label }</p>
 
