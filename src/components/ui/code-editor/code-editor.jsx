@@ -82,6 +82,15 @@ const CodeEditor = ({ label }) => {
             />
           </div>
         </div>
+        <label>
+        Enter file name:
+        <input
+        className="category-dropdown"
+          type="text"
+          id="file-name-input"
+          placeholder="Enter file name (without .py)"
+        />
+      </label>
 
         <div>
           <button
@@ -92,9 +101,13 @@ const CodeEditor = ({ label }) => {
                 "CustomScriptCategories"
               );
               const selectedValue = selectElement.value;
+              const selectedNameElement = document.getElementById(
+                "file-name-input"
+              );
+              const selectedNameValue = selectedNameElement.value;
               handleCustomScriptSubmit(
                 code,
-                `Custom${capitalizeFirstLetter(selectedValue)}Script`,
+                selectedNameValue,
                 selectedValue
               );
             }}
