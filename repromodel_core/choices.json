@@ -1927,7 +1927,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x14aba3820>"
+                    "default": "<function round_channels at 0x16e322820>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -1995,7 +1995,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x14aba3820>"
+                    "default": "<function round_channels at 0x16e322820>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -3381,7 +3381,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x14aba3820>"
+                    "default": "<function round_channels at 0x16e322820>"
                 },
                 "drop_rate": {
                     "type": "int, float",
@@ -3437,7 +3437,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x14aba3820>"
+                    "default": "<function round_channels at 0x16e322820>"
                 },
                 "se_from_exp": {
                     "type": "bool",
@@ -6232,7 +6232,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x14aba3820>"
+                    "default": "<function round_channels at 0x16e322820>"
                 },
                 "se_from_exp": {
                     "type": "int, float",
@@ -17382,7 +17382,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x146079d30>"
+                    "default": "<function _preprocess_text at 0x13f9f4d30>"
                 },
                 "idf": {
                     "type": "bool",
