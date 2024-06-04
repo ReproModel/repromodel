@@ -1,16 +1,15 @@
 import json
 import torch
-import torch.nn as nn
 import importlib
 from torch.utils.tensorboard import SummaryWriter
-import torchmetrics
 from src.utils import ensure_folder_exists
 
 def load_json(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
-def get_from_torch(module, class_name, params):
+def get_from_lib(module_name, class_name, params):
+    module = __import__(module_name)
     cls = getattr(module, class_name, None)
     if not cls:
         raise ValueError(f"{class_name} not found in {module.__name__}")
@@ -44,13 +43,11 @@ def get_lr_scheduler(optimizer, scheduler_name, params):
     return scheduler_class(optimizer, **params)
 
 def configure_component(type, name, params):
-    if "torch" in type:
-        parts = name.split('.')
-        if len(parts) > 1:
-            name = parts[-1]
-        module = nn if 'loss' in type \
-                 else torchmetrics
-        return get_from_torch(module, name, params)
+    parts = name.split('.')
+    if len(parts) > 1:
+        name = parts[-1]
+        module = ".".join(parts[:-1])
+        return get_from_lib(module, name, params)
     else:
         return get_from_module(type, name, params)
 

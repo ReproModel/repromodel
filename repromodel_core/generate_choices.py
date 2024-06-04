@@ -5,7 +5,10 @@ import torchmetrics
 import inspect
 import pkgutil
 import torch
-import platform
+import timm
+from timm import optim as timm_optim
+from timm import loss as timm_loss
+import segmentation_models_pytorch 
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
@@ -241,8 +244,18 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
     if directory_definitions:
         all_definitions[directory] = directory_definitions
 
+# Extract torchmetric classes
 all_torchmetrics = extract_classes_with_init_params(torchmetrics)
 all_definitions['metrics']['torchmetrics'] = make_json_serializable(all_torchmetrics)
+
+# Extract segmentation-models-pytorch classes
+smp_classes = [ "Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
+all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
+all_definitions['models']['segmentation_models_pytorch'] = make_json_serializable(all_smp)
+
+# Extract timm models classes
+all_timm = extract_classes_with_init_params(timm.models)
+all_definitions['models']['timm'] = make_json_serializable(all_timm)
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
@@ -261,6 +274,23 @@ loss_classes = [
 loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
 all_definitions['losses']['torch.nn.modules.loss'] = make_json_serializable(loss_classes_extracted)
 
+# Extract classes from segmentation-models-pytorch losses
+smp_loss_classes = ["JaccardLoss",
+                    "DiceLoss",
+                    "FocalLoss",
+                    "LovaszLoss",
+                    "SoftBCEWithLogitsLoss",
+                    "SoftCrossEntropyLoss",
+                    "TverskyLoss",
+                    "MCCLoss"]
+
+smp_loss_classes_extracted = extract_classes_with_init_params(segmentation_models_pytorch.losses, smp_loss_classes)
+all_definitions['losses']['segmentation_models_pytorch.losses'] = make_json_serializable(smp_loss_classes_extracted)
+
+# Extract classes from torch.nn for the specified loss classes
+timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
+all_definitions['losses']['timm.loss'] = make_json_serializable(timm_loss_classes_extracted)
+
 # List of specific class names to extract from torch.optim
 optimizer_classes = [
     "Adadelta", "Adagrad", "Adam", "AdamW", "SparseAdam", "Adamax", "ASGD", "LBFGS",
@@ -270,10 +300,13 @@ optimizer_classes = [
 # Extract classes from torch.nn for the specified loss classes
 optimizer_classes_extracted = extract_classes_with_init_params(optim, optimizer_classes)
 all_definitions['optimizers'] = {}
-all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) #make_json_serializable(optimizer_classes_extracted)
+all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) 
+
+# Extract classes from timm.optimizers
+timm_optimizer_classes_extracted = extract_classes_with_init_params(timm_optim)
+all_definitions['optimizers']['timm.optim'] = make_json_serializable(timm_optimizer_classes_extracted) 
 
 # Static choices 
-
 all_definitions["batch_size"] = {
                     "type": "int",
                     "default": 1,

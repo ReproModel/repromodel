@@ -47,9 +47,9 @@ function App() {
               <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
                 <ButtonGroup variant = "contained">
                   <Button variant="outlined" onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
                 </ButtonGroup>
               </Box>
 
