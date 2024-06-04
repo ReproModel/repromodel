@@ -78,8 +78,8 @@ const CodeEditor = ({ label }) => {
         </div>
 
         <label className = "file-name-input-container">
-          Enter file name:
-          <input id = "file-name-input" className = "file-name-input" type = "text" placeholder = "Enter file name (without .py)"/>
+          Enter output file name:
+          <input id = "file-name-input" className = "file-name-input" type = "text" placeholder = "Enter output file name (without .py)"/>
         </label>
 
         <div className = "button-container">
