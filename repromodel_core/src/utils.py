@@ -156,6 +156,18 @@ def print_to_file(string, config = None, tqdm=False, model_num = None):
         file.write(timestamped_string + ('\n' if not tqdm else ''))
         file.flush()
 
+def replace_keys(obj, key1='>', key2='.'):
+    if isinstance(obj, dict):
+        new_obj = {}
+        for key, value in obj.items():
+            new_key = key.replace(key1, key2)
+            new_obj[new_key] = replace_keys(value)
+        return new_obj
+    elif isinstance(obj, list):
+        return [replace_keys(item) for item in obj]
+    else:
+        return obj
+
 def delete_command_outputs():
     file_path = "repromodel_core/logs/command_output.txt"
 

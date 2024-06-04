@@ -7,7 +7,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, TqdmFile
+from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, replace_keys, TqdmFile
 
 SRC_DIR = "src."
 
@@ -20,9 +20,11 @@ def test(input_data):
     if os.path.isfile(input_data):
         with open(input_data, 'r') as file:
             data = json.load(file)
+            data = replace_keys(data)
     else:
         # Assume input is a JSON string
         data = json.loads(input_data)
+        data = replace_keys(data)
 
     cfg = edict(data)
 
@@ -35,7 +37,6 @@ def test(input_data):
 
     # TensorBoard writer
     writer = SummaryWriter(log_dir=cfg.tensorboard_log_path)
-
 
     # get all saved checkpoints
     checkpoints = get_all_ckpts(cfg.model_save_path, cfg.models, cfg.data_splits.k)

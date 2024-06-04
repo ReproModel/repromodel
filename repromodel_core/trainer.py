@@ -8,7 +8,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, TqdmFile
+from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, replace_keys, TqdmFile
 from copy import deepcopy
 
 SRC_DIR = "src."
@@ -21,9 +21,11 @@ def train(input_data):
     if os.path.isfile(input_data):
         with open(input_data, 'r') as file:
             data = json.load(file)
+            data = replace_keys(data)
     else:
         # Assume input is a JSON string
         data = json.loads(input_data)
+        data = replace_keys(data)
 
     cfg = edict(data)
 
