@@ -111,7 +111,7 @@
             }
         },
         "segmentation_models_pytorch": {
-            "DeepLabV3": {
+            "segmentation_models_pytorch.DeepLabV3": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -149,7 +149,7 @@
                     "default": null
                 }
             },
-            "DeepLabV3Plus": {
+            "segmentation_models_pytorch.DeepLabV3Plus": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -199,7 +199,7 @@
                     "default": null
                 }
             },
-            "FPN": {
+            "segmentation_models_pytorch.FPN": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -249,7 +249,7 @@
                     "default": null
                 }
             },
-            "Linknet": {
+            "segmentation_models_pytorch.Linknet": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -283,7 +283,7 @@
                     "default": null
                 }
             },
-            "MAnet": {
+            "segmentation_models_pytorch.MAnet": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -331,7 +331,7 @@
                     "default": null
                 }
             },
-            "PAN": {
+            "segmentation_models_pytorch.PAN": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -369,7 +369,7 @@
                     "default": null
                 }
             },
-            "PSPNet": {
+            "segmentation_models_pytorch.PSPNet": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -415,7 +415,7 @@
                     "default": null
                 }
             },
-            "Unet": {
+            "segmentation_models_pytorch.Unet": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -463,7 +463,7 @@
                     "default": null
                 }
             },
-            "UnetPlusPlus": {
+            "segmentation_models_pytorch.UnetPlusPlus": {
                 "encoder_name": {
                     "type": "str",
                     "default": "resnet34"
@@ -512,8 +512,8 @@
                 }
             }
         },
-        "timm": {
-            "BasicBlock": {
+        "timm.models": {
+            "timm.models.BasicBlock": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -543,7 +543,7 @@
                     "default": 0.0
                 }
             },
-            "Beit": {
+            "timm.models.Beit": {
                 "img_size": {
                     "type": "typing.Union[int, typing.Tuple[int, int]]",
                     "default": 224
@@ -637,7 +637,7 @@
                     "default": 0.001
                 }
             },
-            "Bottleneck": {
+            "timm.models.Bottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -671,7 +671,7 @@
                     "default": 0.0
                 }
             },
-            "ByoBlockCfg": {
+            "timm.models.ByoBlockCfg": {
                 "type": {
                     "type": "typing.Union[str, torch.nn.modules.module.Module]",
                     "default": null
@@ -717,7 +717,7 @@
                     "default": null
                 }
             },
-            "ByoModelCfg": {
+            "timm.models.ByoModelCfg": {
                 "blocks": {
                     "type": "typing.Tuple[typing.Union[timm.models.byobnet.ByoBlockCfg, typing.Tuple[timm.models.byobnet.ByoBlockCfg, ...]], ...]",
                     "default": null
@@ -783,7 +783,7 @@
                     "default": "<factory>"
                 }
             },
-            "ByobNet": {
+            "timm.models.ByobNet": {
                 "cfg": {
                     "type": "ByoModelCfg",
                     "default": null
@@ -825,7 +825,7 @@
                     "default": null
                 }
             },
-            "Cait": {
+            "timm.models.Cait": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -935,7 +935,7 @@
                     "default": 4.0
                 }
             },
-            "ClassAttn": {
+            "timm.models.ClassAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -957,7 +957,7 @@
                     "default": 0.0
                 }
             },
-            "CoaT": {
+            "timm.models.CoaT": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -1050,7 +1050,7 @@
                     "default": "token"
                 }
             },
-            "ConVit": {
+            "timm.models.ConVit": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -1132,7 +1132,7 @@
                     "default": true
                 }
             },
-            "ConvMixer": {
+            "timm.models.ConvMixer": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -1174,7 +1174,7 @@
                     "default": null
                 }
             },
-            "ConvNeXt": {
+            "timm.models.ConvNeXt": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -1270,7 +1270,7 @@
                     "default": 0.0
                 }
             },
-            "CrossVit": {
+            "timm.models.CrossVit": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -1380,7 +1380,7 @@
                     "default": "token"
                 }
             },
-            "CspNet": {
+            "timm.models.CspNet": {
                 "cfg": {
                     "type": "CspModelCfg",
                     "default": null
@@ -1418,7 +1418,7 @@
                     "default": null
                 }
             },
-            "DLA": {
+            "timm.models.DLA": {
                 "levels": {
                     "type": "unknown",
                     "default": null
@@ -1464,7 +1464,7 @@
                     "default": 0.0
                 }
             },
-            "DPN": {
+            "timm.models.DPN": {
                 "k_sec": {
                     "type": "tuple",
                     "default": [
@@ -1536,7 +1536,7 @@
                     "default": "elu"
                 }
             },
-            "DaVit": {
+            "timm.models.DaVit": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -1628,7 +1628,7 @@
                     "default": false
                 }
             },
-            "DefaultCfg": {
+            "timm.models.DefaultCfg": {
                 "tags": {
                     "type": "typing.Deque[str]",
                     "default": "<factory>"
@@ -1642,7 +1642,7 @@
                     "default": false
                 }
             },
-            "DenseNet": {
+            "timm.models.DenseNet": {
                 "growth_rate": {
                     "type": "int",
                     "default": 32
@@ -1705,7 +1705,7 @@
                     "default": true
                 }
             },
-            "EdgeNeXt": {
+            "timm.models.EdgeNeXt": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -1822,7 +1822,7 @@
                     "default": 0.0
                 }
             },
-            "EfficientFormer": {
+            "timm.models.EfficientFormer": {
                 "depths": {
                     "type": "unknown",
                     "default": null
@@ -1892,7 +1892,7 @@
                     "default": null
                 }
             },
-            "EfficientNet": {
+            "timm.models.EfficientNet": {
                 "block_args": {
                     "type": "unknown",
                     "default": null
@@ -1927,7 +1927,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x1332229d0>"
+                    "default": "<function round_channels at 0x152462820>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -1954,7 +1954,7 @@
                     "default": "avg"
                 }
             },
-            "EfficientNetFeatures": {
+            "timm.models.EfficientNetFeatures": {
                 "block_args": {
                     "type": "unknown",
                     "default": null
@@ -1995,7 +1995,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x1332229d0>"
+                    "default": "<function round_channels at 0x152462820>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -2018,7 +2018,7 @@
                     "default": 0.0
                 }
             },
-            "Eva": {
+            "timm.models.Eva": {
                 "img_size": {
                     "type": "typing.Union[int, typing.Tuple[int, int]]",
                     "default": 224
@@ -2132,7 +2132,7 @@
                     "default": 0.001
                 }
             },
-            "FeatureDictNet": {
+            "timm.models.FeatureDictNet": {
                 "model": {
                     "type": "Module",
                     "default": null
@@ -2164,7 +2164,7 @@
                     "default": false
                 }
             },
-            "FeatureGraphNet": {
+            "timm.models.FeatureGraphNet": {
                 "model": {
                     "type": "unknown",
                     "default": null
@@ -2178,7 +2178,7 @@
                     "default": null
                 }
             },
-            "FeatureHookNet": {
+            "timm.models.FeatureHookNet": {
                 "model": {
                     "type": "Module",
                     "default": null
@@ -2218,7 +2218,7 @@
                     "default": "forward"
                 }
             },
-            "FeatureHooks": {
+            "timm.models.FeatureHooks": {
                 "hooks": {
                     "type": "typing.Sequence[str]",
                     "default": null
@@ -2236,7 +2236,7 @@
                     "default": "forward"
                 }
             },
-            "FeatureInfo": {
+            "timm.models.FeatureInfo": {
                 "feature_info": {
                     "type": "typing.List[typing.Dict]",
                     "default": null
@@ -2246,7 +2246,7 @@
                     "default": null
                 }
             },
-            "FeatureListNet": {
+            "timm.models.FeatureListNet": {
                 "model": {
                     "type": "Module",
                     "default": null
@@ -2274,7 +2274,7 @@
                     "default": false
                 }
             },
-            "FocalNet": {
+            "timm.models.FocalNet": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -2367,7 +2367,7 @@
                     "default": "functools.partial(<class 'timm.layers.norm.LayerNorm2d'>, eps=1e-05)"
                 }
             },
-            "GhostNet": {
+            "timm.models.GhostNet": {
                 "cfgs": {
                     "type": "unknown",
                     "default": null
@@ -2397,7 +2397,7 @@
                     "default": 0.2
                 }
             },
-            "GlobalContextVit": {
+            "timm.models.GlobalContextVit": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -2498,7 +2498,7 @@
                     "default": 1e-05
                 }
             },
-            "GraphExtractNet": {
+            "timm.models.GraphExtractNet": {
                 "model": {
                     "type": "unknown",
                     "default": null
@@ -2512,7 +2512,7 @@
                     "default": true
                 }
             },
-            "HighResolutionNet": {
+            "timm.models.HighResolutionNet": {
                 "cfg": {
                     "type": "unknown",
                     "default": null
@@ -2546,7 +2546,7 @@
                     "default": null
                 }
             },
-            "HighResolutionNetFeatures": {
+            "timm.models.HighResolutionNetFeatures": {
                 "cfg": {
                     "type": "unknown",
                     "default": null
@@ -2590,7 +2590,7 @@
                     "default": null
                 }
             },
-            "InceptionResnetV2": {
+            "timm.models.InceptionResnetV2": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -2624,7 +2624,7 @@
                     "default": "relu"
                 }
             },
-            "InceptionV3": {
+            "timm.models.InceptionV3": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -2658,7 +2658,7 @@
                     "default": "relu"
                 }
             },
-            "InceptionV4": {
+            "timm.models.InceptionV4": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -2692,7 +2692,7 @@
                     "default": "relu"
                 }
             },
-            "LayerScaleBlock": {
+            "timm.models.LayerScaleBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -2742,7 +2742,7 @@
                     "default": 0.0001
                 }
             },
-            "LayerScaleBlockClassAttn": {
+            "timm.models.LayerScaleBlockClassAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -2792,7 +2792,7 @@
                     "default": 0.0001
                 }
             },
-            "Levit": {
+            "timm.models.Levit": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -2876,7 +2876,7 @@
                     "default": 0.0
                 }
             },
-            "MaxxVit": {
+            "timm.models.MaxxVit": {
                 "cfg": {
                     "type": "MaxxVitCfg",
                     "default": null
@@ -2910,7 +2910,7 @@
                     "default": null
                 }
             },
-            "MaxxVitCfg": {
+            "timm.models.MaxxVitCfg": {
                 "embed_dim": {
                     "type": "typing.Tuple[int, ...]",
                     "default": [
@@ -2963,7 +2963,7 @@
                     "default": "vit_eff"
                 }
             },
-            "MaxxVitConvCfg": {
+            "timm.models.MaxxVitConvCfg": {
                 "block_type": {
                     "type": "str",
                     "default": "mbconv"
@@ -3045,7 +3045,7 @@
                     "default": null
                 }
             },
-            "MaxxVitTransformerCfg": {
+            "timm.models.MaxxVitTransformerCfg": {
                 "dim_head": {
                     "type": "int",
                     "default": 32
@@ -3131,7 +3131,7 @@
                     "default": 1e-06
                 }
             },
-            "MetaFormer": {
+            "timm.models.MetaFormer": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -3220,7 +3220,7 @@
                     "default": null
                 }
             },
-            "MixerBlock": {
+            "timm.models.MixerBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -3257,7 +3257,7 @@
                     "default": 0.0
                 }
             },
-            "MlpMixer": {
+            "timm.models.MlpMixer": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -3330,7 +3330,7 @@
                     "default": "avg"
                 }
             },
-            "MobileNetV3": {
+            "timm.models.MobileNetV3": {
                 "block_args": {
                     "type": "unknown",
                     "default": null
@@ -3381,7 +3381,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x1332229d0>"
+                    "default": "<function round_channels at 0x152462820>"
                 },
                 "drop_rate": {
                     "type": "int, float",
@@ -3396,7 +3396,7 @@
                     "default": "avg"
                 }
             },
-            "MobileNetV3Features": {
+            "timm.models.MobileNetV3Features": {
                 "block_args": {
                     "type": "unknown",
                     "default": null
@@ -3437,7 +3437,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x1332229d0>"
+                    "default": "<function round_channels at 0x152462820>"
                 },
                 "se_from_exp": {
                     "type": "bool",
@@ -3464,7 +3464,7 @@
                     "default": 0.0
                 }
             },
-            "MultiScaleVit": {
+            "timm.models.MultiScaleVit": {
                 "cfg": {
                     "type": "MultiScaleVitCfg",
                     "default": null
@@ -3497,7 +3497,7 @@
                     "default": 0.0
                 }
             },
-            "MultiScaleVitCfg": {
+            "timm.models.MultiScaleVitCfg": {
                 "depths": {
                     "type": "typing.Tuple[int, ...]",
                     "default": [
@@ -3628,7 +3628,7 @@
                     "default": 1e-06
                 }
             },
-            "NASNetALarge": {
+            "timm.models.NASNetALarge": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -3666,7 +3666,7 @@
                     "default": "same"
                 }
             },
-            "Nest": {
+            "timm.models.Nest": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -3756,7 +3756,7 @@
                     "default": "avg"
                 }
             },
-            "NfCfg": {
+            "timm.models.NfCfg": {
                 "depths": {
                     "type": "typing.Tuple[int, int, int, int]",
                     "default": null
@@ -3842,7 +3842,7 @@
                     "default": "silu"
                 }
             },
-            "NormFreeNet": {
+            "timm.models.NormFreeNet": {
                 "cfg": {
                     "type": "NfCfg",
                     "default": null
@@ -3876,7 +3876,7 @@
                     "default": null
                 }
             },
-            "PNASNet5Large": {
+            "timm.models.PNASNet5Large": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -3902,7 +3902,7 @@
                     "default": ""
                 }
             },
-            "PoolingVisionTransformer": {
+            "timm.models.PoolingVisionTransformer": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -3984,7 +3984,7 @@
                     "default": 0.0
                 }
             },
-            "PretrainedCfg": {
+            "timm.models.PretrainedCfg": {
                 "url": {
                     "type": "typing.Union[str, typing.Tuple[str, str], NoneType]",
                     "default": null
@@ -4130,7 +4130,7 @@
                     "default": null
                 }
             },
-            "PyramidVisionTransformerV2": {
+            "timm.models.PyramidVisionTransformerV2": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -4217,7 +4217,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm'>"
                 }
             },
-            "RegNet": {
+            "timm.models.RegNet": {
                 "cfg": {
                     "type": "RegNetCfg",
                     "default": null
@@ -4255,7 +4255,7 @@
                     "default": null
                 }
             },
-            "RegNetCfg": {
+            "timm.models.RegNetCfg": {
                 "depth": {
                     "type": "int",
                     "default": 21
@@ -4317,7 +4317,7 @@
                     "default": "batchnorm"
                 }
             },
-            "ResNet": {
+            "timm.models.ResNet": {
                 "block": {
                     "type": "unknown",
                     "default": null
@@ -4407,7 +4407,7 @@
                     "default": null
                 }
             },
-            "ResNetV2": {
+            "timm.models.ResNetV2": {
                 "layers": {
                     "type": "unknown",
                     "default": null
@@ -4482,7 +4482,7 @@
                     "default": false
                 }
             },
-            "RexNet": {
+            "timm.models.RexNet": {
                 "in_chans": {
                     "type": "int",
                     "default": 3
@@ -4540,7 +4540,7 @@
                     "default": 0.0
                 }
             },
-            "SENet": {
+            "timm.models.SENet": {
                 "block": {
                     "type": "unknown",
                     "default": null
@@ -4590,7 +4590,7 @@
                     "default": "avg"
                 }
             },
-            "SelecSls": {
+            "timm.models.SelecSls": {
                 "cfg": {
                     "type": "unknown",
                     "default": null
@@ -4612,7 +4612,7 @@
                     "default": "avg"
                 }
             },
-            "Sequencer2d": {
+            "timm.models.Sequencer2d": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -4727,7 +4727,7 @@
                     "default": false
                 }
             },
-            "SwinTransformer": {
+            "timm.models.SwinTransformer": {
                 "img_size": {
                     "type": "typing.Union[int, typing.Tuple[int, int]]",
                     "default": 224
@@ -4815,7 +4815,7 @@
                     "default": null
                 }
             },
-            "SwinTransformerV2": {
+            "timm.models.SwinTransformerV2": {
                 "img_size": {
                     "type": "typing.Union[int, typing.Tuple[int, int]]",
                     "default": 224
@@ -4904,7 +4904,7 @@
                     "default": null
                 }
             },
-            "SwinTransformerV2Cr": {
+            "timm.models.SwinTransformerV2Cr": {
                 "img_size": {
                     "type": "typing.Tuple[int, int]",
                     "default": [
@@ -5007,7 +5007,7 @@
                     "default": null
                 }
             },
-            "TNT": {
+            "timm.models.TNT": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -5085,7 +5085,7 @@
                     "default": 4
                 }
             },
-            "TResNet": {
+            "timm.models.TResNet": {
                 "layers": {
                     "type": "unknown",
                     "default": null
@@ -5119,7 +5119,7 @@
                     "default": 0.0
                 }
             },
-            "TalkingHeadAttn": {
+            "timm.models.TalkingHeadAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -5141,7 +5141,7 @@
                     "default": 0.0
                 }
             },
-            "Twins": {
+            "timm.models.Twins": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -5240,7 +5240,7 @@
                     "default": "<class 'timm.models.twins.Block'>"
                 }
             },
-            "VGG": {
+            "timm.models.VGG": {
                 "cfg": {
                     "type": "typing.List[typing.Any]",
                     "default": null
@@ -5282,7 +5282,7 @@
                     "default": 0.0
                 }
             },
-            "VOLO": {
+            "timm.models.VOLO": {
                 "layers": {
                     "type": "unknown",
                     "default": null
@@ -5385,7 +5385,7 @@
                     "default": 2
                 }
             },
-            "Visformer": {
+            "timm.models.Visformer": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -5479,7 +5479,7 @@
                     "default": null
                 }
             },
-            "VisionTransformer": {
+            "timm.models.VisionTransformer": {
                 "img_size": {
                     "type": "typing.Union[int, typing.Tuple[int, int]]",
                     "default": 224
@@ -5593,7 +5593,7 @@
                     "default": "<class 'timm.layers.mlp.Mlp'>"
                 }
             },
-            "VisionTransformerDistilled": {
+            "timm.models.VisionTransformerDistilled": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -5603,7 +5603,7 @@
                     "default": null
                 }
             },
-            "VisionTransformerRelPos": {
+            "timm.models.VisionTransformerRelPos": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -5709,7 +5709,7 @@
                     "default": "<class 'timm.models.vision_transformer_relpos.RelPosBlock'>"
                 }
             },
-            "VovNet": {
+            "timm.models.VovNet": {
                 "cfg": {
                     "type": "unknown",
                     "default": null
@@ -5751,7 +5751,7 @@
                     "default": null
                 }
             },
-            "Xception": {
+            "timm.models.Xception": {
                 "num_classes": {
                     "type": "int",
                     "default": 1000
@@ -5769,7 +5769,7 @@
                     "default": "avg"
                 }
             },
-            "XceptionAligned": {
+            "timm.models.XceptionAligned": {
                 "block_cfg": {
                     "type": "unknown",
                     "default": null
@@ -5807,7 +5807,7 @@
                     "default": "avg"
                 }
             },
-            "Xcit": {
+            "timm.models.Xcit": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -5893,7 +5893,7 @@
                     "default": false
                 }
             },
-            "CondConvResidual": {
+            "timm.models.CondConvResidual": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -5959,7 +5959,7 @@
                     "default": 0.0
                 }
             },
-            "ConvBnAct": {
+            "timm.models.ConvBnAct": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6005,7 +6005,7 @@
                     "default": 0.0
                 }
             },
-            "DepthwiseSeparableConv": {
+            "timm.models.DepthwiseSeparableConv": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6063,7 +6063,7 @@
                     "default": 0.0
                 }
             },
-            "EdgeResidual": {
+            "timm.models.EdgeResidual": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6125,7 +6125,7 @@
                     "default": 0.0
                 }
             },
-            "InvertedResidual": {
+            "timm.models.InvertedResidual": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6191,7 +6191,7 @@
                     "default": 0.0
                 }
             },
-            "SqueezeExcite": {
+            "timm.models.SqueezeExcite": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6221,7 +6221,7 @@
                     "default": null
                 }
             },
-            "EfficientNetBuilder": {
+            "timm.models.EfficientNetBuilder": {
                 "output_stride": {
                     "type": "int",
                     "default": 32
@@ -6232,7 +6232,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x1332229d0>"
+                    "default": "<function round_channels at 0x152462820>"
                 },
                 "se_from_exp": {
                     "type": "int, float",
@@ -6259,7 +6259,7 @@
                     "default": ""
                 }
             },
-            "Attention": {
+            "timm.models.Attention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6281,7 +6281,7 @@
                     "default": 0.0
                 }
             },
-            "Block": {
+            "timm.models.Block": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -6307,7 +6307,7 @@
                     "default": true
                 }
             },
-            "RelativePositionBias": {
+            "timm.models.RelativePositionBias": {
                 "window_size": {
                     "type": "unknown",
                     "default": null
@@ -6317,7 +6317,7 @@
                     "default": null
                 }
             },
-            "BottleneckBlock": {
+            "timm.models.BottleneckBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6363,7 +6363,7 @@
                     "default": 0.0
                 }
             },
-            "DarkBlock": {
+            "timm.models.DarkBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6405,7 +6405,7 @@
                     "default": 0.0
                 }
             },
-            "DownsampleAvg": {
+            "timm.models.DownsampleAvg": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6439,7 +6439,7 @@
                     "default": null
                 }
             },
-            "EdgeBlock": {
+            "timm.models.EdgeBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6481,7 +6481,7 @@
                     "default": 0.0
                 }
             },
-            "LayerFn": {
+            "timm.models.LayerFn": {
                 "conv_norm_act": {
                     "type": "typing.Callable",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
@@ -6503,7 +6503,7 @@
                     "default": null
                 }
             },
-            "RepVggBlock": {
+            "timm.models.RepVggBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -6552,7 +6552,7 @@
                     "default": 0.0
                 }
             },
-            "SelfAttnBlock": {
+            "timm.models.SelfAttnBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -6621,7 +6621,7 @@
                     "default": 0.0
                 }
             },
-            "Stem": {
+            "timm.models.Stem": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -6635,7 +6635,7 @@
                     "default": null
                 }
             },
-            "ConvPosEnc": {
+            "timm.models.ConvPosEnc": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -6649,7 +6649,7 @@
                     "default": false
                 }
             },
-            "ConvRelPosEnc": {
+            "timm.models.ConvRelPosEnc": {
                 "head_chs": {
                     "type": "unknown",
                     "default": null
@@ -6663,7 +6663,7 @@
                     "default": null
                 }
             },
-            "FactorAttnConvRelPosEnc": {
+            "timm.models.FactorAttnConvRelPosEnc": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6689,7 +6689,7 @@
                     "default": null
                 }
             },
-            "ParallelBlock": {
+            "timm.models.ParallelBlock": {
                 "dims": {
                     "type": "unknown",
                     "default": null
@@ -6731,7 +6731,7 @@
                     "default": null
                 }
             },
-            "SerialBlock": {
+            "timm.models.SerialBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6777,7 +6777,7 @@
                     "default": null
                 }
             },
-            "GPSA": {
+            "timm.models.GPSA": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6803,7 +6803,7 @@
                     "default": 1.0
                 }
             },
-            "MHSA": {
+            "timm.models.MHSA": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6825,13 +6825,13 @@
                     "default": 0.0
                 }
             },
-            "Residual": {
+            "timm.models.Residual": {
                 "fn": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "ConvNeXtBlock": {
+            "timm.models.ConvNeXtBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -6868,7 +6868,7 @@
                     "default": 0.0
                 }
             },
-            "ConvNeXtStage": {
+            "timm.models.ConvNeXtStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -6929,7 +6929,7 @@
                     "default": null
                 }
             },
-            "Downsample": {
+            "timm.models.Downsample": {
                 "in_embed_dim": {
                     "type": "unknown",
                     "default": null
@@ -6943,7 +6943,7 @@
                     "default": 2
                 }
             },
-            "CrossAttention": {
+            "timm.models.CrossAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -6965,7 +6965,7 @@
                     "default": 0.0
                 }
             },
-            "CrossAttentionBlock": {
+            "timm.models.CrossAttentionBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7003,7 +7003,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "MultiScaleBlock": {
+            "timm.models.MultiScaleBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7089,7 +7089,7 @@
                     "default": true
                 }
             },
-            "PatchEmbed": {
+            "timm.models.PatchEmbed": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -7119,7 +7119,7 @@
                     "default": 384
                 }
             },
-            "CrossStage": {
+            "timm.models.CrossStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7185,7 +7185,7 @@
                     "default": null
                 }
             },
-            "CrossStage3": {
+            "timm.models.CrossStage3": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7251,7 +7251,7 @@
                     "default": null
                 }
             },
-            "CspModelCfg": {
+            "timm.models.CspModelCfg": {
                 "stem": {
                     "type": "CspStemCfg",
                     "default": null
@@ -7277,7 +7277,7 @@
                     "default": null
                 }
             },
-            "CspStagesCfg": {
+            "timm.models.CspStagesCfg": {
                 "depth": {
                     "type": "typing.Tuple[int, ...]",
                     "default": [
@@ -7345,7 +7345,7 @@
                     "default": false
                 }
             },
-            "CspStemCfg": {
+            "timm.models.CspStemCfg": {
                 "out_chs": {
                     "type": "typing.Union[int, typing.Tuple[int, ...]]",
                     "default": 32
@@ -7367,7 +7367,7 @@
                     "default": ""
                 }
             },
-            "DarkStage": {
+            "timm.models.DarkStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7421,7 +7421,7 @@
                     "default": null
                 }
             },
-            "ChannelAttention": {
+            "timm.models.ChannelAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7435,7 +7435,7 @@
                     "default": false
                 }
             },
-            "ChannelBlock": {
+            "timm.models.ChannelBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7473,7 +7473,7 @@
                     "default": false
                 }
             },
-            "DaVitStage": {
+            "timm.models.DaVitStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7537,7 +7537,7 @@
                     "default": false
                 }
             },
-            "SpatialBlock": {
+            "timm.models.SpatialBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7579,7 +7579,7 @@
                     "default": false
                 }
             },
-            "WindowAttention": {
+            "timm.models.WindowAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7612,7 +7612,7 @@
                     ]
                 }
             },
-            "DenseBlock": {
+            "timm.models.DenseBlock": {
                 "num_layers": {
                     "type": "unknown",
                     "default": null
@@ -7642,7 +7642,7 @@
                     "default": false
                 }
             },
-            "DenseLayer": {
+            "timm.models.DenseLayer": {
                 "num_input_features": {
                     "type": "unknown",
                     "default": null
@@ -7668,7 +7668,7 @@
                     "default": false
                 }
             },
-            "DenseTransition": {
+            "timm.models.DenseTransition": {
                 "num_input_features": {
                     "type": "unknown",
                     "default": null
@@ -7686,7 +7686,7 @@
                     "default": null
                 }
             },
-            "DlaBasic": {
+            "timm.models.DlaBasic": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -7708,7 +7708,7 @@
                     "default": null
                 }
             },
-            "DlaBottle2neck": {
+            "timm.models.DlaBottle2neck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -7738,7 +7738,7 @@
                     "default": 4
                 }
             },
-            "DlaBottleneck": {
+            "timm.models.DlaBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -7764,7 +7764,7 @@
                     "default": 64
                 }
             },
-            "DlaRoot": {
+            "timm.models.DlaRoot": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -7782,7 +7782,7 @@
                     "default": null
                 }
             },
-            "DlaTree": {
+            "timm.models.DlaTree": {
                 "levels": {
                     "type": "unknown",
                     "default": null
@@ -7832,7 +7832,7 @@
                     "default": false
                 }
             },
-            "BnActConv2d": {
+            "timm.models.BnActConv2d": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7858,7 +7858,7 @@
                     "default": "<class 'timm.layers.norm_act.BatchNormAct2d'>"
                 }
             },
-            "CatBnAct": {
+            "timm.models.CatBnAct": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7868,7 +7868,7 @@
                     "default": "<class 'timm.layers.norm_act.BatchNormAct2d'>"
                 }
             },
-            "DualPathBlock": {
+            "timm.models.DualPathBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -7902,7 +7902,7 @@
                     "default": false
                 }
             },
-            "ConvBlock": {
+            "timm.models.ConvBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7944,7 +7944,7 @@
                     "default": 0.0
                 }
             },
-            "CrossCovarianceAttn": {
+            "timm.models.CrossCovarianceAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -7966,7 +7966,7 @@
                     "default": 0.0
                 }
             },
-            "EdgeNeXtStage": {
+            "timm.models.EdgeNeXtStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -8036,7 +8036,7 @@
                     "default": "<class 'torch.nn.modules.activation.GELU'>"
                 }
             },
-            "PositionalEncodingFourier": {
+            "timm.models.PositionalEncodingFourier": {
                 "hidden_dim": {
                     "type": "int",
                     "default": 32
@@ -8050,7 +8050,7 @@
                     "default": 10000
                 }
             },
-            "SplitTransposeBlock": {
+            "timm.models.SplitTransposeBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8104,7 +8104,7 @@
                     "default": 0.0
                 }
             },
-            "ConvMlpWithNorm": {
+            "timm.models.ConvMlpWithNorm": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -8134,7 +8134,7 @@
                     "default": false
                 }
             },
-            "EfficientFormerStage": {
+            "timm.models.EfficientFormerStage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8188,8 +8188,8 @@
                     "default": 1e-05
                 }
             },
-            "Flat": {},
-            "LayerScale": {
+            "timm.models.Flat": {},
+            "timm.models.LayerScale": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8203,7 +8203,7 @@
                     "default": false
                 }
             },
-            "LayerScale2d": {
+            "timm.models.LayerScale2d": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8217,7 +8217,7 @@
                     "default": false
                 }
             },
-            "MetaBlock1d": {
+            "timm.models.MetaBlock1d": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8247,7 +8247,7 @@
                     "default": 1e-05
                 }
             },
-            "MetaBlock2d": {
+            "timm.models.MetaBlock2d": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8281,7 +8281,7 @@
                     "default": 1e-05
                 }
             },
-            "Pooling": {
+            "timm.models.Pooling": {
                 "in_feature": {
                     "type": "unknown",
                     "default": null
@@ -8299,7 +8299,7 @@
                     "default": "zeros"
                 }
             },
-            "Stem4": {
+            "timm.models.Stem4": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -8317,7 +8317,7 @@
                     "default": "<class 'torch.nn.modules.batchnorm.BatchNorm2d'>"
                 }
             },
-            "Attention2d": {
+            "timm.models.Attention2d": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8355,7 +8355,7 @@
                     "default": 0.0
                 }
             },
-            "Attention2dDownsample": {
+            "timm.models.Attention2dDownsample": {
                 "dim": {
                     "type": "int",
                     "default": 384
@@ -8385,7 +8385,7 @@
                     "default": "<class 'torch.nn.modules.activation.GELU'>"
                 }
             },
-            "ConvNorm": {
+            "timm.models.ConvNorm": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -8419,7 +8419,7 @@
                     "default": 1
                 }
             },
-            "EfficientFormerV2": {
+            "timm.models.EfficientFormerV2": {
                 "depths": {
                     "type": "unknown",
                     "default": null
@@ -8489,7 +8489,7 @@
                     "default": true
                 }
             },
-            "EfficientFormerV2Block": {
+            "timm.models.EfficientFormerV2Block": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8531,7 +8531,7 @@
                     "default": true
                 }
             },
-            "EfficientFormerV2Stage": {
+            "timm.models.EfficientFormerV2Stage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8593,7 +8593,7 @@
                     "default": "<class 'torch.nn.modules.batchnorm.BatchNorm2d'>"
                 }
             },
-            "LocalGlobalQuery": {
+            "timm.models.LocalGlobalQuery": {
                 "in_dim": {
                     "type": "unknown",
                     "default": null
@@ -8603,7 +8603,7 @@
                     "default": null
                 }
             },
-            "EvaAttention": {
+            "timm.models.EvaAttention": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8637,7 +8637,7 @@
                     "default": null
                 }
             },
-            "EvaBlock": {
+            "timm.models.EvaBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8699,7 +8699,7 @@
                     "default": null
                 }
             },
-            "EvaBlockPostNorm": {
+            "timm.models.EvaBlockPostNorm": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8761,7 +8761,7 @@
                     "default": null
                 }
             },
-            "FocalModulation": {
+            "timm.models.FocalModulation": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8799,7 +8799,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm2d'>"
                 }
             },
-            "FocalNetBlock": {
+            "timm.models.FocalNetBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8849,7 +8849,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm2d'>"
                 }
             },
-            "FocalNetStage": {
+            "timm.models.FocalNetStage": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -8911,7 +8911,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm2d'>"
                 }
             },
-            "Downsample2d": {
+            "timm.models.Downsample2d": {
                 "input_dim": {
                     "type": "unknown",
                     "default": null
@@ -8925,7 +8925,7 @@
                     "default": null
                 }
             },
-            "FeatureBlock": {
+            "timm.models.FeatureBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -8943,7 +8943,7 @@
                     "default": "<class 'torch.nn.modules.activation.GELU'>"
                 }
             },
-            "GlobalContextVitBlock": {
+            "timm.models.GlobalContextVitBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9001,7 +9001,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "GlobalContextVitStage": {
+            "timm.models.GlobalContextVitStage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -9071,7 +9071,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm2d'>"
                 }
             },
-            "MbConvBlock": {
+            "timm.models.MbConvBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -9100,7 +9100,7 @@
                     "default": 0.0
                 }
             },
-            "WindowAttentionGlobal": {
+            "timm.models.WindowAttentionGlobal": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9130,7 +9130,7 @@
                     "default": 0.0
                 }
             },
-            "GhostBottleneck": {
+            "timm.models.GhostBottleneck": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -9160,7 +9160,7 @@
                     "default": 0.0
                 }
             },
-            "GhostModule": {
+            "timm.models.GhostModule": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -9190,7 +9190,7 @@
                     "default": true
                 }
             },
-            "HighResolutionModule": {
+            "timm.models.HighResolutionModule": {
                 "num_branches": {
                     "type": "unknown",
                     "default": null
@@ -9220,7 +9220,7 @@
                     "default": true
                 }
             },
-            "ModuleInterface": {
+            "timm.models.ModuleInterface": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -9230,13 +9230,13 @@
                     "default": null
                 }
             },
-            "SequentialList": {
+            "timm.models.SequentialList": {
                 "args": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "Block17": {
+            "timm.models.Block17": {
                 "scale": {
                     "type": "float",
                     "default": 1.0
@@ -9246,7 +9246,7 @@
                     "default": null
                 }
             },
-            "Block35": {
+            "timm.models.Block35": {
                 "scale": {
                     "type": "float",
                     "default": 1.0
@@ -9256,7 +9256,7 @@
                     "default": null
                 }
             },
-            "Block8": {
+            "timm.models.Block8": {
                 "scale": {
                     "type": "float",
                     "default": 1.0
@@ -9270,31 +9270,31 @@
                     "default": null
                 }
             },
-            "Mixed_5b": {
+            "timm.models.Mixed_5b": {
                 "conv_block": {
                     "type": "NoneType",
                     "default": null
                 }
             },
-            "Mixed_6a": {
+            "timm.models.Mixed_6a": {
                 "conv_block": {
                     "type": "NoneType",
                     "default": null
                 }
             },
-            "Mixed_7a": {
+            "timm.models.Mixed_7a": {
                 "conv_block": {
                     "type": "NoneType",
                     "default": null
                 }
             },
-            "InceptionA": {
+            "timm.models.InceptionA": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "InceptionAux": {
+            "timm.models.InceptionAux": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -9308,19 +9308,19 @@
                     "default": null
                 }
             },
-            "InceptionB": {
+            "timm.models.InceptionB": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "InceptionC": {
+            "timm.models.InceptionC": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "InceptionD": {
+            "timm.models.InceptionD": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -9330,7 +9330,7 @@
                     "default": null
                 }
             },
-            "InceptionE": {
+            "timm.models.InceptionE": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -9340,37 +9340,37 @@
                     "default": null
                 }
             },
-            "Mixed3a": {
+            "timm.models.Mixed3a": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "Mixed4a": {
+            "timm.models.Mixed4a": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "Mixed5a": {
+            "timm.models.Mixed5a": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "ReductionA": {
+            "timm.models.ReductionA": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "ReductionB": {
+            "timm.models.ReductionB": {
                 "conv_block": {
                     "type": "type",
                     "default": "<class 'timm.layers.conv_bn_act.ConvNormAct'>"
                 }
             },
-            "AttentionDownsample": {
+            "timm.models.AttentionDownsample": {
                 "in_dim": {
                     "type": "unknown",
                     "default": null
@@ -9412,7 +9412,7 @@
                     "default": "<class 'torch.nn.modules.activation.SiLU'>"
                 }
             },
-            "LevitBlock": {
+            "timm.models.LevitBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -9454,7 +9454,7 @@
                     "default": 0.0
                 }
             },
-            "LevitDistilled": {
+            "timm.models.LevitDistilled": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -9464,7 +9464,7 @@
                     "default": null
                 }
             },
-            "LevitDownsample": {
+            "timm.models.LevitDownsample": {
                 "in_dim": {
                     "type": "unknown",
                     "default": null
@@ -9514,7 +9514,7 @@
                     "default": 0.0
                 }
             },
-            "LevitMlp": {
+            "timm.models.LevitMlp": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -9540,7 +9540,7 @@
                     "default": 0.0
                 }
             },
-            "LevitStage": {
+            "timm.models.LevitStage": {
                 "in_dim": {
                     "type": "unknown",
                     "default": null
@@ -9594,7 +9594,7 @@
                     "default": 0.0
                 }
             },
-            "LinearNorm": {
+            "timm.models.LinearNorm": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -9608,7 +9608,7 @@
                     "default": 1
                 }
             },
-            "NormLinear": {
+            "timm.models.NormLinear": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -9630,7 +9630,7 @@
                     "default": 0.0
                 }
             },
-            "Stem16": {
+            "timm.models.Stem16": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -9644,7 +9644,7 @@
                     "default": null
                 }
             },
-            "Stem8": {
+            "timm.models.Stem8": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -9658,7 +9658,7 @@
                     "default": null
                 }
             },
-            "AttentionCl": {
+            "timm.models.AttentionCl": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9696,7 +9696,7 @@
                     "default": 0.0
                 }
             },
-            "MaxxVitBlock": {
+            "timm.models.MaxxVitBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9722,7 +9722,7 @@
                     "default": 0.0
                 }
             },
-            "MaxxVitStage": {
+            "timm.models.MaxxVitStage": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -9763,7 +9763,7 @@
                     "default": 0.0
                 }
             },
-            "ParallelMaxxVitBlock": {
+            "timm.models.ParallelMaxxVitBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -9793,7 +9793,7 @@
                     "default": 0.0
                 }
             },
-            "ParallelPartitionAttention": {
+            "timm.models.ParallelPartitionAttention": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9807,25 +9807,7 @@
                     "default": 0.0
                 }
             },
-            "PartitionAttention2d": {
-                "dim": {
-                    "type": "int",
-                    "default": null
-                },
-                "partition_type": {
-                    "type": "str",
-                    "default": "block"
-                },
-                "cfg": {
-                    "type": "MaxxVitTransformerCfg",
-                    "default": "MaxxVitTransformerCfg(dim_head=32, head_first=True, expand_ratio=4.0, expand_first=True, shortcut_bias=True, attn_bias=True, attn_drop=0.0, proj_drop=0.0, pool_type='avg2', rel_pos_type='bias', rel_pos_dim=512, partition_ratio=32, window_size=None, grid_size=None, no_block_attn=False, use_nchw_attn=False, init_values=None, act_layer='gelu', norm_layer='layernorm2d', norm_layer_cl='layernorm', norm_eps=1e-06)"
-                },
-                "drop_path": {
-                    "type": "float",
-                    "default": 0.0
-                }
-            },
-            "PartitionAttentionCl": {
+            "timm.models.PartitionAttention2d": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9843,7 +9825,25 @@
                     "default": 0.0
                 }
             },
-            "TransformerBlock2d": {
+            "timm.models.PartitionAttentionCl": {
+                "dim": {
+                    "type": "int",
+                    "default": null
+                },
+                "partition_type": {
+                    "type": "str",
+                    "default": "block"
+                },
+                "cfg": {
+                    "type": "MaxxVitTransformerCfg",
+                    "default": "MaxxVitTransformerCfg(dim_head=32, head_first=True, expand_ratio=4.0, expand_first=True, shortcut_bias=True, attn_bias=True, attn_drop=0.0, proj_drop=0.0, pool_type='avg2', rel_pos_type='bias', rel_pos_dim=512, partition_ratio=32, window_size=None, grid_size=None, no_block_attn=False, use_nchw_attn=False, init_values=None, act_layer='gelu', norm_layer='layernorm2d', norm_layer_cl='layernorm', norm_eps=1e-06)"
+                },
+                "drop_path": {
+                    "type": "float",
+                    "default": 0.0
+                }
+            },
+            "timm.models.TransformerBlock2d": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -9869,7 +9869,7 @@
                     "default": 0.0
                 }
             },
-            "Downsampling": {
+            "timm.models.Downsampling": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -9895,7 +9895,7 @@
                     "default": null
                 }
             },
-            "GroupNorm1NoBias": {
+            "timm.models.GroupNorm1NoBias": {
                 "num_channels": {
                     "type": "unknown",
                     "default": null
@@ -9905,7 +9905,7 @@
                     "default": null
                 }
             },
-            "LayerNorm2dNoBias": {
+            "timm.models.LayerNorm2dNoBias": {
                 "num_channels": {
                     "type": "unknown",
                     "default": null
@@ -9915,7 +9915,7 @@
                     "default": null
                 }
             },
-            "LayerNormNoBias": {
+            "timm.models.LayerNormNoBias": {
                 "num_channels": {
                     "type": "unknown",
                     "default": null
@@ -9925,7 +9925,7 @@
                     "default": null
                 }
             },
-            "MetaFormerBlock": {
+            "timm.models.MetaFormerBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -9971,7 +9971,7 @@
                     "default": null
                 }
             },
-            "MetaFormerStage": {
+            "timm.models.MetaFormerStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -10028,7 +10028,7 @@
                     "default": null
                 }
             },
-            "MlpHead": {
+            "timm.models.MlpHead": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10058,7 +10058,7 @@
                     "default": true
                 }
             },
-            "Scale": {
+            "timm.models.Scale": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10076,7 +10076,7 @@
                     "default": true
                 }
             },
-            "SepConv": {
+            "timm.models.SepConv": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10110,13 +10110,13 @@
                     "default": null
                 }
             },
-            "SquaredReLU": {
+            "timm.models.SquaredReLU": {
                 "inplace": {
                     "type": "int, float",
                     "default": false
                 }
             },
-            "StarReLU": {
+            "timm.models.StarReLU": {
                 "scale_value": {
                     "type": "float",
                     "default": 1.0
@@ -10142,13 +10142,13 @@
                     "default": false
                 }
             },
-            "Affine": {
+            "timm.models.Affine": {
                 "dim": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "ResBlock": {
+            "timm.models.ResBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10186,7 +10186,7 @@
                     "default": 0.0
                 }
             },
-            "SpatialGatingBlock": {
+            "timm.models.SpatialGatingBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10220,7 +10220,7 @@
                     "default": 0.0
                 }
             },
-            "SpatialGatingUnit": {
+            "timm.models.SpatialGatingUnit": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10234,7 +10234,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "LinearSelfAttention": {
+            "timm.models.LinearSelfAttention": {
                 "embed_dim": {
                     "type": "int",
                     "default": null
@@ -10252,7 +10252,7 @@
                     "default": true
                 }
             },
-            "LinearTransformerBlock": {
+            "timm.models.LinearTransformerBlock": {
                 "embed_dim": {
                     "type": "int",
                     "default": null
@@ -10282,7 +10282,7 @@
                     "default": null
                 }
             },
-            "MobileVitBlock": {
+            "timm.models.MobileVitBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -10363,7 +10363,7 @@
                     "default": null
                 }
             },
-            "MobileVitV2Block": {
+            "timm.models.MobileVitV2Block": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -10432,7 +10432,7 @@
                     "default": null
                 }
             },
-            "MultiScaleAttention": {
+            "timm.models.MultiScaleAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10502,7 +10502,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "MultiScaleAttentionPoolFirst": {
+            "timm.models.MultiScaleAttentionPoolFirst": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10572,7 +10572,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "MultiScaleVitStage": {
+            "timm.models.MultiScaleVitStage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10662,7 +10662,7 @@
                     "default": 0.0
                 }
             },
-            "ActConvBn": {
+            "timm.models.ActConvBn": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -10684,7 +10684,7 @@
                     "default": ""
                 }
             },
-            "BranchSeparables": {
+            "timm.models.BranchSeparables": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -10710,7 +10710,7 @@
                     "default": ""
                 }
             },
-            "CellStem0": {
+            "timm.models.CellStem0": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -10732,7 +10732,7 @@
                     "default": ""
                 }
             },
-            "CellStem1": {
+            "timm.models.CellStem1": {
                 "stem_size": {
                     "type": "unknown",
                     "default": null
@@ -10746,7 +10746,7 @@
                     "default": ""
                 }
             },
-            "FirstCell": {
+            "timm.models.FirstCell": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -10768,7 +10768,7 @@
                     "default": ""
                 }
             },
-            "NormalCell": {
+            "timm.models.NormalCell": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -10790,7 +10790,7 @@
                     "default": ""
                 }
             },
-            "ReductionCell0": {
+            "timm.models.ReductionCell0": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -10812,7 +10812,7 @@
                     "default": ""
                 }
             },
-            "ReductionCell1": {
+            "timm.models.ReductionCell1": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -10834,7 +10834,7 @@
                     "default": ""
                 }
             },
-            "SeparableConv2d": {
+            "timm.models.SeparableConv2d": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -10868,7 +10868,7 @@
                     "default": "<class 'torch.nn.modules.batchnorm.BatchNorm2d'>"
                 }
             },
-            "ConvPool": {
+            "timm.models.ConvPool": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -10886,7 +10886,7 @@
                     "default": ""
                 }
             },
-            "NestLevel": {
+            "timm.models.NestLevel": {
                 "num_blocks": {
                     "type": "unknown",
                     "default": null
@@ -10948,7 +10948,7 @@
                     "default": ""
                 }
             },
-            "TransformerLayer": {
+            "timm.models.TransformerLayer": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -10986,7 +10986,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "GammaAct": {
+            "timm.models.GammaAct": {
                 "act_type": {
                     "type": "str",
                     "default": "relu"
@@ -11000,7 +11000,7 @@
                     "default": false
                 }
             },
-            "NormFreeBlock": {
+            "timm.models.NormFreeBlock": {
                 "in_chs": {
                     "type": "int",
                     "default": null
@@ -11074,7 +11074,7 @@
                     "default": 0.0
                 }
             },
-            "ConvEmbedding": {
+            "timm.models.ConvEmbedding": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -11100,13 +11100,13 @@
                     "default": 0
                 }
             },
-            "SequentialTuple": {
+            "timm.models.SequentialTuple": {
                 "args": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "Transformer": {
+            "timm.models.Transformer": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -11140,7 +11140,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "Cell": {
+            "timm.models.Cell": {
                 "in_chs_left": {
                     "type": "unknown",
                     "default": null
@@ -11170,7 +11170,7 @@
                     "default": false
                 }
             },
-            "CellBase": {
+            "timm.models.CellBase": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -11180,7 +11180,7 @@
                     "default": null
                 }
             },
-            "FactorizedReduction": {
+            "timm.models.FactorizedReduction": {
                 "in_channels": {
                     "type": "unknown",
                     "default": null
@@ -11194,7 +11194,7 @@
                     "default": ""
                 }
             },
-            "MlpWithDepthwiseConv": {
+            "timm.models.MlpWithDepthwiseConv": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -11220,7 +11220,7 @@
                     "default": false
                 }
             },
-            "OverlapPatchEmbed": {
+            "timm.models.OverlapPatchEmbed": {
                 "patch_size": {
                     "type": "int",
                     "default": 7
@@ -11238,7 +11238,7 @@
                     "default": 768
                 }
             },
-            "PyramidVisionTransformerStage": {
+            "timm.models.PyramidVisionTransformerStage": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -11292,7 +11292,7 @@
                     "default": "<class 'timm.layers.norm.LayerNorm'>"
                 }
             },
-            "PreBottleneck": {
+            "timm.models.PreBottleneck": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11349,7 +11349,7 @@
                     "default": 0.0
                 }
             },
-            "RegStage": {
+            "timm.models.RegStage": {
                 "depth": {
                     "type": "unknown",
                     "default": null
@@ -11383,7 +11383,7 @@
                     "default": null
                 }
             },
-            "Bottle2neck": {
+            "timm.models.Bottle2neck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11437,7 +11437,7 @@
                     "default": null
                 }
             },
-            "ResNestBottleneck": {
+            "timm.models.ResNestBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11515,7 +11515,7 @@
                     "default": null
                 }
             },
-            "DownsampleConv": {
+            "timm.models.DownsampleConv": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11549,7 +11549,7 @@
                     "default": null
                 }
             },
-            "PreActBottleneck": {
+            "timm.models.PreActBottleneck": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11599,7 +11599,7 @@
                     "default": 0.0
                 }
             },
-            "ResNetStage": {
+            "timm.models.ResNetStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11657,7 +11657,7 @@
                     "default": null
                 }
             },
-            "LinearBottleneck": {
+            "timm.models.LinearBottleneck": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11702,7 +11702,7 @@
                     "default": null
                 }
             },
-            "SelecSlsBlock": {
+            "timm.models.SelecSlsBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -11732,7 +11732,7 @@
                     "default": 1
                 }
             },
-            "SelectSeq": {
+            "timm.models.SelectSeq": {
                 "mode": {
                     "type": "str",
                     "default": "index"
@@ -11742,7 +11742,7 @@
                     "default": 0
                 }
             },
-            "SEBottleneck": {
+            "timm.models.SEBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11768,7 +11768,7 @@
                     "default": null
                 }
             },
-            "SEModule": {
+            "timm.models.SEModule": {
                 "channels": {
                     "type": "unknown",
                     "default": null
@@ -11778,7 +11778,7 @@
                     "default": null
                 }
             },
-            "SEResNeXtBottleneck": {
+            "timm.models.SEResNeXtBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11808,7 +11808,7 @@
                     "default": 4
                 }
             },
-            "SEResNetBlock": {
+            "timm.models.SEResNetBlock": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11834,7 +11834,7 @@
                     "default": null
                 }
             },
-            "SEResNetBottleneck": {
+            "timm.models.SEResNetBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -11860,7 +11860,7 @@
                     "default": null
                 }
             },
-            "LSTM2d": {
+            "timm.models.LSTM2d": {
                 "input_size": {
                     "type": "int",
                     "default": null
@@ -11890,7 +11890,7 @@
                     "default": true
                 }
             },
-            "RNN2dBase": {
+            "timm.models.RNN2dBase": {
                 "input_size": {
                     "type": "int",
                     "default": null
@@ -11920,7 +11920,7 @@
                     "default": true
                 }
             },
-            "RNNIdentity": {
+            "timm.models.RNNIdentity": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -11930,7 +11930,7 @@
                     "default": null
                 }
             },
-            "Sequencer2dBlock": {
+            "timm.models.Sequencer2dBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -11984,7 +11984,7 @@
                     "default": 0.0
                 }
             },
-            "Sequencer2dStage": {
+            "timm.models.Sequencer2dStage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12058,8 +12058,8 @@
                     "default": 0.0
                 }
             },
-            "Shuffle": {},
-            "SelectiveKernelBasic": {
+            "timm.models.Shuffle": {},
+            "timm.models.SelectiveKernelBasic": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -12125,7 +12125,7 @@
                     "default": null
                 }
             },
-            "SelectiveKernelBottleneck": {
+            "timm.models.SelectiveKernelBottleneck": {
                 "inplanes": {
                     "type": "unknown",
                     "default": null
@@ -12191,7 +12191,7 @@
                     "default": null
                 }
             },
-            "PatchMerging": {
+            "timm.models.PatchMerging": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -12201,7 +12201,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "SwinTransformerBlock": {
+            "timm.models.SwinTransformerBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -12255,7 +12255,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "SwinTransformerStage": {
+            "timm.models.SwinTransformerStage": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -12313,7 +12313,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "SwinTransformerV2Block": {
+            "timm.models.SwinTransformerV2Block": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12367,7 +12367,7 @@
                     "default": 0
                 }
             },
-            "SwinTransformerV2Stage": {
+            "timm.models.SwinTransformerV2Stage": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12429,7 +12429,7 @@
                     "default": false
                 }
             },
-            "SwinTransformerV2CrBlock": {
+            "timm.models.SwinTransformerV2CrBlock": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -12486,7 +12486,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "SwinTransformerV2CrStage": {
+            "timm.models.SwinTransformerV2CrStage": {
                 "embed_dim": {
                     "type": "int",
                     "default": null
@@ -12548,7 +12548,7 @@
                     "default": false
                 }
             },
-            "WindowMultiHeadAttention": {
+            "timm.models.WindowMultiHeadAttention": {
                 "dim": {
                     "type": "int",
                     "default": null
@@ -12578,7 +12578,7 @@
                     "default": false
                 }
             },
-            "PixelEmbed": {
+            "timm.models.PixelEmbed": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -12600,7 +12600,7 @@
                     "default": 4
                 }
             },
-            "GlobalSubSampleAttn": {
+            "timm.models.GlobalSubSampleAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12622,7 +12622,7 @@
                     "default": 1
                 }
             },
-            "LocallyGroupedAttn": {
+            "timm.models.LocallyGroupedAttn": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12644,7 +12644,7 @@
                     "default": 1
                 }
             },
-            "PosConv": {
+            "timm.models.PosConv": {
                 "in_chans": {
                     "type": "unknown",
                     "default": null
@@ -12658,7 +12658,7 @@
                     "default": 1
                 }
             },
-            "ConvMlp": {
+            "timm.models.ConvMlp": {
                 "in_features": {
                     "type": "int",
                     "default": 512
@@ -12688,7 +12688,7 @@
                     "default": null
                 }
             },
-            "SpatialMlp": {
+            "timm.models.SpatialMlp": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -12718,7 +12718,7 @@
                     "default": false
                 }
             },
-            "ParallelScalingBlock": {
+            "timm.models.ParallelScalingBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12768,7 +12768,7 @@
                     "default": null
                 }
             },
-            "ParallelThingsBlock": {
+            "timm.models.ParallelThingsBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12822,7 +12822,7 @@
                     "default": "<class 'timm.layers.mlp.Mlp'>"
                 }
             },
-            "ResPostBlock": {
+            "timm.models.ResPostBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12872,7 +12872,7 @@
                     "default": "<class 'timm.layers.mlp.Mlp'>"
                 }
             },
-            "HybridEmbed": {
+            "timm.models.HybridEmbed": {
                 "backbone": {
                     "type": "unknown",
                     "default": null
@@ -12902,7 +12902,7 @@
                     "default": true
                 }
             },
-            "HybridEmbedWithSize": {
+            "timm.models.HybridEmbedWithSize": {
                 "backbone": {
                     "type": "unknown",
                     "default": null
@@ -12932,7 +12932,7 @@
                     "default": true
                 }
             },
-            "RelPosAttention": {
+            "timm.models.RelPosAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -12966,7 +12966,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "RelPosBlock": {
+            "timm.models.RelPosBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13016,7 +13016,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "ResPostRelPosBlock": {
+            "timm.models.ResPostRelPosBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13066,7 +13066,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "ClassAttention": {
+            "timm.models.ClassAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13092,7 +13092,7 @@
                     "default": 0.0
                 }
             },
-            "ClassBlock": {
+            "timm.models.ClassBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13134,7 +13134,7 @@
                     "default": "<class 'torch.nn.modules.normalization.LayerNorm'>"
                 }
             },
-            "OutlookAttention": {
+            "timm.models.OutlookAttention": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13168,7 +13168,7 @@
                     "default": 0.0
                 }
             },
-            "Outlooker": {
+            "timm.models.Outlooker": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13214,7 +13214,7 @@
                     "default": false
                 }
             },
-            "OsaBlock": {
+            "timm.models.OsaBlock": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -13256,7 +13256,7 @@
                     "default": null
                 }
             },
-            "OsaStage": {
+            "timm.models.OsaStage": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -13306,13 +13306,13 @@
                     "default": null
                 }
             },
-            "SequentialAppendList": {
+            "timm.models.SequentialAppendList": {
                 "args": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "PreSeparableConv2d": {
+            "timm.models.PreSeparableConv2d": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -13350,7 +13350,7 @@
                     "default": true
                 }
             },
-            "PreXceptionModule": {
+            "timm.models.PreXceptionModule": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -13384,7 +13384,7 @@
                     "default": null
                 }
             },
-            "XceptionModule": {
+            "timm.models.XceptionModule": {
                 "in_chs": {
                     "type": "unknown",
                     "default": null
@@ -13422,7 +13422,7 @@
                     "default": null
                 }
             },
-            "ClassAttentionBlock": {
+            "timm.models.ClassAttentionBlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13468,7 +13468,7 @@
                     "default": false
                 }
             },
-            "ConvPatchEmbed": {
+            "timm.models.ConvPatchEmbed": {
                 "img_size": {
                     "type": "int",
                     "default": 224
@@ -13490,7 +13490,7 @@
                     "default": "<class 'torch.nn.modules.activation.GELU'>"
                 }
             },
-            "LPI": {
+            "timm.models.LPI": {
                 "in_features": {
                     "type": "unknown",
                     "default": null
@@ -13508,7 +13508,7 @@
                     "default": 3
                 }
             },
-            "XCA": {
+            "timm.models.XCA": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13530,7 +13530,7 @@
                     "default": 0.0
                 }
             },
-            "XCABlock": {
+            "timm.models.XCABlock": {
                 "dim": {
                     "type": "unknown",
                     "default": null
@@ -13765,25 +13765,25 @@
             }
         },
         "torchmetrics": {
-            "AUROC": {
+            "torchmetrics.AUROC": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "Accuracy": {
+            "torchmetrics.Accuracy": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "AveragePrecision": {
+            "torchmetrics.AveragePrecision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "BLEUScore": {
+            "torchmetrics.BLEUScore": {
                 "n_gram": {
                     "type": "int",
                     "default": 4
@@ -13801,7 +13801,7 @@
                     "default": null
                 }
             },
-            "BootStrapper": {
+            "torchmetrics.BootStrapper": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -13835,7 +13835,7 @@
                     "default": null
                 }
             },
-            "CHRFScore": {
+            "torchmetrics.CHRFScore": {
                 "n_char_order": {
                     "type": "int",
                     "default": 6
@@ -13865,13 +13865,13 @@
                     "default": null
                 }
             },
-            "CalibrationError": {
+            "torchmetrics.CalibrationError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "CatMetric": {
+            "torchmetrics.CatMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -13881,13 +13881,13 @@
                     "default": null
                 }
             },
-            "CharErrorRate": {
+            "torchmetrics.CharErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "ClasswiseWrapper": {
+            "torchmetrics.ClasswiseWrapper": {
                 "metric": {
                     "type": "Metric",
                     "default": null
@@ -13905,13 +13905,13 @@
                     "default": null
                 }
             },
-            "CohenKappa": {
+            "torchmetrics.CohenKappa": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "ConcordanceCorrCoef": {
+            "torchmetrics.ConcordanceCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -13921,13 +13921,13 @@
                     "default": null
                 }
             },
-            "ConfusionMatrix": {
+            "torchmetrics.ConfusionMatrix": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "CosineSimilarity": {
+            "torchmetrics.CosineSimilarity": {
                 "reduction": {
                     "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
                     "default": "sum"
@@ -13937,7 +13937,7 @@
                     "default": null
                 }
             },
-            "CramersV": {
+            "torchmetrics.CramersV": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -13959,7 +13959,7 @@
                     "default": null
                 }
             },
-            "CriticalSuccessIndex": {
+            "torchmetrics.CriticalSuccessIndex": {
                 "threshold": {
                     "type": "float",
                     "default": null
@@ -13973,7 +13973,7 @@
                     "default": null
                 }
             },
-            "Dice": {
+            "torchmetrics.Dice": {
                 "zero_division": {
                     "type": "int",
                     "default": 0
@@ -14011,7 +14011,7 @@
                     "default": null
                 }
             },
-            "ErrorRelativeGlobalDimensionlessSynthesis": {
+            "torchmetrics.ErrorRelativeGlobalDimensionlessSynthesis": {
                 "ratio": {
                     "type": "float",
                     "default": 4
@@ -14025,13 +14025,13 @@
                     "default": null
                 }
             },
-            "ExactMatch": {
+            "torchmetrics.ExactMatch": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "ExplainedVariance": {
+            "torchmetrics.ExplainedVariance": {
                 "multioutput": {
                     "type": "typing_extensions.Literal['raw_values', 'uniform_average', 'variance_weighted']",
                     "default": "uniform_average"
@@ -14041,7 +14041,7 @@
                     "default": null
                 }
             },
-            "ExtendedEditDistance": {
+            "torchmetrics.ExtendedEditDistance": {
                 "language": {
                     "type": "typing_extensions.Literal['en', 'ja']",
                     "default": "en"
@@ -14071,19 +14071,19 @@
                     "default": null
                 }
             },
-            "F1Score": {
+            "torchmetrics.F1Score": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "FBetaScore": {
+            "torchmetrics.FBetaScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "FleissKappa": {
+            "torchmetrics.FleissKappa": {
                 "mode": {
                     "type": "typing_extensions.Literal['counts', 'probs']",
                     "default": "counts"
@@ -14093,25 +14093,25 @@
                     "default": null
                 }
             },
-            "HammingDistance": {
+            "torchmetrics.HammingDistance": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "HingeLoss": {
+            "torchmetrics.HingeLoss": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "JaccardIndex": {
+            "torchmetrics.JaccardIndex": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "KLDivergence": {
+            "torchmetrics.KLDivergence": {
                 "log_prob": {
                     "type": "bool",
                     "default": false
@@ -14125,7 +14125,7 @@
                     "default": null
                 }
             },
-            "KendallRankCorrCoef": {
+            "torchmetrics.KendallRankCorrCoef": {
                 "variant": {
                     "type": "typing_extensions.Literal['a', 'b', 'c']",
                     "default": "b"
@@ -14147,7 +14147,7 @@
                     "default": null
                 }
             },
-            "LogCoshError": {
+            "torchmetrics.LogCoshError": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -14157,19 +14157,19 @@
                     "default": null
                 }
             },
-            "MatchErrorRate": {
+            "torchmetrics.MatchErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MatthewsCorrCoef": {
+            "torchmetrics.MatthewsCorrCoef": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MaxMetric": {
+            "torchmetrics.MaxMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -14179,19 +14179,19 @@
                     "default": null
                 }
             },
-            "MeanAbsoluteError": {
+            "torchmetrics.MeanAbsoluteError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MeanAbsolutePercentageError": {
+            "torchmetrics.MeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MeanMetric": {
+            "torchmetrics.MeanMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -14201,7 +14201,7 @@
                     "default": null
                 }
             },
-            "MeanSquaredError": {
+            "torchmetrics.MeanSquaredError": {
                 "squared": {
                     "type": "bool",
                     "default": true
@@ -14215,19 +14215,19 @@
                     "default": null
                 }
             },
-            "MeanSquaredLogError": {
+            "torchmetrics.MeanSquaredLogError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "Metric": {
+            "torchmetrics.Metric": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MetricCollection": {
+            "torchmetrics.MetricCollection": {
                 "metrics": {
                     "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
                     "default": null
@@ -14249,7 +14249,7 @@
                     "default": true
                 }
             },
-            "MetricTracker": {
+            "torchmetrics.MetricTracker": {
                 "metric": {
                     "type": "typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]",
                     "default": null
@@ -14259,7 +14259,7 @@
                     "default": true
                 }
             },
-            "MinMaxMetric": {
+            "torchmetrics.MinMaxMetric": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -14269,7 +14269,7 @@
                     "default": null
                 }
             },
-            "MinMetric": {
+            "torchmetrics.MinMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -14279,7 +14279,7 @@
                     "default": null
                 }
             },
-            "MinkowskiDistance": {
+            "torchmetrics.MinkowskiDistance": {
                 "p": {
                     "type": "float",
                     "default": null
@@ -14289,7 +14289,7 @@
                     "default": null
                 }
             },
-            "ModifiedPanopticQuality": {
+            "torchmetrics.ModifiedPanopticQuality": {
                 "things": {
                     "type": "typing.Collection[int]",
                     "default": null
@@ -14307,7 +14307,7 @@
                     "default": null
                 }
             },
-            "MultiScaleStructuralSimilarityIndexMeasure": {
+            "torchmetrics.MultiScaleStructuralSimilarityIndexMeasure": {
                 "gaussian_kernel": {
                     "type": "bool",
                     "default": true
@@ -14355,7 +14355,7 @@
                     "default": null
                 }
             },
-            "MultioutputWrapper": {
+            "torchmetrics.MultioutputWrapper": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -14377,13 +14377,13 @@
                     "default": true
                 }
             },
-            "MultitaskWrapper": {
+            "torchmetrics.MultitaskWrapper": {
                 "task_metrics": {
                     "type": "typing.Dict[str, typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]]",
                     "default": null
                 }
             },
-            "PanopticQuality": {
+            "torchmetrics.PanopticQuality": {
                 "things": {
                     "type": "typing.Collection[int]",
                     "default": null
@@ -14409,7 +14409,7 @@
                     "default": null
                 }
             },
-            "PeakSignalNoiseRatio": {
+            "torchmetrics.PeakSignalNoiseRatio": {
                 "data_range": {
                     "type": "typing.Union[float, typing.Tuple[float, float], NoneType]",
                     "default": null
@@ -14431,7 +14431,7 @@
                     "default": null
                 }
             },
-            "PearsonCorrCoef": {
+            "torchmetrics.PearsonCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -14441,7 +14441,7 @@
                     "default": null
                 }
             },
-            "PearsonsContingencyCoefficient": {
+            "torchmetrics.PearsonsContingencyCoefficient": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -14459,7 +14459,7 @@
                     "default": null
                 }
             },
-            "PermutationInvariantTraining": {
+            "torchmetrics.PermutationInvariantTraining": {
                 "metric_func": {
                     "type": "typing.Callable",
                     "default": null
@@ -14477,7 +14477,7 @@
                     "default": null
                 }
             },
-            "Perplexity": {
+            "torchmetrics.Perplexity": {
                 "ignore_index": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -14487,25 +14487,25 @@
                     "default": null
                 }
             },
-            "Precision": {
+            "torchmetrics.Precision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "PrecisionAtFixedRecall": {
+            "torchmetrics.PrecisionAtFixedRecall": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "PrecisionRecallCurve": {
+            "torchmetrics.PrecisionRecallCurve": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "R2Score": {
+            "torchmetrics.R2Score": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -14523,25 +14523,25 @@
                     "default": null
                 }
             },
-            "ROC": {
+            "torchmetrics.ROC": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "Recall": {
+            "torchmetrics.Recall": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "RecallAtFixedPrecision": {
+            "torchmetrics.RecallAtFixedPrecision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "RelativeAverageSpectralError": {
+            "torchmetrics.RelativeAverageSpectralError": {
                 "window_size": {
                     "type": "int",
                     "default": 8
@@ -14551,7 +14551,7 @@
                     "default": null
                 }
             },
-            "RelativeSquaredError": {
+            "torchmetrics.RelativeSquaredError": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -14565,7 +14565,7 @@
                     "default": null
                 }
             },
-            "RetrievalFallOut": {
+            "torchmetrics.RetrievalFallOut": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "pos"
@@ -14587,7 +14587,7 @@
                     "default": null
                 }
             },
-            "RetrievalHitRate": {
+            "torchmetrics.RetrievalHitRate": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14609,7 +14609,7 @@
                     "default": null
                 }
             },
-            "RetrievalMAP": {
+            "torchmetrics.RetrievalMAP": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14631,7 +14631,7 @@
                     "default": null
                 }
             },
-            "RetrievalMRR": {
+            "torchmetrics.RetrievalMRR": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14653,7 +14653,7 @@
                     "default": null
                 }
             },
-            "RetrievalNormalizedDCG": {
+            "torchmetrics.RetrievalNormalizedDCG": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14675,7 +14675,7 @@
                     "default": null
                 }
             },
-            "RetrievalPrecision": {
+            "torchmetrics.RetrievalPrecision": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14701,7 +14701,7 @@
                     "default": null
                 }
             },
-            "RetrievalPrecisionRecallCurve": {
+            "torchmetrics.RetrievalPrecisionRecallCurve": {
                 "max_k": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -14727,7 +14727,7 @@
                     "default": null
                 }
             },
-            "RetrievalRPrecision": {
+            "torchmetrics.RetrievalRPrecision": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14745,7 +14745,7 @@
                     "default": null
                 }
             },
-            "RetrievalRecall": {
+            "torchmetrics.RetrievalRecall": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -14767,7 +14767,7 @@
                     "default": null
                 }
             },
-            "RetrievalRecallAtFixedPrecision": {
+            "torchmetrics.RetrievalRecallAtFixedPrecision": {
                 "min_precision": {
                     "type": "float",
                     "default": 0.0
@@ -14793,7 +14793,7 @@
                     "default": null
                 }
             },
-            "RootMeanSquaredErrorUsingSlidingWindow": {
+            "torchmetrics.RootMeanSquaredErrorUsingSlidingWindow": {
                 "window_size": {
                     "type": "int",
                     "default": 8
@@ -14803,7 +14803,7 @@
                     "default": null
                 }
             },
-            "RunningMean": {
+            "torchmetrics.RunningMean": {
                 "window": {
                     "type": "int",
                     "default": 5
@@ -14817,7 +14817,7 @@
                     "default": null
                 }
             },
-            "RunningSum": {
+            "torchmetrics.RunningSum": {
                 "window": {
                     "type": "int",
                     "default": 5
@@ -14831,13 +14831,13 @@
                     "default": null
                 }
             },
-            "SQuAD": {
+            "torchmetrics.SQuAD": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "SacreBLEUScore": {
+            "torchmetrics.SacreBLEUScore": {
                 "n_gram": {
                     "type": "int",
                     "default": 4
@@ -14863,7 +14863,7 @@
                     "default": null
                 }
             },
-            "ScaleInvariantSignalDistortionRatio": {
+            "torchmetrics.ScaleInvariantSignalDistortionRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -14873,19 +14873,19 @@
                     "default": null
                 }
             },
-            "ScaleInvariantSignalNoiseRatio": {
+            "torchmetrics.ScaleInvariantSignalNoiseRatio": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "SensitivityAtSpecificity": {
+            "torchmetrics.SensitivityAtSpecificity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "SignalDistortionRatio": {
+            "torchmetrics.SignalDistortionRatio": {
                 "use_cg_iter": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -14907,7 +14907,7 @@
                     "default": null
                 }
             },
-            "SignalNoiseRatio": {
+            "torchmetrics.SignalNoiseRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -14917,7 +14917,7 @@
                     "default": null
                 }
             },
-            "SpearmanCorrCoef": {
+            "torchmetrics.SpearmanCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -14927,19 +14927,19 @@
                     "default": null
                 }
             },
-            "Specificity": {
+            "torchmetrics.Specificity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "SpecificityAtSensitivity": {
+            "torchmetrics.SpecificityAtSensitivity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "SpectralAngleMapper": {
+            "torchmetrics.SpectralAngleMapper": {
                 "reduction": {
                     "type": "typing.Optional[typing_extensions.Literal['elementwise_mean', 'sum', 'none']]",
                     "default": "elementwise_mean"
@@ -14949,7 +14949,7 @@
                     "default": null
                 }
             },
-            "SpectralDistortionIndex": {
+            "torchmetrics.SpectralDistortionIndex": {
                 "p": {
                     "type": "int",
                     "default": 1
@@ -14963,13 +14963,13 @@
                     "default": null
                 }
             },
-            "StatScores": {
+            "torchmetrics.StatScores": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "StructuralSimilarityIndexMeasure": {
+            "torchmetrics.StructuralSimilarityIndexMeasure": {
                 "gaussian_kernel": {
                     "type": "bool",
                     "default": true
@@ -15011,7 +15011,7 @@
                     "default": null
                 }
             },
-            "SumMetric": {
+            "torchmetrics.SumMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -15021,13 +15021,13 @@
                     "default": null
                 }
             },
-            "SymmetricMeanAbsolutePercentageError": {
+            "torchmetrics.SymmetricMeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "TheilsU": {
+            "torchmetrics.TheilsU": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15045,7 +15045,7 @@
                     "default": null
                 }
             },
-            "TotalVariation": {
+            "torchmetrics.TotalVariation": {
                 "reduction": {
                     "type": "typing.Optional[typing_extensions.Literal['mean', 'sum', 'none']]",
                     "default": "sum"
@@ -15055,7 +15055,7 @@
                     "default": null
                 }
             },
-            "TranslationEditRate": {
+            "torchmetrics.TranslationEditRate": {
                 "normalize": {
                     "type": "bool",
                     "default": false
@@ -15081,7 +15081,7 @@
                     "default": null
                 }
             },
-            "TschuprowsT": {
+            "torchmetrics.TschuprowsT": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15103,7 +15103,7 @@
                     "default": null
                 }
             },
-            "TweedieDevianceScore": {
+            "torchmetrics.TweedieDevianceScore": {
                 "power": {
                     "type": "float",
                     "default": 0.0
@@ -15113,7 +15113,7 @@
                     "default": null
                 }
             },
-            "UniversalImageQualityIndex": {
+            "torchmetrics.UniversalImageQualityIndex": {
                 "kernel_size": {
                     "type": "typing.Sequence[int]",
                     "default": [
@@ -15137,31 +15137,31 @@
                     "default": null
                 }
             },
-            "WeightedMeanAbsolutePercentageError": {
+            "torchmetrics.WeightedMeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "WordErrorRate": {
+            "torchmetrics.WordErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "WordInfoLost": {
+            "torchmetrics.WordInfoLost": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "WordInfoPreserved": {
+            "torchmetrics.WordInfoPreserved": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "BaseAggregator": {
+            "torchmetrics.BaseAggregator": {
                 "fn": {
                     "type": "typing.Union[typing.Callable, str]",
                     "default": null
@@ -15183,7 +15183,7 @@
                     "default": null
                 }
             },
-            "ComplexScaleInvariantSignalNoiseRatio": {
+            "torchmetrics.ComplexScaleInvariantSignalNoiseRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -15193,7 +15193,7 @@
                     "default": null
                 }
             },
-            "SourceAggregatedSignalDistortionRatio": {
+            "torchmetrics.SourceAggregatedSignalDistortionRatio": {
                 "scale_invariant": {
                     "type": "bool",
                     "default": true
@@ -15207,7 +15207,7 @@
                     "default": null
                 }
             },
-            "PerceptualEvaluationSpeechQuality": {
+            "torchmetrics.PerceptualEvaluationSpeechQuality": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -15225,7 +15225,7 @@
                     "default": null
                 }
             },
-            "SpeechReverberationModulationEnergyRatio": {
+            "torchmetrics.SpeechReverberationModulationEnergyRatio": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -15259,7 +15259,7 @@
                     "default": null
                 }
             },
-            "ShortTimeObjectiveIntelligibility": {
+            "torchmetrics.ShortTimeObjectiveIntelligibility": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -15273,7 +15273,7 @@
                     "default": null
                 }
             },
-            "BinaryAUROC": {
+            "torchmetrics.BinaryAUROC": {
                 "max_fpr": {
                     "type": "typing.Optional[float]",
                     "default": null
@@ -15295,7 +15295,7 @@
                     "default": null
                 }
             },
-            "BinaryAccuracy": {
+            "torchmetrics.BinaryAccuracy": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15317,7 +15317,7 @@
                     "default": null
                 }
             },
-            "BinaryAveragePrecision": {
+            "torchmetrics.BinaryAveragePrecision": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -15335,7 +15335,7 @@
                     "default": null
                 }
             },
-            "BinaryCalibrationError": {
+            "torchmetrics.BinaryCalibrationError": {
                 "n_bins": {
                     "type": "int",
                     "default": 15
@@ -15357,7 +15357,7 @@
                     "default": null
                 }
             },
-            "BinaryCohenKappa": {
+            "torchmetrics.BinaryCohenKappa": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15379,7 +15379,7 @@
                     "default": null
                 }
             },
-            "BinaryConfusionMatrix": {
+            "torchmetrics.BinaryConfusionMatrix": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15401,7 +15401,7 @@
                     "default": null
                 }
             },
-            "BinaryF1Score": {
+            "torchmetrics.BinaryF1Score": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15427,7 +15427,7 @@
                     "default": null
                 }
             },
-            "BinaryFBetaScore": {
+            "torchmetrics.BinaryFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -15457,7 +15457,7 @@
                     "default": null
                 }
             },
-            "BinaryFairness": {
+            "torchmetrics.BinaryFairness": {
                 "num_groups": {
                     "type": "int",
                     "default": null
@@ -15483,7 +15483,7 @@
                     "default": null
                 }
             },
-            "BinaryGroupStatRates": {
+            "torchmetrics.BinaryGroupStatRates": {
                 "num_groups": {
                     "type": "int",
                     "default": null
@@ -15505,7 +15505,7 @@
                     "default": null
                 }
             },
-            "BinaryHammingDistance": {
+            "torchmetrics.BinaryHammingDistance": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15527,7 +15527,7 @@
                     "default": null
                 }
             },
-            "BinaryHingeLoss": {
+            "torchmetrics.BinaryHingeLoss": {
                 "squared": {
                     "type": "bool",
                     "default": false
@@ -15545,7 +15545,7 @@
                     "default": null
                 }
             },
-            "BinaryJaccardIndex": {
+            "torchmetrics.BinaryJaccardIndex": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15567,7 +15567,7 @@
                     "default": null
                 }
             },
-            "BinaryMatthewsCorrCoef": {
+            "torchmetrics.BinaryMatthewsCorrCoef": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15585,7 +15585,7 @@
                     "default": null
                 }
             },
-            "BinaryPrecision": {
+            "torchmetrics.BinaryPrecision": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15607,7 +15607,7 @@
                     "default": null
                 }
             },
-            "BinaryPrecisionAtFixedRecall": {
+            "torchmetrics.BinaryPrecisionAtFixedRecall": {
                 "min_recall": {
                     "type": "float",
                     "default": null
@@ -15629,7 +15629,7 @@
                     "default": null
                 }
             },
-            "BinaryPrecisionRecallCurve": {
+            "torchmetrics.BinaryPrecisionRecallCurve": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -15647,7 +15647,7 @@
                     "default": null
                 }
             },
-            "BinaryROC": {
+            "torchmetrics.BinaryROC": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -15665,7 +15665,7 @@
                     "default": null
                 }
             },
-            "BinaryRecall": {
+            "torchmetrics.BinaryRecall": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15687,7 +15687,7 @@
                     "default": null
                 }
             },
-            "BinaryRecallAtFixedPrecision": {
+            "torchmetrics.BinaryRecallAtFixedPrecision": {
                 "min_precision": {
                     "type": "float",
                     "default": null
@@ -15709,7 +15709,7 @@
                     "default": null
                 }
             },
-            "BinarySensitivityAtSpecificity": {
+            "torchmetrics.BinarySensitivityAtSpecificity": {
                 "min_specificity": {
                     "type": "float",
                     "default": null
@@ -15731,7 +15731,7 @@
                     "default": null
                 }
             },
-            "BinarySpecificity": {
+            "torchmetrics.BinarySpecificity": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15753,7 +15753,7 @@
                     "default": null
                 }
             },
-            "BinarySpecificityAtSensitivity": {
+            "torchmetrics.BinarySpecificityAtSensitivity": {
                 "min_sensitivity": {
                     "type": "float",
                     "default": null
@@ -15775,7 +15775,7 @@
                     "default": null
                 }
             },
-            "BinaryStatScores": {
+            "torchmetrics.BinaryStatScores": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -15797,7 +15797,7 @@
                     "default": null
                 }
             },
-            "MulticlassAUROC": {
+            "torchmetrics.MulticlassAUROC": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15823,7 +15823,7 @@
                     "default": null
                 }
             },
-            "MulticlassAccuracy": {
+            "torchmetrics.MulticlassAccuracy": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15853,7 +15853,7 @@
                     "default": null
                 }
             },
-            "MulticlassAveragePrecision": {
+            "torchmetrics.MulticlassAveragePrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15879,7 +15879,7 @@
                     "default": null
                 }
             },
-            "MulticlassCalibrationError": {
+            "torchmetrics.MulticlassCalibrationError": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15905,7 +15905,7 @@
                     "default": null
                 }
             },
-            "MulticlassCohenKappa": {
+            "torchmetrics.MulticlassCohenKappa": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15927,7 +15927,7 @@
                     "default": null
                 }
             },
-            "MulticlassConfusionMatrix": {
+            "torchmetrics.MulticlassConfusionMatrix": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15949,7 +15949,7 @@
                     "default": null
                 }
             },
-            "MulticlassExactMatch": {
+            "torchmetrics.MulticlassExactMatch": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -15971,7 +15971,7 @@
                     "default": null
                 }
             },
-            "MulticlassF1Score": {
+            "torchmetrics.MulticlassF1Score": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16005,7 +16005,7 @@
                     "default": null
                 }
             },
-            "MulticlassFBetaScore": {
+            "torchmetrics.MulticlassFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -16043,7 +16043,7 @@
                     "default": null
                 }
             },
-            "MulticlassHammingDistance": {
+            "torchmetrics.MulticlassHammingDistance": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16073,7 +16073,7 @@
                     "default": null
                 }
             },
-            "MulticlassHingeLoss": {
+            "torchmetrics.MulticlassHingeLoss": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16099,7 +16099,7 @@
                     "default": null
                 }
             },
-            "MulticlassJaccardIndex": {
+            "torchmetrics.MulticlassJaccardIndex": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16125,7 +16125,7 @@
                     "default": null
                 }
             },
-            "MulticlassMatthewsCorrCoef": {
+            "torchmetrics.MulticlassMatthewsCorrCoef": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16143,7 +16143,7 @@
                     "default": null
                 }
             },
-            "MulticlassPrecision": {
+            "torchmetrics.MulticlassPrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16173,7 +16173,7 @@
                     "default": null
                 }
             },
-            "MulticlassPrecisionAtFixedRecall": {
+            "torchmetrics.MulticlassPrecisionAtFixedRecall": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16199,7 +16199,7 @@
                     "default": null
                 }
             },
-            "MulticlassPrecisionRecallCurve": {
+            "torchmetrics.MulticlassPrecisionRecallCurve": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16225,7 +16225,7 @@
                     "default": null
                 }
             },
-            "MulticlassROC": {
+            "torchmetrics.MulticlassROC": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16251,7 +16251,7 @@
                     "default": null
                 }
             },
-            "MulticlassRecall": {
+            "torchmetrics.MulticlassRecall": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16281,7 +16281,7 @@
                     "default": null
                 }
             },
-            "MulticlassRecallAtFixedPrecision": {
+            "torchmetrics.MulticlassRecallAtFixedPrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16307,7 +16307,7 @@
                     "default": null
                 }
             },
-            "MulticlassSensitivityAtSpecificity": {
+            "torchmetrics.MulticlassSensitivityAtSpecificity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16333,7 +16333,7 @@
                     "default": null
                 }
             },
-            "MulticlassSpecificity": {
+            "torchmetrics.MulticlassSpecificity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16363,7 +16363,7 @@
                     "default": null
                 }
             },
-            "MulticlassSpecificityAtSensitivity": {
+            "torchmetrics.MulticlassSpecificityAtSensitivity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16389,7 +16389,7 @@
                     "default": null
                 }
             },
-            "MulticlassStatScores": {
+            "torchmetrics.MulticlassStatScores": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -16419,7 +16419,7 @@
                     "default": null
                 }
             },
-            "MultilabelAUROC": {
+            "torchmetrics.MultilabelAUROC": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16445,7 +16445,7 @@
                     "default": null
                 }
             },
-            "MultilabelAccuracy": {
+            "torchmetrics.MultilabelAccuracy": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16475,7 +16475,7 @@
                     "default": null
                 }
             },
-            "MultilabelAveragePrecision": {
+            "torchmetrics.MultilabelAveragePrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16501,7 +16501,7 @@
                     "default": null
                 }
             },
-            "MultilabelConfusionMatrix": {
+            "torchmetrics.MultilabelConfusionMatrix": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16527,7 +16527,7 @@
                     "default": null
                 }
             },
-            "MultilabelCoverageError": {
+            "torchmetrics.MultilabelCoverageError": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16545,7 +16545,7 @@
                     "default": null
                 }
             },
-            "MultilabelExactMatch": {
+            "torchmetrics.MultilabelExactMatch": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16571,7 +16571,7 @@
                     "default": null
                 }
             },
-            "MultilabelF1Score": {
+            "torchmetrics.MultilabelF1Score": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16605,7 +16605,7 @@
                     "default": null
                 }
             },
-            "MultilabelFBetaScore": {
+            "torchmetrics.MultilabelFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -16643,7 +16643,7 @@
                     "default": null
                 }
             },
-            "MultilabelHammingDistance": {
+            "torchmetrics.MultilabelHammingDistance": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16673,7 +16673,7 @@
                     "default": null
                 }
             },
-            "MultilabelJaccardIndex": {
+            "torchmetrics.MultilabelJaccardIndex": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16703,7 +16703,7 @@
                     "default": null
                 }
             },
-            "MultilabelMatthewsCorrCoef": {
+            "torchmetrics.MultilabelMatthewsCorrCoef": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16725,7 +16725,7 @@
                     "default": null
                 }
             },
-            "MultilabelPrecision": {
+            "torchmetrics.MultilabelPrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16755,7 +16755,7 @@
                     "default": null
                 }
             },
-            "MultilabelPrecisionAtFixedRecall": {
+            "torchmetrics.MultilabelPrecisionAtFixedRecall": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16781,7 +16781,7 @@
                     "default": null
                 }
             },
-            "MultilabelPrecisionRecallCurve": {
+            "torchmetrics.MultilabelPrecisionRecallCurve": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16803,7 +16803,7 @@
                     "default": null
                 }
             },
-            "MultilabelROC": {
+            "torchmetrics.MultilabelROC": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16825,7 +16825,7 @@
                     "default": null
                 }
             },
-            "MultilabelRankingAveragePrecision": {
+            "torchmetrics.MultilabelRankingAveragePrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16843,7 +16843,7 @@
                     "default": null
                 }
             },
-            "MultilabelRankingLoss": {
+            "torchmetrics.MultilabelRankingLoss": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16861,7 +16861,7 @@
                     "default": null
                 }
             },
-            "MultilabelRecall": {
+            "torchmetrics.MultilabelRecall": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16891,7 +16891,7 @@
                     "default": null
                 }
             },
-            "MultilabelRecallAtFixedPrecision": {
+            "torchmetrics.MultilabelRecallAtFixedPrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16917,7 +16917,7 @@
                     "default": null
                 }
             },
-            "MultilabelSensitivityAtSpecificity": {
+            "torchmetrics.MultilabelSensitivityAtSpecificity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16943,7 +16943,7 @@
                     "default": null
                 }
             },
-            "MultilabelSpecificity": {
+            "torchmetrics.MultilabelSpecificity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16973,7 +16973,7 @@
                     "default": null
                 }
             },
-            "MultilabelSpecificityAtSensitivity": {
+            "torchmetrics.MultilabelSpecificityAtSensitivity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -16999,7 +16999,7 @@
                     "default": null
                 }
             },
-            "MultilabelStatScores": {
+            "torchmetrics.MultilabelStatScores": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -17029,7 +17029,7 @@
                     "default": null
                 }
             },
-            "AdjustedMutualInfoScore": {
+            "torchmetrics.AdjustedMutualInfoScore": {
                 "average_method": {
                     "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
                     "default": "arithmetic"
@@ -17039,31 +17039,31 @@
                     "default": null
                 }
             },
-            "AdjustedRandScore": {
+            "torchmetrics.AdjustedRandScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "CalinskiHarabaszScore": {
+            "torchmetrics.CalinskiHarabaszScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "CompletenessScore": {
+            "torchmetrics.CompletenessScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "DaviesBouldinScore": {
+            "torchmetrics.DaviesBouldinScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "DunnIndex": {
+            "torchmetrics.DunnIndex": {
                 "p": {
                     "type": "float",
                     "default": 2
@@ -17073,25 +17073,25 @@
                     "default": null
                 }
             },
-            "FowlkesMallowsIndex": {
+            "torchmetrics.FowlkesMallowsIndex": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "HomogeneityScore": {
+            "torchmetrics.HomogeneityScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "MutualInfoScore": {
+            "torchmetrics.MutualInfoScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "NormalizedMutualInfoScore": {
+            "torchmetrics.NormalizedMutualInfoScore": {
                 "average_method": {
                     "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
                     "default": "arithmetic"
@@ -17101,13 +17101,13 @@
                     "default": null
                 }
             },
-            "RandScore": {
+            "torchmetrics.RandScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "VMeasureScore": {
+            "torchmetrics.VMeasureScore": {
                 "beta": {
                     "type": "float",
                     "default": 1.0
@@ -17117,7 +17117,7 @@
                     "default": null
                 }
             },
-            "CompleteIntersectionOverUnion": {
+            "torchmetrics.CompleteIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -17139,7 +17139,7 @@
                     "default": null
                 }
             },
-            "DistanceIntersectionOverUnion": {
+            "torchmetrics.DistanceIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -17161,7 +17161,7 @@
                     "default": null
                 }
             },
-            "GeneralizedIntersectionOverUnion": {
+            "torchmetrics.GeneralizedIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -17183,7 +17183,7 @@
                     "default": null
                 }
             },
-            "IntersectionOverUnion": {
+            "torchmetrics.IntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -17205,7 +17205,7 @@
                     "default": null
                 }
             },
-            "MeanAveragePrecision": {
+            "torchmetrics.MeanAveragePrecision": {
                 "box_format": {
                     "type": "typing_extensions.Literal['xyxy', 'xywh', 'cxcywh']",
                     "default": "xyxy"
@@ -17247,7 +17247,7 @@
                     "default": null
                 }
             },
-            "BaseMetricResults": {
+            "torchmetrics.BaseMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17257,7 +17257,7 @@
                     "default": null
                 }
             },
-            "COCOMetricResults": {
+            "torchmetrics.COCOMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17267,7 +17267,7 @@
                     "default": null
                 }
             },
-            "MAPMetricResults": {
+            "torchmetrics.MAPMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17277,7 +17277,7 @@
                     "default": null
                 }
             },
-            "MARMetricResults": {
+            "torchmetrics.MARMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17287,7 +17287,7 @@
                     "default": null
                 }
             },
-            "Alexnet": {
+            "torchmetrics.Alexnet": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -17297,7 +17297,7 @@
                     "default": true
                 }
             },
-            "NetLinLayer": {
+            "torchmetrics.NetLinLayer": {
                 "chn_in": {
                     "type": "int",
                     "default": null
@@ -17311,8 +17311,8 @@
                     "default": false
                 }
             },
-            "ScalingLayer": {},
-            "SqueezeNet": {
+            "torchmetrics.ScalingLayer": {},
+            "torchmetrics.SqueezeNet": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -17322,7 +17322,7 @@
                     "default": true
                 }
             },
-            "Vgg16": {
+            "torchmetrics.Vgg16": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -17332,7 +17332,7 @@
                     "default": true
                 }
             },
-            "GeneratorType": {
+            "torchmetrics.GeneratorType": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17342,7 +17342,7 @@
                     "default": null
                 }
             },
-            "TextDataset": {
+            "torchmetrics.TextDataset": {
                 "text": {
                     "type": "typing.List[str]",
                     "default": null
@@ -17357,7 +17357,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x125770d30>"
+                    "default": "<function _preprocess_text at 0x14e263d30>"
                 },
                 "idf": {
                     "type": "bool",
@@ -17368,7 +17368,7 @@
                     "default": null
                 }
             },
-            "TokenizedDataset": {
+            "torchmetrics.TokenizedDataset": {
                 "input_ids": {
                     "type": "Tensor",
                     "default": null
@@ -17386,7 +17386,7 @@
                     "default": null
                 }
             },
-            "LearnedPerceptualImagePatchSimilarity": {
+            "torchmetrics.LearnedPerceptualImagePatchSimilarity": {
                 "net_type": {
                     "type": "typing_extensions.Literal['vgg', 'alex', 'squeeze']",
                     "default": "alex"
@@ -17404,7 +17404,7 @@
                     "default": null
                 }
             },
-            "MemorizationInformedFrechetInceptionDistance": {
+            "torchmetrics.MemorizationInformedFrechetInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -17426,7 +17426,7 @@
                     "default": null
                 }
             },
-            "PeakSignalNoiseRatioWithBlockedEffect": {
+            "torchmetrics.PeakSignalNoiseRatioWithBlockedEffect": {
                 "block_size": {
                     "type": "int",
                     "default": 8
@@ -17436,7 +17436,7 @@
                     "default": null
                 }
             },
-            "PerceptualPathLength": {
+            "torchmetrics.PerceptualPathLength": {
                 "num_samples": {
                     "type": "int",
                     "default": 10000
@@ -17478,7 +17478,7 @@
                     "default": null
                 }
             },
-            "QualityWithNoReference": {
+            "torchmetrics.QualityWithNoReference": {
                 "alpha": {
                     "type": "float",
                     "default": 1
@@ -17504,7 +17504,7 @@
                     "default": null
                 }
             },
-            "SpatialCorrelationCoefficient": {
+            "torchmetrics.SpatialCorrelationCoefficient": {
                 "high_pass_filter": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -17518,7 +17518,7 @@
                     "default": null
                 }
             },
-            "SpatialDistortionIndex": {
+            "torchmetrics.SpatialDistortionIndex": {
                 "norm_order": {
                     "type": "int",
                     "default": 1
@@ -17536,7 +17536,7 @@
                     "default": null
                 }
             },
-            "VisualInformationFidelity": {
+            "torchmetrics.VisualInformationFidelity": {
                 "sigma_n_sq": {
                     "type": "float",
                     "default": 2.0
@@ -17546,7 +17546,7 @@
                     "default": null
                 }
             },
-            "FrechetInceptionDistance": {
+            "torchmetrics.FrechetInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -17572,7 +17572,7 @@
                     "default": null
                 }
             },
-            "NoTrainInceptionV3": {
+            "torchmetrics.NoTrainInceptionV3": {
                 "name": {
                     "type": "str",
                     "default": null
@@ -17586,7 +17586,7 @@
                     "default": null
                 }
             },
-            "InceptionScore": {
+            "torchmetrics.InceptionScore": {
                 "feature": {
                     "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
                     "default": "logits_unbiased"
@@ -17604,7 +17604,7 @@
                     "default": null
                 }
             },
-            "KernelInceptionDistance": {
+            "torchmetrics.KernelInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -17642,7 +17642,7 @@
                     "default": null
                 }
             },
-            "CompositionalMetric": {
+            "torchmetrics.CompositionalMetric": {
                 "operator": {
                     "type": "typing.Callable",
                     "default": null
@@ -17656,7 +17656,7 @@
                     "default": null
                 }
             },
-            "CLIPImageQualityAssessment": {
+            "torchmetrics.CLIPImageQualityAssessment": {
                 "model_name_or_path": {
                     "type": "typing.Literal['clip_iqa', 'openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "clip_iqa"
@@ -17676,7 +17676,7 @@
                     "default": null
                 }
             },
-            "CLIPScore": {
+            "torchmetrics.CLIPScore": {
                 "model_name_or_path": {
                     "type": "typing_extensions.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "openai/clip-vit-large-patch14"
@@ -17686,7 +17686,7 @@
                     "default": null
                 }
             },
-            "RetrievalAUROC": {
+            "torchmetrics.RetrievalAUROC": {
                 "empty_target_action": {
                     "type": "typing_extensions.Literal['error', 'skip', 'neg', 'pos']",
                     "default": "neg"
@@ -17712,7 +17712,7 @@
                     "default": null
                 }
             },
-            "RetrievalMetric": {
+            "torchmetrics.RetrievalMetric": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -17730,7 +17730,7 @@
                     "default": null
                 }
             },
-            "GeneralizedDiceScore": {
+            "torchmetrics.GeneralizedDiceScore": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -17752,7 +17752,7 @@
                     "default": null
                 }
             },
-            "MeanIoU": {
+            "torchmetrics.MeanIoU": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -17770,7 +17770,7 @@
                     "default": null
                 }
             },
-            "EditDistance": {
+            "torchmetrics.EditDistance": {
                 "substitution_cost": {
                     "type": "int",
                     "default": 1
@@ -17784,7 +17784,7 @@
                     "default": null
                 }
             },
-            "ROUGEScore": {
+            "torchmetrics.ROUGEScore": {
                 "use_stemmer": {
                     "type": "bool",
                     "default": false
@@ -17815,7 +17815,7 @@
                     "default": null
                 }
             },
-            "BERTScore": {
+            "torchmetrics.BERTScore": {
                 "model_name_or_path": {
                     "type": "typing.Optional[str]",
                     "default": null
@@ -17889,7 +17889,7 @@
                     "default": null
                 }
             },
-            "InfoLM": {
+            "torchmetrics.InfoLM": {
                 "model_name_or_path": {
                     "type": "typing.Union[str, os.PathLike]",
                     "default": "bert-base-uncased"
@@ -17943,7 +17943,7 @@
                     "default": null
                 }
             },
-            "AverageMethod": {
+            "torchmetrics.AverageMethod": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17953,7 +17953,7 @@
                     "default": null
                 }
             },
-            "ClassificationTask": {
+            "torchmetrics.ClassificationTask": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17963,7 +17963,7 @@
                     "default": null
                 }
             },
-            "ClassificationTaskNoBinary": {
+            "torchmetrics.ClassificationTaskNoBinary": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17973,7 +17973,7 @@
                     "default": null
                 }
             },
-            "ClassificationTaskNoMultilabel": {
+            "torchmetrics.ClassificationTaskNoMultilabel": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17983,7 +17983,7 @@
                     "default": null
                 }
             },
-            "DataType": {
+            "torchmetrics.DataType": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -17993,7 +17993,7 @@
                     "default": null
                 }
             },
-            "EnumStr": {
+            "torchmetrics.EnumStr": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -18003,7 +18003,7 @@
                     "default": null
                 }
             },
-            "MDMCAverageMethod": {
+            "torchmetrics.MDMCAverageMethod": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -18013,7 +18013,7 @@
                     "default": null
                 }
             },
-            "TorchMetricsUserError": {
+            "torchmetrics.TorchMetricsUserError": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -18023,7 +18023,7 @@
                     "default": null
                 }
             },
-            "TorchMetricsUserWarning": {
+            "torchmetrics.TorchMetricsUserWarning": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -18033,7 +18033,7 @@
                     "default": null
                 }
             },
-            "FeatureShare": {
+            "torchmetrics.FeatureShare": {
                 "metrics": {
                     "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
                     "default": null
@@ -18043,7 +18043,7 @@
                     "default": null
                 }
             },
-            "Running": {
+            "torchmetrics.Running": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -18053,13 +18053,13 @@
                     "default": 5
                 }
             },
-            "WrapperMetric": {
+            "torchmetrics.WrapperMetric": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "NetworkCache": {
+            "torchmetrics.NetworkCache": {
                 "network": {
                     "type": "Module",
                     "default": null
@@ -18090,7 +18090,7 @@
             }
         },
         "torch.nn.modules.loss": {
-            "BCELoss": {
+            "torch.nn.modules.loss.BCELoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18108,7 +18108,7 @@
                     "default": "mean"
                 }
             },
-            "BCEWithLogitsLoss": {
+            "torch.nn.modules.loss.BCEWithLogitsLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18130,7 +18130,7 @@
                     "default": null
                 }
             },
-            "CTCLoss": {
+            "torch.nn.modules.loss.CTCLoss": {
                 "blank": {
                     "type": "int",
                     "default": 0
@@ -18144,7 +18144,7 @@
                     "default": false
                 }
             },
-            "CosineEmbeddingLoss": {
+            "torch.nn.modules.loss.CosineEmbeddingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 0.0
@@ -18162,7 +18162,7 @@
                     "default": "mean"
                 }
             },
-            "CrossEntropyLoss": {
+            "torch.nn.modules.loss.CrossEntropyLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18188,7 +18188,7 @@
                     "default": 0.0
                 }
             },
-            "GaussianNLLLoss": {
+            "torch.nn.modules.loss.GaussianNLLLoss": {
                 "full": {
                     "type": "bool",
                     "default": false
@@ -18202,7 +18202,7 @@
                     "default": "mean"
                 }
             },
-            "HingeEmbeddingLoss": {
+            "torch.nn.modules.loss.HingeEmbeddingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 1.0
@@ -18220,7 +18220,7 @@
                     "default": "mean"
                 }
             },
-            "HuberLoss": {
+            "torch.nn.modules.loss.HuberLoss": {
                 "reduction": {
                     "type": "str",
                     "default": "mean"
@@ -18230,7 +18230,7 @@
                     "default": 1.0
                 }
             },
-            "KLDivLoss": {
+            "torch.nn.modules.loss.KLDivLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18248,7 +18248,7 @@
                     "default": false
                 }
             },
-            "L1Loss": {
+            "torch.nn.modules.loss.L1Loss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18262,7 +18262,7 @@
                     "default": "mean"
                 }
             },
-            "MSELoss": {
+            "torch.nn.modules.loss.MSELoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18276,7 +18276,7 @@
                     "default": "mean"
                 }
             },
-            "MarginRankingLoss": {
+            "torch.nn.modules.loss.MarginRankingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 0.0
@@ -18294,7 +18294,7 @@
                     "default": "mean"
                 }
             },
-            "MultiLabelMarginLoss": {
+            "torch.nn.modules.loss.MultiLabelMarginLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18308,7 +18308,7 @@
                     "default": "mean"
                 }
             },
-            "MultiLabelSoftMarginLoss": {
+            "torch.nn.modules.loss.MultiLabelSoftMarginLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18326,7 +18326,7 @@
                     "default": "mean"
                 }
             },
-            "MultiMarginLoss": {
+            "torch.nn.modules.loss.MultiMarginLoss": {
                 "p": {
                     "type": "int",
                     "default": 1
@@ -18352,7 +18352,7 @@
                     "default": "mean"
                 }
             },
-            "NLLLoss": {
+            "torch.nn.modules.loss.NLLLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18374,7 +18374,7 @@
                     "default": "mean"
                 }
             },
-            "PoissonNLLLoss": {
+            "torch.nn.modules.loss.PoissonNLLLoss": {
                 "log_input": {
                     "type": "bool",
                     "default": true
@@ -18400,7 +18400,7 @@
                     "default": "mean"
                 }
             },
-            "SmoothL1Loss": {
+            "torch.nn.modules.loss.SmoothL1Loss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18418,7 +18418,7 @@
                     "default": 1.0
                 }
             },
-            "SoftMarginLoss": {
+            "torch.nn.modules.loss.SoftMarginLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -18432,7 +18432,7 @@
                     "default": "mean"
                 }
             },
-            "TripletMarginLoss": {
+            "torch.nn.modules.loss.TripletMarginLoss": {
                 "margin": {
                     "type": "float",
                     "default": 1.0
@@ -18462,7 +18462,7 @@
                     "default": "mean"
                 }
             },
-            "TripletMarginWithDistanceLoss": {
+            "torch.nn.modules.loss.TripletMarginWithDistanceLoss": {
                 "distance_function": {
                     "type": "typing.Optional[typing.Callable[[torch.Tensor, torch.Tensor], torch.Tensor]]",
                     "default": null
@@ -18482,7 +18482,7 @@
             }
         },
         "segmentation_models_pytorch.losses": {
-            "DiceLoss": {
+            "segmentation_models_pytorch.losses.DiceLoss": {
                 "mode": {
                     "type": "str",
                     "default": null
@@ -18512,7 +18512,7 @@
                     "default": 1e-07
                 }
             },
-            "FocalLoss": {
+            "segmentation_models_pytorch.losses.FocalLoss": {
                 "mode": {
                     "type": "str",
                     "default": null
@@ -18542,7 +18542,7 @@
                     "default": null
                 }
             },
-            "JaccardLoss": {
+            "segmentation_models_pytorch.losses.JaccardLoss": {
                 "mode": {
                     "type": "str",
                     "default": null
@@ -18568,7 +18568,7 @@
                     "default": 1e-07
                 }
             },
-            "LovaszLoss": {
+            "segmentation_models_pytorch.losses.LovaszLoss": {
                 "mode": {
                     "type": "str",
                     "default": null
@@ -18586,13 +18586,13 @@
                     "default": true
                 }
             },
-            "MCCLoss": {
+            "segmentation_models_pytorch.losses.MCCLoss": {
                 "eps": {
                     "type": "float",
                     "default": 1e-05
                 }
             },
-            "SoftBCEWithLogitsLoss": {
+            "segmentation_models_pytorch.losses.SoftBCEWithLogitsLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -18614,7 +18614,7 @@
                     "default": null
                 }
             },
-            "SoftCrossEntropyLoss": {
+            "segmentation_models_pytorch.losses.SoftCrossEntropyLoss": {
                 "reduction": {
                     "type": "str",
                     "default": "mean"
@@ -18632,7 +18632,7 @@
                     "default": 1
                 }
             },
-            "TverskyLoss": {
+            "segmentation_models_pytorch.losses.TverskyLoss": {
                 "mode": {
                     "type": "str",
                     "default": null
@@ -18676,7 +18676,7 @@
             }
         },
         "timm.loss": {
-            "AsymmetricLossMultiLabel": {
+            "timm.loss.AsymmetricLossMultiLabel": {
                 "gamma_neg": {
                     "type": "int",
                     "default": 4
@@ -18698,7 +18698,7 @@
                     "default": false
                 }
             },
-            "AsymmetricLossSingleLabel": {
+            "timm.loss.AsymmetricLossSingleLabel": {
                 "gamma_pos": {
                     "type": "int",
                     "default": 1
@@ -18716,7 +18716,7 @@
                     "default": "mean"
                 }
             },
-            "BinaryCrossEntropy": {
+            "timm.loss.BinaryCrossEntropy": {
                 "smoothing": {
                     "type": "float",
                     "default": 0.1
@@ -18738,7 +18738,7 @@
                     "default": null
                 }
             },
-            "JsdCrossEntropy": {
+            "timm.loss.JsdCrossEntropy": {
                 "num_splits": {
                     "type": "int",
                     "default": 3
@@ -18752,13 +18752,13 @@
                     "default": 0.1
                 }
             },
-            "LabelSmoothingCrossEntropy": {
+            "timm.loss.LabelSmoothingCrossEntropy": {
                 "smoothing": {
                     "type": "float",
                     "default": 0.1
                 }
             },
-            "SoftTargetCrossEntropy": {}
+            "timm.loss.SoftTargetCrossEntropy": {}
         }
     },
     "early_stopping": {
@@ -18834,13 +18834,13 @@
     },
     "lr_schedulers": {
         "torch.optim": {
-            "ChainedScheduler": {
+            "torch.optim.ChainedScheduler": {
                 "schedulers": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "ConstantLR": {
+            "torch.optim.ConstantLR": {
                 "factor": {
                     "type": "float",
                     "default": 0.3333333333333333
@@ -18858,7 +18858,7 @@
                     "default": "deprecated"
                 }
             },
-            "CosineAnnealingLR": {
+            "torch.optim.CosineAnnealingLR": {
                 "T_max": {
                     "type": "unknown",
                     "default": null
@@ -18876,7 +18876,7 @@
                     "default": "deprecated"
                 }
             },
-            "CosineAnnealingWarmRestarts": {
+            "torch.optim.CosineAnnealingWarmRestarts": {
                 "T_0": {
                     "type": "unknown",
                     "default": null
@@ -18898,7 +18898,7 @@
                     "default": "deprecated"
                 }
             },
-            "CyclicLR": {
+            "torch.optim.CyclicLR": {
                 "base_lr": {
                     "type": "unknown",
                     "default": null
@@ -18952,7 +18952,7 @@
                     "default": "deprecated"
                 }
             },
-            "ExponentialLR": {
+            "torch.optim.ExponentialLR": {
                 "gamma": {
                     "type": "unknown",
                     "default": null
@@ -18966,7 +18966,7 @@
                     "default": "deprecated"
                 }
             },
-            "LRScheduler": {
+            "torch.optim.LRScheduler": {
                 "last_epoch": {
                     "type": "int",
                     "default": -1
@@ -18976,7 +18976,7 @@
                     "default": "deprecated"
                 }
             },
-            "LambdaLR": {
+            "torch.optim.LambdaLR": {
                 "lr_lambda": {
                     "type": "unknown",
                     "default": null
@@ -18990,7 +18990,7 @@
                     "default": "deprecated"
                 }
             },
-            "LinearLR": {
+            "torch.optim.LinearLR": {
                 "start_factor": {
                     "type": "float",
                     "default": 0.3333333333333333
@@ -19012,7 +19012,7 @@
                     "default": "deprecated"
                 }
             },
-            "MultiStepLR": {
+            "torch.optim.MultiStepLR": {
                 "milestones": {
                     "type": "unknown",
                     "default": null
@@ -19030,7 +19030,7 @@
                     "default": "deprecated"
                 }
             },
-            "MultiplicativeLR": {
+            "torch.optim.MultiplicativeLR": {
                 "lr_lambda": {
                     "type": "unknown",
                     "default": null
@@ -19044,7 +19044,7 @@
                     "default": "deprecated"
                 }
             },
-            "OneCycleLR": {
+            "torch.optim.OneCycleLR": {
                 "max_lr": {
                     "type": "unknown",
                     "default": null
@@ -19102,7 +19102,7 @@
                     "default": "deprecated"
                 }
             },
-            "PolynomialLR": {
+            "torch.optim.PolynomialLR": {
                 "total_iters": {
                     "type": "int",
                     "default": 5
@@ -19120,7 +19120,7 @@
                     "default": "deprecated"
                 }
             },
-            "ReduceLROnPlateau": {
+            "torch.optim.ReduceLROnPlateau": {
                 "mode": {
                     "type": "str",
                     "default": "min"
@@ -19158,7 +19158,7 @@
                     "default": "deprecated"
                 }
             },
-            "SequentialLR": {
+            "torch.optim.SequentialLR": {
                 "schedulers": {
                     "type": "unknown",
                     "default": null
@@ -19176,7 +19176,7 @@
                     "default": "deprecated"
                 }
             },
-            "StepLR": {
+            "torch.optim.StepLR": {
                 "step_size": {
                     "type": "unknown",
                     "default": null
@@ -19198,7 +19198,7 @@
     },
     "optimizers": {
         "torch.optim": {
-            "ASGD": {
+            "torch.optim.ASGD": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19240,7 +19240,7 @@
                     "default": false
                 }
             },
-            "Adadelta": {
+            "torch.optim.Adadelta": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19274,7 +19274,7 @@
                     "default": false
                 }
             },
-            "Adagrad": {
+            "torch.optim.Adagrad": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19312,7 +19312,7 @@
                     "default": false
                 }
             },
-            "Adam": {
+            "torch.optim.Adam": {
                 "params": {
                     "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
                     "default": null
@@ -19361,7 +19361,7 @@
                     "default": null
                 }
             },
-            "AdamW": {
+            "torch.optim.AdamW": {
                 "params": {
                     "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
                     "default": null
@@ -19410,7 +19410,7 @@
                     "default": null
                 }
             },
-            "Adamax": {
+            "torch.optim.Adamax": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19451,7 +19451,7 @@
                     "default": false
                 }
             },
-            "LBFGS": {
+            "torch.optim.LBFGS": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19485,7 +19485,7 @@
                     "default": null
                 }
             },
-            "NAdam": {
+            "torch.optim.NAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19530,7 +19530,7 @@
                     "default": false
                 }
             },
-            "RAdam": {
+            "torch.optim.RAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19571,7 +19571,7 @@
                     "default": false
                 }
             },
-            "RMSprop": {
+            "torch.optim.RMSprop": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19613,7 +19613,7 @@
                     "default": false
                 }
             },
-            "Rprop": {
+            "torch.optim.Rprop": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19649,7 +19649,7 @@
                     "default": false
                 }
             },
-            "SGD": {
+            "torch.optim.SGD": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19691,7 +19691,7 @@
                     "default": null
                 }
             },
-            "SparseAdam": {
+            "torch.optim.SparseAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19718,7 +19718,7 @@
             }
         },
         "timm.optim": {
-            "AdaBelief": {
+            "timm.optim.AdaBelief": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19763,7 +19763,7 @@
                     "default": true
                 }
             },
-            "Adafactor": {
+            "timm.optim.Adafactor": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19805,7 +19805,7 @@
                     "default": false
                 }
             },
-            "Adahessian": {
+            "timm.optim.Adahessian": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19846,7 +19846,7 @@
                     "default": false
                 }
             },
-            "AdamP": {
+            "timm.optim.AdamP": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19883,7 +19883,7 @@
                     "default": false
                 }
             },
-            "AdamW": {
+            "timm.optim.AdamW": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19912,7 +19912,7 @@
                     "default": false
                 }
             },
-            "Adan": {
+            "timm.optim.Adan": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19942,7 +19942,7 @@
                     "default": false
                 }
             },
-            "Lamb": {
+            "timm.optim.Lamb": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -19987,7 +19987,7 @@
                     "default": false
                 }
             },
-            "Lars": {
+            "timm.optim.Lars": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20029,7 +20029,7 @@
                     "default": false
                 }
             },
-            "Lookahead": {
+            "timm.optim.Lookahead": {
                 "base_optimizer": {
                     "type": "unknown",
                     "default": null
@@ -20043,7 +20043,7 @@
                     "default": 6
                 }
             },
-            "MADGRAD": {
+            "timm.optim.MADGRAD": {
                 "params": {
                     "type": "typing.Any",
                     "default": null
@@ -20069,7 +20069,7 @@
                     "default": false
                 }
             },
-            "Nadam": {
+            "timm.optim.Nadam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20098,7 +20098,7 @@
                     "default": 0.004
                 }
             },
-            "NvNovoGrad": {
+            "timm.optim.NvNovoGrad": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20131,7 +20131,7 @@
                     "default": false
                 }
             },
-            "RAdam": {
+            "timm.optim.RAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20156,7 +20156,7 @@
                     "default": 0
                 }
             },
-            "RMSpropTF": {
+            "timm.optim.RMSpropTF": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20194,7 +20194,7 @@
                     "default": true
                 }
             },
-            "SGDP": {
+            "timm.optim.SGDP": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -20232,7 +20232,7 @@
                     "default": 0.1
                 }
             },
-            "Lion": {
+            "timm.optim.Lion": {
                 "params": {
                     "type": "unknown",
                     "default": null

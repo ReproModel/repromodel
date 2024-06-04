@@ -186,12 +186,15 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
     inspect_module(module)
     return classes
 
-def make_json_serializable(obj):
+def make_json_serializable(obj, leading_key = None):
     """
     Recursively convert non-serializable objects to their string representations.
     """
     if isinstance(obj, dict):
-        return {k: make_json_serializable(v) for k, v in obj.items()}
+        if leading_key == None:
+            return {k: make_json_serializable(v) for k, v in obj.items()}
+        else:
+            return {leading_key + "." + k: make_json_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [make_json_serializable(i) for i in obj]
     elif isinstance(obj, tuple):
@@ -246,21 +249,22 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
 
 # Extract torchmetric classes
 all_torchmetrics = extract_classes_with_init_params(torchmetrics)
-all_definitions['metrics']['torchmetrics'] = make_json_serializable(all_torchmetrics)
+all_definitions['metrics']['torchmetrics'] = make_json_serializable(all_torchmetrics, leading_key="torchmetrics")
 
 # Extract segmentation-models-pytorch classes
 smp_classes = [ "Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
 all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
-all_definitions['models']['segmentation_models_pytorch'] = make_json_serializable(all_smp)
+all_definitions['models']['segmentation_models_pytorch'] = make_json_serializable(all_smp, leading_key="segmentation_models_pytorch")
 
 # Extract timm models classes
 all_timm = extract_classes_with_init_params(timm.models)
-all_definitions['models']['timm'] = make_json_serializable(all_timm)
+all_definitions['models']['timm.models'] = make_json_serializable(all_timm, leading_key="timm.models")
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
 all_definitions['lr_schedulers'] = {}
-all_definitions['lr_schedulers']['torch.optim'] = make_json_serializable(lr_scheduler_classes)
+all_definitions['lr_schedulers']['torch.optim'] = make_json_serializable(lr_scheduler_classes, leading_key='torch.optim')
+
 
 loss_classes = [
     "L1Loss", "MSELoss", "CrossEntropyLoss", "CTCLoss", "NLLLoss", "PoissonNLLLoss",
@@ -272,7 +276,8 @@ loss_classes = [
 
 # Extract classes from torch.nn for the specified loss classes
 loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
-all_definitions['losses']['torch.nn.modules.loss'] = make_json_serializable(loss_classes_extracted)
+all_definitions['losses']['torch.nn.modules.loss'] = make_json_serializable(loss_classes_extracted, leading_key='torch.nn.modules.loss')
+
 
 # Extract classes from segmentation-models-pytorch losses
 smp_loss_classes = ["JaccardLoss",
@@ -285,11 +290,11 @@ smp_loss_classes = ["JaccardLoss",
                     "MCCLoss"]
 
 smp_loss_classes_extracted = extract_classes_with_init_params(segmentation_models_pytorch.losses, smp_loss_classes)
-all_definitions['losses']['segmentation_models_pytorch.losses'] = make_json_serializable(smp_loss_classes_extracted)
+all_definitions['losses']['segmentation_models_pytorch.losses'] = make_json_serializable(smp_loss_classes_extracted, leading_key='segmentation_models_pytorch.losses')
 
 # Extract classes from torch.nn for the specified loss classes
 timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
-all_definitions['losses']['timm.loss'] = make_json_serializable(timm_loss_classes_extracted)
+all_definitions['losses']['timm.loss'] = make_json_serializable(timm_loss_classes_extracted, leading_key='timm.loss')
 
 # List of specific class names to extract from torch.optim
 optimizer_classes = [
@@ -300,11 +305,11 @@ optimizer_classes = [
 # Extract classes from torch.nn for the specified loss classes
 optimizer_classes_extracted = extract_classes_with_init_params(optim, optimizer_classes)
 all_definitions['optimizers'] = {}
-all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted) 
+all_definitions['optimizers']['torch.optim'] = make_json_serializable(optimizer_classes_extracted, leading_key='torch.optim')
 
 # Extract classes from timm.optimizers
 timm_optimizer_classes_extracted = extract_classes_with_init_params(timm_optim)
-all_definitions['optimizers']['timm.optim'] = make_json_serializable(timm_optimizer_classes_extracted) 
+all_definitions['optimizers']['timm.optim'] = make_json_serializable(timm_optimizer_classes_extracted, leading_key='timm.optim') 
 
 # Static choices 
 all_definitions["batch_size"] = {
