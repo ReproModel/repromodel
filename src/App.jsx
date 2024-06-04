@@ -16,7 +16,7 @@ import CustomScript from "./components/custom-script/custom-script"
 
 function App() {
 
-  const [selectedSection, setSelectedSection] = useState("Experiment Builder")
+  const [selectedSection, setSelectedSection] = useState("Custom Script")
   
   // Generate initial values from questions data.
   const initialValues = Object.values(newQuestions).reduce(
