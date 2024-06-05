@@ -20,6 +20,9 @@ const supportedLLMs = [
 
 const LLMDescription = ({ handleFileChange, setFieldValue }) => {
 
+  // LLM Additional Prompt
+  const [additionalPrompt, setAdditionalPrompt] = React.useState("")
+
   // Radio Button - Writing Voice
   const [voice, setVoice] = React.useState("passive")
   
@@ -32,6 +35,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
   const runQuery = () => { 
     console.log("Running LLM query...")
 
+    console.log("Text Area - Additional Prompt: ", additionalPrompt)
     console.log("Radio Radio - Writing Voice: ", voice)
     console.log("Radio Radio - Output File Format: ", format)
 
@@ -87,6 +91,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
             
           <TextareaAutosize
             className = "textarea-additional-prompt"
+            onChange = { (e) => { setAdditionalPrompt(e.target.value) } }
             placeholder = "• Describe my custom model in more detail while only briefly describe other models that are used.&#10;&#10;• Do not describe optimizers and LR schedulers."
             minRows = { 4 }
             style = { { width: "100%", height: "40px" } }
