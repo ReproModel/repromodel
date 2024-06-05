@@ -7,7 +7,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, replace_keys, TqdmFile
+from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, load_and_replace_keys, TqdmFile
 
 SRC_DIR = "src."
 
@@ -18,13 +18,11 @@ def test(input_data):
     
     # Load config
     if os.path.isfile(input_data):
-        with open(input_data, 'r') as file:
-            data = json.load(file)
-            data = replace_keys(data)
+        data = load_and_replace_keys(input_data)
     else:
         # Assume input is a JSON string
         data = json.loads(input_data)
-        data = replace_keys(data)
+        data = data.replace('>', '.')
 
     cfg = edict(data)
 
@@ -44,7 +42,7 @@ def test(input_data):
         # Custom file object for TQDM
         tqdm_file = TqdmFile(config=cfg, model_num = m)
 
-        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:]
+        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:] #needed for custom models, otherwise ignored in configure_component
         model_params = cfg.models_params[model_name]
         checkpoint_path = checkpoints[model_name]
         # Load model
