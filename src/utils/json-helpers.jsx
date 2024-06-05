@@ -159,3 +159,36 @@ export const handleSubmit = async (values) => {
     URL.revokeObjectURL(url);
   }
 }
+
+// Export the handleSubmit function that also applies the nestJson transformation
+export const handleCustomScriptSubmit = async (code, filename, type) => {
+
+  // Create a blob from the code string
+  const file = new Blob([code], { type: "text/plain" });
+
+  // Create a FormData object
+  const formData = new FormData();
+  formData.append("file", file, filename);
+  formData.append("filename", filename);
+  formData.append("type", type);
+
+  try {
+    const response = await axios.post(
+      "http://127.0.0.1:5005/save-custom-script",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    console.log("Script Output:", response.data);
+    alert("New Script saved to the backend");
+  } catch (error) {
+    const errorMessage = error.response
+      ? JSON.stringify(error.response.data)
+      : error.message;
+    console.warn("Warning: Error running script:", errorMessage);
+    alert("Warning: Error running script: " + errorMessage);
+  }
+};
