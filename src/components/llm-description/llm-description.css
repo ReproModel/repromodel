@@ -41,7 +41,7 @@
 
 /* Submit Button */
 .submit-button {
-    margin-top: 10px;
+    padding-top: 10px;
     width: 150px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
@@ -54,6 +54,58 @@
 }
 
 .submit-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
+}
+
+/* LLM Response */
+.textarea-llm-response-container {
+    padding-top: 10px;
+}
+
+.textarea-llm-response-label {
+    padding-top: 10px;
+}
+
+.container-editor-area {
+    max-height: 800px;
+    tab-size: 4ch;
+    overflow: auto;
+    border: 3px dotted #ccc;
+    margin: 14px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.container-editor {
+    min-height: 800px;
+    overflow-y: scroll;
+    font-size: 12px;
+    font-variant-ligatures: common-ligatures;
+    background-color: #fafafa;
+    border-radius: 3px;
+    font-family: "Fira code", "Fira Mono", monospace;
+}
+
+.container-editor textarea {
+    outline: 0;
+}
+
+/* Copy Button */
+.copy-button {
+    padding-top: 10px;
+    width: 150px;
+    letter-spacing: 0.02857em;
+    line-height: 1.75;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+}
+
+.copy-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
 }
