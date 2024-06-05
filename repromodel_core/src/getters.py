@@ -9,10 +9,11 @@ def load_json(file_path):
         return json.load(file)
 
 def get_from_lib(module_name, class_name, params):
-    module = __import__(module_name)
+    module = __import__(module_name, fromlist=[class_name])
     cls = getattr(module, class_name, None)
     if not cls:
         raise ValueError(f"{class_name} not found in {module.__name__}")
+    print('params',params)
     return cls(**params)
 
 def get_from_module(module_path, class_name, params):
@@ -23,19 +24,24 @@ def get_from_module(module_path, class_name, params):
     return cls(**params)
 
 def get_optimizer(model, optimizer_name, optimizer_params):
-    if optimizer_name.split('.')[0] == 'torch':
-        optimizer_name = optimizer_name.split('.')[1]
-
-    optimizer_class = getattr(torch.optim, optimizer_name, None)
+    parts = optimizer_name.split('.')
+    if len(parts) > 1:
+        class_name = parts[-1]
+        module_name = ".".join(parts[:-1])
+    module = __import__(module_name, fromlist=[class_name])
+    optimizer_class = getattr(module, class_name, None)
     if not optimizer_class:
-        raise ValueError(f"Optimizer '{optimizer_name}' not found in torch.optim")
+        raise ValueError(f"Optimizer '{optimizer_name}' not found in library")
 
     return optimizer_class(params=model.parameters(), **optimizer_params)
 
 def get_lr_scheduler(optimizer, scheduler_name, params):
-    if scheduler_name.split('.')[0] == 'torch':
-        scheduler_name = scheduler_name.split('.')[1]
-    scheduler_class = getattr(torch.optim.lr_scheduler, scheduler_name, None)
+    parts = scheduler_name.split('.')
+    if len(parts) > 1:
+        class_name = parts[-1]
+        module_name = ".".join(parts[:-1])
+    module = __import__(module_name, fromlist=[class_name])
+    scheduler_class = getattr(module, class_name, None)
     
     if not scheduler_class:
         raise ValueError(

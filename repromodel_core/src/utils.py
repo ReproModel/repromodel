@@ -156,6 +156,16 @@ def print_to_file(string, config = None, tqdm=False, model_num = None):
         file.write(timestamped_string + ('\n' if not tqdm else ''))
         file.flush()
 
+def load_and_replace_keys(file_path):
+    with open(file_path, 'r') as f:
+        data = f.read()
+    
+    # Replace all '>' with '.'
+    modified_data = data.replace('>', '.')
+    
+    # Parse the modified string back to JSON
+    return json.loads(modified_data)
+
 def delete_command_outputs():
     file_path = "repromodel_core/logs/command_output.txt"
 
