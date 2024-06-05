@@ -166,6 +166,19 @@ def load_and_replace_keys(file_path):
     # Parse the modified string back to JSON
     return json.loads(modified_data)
 
+def replace_in_string(data):
+    # Convert the dict or JSON string to a JSON string
+    if isinstance(data, dict):
+        data_str = json.dumps(data)
+    else:
+        data_str = data
+    
+    # Replace all '>' with '.'
+    modified_data_str = data_str.replace('>', '.')
+    
+    # Convert the modified string back to a dict
+    return json.loads(modified_data_str)
+
 def delete_command_outputs():
     file_path = "repromodel_core/logs/command_output.txt"
 
