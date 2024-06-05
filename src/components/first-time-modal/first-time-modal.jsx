@@ -40,42 +40,50 @@ const FirstTimeModal = () => {
   }
 
   return (
-    <div className = "modal-container">
-      
-      <Button variant = "contained" onClick = { handleOpen }>First Time Here?</Button>
-      
-      <Modal open = { open } onClose = { handleClose }>
-        
-        <Box className = "modal">
-          
-          <IconButton onClick = { handleClose } style = { { position: "absolute", right: 8, top: 8 } }>
+    <div className="modal-container">
+      <Button variant="contained" onClick={handleOpen}>
+        First Time Here?
+      </Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box className="modal">
+          <IconButton onClick={handleClose} style={{ position: "absolute", right: 8, top: 8 }}>
             <CloseIcon />
           </IconButton>
 
-          <Typography id = "modal-title" variant = "h6" component = "h2" className = "modal-title">Hey, nice to have you here!</Typography>
-          
-          <Typography id = "modal-description" className = "modal-description">For a quick start and to try out ReproModel you can load some defaults.</Typography>
-          
-          <Typography className = "modal-step-one">1. Generate dummy data.</Typography>          
-          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate }>Generate</Button>
-
-          <Typography className = "modal-step-two">2. Download a training script.</Typography>
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(trainConfig, "DemoTrainingConfig", "json") }>Download</Button>
-          
-          { confirmationMessage && (
-            <Typography className = "modal-confirmation" style = { { color: "green" } }>
-              { confirmationMessage }
+          <Typography id="modal-title" variant="h6" component="h2" className="modal-title">
+            Hey, nice to have you here!
+          </Typography>
+          <Typography id="modal-description" className="modal-description">
+            For a quick start and to try out ReproModel you can load some defaults.
+          </Typography>
+          <Typography className="modal-step-one">
+            1. Generate Dummy Data
+          </Typography>
+          <Button variant="contained" className="modal-button" onClick={handleGenerate}>
+            Generate
+          </Button>
+          <Typography className="modal-step-two">
+            2. Download a training config
+          </Typography>
+          <Button variant="contained" className="modal-button" onClick={() => handleDownload(trainConfig, 'DemoTrainingConfig', 'json')}>
+            Download
+          </Button>
+          {confirmationMessage && (
+            <Typography className="modal-confirmation" style={{ color: 'green' }}>
+              {confirmationMessage}
             </Typography>
           )}
 
-          <Typography className = "modal-message">Happy developing with ReproModel.</Typography>
-        
+          <Typography className="modal-message">Happy developing with ReproModel.</Typography>
         </Box>
-      
       </Modal>
-    
     </div>
   )
 }
 
-export default FirstTimeModal
+export default FirstTimeModal;

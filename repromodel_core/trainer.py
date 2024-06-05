@@ -8,7 +8,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, TqdmFile
+from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, TqdmFile
 from copy import deepcopy
 
 SRC_DIR = "src."
@@ -19,14 +19,13 @@ def train(input_data):
     delete_command_outputs()
     # Load config
     if os.path.isfile(input_data):
-        with open(input_data, 'r') as file:
-            data = json.load(file)
+        data = load_and_replace_keys(input_data)
     else:
         # Assume input is a JSON string
         data = json.loads(input_data)
+        data = data.replace('>', '.')
 
     cfg = edict(data)
-
     # Set training parameters
     k_min, epoch_min, model_min = 0, 0, 0
 
@@ -64,15 +63,16 @@ def train(input_data):
         val_metrics.append(configure_component(metric_path, metric, params))
 
     models = []
-    for model in cfg.models:
-        params = cfg.models_params[model]
-        model_path = SRC_DIR + "models." + model[0].lower() + model[1:]
-        models.append(configure_component(model_path, model, params))
+    for model_name in cfg.models:
+        params = cfg.models_params[model_name]
+        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:] #assumes that the file is the same as class name (with lowercase first letter)
+        #if it has dots in model_name, it ignores model_path
+        models.append(configure_component(model_path, model_name, params))
 
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping[0].lower() + cfg.early_stopping[1:]
 
     #TODO make custom possible and refactor getters
-    criterion = configure_component("torch.losses", cfg.losses, cfg.losses_params[cfg.losses])
+    criterion = configure_component(None, cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
@@ -85,8 +85,8 @@ def train(input_data):
             # Initialize TensorBoard
             writer = init_tensorboard_logging(cfg, k, m)
             model = deepcopy(models[m])
-            optimizer = get_optimizer(model, "torch." + cfg.optimizers, cfg.optimizers_params[cfg.optimizers])
-            lr_scheduler = get_lr_scheduler(optimizer, "torch." + cfg.lr_schedulers, cfg.lr_schedulers_params[cfg.lr_schedulers])
+            optimizer = get_optimizer(model, cfg.optimizers, cfg.optimizers_params[cfg.optimizers])
+            lr_scheduler = get_lr_scheduler(optimizer, cfg.lr_schedulers, cfg.lr_schedulers_params[cfg.lr_schedulers])
             early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params[cfg.early_stopping])
             
             # Configure device specifics
@@ -192,10 +192,13 @@ def train(input_data):
 
                 # Learning rate adjustment
                 current_lr = optimizer.param_groups[0]['lr']
-                if cfg.monitor == 'val_loss':
-                    lr_scheduler.step(average_val_loss, current_lr)
-                elif cfg.monitor == 'train_loss':
-                    lr_scheduler.step(average_train_loss, current_lr)
+                try:
+                    if cfg.monitor == 'val_loss':
+                        lr_scheduler.step(average_val_loss, current_lr)
+                    elif cfg.monitor == 'train_loss':
+                        lr_scheduler.step(average_train_loss, current_lr)
+                except TypeError:
+                    lr_scheduler.step()
 
                 #log learning rate
                 lr = optimizer.param_groups[0]['lr']
