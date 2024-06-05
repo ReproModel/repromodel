@@ -7,8 +7,9 @@ import { Form } from "formik"
 import { FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material"
 
 const supportedLLMs = [
-  { index: 0, label: "Llama-3-8b-Instruct", company: "Meta", image: "./llm-models/meta.svg" },
-  { index: 1, label: "Llama-3-70b-Instruct", company: "Meta", image: "./llm-models/meta.svg" }
+  { index: 0, label: "Llama-3-8b", company: "Meta", image: "./llm-models/meta.svg" },
+  { index: 1, label: "Llama-3-70b", company: "Meta", image: "./llm-models/meta.svg" },
+  { index: 3, label: "Mistral-7b", company: "Mistral AI,", image: "./llm-models/mistal.svg" }
 ]
 
 const LLMDescription = ({ handleFileChange, setFieldValue }) => {
