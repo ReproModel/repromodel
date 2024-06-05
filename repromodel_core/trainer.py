@@ -192,10 +192,13 @@ def train(input_data):
 
                 # Learning rate adjustment
                 current_lr = optimizer.param_groups[0]['lr']
-                if cfg.monitor == 'val_loss':
-                    lr_scheduler.step(average_val_loss, current_lr)
-                elif cfg.monitor == 'train_loss':
-                    lr_scheduler.step(average_train_loss, current_lr)
+                try:
+                    if cfg.monitor == 'val_loss':
+                        lr_scheduler.step(average_val_loss, current_lr)
+                    elif cfg.monitor == 'train_loss':
+                        lr_scheduler.step(average_train_loss, current_lr)
+                except TypeError:
+                    lr_scheduler.step()
 
                 #log learning rate
                 lr = optimizer.param_groups[0]['lr']
