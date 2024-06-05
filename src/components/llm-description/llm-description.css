@@ -2,6 +2,11 @@
     padding-top: 16px;
 }
 
+/* Configuration File */
+.json-input-file-container {
+    padding-top: 16px;
+}
+
 .json-input-file-label {
     padding-top: 16px;
 }
@@ -10,18 +15,45 @@
     padding-top: 8px;
 }
 
-.textarea-additional-prompt {
-    padding-top: 50px;
+/* Supported LLM Models */
+.supported-llm-container {
+    padding-top: 10px;
 }
 
+/* Additional LLM Prompting Rules */
+.textarea-additional-prompt-container {
+    padding-top: 10px;
+}
+
+/* Writing Voice */
 .radio-writing-voice-container {
-    padding-top: 24px;
+    padding-top: 10px;
 }
 
+/* Output Format */
 .radio-output-format-container {
-    padding-top: 24px;
+    padding-top: 8px;
 }
 
 .radio-plain-text {
     padding-left: 12px;
+}
+
+/* Submit Button */
+.submit-button {
+    margin-top: 10px;
+    width: 150px;
+    letter-spacing: 0.02857em;
+    line-height: 1.75;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+}
+
+.submit-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
 }
