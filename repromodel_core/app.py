@@ -245,7 +245,7 @@ def generate_methodology(config, additionalPrompt, voice, format):
     prompt = f"Act like an experienced scientist and write a methodology section of the research paper based on this config file {config} and additionally follow these rules {additionalPrompt}. Write it in {voice} voice and use {format} format."
 
     # Call the ollama chat function
-    response = ollama.chat(model='llama2', messages=[
+    response = ollama.chat(model='llama3', messages=[
       {
         'role': 'user',
         'content': prompt,
