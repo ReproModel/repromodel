@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
 import subprocess
 import os
 import json
+import ollama
 
 
 app = Flask(__name__)
@@ -237,6 +238,36 @@ def ping():
     return jsonify({"message": "pong"}), 200
 
 
+# Generate LLM Methodology Section
+
+def generate_methodology(config, additionalPrompt, voice, format):
+    # Construct the prompt
+    prompt = f"Act like an experienced scientist and write a methodology section of the research paper based on this config file {config} and additionally follow these rules {additionalPrompt}. Write it in {voice} voice and use {format} format."
+
+    # Call the ollama chat function
+    response = ollama.chat(model='llama2', messages=[
+      {
+        'role': 'user',
+        'content': prompt,
+      },
+    ])
+
+    return response['message']['content']
+
+@app.route('/generate_methodology', methods=['POST'])
+def generate_methodology_route():
+    # Get the variables from the request
+    config = request.form.get('config')
+    additionalPrompt = request.form.get('additionalPrompt')
+    voice = request.form.get('voice')
+    format = request.form.get('format')
+
+    # Generate the methodology section
+    result = generate_methodology(config, additionalPrompt, voice, format)
+    
+    # Return the result as plain text
+    return Response(result, mimetype='text/plain')
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5005,threaded=True, debug=True , use_reloader=False)
+    app.run(host='0.0.0.0', port=5005,threaded=True, debug=True , use_reloader=True)

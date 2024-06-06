@@ -3,9 +3,11 @@ import { Form } from "formik"
 import { FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material"
 import { highlight, languages } from "prismjs/components/prism-core"
 
+
 import CustomSelectComponent from "../ui/custom-select"
 import Editor from "react-simple-code-editor"
 import React from "react"
+import axios from "axios"
 
 import "./llm-description.css"
 import "prismjs/components/prism-clike"
@@ -32,22 +34,44 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
   // LLM Output
   const [output, setOutput] = React.useState("")
 
-  const runQuery = () => { 
+  const runQuery = async (config, additionalPrompt, voice, format) => { 
     console.log("Running LLM query...")
 
     console.log("Text Area - Additional Prompt: ", additionalPrompt)
     console.log("Radio Radio - Writing Voice: ", voice)
     console.log("Radio Radio - Output File Format: ", format)
 
-    // Temporary Hard-coded example (DELETE LATER)
-    if (format == "latex") {
-      setOutput(exampleLatexOutput)
-    }
-    
-    else if (format == "plain-text") {
-      setOutput(examplePlainTextOutput)
+    try {
+      const formData = new FormData();
+      formData.append('config', config);
+      formData.append('additionalPrompt', additionalPrompt);
+      formData.append('voice', voice);
+      formData.append('format', format);
+  
+      const response = await axios.post('http://127.0.0.1:5005/generate_methodology', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+  
+      // Handle the response
+      console.log(response.data);
+      return response.data.methodology;
+    } catch (error) {
+      console.error('Error generating methodology:', error);
+      throw error;
     }
   }
+
+  const handleGenerate = async (config, additionalPrompt, voice, format) => {
+    try {
+      const methodology = await runQuery(config, additionalPrompt, voice, format);
+      // setOutput(methodology);
+    } catch (error) {
+      // Handle the error appropriately in your UI
+      console.error('Error:', error);
+    }
+  };
 
   return (
     <Form>
@@ -136,7 +160,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
         </div>
 
         {/* Submit Button */}
-        <button className = "submit-button" onClick = { (e) => { runQuery() } }>
+        <button className = "submit-button" type="button" onClick={() => handleGenerate("Method is bruteforce", additionalPrompt, voice, format)}>
           <Typography>Submit</Typography>
         </button>
 
