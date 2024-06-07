@@ -19,6 +19,8 @@
     "dev-frontend": "npm run dev",
     "dev-backend": "source ./.venv/bin/activate && python3 repromodel_core/app.py",
     "dev-backend-windows": ".\\.venv\\Scripts\\activate && python repromodel_core\\app.py"
+    "repromodel-with-llm": "concurrently \"ollama run llama3\" \"npm run repromodel\""
+
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -43,6 +45,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "wait-on": "^7.2.0"
   }
 }
