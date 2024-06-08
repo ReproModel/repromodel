@@ -17,7 +17,7 @@ import { useState } from "react"
 
 function App() {
 
-  const [selectedSection, setSelectedSection] = useState("Custom Script")
+  const [selectedSection, setSelectedSection] = useState("Experiment Builder")
   
   // Generate initial values from questions data.
   const initialValues = Object.values(newQuestions).reduce(
