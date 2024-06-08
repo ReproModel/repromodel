@@ -4,8 +4,7 @@
 
 /* Loading Animation */
 .loading-animation {
-    top: 100;
-    left: 100;
+    margin-top: 32px;
 }
 
 /* Configuration File */
