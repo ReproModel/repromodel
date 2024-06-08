@@ -14,9 +14,7 @@ import "prismjs/components/prism-latex"
 import "prismjs/themes/prism.css"
 
 const supportedLLMs = [
-  { value: "Llama-3-70b", label: <div><img src =  "./llm-models/meta.svg" height = "12px" width = "20px"/>{" "}Llama-3-70b</div> },
-  { value: "Llama-3-8b", label: <div><img src =  "./llm-models/meta.svg" height = "12px" width = "20px"/>{" "}Llama-3-8b</div> },
-  { value: "Mistral-7b", label: <div><img src =  "./llm-models/mistral.svg" height = "12px" width = "20px"/>{" "}Mistral-7b</div> }
+  { value: "Llama-3", label: <div><img src =  "./llm-models/meta.svg" height = "12px" width = "20px"/>{" "}Llama-3</div> }
 ]
 
 const LLMDescription = ({ handleFileChange, setFieldValue }) => {
