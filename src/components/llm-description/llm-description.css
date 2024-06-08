@@ -2,6 +2,11 @@
     padding-top: 16px;
 }
 
+/* Loading Animation */
+.loading-animation {
+    margin-top: 32px;
+}
+
 /* Configuration File */
 .json-input-file-container {
     padding-top: 16px;
