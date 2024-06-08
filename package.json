@@ -19,7 +19,8 @@
     "dev-frontend": "npm run dev",
     "dev-backend": "source ./.venv/bin/activate && python3 repromodel_core/app.py",
     "dev-backend-windows": ".\\.venv\\Scripts\\activate && python repromodel_core\\app.py",
-    "repromodel-with-llm": "concurrently \"ollama run llama3\" \"npm run repromodel\""
+    "repromodel-with-llm": "concurrently \"ollama run llama3\" \"npm run repromodel\"",
+    "llm": "ollama run llama3"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
