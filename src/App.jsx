@@ -98,7 +98,11 @@ function App() {
                 { selectedSection === "LLM Description" && (
                   <>
                     <Typography variant = "h4" style = { { marginTop: "20px" } }>LLM Description</Typography>
-                    <LLMDescription/>
+                    <LLMDescription
+                      FormikProps = { FormikProps }
+                      setFieldValue = { FormikProps.setFieldValue }
+                      handleFileChange = { handleFileChange }
+                    />
                   </>
                 )}
 
