@@ -195,7 +195,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
             </div>
 
             {/* Copy Button */}
-            <button type = "submit" className = "copy-button" onClick = { () => navigator.clipboard.writeText(code) }>
+            <button type = "submit" className = "copy-button" onClick = { () => navigator.clipboard.writeText(output) }>
               Copy
             </button>
             
