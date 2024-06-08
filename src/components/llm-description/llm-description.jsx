@@ -8,10 +8,24 @@ import Editor from "react-simple-code-editor"
 import React from "react"
 import axios from "axios"
 
+
 import "./llm-description.css"
 import "prismjs/components/prism-clike"
 import "prismjs/components/prism-latex"
 import "prismjs/themes/prism.css"
+
+// Function to be triggered when the config file is uploaded
+export const handleFileUpload = (event, setConfig) => {
+  const file = event.currentTarget.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = e.target.result;
+        setConfig(text)
+    };
+    reader.readAsText(file);
+  }
+};
 
 const supportedLLMs = [
   { value: "Llama-3-70b", label: <div><img src =  "./llm-models/meta.svg" height = "12px" width = "20px"/>{" "}Llama-3-70b</div> },
@@ -19,9 +33,12 @@ const supportedLLMs = [
   { value: "Mistral-7b", label: <div><img src =  "./llm-models/mistral.svg" height = "12px" width = "20px"/>{" "}Mistral-7b</div> }
 ]
 
-const LLMDescription = ({ handleFileChange, setFieldValue }) => {
+const LLMDescription = () => {
 
   // Config
+  const [config, setConfig] = React.useState("")
+
+  // LLM Model
   const [LLM, setLLM] = React.useState(supportedLLMs[0])
 
   // LLM Additional Prompt
@@ -47,6 +64,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
     console.log("Text Area - Additional Prompt: ", additionalPrompt)
     console.log("Radio Radio - Writing Voice: ", voice)
     console.log("Radio Radio - Output File Format: ", format)
+    console.log("Config file contains: ", config)
 
     const formData = new FormData();
     formData.append('config', config);
@@ -65,6 +83,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
       setLoading(false)
 
       // Set Form Elements
+      setConfig(config)
       setAdditionalPrompt(additionalPrompt)
       setVoice(voice)
       setFormat(format)
@@ -98,7 +117,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
                 type = "file"
                 className = "json-input-file"
                 accept = ".json"
-                onChange = { (event) => handleFileChange(event, setFieldValue) }
+                onChange = { (event) => handleFileUpload(event, setConfig) }
               />
 
             </div>
@@ -173,7 +192,7 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
             </div>
 
             {/* Submit Button */}
-            <button className = "submit-button" type="button" onClick = { () => runQuery("Method is bruteforce", additionalPrompt, voice, format) }>
+            <button className = "submit-button" type="button" onClick = { () => runQuery(config, additionalPrompt, voice, format) }>
               <Typography>Submit</Typography>
             </button>
 
