@@ -60,9 +60,6 @@ const LLMDescription = ({ handleFileChange, setFieldValue }) => {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
     .then((response) => {
-      console.log(response.data)
-
-      console.log(formData)
 
       // Hide Loading Animation
       setLoading(false)
