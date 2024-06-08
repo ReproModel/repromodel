@@ -22,7 +22,7 @@ const supportedLLMs = [
 const LLMDescription = ({ handleFileChange, setFieldValue }) => {
 
   // Config
-  const [LLM, setLLM] = React.useState({})
+  const [LLM, setLLM] = React.useState(supportedLLMs[0])
 
   // LLM Additional Prompt
   const [additionalPrompt, setAdditionalPrompt] = React.useState("")
