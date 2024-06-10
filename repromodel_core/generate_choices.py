@@ -199,9 +199,9 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
 def make_json_serializable(obj, leading_key=None):
     if isinstance(obj, dict):
         if leading_key is None:
-            return {k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
         else:
-            return {leading_key + ">" + k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [make_json_serializable(i) for i in obj]
     elif isinstance(obj, tuple):
