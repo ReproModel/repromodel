@@ -4,6 +4,7 @@ import ModalityOptions from "./modality-options"
 import React from "react"
 
 import { Typography } from "@mui/material"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
 
 const modalities = [
   { label: "Image", image: "https://production-media.paperswithcode.com/thumbnails/task/task-0000000509-66402dc1_C47uozM.jpg", numPapers: "2157 Datasets", href: "" },
@@ -19,11 +20,27 @@ const tasks = [
   { label: "Object Detecttion", image: "https://production-media.paperswithcode.com/icons/task/dd004e56-bc49-4cc1-b0d5-186f2dd17ce8.jpg", numPapers: "180 models", href: ""},
 ]
 
-const ModalitySection = () => {
+const ModalitySection = (tags) => {
   
   return (
 
     <div className = "container">
+      {console.log(tags)}
+      {/* For everything under tag. */}
+       {Object.entries(tags).map(([tag, tagContent]) => (
+            <>
+              {/* For every Category to choose from. */}
+              {Object.entries(tagContent).map(([category, content]) => (
+                <>
+                <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your {capitalizeFirstLetter(category)}</Typography>
+                <ModalityOptions cardOptions = { tasks }/>
+                </>
+              ))}
+            </>
+         
+         
+        
+      ))}
 
         <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your modality:</Typography>
         <ModalityOptions cardOptions = { modalities }/>
