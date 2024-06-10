@@ -951,7 +951,7 @@
             }
         },
         "torchvision>datasets": {
-            "torchvision>datasets>CIFAR10": {
+            "CIFAR10": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -973,7 +973,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>CIFAR100": {
+            "CIFAR100": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -995,7 +995,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>CLEVRClassification": {
+            "CLEVRClassification": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1017,7 +1017,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>CREStereo": {
+            "CREStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1027,7 +1027,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Caltech101": {
+            "Caltech101": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1049,7 +1049,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Caltech256": {
+            "Caltech256": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1067,7 +1067,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>CarlaStereo": {
+            "CarlaStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1077,7 +1077,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>CelebA": {
+            "CelebA": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1103,7 +1103,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Cityscapes": {
+            "Cityscapes": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1133,7 +1133,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>CocoCaptions": {
+            "CocoCaptions": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1155,7 +1155,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>CocoDetection": {
+            "CocoDetection": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1177,7 +1177,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Country211": {
+            "Country211": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1199,7 +1199,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>DTD": {
+            "DTD": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1225,7 +1225,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>DatasetFolder": {
+            "DatasetFolder": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1255,7 +1255,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>EMNIST": {
+            "EMNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1269,7 +1269,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>ETH3DStereo": {
+            "ETH3DStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1283,7 +1283,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>EuroSAT": {
+            "EuroSAT": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1301,7 +1301,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>FER2013": {
+            "FER2013": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1319,7 +1319,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>FGVCAircraft": {
+            "FGVCAircraft": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1345,7 +1345,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>FakeData": {
+            "FakeData": {
                 "size": {
                     "type": "int",
                     "default": 1000
@@ -1375,7 +1375,7 @@
                     "default": 0
                 }
             },
-            "torchvision>datasets>FallingThingsStereo": {
+            "FallingThingsStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1389,7 +1389,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>FashionMNIST": {
+            "FashionMNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1411,7 +1411,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Flickr30k": {
+            "Flickr30k": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1429,7 +1429,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Flickr8k": {
+            "Flickr8k": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1447,7 +1447,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Flowers102": {
+            "Flowers102": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1469,7 +1469,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>FlyingChairs": {
+            "FlyingChairs": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1483,7 +1483,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>FlyingThings3D": {
+            "FlyingThings3D": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1505,7 +1505,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Food101": {
+            "Food101": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1527,7 +1527,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>GTSRB": {
+            "GTSRB": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1549,7 +1549,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>HD1K": {
+            "HD1K": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1563,7 +1563,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>HMDB51": {
+            "HMDB51": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1625,7 +1625,7 @@
                     "default": "THWC"
                 }
             },
-            "torchvision>datasets>INaturalist": {
+            "INaturalist": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1651,7 +1651,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>ImageFolder": {
+            "ImageFolder": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1666,7 +1666,7 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x1370d64c0>"
+                    "default": "<function default_loader at 0x12c0f2550>"
                 },
                 "is_valid_file": {
                     "type": "typing.Optional[typing.Callable[[str], bool]]",
@@ -1677,7 +1677,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>ImageNet": {
+            "ImageNet": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1691,7 +1691,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Imagenette": {
+            "Imagenette": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1717,7 +1717,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>InStereo2k": {
+            "InStereo2k": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1731,7 +1731,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>KMNIST": {
+            "KMNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1753,7 +1753,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Kinetics": {
+            "Kinetics": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1834,7 +1834,7 @@
                     "default": "TCHW"
                 }
             },
-            "torchvision>datasets>Kitti": {
+            "Kitti": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1860,7 +1860,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Kitti2012Stereo": {
+            "Kitti2012Stereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1874,7 +1874,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Kitti2015Stereo": {
+            "Kitti2015Stereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1888,7 +1888,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>KittiFlow": {
+            "KittiFlow": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1902,7 +1902,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>LFWPairs": {
+            "LFWPairs": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1928,7 +1928,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>LFWPeople": {
+            "LFWPeople": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1954,7 +1954,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>LSUN": {
+            "LSUN": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -1972,7 +1972,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>LSUNClass": {
+            "LSUNClass": {
                 "root": {
                     "type": "str",
                     "default": null
@@ -1986,7 +1986,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>MNIST": {
+            "MNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2008,7 +2008,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Middlebury2014Stereo": {
+            "Middlebury2014Stereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2034,7 +2034,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>MovingMNIST": {
+            "MovingMNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2056,7 +2056,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Omniglot": {
+            "Omniglot": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2078,7 +2078,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>OxfordIIITPet": {
+            "OxfordIIITPet": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2108,7 +2108,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>PCAM": {
+            "PCAM": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2130,7 +2130,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>PhotoTour": {
+            "PhotoTour": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2152,7 +2152,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>Places365": {
+            "Places365": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2179,10 +2179,10 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x1370d64c0>"
+                    "default": "<function default_loader at 0x12c0f2550>"
                 }
             },
-            "torchvision>datasets>QMNIST": {
+            "QMNIST": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2204,7 +2204,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>RenderedSST2": {
+            "RenderedSST2": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2226,7 +2226,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>SBDataset": {
+            "SBDataset": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2248,7 +2248,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>SBU": {
+            "SBU": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2266,7 +2266,7 @@
                     "default": true
                 }
             },
-            "torchvision>datasets>SEMEION": {
+            "SEMEION": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2284,7 +2284,7 @@
                     "default": true
                 }
             },
-            "torchvision>datasets>STL10": {
+            "STL10": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2310,7 +2310,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>SUN397": {
+            "SUN397": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2328,7 +2328,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>SVHN": {
+            "SVHN": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2350,7 +2350,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>SceneFlowStereo": {
+            "SceneFlowStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2368,7 +2368,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Sintel": {
+            "Sintel": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2386,7 +2386,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>SintelStereo": {
+            "SintelStereo": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2400,7 +2400,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>StanfordCars": {
+            "StanfordCars": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2422,7 +2422,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>UCF101": {
+            "UCF101": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2484,7 +2484,7 @@
                     "default": "THWC"
                 }
             },
-            "torchvision>datasets>USPS": {
+            "USPS": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2506,7 +2506,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>VOCDetection": {
+            "VOCDetection": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2536,7 +2536,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>VOCSegmentation": {
+            "VOCSegmentation": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2566,7 +2566,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>VisionDataset": {
+            "VisionDataset": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path, NoneType]",
                     "default": null
@@ -2584,7 +2584,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>WIDERFace": {
+            "WIDERFace": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2606,7 +2606,7 @@
                     "default": false
                 }
             },
-            "torchvision>datasets>FlowDataset": {
+            "FlowDataset": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2616,7 +2616,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>StereoMatchingDataset": {
+            "StereoMatchingDataset": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
@@ -2626,7 +2626,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>CSV": {
+            "CSV": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -2636,13 +2636,13 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>Flickr8kParser": {
+            "Flickr8kParser": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
                     "default": null
                 }
             },
-            "torchvision>datasets>DistributedSampler": {
+            "DistributedSampler": {
                 "dataset": {
                     "type": "typing.Sized",
                     "default": null
@@ -2664,7 +2664,7 @@
                     "default": 1
                 }
             },
-            "torchvision>datasets>RandomClipSampler": {
+            "RandomClipSampler": {
                 "video_clips": {
                     "type": "VideoClips",
                     "default": null
@@ -2674,7 +2674,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>UniformClipSampler": {
+            "UniformClipSampler": {
                 "video_clips": {
                     "type": "VideoClips",
                     "default": null
@@ -2684,7 +2684,7 @@
                     "default": null
                 }
             },
-            "torchvision>datasets>VideoClips": {
+            "VideoClips": {
                 "video_paths": {
                     "type": "typing.List[str]",
                     "default": null
@@ -2738,7 +2738,7 @@
                     "default": "THWC"
                 }
             },
-            "torchvision>datasets>StandardTransform": {
+            "StandardTransform": {
                 "transform": {
                     "type": "typing.Optional[typing.Callable]",
                     "default": null
@@ -2798,7 +2798,7 @@
             }
         },
         "torchvision>transforms": {
-            "torchvision>transforms>AugMix": {
+            "AugMix": {
                 "severity": {
                     "type": "int",
                     "default": 3
@@ -2828,7 +2828,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>AutoAugment": {
+            "AutoAugment": {
                 "policy": {
                     "type": "AutoAugmentPolicy",
                     "default": "AutoAugmentPolicy.IMAGENET"
@@ -2842,7 +2842,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>AutoAugmentPolicy": {
+            "AutoAugmentPolicy": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -2852,13 +2852,13 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>CenterCrop": {
+            "CenterCrop": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
                 }
             },
-            "torchvision>transforms>ColorJitter": {
+            "ColorJitter": {
                 "brightness": {
                     "type": "typing.Union[float, typing.Sequence[float], NoneType]",
                     "default": null
@@ -2876,19 +2876,19 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>Compose": {
+            "Compose": {
                 "transforms": {
                     "type": "typing.Sequence[typing.Callable]",
                     "default": null
                 }
             },
-            "torchvision>transforms>ConvertImageDtype": {
+            "ConvertImageDtype": {
                 "dtype": {
                     "type": "dtype",
                     "default": "torch.float32"
                 }
             },
-            "torchvision>transforms>ElasticTransform": {
+            "ElasticTransform": {
                 "alpha": {
                     "type": "typing.Union[float, typing.Sequence[float]]",
                     "default": 50.0
@@ -2906,13 +2906,13 @@
                     "default": 0
                 }
             },
-            "torchvision>transforms>FiveCrop": {
+            "FiveCrop": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
                 }
             },
-            "torchvision>transforms>GaussianBlur": {
+            "GaussianBlur": {
                 "kernel_size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -2925,13 +2925,13 @@
                     ]
                 }
             },
-            "torchvision>transforms>Grayscale": {
+            "Grayscale": {
                 "num_output_channels": {
                     "type": "int",
                     "default": 1
                 }
             },
-            "torchvision>transforms>InterpolationMode": {
+            "InterpolationMode": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -2941,7 +2941,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>Lambda": {
+            "Lambda": {
                 "lambd": {
                     "type": "typing.Callable[[typing.Any], typing.Any]",
                     "default": null
@@ -2951,7 +2951,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>LinearTransformation": {
+            "LinearTransformation": {
                 "transformation_matrix": {
                     "type": "Tensor",
                     "default": null
@@ -2961,7 +2961,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>Normalize": {
+            "Normalize": {
                 "mean": {
                     "type": "typing.Sequence[float]",
                     "default": null
@@ -2975,8 +2975,8 @@
                     "default": false
                 }
             },
-            "torchvision>transforms>PILToTensor": {},
-            "torchvision>transforms>Pad": {
+            "PILToTensor": {},
+            "Pad": {
                 "padding": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -2990,7 +2990,7 @@
                     "default": "constant"
                 }
             },
-            "torchvision>transforms>RandAugment": {
+            "RandAugment": {
                 "num_ops": {
                     "type": "int",
                     "default": 2
@@ -3012,7 +3012,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>RandomAdjustSharpness": {
+            "RandomAdjustSharpness": {
                 "sharpness_factor": {
                     "type": "float",
                     "default": null
@@ -3022,7 +3022,7 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomAffine": {
+            "RandomAffine": {
                 "degrees": {
                     "type": "typing.Union[numbers.Number, typing.Sequence]",
                     "default": null
@@ -3052,7 +3052,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>RandomApply": {
+            "RandomApply": {
                 "transforms": {
                     "type": "typing.Union[typing.Sequence[typing.Callable], torch.nn.modules.container.ModuleList]",
                     "default": null
@@ -3062,13 +3062,13 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomAutocontrast": {
+            "RandomAutocontrast": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomChoice": {
+            "RandomChoice": {
                 "transforms": {
                     "type": "typing.Sequence[typing.Callable]",
                     "default": null
@@ -3078,7 +3078,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>RandomCrop": {
+            "RandomCrop": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -3100,13 +3100,13 @@
                     "default": "constant"
                 }
             },
-            "torchvision>transforms>RandomEqualize": {
+            "RandomEqualize": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomErasing": {
+            "RandomErasing": {
                 "p": {
                     "type": "float",
                     "default": 0.5
@@ -3134,31 +3134,31 @@
                     "default": false
                 }
             },
-            "torchvision>transforms>RandomGrayscale": {
+            "RandomGrayscale": {
                 "p": {
                     "type": "float",
                     "default": 0.1
                 }
             },
-            "torchvision>transforms>RandomHorizontalFlip": {
+            "RandomHorizontalFlip": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomInvert": {
+            "RandomInvert": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomOrder": {
+            "RandomOrder": {
                 "transforms": {
                     "type": "typing.Sequence[typing.Callable]",
                     "default": null
                 }
             },
-            "torchvision>transforms>RandomPerspective": {
+            "RandomPerspective": {
                 "distortion_scale": {
                     "type": "float",
                     "default": 0.5
@@ -3176,7 +3176,7 @@
                     "default": 0
                 }
             },
-            "torchvision>transforms>RandomPosterize": {
+            "RandomPosterize": {
                 "bits": {
                     "type": "int",
                     "default": null
@@ -3186,7 +3186,7 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomResizedCrop": {
+            "RandomResizedCrop": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -3214,7 +3214,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>RandomRotation": {
+            "RandomRotation": {
                 "degrees": {
                     "type": "typing.Union[numbers.Number, typing.Sequence]",
                     "default": null
@@ -3236,7 +3236,7 @@
                     "default": 0
                 }
             },
-            "torchvision>transforms>RandomSolarize": {
+            "RandomSolarize": {
                 "threshold": {
                     "type": "float",
                     "default": null
@@ -3246,13 +3246,13 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomVerticalFlip": {
+            "RandomVerticalFlip": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>Resize": {
+            "Resize": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -3270,7 +3270,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>TenCrop": {
+            "TenCrop": {
                 "size": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
@@ -3280,14 +3280,14 @@
                     "default": false
                 }
             },
-            "torchvision>transforms>ToPILImage": {
+            "ToPILImage": {
                 "mode": {
                     "type": "typing.Optional[str]",
                     "default": null
                 }
             },
-            "torchvision>transforms>ToTensor": {},
-            "torchvision>transforms>TrivialAugmentWide": {
+            "ToTensor": {},
+            "TrivialAugmentWide": {
                 "num_magnitude_bins": {
                     "type": "int",
                     "default": 31
@@ -3301,7 +3301,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>ImageClassification": {
+            "ImageClassification": {
                 "crop_size": {
                     "type": "int",
                     "default": null
@@ -3335,7 +3335,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>ObjectDetection": {
+            "ObjectDetection": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -3345,7 +3345,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>OpticalFlow": {
+            "OpticalFlow": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -3355,7 +3355,7 @@
                     "default": null
                 }
             },
-            "torchvision>transforms>SemanticSegmentation": {
+            "SemanticSegmentation": {
                 "resize_size": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -3385,7 +3385,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>VideoClassification": {
+            "VideoClassification": {
                 "crop_size": {
                     "type": "typing.Tuple[int, int]",
                     "default": null
@@ -3415,13 +3415,13 @@
                     "default": "InterpolationMode.BILINEAR"
                 }
             },
-            "torchvision>transforms>CenterCropVideo": {
+            "CenterCropVideo": {
                 "crop_size": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "torchvision>transforms>NormalizeVideo": {
+            "NormalizeVideo": {
                 "mean": {
                     "type": "unknown",
                     "default": null
@@ -3435,19 +3435,19 @@
                     "default": false
                 }
             },
-            "torchvision>transforms>RandomCropVideo": {
+            "RandomCropVideo": {
                 "size": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "torchvision>transforms>RandomHorizontalFlipVideo": {
+            "RandomHorizontalFlipVideo": {
                 "p": {
                     "type": "float",
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomResizedCropVideo": {
+            "RandomResizedCropVideo": {
                 "size": {
                     "type": "unknown",
                     "default": null
@@ -3471,21 +3471,21 @@
                     "default": "bilinear"
                 }
             },
-            "torchvision>transforms>ToTensorVideo": {},
-            "torchvision>transforms>RandomTransforms": {
+            "ToTensorVideo": {},
+            "RandomTransforms": {
                 "transforms": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "torchvision>transforms>ClampBoundingBoxes": {},
-            "torchvision>transforms>ConvertBoundingBoxFormat": {
+            "ClampBoundingBoxes": {},
+            "ConvertBoundingBoxFormat": {
                 "format": {
                     "type": "typing.Union[str, torchvision.tv_tensors._bounding_boxes.BoundingBoxFormat]",
                     "default": null
                 }
             },
-            "torchvision>transforms>CutMix": {
+            "CutMix": {
                 "alpha": {
                     "type": "float",
                     "default": 1.0
@@ -3499,14 +3499,14 @@
                     "default": "default"
                 }
             },
-            "torchvision>transforms>Identity": {},
-            "torchvision>transforms>JPEG": {
+            "Identity": {},
+            "JPEG": {
                 "quality": {
                     "type": "typing.Union[int, typing.Sequence[int]]",
                     "default": null
                 }
             },
-            "torchvision>transforms>MixUp": {
+            "MixUp": {
                 "alpha": {
                     "type": "float",
                     "default": 1.0
@@ -3520,9 +3520,9 @@
                     "default": "default"
                 }
             },
-            "torchvision>transforms>RGB": {},
-            "torchvision>transforms>RandomChannelPermutation": {},
-            "torchvision>transforms>RandomIoUCrop": {
+            "RGB": {},
+            "RandomChannelPermutation": {},
+            "RandomIoUCrop": {
                 "min_scale": {
                     "type": "float",
                     "default": 0.3
@@ -3548,7 +3548,7 @@
                     "default": 40
                 }
             },
-            "torchvision>transforms>RandomPhotometricDistort": {
+            "RandomPhotometricDistort": {
                 "brightness": {
                     "type": "typing.Tuple[float, float]",
                     "default": [
@@ -3582,7 +3582,7 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>RandomResize": {
+            "RandomResize": {
                 "min_size": {
                     "type": "int",
                     "default": null
@@ -3600,7 +3600,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>RandomShortestSize": {
+            "RandomShortestSize": {
                 "min_size": {
                     "type": "typing.Union[typing.List[int], typing.Tuple[int], int]",
                     "default": null
@@ -3618,7 +3618,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>RandomZoomOut": {
+            "RandomZoomOut": {
                 "fill": {
                     "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
                     "default": 0
@@ -3635,7 +3635,7 @@
                     "default": 0.5
                 }
             },
-            "torchvision>transforms>SanitizeBoundingBoxes": {
+            "SanitizeBoundingBoxes": {
                 "min_size": {
                     "type": "float",
                     "default": 1.0
@@ -3645,7 +3645,7 @@
                     "default": "default"
                 }
             },
-            "torchvision>transforms>ScaleJitter": {
+            "ScaleJitter": {
                 "target_size": {
                     "type": "typing.Tuple[int, int]",
                     "default": null
@@ -3666,7 +3666,7 @@
                     "default": true
                 }
             },
-            "torchvision>transforms>ToDtype": {
+            "ToDtype": {
                 "dtype": {
                     "type": "typing.Union[torch.dtype, typing.Dict[typing.Union[typing.Type, str], typing.Optional[torch.dtype]]]",
                     "default": null
@@ -3676,10 +3676,10 @@
                     "default": false
                 }
             },
-            "torchvision>transforms>ToImage": {},
-            "torchvision>transforms>ToPureTensor": {},
-            "torchvision>transforms>Transform": {},
-            "torchvision>transforms>UniformTemporalSubsample": {
+            "ToImage": {},
+            "ToPureTensor": {},
+            "Transform": {},
+            "UniformTemporalSubsample": {
                 "num_samples": {
                     "type": "int",
                     "default": null
@@ -3720,25 +3720,25 @@
             }
         },
         "torchmetrics": {
-            "torchmetrics>AUROC": {
+            "AUROC": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>Accuracy": {
+            "Accuracy": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>AveragePrecision": {
+            "AveragePrecision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>BLEUScore": {
+            "BLEUScore": {
                 "n_gram": {
                     "type": "int",
                     "default": 4
@@ -3756,7 +3756,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BootStrapper": {
+            "BootStrapper": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -3790,7 +3790,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CHRFScore": {
+            "CHRFScore": {
                 "n_char_order": {
                     "type": "int",
                     "default": 6
@@ -3820,13 +3820,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>CalibrationError": {
+            "CalibrationError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>CatMetric": {
+            "CatMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -3836,13 +3836,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>CharErrorRate": {
+            "CharErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>ClasswiseWrapper": {
+            "ClasswiseWrapper": {
                 "metric": {
                     "type": "Metric",
                     "default": null
@@ -3860,13 +3860,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>CohenKappa": {
+            "CohenKappa": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>ConcordanceCorrCoef": {
+            "ConcordanceCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -3876,13 +3876,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>ConfusionMatrix": {
+            "ConfusionMatrix": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>CosineSimilarity": {
+            "CosineSimilarity": {
                 "reduction": {
                     "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
                     "default": "sum"
@@ -3892,7 +3892,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CramersV": {
+            "CramersV": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -3914,7 +3914,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CriticalSuccessIndex": {
+            "CriticalSuccessIndex": {
                 "threshold": {
                     "type": "float",
                     "default": null
@@ -3928,7 +3928,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>Dice": {
+            "Dice": {
                 "zero_division": {
                     "type": "int",
                     "default": 0
@@ -3966,7 +3966,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ErrorRelativeGlobalDimensionlessSynthesis": {
+            "ErrorRelativeGlobalDimensionlessSynthesis": {
                 "ratio": {
                     "type": "float",
                     "default": 4
@@ -3980,13 +3980,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>ExactMatch": {
+            "ExactMatch": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>ExplainedVariance": {
+            "ExplainedVariance": {
                 "multioutput": {
                     "type": "typing_extensions.Literal['raw_values', 'uniform_average', 'variance_weighted']",
                     "default": "uniform_average"
@@ -3996,7 +3996,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ExtendedEditDistance": {
+            "ExtendedEditDistance": {
                 "language": {
                     "type": "typing_extensions.Literal['en', 'ja']",
                     "default": "en"
@@ -4026,19 +4026,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>F1Score": {
+            "F1Score": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>FBetaScore": {
+            "FBetaScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>FleissKappa": {
+            "FleissKappa": {
                 "mode": {
                     "type": "typing_extensions.Literal['counts', 'probs']",
                     "default": "counts"
@@ -4048,25 +4048,25 @@
                     "default": null
                 }
             },
-            "torchmetrics>HammingDistance": {
+            "HammingDistance": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>HingeLoss": {
+            "HingeLoss": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>JaccardIndex": {
+            "JaccardIndex": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>KLDivergence": {
+            "KLDivergence": {
                 "log_prob": {
                     "type": "bool",
                     "default": false
@@ -4080,7 +4080,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>KendallRankCorrCoef": {
+            "KendallRankCorrCoef": {
                 "variant": {
                     "type": "typing_extensions.Literal['a', 'b', 'c']",
                     "default": "b"
@@ -4102,7 +4102,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>LogCoshError": {
+            "LogCoshError": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -4112,19 +4112,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>MatchErrorRate": {
+            "MatchErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MatthewsCorrCoef": {
+            "MatthewsCorrCoef": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MaxMetric": {
+            "MaxMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -4134,19 +4134,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>MeanAbsoluteError": {
+            "MeanAbsoluteError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MeanAbsolutePercentageError": {
+            "MeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MeanMetric": {
+            "MeanMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -4156,7 +4156,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MeanSquaredError": {
+            "MeanSquaredError": {
                 "squared": {
                     "type": "bool",
                     "default": true
@@ -4170,19 +4170,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>MeanSquaredLogError": {
+            "MeanSquaredLogError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>Metric": {
+            "Metric": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MetricCollection": {
+            "MetricCollection": {
                 "metrics": {
                     "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
                     "default": null
@@ -4204,7 +4204,7 @@
                     "default": true
                 }
             },
-            "torchmetrics>MetricTracker": {
+            "MetricTracker": {
                 "metric": {
                     "type": "typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]",
                     "default": null
@@ -4214,7 +4214,7 @@
                     "default": true
                 }
             },
-            "torchmetrics>MinMaxMetric": {
+            "MinMaxMetric": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -4224,7 +4224,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MinMetric": {
+            "MinMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -4234,7 +4234,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MinkowskiDistance": {
+            "MinkowskiDistance": {
                 "p": {
                     "type": "float",
                     "default": null
@@ -4244,7 +4244,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ModifiedPanopticQuality": {
+            "ModifiedPanopticQuality": {
                 "things": {
                     "type": "typing.Collection[int]",
                     "default": null
@@ -4262,7 +4262,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultiScaleStructuralSimilarityIndexMeasure": {
+            "MultiScaleStructuralSimilarityIndexMeasure": {
                 "gaussian_kernel": {
                     "type": "bool",
                     "default": true
@@ -4310,7 +4310,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultioutputWrapper": {
+            "MultioutputWrapper": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -4332,13 +4332,13 @@
                     "default": true
                 }
             },
-            "torchmetrics>MultitaskWrapper": {
+            "MultitaskWrapper": {
                 "task_metrics": {
                     "type": "typing.Dict[str, typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]]",
                     "default": null
                 }
             },
-            "torchmetrics>PanopticQuality": {
+            "PanopticQuality": {
                 "things": {
                     "type": "typing.Collection[int]",
                     "default": null
@@ -4364,7 +4364,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PeakSignalNoiseRatio": {
+            "PeakSignalNoiseRatio": {
                 "data_range": {
                     "type": "typing.Union[float, typing.Tuple[float, float], NoneType]",
                     "default": null
@@ -4386,7 +4386,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PearsonCorrCoef": {
+            "PearsonCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -4396,7 +4396,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PearsonsContingencyCoefficient": {
+            "PearsonsContingencyCoefficient": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -4414,7 +4414,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PermutationInvariantTraining": {
+            "PermutationInvariantTraining": {
                 "metric_func": {
                     "type": "typing.Callable",
                     "default": null
@@ -4432,7 +4432,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>Perplexity": {
+            "Perplexity": {
                 "ignore_index": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -4442,25 +4442,25 @@
                     "default": null
                 }
             },
-            "torchmetrics>Precision": {
+            "Precision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>PrecisionAtFixedRecall": {
+            "PrecisionAtFixedRecall": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>PrecisionRecallCurve": {
+            "PrecisionRecallCurve": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>R2Score": {
+            "R2Score": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -4478,25 +4478,25 @@
                     "default": null
                 }
             },
-            "torchmetrics>ROC": {
+            "ROC": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>Recall": {
+            "Recall": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>RecallAtFixedPrecision": {
+            "RecallAtFixedPrecision": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>RelativeAverageSpectralError": {
+            "RelativeAverageSpectralError": {
                 "window_size": {
                     "type": "int",
                     "default": 8
@@ -4506,7 +4506,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RelativeSquaredError": {
+            "RelativeSquaredError": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -4520,7 +4520,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalFallOut": {
+            "RetrievalFallOut": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "pos"
@@ -4542,7 +4542,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalHitRate": {
+            "RetrievalHitRate": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4564,7 +4564,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalMAP": {
+            "RetrievalMAP": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4586,7 +4586,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalMRR": {
+            "RetrievalMRR": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4608,7 +4608,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalNormalizedDCG": {
+            "RetrievalNormalizedDCG": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4630,7 +4630,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalPrecision": {
+            "RetrievalPrecision": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4656,7 +4656,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalPrecisionRecallCurve": {
+            "RetrievalPrecisionRecallCurve": {
                 "max_k": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -4682,7 +4682,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalRPrecision": {
+            "RetrievalRPrecision": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4700,7 +4700,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalRecall": {
+            "RetrievalRecall": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -4722,7 +4722,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalRecallAtFixedPrecision": {
+            "RetrievalRecallAtFixedPrecision": {
                 "min_precision": {
                     "type": "float",
                     "default": 0.0
@@ -4748,7 +4748,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RootMeanSquaredErrorUsingSlidingWindow": {
+            "RootMeanSquaredErrorUsingSlidingWindow": {
                 "window_size": {
                     "type": "int",
                     "default": 8
@@ -4758,7 +4758,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RunningMean": {
+            "RunningMean": {
                 "window": {
                     "type": "int",
                     "default": 5
@@ -4772,7 +4772,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RunningSum": {
+            "RunningSum": {
                 "window": {
                     "type": "int",
                     "default": 5
@@ -4786,13 +4786,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>SQuAD": {
+            "SQuAD": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>SacreBLEUScore": {
+            "SacreBLEUScore": {
                 "n_gram": {
                     "type": "int",
                     "default": 4
@@ -4818,7 +4818,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ScaleInvariantSignalDistortionRatio": {
+            "ScaleInvariantSignalDistortionRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -4828,19 +4828,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>ScaleInvariantSignalNoiseRatio": {
+            "ScaleInvariantSignalNoiseRatio": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>SensitivityAtSpecificity": {
+            "SensitivityAtSpecificity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>SignalDistortionRatio": {
+            "SignalDistortionRatio": {
                 "use_cg_iter": {
                     "type": "typing.Optional[int]",
                     "default": null
@@ -4862,7 +4862,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SignalNoiseRatio": {
+            "SignalNoiseRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -4872,7 +4872,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SpearmanCorrCoef": {
+            "SpearmanCorrCoef": {
                 "num_outputs": {
                     "type": "int",
                     "default": 1
@@ -4882,19 +4882,19 @@
                     "default": null
                 }
             },
-            "torchmetrics>Specificity": {
+            "Specificity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>SpecificityAtSensitivity": {
+            "SpecificityAtSensitivity": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>SpectralAngleMapper": {
+            "SpectralAngleMapper": {
                 "reduction": {
                     "type": "typing.Optional[typing_extensions.Literal['elementwise_mean', 'sum', 'none']]",
                     "default": "elementwise_mean"
@@ -4904,7 +4904,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SpectralDistortionIndex": {
+            "SpectralDistortionIndex": {
                 "p": {
                     "type": "int",
                     "default": 1
@@ -4918,13 +4918,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>StatScores": {
+            "StatScores": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>StructuralSimilarityIndexMeasure": {
+            "StructuralSimilarityIndexMeasure": {
                 "gaussian_kernel": {
                     "type": "bool",
                     "default": true
@@ -4966,7 +4966,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SumMetric": {
+            "SumMetric": {
                 "nan_strategy": {
                     "type": "typing.Union[str, float]",
                     "default": "warn"
@@ -4976,13 +4976,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>SymmetricMeanAbsolutePercentageError": {
+            "SymmetricMeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>TheilsU": {
+            "TheilsU": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5000,7 +5000,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TotalVariation": {
+            "TotalVariation": {
                 "reduction": {
                     "type": "typing.Optional[typing_extensions.Literal['mean', 'sum', 'none']]",
                     "default": "sum"
@@ -5010,7 +5010,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TranslationEditRate": {
+            "TranslationEditRate": {
                 "normalize": {
                     "type": "bool",
                     "default": false
@@ -5036,7 +5036,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TschuprowsT": {
+            "TschuprowsT": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5058,7 +5058,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TweedieDevianceScore": {
+            "TweedieDevianceScore": {
                 "power": {
                     "type": "float",
                     "default": 0.0
@@ -5068,7 +5068,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>UniversalImageQualityIndex": {
+            "UniversalImageQualityIndex": {
                 "kernel_size": {
                     "type": "typing.Sequence[int]",
                     "default": [
@@ -5092,31 +5092,31 @@
                     "default": null
                 }
             },
-            "torchmetrics>WeightedMeanAbsolutePercentageError": {
+            "WeightedMeanAbsolutePercentageError": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>WordErrorRate": {
+            "WordErrorRate": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>WordInfoLost": {
+            "WordInfoLost": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>WordInfoPreserved": {
+            "WordInfoPreserved": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>BaseAggregator": {
+            "BaseAggregator": {
                 "fn": {
                     "type": "typing.Union[typing.Callable, str]",
                     "default": null
@@ -5138,7 +5138,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ComplexScaleInvariantSignalNoiseRatio": {
+            "ComplexScaleInvariantSignalNoiseRatio": {
                 "zero_mean": {
                     "type": "bool",
                     "default": false
@@ -5148,7 +5148,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SourceAggregatedSignalDistortionRatio": {
+            "SourceAggregatedSignalDistortionRatio": {
                 "scale_invariant": {
                     "type": "bool",
                     "default": true
@@ -5162,7 +5162,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PerceptualEvaluationSpeechQuality": {
+            "PerceptualEvaluationSpeechQuality": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -5180,7 +5180,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SpeechReverberationModulationEnergyRatio": {
+            "SpeechReverberationModulationEnergyRatio": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -5214,7 +5214,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ShortTimeObjectiveIntelligibility": {
+            "ShortTimeObjectiveIntelligibility": {
                 "fs": {
                     "type": "int",
                     "default": null
@@ -5228,7 +5228,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryAUROC": {
+            "BinaryAUROC": {
                 "max_fpr": {
                     "type": "typing.Optional[float]",
                     "default": null
@@ -5250,7 +5250,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryAccuracy": {
+            "BinaryAccuracy": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5272,7 +5272,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryAveragePrecision": {
+            "BinaryAveragePrecision": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -5290,7 +5290,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryCalibrationError": {
+            "BinaryCalibrationError": {
                 "n_bins": {
                     "type": "int",
                     "default": 15
@@ -5312,7 +5312,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryCohenKappa": {
+            "BinaryCohenKappa": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5334,7 +5334,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryConfusionMatrix": {
+            "BinaryConfusionMatrix": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5356,7 +5356,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryF1Score": {
+            "BinaryF1Score": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5382,7 +5382,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryFBetaScore": {
+            "BinaryFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -5412,7 +5412,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryFairness": {
+            "BinaryFairness": {
                 "num_groups": {
                     "type": "int",
                     "default": null
@@ -5438,7 +5438,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryGroupStatRates": {
+            "BinaryGroupStatRates": {
                 "num_groups": {
                     "type": "int",
                     "default": null
@@ -5460,7 +5460,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryHammingDistance": {
+            "BinaryHammingDistance": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5482,7 +5482,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryHingeLoss": {
+            "BinaryHingeLoss": {
                 "squared": {
                     "type": "bool",
                     "default": false
@@ -5500,7 +5500,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryJaccardIndex": {
+            "BinaryJaccardIndex": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5522,7 +5522,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryMatthewsCorrCoef": {
+            "BinaryMatthewsCorrCoef": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5540,7 +5540,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryPrecision": {
+            "BinaryPrecision": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5562,7 +5562,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryPrecisionAtFixedRecall": {
+            "BinaryPrecisionAtFixedRecall": {
                 "min_recall": {
                     "type": "float",
                     "default": null
@@ -5584,7 +5584,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryPrecisionRecallCurve": {
+            "BinaryPrecisionRecallCurve": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -5602,7 +5602,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryROC": {
+            "BinaryROC": {
                 "thresholds": {
                     "type": "typing.Union[int, typing.List[float], torch.Tensor, NoneType]",
                     "default": null
@@ -5620,7 +5620,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryRecall": {
+            "BinaryRecall": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5642,7 +5642,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryRecallAtFixedPrecision": {
+            "BinaryRecallAtFixedPrecision": {
                 "min_precision": {
                     "type": "float",
                     "default": null
@@ -5664,7 +5664,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinarySensitivityAtSpecificity": {
+            "BinarySensitivityAtSpecificity": {
                 "min_specificity": {
                     "type": "float",
                     "default": null
@@ -5686,7 +5686,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinarySpecificity": {
+            "BinarySpecificity": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5708,7 +5708,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinarySpecificityAtSensitivity": {
+            "BinarySpecificityAtSensitivity": {
                 "min_sensitivity": {
                     "type": "float",
                     "default": null
@@ -5730,7 +5730,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BinaryStatScores": {
+            "BinaryStatScores": {
                 "threshold": {
                     "type": "float",
                     "default": 0.5
@@ -5752,7 +5752,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassAUROC": {
+            "MulticlassAUROC": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5778,7 +5778,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassAccuracy": {
+            "MulticlassAccuracy": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5808,7 +5808,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassAveragePrecision": {
+            "MulticlassAveragePrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5834,7 +5834,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassCalibrationError": {
+            "MulticlassCalibrationError": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5860,7 +5860,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassCohenKappa": {
+            "MulticlassCohenKappa": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5882,7 +5882,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassConfusionMatrix": {
+            "MulticlassConfusionMatrix": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5904,7 +5904,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassExactMatch": {
+            "MulticlassExactMatch": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5926,7 +5926,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassF1Score": {
+            "MulticlassF1Score": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -5960,7 +5960,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassFBetaScore": {
+            "MulticlassFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -5998,7 +5998,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassHammingDistance": {
+            "MulticlassHammingDistance": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6028,7 +6028,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassHingeLoss": {
+            "MulticlassHingeLoss": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6054,7 +6054,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassJaccardIndex": {
+            "MulticlassJaccardIndex": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6080,7 +6080,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassMatthewsCorrCoef": {
+            "MulticlassMatthewsCorrCoef": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6098,7 +6098,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassPrecision": {
+            "MulticlassPrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6128,7 +6128,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassPrecisionAtFixedRecall": {
+            "MulticlassPrecisionAtFixedRecall": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6154,7 +6154,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassPrecisionRecallCurve": {
+            "MulticlassPrecisionRecallCurve": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6180,7 +6180,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassROC": {
+            "MulticlassROC": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6206,7 +6206,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassRecall": {
+            "MulticlassRecall": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6236,7 +6236,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassRecallAtFixedPrecision": {
+            "MulticlassRecallAtFixedPrecision": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6262,7 +6262,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassSensitivityAtSpecificity": {
+            "MulticlassSensitivityAtSpecificity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6288,7 +6288,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassSpecificity": {
+            "MulticlassSpecificity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6318,7 +6318,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassSpecificityAtSensitivity": {
+            "MulticlassSpecificityAtSensitivity": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6344,7 +6344,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MulticlassStatScores": {
+            "MulticlassStatScores": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -6374,7 +6374,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelAUROC": {
+            "MultilabelAUROC": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6400,7 +6400,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelAccuracy": {
+            "MultilabelAccuracy": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6430,7 +6430,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelAveragePrecision": {
+            "MultilabelAveragePrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6456,7 +6456,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelConfusionMatrix": {
+            "MultilabelConfusionMatrix": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6482,7 +6482,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelCoverageError": {
+            "MultilabelCoverageError": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6500,7 +6500,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelExactMatch": {
+            "MultilabelExactMatch": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6526,7 +6526,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelF1Score": {
+            "MultilabelF1Score": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6560,7 +6560,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelFBetaScore": {
+            "MultilabelFBetaScore": {
                 "beta": {
                     "type": "float",
                     "default": null
@@ -6598,7 +6598,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelHammingDistance": {
+            "MultilabelHammingDistance": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6628,7 +6628,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelJaccardIndex": {
+            "MultilabelJaccardIndex": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6658,7 +6658,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelMatthewsCorrCoef": {
+            "MultilabelMatthewsCorrCoef": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6680,7 +6680,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelPrecision": {
+            "MultilabelPrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6710,7 +6710,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelPrecisionAtFixedRecall": {
+            "MultilabelPrecisionAtFixedRecall": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6736,7 +6736,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelPrecisionRecallCurve": {
+            "MultilabelPrecisionRecallCurve": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6758,7 +6758,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelROC": {
+            "MultilabelROC": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6780,7 +6780,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelRankingAveragePrecision": {
+            "MultilabelRankingAveragePrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6798,7 +6798,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelRankingLoss": {
+            "MultilabelRankingLoss": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6816,7 +6816,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelRecall": {
+            "MultilabelRecall": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6846,7 +6846,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelRecallAtFixedPrecision": {
+            "MultilabelRecallAtFixedPrecision": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6872,7 +6872,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelSensitivityAtSpecificity": {
+            "MultilabelSensitivityAtSpecificity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6898,7 +6898,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelSpecificity": {
+            "MultilabelSpecificity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6928,7 +6928,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelSpecificityAtSensitivity": {
+            "MultilabelSpecificityAtSensitivity": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6954,7 +6954,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MultilabelStatScores": {
+            "MultilabelStatScores": {
                 "num_labels": {
                     "type": "int",
                     "default": null
@@ -6984,7 +6984,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>AdjustedMutualInfoScore": {
+            "AdjustedMutualInfoScore": {
                 "average_method": {
                     "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
                     "default": "arithmetic"
@@ -6994,31 +6994,31 @@
                     "default": null
                 }
             },
-            "torchmetrics>AdjustedRandScore": {
+            "AdjustedRandScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>CalinskiHarabaszScore": {
+            "CalinskiHarabaszScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>CompletenessScore": {
+            "CompletenessScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>DaviesBouldinScore": {
+            "DaviesBouldinScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>DunnIndex": {
+            "DunnIndex": {
                 "p": {
                     "type": "float",
                     "default": 2
@@ -7028,25 +7028,25 @@
                     "default": null
                 }
             },
-            "torchmetrics>FowlkesMallowsIndex": {
+            "FowlkesMallowsIndex": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>HomogeneityScore": {
+            "HomogeneityScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>MutualInfoScore": {
+            "MutualInfoScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>NormalizedMutualInfoScore": {
+            "NormalizedMutualInfoScore": {
                 "average_method": {
                     "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
                     "default": "arithmetic"
@@ -7056,13 +7056,13 @@
                     "default": null
                 }
             },
-            "torchmetrics>RandScore": {
+            "RandScore": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>VMeasureScore": {
+            "VMeasureScore": {
                 "beta": {
                     "type": "float",
                     "default": 1.0
@@ -7072,7 +7072,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CompleteIntersectionOverUnion": {
+            "CompleteIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -7094,7 +7094,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>DistanceIntersectionOverUnion": {
+            "DistanceIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -7116,7 +7116,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>GeneralizedIntersectionOverUnion": {
+            "GeneralizedIntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -7138,7 +7138,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>IntersectionOverUnion": {
+            "IntersectionOverUnion": {
                 "box_format": {
                     "type": "str",
                     "default": "xyxy"
@@ -7160,7 +7160,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MeanAveragePrecision": {
+            "MeanAveragePrecision": {
                 "box_format": {
                     "type": "typing_extensions.Literal['xyxy', 'xywh', 'cxcywh']",
                     "default": "xyxy"
@@ -7202,7 +7202,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BaseMetricResults": {
+            "BaseMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7212,7 +7212,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>COCOMetricResults": {
+            "COCOMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7222,7 +7222,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MAPMetricResults": {
+            "MAPMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7232,7 +7232,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MARMetricResults": {
+            "MARMetricResults": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7242,7 +7242,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>Alexnet": {
+            "Alexnet": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -7252,7 +7252,7 @@
                     "default": true
                 }
             },
-            "torchmetrics>NetLinLayer": {
+            "NetLinLayer": {
                 "chn_in": {
                     "type": "int",
                     "default": null
@@ -7266,8 +7266,8 @@
                     "default": false
                 }
             },
-            "torchmetrics>ScalingLayer": {},
-            "torchmetrics>SqueezeNet": {
+            "ScalingLayer": {},
+            "SqueezeNet": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -7277,7 +7277,7 @@
                     "default": true
                 }
             },
-            "torchmetrics>Vgg16": {
+            "Vgg16": {
                 "requires_grad": {
                     "type": "bool",
                     "default": false
@@ -7287,7 +7287,7 @@
                     "default": true
                 }
             },
-            "torchmetrics>GeneratorType": {
+            "GeneratorType": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7297,7 +7297,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TextDataset": {
+            "TextDataset": {
                 "text": {
                     "type": "typing.List[str]",
                     "default": null
@@ -7312,7 +7312,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x135bb0430>"
+                    "default": "<function _preprocess_text at 0x12b467a60>"
                 },
                 "idf": {
                     "type": "bool",
@@ -7323,7 +7323,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TokenizedDataset": {
+            "TokenizedDataset": {
                 "input_ids": {
                     "type": "Tensor",
                     "default": null
@@ -7341,7 +7341,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>LearnedPerceptualImagePatchSimilarity": {
+            "LearnedPerceptualImagePatchSimilarity": {
                 "net_type": {
                     "type": "typing_extensions.Literal['vgg', 'alex', 'squeeze']",
                     "default": "alex"
@@ -7359,7 +7359,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MemorizationInformedFrechetInceptionDistance": {
+            "MemorizationInformedFrechetInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -7381,7 +7381,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PeakSignalNoiseRatioWithBlockedEffect": {
+            "PeakSignalNoiseRatioWithBlockedEffect": {
                 "block_size": {
                     "type": "int",
                     "default": 8
@@ -7391,7 +7391,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>PerceptualPathLength": {
+            "PerceptualPathLength": {
                 "num_samples": {
                     "type": "int",
                     "default": 10000
@@ -7433,7 +7433,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>QualityWithNoReference": {
+            "QualityWithNoReference": {
                 "alpha": {
                     "type": "float",
                     "default": 1
@@ -7459,7 +7459,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SpatialCorrelationCoefficient": {
+            "SpatialCorrelationCoefficient": {
                 "high_pass_filter": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -7473,7 +7473,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>SpatialDistortionIndex": {
+            "SpatialDistortionIndex": {
                 "norm_order": {
                     "type": "int",
                     "default": 1
@@ -7491,7 +7491,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>VisualInformationFidelity": {
+            "VisualInformationFidelity": {
                 "sigma_n_sq": {
                     "type": "float",
                     "default": 2.0
@@ -7501,7 +7501,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>FrechetInceptionDistance": {
+            "FrechetInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -7527,7 +7527,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>NoTrainInceptionV3": {
+            "NoTrainInceptionV3": {
                 "name": {
                     "type": "str",
                     "default": null
@@ -7541,7 +7541,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>InceptionScore": {
+            "InceptionScore": {
                 "feature": {
                     "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
                     "default": "logits_unbiased"
@@ -7559,7 +7559,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>KernelInceptionDistance": {
+            "KernelInceptionDistance": {
                 "feature": {
                     "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
                     "default": 2048
@@ -7597,7 +7597,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CompositionalMetric": {
+            "CompositionalMetric": {
                 "operator": {
                     "type": "typing.Callable",
                     "default": null
@@ -7611,7 +7611,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CLIPImageQualityAssessment": {
+            "CLIPImageQualityAssessment": {
                 "model_name_or_path": {
                     "type": "typing.Literal['clip_iqa', 'openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "clip_iqa"
@@ -7631,7 +7631,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>CLIPScore": {
+            "CLIPScore": {
                 "model_name_or_path": {
                     "type": "typing_extensions.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "openai/clip-vit-large-patch14"
@@ -7641,7 +7641,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalAUROC": {
+            "RetrievalAUROC": {
                 "empty_target_action": {
                     "type": "typing_extensions.Literal['error', 'skip', 'neg', 'pos']",
                     "default": "neg"
@@ -7667,7 +7667,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>RetrievalMetric": {
+            "RetrievalMetric": {
                 "empty_target_action": {
                     "type": "str",
                     "default": "neg"
@@ -7685,7 +7685,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>GeneralizedDiceScore": {
+            "GeneralizedDiceScore": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -7707,7 +7707,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MeanIoU": {
+            "MeanIoU": {
                 "num_classes": {
                     "type": "int",
                     "default": null
@@ -7725,7 +7725,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>EditDistance": {
+            "EditDistance": {
                 "substitution_cost": {
                     "type": "int",
                     "default": 1
@@ -7739,7 +7739,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ROUGEScore": {
+            "ROUGEScore": {
                 "use_stemmer": {
                     "type": "bool",
                     "default": false
@@ -7770,7 +7770,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>BERTScore": {
+            "BERTScore": {
                 "model_name_or_path": {
                     "type": "typing.Optional[str]",
                     "default": null
@@ -7844,7 +7844,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>InfoLM": {
+            "InfoLM": {
                 "model_name_or_path": {
                     "type": "typing.Union[str, os.PathLike]",
                     "default": "bert-base-uncased"
@@ -7898,7 +7898,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>AverageMethod": {
+            "AverageMethod": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7908,7 +7908,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ClassificationTask": {
+            "ClassificationTask": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7918,7 +7918,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ClassificationTaskNoBinary": {
+            "ClassificationTaskNoBinary": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7928,7 +7928,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>ClassificationTaskNoMultilabel": {
+            "ClassificationTaskNoMultilabel": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7938,7 +7938,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>DataType": {
+            "DataType": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7948,7 +7948,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>EnumStr": {
+            "EnumStr": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7958,7 +7958,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>MDMCAverageMethod": {
+            "MDMCAverageMethod": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7968,7 +7968,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TorchMetricsUserError": {
+            "TorchMetricsUserError": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7978,7 +7978,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>TorchMetricsUserWarning": {
+            "TorchMetricsUserWarning": {
                 "args": {
                     "type": "unknown",
                     "default": null
@@ -7988,7 +7988,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>FeatureShare": {
+            "FeatureShare": {
                 "metrics": {
                     "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
                     "default": null
@@ -7998,7 +7998,7 @@
                     "default": null
                 }
             },
-            "torchmetrics>Running": {
+            "Running": {
                 "base_metric": {
                     "type": "Metric",
                     "default": null
@@ -8008,13 +8008,13 @@
                     "default": 5
                 }
             },
-            "torchmetrics>WrapperMetric": {
+            "WrapperMetric": {
                 "kwargs": {
                     "type": "typing.Any",
                     "default": null
                 }
             },
-            "torchmetrics>NetworkCache": {
+            "NetworkCache": {
                 "network": {
                     "type": "Module",
                     "default": null
@@ -8045,7 +8045,7 @@
             }
         },
         "torch>nn>modules>loss": {
-            "torch>nn>modules>loss>BCELoss": {
+            "BCELoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -8063,7 +8063,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>BCEWithLogitsLoss": {
+            "BCEWithLogitsLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -8085,7 +8085,7 @@
                     "default": null
                 }
             },
-            "torch>nn>modules>loss>CTCLoss": {
+            "CTCLoss": {
                 "blank": {
                     "type": "int",
                     "default": 0
@@ -8099,7 +8099,7 @@
                     "default": false
                 }
             },
-            "torch>nn>modules>loss>CosineEmbeddingLoss": {
+            "CosineEmbeddingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 0.0
@@ -8117,7 +8117,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>CrossEntropyLoss": {
+            "CrossEntropyLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -8143,7 +8143,7 @@
                     "default": 0.0
                 }
             },
-            "torch>nn>modules>loss>GaussianNLLLoss": {
+            "GaussianNLLLoss": {
                 "full": {
                     "type": "bool",
                     "default": false
@@ -8157,7 +8157,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>HingeEmbeddingLoss": {
+            "HingeEmbeddingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 1.0
@@ -8175,7 +8175,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>HuberLoss": {
+            "HuberLoss": {
                 "reduction": {
                     "type": "str",
                     "default": "mean"
@@ -8185,7 +8185,7 @@
                     "default": 1.0
                 }
             },
-            "torch>nn>modules>loss>KLDivLoss": {
+            "KLDivLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8203,7 +8203,7 @@
                     "default": false
                 }
             },
-            "torch>nn>modules>loss>L1Loss": {
+            "L1Loss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8217,7 +8217,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>MSELoss": {
+            "MSELoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8231,7 +8231,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>MarginRankingLoss": {
+            "MarginRankingLoss": {
                 "margin": {
                     "type": "float",
                     "default": 0.0
@@ -8249,7 +8249,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>MultiLabelMarginLoss": {
+            "MultiLabelMarginLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8263,7 +8263,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>MultiLabelSoftMarginLoss": {
+            "MultiLabelSoftMarginLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -8281,7 +8281,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>MultiMarginLoss": {
+            "MultiMarginLoss": {
                 "p": {
                     "type": "int",
                     "default": 1
@@ -8307,7 +8307,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>NLLLoss": {
+            "NLLLoss": {
                 "weight": {
                     "type": "typing.Optional[torch.Tensor]",
                     "default": null
@@ -8329,7 +8329,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>PoissonNLLLoss": {
+            "PoissonNLLLoss": {
                 "log_input": {
                     "type": "bool",
                     "default": true
@@ -8355,7 +8355,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>SmoothL1Loss": {
+            "SmoothL1Loss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8373,7 +8373,7 @@
                     "default": 1.0
                 }
             },
-            "torch>nn>modules>loss>SoftMarginLoss": {
+            "SoftMarginLoss": {
                 "size_average": {
                     "type": "NoneType",
                     "default": null
@@ -8387,7 +8387,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>TripletMarginLoss": {
+            "TripletMarginLoss": {
                 "margin": {
                     "type": "float",
                     "default": 1.0
@@ -8417,7 +8417,7 @@
                     "default": "mean"
                 }
             },
-            "torch>nn>modules>loss>TripletMarginWithDistanceLoss": {
+            "TripletMarginWithDistanceLoss": {
                 "distance_function": {
                     "type": "typing.Optional[typing.Callable[[torch.Tensor, torch.Tensor], torch.Tensor]]",
                     "default": null
@@ -8437,7 +8437,7 @@
             }
         },
         "timm>loss": {
-            "timm>loss>AsymmetricLossMultiLabel": {
+            "AsymmetricLossMultiLabel": {
                 "gamma_neg": {
                     "type": "int",
                     "default": 4
@@ -8459,7 +8459,7 @@
                     "default": false
                 }
             },
-            "timm>loss>AsymmetricLossSingleLabel": {
+            "AsymmetricLossSingleLabel": {
                 "gamma_pos": {
                     "type": "int",
                     "default": 1
@@ -8477,7 +8477,7 @@
                     "default": "mean"
                 }
             },
-            "timm>loss>BinaryCrossEntropy": {
+            "BinaryCrossEntropy": {
                 "smoothing": {
                     "type": "float",
                     "default": 0.1
@@ -8499,7 +8499,7 @@
                     "default": null
                 }
             },
-            "timm>loss>JsdCrossEntropy": {
+            "JsdCrossEntropy": {
                 "num_splits": {
                     "type": "int",
                     "default": 3
@@ -8513,13 +8513,13 @@
                     "default": 0.1
                 }
             },
-            "timm>loss>LabelSmoothingCrossEntropy": {
+            "LabelSmoothingCrossEntropy": {
                 "smoothing": {
                     "type": "float",
                     "default": 0.1
                 }
             },
-            "timm>loss>SoftTargetCrossEntropy": {}
+            "SoftTargetCrossEntropy": {}
         }
     },
     "early_stopping": {
@@ -8599,73 +8599,73 @@
                 "object detection": [
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN"
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN"
                 ],
                 "instance segmentation": [
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN"
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN"
                 ],
                 "keypoint detection": [
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN"
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN"
                 ],
                 "classification": [
                     "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
-                    "resnet152>ResNet152",
-                    "vgg16>VGG16",
-                    "vgg11_bn>VGG11_BN",
-                    "vgg19>VGG19",
-                    "alexnet>AlexNet",
-                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
-                    "vgg19_bn>VGG19_BN",
-                    "squeezenet1_1>SqueezeNet1_1",
-                    "resnet50>ResNet50",
-                    "squeezenet1_0>SqueezeNet1_0",
-                    "vgg16_bn>VGG16_BN",
-                    "resnet3d>ResNet3D",
-                    "wide_resnet101_2>WideResNet101_2",
-                    "densenet161>DenseNet161",
-                    "mnasnet1_0>MNASNet1_0",
                     "mnasnet0_5>MNASNet0_5",
-                    "mobilenet_v3_large>MobileNetV3_Large",
-                    "resnet_mixed_convolution>ResNetMixedConvolution",
-                    "resnext101_32x8d>ResNeXt101_32x8d",
-                    "mobilenet_v3_small>MobileNetV3_Small",
-                    "wide_resnet50_2>WideResNet50_2",
-                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
-                    "vgg13_bn>VGG13_BN",
-                    "mnasnet1_3>MNASNet1_3",
-                    "resnet101>ResNet101",
+                    "densenet161>DenseNet161",
                     "densenet201>DenseNet201",
+                    "googlenet>GoogLeNet",
+                    "vgg19>VGG19",
+                    "vgg16_bn>VGG16_BN",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "vgg11>VGG11",
+                    "resnet50>ResNet50",
+                    "resnet101>ResNet101",
+                    "vgg11_bn>VGG11_BN",
+                    "mnasnet1_3>MNASNet1_3",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "resnet34>ResNet34",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "densenet169>DenseNet169",
                     "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
-                    "mnasnet0_75>MNASNet0_75",
+                    "resnet3d>ResNet3D",
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "vgg16>VGG16",
                     "mobilenet_v2>MobileNetV2",
-                    "resnet18>ResNet18",
-                    "resnet2plus1d>ResNet2Plus1D",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "resnet152>ResNet152",
+                    "vgg19_bn>VGG19_BN",
+                    "wide_resnet101_2>WideResNet101_2",
                     "inceptionv3>InceptionV3",
                     "densenet121>DenseNet121",
-                    "resnet34>ResNet34",
+                    "resnet18>ResNet18",
+                    "mnasnet1_0>MNASNet1_0",
+                    "vgg13_bn>VGG13_BN",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
-                    "densenet169>DenseNet169",
-                    "vgg11>VGG11",
-                    "googlenet>GoogLeNet"
+                    "alexnet>AlexNet"
                 ],
                 "segmentation": [
-                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
                     "fcnresnet50>FCNResNet50",
                     "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
                     "fcnresnet101>FCNResNet101",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
                     "deeplabv3_resnet101>DeepLabV3ResNet101",
                     "deeplabv3_resnet50>DeepLabV3ResNet50"
                 ]
@@ -8673,231 +8673,231 @@
             "subtask": {
                 "binary": [
                     "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
-                    "resnet152>ResNet152",
-                    "vgg16>VGG16",
-                    "vgg11_bn>VGG11_BN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
-                    "vgg19>VGG19",
-                    "alexnet>AlexNet",
-                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
-                    "vgg19_bn>VGG19_BN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
-                    "squeezenet1_1>SqueezeNet1_1",
-                    "resnet50>ResNet50",
-                    "squeezenet1_0>SqueezeNet1_0",
-                    "vgg16_bn>VGG16_BN",
-                    "fcnresnet50>FCNResNet50",
-                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
-                    "resnet3d>ResNet3D",
-                    "fcnresnet101>FCNResNet101",
-                    "wide_resnet101_2>WideResNet101_2",
-                    "densenet161>DenseNet161",
-                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "mnasnet1_0>MNASNet1_0",
                     "mnasnet0_5>MNASNet0_5",
-                    "mobilenet_v3_large>MobileNetV3_Large",
-                    "resnet_mixed_convolution>ResNetMixedConvolution",
-                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "resnext101_32x8d>ResNeXt101_32x8d",
-                    "mobilenet_v3_small>MobileNetV3_Small",
-                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
-                    "wide_resnet50_2>WideResNet50_2",
-                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
-                    "vgg13_bn>VGG13_BN",
-                    "mnasnet1_3>MNASNet1_3",
-                    "resnet101>ResNet101",
+                    "densenet161>DenseNet161",
                     "densenet201>DenseNet201",
-                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "googlenet>GoogLeNet",
+                    "vgg19>VGG19",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "vgg16_bn>VGG16_BN",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "vgg11>VGG11",
+                    "resnet50>ResNet50",
+                    "resnet101>ResNet101",
                     "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "vgg11_bn>VGG11_BN",
+                    "mnasnet1_3>MNASNet1_3",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "fcnresnet101>FCNResNet101",
+                    "resnet34>ResNet34",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "densenet169>DenseNet169",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "resnet3d>ResNet3D",
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "vgg16>VGG16",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
                     "mobilenet_v2>MobileNetV2",
-                    "mnasnet0_75>MNASNet0_75",
-                    "resnet18>ResNet18",
-                    "resnet2plus1d>ResNet2Plus1D",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "resnet152>ResNet152",
                     "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "vgg19_bn>VGG19_BN",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "fcnresnet50>FCNResNet50",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "inceptionv3>InceptionV3",
                     "densenet121>DenseNet121",
-                    "resnet34>ResNet34",
+                    "resnet18>ResNet18",
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg13_bn>VGG13_BN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
-                    "deeplabv3_resnet101>DeepLabV3ResNet101",
-                    "densenet169>DenseNet169",
-                    "vgg11>VGG11",
-                    "googlenet>GoogLeNet"
+                    "alexnet>AlexNet"
                 ],
                 "multi-class": [
                     "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
-                    "resnet152>ResNet152",
-                    "vgg16>VGG16",
-                    "vgg11_bn>VGG11_BN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
-                    "vgg19>VGG19",
-                    "alexnet>AlexNet",
-                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
-                    "vgg19_bn>VGG19_BN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
-                    "squeezenet1_1>SqueezeNet1_1",
-                    "resnet50>ResNet50",
-                    "squeezenet1_0>SqueezeNet1_0",
-                    "vgg16_bn>VGG16_BN",
-                    "fcnresnet50>FCNResNet50",
-                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
-                    "resnet3d>ResNet3D",
-                    "fcnresnet101>FCNResNet101",
-                    "wide_resnet101_2>WideResNet101_2",
-                    "densenet161>DenseNet161",
-                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "mnasnet1_0>MNASNet1_0",
                     "mnasnet0_5>MNASNet0_5",
-                    "mobilenet_v3_large>MobileNetV3_Large",
-                    "resnet_mixed_convolution>ResNetMixedConvolution",
-                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "resnext101_32x8d>ResNeXt101_32x8d",
-                    "mobilenet_v3_small>MobileNetV3_Small",
-                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
-                    "wide_resnet50_2>WideResNet50_2",
-                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
-                    "vgg13_bn>VGG13_BN",
-                    "mnasnet1_3>MNASNet1_3",
-                    "resnet101>ResNet101",
+                    "densenet161>DenseNet161",
                     "densenet201>DenseNet201",
-                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "googlenet>GoogLeNet",
+                    "vgg19>VGG19",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "vgg16_bn>VGG16_BN",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "vgg11>VGG11",
+                    "resnet50>ResNet50",
+                    "resnet101>ResNet101",
                     "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "vgg11_bn>VGG11_BN",
+                    "mnasnet1_3>MNASNet1_3",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "fcnresnet101>FCNResNet101",
+                    "resnet34>ResNet34",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "densenet169>DenseNet169",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "resnet3d>ResNet3D",
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "vgg16>VGG16",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
                     "mobilenet_v2>MobileNetV2",
-                    "mnasnet0_75>MNASNet0_75",
-                    "resnet18>ResNet18",
-                    "resnet2plus1d>ResNet2Plus1D",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "resnet152>ResNet152",
                     "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "vgg19_bn>VGG19_BN",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "fcnresnet50>FCNResNet50",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "inceptionv3>InceptionV3",
                     "densenet121>DenseNet121",
-                    "resnet34>ResNet34",
+                    "resnet18>ResNet18",
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg13_bn>VGG13_BN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
-                    "deeplabv3_resnet101>DeepLabV3ResNet101",
-                    "densenet169>DenseNet169",
-                    "vgg11>VGG11",
-                    "googlenet>GoogLeNet"
+                    "alexnet>AlexNet"
                 ]
             },
             "modality": {
                 "images": [
                     "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
-                    "resnet152>ResNet152",
-                    "vgg16>VGG16",
-                    "vgg11_bn>VGG11_BN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
-                    "vgg19>VGG19",
-                    "alexnet>AlexNet",
-                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
-                    "vgg19_bn>VGG19_BN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
-                    "squeezenet1_1>SqueezeNet1_1",
-                    "resnet50>ResNet50",
-                    "squeezenet1_0>SqueezeNet1_0",
-                    "vgg16_bn>VGG16_BN",
-                    "fcnresnet50>FCNResNet50",
-                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
-                    "fcnresnet101>FCNResNet101",
-                    "wide_resnet101_2>WideResNet101_2",
-                    "densenet161>DenseNet161",
-                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "mnasnet1_0>MNASNet1_0",
                     "mnasnet0_5>MNASNet0_5",
-                    "mobilenet_v3_large>MobileNetV3_Large",
-                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "resnext101_32x8d>ResNeXt101_32x8d",
-                    "mobilenet_v3_small>MobileNetV3_Small",
-                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
-                    "wide_resnet50_2>WideResNet50_2",
-                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
-                    "vgg13_bn>VGG13_BN",
-                    "mnasnet1_3>MNASNet1_3",
-                    "resnet101>ResNet101",
+                    "densenet161>DenseNet161",
                     "densenet201>DenseNet201",
-                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "googlenet>GoogLeNet",
+                    "vgg19>VGG19",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "vgg16_bn>VGG16_BN",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "vgg11>VGG11",
+                    "resnet50>ResNet50",
+                    "resnet101>ResNet101",
                     "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "vgg11_bn>VGG11_BN",
+                    "mnasnet1_3>MNASNet1_3",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "fcnresnet101>FCNResNet101",
+                    "resnet34>ResNet34",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "densenet169>DenseNet169",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "vgg16>VGG16",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
                     "mobilenet_v2>MobileNetV2",
-                    "mnasnet0_75>MNASNet0_75",
-                    "resnet18>ResNet18",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "resnet152>ResNet152",
                     "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "vgg19_bn>VGG19_BN",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "fcnresnet50>FCNResNet50",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "inceptionv3>InceptionV3",
                     "densenet121>DenseNet121",
-                    "resnet34>ResNet34",
+                    "resnet18>ResNet18",
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg13_bn>VGG13_BN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
-                    "deeplabv3_resnet101>DeepLabV3ResNet101",
-                    "densenet169>DenseNet169",
-                    "vgg11>VGG11",
-                    "googlenet>GoogLeNet"
+                    "alexnet>AlexNet"
                 ],
                 "video": [
+                    "resnet2plus1d>ResNet2Plus1D",
                     "resnet3d>ResNet3D",
-                    "resnet_mixed_convolution>ResNetMixedConvolution",
-                    "resnet2plus1d>ResNet2Plus1D"
+                    "resnet_mixed_convolution>ResNetMixedConvolution"
                 ]
             },
             "submodality": {
                 "RGB": [
                     "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
-                    "resnet152>ResNet152",
-                    "vgg16>VGG16",
-                    "vgg11_bn>VGG11_BN",
-                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
-                    "vgg19>VGG19",
-                    "alexnet>AlexNet",
-                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
-                    "vgg19_bn>VGG19_BN",
-                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
-                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
-                    "squeezenet1_1>SqueezeNet1_1",
-                    "resnet50>ResNet50",
-                    "squeezenet1_0>SqueezeNet1_0",
-                    "vgg16_bn>VGG16_BN",
-                    "fcnresnet50>FCNResNet50",
-                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
-                    "fcnresnet101>FCNResNet101",
-                    "wide_resnet101_2>WideResNet101_2",
-                    "densenet161>DenseNet161",
-                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
-                    "mnasnet1_0>MNASNet1_0",
                     "mnasnet0_5>MNASNet0_5",
-                    "mobilenet_v3_large>MobileNetV3_Large",
-                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
-                    "resnext101_32x8d>ResNeXt101_32x8d",
-                    "mobilenet_v3_small>MobileNetV3_Small",
-                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
-                    "wide_resnet50_2>WideResNet50_2",
-                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
-                    "vgg13_bn>VGG13_BN",
-                    "mnasnet1_3>MNASNet1_3",
-                    "resnet101>ResNet101",
+                    "densenet161>DenseNet161",
                     "densenet201>DenseNet201",
-                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "googlenet>GoogLeNet",
+                    "vgg19>VGG19",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "vgg16_bn>VGG16_BN",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "vgg11>VGG11",
+                    "resnet50>ResNet50",
+                    "resnet101>ResNet101",
                     "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "vgg11_bn>VGG11_BN",
+                    "mnasnet1_3>MNASNet1_3",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "fcnresnet101>FCNResNet101",
+                    "resnet34>ResNet34",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "densenet169>DenseNet169",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "vgg16>VGG16",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
                     "mobilenet_v2>MobileNetV2",
-                    "mnasnet0_75>MNASNet0_75",
-                    "resnet18>ResNet18",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "resnet152>ResNet152",
                     "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "vgg19_bn>VGG19_BN",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "fcnresnet50>FCNResNet50",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "inceptionv3>InceptionV3",
                     "densenet121>DenseNet121",
-                    "resnet34>ResNet34",
+                    "resnet18>ResNet18",
+                    "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg13_bn>VGG13_BN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
-                    "deeplabv3_resnet101>DeepLabV3ResNet101",
-                    "densenet169>DenseNet169",
-                    "vgg11>VGG11",
-                    "googlenet>GoogLeNet"
+                    "alexnet>AlexNet"
                 ]
             }
         }
     },
     "lr_schedulers": {
         "torch>optim>lr_scheduler": {
-            "torch>optim>lr_scheduler>ChainedScheduler": {
+            "ChainedScheduler": {
                 "schedulers": {
                     "type": "unknown",
                     "default": null
                 }
             },
-            "torch>optim>lr_scheduler>ConstantLR": {
+            "ConstantLR": {
                 "factor": {
                     "type": "float",
                     "default": 0.3333333333333333
@@ -8915,7 +8915,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>CosineAnnealingLR": {
+            "CosineAnnealingLR": {
                 "T_max": {
                     "type": "unknown",
                     "default": null
@@ -8933,7 +8933,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>CosineAnnealingWarmRestarts": {
+            "CosineAnnealingWarmRestarts": {
                 "T_0": {
                     "type": "unknown",
                     "default": null
@@ -8955,7 +8955,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>CyclicLR": {
+            "CyclicLR": {
                 "base_lr": {
                     "type": "unknown",
                     "default": null
@@ -9009,7 +9009,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>ExponentialLR": {
+            "ExponentialLR": {
                 "gamma": {
                     "type": "unknown",
                     "default": null
@@ -9023,7 +9023,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>LRScheduler": {
+            "LRScheduler": {
                 "last_epoch": {
                     "type": "int",
                     "default": -1
@@ -9033,7 +9033,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>LambdaLR": {
+            "LambdaLR": {
                 "lr_lambda": {
                     "type": "unknown",
                     "default": null
@@ -9047,7 +9047,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>LinearLR": {
+            "LinearLR": {
                 "start_factor": {
                     "type": "float",
                     "default": 0.3333333333333333
@@ -9069,7 +9069,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>MultiStepLR": {
+            "MultiStepLR": {
                 "milestones": {
                     "type": "unknown",
                     "default": null
@@ -9087,7 +9087,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>MultiplicativeLR": {
+            "MultiplicativeLR": {
                 "lr_lambda": {
                     "type": "unknown",
                     "default": null
@@ -9101,7 +9101,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>OneCycleLR": {
+            "OneCycleLR": {
                 "max_lr": {
                     "type": "unknown",
                     "default": null
@@ -9159,7 +9159,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>PolynomialLR": {
+            "PolynomialLR": {
                 "total_iters": {
                     "type": "int",
                     "default": 5
@@ -9177,7 +9177,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>ReduceLROnPlateau": {
+            "ReduceLROnPlateau": {
                 "mode": {
                     "type": "str",
                     "default": "min"
@@ -9215,7 +9215,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>SequentialLR": {
+            "SequentialLR": {
                 "schedulers": {
                     "type": "unknown",
                     "default": null
@@ -9233,7 +9233,7 @@
                     "default": "deprecated"
                 }
             },
-            "torch>optim>lr_scheduler>StepLR": {
+            "StepLR": {
                 "step_size": {
                     "type": "unknown",
                     "default": null
@@ -9255,7 +9255,7 @@
     },
     "optimizers": {
         "torch>optim": {
-            "torch>optim>ASGD": {
+            "ASGD": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9297,7 +9297,7 @@
                     "default": false
                 }
             },
-            "torch>optim>Adadelta": {
+            "Adadelta": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9331,7 +9331,7 @@
                     "default": false
                 }
             },
-            "torch>optim>Adagrad": {
+            "Adagrad": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9369,7 +9369,7 @@
                     "default": false
                 }
             },
-            "torch>optim>Adam": {
+            "Adam": {
                 "params": {
                     "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
                     "default": null
@@ -9418,7 +9418,7 @@
                     "default": null
                 }
             },
-            "torch>optim>AdamW": {
+            "AdamW": {
                 "params": {
                     "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
                     "default": null
@@ -9467,7 +9467,7 @@
                     "default": null
                 }
             },
-            "torch>optim>Adamax": {
+            "Adamax": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9508,7 +9508,7 @@
                     "default": false
                 }
             },
-            "torch>optim>LBFGS": {
+            "LBFGS": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9542,7 +9542,7 @@
                     "default": null
                 }
             },
-            "torch>optim>NAdam": {
+            "NAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9587,7 +9587,7 @@
                     "default": false
                 }
             },
-            "torch>optim>RAdam": {
+            "RAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9628,7 +9628,7 @@
                     "default": false
                 }
             },
-            "torch>optim>RMSprop": {
+            "RMSprop": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9670,7 +9670,7 @@
                     "default": false
                 }
             },
-            "torch>optim>Rprop": {
+            "Rprop": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9706,7 +9706,7 @@
                     "default": false
                 }
             },
-            "torch>optim>SGD": {
+            "SGD": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9748,7 +9748,7 @@
                     "default": null
                 }
             },
-            "torch>optim>SparseAdam": {
+            "SparseAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9775,7 +9775,7 @@
             }
         },
         "timm>optim": {
-            "timm>optim>AdaBelief": {
+            "AdaBelief": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9820,7 +9820,7 @@
                     "default": true
                 }
             },
-            "timm>optim>Adafactor": {
+            "Adafactor": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9862,7 +9862,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Adahessian": {
+            "Adahessian": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9903,7 +9903,7 @@
                     "default": false
                 }
             },
-            "timm>optim>AdamP": {
+            "AdamP": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9940,7 +9940,7 @@
                     "default": false
                 }
             },
-            "timm>optim>AdamW": {
+            "AdamW": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9969,7 +9969,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Adan": {
+            "Adan": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -9999,7 +9999,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Lamb": {
+            "Lamb": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10044,7 +10044,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Lars": {
+            "Lars": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10086,7 +10086,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Lookahead": {
+            "Lookahead": {
                 "base_optimizer": {
                     "type": "unknown",
                     "default": null
@@ -10100,7 +10100,7 @@
                     "default": 6
                 }
             },
-            "timm>optim>MADGRAD": {
+            "MADGRAD": {
                 "params": {
                     "type": "typing.Any",
                     "default": null
@@ -10126,7 +10126,7 @@
                     "default": false
                 }
             },
-            "timm>optim>Nadam": {
+            "Nadam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10155,7 +10155,7 @@
                     "default": 0.004
                 }
             },
-            "timm>optim>NvNovoGrad": {
+            "NvNovoGrad": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10188,7 +10188,7 @@
                     "default": false
                 }
             },
-            "timm>optim>RAdam": {
+            "RAdam": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10213,7 +10213,7 @@
                     "default": 0
                 }
             },
-            "timm>optim>RMSpropTF": {
+            "RMSpropTF": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10251,7 +10251,7 @@
                     "default": true
                 }
             },
-            "timm>optim>SGDP": {
+            "SGDP": {
                 "params": {
                     "type": "unknown",
                     "default": null
@@ -10289,7 +10289,7 @@
                     "default": 0.1
                 }
             },
-            "timm>optim>Lion": {
+            "Lion": {
                 "params": {
                     "type": "unknown",
                     "default": null
