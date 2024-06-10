@@ -24,13 +24,35 @@ const extractSecondLevelKeys = (obj) => {
   return options
 }
 
+const extractFirstandSecondLevelKeys = (obj) => {
+  
+  const options = []
+
+  const traverse = (obj, level = 0, parentKey = '') => {
+    if (level === 1) {
+      Object.keys(obj).forEach((key) => {
+        options.push({ value: `${parentKey}>${key}`, label: `${parentKey}>${key}` })
+      })
+    } else {
+      Object.entries(obj).forEach(([key, value]) => {
+        if (typeof value === "object") {
+          traverse(value, level + 1, level === 0 ? key : parentKey)
+        }
+      })
+    }
+  }
+
+  traverse(obj)
+
+  return options
+}
 export function FolderField({ folder, folderContent }) {
   
   // Define the array of specific folder names.
   const multipleSelectFolders = ["models", "metrics"]
 
   // Convert folderContent into array.
-  const newoptions = extractSecondLevelKeys(folderContent)
+  const newoptions = extractFirstandSecondLevelKeys(folderContent)
 
   // Check if the folder name is within the specific folders array.
   const isMultipleFolder = multipleSelectFolders.includes(folder)
@@ -42,5 +64,6 @@ export function FolderField({ folder, folderContent }) {
       placeholder = "Select or start typing..."
       isMulti = { isMultipleFolder }
     />
+  
   )
 }
