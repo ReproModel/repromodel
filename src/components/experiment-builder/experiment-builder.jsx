@@ -65,8 +65,8 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
                         
                         { FormikProps.values[folder] &&
                           
-                          ((Array.isArray(FormikProps.values[folder]) && FormikProps.values[folder].includes(className))
-                            || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
+                          ((Array.isArray(FormikProps.values[folder]) && FormikProps.values[folder].includes(`${file}>${className}`))
+                            || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === `${file}>${className}`)) &&
                             
                             (
                               <div className = "param-box">
@@ -78,15 +78,15 @@ const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFie
                                   ([param, value]) => (
                                     <>
                                       
-                                      <label htmlFor = { `${folder}_params:${className}:${param}` }>
+                                      <label htmlFor = { `${folder}_params:${file}>${className}:${param}` }>
                                         { param }:
                                       </label>
                                       
                                       <FlexibleFormField
-                                        id = { `${folder}_params:${className}:${param}` }
+                                        id = { `${folder}_params:${file}>${className}:${param}` }
                                         object = { value }
                                         type = { value.type }
-                                        name = { `${folder}_params:${className}:${param}` }
+                                        name = { `${folder}_params:${file}>${className}:${param}` }
                                         label = { param }
                                       />
 
