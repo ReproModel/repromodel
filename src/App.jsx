@@ -1,7 +1,7 @@
 import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
-import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
+import ExperimentBuilderWrapper from "./components/experiment-builder/experiment-builder-wrapper"
 import Header from "./components/header/header"
 import LLMDescription from "./components/llm-description/llm-description"
 import ModelTesting from "./components/model-testing/model-testing"
@@ -67,7 +67,7 @@ function App() {
                 { selectedSection === "Experiment Builder" && (
                   <>
                     <Typography variant = "h4" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
-                    <ExperimentBuilder
+                    <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }

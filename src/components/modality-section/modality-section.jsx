@@ -25,10 +25,10 @@ const ModalitySection = () => {
 
     <div className = "container">
 
-        <Typography style = { { marginBottom: "16px", marginTop: "16px" } } variant = "h4"> Choose your modality:</Typography>
+        <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your modality:</Typography>
         <ModalityOptions cardOptions = { modalities }/>
         
-        <Typography style = { { marginBottom: "16px", marginTop: "64px" } } variant="h4"> Choose your task:</Typography>
+        <Typography style = { { marginTop: "64px" } } variant="h6"> Choose your task:</Typography>
         <ModalityOptions cardOptions = { tasks }/>
     
     </div>
