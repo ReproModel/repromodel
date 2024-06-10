@@ -651,19 +651,6 @@
                 }
             }
         },
-        "retinanet_resnet50_fpn": {
-            "RetinaNetResNet50FPN": {
-                "num_classes": {
-                    "type": "int",
-                    "default": 91,
-                    "range": "(1, 10000)"
-                },
-                "pretrained": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
         "vgg19": {
             "VGG19": {
                 "num_classes": {
@@ -778,6 +765,19 @@
                 "num_classes": {
                     "type": "int",
                     "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "retinanet_resnet50_fpn_model": {
+            "RetinaNetResNet50FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
                     "range": "(1, 10000)"
                 },
                 "pretrained": {
@@ -902,9 +902,6 @@
                 }
             }
         },
-        "extendedVisionDataset": {
-            "ExtendedVisionDataset": {}
-        },
         "dummyDataset": {
             "DummyDataset": {
                 "input_path": {
@@ -927,26 +924,6 @@
                 },
                 "extension": {
                     "type": "str"
-                }
-            }
-        },
-        "caltech101_RM": {
-            "Caltech101_RM": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/caltech101"
-                },
-                "input_folder": {
-                    "type": "str",
-                    "default": "101_ObjectCategories"
-                },
-                "target_folder": {
-                    "type": "str",
-                    "default": "Annotations"
-                },
-                "download": {
-                    "type": "bool",
-                    "default": true
                 }
             }
         },
@@ -1265,7 +1242,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -1666,7 +1643,7 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x12c0f2550>"
+                    "default": "<function default_loader at 0x139b24680>"
                 },
                 "is_valid_file": {
                     "type": "typing.Optional[typing.Callable[[str], bool]]",
@@ -1687,7 +1664,7 @@
                     "default": "train"
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2179,7 +2156,7 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x12c0f2550>"
+                    "default": "<function default_loader at 0x139b24680>"
                 }
             },
             "QMNIST": {
@@ -2200,7 +2177,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "typing.Any",
+                    "type": "Any",
                     "default": null
                 }
             },
@@ -2296,9 +2273,6 @@
                 "folds": {
                     "type": "typing.Optional[int]",
                     "default": null
-                "round_chs_fn": {
-                    "type": "function",
-                    "default": "<function round_channels at 0x12b8bd800>"
                 },
                 "transform": {
                     "type": "typing.Optional[typing.Callable]",
@@ -2365,9 +2339,6 @@
                 "pass_name": {
                     "type": "str",
                     "default": "clean"
-                "round_chs_fn": {
-                    "type": "function",
-                    "default": "<function round_channels at 0x12b8bd800>"
                 },
                 "transforms": {
                     "type": "typing.Optional[typing.Callable]",
@@ -2550,19 +2521,6 @@
                 "year": {
                     "type": "str",
                     "default": "2012"
-                "out_indices": {
-                    "type": "typing.Tuple[int, ...]",
-                    "default": [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4
-                    ]
-                },
-                "out_map": {
-                    "type": "typing.Sequence[typing.Union[int, str]]",
-                    "default": null
                 },
                 "image_set": {
                     "type": "str",
@@ -2587,7 +2545,7 @@
             },
             "VisionDataset": {
                 "root": {
-                    "type": "typing.Union[str, pathlib.Path, NoneType]",
+                    "type": "typing.Union[str, pathlib.Path]",
                     "default": null
                 },
                 "transforms": {
@@ -2596,8 +2554,6 @@
                 },
                 "transform": {
                     "type": "typing.Optional[typing.Callable]",
-                "out_map": {
-                    "type": "typing.Sequence[typing.Union[int, str]]",
                     "default": null
                 },
                 "target_transform": {
@@ -2640,9 +2596,6 @@
             "StereoMatchingDataset": {
                 "root": {
                     "type": "typing.Union[str, pathlib.Path]",
-                },
-                "out_map": {
-                    "type": "typing.Sequence[typing.Union[int, str]]",
                     "default": null
                 },
                 "transforms": {
@@ -2783,24 +2736,6 @@
                 }
             }
         },
-        "resizeToTensor": {
-            "ResizeToTensor": {
-                "p": {
-                    "type": "float",
-                    "range": "(0.0, 1.0)"
-                },
-                "height": {
-                    "type": "int",
-                    "range": "(1, 10000)",
-                    "default": 224
-                },
-                "width": {
-                    "type": "int",
-                    "range": "(1, 10000)",
-                    "default": 224
-                }
-            }
-        },
         "shiftScaleRotateFlip": {
             "ShiftScaleRotateFlip": {
                 "p": {
@@ -2830,27 +2765,6 @@
                 "mixture_width": {
                     "type": "int",
                     "default": 3
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
-                },
-                "img_size": {
-                    "type": "typing.Tuple[int, int]",
-                    "default": 224
-                },
-                "window_ratio": {
-                    "type": "typing.Tuple[int, ...]",
-                    "default": [
-                        32,
-                        32,
-                        16,
-                        32
-                    ]
-                },
-                "window_size": {
-                    "type": "typing.Tuple[int, ...]",
-                    "default": null
                 },
                 "chain_depth": {
                     "type": "int",
@@ -2892,7 +2806,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -2981,7 +2895,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwargs": {
+                "kwds": {
                     "type": "unknown",
                     "default": null
                 }
@@ -3274,8 +3188,6 @@
                 },
                 "center": {
                     "type": "typing.Optional[typing.List[float]]",
-                "head_hidden_size": {
-                    "type": "int",
                     "default": null
                 },
                 "fill": {
@@ -3581,203 +3493,6 @@
                 "min_aspect_ratio": {
                     "type": "float",
                     "default": 0.5
-                "embed_dim": {
-                    "type": "int",
-                    "default": 512
-                },
-                "mlp_ratio": {
-                    "type": "tuple",
-                    "default": [
-                        0.5,
-                        4.0
-                    ]
-                },
-                "block_layer": {
-                    "type": "type",
-                    "default": "<class 'timm.models.mlp_mixer.MixerBlock'>"
-                },
-                "mlp_layer": {
-                    "type": "type",
-                    "default": "<class 'timm.layers.mlp.Mlp'>"
-                },
-                "norm_layer": {
-                    "type": "partial",
-                    "default": "functools.partial(<class 'torch.nn.modules.normalization.LayerNorm'>, eps=1e-06)"
-                },
-                "act_layer": {
-                    "type": "type",
-                    "default": "<class 'torch.nn.modules.activation.GELU'>"
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "proj_drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "nlhb": {
-                    "type": "int, float",
-                    "default": false
-                },
-                "stem_norm": {
-                    "type": "int, float",
-                    "default": false
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
-                }
-            },
-            "timm>models>MobileNetV3": {
-                "block_args": {
-                    "type": "unknown",
-                    "default": null
-                },
-                "num_classes": {
-                    "type": "int",
-                    "default": 1000
-                },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
-                },
-                "stem_size": {
-                    "type": "int",
-                    "default": 16
-                },
-                "fix_stem": {
-                    "type": "int, float",
-                    "default": false
-                },
-                "num_features": {
-                    "type": "int",
-                    "default": 1280
-                },
-                "head_bias": {
-                    "type": "bool",
-                    "default": true
-                },
-                "pad_type": {
-                    "type": "str",
-                    "default": ""
-                },
-                "act_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "norm_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "se_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "se_from_exp": {
-                    "type": "bool",
-                    "default": true
-                },
-                "round_chs_fn": {
-                    "type": "function",
-                    "default": "<function round_channels at 0x12b8bd800>"
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
-                }
-            },
-            "timm>models>MobileNetV3Features": {
-                "block_args": {
-                    "type": "unknown",
-                    "default": null
-                },
-                "out_indices": {
-                    "type": "tuple",
-                    "default": [
-                        0,
-                        1,
-                        2,
-                        3,
-                        4
-                    ]
-                },
-                "feature_location": {
-                    "type": "str",
-                    "default": "bottleneck"
-                },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
-                },
-                "stem_size": {
-                    "type": "int",
-                    "default": 16
-                },
-                "fix_stem": {
-                    "type": "int, float",
-                    "default": false
-                },
-                "output_stride": {
-                    "type": "int",
-                    "default": 32
-                },
-                "pad_type": {
-                    "type": "str",
-                    "default": ""
-                },
-                "round_chs_fn": {
-                    "type": "function",
-                    "default": "<function round_channels at 0x12b8bd800>"
-                },
-                "se_from_exp": {
-                    "type": "bool",
-                    "default": true
-                },
-                "act_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "norm_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "se_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                }
-            },
-            "timm>models>MultiScaleVit": {
-                "cfg": {
-                    "type": "MultiScaleVitCfg",
-                    "default": null
-                },
-                "img_size": {
-                    "type": "typing.Tuple[int, int]",
-                    "default": [
-                        224,
-                        224
-                    ]
                 },
                 "max_aspect_ratio": {
                     "type": "float",
@@ -3830,448 +3545,494 @@
                 "min_size": {
                     "type": "int",
                     "default": null
-            "timm>models>Nest": {
-                "img_size": {
+                },
+                "max_size": {
                     "type": "int",
-                    "default": 224
+                    "default": null
                 },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
                 },
-                "patch_size": {
-                    "type": "int",
-                    "default": 4
-                },
-                "num_levels": {
-                    "type": "int",
-                    "default": 3
-                },
-                "embed_dims": {
-                    "type": "tuple",
-                    "default": [
-                        128,
-                        256,
-                        512
-                    ]
-                },
-                "num_heads": {
-                    "type": "tuple",
-                    "default": [
-                        4,
-                        8,
-                        16
-                    ]
-                },
-                "depths": {
-                    "type": "tuple",
-                    "default": [
-                        2,
-                        2,
-                        20
-                    ]
-                },
-                "num_classes": {
-                    "type": "int",
-                    "default": 1000
-                },
-                "mlp_ratio": {
-                    "type": "float",
-                    "default": 4.0
-                },
-                "qkv_bias": {
-                    "type": "bool",
+                "antialias": {
+                    "type": "typing.Optional[bool]",
                     "default": true
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "proj_drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "attn_drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "float",
-                    "default": 0.5
-                },
-                "norm_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "act_layer": {
-                    "type": "NoneType",
-                    "default": null
-                },
-                "pad_type": {
-                    "type": "str",
-                    "default": ""
-                },
-                "weight_init": {
-                    "type": "str",
-                    "default": ""
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
                 }
             },
-            "timm>models>NfCfg": {
-                "depths": {
-                    "type": "typing.Tuple[int, int, int, int]",
+            "torchvision>transforms>RandomShortestSize": {
+                "min_size": {
+                    "type": "typing.Union[typing.List[int], typing.Tuple[int], int]",
                     "default": null
                 },
-                "channels": {
-                    "type": "typing.Tuple[int, int, int, int]",
-                    "default": null
-                },
-                "alpha": {
-                    "type": "float",
-                    "default": 0.2
-                },
-                "stem_type": {
-                    "type": "str",
-                    "default": "3x3"
-                },
-                "stem_chs": {
+                "max_size": {
                     "type": "typing.Optional[int]",
                     "default": null
                 },
-                "group_size": {
-                    "type": "typing.Optional[int]",
-                    "default": null
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
                 },
-                "attn_layer": {
-                    "type": "typing.Optional[str]",
-                    "default": null
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>RandomZoomOut": {
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
                 },
-                "attn_kwargs": {
-                    "type": "dict",
-                    "default": null
+                "side_range": {
+                    "type": "typing.Sequence[float]",
+                    "default": [
+                        1.0,
+                        4.0
+                    ]
                 },
-                "attn_gain": {
+                "p": {
                     "type": "float",
-                    "default": 2.0
-                },
-                "width_factor": {
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>SanitizeBoundingBoxes": {
+                "min_size": {
                     "type": "float",
                     "default": 1.0
                 },
-                "bottle_ratio": {
-                    "type": "float",
-                    "default": 0.5
-                },
-                "num_features": {
-                    "type": "int",
-                    "default": 0
-                },
-                "ch_div": {
-                    "type": "int",
-                    "default": 8
-                },
-                "reg": {
-                    "type": "bool",
-                    "default": false
-                },
-                "extra_conv": {
-                    "type": "bool",
-                    "default": false
-                },
-                "gamma_in_act": {
-                    "type": "bool",
-                    "default": false
-                },
-                "same_padding": {
-                    "type": "bool",
-                    "default": false
-                },
-                "std_conv_eps": {
-                    "type": "float",
-                    "default": 1e-05
-                },
-                "skipinit": {
-                    "type": "bool",
-                    "default": false
-                },
-                "zero_init_fc": {
-                    "type": "bool",
-                    "default": false
-                },
-                "act_layer": {
-                    "type": "str",
-                    "default": "silu"
+                "labels_getter": {
+                    "type": "typing.Union[typing.Callable[[typing.Any], typing.Any], str, NoneType]",
+                    "default": "default"
                 }
             },
-            "timm>models>NormFreeNet": {
-                "cfg": {
-                    "type": "NfCfg",
+            "torchvision>transforms>ScaleJitter": {
+                "target_size": {
+                    "type": "typing.Tuple[int, int]",
                     "default": null
                 },
+                "scale_range": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.1,
+                        2.0
+                    ]
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>ToDtype": {
+                "dtype": {
+                    "type": "typing.Union[torch.dtype, typing.Dict[typing.Union[typing.Type, str], typing.Optional[torch.dtype]]]",
+                    "default": null
+                },
+                "scale": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>ToImage": {},
+            "torchvision>transforms>ToPureTensor": {},
+            "torchvision>transforms>Transform": {},
+            "torchvision>transforms>UniformTemporalSubsample": {
+                "num_samples": {
+                    "type": "int",
+                    "default": null
+                }
+            }
+        }
+    },
+    "metrics": {
+        "customMetrics": {
+            "CustomMetric": {
+                "weight": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "accuracyScore": {
+            "AccuracyScore": {
+                "threshold": {
+                    "type": "float",
+                    "default": 0.5,
+                    "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "diceScore": {
+            "DiceScore": {
+                "threshold": {
+                    "type": "float",
+                    "default": 0.5,
+                    "range": "(0.0, 1.0)"
+                },
+                "smooth": {
+                    "type": "float",
+                    "default": 1,
+                    "range": "(1e-05, 1)"
+                }
+            }
+        },
+        "torchmetrics": {
+            "torchmetrics>AUROC": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>Accuracy": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>AveragePrecision": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>BLEUScore": {
+                "n_gram": {
+                    "type": "int",
+                    "default": 4
+                },
+                "smooth": {
+                    "type": "bool",
+                    "default": false
+                },
+                "weights": {
+                    "type": "typing.Optional[typing.Sequence[float]]",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>BootStrapper": {
+                "base_metric": {
+                    "type": "Metric",
+                    "default": null
+                },
+                "num_bootstraps": {
+                    "type": "int",
+                    "default": 10
+                },
+                "mean": {
+                    "type": "bool",
+                    "default": true
+                },
+                "std": {
+                    "type": "bool",
+                    "default": true
+                },
+                "quantile": {
+                    "type": "typing.Union[float, torch.Tensor, NoneType]",
+                    "default": null
+                },
+                "raw": {
+                    "type": "bool",
+                    "default": false
+                },
+                "sampling_strategy": {
+                    "type": "str",
+                    "default": "poisson"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CHRFScore": {
+                "n_char_order": {
+                    "type": "int",
+                    "default": 6
+                },
+                "n_word_order": {
+                    "type": "int",
+                    "default": 2
+                },
+                "beta": {
+                    "type": "float",
+                    "default": 2.0
+                },
+                "lowercase": {
+                    "type": "bool",
+                    "default": false
+                },
+                "whitespace": {
+                    "type": "bool",
+                    "default": false
+                },
+                "return_sentence_level_score": {
+                    "type": "bool",
+                    "default": false
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CalibrationError": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CatMetric": {
+                "nan_strategy": {
+                    "type": "typing.Union[str, float]",
+                    "default": "warn"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CharErrorRate": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ClasswiseWrapper": {
+                "metric": {
+                    "type": "Metric",
+                    "default": null
+                },
+                "labels": {
+                    "type": "typing.Optional[typing.List[str]]",
+                    "default": null
+                },
+                "prefix": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                },
+                "postfix": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                }
+            },
+            "torchmetrics>CohenKappa": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ConcordanceCorrCoef": {
+                "num_outputs": {
+                    "type": "int",
+                    "default": 1
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ConfusionMatrix": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CosineSimilarity": {
+                "reduction": {
+                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "default": "sum"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>CramersV": {
                 "num_classes": {
                     "type": "int",
-                    "default": 1000
+                    "default": null
                 },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
+                "bias_correction": {
+                    "type": "bool",
+                    "default": true
                 },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
+                "nan_strategy": {
+                    "type": "typing.Literal['replace', 'drop']",
+                    "default": "replace"
                 },
-                "output_stride": {
-                    "type": "int",
-                    "default": 32
-                },
-                "drop_rate": {
-                    "type": "float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "float",
+                "nan_replace_value": {
+                    "type": "typing.Optional[float]",
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "unknown",
+                    "type": "Any",
                     "default": null
                 }
             },
-            "timm>models>PNASNet5Large": {
-                "num_classes": {
-                    "type": "int",
-                    "default": 1000
-                },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
-                },
-                "output_stride": {
-                    "type": "int",
-                    "default": 32
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "avg"
-                },
-                "pad_type": {
-                    "type": "str",
-                    "default": ""
-                }
-            },
-            "timm>models>PoolingVisionTransformer": {
-                "img_size": {
-                    "type": "int",
-                    "default": 224
-                },
-                "patch_size": {
-                    "type": "int",
-                    "default": 16
-                },
-                "stride": {
-                    "type": "int",
-                    "default": 8
-                },
-                "stem_type": {
-                    "type": "str",
-                    "default": "overlap"
-                },
-                "base_dims": {
-                    "type": "typing.Sequence[int]",
-                    "default": [
-                        48,
-                        48,
-                        48
-                    ]
-                },
-                "depth": {
-                    "type": "typing.Sequence[int]",
-                    "default": [
-                        2,
-                        6,
-                        4
-                    ]
-                },
-                "heads": {
-                    "type": "typing.Sequence[int]",
-                    "default": [
-                        2,
-                        4,
-                        8
-                    ]
-                },
-                "mlp_ratio": {
+            "torchmetrics>CriticalSuccessIndex": {
+                "threshold": {
                     "type": "float",
-                    "default": 4
-                },
-                "num_classes": {
-                    "type": "int",
-                    "default": 1000
-                },
-                "in_chans": {
-                    "type": "int",
-                    "default": 3
-                },
-                "global_pool": {
-                    "type": "str",
-                    "default": "token"
-                },
-                "distilled": {
-                    "type": "int, float",
-                    "default": false
-                },
-                "drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "pos_drop_drate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "proj_drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "attn_drop_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                },
-                "drop_path_rate": {
-                    "type": "int, float",
-                    "default": 0.0
-                }
-            },
-            "timm>models>PretrainedCfg": {
-                "url": {
-                    "type": "typing.Union[str, typing.Tuple[str, str], NoneType]",
                     "default": null
                 },
-                "file": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "state_dict": {
-                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
-                    "default": null
-                },
-                "hf_hub_id": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "hf_hub_filename": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "source": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "architecture": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "tag": {
-                    "type": "typing.Optional[str]",
-                    "default": null
-                },
-                "custom_load": {
-                    "type": "bool",
-                    "default": false
-                },
-                "input_size": {
-                    "type": "typing.Tuple[int, int, int]",
-                    "default": [
-                        3,
-                        224,
-                        224
-                    ]
-                },
-                "test_input_size": {
-                    "type": "typing.Optional[typing.Tuple[int, int, int]]",
-                    "default": null
-                },
-                "min_input_size": {
-                    "type": "typing.Optional[typing.Tuple[int, int, int]]",
-                    "default": null
-                },
-                "fixed_input_size": {
-                    "type": "bool",
-                    "default": false
-                },
-                "interpolation": {
-                    "type": "str",
-                    "default": "bicubic"
-                },
-                "crop_pct": {
-                    "type": "float",
-                    "default": 0.875
-                },
-                "test_crop_pct": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "crop_mode": {
-                    "type": "str",
-                    "default": "center"
-                },
-                "mean": {
-                    "type": "typing.Tuple[float, ...]",
-                    "default": [
-                        0.485,
-                        0.456,
-                        0.406
-                    ]
-                },
-                "std": {
-                    "type": "typing.Tuple[float, ...]",
-                    "default": [
-                        0.229,
-                        0.224,
-                        0.225
-                    ]
-                },
-                "num_classes": {
-                    "type": "int",
-                    "default": 1000
-                },
-                "label_offset": {
+                "keep_sequence_dim": {
                     "type": "typing.Optional[int]",
                     "default": null
                 },
-                "label_names": {
-                    "type": "typing.Optional[typing.Tuple[str]]",
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>Dice": {
+                "zero_division": {
+                    "type": "int",
+                    "default": 0
+                },
+                "num_classes": {
+                    "type": "typing.Optional[int]",
                     "default": null
                 },
-                "label_descriptions": {
-                    "type": "typing.Optional[typing.Dict[str, str]]",
-                    "default": null
+                "threshold": {
+                    "type": "float",
+                    "default": 0.5
                 },
-                "pool_size": {
-                    "type": "typing.Optional[typing.Tuple[int, ...]]",
-                    "default": null
+                "average": {
+                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'none']]",
+                    "default": "micro"
                 },
-                "test_pool_size": {
-                    "type": "typing.Optional[typing.Tuple[int, ...]]",
-                    "default": null
-                },
-                "first_conv": {
+                "mdmc_average": {
                     "type": "typing.Optional[str]",
+                    "default": "global"
+                },
+                "ignore_index": {
+                    "type": "typing.Optional[int]",
                     "default": null
                 },
-                "classifier": {
-                    "type": "typing.Optional[str]",
+                "top_k": {
+                    "type": "typing.Optional[int]",
                     "default": null
                 },
-                "license": {
-                    "type": "typing.Optional[str]",
+                "multiclass": {
+                    "type": "typing.Optional[bool]",
                     "default": null
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ErrorRelativeGlobalDimensionlessSynthesis": {
+                "ratio": {
+                    "type": "float",
+                    "default": 4
+                },
+                "reduction": {
+                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "default": "elementwise_mean"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ExactMatch": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ExplainedVariance": {
+                "multioutput": {
+                    "type": "typing.Literal['raw_values', 'uniform_average', 'variance_weighted']",
+                    "default": "uniform_average"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>ExtendedEditDistance": {
+                "language": {
+                    "type": "typing.Literal['en', 'ja']",
+                    "default": "en"
+                },
+                "return_sentence_level_score": {
+                    "type": "bool",
+                    "default": false
+                },
+                "alpha": {
+                    "type": "float",
+                    "default": 2.0
+                },
+                "rho": {
+                    "type": "float",
+                    "default": 0.3
+                },
+                "deletion": {
+                    "type": "float",
+                    "default": 0.2
+                },
+                "insertion": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>F1Score": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>FBetaScore": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>FleissKappa": {
+                "mode": {
+                    "type": "typing.Literal['counts', 'probs']",
+                    "default": "counts"
+                },
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>HammingDistance": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>HingeLoss": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>JaccardIndex": {
+                "kwargs": {
+                    "type": "Any",
+                    "default": null
+                }
+            },
+            "torchmetrics>KLDivergence": {
+                "log_prob": {
+                    "type": "bool",
+                    "default": false
+                },
+                "reduction": {
+                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "default": "mean"
                 },
                 "description": {
                     "type": "typing.Optional[str]",
@@ -18779,115 +18540,119 @@
                     "type": "float",
                     "default": 0.0
                 },
-                "eps": {
-                    "type": "float",
-                    "default": 1e-07
-                }
-            },
-            "segmentation_models_pytorch>losses>LovaszLoss": {
-                "mode": {
-                    "type": "str",
+                "reduce": {
+                    "type": "NoneType",
                     "default": null
-                },
-                "per_image": {
-                    "type": "bool",
-                    "default": false
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": null
-                },
-                "from_logits": {
-                    "type": "bool",
-                    "default": true
-                }
-            },
-            "segmentation_models_pytorch>losses>MCCLoss": {
-                "eps": {
-                    "type": "float",
-                    "default": 1e-05
-                }
-            },
-            "segmentation_models_pytorch>losses>SoftBCEWithLogitsLoss": {
-                "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": -100
                 },
                 "reduction": {
                     "type": "str",
                     "default": "mean"
-                },
-                "smooth_factor": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "pos_weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
                 }
             },
-            "segmentation_models_pytorch>losses>SoftCrossEntropyLoss": {
-                "reduction": {
-                    "type": "str",
-                    "default": "mean"
-                },
-                "smooth_factor": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": -100
-                },
-                "dim": {
-                    "type": "int",
-                    "default": 1
-                }
-            },
-            "segmentation_models_pytorch>losses>TverskyLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "classes": {
-                    "type": "typing.List[int]",
-                    "default": null
-                },
-                "log_loss": {
-                    "type": "bool",
-                    "default": false
-                },
-                "from_logits": {
+            "torch>nn>modules>loss>PoissonNLLLoss": {
+                "log_input": {
                     "type": "bool",
                     "default": true
                 },
-                "smooth": {
-                    "type": "float",
-                    "default": 0.0
+                "full": {
+                    "type": "bool",
+                    "default": false
                 },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
+                "size_average": {
+                    "type": "NoneType",
                     "default": null
                 },
                 "eps": {
                     "type": "float",
-                    "default": 1e-07
+                    "default": 1e-08
                 },
-                "alpha": {
-                    "type": "float",
-                    "default": 0.5
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "torch>nn>modules>loss>SmoothL1Loss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
                 },
                 "beta": {
                     "type": "float",
-                    "default": 0.5
+                    "default": 1.0
+                }
+            },
+            "torch>nn>modules>loss>SoftMarginLoss": {
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
                 },
-                "gamma": {
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "torch>nn>modules>loss>TripletMarginLoss": {
+                "margin": {
                     "type": "float",
                     "default": 1.0
+                },
+                "p": {
+                    "type": "float",
+                    "default": 2.0
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 1e-06
+                },
+                "swap": {
+                    "type": "bool",
+                    "default": false
+                },
+                "size_average": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduce": {
+                    "type": "NoneType",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "torch>nn>modules>loss>TripletMarginWithDistanceLoss": {
+                "distance_function": {
+                    "type": "typing.Optional[typing.Callable[[torch.Tensor, torch.Tensor], torch.Tensor]]",
+                    "default": null
+                },
+                "margin": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "swap": {
+                    "type": "bool",
+                    "default": false
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
                 }
             }
         },
@@ -19052,22 +18817,32 @@
         "models": {
             "task": {
                 "object detection": [
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
                     "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
                     "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN"
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
                 ],
                 "instance segmentation": [
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
                     "retinanet_resnet50_fpn>RetinaNetResNet50FPN",
                     "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN"
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
                 ],
                 "keypoint detection": [
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
                     "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
                     "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
                     "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
@@ -19121,8 +18896,57 @@
                     "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
                     "fcnresnet101>FCNResNet101",
                     "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
+                ],
+                "classification": [
+                    "mnasnet1_3>MNASNet1_3",
+                    "mnasnet0_5>MNASNet0_5",
+                    "resnet152>ResNet152",
+                    "densenet121>DenseNet121",
+                    "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "resnet101>ResNet101",
+                    "googlenet>GoogLeNet",
+                    "mnasnet1_0>MNASNet1_0",
+                    "resnet3d>ResNet3D",
+                    "vgg16>VGG16",
+                    "densenet169>DenseNet169",
+                    "vgg19>VGG19",
+                    "inceptionv3>InceptionV3",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "vgg11>VGG11",
+                    "vgg11_bn>VGG11_BN",
+                    "vgg13_bn>VGG13_BN",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "mnasnet0_75>MNASNet0_75",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "vgg13>VGG13",
+                    "densenet201>DenseNet201",
+                    "resnet50>ResNet50",
+                    "resnet18>ResNet18",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "resnet34>ResNet34",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "densenet161>DenseNet161",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "vgg16_bn>VGG16_BN",
+                    "alexnet>AlexNet",
+                    "mobilenet_v2>MobileNetV2",
+                    "vgg19_bn>VGG19_BN",
+                    "resnet_mixed_convolution>ResNetMixedConvolution"
+                ],
+                "segmentation": [
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
                     "deeplabv3_resnet101>DeepLabV3ResNet101",
-                    "deeplabv3_resnet50>DeepLabV3ResNet50"
+                    "fcnresnet50>FCNResNet50",
+                    "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "fcnresnet101>FCNResNet101"
                 ]
             },
             "subtask": {
@@ -19231,6 +19055,110 @@
                     "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
                     "alexnet>AlexNet"
+                    "mnasnet1_3>MNASNet1_3",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "resnet152>ResNet152",
+                    "mnasnet0_5>MNASNet0_5",
+                    "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "densenet121>DenseNet121",
+                    "fcnresnet101>FCNResNet101",
+                    "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "resnet101>ResNet101",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "googlenet>GoogLeNet",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "resnet3d>ResNet3D",
+                    "vgg16>VGG16",
+                    "densenet169>DenseNet169",
+                    "vgg19>VGG19",
+                    "inceptionv3>InceptionV3",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "vgg11>VGG11",
+                    "vgg11_bn>VGG11_BN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "vgg13_bn>VGG13_BN",
+                    "mnasnet0_75>MNASNet0_75",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "vgg13>VGG13",
+                    "densenet201>DenseNet201",
+                    "resnet50>ResNet50",
+                    "resnet18>ResNet18",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "resnet34>ResNet34",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "densenet161>DenseNet161",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "fcnresnet50>FCNResNet50",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "vgg16_bn>VGG16_BN",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
+                    "alexnet>AlexNet",
+                    "mobilenet_v2>MobileNetV2",
+                    "vgg19_bn>VGG19_BN",
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
+                ],
+                "multi-class": [
+                    "mnasnet1_3>MNASNet1_3",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "resnet152>ResNet152",
+                    "mnasnet0_5>MNASNet0_5",
+                    "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "densenet121>DenseNet121",
+                    "fcnresnet101>FCNResNet101",
+                    "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "resnet101>ResNet101",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "googlenet>GoogLeNet",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "resnet3d>ResNet3D",
+                    "vgg16>VGG16",
+                    "densenet169>DenseNet169",
+                    "vgg19>VGG19",
+                    "inceptionv3>InceptionV3",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "vgg11>VGG11",
+                    "vgg11_bn>VGG11_BN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "vgg13_bn>VGG13_BN",
+                    "mnasnet0_75>MNASNet0_75",
+                    "resnet2plus1d>ResNet2Plus1D",
+                    "vgg13>VGG13",
+                    "densenet201>DenseNet201",
+                    "resnet50>ResNet50",
+                    "resnet18>ResNet18",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "resnet34>ResNet34",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "densenet161>DenseNet161",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "fcnresnet50>FCNResNet50",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "vgg16_bn>VGG16_BN",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
+                    "alexnet>AlexNet",
+                    "mobilenet_v2>MobileNetV2",
+                    "vgg19_bn>VGG19_BN",
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
                 ]
             },
             "modality": {
@@ -19288,6 +19216,59 @@
                     "resnet2plus1d>ResNet2Plus1D",
                     "resnet3d>ResNet3D",
                     "resnet_mixed_convolution>ResNetMixedConvolution"
+                    "mnasnet1_3>MNASNet1_3",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "resnet152>ResNet152",
+                    "mnasnet0_5>MNASNet0_5",
+                    "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "densenet121>DenseNet121",
+                    "fcnresnet101>FCNResNet101",
+                    "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "resnet101>ResNet101",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "googlenet>GoogLeNet",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg16>VGG16",
+                    "densenet169>DenseNet169",
+                    "vgg19>VGG19",
+                    "inceptionv3>InceptionV3",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "vgg11>VGG11",
+                    "vgg11_bn>VGG11_BN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "vgg13_bn>VGG13_BN",
+                    "mnasnet0_75>MNASNet0_75",
+                    "vgg13>VGG13",
+                    "densenet201>DenseNet201",
+                    "resnet50>ResNet50",
+                    "resnet18>ResNet18",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "resnet34>ResNet34",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "densenet161>DenseNet161",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "fcnresnet50>FCNResNet50",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "vgg16_bn>VGG16_BN",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
+                    "alexnet>AlexNet",
+                    "mobilenet_v2>MobileNetV2",
+                    "vgg19_bn>VGG19_BN",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
+                ],
+                "video": [
+                    "resnet_mixed_convolution>ResNetMixedConvolution",
+                    "resnet3d>ResNet3D",
+                    "resnet2plus1d>ResNet2Plus1D"
                 ]
             },
             "submodality": {
@@ -19340,6 +19321,54 @@
                     "mnasnet0_75>MNASNet0_75",
                     "vgg13>VGG13",
                     "alexnet>AlexNet"
+                    "mnasnet1_3>MNASNet1_3",
+                    "deeplabv3_resnet101>DeepLabV3ResNet101",
+                    "resnet152>ResNet152",
+                    "mnasnet0_5>MNASNet0_5",
+                    "deeplabv3_resnet50>DeepLabV3ResNet50",
+                    "lraspp_mobilenet_v3_large>LRASPPMobileNetV3Large",
+                    "densenet121>DenseNet121",
+                    "fcnresnet101>FCNResNet101",
+                    "shufflenet_v2_x1_0>ShuffleNetV2_x1_0",
+                    "squeezenet1_0>SqueezeNet1_0",
+                    "wide_resnet50_2>WideResNet50_2",
+                    "mobilenet_v3_large>MobileNetV3_Large",
+                    "resnet101>ResNet101",
+                    "fasterrcnn_mobilenet_v3_large_fpn>FasterRCNNMobileNetV3LargeFPN",
+                    "googlenet>GoogLeNet",
+                    "mnasnet1_0>MNASNet1_0",
+                    "fasterrcnn_mobilenet_v3_large_320_fpn>FasterRCNNMobileNetV3Large320FPN",
+                    "vgg16>VGG16",
+                    "densenet169>DenseNet169",
+                    "vgg19>VGG19",
+                    "inceptionv3>InceptionV3",
+                    "mobilenet_v3_small>MobileNetV3_Small",
+                    "keypointrcnn_resnet50_fpn>KeypointRCNNResNet50FPN",
+                    "vgg11>VGG11",
+                    "vgg11_bn>VGG11_BN",
+                    "maskrcnn_resnet50_fpn>MaskRCNNResNet50FPN",
+                    "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
+                    "wide_resnet101_2>WideResNet101_2",
+                    "vgg13_bn>VGG13_BN",
+                    "mnasnet0_75>MNASNet0_75",
+                    "vgg13>VGG13",
+                    "densenet201>DenseNet201",
+                    "resnet50>ResNet50",
+                    "resnet18>ResNet18",
+                    "shufflenet_v2_x0_5>ShuffleNetV2_x0_5",
+                    "resnet34>ResNet34",
+                    "squeezenet1_1>SqueezeNet1_1",
+                    "densenet161>DenseNet161",
+                    "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
+                    "fcnresnet50>FCNResNet50",
+                    "resnext101_32x8d>ResNeXt101_32x8d",
+                    "shufflenet_v2_x2_0>ShuffleNetV2_x2_0",
+                    "vgg16_bn>VGG16_BN",
+                    "fasterrcnn_resnet50_fpn>FasterRCNNResNet50FPN",
+                    "alexnet>AlexNet",
+                    "mobilenet_v2>MobileNetV2",
+                    "vgg19_bn>VGG19_BN",
+                    "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN"
                 ]
             }
         }
