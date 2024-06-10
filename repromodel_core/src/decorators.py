@@ -36,7 +36,20 @@ def enforce_types_and_ranges(config):
 
 def tag(**tags):
     def decorator(cls):
-        for key, value in tags.items():
+        # Initialize default values if not provided
+        default_tags = {
+            'task': [""],
+            'subtask': [""],
+            'modality': [""],
+            'submodality': [""]
+        }
+        
+        # Update default values with provided tags
+        default_tags.update(tags)
+        
+        # Set attributes on the class
+        for key, value in default_tags.items():
             setattr(cls, key, value)
+            
         return cls
     return decorator
