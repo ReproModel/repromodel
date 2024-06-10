@@ -2616,7 +2616,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x156c37550>"
+                    "default": "<function round_channels at 0x16fdf8310>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -2684,7 +2684,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x156c37550>"
+                    "default": "<function round_channels at 0x16fdf8310>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -4070,7 +4070,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x156c37550>"
+                    "default": "<function round_channels at 0x16fdf8310>"
                 },
                 "drop_rate": {
                     "type": "int, float",
@@ -4126,7 +4126,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x156c37550>"
+                    "default": "<function round_channels at 0x16fdf8310>"
                 },
                 "se_from_exp": {
                     "type": "bool",
@@ -6921,7 +6921,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x156c37550>"
+                    "default": "<function round_channels at 0x16fdf8310>"
                 },
                 "se_from_exp": {
                     "type": "int, float",
@@ -14412,6 +14412,1805 @@
                     "default": true
                 }
             }
+        },
+        "torchvision>datasets": {
+            "torchvision>datasets>CIFAR10": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>CIFAR100": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>CLEVRClassification": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>CREStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Caltech101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "category"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Caltech256": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>CarlaStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>CelebA": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "attr"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Cityscapes": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "mode": {
+                    "type": "str",
+                    "default": "fine"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "instance"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>CocoCaptions": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annFile": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>CocoDetection": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annFile": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Country211": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>DTD": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "partition": {
+                    "type": "int",
+                    "default": 1
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>DatasetFolder": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": null
+                },
+                "extensions": {
+                    "type": "typing.Optional[typing.Tuple[str, ...]]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "is_valid_file": {
+                    "type": "typing.Optional[typing.Callable[[str], bool]]",
+                    "default": null
+                },
+                "allow_empty": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>EMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>ETH3DStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>EuroSAT": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>FER2013": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>FGVCAircraft": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "trainval"
+                },
+                "annotation_level": {
+                    "type": "str",
+                    "default": "variant"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>FakeData": {
+                "size": {
+                    "type": "int",
+                    "default": 1000
+                },
+                "image_size": {
+                    "type": "typing.Tuple[int, int, int]",
+                    "default": [
+                        3,
+                        224,
+                        224
+                    ]
+                },
+                "num_classes": {
+                    "type": "int",
+                    "default": 10
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "random_offset": {
+                    "type": "int",
+                    "default": 0
+                }
+            },
+            "torchvision>datasets>FallingThingsStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "variant": {
+                    "type": "str",
+                    "default": "single"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>FashionMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Flickr30k": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "ann_file": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Flickr8k": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "ann_file": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Flowers102": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>FlyingChairs": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>FlyingThings3D": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "camera": {
+                    "type": "str",
+                    "default": "left"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Food101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>GTSRB": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>HD1K": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>HMDB51": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annotation_path": {
+                    "type": "str",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "fold": {
+                    "type": "int",
+                    "default": 1
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "torchvision>datasets>INaturalist": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "version": {
+                    "type": "str",
+                    "default": "2021_train"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "full"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>ImageFolder": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": "<function default_loader at 0x169666670>"
+                },
+                "is_valid_file": {
+                    "type": "typing.Optional[typing.Callable[[str], bool]]",
+                    "default": null
+                },
+                "allow_empty": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>ImageNet": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Imagenette": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "size": {
+                    "type": "str",
+                    "default": "full"
+                },
+                "download": {
+                    "type": "int, float",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>InStereo2k": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>KMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Kinetics": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "num_classes": {
+                    "type": "str",
+                    "default": "400"
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "extensions": {
+                    "type": "typing.Tuple[str, ...]",
+                    "default": [
+                        "avi",
+                        "mp4"
+                    ]
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "num_download_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_channels": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_legacy": {
+                    "type": "bool",
+                    "default": false
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "TCHW"
+                }
+            },
+            "torchvision>datasets>Kitti": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Kitti2012Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Kitti2015Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>KittiFlow": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>LFWPairs": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "10fold"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "funneled"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>LFWPeople": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "10fold"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "funneled"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>LSUN": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "classes": {
+                    "type": "typing.Union[str, typing.List[str]]",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>LSUNClass": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>MNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Middlebury2014Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "calibration": {
+                    "type": "typing.Optional[str]",
+                    "default": "perfect"
+                },
+                "use_ambient_views": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>MovingMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                },
+                "split_ratio": {
+                    "type": "int",
+                    "default": 10
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Omniglot": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "background": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>OxfordIIITPet": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "trainval"
+                },
+                "target_types": {
+                    "type": "typing.Union[typing.Sequence[str], str]",
+                    "default": "category"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>PCAM": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>PhotoTour": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "name": {
+                    "type": "str",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>Places365": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train-standard"
+                },
+                "small": {
+                    "type": "bool",
+                    "default": false
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": "<function default_loader at 0x169666670>"
+                }
+            },
+            "torchvision>datasets>QMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "what": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                },
+                "compat": {
+                    "type": "bool",
+                    "default": true
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>RenderedSST2": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>SBDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "mode": {
+                    "type": "str",
+                    "default": "boundaries"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>SBU": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            },
+            "torchvision>datasets>SEMEION": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            },
+            "torchvision>datasets>STL10": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "folds": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>SUN397": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>SVHN": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>SceneFlowStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "variant": {
+                    "type": "str",
+                    "default": "FlyingThings3D"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Sintel": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>SintelStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "final"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>StanfordCars": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>UCF101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annotation_path": {
+                    "type": "str",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "fold": {
+                    "type": "int",
+                    "default": 1
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "torchvision>datasets>USPS": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>VOCDetection": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "year": {
+                    "type": "str",
+                    "default": "2012"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>VOCSegmentation": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "year": {
+                    "type": "str",
+                    "default": "2012"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>VisionDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path, NoneType]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>WIDERFace": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>datasets>FlowDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>StereoMatchingDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>CSV": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>Flickr8kParser": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>DistributedSampler": {
+                "dataset": {
+                    "type": "typing.Sized",
+                    "default": null
+                },
+                "num_replicas": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "rank": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "shuffle": {
+                    "type": "bool",
+                    "default": false
+                },
+                "group_size": {
+                    "type": "int",
+                    "default": 1
+                }
+            },
+            "torchvision>datasets>RandomClipSampler": {
+                "video_clips": {
+                    "type": "VideoClips",
+                    "default": null
+                },
+                "max_clips_per_video": {
+                    "type": "int",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>UniformClipSampler": {
+                "video_clips": {
+                    "type": "VideoClips",
+                    "default": null
+                },
+                "num_clips_per_video": {
+                    "type": "int",
+                    "default": null
+                }
+            },
+            "torchvision>datasets>VideoClips": {
+                "video_paths": {
+                    "type": "typing.List[str]",
+                    "default": null
+                },
+                "clip_length_in_frames": {
+                    "type": "int",
+                    "default": 16
+                },
+                "frames_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[float]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_max_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_channels": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "torchvision>datasets>StandardTransform": {
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            }
         }
     },
     "augmentations": {
@@ -18976,7 +20775,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x151937d30>"
+                    "default": "<function _preprocess_text at 0x16896aee0>"
                 },
                 "idf": {
                     "type": "bool",
@@ -20099,6 +21898,91 @@
                     "default": "mean"
                 }
             }
+        },
+        "timm>loss": {
+            "timm>loss>AsymmetricLossMultiLabel": {
+                "gamma_neg": {
+                    "type": "int",
+                    "default": 4
+                },
+                "gamma_pos": {
+                    "type": "int",
+                    "default": 1
+                },
+                "clip": {
+                    "type": "float",
+                    "default": 0.05
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 1e-08
+                },
+                "disable_torch_grad_focal_loss": {
+                    "type": "int, float",
+                    "default": false
+                }
+            },
+            "timm>loss>AsymmetricLossSingleLabel": {
+                "gamma_pos": {
+                    "type": "int",
+                    "default": 1
+                },
+                "gamma_neg": {
+                    "type": "int",
+                    "default": 4
+                },
+                "eps": {
+                    "type": "float",
+                    "default": 0.1
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                }
+            },
+            "timm>loss>BinaryCrossEntropy": {
+                "smoothing": {
+                    "type": "float",
+                    "default": 0.1
+                },
+                "target_threshold": {
+                    "type": "typing.Optional[float]",
+                    "default": null
+                },
+                "weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                },
+                "reduction": {
+                    "type": "str",
+                    "default": "mean"
+                },
+                "pos_weight": {
+                    "type": "typing.Optional[torch.Tensor]",
+                    "default": null
+                }
+            },
+            "timm>loss>JsdCrossEntropy": {
+                "num_splits": {
+                    "type": "int",
+                    "default": 3
+                },
+                "alpha": {
+                    "type": "int",
+                    "default": 12
+                },
+                "smoothing": {
+                    "type": "float",
+                    "default": 0.1
+                }
+            },
+            "timm>loss>LabelSmoothingCrossEntropy": {
+                "smoothing": {
+                    "type": "float",
+                    "default": 0.1
+                }
+            },
+            "timm>loss>SoftTargetCrossEntropy": {}
         }
     },
     "early_stopping": {
@@ -21641,6 +23525,304 @@
     "device": {
         "type": "str",
         "default": "cpu",
-        "options": "['cpu']"
+        "options": [
+            "cpu"
+        ]
+    },
+    "tags": {
+        "models": {
+            "task": {
+                "object detection": [
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "MaskRCNNResNet50FPN",
+                    "RetinaNetResNet50FPN",
+                    "KeypointRCNNResNet50FPN",
+                    "FasterRCNNResNet50FPN",
+                    "FasterRCNNMobileNetV3LargeFPN"
+                ],
+                "instance segmentation": [
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "MaskRCNNResNet50FPN",
+                    "RetinaNetResNet50FPN",
+                    "KeypointRCNNResNet50FPN",
+                    "FasterRCNNResNet50FPN",
+                    "FasterRCNNMobileNetV3LargeFPN"
+                ],
+                "keypoint detection": [
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "MaskRCNNResNet50FPN",
+                    "RetinaNetResNet50FPN",
+                    "KeypointRCNNResNet50FPN",
+                    "FasterRCNNResNet50FPN",
+                    "FasterRCNNMobileNetV3LargeFPN"
+                ],
+                "classification": [
+                    "ResNetMixedConvolution",
+                    "DenseNet161",
+                    "AlexNet",
+                    "WideResNet101_2",
+                    "VGG19_BN",
+                    "SqueezeNet1_1",
+                    "DenseNet169",
+                    "ShuffleNetV2_x2_0",
+                    "VGG11",
+                    "ResNet50",
+                    "WideResNet50_2",
+                    "MNASNet0_75",
+                    "VGG13_BN",
+                    "ResNeXt101_32x8d",
+                    "MobileNetV3_Small",
+                    "ResNet2Plus1D",
+                    "ShuffleNetV2_x0_5",
+                    "ResNet152",
+                    "VGG11_BN",
+                    "MobileNetV2",
+                    "MNASNet1_0",
+                    "ShuffleNetV2_x1_5",
+                    "VGG19",
+                    "VGG16_BN",
+                    "MNASNet0_5",
+                    "ResNet34",
+                    "MobileNetV3_Large",
+                    "ResNet3D",
+                    "ResNet18",
+                    "VGG16",
+                    "GoogLeNet",
+                    "SqueezeNet1_0",
+                    "VGG13",
+                    "ShuffleNetV2_x1_0",
+                    "DenseNet121",
+                    "ResNet101",
+                    "DenseNet201",
+                    "InceptionV3",
+                    "MNASNet1_3"
+                ],
+                "segmentation": [
+                    "FCNResNet50",
+                    "DeepLabV3ResNet50",
+                    "DeepLabV3MobileNetV3Large",
+                    "DeepLabV3ResNet101",
+                    "LRASPPMobileNetV3Large",
+                    "FCNResNet101"
+                ]
+            },
+            "subtask": {
+                "binary": [
+                    "ResNetMixedConvolution",
+                    "DenseNet201",
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "DenseNet161",
+                    "LRASPPMobileNetV3Large",
+                    "AlexNet",
+                    "WideResNet101_2",
+                    "VGG19_BN",
+                    "SqueezeNet1_1",
+                    "DenseNet169",
+                    "ShuffleNetV2_x2_0",
+                    "VGG11",
+                    "FCNResNet101",
+                    "ResNet50",
+                    "WideResNet50_2",
+                    "MNASNet0_75",
+                    "DeepLabV3MobileNetV3Large",
+                    "DeepLabV3ResNet101",
+                    "VGG13_BN",
+                    "MaskRCNNResNet50FPN",
+                    "ResNeXt101_32x8d",
+                    "MobileNetV3_Small",
+                    "ResNet2Plus1D",
+                    "ShuffleNetV2_x0_5",
+                    "ResNet152",
+                    "DeepLabV3ResNet50",
+                    "VGG11_BN",
+                    "MobileNetV2",
+                    "MNASNet1_0",
+                    "ShuffleNetV2_x1_5",
+                    "VGG19",
+                    "KeypointRCNNResNet50FPN",
+                    "VGG16_BN",
+                    "MNASNet0_5",
+                    "ResNet34",
+                    "MobileNetV3_Large",
+                    "FasterRCNNMobileNetV3LargeFPN",
+                    "ResNet3D",
+                    "ResNet18",
+                    "FCNResNet50",
+                    "VGG16",
+                    "RetinaNetResNet50FPN",
+                    "GoogLeNet",
+                    "SqueezeNet1_0",
+                    "VGG13",
+                    "ShuffleNetV2_x1_0",
+                    "DenseNet121",
+                    "ResNet101",
+                    "FasterRCNNResNet50FPN",
+                    "InceptionV3",
+                    "MNASNet1_3"
+                ],
+                "multi-class": [
+                    "ResNetMixedConvolution",
+                    "DenseNet201",
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "DenseNet161",
+                    "LRASPPMobileNetV3Large",
+                    "AlexNet",
+                    "WideResNet101_2",
+                    "VGG19_BN",
+                    "SqueezeNet1_1",
+                    "DenseNet169",
+                    "ShuffleNetV2_x2_0",
+                    "VGG11",
+                    "FCNResNet101",
+                    "ResNet50",
+                    "WideResNet50_2",
+                    "MNASNet0_75",
+                    "DeepLabV3MobileNetV3Large",
+                    "DeepLabV3ResNet101",
+                    "VGG13_BN",
+                    "MaskRCNNResNet50FPN",
+                    "ResNeXt101_32x8d",
+                    "MobileNetV3_Small",
+                    "ResNet2Plus1D",
+                    "ShuffleNetV2_x0_5",
+                    "ResNet152",
+                    "DeepLabV3ResNet50",
+                    "VGG11_BN",
+                    "MobileNetV2",
+                    "MNASNet1_0",
+                    "ShuffleNetV2_x1_5",
+                    "VGG19",
+                    "KeypointRCNNResNet50FPN",
+                    "VGG16_BN",
+                    "MNASNet0_5",
+                    "ResNet34",
+                    "MobileNetV3_Large",
+                    "FasterRCNNMobileNetV3LargeFPN",
+                    "ResNet3D",
+                    "ResNet18",
+                    "FCNResNet50",
+                    "VGG16",
+                    "RetinaNetResNet50FPN",
+                    "GoogLeNet",
+                    "SqueezeNet1_0",
+                    "VGG13",
+                    "ShuffleNetV2_x1_0",
+                    "DenseNet121",
+                    "ResNet101",
+                    "FasterRCNNResNet50FPN",
+                    "InceptionV3",
+                    "MNASNet1_3"
+                ]
+            },
+            "modality": {
+                "images": [
+                    "DenseNet201",
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "DenseNet161",
+                    "LRASPPMobileNetV3Large",
+                    "AlexNet",
+                    "WideResNet101_2",
+                    "VGG19_BN",
+                    "SqueezeNet1_1",
+                    "DenseNet169",
+                    "ShuffleNetV2_x2_0",
+                    "VGG11",
+                    "FCNResNet101",
+                    "ResNet50",
+                    "WideResNet50_2",
+                    "MNASNet0_75",
+                    "DeepLabV3MobileNetV3Large",
+                    "DeepLabV3ResNet101",
+                    "VGG13_BN",
+                    "MaskRCNNResNet50FPN",
+                    "ResNeXt101_32x8d",
+                    "MobileNetV3_Small",
+                    "ShuffleNetV2_x0_5",
+                    "ResNet152",
+                    "DeepLabV3ResNet50",
+                    "VGG11_BN",
+                    "MobileNetV2",
+                    "MNASNet1_0",
+                    "ShuffleNetV2_x1_5",
+                    "VGG19",
+                    "KeypointRCNNResNet50FPN",
+                    "VGG16_BN",
+                    "MNASNet0_5",
+                    "ResNet34",
+                    "MobileNetV3_Large",
+                    "FasterRCNNMobileNetV3LargeFPN",
+                    "ResNet18",
+                    "FCNResNet50",
+                    "VGG16",
+                    "RetinaNetResNet50FPN",
+                    "GoogLeNet",
+                    "SqueezeNet1_0",
+                    "VGG13",
+                    "ShuffleNetV2_x1_0",
+                    "DenseNet121",
+                    "ResNet101",
+                    "FasterRCNNResNet50FPN",
+                    "InceptionV3",
+                    "MNASNet1_3"
+                ],
+                "video": [
+                    "ResNetMixedConvolution",
+                    "ResNet2Plus1D",
+                    "ResNet3D"
+                ]
+            },
+            "submodality": {
+                "RGB": [
+                    "DenseNet201",
+                    "FasterRCNNMobileNetV3Large320FPN",
+                    "DenseNet161",
+                    "LRASPPMobileNetV3Large",
+                    "AlexNet",
+                    "WideResNet101_2",
+                    "VGG19_BN",
+                    "SqueezeNet1_1",
+                    "DenseNet169",
+                    "ShuffleNetV2_x2_0",
+                    "VGG11",
+                    "FCNResNet101",
+                    "ResNet50",
+                    "WideResNet50_2",
+                    "MNASNet0_75",
+                    "DeepLabV3MobileNetV3Large",
+                    "DeepLabV3ResNet101",
+                    "VGG13_BN",
+                    "MaskRCNNResNet50FPN",
+                    "ResNeXt101_32x8d",
+                    "MobileNetV3_Small",
+                    "ShuffleNetV2_x0_5",
+                    "ResNet152",
+                    "DeepLabV3ResNet50",
+                    "VGG11_BN",
+                    "MobileNetV2",
+                    "MNASNet1_0",
+                    "ShuffleNetV2_x1_5",
+                    "VGG19",
+                    "KeypointRCNNResNet50FPN",
+                    "VGG16_BN",
+                    "MNASNet0_5",
+                    "ResNet34",
+                    "MobileNetV3_Large",
+                    "FasterRCNNMobileNetV3LargeFPN",
+                    "ResNet18",
+                    "FCNResNet50",
+                    "VGG16",
+                    "RetinaNetResNet50FPN",
+                    "GoogLeNet",
+                    "SqueezeNet1_0",
+                    "VGG13",
+                    "ShuffleNetV2_x1_0",
+                    "DenseNet121",
+                    "ResNet101",
+                    "FasterRCNNResNet50FPN",
+                    "InceptionV3",
+                    "MNASNet1_3"
+                ]
+            }
+        }
     }
 }
