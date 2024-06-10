@@ -8,6 +8,7 @@ import torch
 import timm
 from timm import optim as timm_optim
 from timm import loss as timm_loss
+import torchvision
 import segmentation_models_pytorch 
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
@@ -247,6 +248,16 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
     if directory_definitions:
         all_definitions[directory] = directory_definitions
 
+# Extract torchvision datasets
+# all_tv_datasets = extract_classes_with_init_params(torchvision.datasets)
+# leading_key = 'torchvision>datasets'
+# all_definitions['datasets'][leading_key] = make_json_serializable(all_tv_datasets, leading_key=leading_key)
+
+# Extract torchvision augmentations
+all_tv_augs = extract_classes_with_init_params(torchvision.transforms)
+leading_key = 'torchvision>transforms'
+all_definitions['augmentations'][leading_key] = make_json_serializable(all_tv_augs, leading_key=leading_key)
+
 # Extract torchmetric classes
 all_torchmetrics = extract_classes_with_init_params(torchmetrics)
 leading_key = 'torchmetrics'
@@ -292,14 +303,14 @@ smp_loss_classes = ["JaccardLoss",
                     "TverskyLoss",
                     "MCCLoss"]
 
-smp_loss_classes_extracted = extract_classes_with_init_params(segmentation_models_pytorch.losses, smp_loss_classes)
-leading_key='segmentation_models_pytorch>losses'
-all_definitions['losses'][leading_key] = make_json_serializable(smp_loss_classes_extracted, leading_key=leading_key)
+# smp_loss_classes_extracted = extract_classes_with_init_params(segmentation_models_pytorch.losses, smp_loss_classes)
+# leading_key='segmentation_models_pytorch>losses'
+# all_definitions['losses'][leading_key] = make_json_serializable(smp_loss_classes_extracted, leading_key=leading_key)
 
 # Extract classes from torch.nn for the specified loss classes
-timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
-leading_key='timm>loss'
-all_definitions['losses'][leading_key] = make_json_serializable(timm_loss_classes_extracted, leading_key=leading_key)
+# timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
+# leading_key='timm>loss'
+# all_definitions['losses'][leading_key] = make_json_serializable(timm_loss_classes_extracted, leading_key=leading_key)
 
 # List of specific class names to extract from torch.optim
 optimizer_classes = [

@@ -4,6 +4,123 @@
         "default": false
     },
     "models": {
+        "keypointrcnn_resnet50_fpn": {
+            "KeypointRCNNResNet50FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 2,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                },
+                "num_keypoints": {
+                    "type": "int",
+                    "default": 17,
+                    "range": "(1, 100)"
+                }
+            }
+        },
+        "densenet121": {
+            "DenseNet121": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet152": {
+            "ResNet152": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "googlenet": {
+            "GoogLeNet": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                },
+                "aux_logits": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform_input": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg19_bn": {
+            "VGG19_BN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "fasterrcnn_resnet50_fpn": {
+            "FasterRCNNResNet50FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "lraspp_mobilenet_v3_large": {
+            "LRASPPMobileNetV3Large": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet3d": {
+            "ResNet3D": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 400,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
         "convAE_2D": {
             "ConvAE_2D": {
                 "n_layers": {
@@ -24,6 +141,188 @@
                 }
             }
         },
+        "densenet161": {
+            "DenseNet161": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "deeplabv3_resnet101": {
+            "DeepLabV3ResNet101": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mnasnet1_3": {
+            "MNASNet1_3": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "fasterrcnn_mobilenet_v3_large_fpn": {
+            "FasterRCNNMobileNetV3LargeFPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg11": {
+            "VGG11": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnext101_32x8d": {
+            "ResNeXt101_32x8d": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mobilenet_v3_large": {
+            "MobileNetV3_Large": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet18": {
+            "ResNet18": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "shufflenet_v2_x2_0": {
+            "ShuffleNetV2_x2_0": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "maskrcnn_resnet50_fpn": {
+            "MaskRCNNResNet50FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "squeezenet1_1": {
+            "SqueezeNet1_1": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mobilenet_v2": {
+            "MobileNetV2": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mobilenet_v3_small": {
+            "MobileNetV3_Small": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "deeplabv3_resnet50": {
+            "DeepLabV3ResNet50": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
         "customModel": {
             "CustomModel": {
                 "lr": {
@@ -35,6 +334,45 @@
                     "type": "str",
                     "default": "relu",
                     "options": "['relu', 'sigmoid', 'tanh']"
+                }
+            }
+        },
+        "squeezenet1_0": {
+            "SqueezeNet1_0": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mnasnet0_75": {
+            "MNASNet0_75": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "deeplabv3_mobilenet_v3_large": {
+            "DeepLabV3MobileNetV3Large": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
                 }
             }
         },
@@ -90,6 +428,144 @@
                 }
             }
         },
+        "fcnresnet101": {
+            "FCNResNet101": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "shufflenet_v2_x1_5": {
+            "ShuffleNetV2_x1_5": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "wide_resnet101_2": {
+            "WideResNet101_2": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg16_bn": {
+            "VGG16_BN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg13": {
+            "VGG13": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "inceptionv3": {
+            "InceptionV3": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                },
+                "aux_logits": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform_input": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "densenet169": {
+            "DenseNet169": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "shufflenet_v2_x1_0": {
+            "ShuffleNetV2_x1_0": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet2plus1d": {
+            "ResNet2Plus1D": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 400,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "fcnresnet50": {
+            "FCNResNet50": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 21,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
         "uNet_2D": {
             "UNet_2D": {
                 "in_channels": {
@@ -107,6 +583,219 @@
                 "activation": {
                     "type": "str",
                     "default": "sigmoid"
+                }
+            }
+        },
+        "vgg16": {
+            "VGG16": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "shufflenet_v2_x0_5": {
+            "ShuffleNetV2_x0_5": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mnasnet0_5": {
+            "MNASNet0_5": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "fasterrcnn_mobilenet_v3_large_320_fpn": {
+            "FasterRCNNMobileNetV3Large320FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet34": {
+            "ResNet34": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg19": {
+            "VGG19": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "mnasnet1_0": {
+            "MNASNet1_0": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet101": {
+            "ResNet101": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "densenet201": {
+            "DenseNet201": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg11_bn": {
+            "VGG11_BN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "alexnet": {
+            "AlexNet": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "dropout": {
+                    "type": "float",
+                    "default": 0.5,
+                    "range": "(0.0, 1.0)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "wide_resnet50_2": {
+            "WideResNet50_2": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet_mixed_convolution": {
+            "ResNetMixedConvolution": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 400,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "vgg13_bn": {
+            "VGG13_BN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "retinanet_resnet50_fpn_model": {
+            "RetinaNetResNet50FPN": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 91,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
+                }
+            }
+        },
+        "resnet50": {
+            "ResNet50": {
+                "num_classes": {
+                    "type": "int",
+                    "default": 1000,
+                    "range": "(1, 10000)"
+                },
+                "pretrained": {
+                    "type": "bool",
+                    "default": false
                 }
             }
         },
@@ -1927,7 +2616,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x16e322820>"
+                    "default": "<function round_channels at 0x156c37550>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -1995,7 +2684,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x16e322820>"
+                    "default": "<function round_channels at 0x156c37550>"
                 },
                 "act_layer": {
                     "type": "NoneType",
@@ -3381,7 +4070,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x16e322820>"
+                    "default": "<function round_channels at 0x156c37550>"
                 },
                 "drop_rate": {
                     "type": "int, float",
@@ -3437,7 +4126,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x16e322820>"
+                    "default": "<function round_channels at 0x156c37550>"
                 },
                 "se_from_exp": {
                     "type": "bool",
@@ -6232,7 +6921,7 @@
                 },
                 "round_chs_fn": {
                     "type": "function",
-                    "default": "<function round_channels at 0x16e322820>"
+                    "default": "<function round_channels at 0x156c37550>"
                 },
                 "se_from_exp": {
                     "type": "int, float",
@@ -13630,31 +14319,6 @@
                 }
             }
         },
-        "CustomDatasetsScript": {
-            "CustomDataset": {
-                "input_path": {
-                    "type": "str"
-                },
-                "target_path": {
-                    "type": "str"
-                },
-                "in_channel": {
-                    "type": "int",
-                    "range": "(1, 1000)"
-                },
-                "mode": {
-                    "type": "str",
-                    "options": "['train', 'val', 'test']"
-                },
-                "transforms": {
-                    "type": "<class 'function'>",
-                    "default": null
-                },
-                "extension": {
-                    "type": "str"
-                }
-            }
-        },
         "customDataset": {
             "CustomDataset": {
                 "input_path": {
@@ -13701,6 +14365,9 @@
                 }
             }
         },
+        "extendedVisionDataset": {
+            "ExtendedVisionDataset": {}
+        },
         "dummyDataset": {
             "DummyDataset": {
                 "input_path": {
@@ -13725,6 +14392,26 @@
                     "type": "str"
                 }
             }
+        },
+        "caltech101_RM": {
+            "Caltech101_RM": {
+                "root": {
+                    "type": "str",
+                    "default": "repromodel_core/data/caltech101"
+                },
+                "input_folder": {
+                    "type": "str",
+                    "default": "101_ObjectCategories"
+                },
+                "target_folder": {
+                    "type": "str",
+                    "default": "Annotations"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            }
         }
     },
     "augmentations": {
@@ -13733,6 +14420,24 @@
                 "p": {
                     "type": "float",
                     "range": "(0.0, 1.0)"
+                }
+            }
+        },
+        "resizeToTensor": {
+            "ResizeToTensor": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                },
+                "height": {
+                    "type": "int",
+                    "range": "(1, 10000)",
+                    "default": 224
+                },
+                "width": {
+                    "type": "int",
+                    "range": "(1, 10000)",
+                    "default": 224
                 }
             }
         },
@@ -13753,6 +14458,895 @@
                 "rotate_limit": {
                     "type": "int",
                     "range": "(0, 360)"
+                }
+            }
+        },
+        "torchvision>transforms": {
+            "torchvision>transforms>AugMix": {
+                "severity": {
+                    "type": "int",
+                    "default": 3
+                },
+                "mixture_width": {
+                    "type": "int",
+                    "default": 3
+                },
+                "chain_depth": {
+                    "type": "int",
+                    "default": -1
+                },
+                "alpha": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "all_ops": {
+                    "type": "bool",
+                    "default": true
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>AutoAugment": {
+                "policy": {
+                    "type": "AutoAugmentPolicy",
+                    "default": "AutoAugmentPolicy.IMAGENET"
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.NEAREST"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>AutoAugmentPolicy": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>CenterCrop": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>ColorJitter": {
+                "brightness": {
+                    "type": "typing.Union[float, typing.Sequence[float], NoneType]",
+                    "default": null
+                },
+                "contrast": {
+                    "type": "typing.Union[float, typing.Sequence[float], NoneType]",
+                    "default": null
+                },
+                "saturation": {
+                    "type": "typing.Union[float, typing.Sequence[float], NoneType]",
+                    "default": null
+                },
+                "hue": {
+                    "type": "typing.Union[float, typing.Sequence[float], NoneType]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>Compose": {
+                "transforms": {
+                    "type": "typing.Sequence[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>ConvertImageDtype": {
+                "dtype": {
+                    "type": "dtype",
+                    "default": "torch.float32"
+                }
+            },
+            "torchvision>transforms>ElasticTransform": {
+                "alpha": {
+                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "default": 50.0
+                },
+                "sigma": {
+                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "default": 5.0
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                }
+            },
+            "torchvision>transforms>FiveCrop": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>GaussianBlur": {
+                "kernel_size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "sigma": {
+                    "type": "typing.Union[int, float, typing.Sequence[float]]",
+                    "default": [
+                        0.1,
+                        2.0
+                    ]
+                }
+            },
+            "torchvision>transforms>Grayscale": {
+                "num_output_channels": {
+                    "type": "int",
+                    "default": 1
+                }
+            },
+            "torchvision>transforms>InterpolationMode": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>Lambda": {
+                "lambd": {
+                    "type": "typing.Callable[[typing.Any], typing.Any]",
+                    "default": null
+                },
+                "types": {
+                    "type": "typing.Type",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>LinearTransformation": {
+                "transformation_matrix": {
+                    "type": "Tensor",
+                    "default": null
+                },
+                "mean_vector": {
+                    "type": "Tensor",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>Normalize": {
+                "mean": {
+                    "type": "typing.Sequence[float]",
+                    "default": null
+                },
+                "std": {
+                    "type": "typing.Sequence[float]",
+                    "default": null
+                },
+                "inplace": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>PILToTensor": {},
+            "torchvision>transforms>Pad": {
+                "padding": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                },
+                "padding_mode": {
+                    "type": "typing.Literal['constant', 'edge', 'reflect', 'symmetric']",
+                    "default": "constant"
+                }
+            },
+            "torchvision>transforms>RandAugment": {
+                "num_ops": {
+                    "type": "int",
+                    "default": 2
+                },
+                "magnitude": {
+                    "type": "int",
+                    "default": 9
+                },
+                "num_magnitude_bins": {
+                    "type": "int",
+                    "default": 31
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.NEAREST"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>RandomAdjustSharpness": {
+                "sharpness_factor": {
+                    "type": "float",
+                    "default": null
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomAffine": {
+                "degrees": {
+                    "type": "typing.Union[numbers.Number, typing.Sequence]",
+                    "default": null
+                },
+                "translate": {
+                    "type": "typing.Optional[typing.Sequence[float]]",
+                    "default": null
+                },
+                "scale": {
+                    "type": "typing.Optional[typing.Sequence[float]]",
+                    "default": null
+                },
+                "shear": {
+                    "type": "typing.Union[int, float, typing.Sequence[float], NoneType]",
+                    "default": null
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.NEAREST"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                },
+                "center": {
+                    "type": "typing.Optional[typing.List[float]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>RandomApply": {
+                "transforms": {
+                    "type": "typing.Union[typing.Sequence[typing.Callable], torch.nn.modules.container.ModuleList]",
+                    "default": null
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomAutocontrast": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomChoice": {
+                "transforms": {
+                    "type": "typing.Sequence[typing.Callable]",
+                    "default": null
+                },
+                "p": {
+                    "type": "typing.Optional[typing.List[float]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>RandomCrop": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "padding": {
+                    "type": "typing.Union[int, typing.Sequence[int], NoneType]",
+                    "default": null
+                },
+                "pad_if_needed": {
+                    "type": "bool",
+                    "default": false
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                },
+                "padding_mode": {
+                    "type": "typing.Literal['constant', 'edge', 'reflect', 'symmetric']",
+                    "default": "constant"
+                }
+            },
+            "torchvision>transforms>RandomEqualize": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomErasing": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                },
+                "scale": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.02,
+                        0.33
+                    ]
+                },
+                "ratio": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.3,
+                        3.3
+                    ]
+                },
+                "value": {
+                    "type": "float",
+                    "default": 0.0
+                },
+                "inplace": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>RandomGrayscale": {
+                "p": {
+                    "type": "float",
+                    "default": 0.1
+                }
+            },
+            "torchvision>transforms>RandomHorizontalFlip": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomInvert": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomOrder": {
+                "transforms": {
+                    "type": "typing.Sequence[typing.Callable]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>RandomPerspective": {
+                "distortion_scale": {
+                    "type": "float",
+                    "default": 0.5
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                }
+            },
+            "torchvision>transforms>RandomPosterize": {
+                "bits": {
+                    "type": "int",
+                    "default": null
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomResizedCrop": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "scale": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.08,
+                        1.0
+                    ]
+                },
+                "ratio": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.75,
+                        1.3333333333333333
+                    ]
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>RandomRotation": {
+                "degrees": {
+                    "type": "typing.Union[numbers.Number, typing.Sequence]",
+                    "default": null
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.NEAREST"
+                },
+                "expand": {
+                    "type": "bool",
+                    "default": false
+                },
+                "center": {
+                    "type": "typing.Optional[typing.List[float]]",
+                    "default": null
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                }
+            },
+            "torchvision>transforms>RandomSolarize": {
+                "threshold": {
+                    "type": "float",
+                    "default": null
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomVerticalFlip": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>Resize": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "max_size": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>TenCrop": {
+                "size": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                },
+                "vertical_flip": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>ToPILImage": {
+                "mode": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>ToTensor": {},
+            "torchvision>transforms>TrivialAugmentWide": {
+                "num_magnitude_bins": {
+                    "type": "int",
+                    "default": 31
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.NEAREST"
+                },
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>ImageClassification": {
+                "crop_size": {
+                    "type": "int",
+                    "default": null
+                },
+                "resize_size": {
+                    "type": "int",
+                    "default": 256
+                },
+                "mean": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.485,
+                        0.456,
+                        0.406
+                    ]
+                },
+                "std": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.229,
+                        0.224,
+                        0.225
+                    ]
+                },
+                "interpolation": {
+                    "type": "InterpolationMode",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>ObjectDetection": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>OpticalFlow": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>SemanticSegmentation": {
+                "resize_size": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "mean": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.485,
+                        0.456,
+                        0.406
+                    ]
+                },
+                "std": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.229,
+                        0.224,
+                        0.225
+                    ]
+                },
+                "interpolation": {
+                    "type": "InterpolationMode",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>VideoClassification": {
+                "crop_size": {
+                    "type": "typing.Tuple[int, int]",
+                    "default": null
+                },
+                "resize_size": {
+                    "type": "typing.Tuple[int, int]",
+                    "default": null
+                },
+                "mean": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.43216,
+                        0.394666,
+                        0.37645
+                    ]
+                },
+                "std": {
+                    "type": "typing.Tuple[float, ...]",
+                    "default": [
+                        0.22803,
+                        0.22145,
+                        0.216989
+                    ]
+                },
+                "interpolation": {
+                    "type": "InterpolationMode",
+                    "default": "InterpolationMode.BILINEAR"
+                }
+            },
+            "torchvision>transforms>CenterCropVideo": {
+                "crop_size": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>NormalizeVideo": {
+                "mean": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "std": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "inplace": {
+                    "type": "int, float",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>RandomCropVideo": {
+                "size": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>RandomHorizontalFlipVideo": {
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomResizedCropVideo": {
+                "size": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "scale": {
+                    "type": "tuple",
+                    "default": [
+                        0.08,
+                        1.0
+                    ]
+                },
+                "ratio": {
+                    "type": "tuple",
+                    "default": [
+                        0.75,
+                        1.3333333333333333
+                    ]
+                },
+                "interpolation_mode": {
+                    "type": "str",
+                    "default": "bilinear"
+                }
+            },
+            "torchvision>transforms>ToTensorVideo": {},
+            "torchvision>transforms>RandomTransforms": {
+                "transforms": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>ClampBoundingBoxes": {},
+            "torchvision>transforms>ConvertBoundingBoxFormat": {
+                "format": {
+                    "type": "typing.Union[str, torchvision.tv_tensors._bounding_boxes.BoundingBoxFormat]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>CutMix": {
+                "alpha": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "num_classes": {
+                    "type": "int",
+                    "default": null
+                },
+                "labels_getter": {
+                    "type": "str",
+                    "default": "default"
+                }
+            },
+            "torchvision>transforms>Identity": {},
+            "torchvision>transforms>JPEG": {
+                "quality": {
+                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "default": null
+                }
+            },
+            "torchvision>transforms>MixUp": {
+                "alpha": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "num_classes": {
+                    "type": "int",
+                    "default": null
+                },
+                "labels_getter": {
+                    "type": "str",
+                    "default": "default"
+                }
+            },
+            "torchvision>transforms>RGB": {},
+            "torchvision>transforms>RandomChannelPermutation": {},
+            "torchvision>transforms>RandomIoUCrop": {
+                "min_scale": {
+                    "type": "float",
+                    "default": 0.3
+                },
+                "max_scale": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "min_aspect_ratio": {
+                    "type": "float",
+                    "default": 0.5
+                },
+                "max_aspect_ratio": {
+                    "type": "float",
+                    "default": 2.0
+                },
+                "sampler_options": {
+                    "type": "typing.Optional[typing.List[float]]",
+                    "default": null
+                },
+                "trials": {
+                    "type": "int",
+                    "default": 40
+                }
+            },
+            "torchvision>transforms>RandomPhotometricDistort": {
+                "brightness": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.875,
+                        1.125
+                    ]
+                },
+                "contrast": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.5,
+                        1.5
+                    ]
+                },
+                "saturation": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.5,
+                        1.5
+                    ]
+                },
+                "hue": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        -0.05,
+                        0.05
+                    ]
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>RandomResize": {
+                "min_size": {
+                    "type": "int",
+                    "default": null
+                },
+                "max_size": {
+                    "type": "int",
+                    "default": null
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>RandomShortestSize": {
+                "min_size": {
+                    "type": "typing.Union[typing.List[int], typing.Tuple[int], int]",
+                    "default": null
+                },
+                "max_size": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>RandomZoomOut": {
+                "fill": {
+                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "default": 0
+                },
+                "side_range": {
+                    "type": "typing.Sequence[float]",
+                    "default": [
+                        1.0,
+                        4.0
+                    ]
+                },
+                "p": {
+                    "type": "float",
+                    "default": 0.5
+                }
+            },
+            "torchvision>transforms>SanitizeBoundingBoxes": {
+                "min_size": {
+                    "type": "float",
+                    "default": 1.0
+                },
+                "labels_getter": {
+                    "type": "typing.Union[typing.Callable[[typing.Any], typing.Any], str, NoneType]",
+                    "default": "default"
+                }
+            },
+            "torchvision>transforms>ScaleJitter": {
+                "target_size": {
+                    "type": "typing.Tuple[int, int]",
+                    "default": null
+                },
+                "scale_range": {
+                    "type": "typing.Tuple[float, float]",
+                    "default": [
+                        0.1,
+                        2.0
+                    ]
+                },
+                "interpolation": {
+                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "default": "InterpolationMode.BILINEAR"
+                },
+                "antialias": {
+                    "type": "typing.Optional[bool]",
+                    "default": true
+                }
+            },
+            "torchvision>transforms>ToDtype": {
+                "dtype": {
+                    "type": "typing.Union[torch.dtype, typing.Dict[typing.Union[typing.Type, str], typing.Optional[torch.dtype]]]",
+                    "default": null
+                },
+                "scale": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "torchvision>transforms>ToImage": {},
+            "torchvision>transforms>ToPureTensor": {},
+            "torchvision>transforms>Transform": {},
+            "torchvision>transforms>UniformTemporalSubsample": {
+                "num_samples": {
+                    "type": "int",
+                    "default": null
                 }
             }
         }
@@ -17382,7 +18976,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x13f9f4d30>"
+                    "default": "<function _preprocess_text at 0x151937d30>"
                 },
                 "idf": {
                     "type": "bool",
@@ -18505,285 +20099,6 @@
                     "default": "mean"
                 }
             }
-        },
-        "segmentation_models_pytorch>losses": {
-            "segmentation_models_pytorch>losses>DiceLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "classes": {
-                    "type": "typing.Optional[typing.List[int]]",
-                    "default": null
-                },
-                "log_loss": {
-                    "type": "bool",
-                    "default": false
-                },
-                "from_logits": {
-                    "type": "bool",
-                    "default": true
-                },
-                "smooth": {
-                    "type": "float",
-                    "default": 0.0
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": null
-                },
-                "eps": {
-                    "type": "float",
-                    "default": 1e-07
-                }
-            },
-            "segmentation_models_pytorch>losses>FocalLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "alpha": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "gamma": {
-                    "type": "typing.Optional[float]",
-                    "default": 2.0
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": null
-                },
-                "reduction": {
-                    "type": "typing.Optional[str]",
-                    "default": "mean"
-                },
-                "normalized": {
-                    "type": "bool",
-                    "default": false
-                },
-                "reduced_threshold": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                }
-            },
-            "segmentation_models_pytorch>losses>JaccardLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "classes": {
-                    "type": "typing.Optional[typing.List[int]]",
-                    "default": null
-                },
-                "log_loss": {
-                    "type": "bool",
-                    "default": false
-                },
-                "from_logits": {
-                    "type": "bool",
-                    "default": true
-                },
-                "smooth": {
-                    "type": "float",
-                    "default": 0.0
-                },
-                "eps": {
-                    "type": "float",
-                    "default": 1e-07
-                }
-            },
-            "segmentation_models_pytorch>losses>LovaszLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "per_image": {
-                    "type": "bool",
-                    "default": false
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": null
-                },
-                "from_logits": {
-                    "type": "bool",
-                    "default": true
-                }
-            },
-            "segmentation_models_pytorch>losses>MCCLoss": {
-                "eps": {
-                    "type": "float",
-                    "default": 1e-05
-                }
-            },
-            "segmentation_models_pytorch>losses>SoftBCEWithLogitsLoss": {
-                "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": -100
-                },
-                "reduction": {
-                    "type": "str",
-                    "default": "mean"
-                },
-                "smooth_factor": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "pos_weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
-                }
-            },
-            "segmentation_models_pytorch>losses>SoftCrossEntropyLoss": {
-                "reduction": {
-                    "type": "str",
-                    "default": "mean"
-                },
-                "smooth_factor": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": -100
-                },
-                "dim": {
-                    "type": "int",
-                    "default": 1
-                }
-            },
-            "segmentation_models_pytorch>losses>TverskyLoss": {
-                "mode": {
-                    "type": "str",
-                    "default": null
-                },
-                "classes": {
-                    "type": "typing.Optional[typing.List[int]]",
-                    "default": null
-                },
-                "log_loss": {
-                    "type": "bool",
-                    "default": false
-                },
-                "from_logits": {
-                    "type": "bool",
-                    "default": true
-                },
-                "smooth": {
-                    "type": "float",
-                    "default": 0.0
-                },
-                "ignore_index": {
-                    "type": "typing.Optional[int]",
-                    "default": null
-                },
-                "eps": {
-                    "type": "float",
-                    "default": 1e-07
-                },
-                "alpha": {
-                    "type": "float",
-                    "default": 0.5
-                },
-                "beta": {
-                    "type": "float",
-                    "default": 0.5
-                },
-                "gamma": {
-                    "type": "float",
-                    "default": 1.0
-                }
-            }
-        },
-        "timm>loss": {
-            "timm>loss>AsymmetricLossMultiLabel": {
-                "gamma_neg": {
-                    "type": "int",
-                    "default": 4
-                },
-                "gamma_pos": {
-                    "type": "int",
-                    "default": 1
-                },
-                "clip": {
-                    "type": "float",
-                    "default": 0.05
-                },
-                "eps": {
-                    "type": "float",
-                    "default": 1e-08
-                },
-                "disable_torch_grad_focal_loss": {
-                    "type": "int, float",
-                    "default": false
-                }
-            },
-            "timm>loss>AsymmetricLossSingleLabel": {
-                "gamma_pos": {
-                    "type": "int",
-                    "default": 1
-                },
-                "gamma_neg": {
-                    "type": "int",
-                    "default": 4
-                },
-                "eps": {
-                    "type": "float",
-                    "default": 0.1
-                },
-                "reduction": {
-                    "type": "str",
-                    "default": "mean"
-                }
-            },
-            "timm>loss>BinaryCrossEntropy": {
-                "smoothing": {
-                    "type": "float",
-                    "default": 0.1
-                },
-                "target_threshold": {
-                    "type": "typing.Optional[float]",
-                    "default": null
-                },
-                "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
-                },
-                "reduction": {
-                    "type": "str",
-                    "default": "mean"
-                },
-                "pos_weight": {
-                    "type": "typing.Optional[torch.Tensor]",
-                    "default": null
-                }
-            },
-            "timm>loss>JsdCrossEntropy": {
-                "num_splits": {
-                    "type": "int",
-                    "default": 3
-                },
-                "alpha": {
-                    "type": "int",
-                    "default": 12
-                },
-                "smoothing": {
-                    "type": "float",
-                    "default": 0.1
-                }
-            },
-            "timm>loss>LabelSmoothingCrossEntropy": {
-                "smoothing": {
-                    "type": "float",
-                    "default": 0.1
-                }
-            },
-            "timm>loss>SoftTargetCrossEntropy": {}
         }
     },
     "early_stopping": {
