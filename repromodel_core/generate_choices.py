@@ -223,7 +223,7 @@ def get_devices():
     device_definitions = {
         "type": "str",
         "default": "cpu",
-        "options": ["cpu"]
+        "options": "['cpu']"
     }
     if torch.cuda.is_available():
         device_count = torch.cuda.device_count()
