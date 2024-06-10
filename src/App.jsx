@@ -45,13 +45,13 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
-              <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
-                <ButtonGroup variant = "contained">
-                  <Button variant = "outlined" style={{backgroundColor : "white"}} onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+              <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
+                <ButtonGroup variant = "contained" sx = {{width: "100%"}}>
+                  <Button variant = "outlined" style={{backgroundColor : "white", width: "20%"}} onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%", width: "20%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { opacity: (selectedSection == "Model Testing") ? "100%" : "70%", width: "20%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%", width: "20%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { opacity: (selectedSection == "LLM Description") ? "100%" : "70%", width: "20%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 

@@ -1,6 +1,7 @@
 import "./modality-options.css"
 
 const ModalityOptions = ({ cardOptions }) => {
+    
   
   return (
 
@@ -8,9 +9,9 @@ const ModalityOptions = ({ cardOptions }) => {
 
             { cardOptions?.map((card, idx) => (
 
-                <div className = "card" key = { idx }>
+                <div className = "card" key = { idx } onClick={()=> setClicked(true)}>
                     
-                    <a href = { card.href }>
+                   
 
                         <div className = "row">
                             
@@ -34,7 +35,7 @@ const ModalityOptions = ({ cardOptions }) => {
                             
                         </div>
                     
-                    </a>
+                   
 
                 </div>
 
