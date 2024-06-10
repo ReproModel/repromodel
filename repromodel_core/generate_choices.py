@@ -31,33 +31,28 @@ def evaluate_ast_literal(node):
     elif isinstance(node, ast.Dict):
         return {evaluate_ast_literal(k): evaluate_ast_literal(v) for k, v in zip(node.keys, node.values)}
     elif isinstance(node, ast.Name):
-        # Handle the case where the value is a named constant or type, e.g., `None`, `True`, `False`, `float`, `int`
         if node.id in ['None', 'True', 'False']:
             return eval(node.id)
         elif node.id in ['float', 'int', 'str', 'bool', 'Compose']:
             return node.id
         else:
-            return node.id  # Return the name as a string if it's not a recognized built-in type
+            return node.id
     elif isinstance(node, ast.Call):
-        # Handle function calls, assume they return literals or types for simplicity
         if isinstance(node.func, ast.Name):
             if node.func.id in ['float', 'int', 'str', 'bool', 'Compose']:
                 return eval(node.func.id)(*[evaluate_ast_literal(arg) for arg in node.args])
             elif node.func.id == 'type':
-                # Handle type() function call
                 return type(*[evaluate_ast_literal(arg) for arg in node.args])
-        return "<function>"  # Return a placeholder for function calls
+        return "<function>"
     elif isinstance(node, ast.Lambda):
-        # Handle lambda functions
         return eval(compile(ast.Expression(node), '<string>', 'eval'))
     elif isinstance(node, ast.UnaryOp):
-        # Handle unary operations (e.g., -1)
         if isinstance(node.op, ast.USub):
             return -evaluate_ast_literal(node.operand)
         else:
             return evaluate_ast_literal(node.operand)
     else:
-        return "<unsupported>"  # Generic placeholder for unsupported node types
+        return "<unsupported>"
 
 # Function to parse the decorator for types, default values, ranges, and options
 def parse_decorator(decorator):
@@ -99,6 +94,7 @@ def parse_python_file(file_path):
         node = ast.parse(file.read(), filename=file_path)
     class_definitions = {}
     class_tags = {}
+    filename = os.path.splitext(os.path.basename(file_path))[0]
     for n in node.body:
         if isinstance(n, ast.ClassDef) and not n.name.startswith('_'):
             params = {}
@@ -111,7 +107,7 @@ def parse_python_file(file_path):
                 tags.update(parse_tag_decorator(decorator))
             class_definitions[n.name] = params
             if tags:
-                class_tags[n.name] = tags
+                class_tags[n.name] = {'tags': tags, 'filename': filename}
     return class_definitions, class_tags
 
 # Function to format type annotations into a more readable form
@@ -257,16 +253,25 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
                 if tags:
                     if directory not in tag_definitions["tags"]:
                         tag_definitions["tags"][directory] = {"task": {}, "subtask": {}, "modality": {}, "submodality": {}}
-                    for class_name, class_tags in tags.items():
-                        for key, values in class_tags.items():
+                    for class_name, class_info in tags.items():
+                        for key, values in class_info['tags'].items():
                             if key not in tag_definitions["tags"][directory]:
                                 tag_definitions["tags"][directory][key] = {}
                             for value in values:
                                 if value not in tag_definitions["tags"][directory][key]:
                                     tag_definitions["tags"][directory][key][value] = set()
-                                tag_definitions["tags"][directory][key][value].add(class_name)
+                                tag_definitions["tags"][directory][key][value].add(f"{class_info['filename']}>{class_name}")
     if directory_definitions:
         all_definitions[directory] = directory_definitions
+
+# Convert tag sets to lists for JSON serialization
+for directory, tags in tag_definitions["tags"].items():
+    for key, values in tags.items():
+        for subkey, models in values.items():
+            tag_definitions["tags"][directory][key][subkey] = list(models)
+
+# Merge tag_definitions with all_definitions
+all_definitions.update(tag_definitions)
 
 # Extract torchvision datasets
 all_tv_datasets = extract_classes_with_init_params(torchvision.datasets)
