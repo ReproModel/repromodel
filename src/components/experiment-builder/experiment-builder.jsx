@@ -1,12 +1,12 @@
-import "./experiment-builder.css"
+import "./experiment-builder.css";
 
-import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
-import React from "react"
+import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field";
+import React from "react";
 
-import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../../utils/string-helpers"
-import { Field, Form, Formik } from "formik"
-import { FolderField } from "../ui/folder-field"
+import { Button, ButtonGroup, Typography } from "@mui/material";
+import { capitalizeFirstLetter } from "../../utils/string-helpers";
+import { Field, Form, Formik } from "formik";
+import { FolderField } from "../ui/folder-field";
 
 const nestedFolders = [
   "models",
@@ -19,156 +19,142 @@ const nestedFolders = [
   "lr_schedulers",
   "optimizers",
   "early_stopping",
-]
+];
 
-const ExperimentBuilder = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
-  
+const ExperimentBuilder = ({
+  FormikProps,
+  handleFileChange,
+  newQuestions,
+  setFieldValue,
+}) => {
   return (
     <Form>
-      
       {/* Optional JSON file upload input. */}
-      <Typography className = "json-input-file-label">Optionally upload existing configuration file.</Typography>
-      
+      <Typography className="json-input-file-label">
+        Optionally upload existing configuration file.
+      </Typography>
+
       <input
-        type = "file"
-        id = "uploadedJson"
-        className = "json-input-file"
-        accept = ".json"
-        onChange = { (event) => handleFileChange(event, setFieldValue) }
+        type="file"
+        id="uploadedJson"
+        className="json-input-file"
+        accept=".json"
+        onChange={(event) => handleFileChange(event, setFieldValue)}
       />
 
       {/* Hidden field used to capture the submitType. */}
-      <Field type = "hidden" name = "submitType"/>
+      <Field type="hidden" name="submitType" />
 
       {/* Loop each folder. */}
-      { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        
-        <div style = { { display: "flex", flexDirection: "column" } }>
-          
-          <h4> { capitalizeFirstLetter(folder) }</h4>
+      {Object.entries(newQuestions).map(([folder, folderContent]) => (
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          {folder !== "tags" && <h4> {capitalizeFirstLetter(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}
-          { nestedFolders.includes(folder) ? (
+          {nestedFolders.includes(folder) ? (
             <>
-              <FolderField folder = { folder } folderContent = { folderContent } />
+              <FolderField folder={folder} folderContent={folderContent} />
 
               {/* Loop each file in each folder. */}
-              { Object.entries(folderContent).map(([file, fileContent]) => (
+              {Object.entries(folderContent).map(([file, fileContent]) => (
                 <>
-                  
                   {/* Loop each class in each file. */}
-                  { Object.entries(fileContent).map(
-                    
+                  {Object.entries(fileContent).map(
                     ([className, classContent]) => (
-                      
-                      <div style = { { paddingLeft: "16px" } }>
-                        
-                        { FormikProps.values[folder] &&
-                          
-                          ((Array.isArray(FormikProps.values[folder]) && FormikProps.values[folder].includes(className))
-                            || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
-                            
-                            (
-                              <div className = "param-box">
-                                
-                                <p>{ className } Params</p>
+                      <div style={{ paddingLeft: "16px" }}>
+                        {FormikProps.values[folder] &&
+                          ((Array.isArray(FormikProps.values[folder]) &&
+                            FormikProps.values[folder].includes(
+                              `${file}>${className}`
+                            )) ||
+                            (typeof FormikProps.values[folder] === "string" &&
+                              FormikProps.values[folder] ===
+                                `${file}>${className}`)) && (
+                            <div className="param-box">
+                              <p>{className} Params</p>
 
-                                {/* Conditionally render param questions if the class is selected. */}
-                                { Object.entries(classContent).map(
-                                  ([param, value]) => (
-                                    <>
-                                      
-                                      <label htmlFor = { `${folder}_params:${className}:${param}` }>
-                                        { param }:
-                                      </label>
-                                      
-                                      <FlexibleFormField
-                                        id = { `${folder}_params:${className}:${param}` }
-                                        object = { value }
-                                        type = { value.type }
-                                        name = { `${folder}_params:${className}:${param}` }
-                                        label = { param }
-                                      />
+                              {/* Conditionally render param questions if the class is selected. */}
+                              {Object.entries(classContent).map(
+                                ([param, value]) => (
+                                  <>
+                                    <label
+                                      htmlFor={`${folder}_params:${file}>${className}:${param}`}
+                                    >
+                                      {param}:
+                                    </label>
 
-                                    </>
-                                  )
-                                )}
-
-                              </div>
-
-                        )}
-
+                                    <FlexibleFormField
+                                      id={`${folder}_params:${file}>${className}:${param}`}
+                                      object={value}
+                                      type={value.type}
+                                      name={`${folder}_params:${file}>${className}:${param}`}
+                                      label={param}
+                                    />
+                                  </>
+                                )
+                              )}
+                            </div>
+                          )}
                       </div>
-
                     )
-
                   )}
-
                 </>
-
               ))}
-
-            </>   
-          
-          // Case 2: Folder is flat.
-          ): folder === "data_splits" ? (
-            
-            <div className = "param-box">
-              
-              { Object.entries(folderContent).map(([param, value]) => (
+            </>
+          ) : // Case 2: Folder is flat.
+          folder === "data_splits" ? (
+            <div className="param-box">
+              {Object.entries(folderContent).map(([param, value]) => (
                 <>
-                  
-                  <label htmlFor = { `${folder}:${param}` }>{param}:</label>
-                  
+                  <label htmlFor={`${folder}:${param}`}>{param}:</label>
+
                   <FlexibleFormField
-                    id = { `${folder}:${param}` }
-                    object = { value }
-                    type = { value.type }
-                    name = { `${folder}:${param}` }
-                    label = { param }
-                  />   
-                               
+                    id={`${folder}:${param}`}
+                    object={value}
+                    type={value.type}
+                    name={`${folder}:${param}`}
+                    label={param}
+                  />
                 </>
               ))}
             </div>
           ) : (
             <>
-              
-              <label htmlFor = { `${folder}` }>{ folder }:</label>
-              
-              <FlexibleFormField
-                id = { `${folder}` }
-                object = { folderContent }
-                type = { folderContent.type }
-                name = { `${folder}` }
-                label = { folder }
-              />
+              {folder !== "tags" && ( // exclude the tags, since they are not supposed to be rednerde
+                <>
+                  <label htmlFor={`${folder}`}>{folder}:</label>
 
+                  <FlexibleFormField
+                    id={`${folder}`}
+                    object={folderContent}
+                    type={folderContent.type}
+                    name={`${folder}`}
+                    label={folder}
+                  />
+                </>
+              )}
             </>
           )}
-
         </div>
-
       ))}
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
-        
+      <ButtonGroup variant="outlined" sx={{ marginTop: "16px" }}>
         <Button
-          type = "submit"
-          onClick = { () => setFieldValue("submitType", "training") }>
+          type="submit"
+          onClick={() => setFieldValue("submitType", "training")}
+        >
           Submit for Training
         </Button>
-        
+
         <Button
-          type = "submit"
-          onClick = { () => setFieldValue("submitType", "download") }>
+          type="submit"
+          onClick={() => setFieldValue("submitType", "download")}
+        >
           Download Config File
         </Button>
-                  
       </ButtonGroup>
-
     </Form>
-  )
-}
+  );
+};
 
-export default ExperimentBuilder
+export default ExperimentBuilder;

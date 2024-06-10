@@ -32,3 +32,11 @@ def enforce_types_and_ranges(config):
 
         return wrapper
     return decorator
+
+
+def tag(**tags):
+    def decorator(cls):
+        for key, value in tags.items():
+            setattr(cls, key, value)
+        return cls
+    return decorator
