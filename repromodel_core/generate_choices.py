@@ -5,11 +5,11 @@ import torchmetrics
 import inspect
 import pkgutil
 import torch
-import timm
+# import timm
 from timm import optim as timm_optim
 from timm import loss as timm_loss
 import torchvision
-import segmentation_models_pytorch
+# import segmentation_models_pytorch
 from torch.optim import lr_scheduler
 from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 from torch.nn.modules import loss
@@ -289,15 +289,15 @@ leading_key = 'torchmetrics'
 all_definitions['metrics'][leading_key] = make_json_serializable(all_torchmetrics, leading_key=leading_key)
 
 # Extract segmentation-models-pytorch classes
-smp_classes = ["Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
-all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
-leading_key = 'segmentation_models_pytorch'
-all_definitions['models'][leading_key] = make_json_serializable(all_smp, leading_key=leading_key)
+# smp_classes = ["Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
+# all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
+# leading_key = 'segmentation_models_pytorch'
+# all_definitions['models'][leading_key] = make_json_serializable(all_smp, leading_key=leading_key)
 
 # Extract timm models classes
-all_timm = extract_classes_with_init_params(timm.models)
-leading_key = 'timm>models'
-all_definitions['models'][leading_key] = make_json_serializable(all_timm, leading_key=leading_key)
+# all_timm = extract_classes_with_init_params(timm.models)
+# leading_key = 'timm>models'
+# all_definitions['models'][leading_key] = make_json_serializable(all_timm, leading_key=leading_key)
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
