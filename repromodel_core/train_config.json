@@ -24,13 +24,12 @@
     }
   },
   "preprocessing": "dummyPreprocessor>DummyPreprocessor",
-  "augmentations": "shiftScaleRotateFlip>ShiftScaleRotateFlip",
+  "augmentations": "resizeToTensor>ResizeToTensor",
   "augmentations_params": {
-    "shiftScaleRotateFlip>ShiftScaleRotateFlip": {
-      "p": 0.5,
-      "shift_limit": 0.2,
-      "scale_limit": 0.2,
-      "rotate_limit": 60
+    "resizeToTensor>ResizeToTensor": {
+      "height": 224,
+      "width": 224,
+      "p": 1.0
     }
   },
   "preprocessing_params": {
@@ -40,14 +39,13 @@
       "num_workers": 12
     }
   },
-  "datasets": "dummyDataset>DummyDataset",
+  "datasets": "vocSegmentation>VOCSegmentationDataset",
   "datasets_params": {
-    "dummyDataset>DummyDataset": {
-      "input_path": "repromodel_core/data/dummyData_preprocessed/input",
-      "target_path": "repromodel_core/data/dummyData_preprocessed/target",
-      "in_channel": 3,
-      "mode": "train",
-      "extension": ".npy"
+    "vocSegmentation>VOCSegmentationDataset": {
+      "root": "repromodel_core/data/voc_segmentation",
+      "year": "2012",
+      "image_set": "train",
+      "download": true
     }
   },
   "optimizers": "torch>optim>Adam",

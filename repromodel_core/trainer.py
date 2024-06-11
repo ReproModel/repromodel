@@ -141,7 +141,6 @@ def train(input_data):
                 progress_bar = tqdm(enumerate(train_dataloader), total=len(train_dataloader), file=tqdm_file)
                 for batch_idx, (inputs, labels) in progress_bar:
                     inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
-                    print(f"Train Batch {batch_idx} input shape: {inputs.shape} label shape: {labels.shape}")
                     optimizer.zero_grad()
                     outputs = model(inputs)
                     train_loss = criterion(outputs, labels)
@@ -177,8 +176,6 @@ def train(input_data):
                 with torch.no_grad():
 
                     for batch_idx, (inputs, labels) in progress_bar:
-                        print(f"Validation Batch {batch_idx} input shape: {inputs.shape} label shape: {labels.shape}")
-
                         inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
                         outputs = model(inputs)
                         val_loss = criterion(outputs, labels)

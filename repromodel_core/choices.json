@@ -918,6 +918,43 @@
         "extendedVisionDataset": {
             "ExtendedVisionDataset": {}
         },
+        "vocSegmentation": {
+            "VOCSegmentationDataset": {
+                "root": {
+                    "type": [
+                        "str",
+                        "Path"
+                    ],
+                    "default": "repromodel_core/data/voc_dataset"
+                },
+                "year": {
+                    "type": "str",
+                    "default": "2012",
+                    "options": "['2007', '2008', '2009', '2010', '2011', '2012']"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train",
+                    "options": "['train', 'trainval', 'val', 'test']"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "Callable",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "Callable",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "Callable",
+                    "default": null
+                }
+            }
+        },
         "dummyDataset": {
             "DummyDataset": {
                 "input_path": {
@@ -1679,7 +1716,7 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x16273aca0>"
+                    "default": "<function default_loader at 0x123a73ca0>"
                 },
                 "is_valid_file": {
                     "type": "typing.Optional[typing.Callable[[str], bool]]",
@@ -2192,7 +2229,7 @@
                 },
                 "loader": {
                     "type": "typing.Callable[[str], typing.Any]",
-                    "default": "<function default_loader at 0x16273aca0>"
+                    "default": "<function default_loader at 0x123a73ca0>"
                 }
             },
             "QMNIST": {
@@ -7325,7 +7362,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x161a693a0>"
+                    "default": "<function _preprocess_text at 0x122d233a0>"
                 },
                 "idf": {
                     "type": "bool",
@@ -9392,6 +9429,20 @@
                 "submodality": [
                     "RGB"
                 ]
+            },
+            "vocSegmentation>VOCSegmentationDataset": {
+                "task": [
+                    "segmentation"
+                ],
+                "subtask": [
+                    "semantic"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "RGB"
+                ]
             }
         },
         "class_per_tag": {
@@ -9480,6 +9531,9 @@
                         "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
                         "fcnresnet101>FCNResNet101",
                         "fcnresnet50>FCNResNet50"
+                    ],
+                    "datasets": [
+                        "vocSegmentation>VOCSegmentationDataset"
                     ]
                 }
             },
@@ -9595,6 +9649,11 @@
                         "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN",
                         "resnet50>ResNet50"
                     ]
+                },
+                "semantic": {
+                    "datasets": [
+                        "vocSegmentation>VOCSegmentationDataset"
+                    ]
                 }
             },
             "modality": {
@@ -9649,6 +9708,9 @@
                         "vgg13_bn>VGG13_BN",
                         "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN",
                         "resnet50>ResNet50"
+                    ],
+                    "datasets": [
+                        "vocSegmentation>VOCSegmentationDataset"
                     ]
                 },
                 "video": {
@@ -9711,6 +9773,9 @@
                         "vgg13_bn>VGG13_BN",
                         "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN",
                         "resnet50>ResNet50"
+                    ],
+                    "datasets": [
+                        "vocSegmentation>VOCSegmentationDataset"
                     ]
                 }
             }
