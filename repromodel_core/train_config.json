@@ -1,82 +1,150 @@
 {
-    "models": ["ConvAE_2D", "UNet_2D"],
-    "models_params": {
-        "ConvAE_2D": {
-            "n_layers": 4,
-            "input_channels": 3,
-            "output_channels": 2,
-            "activation": "softmax"
-        },
-        "UNet_2D": {
-            "num_layers": 4,
-            "in_channels": 3,
-            "out_channels": 2,
-            "activation": "softmax"
-        }
-    },
-    "preprocessing": "DummyPreprocessor",
-    "preprocessing_params": { "DummyPreprocessor": {
-      "parent_input_path": "repromodel_core/data/dummyData",
-      "parent_output_path": "repromodel_core/data/dummyData_preprocessed",
-      "num_workers": 10
-      }
-    },
-    "augmentations": "ShiftScaleRotateFlip",
-    "augmentations_params": { "ShiftScaleRotateFlip": {
+  "type": "bool",
+  "default": false,
+  "undefined": "",
+  "load_from_checkpoint": false,
+  "batch_size": 16,
+  "monitor": "val_loss",
+  "data_splits": {
+    "k": 5,
+    "random_seed": 42
+  },
+  "model_save_path": "repromodel_core/ckpts/",
+  "tensorboard_log_path": "repromodel_core/logs",
+  "progress_path": "repromodel_core/ckpts/progress.json",
+  "device": "cpu",
+  "lr_schedulers": "torch>optim>lr_scheduler>LinearLR",
+  "models": [
+    "deeplabv3_resnet50>DeepLabV3ResNet50"
+  ],
+  "models_params": {
+    "deeplabv3_resnet50>DeepLabV3ResNet50": {
+      "num_classes": 2,
+      "pretrained": true
+    }
+  },
+  "preprocessing": "dummyPreprocessor>DummyPreprocessor",
+  "augmentations": "shiftScaleRotateFlip>ShiftScaleRotateFlip",
+  "augmentations_params": {
+    "shiftScaleRotateFlip>ShiftScaleRotateFlip": {
       "p": 0.5,
       "shift_limit": 0.2,
       "scale_limit": 0.2,
       "rotate_limit": 60
-      }
-    },
-    "datasets": "DummyDataset",
-    "datasets_params": { "DummyDataset": {
+    }
+  },
+  "preprocessing_params": {
+    "dummyPreprocessor>DummyPreprocessor": {
+      "parent_input_path": "repromodel_core/data/dummyData",
+      "parent_output_path": "repromodel_core/data/dummyData_preprocessed",
+      "num_workers": 12
+    }
+  },
+  "datasets": "dummyDataset>DummyDataset",
+  "datasets_params": {
+    "dummyDataset>DummyDataset": {
       "input_path": "repromodel_core/data/dummyData_preprocessed/input",
       "target_path": "repromodel_core/data/dummyData_preprocessed/target",
+      "in_channel": 3,
+      "mode": "train",
       "extension": ".npy"
-      }
-    },
-
-    "optimizers": "Adam",
-    "optimizers_params": { "Adam": {
+    }
+  },
+  "optimizers": "torch>optim>Adam",
+  "optimizers_params": {
+    "Adam": {
       "lr": 0.001,
-      "betas": [0.9, 0.999],
-      "eps": 1e-08,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-8,
       "weight_decay": 0,
       "amsgrad": false
-      }
     },
-    "lr_schedulers": "ReduceLROnPlateau",
-    "lr_schedulers_params": { "ReduceLROnPlateau": {"factor": 0.5,
-                            "patience": 10
-                          }
-                        },
-    "losses": "BCELoss",
-    "losses_params": {"BCELoss": {}},
-    "early_stopping": "ScheduledStop",
-    "early_stopping_params": { "ScheduledStop": {
+    "torch>optim>Adam": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-8,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "maximize": false,
+      "capturable": false,
+      "differentiable": false
+    },
+    "torch>optim>torch>optim>Adam": {
+      "lr": 0.001,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-8,
+      "weight_decay": 0,
+      "amsgrad": false,
+      "maximize": false,
+      "capturable": false,
+      "differentiable": false
+    }
+  },
+  "lr_schedulers_params": {
+    "ReduceLROnPlateau": {
+      "factor": 0.5,
+      "patience": 10
+    },
+    "torch>optim>lr_scheduler>ConstantLR": {
+      "factor": 0.3333333333333333,
+      "total_iters": 5,
+      "last_epoch": -1,
+      "verbose": "deprecated"
+    },
+    "torch>optim>lr_scheduler>torch>optim>lr_scheduler>LinearLR": {
+      "start_factor": 0.3333333333333333,
+      "end_factor": 1,
+      "total_iters": 3,
+      "last_epoch": -1,
+      "verbose": "deprecated"
+    },
+    "torch>optim>lr_scheduler>LinearLR": {
+      "start_factor": 0.3333333333333333,
+      "end_factor": 1,
+      "total_iters": 3,
+      "last_epoch": -1,
+      "verbose": "deprecated"
+    }
+  },
+  "losses": "diceLoss>DiceLoss",
+  "early_stopping": "scheduledStop>ScheduledStop",
+  "early_stopping_params": {
+    "ScheduledStop": {
       "max_epochs": 10
-      }
     },
-    "metrics": ["DiceScore", "AccuracyScore"],
-    "metrics_params": {
-        "DiceScore": {
-            "threshold": 0.5,
-            "smooth": 0.001
-        },
-        "AccuracyScore": {
-            "threshold": 0.5
-        }
+    "scheduledStop>ScheduledStop": {
+      "max_epochs": 3
+    }
+  },
+  "metrics": [
+    "diceScore>DiceScore"
+  ],
+  "metrics_params": {
+    "diceScore>DiceScore": {
+      "threshold": 0.5,
+      "smooth": 1.0
+    }
+  },
+  "losses_params": {
+    "torch>nn>modules>loss>BCELoss": {
+      "reduction": "mean"
     },
-    "batch_size": 8,
-    "monitor": "val_loss",
-    "data_splits": {
-      "k": 5,
-      "random_seed": 42
+    "torch>nn>modules>loss>MSELoss": {
+      "reduction": "mean"
     },
-    "model_save_path": "repromodel_core/ckpts/",
-    "tensorboard_log_path": "repromodel_core/logs",
-    "progress_path": "repromodel_core/ckpts/progress.json",
-    "load_from_checkpoint": false,
-    "device": "cpu"
-  }
+    "diceLoss>DiceLoss": {
+      "smooth": 1.0
+    }
+  },
+  "training_name": "something",
+  "submitType": "download"
+}

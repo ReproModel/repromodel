@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["segmentation"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class DeepLabV3MobileNetV3Large(nn.Module):
     @enforce_types_and_ranges({
@@ -19,10 +22,14 @@ class DeepLabV3MobileNetV3Large(nn.Module):
         self.pretrained = pretrained
 
         # Load the DeepLabV3 MobileNetV3Large model with the specified parameters
-        self.deeplabv3 = models.deeplabv3_mobilenet_v3_large(pretrained=self.pretrained, num_classes=self.num_classes)
+        self.deeplabv3 = models.deeplabv3_mobilenet_v3_large(pretrained=self.pretrained)
+
+        # Modify the classifier layer to have the specified number of classes
+        if num_classes != 21:
+            self.deeplabv3.classifier[-1] = nn.Conv2d(self.deeplabv3.classifier[-1].in_channels, num_classes, kernel_size=(1, 1))
 
     def forward(self, x):
-        return self.deeplabv3(x)
+        return extract_output(self.deeplabv3(x))
 
 class _TestDeepLabV3MobileNetV3Large(unittest.TestCase):
     def test_deeplabv3_mobilenet_v3_large_initialization(self):
@@ -33,9 +40,9 @@ class _TestDeepLabV3MobileNetV3Large(unittest.TestCase):
         self.assertFalse(model.pretrained, "Default pretrained is not False")
 
         # Test with custom parameters
-        model = DeepLabV3MobileNetV3Large(num_classes=10, pretrained=False)
+        model = DeepLabV3MobileNetV3Large(num_classes=10, pretrained=True)
         self.assertEqual(model.num_classes, 10, "Custom num_classes is not 10")
-        self.assertFalse(model.pretrained, "Custom pretrained is not False")
+        self.assertTrue(model.pretrained, "Custom pretrained is not True")
 
         # Test with pretrained model
         model = DeepLabV3MobileNetV3Large(num_classes=21, pretrained=True)
@@ -45,7 +52,7 @@ class _TestDeepLabV3MobileNetV3Large(unittest.TestCase):
     def test_deeplabv3_mobilenet_v3_large_forward_pass(self):
         model = DeepLabV3MobileNetV3Large(num_classes=10, pretrained=False)
         input_tensor = torch.randn(2, 3, 224, 224)  # Example input tensor for DeepLabV3MobileNetV3Large with batch size 2
-        output = model(input_tensor)['out']
+        output = model(input_tensor)
         self.assertEqual(output.shape, (2, 10, 224, 224), f"Output shape is not correct: {output.shape}")
 
     def test_deeplabv3_mobilenet_v3_large_tags(self):

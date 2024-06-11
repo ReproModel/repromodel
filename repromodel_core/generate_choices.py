@@ -199,9 +199,9 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
 def make_json_serializable(obj, leading_key=None):
     if isinstance(obj, dict):
         if leading_key is None:
-            return {k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
         else:
-            return {leading_key + ">" + k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [make_json_serializable(i) for i in obj]
     elif isinstance(obj, tuple):
@@ -313,7 +313,7 @@ all_definitions['metrics'][leading_key] = make_json_serializable(all_torchmetric
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
 all_definitions['lr_schedulers'] = {}
 leading_key = 'torch>optim>lr_scheduler'
-all_definitions['lr_schedulers'] = make_json_serializable(lr_scheduler_classes, leading_key=leading_key)
+all_definitions['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes)
 
 loss_classes = [
     "L1Loss", "MSELoss", "CrossEntropyLoss", "CTCLoss", "NLLLoss", "PoissonNLLLoss",

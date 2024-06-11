@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class MobileNetV2(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class MobileNetV2(nn.Module):
             self.mobilenet.classifier[1] = nn.Linear(self.mobilenet.classifier[1].in_features, self.num_classes)
 
     def forward(self, x):
-        return self.mobilenet(x)
+        return extract_output(self.mobilenet(x))
 
 class _TestMobileNetV2(unittest.TestCase):
     def test_mobilenet_v2_initialization(self):

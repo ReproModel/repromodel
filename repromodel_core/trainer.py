@@ -1,7 +1,6 @@
 import os
-import sys
-import json
 import torch
+import random
 import torchmetrics
 from torch.utils.data import DataLoader
 from tqdm import tqdm
@@ -31,6 +30,11 @@ def train(input_data):
             data = replace_in_string(input_data)
 
     cfg = edict(data)
+
+    # fix the random seed
+    random.seed(cfg.data_splits.random_seed)
+    torch.manual_seed(17)
+
     # Set training parameters
     k_min, epoch_min, model_min = 0, 0, 0
 
@@ -46,38 +50,36 @@ def train(input_data):
         print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
     # Get preprocessing, augmentation, and dataset configurations
-    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing[0].lower() + cfg.preprocessing[1:]
-    preprocessor = configure_component(preprocessor_path, cfg.preprocessing, cfg.preprocessing_params[cfg.preprocessing])
+    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing
+    preprocessor = configure_component(preprocessor_path, cfg.preprocessing_params[cfg.preprocessing])
     #preprocess the dataset
     preprocessor.preprocess()
 
-    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations[0].lower() + cfg.augmentations[1:]
-    augmentor = configure_component(augmentor_path, cfg.augmentations, cfg.augmentations_params[cfg.augmentations])
-    dataset_path = SRC_DIR + "datasets." + cfg.datasets[0].lower() + cfg.datasets[1:]
-    dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params[cfg.datasets])
+    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations
+    augmentor = configure_component(augmentor_path, cfg.augmentations_params[cfg.augmentations])
+    dataset_path = SRC_DIR + "datasets." + cfg.datasets
+    dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
     dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     dataset.set_transforms(augmentor)
-
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
     train_metrics, val_metrics = [], []
     
     for metric in cfg.metrics:
         params = cfg.metrics_params[metric]
-        metric_path = SRC_DIR + "metrics." + metric[0].lower() + metric[1:]
-        train_metrics.append(configure_component(metric_path, metric, params))
-        val_metrics.append(configure_component(metric_path, metric, params))
+        metric_path = SRC_DIR + "metrics." + metric
+        train_metrics.append(configure_component(metric_path, params))
+        val_metrics.append(configure_component(metric_path, params))
 
     models = []
     for model_name in cfg.models:
         params = cfg.models_params[model_name]
-        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:] #assumes that the file is the same as class name (with lowercase first letter)
-        #if it has dots in model_name, it ignores model_path
-        models.append(configure_component(model_path, model_name, params))
+        model_path = SRC_DIR + "models." + model_name
+        models.append(configure_component(model_path, params))
 
-    es_path = SRC_DIR + "early_stopping." + cfg.early_stopping[0].lower() + cfg.early_stopping[1:]
+    es_path = SRC_DIR + "early_stopping." + cfg.early_stopping
 
-    #TODO make custom possible and refactor getters
-    criterion = configure_component(None, cfg.losses, cfg.losses_params[cfg.losses])
+    loss_path = SRC_DIR + "losses." + cfg.losses
+    criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
@@ -92,7 +94,7 @@ def train(input_data):
             model = deepcopy(models[m])
             optimizer = get_optimizer(model, cfg.optimizers, cfg.optimizers_params[cfg.optimizers])
             lr_scheduler = get_lr_scheduler(optimizer, cfg.lr_schedulers, cfg.lr_schedulers_params[cfg.lr_schedulers])
-            early_stopper = configure_component(es_path, cfg.early_stopping, cfg.early_stopping_params[cfg.early_stopping])
+            early_stopper = configure_component(es_path, cfg.early_stopping_params[cfg.early_stopping])
             
             # Configure device specifics
             model = configure_device_specific(model, cfg.device)
@@ -112,7 +114,6 @@ def train(input_data):
                 early_stopper = load_state(early_stopper, checkpoint_es)
                 print_to_file("Checkpoint states loaded")
                 cfg.load_from_checkpoint = False
-
 
             dataset.set_fold(k)
 
@@ -140,6 +141,7 @@ def train(input_data):
                 progress_bar = tqdm(enumerate(train_dataloader), total=len(train_dataloader), file=tqdm_file)
                 for batch_idx, (inputs, labels) in progress_bar:
                     inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
+                    print(f"Train Batch {batch_idx} input shape: {inputs.shape} label shape: {labels.shape}")
                     optimizer.zero_grad()
                     outputs = model(inputs)
                     train_loss = criterion(outputs, labels)
@@ -175,6 +177,8 @@ def train(input_data):
                 with torch.no_grad():
 
                     for batch_idx, (inputs, labels) in progress_bar:
+                        print(f"Validation Batch {batch_idx} input shape: {inputs.shape} label shape: {labels.shape}")
+
                         inputs, labels = inputs.to(cfg.device), labels.to(cfg.device)
                         outputs = model(inputs)
                         val_loss = criterion(outputs, labels)

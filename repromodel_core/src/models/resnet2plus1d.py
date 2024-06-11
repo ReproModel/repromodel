@@ -4,6 +4,9 @@ import torchvision.models.video as video_models
 import unittest
 from ..decorators import enforce_types_and_ranges, tag
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["video"])
 class ResNet2Plus1D(nn.Module):
     @enforce_types_and_ranges({
@@ -21,7 +24,7 @@ class ResNet2Plus1D(nn.Module):
             self.r2plus1d_18.fc = nn.Linear(in_features, self.num_classes)
 
     def forward(self, x):
-        return self.r2plus1d_18(x)
+        return extract_output(self.r2plus1d_18(x))
 
 class _TestResNet2Plus1D(unittest.TestCase):
     def test_resnet_2plus1d_initialization(self):

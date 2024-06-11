@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["object detection", "instance segmentation", "keypoint detection"], 
      subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class FasterRCNNResNet50FPN(nn.Module):
@@ -23,7 +26,7 @@ class FasterRCNNResNet50FPN(nn.Module):
         self.fasterrcnn = models.fasterrcnn_resnet50_fpn(pretrained=self.pretrained, num_classes=self.num_classes)
 
     def forward(self, x, targets=None):
-        return self.fasterrcnn(x, targets)
+        return extract_output(self.fasterrcnn(x, targets), model_type='fasterrcnn')
 
 class _TestFasterRCNNResNet50FPN(unittest.TestCase):
     def test_fasterrcnn_resnet50_fpn_initialization(self):
@@ -48,8 +51,8 @@ class _TestFasterRCNNResNet50FPN(unittest.TestCase):
         model.eval()  # Ensure the model is in evaluation mode
         input_tensor = [torch.randn(3, 224, 224), torch.randn(3, 224, 224)]  # Example input tensor for FasterRCNNResNet50FPN
         output = model(input_tensor)
-        self.assertTrue(isinstance(output, list) and isinstance(output[0], dict), "Output is not a list of dicts")
-
+        self.assertTrue(isinstance(output, torch.Tensor), "Output should be type torch.Tensor")
+                        
     def test_fasterrcnn_resnet50_fpn_tags(self):
         # Check if the class has the correct tags
         model = FasterRCNNResNet50FPN()
