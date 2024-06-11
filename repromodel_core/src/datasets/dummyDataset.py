@@ -136,7 +136,7 @@ class DummyDataset(Dataset):
 
         # Assuming the data and labels are stored as Height x Width x Channels
         # and we need them as Channels x Height x Width
-        if self.mode == 'val':
+        if self.mode in ['val','test']:
             data = np.transpose(data, (2, 0, 1))
             label = np.transpose(label, (2, 0, 1))
 

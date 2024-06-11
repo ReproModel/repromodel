@@ -31,8 +31,8 @@ def test(input_data):
     cfg = edict(data)
 
     # Load test dataset
-    dataset_path = SRC_DIR + "datasets." + cfg.datasets[0].lower() + cfg.datasets[1:]
-    test_dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params[cfg.datasets])
+    dataset_path = SRC_DIR + "datasets." + cfg.datasets
+    test_dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
     test_dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     test_dataset.set_mode('test')
     test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
@@ -46,11 +46,10 @@ def test(input_data):
         # Custom file object for TQDM
         tqdm_file = TqdmFile(config=cfg, model_num = m)
 
-        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:] #needed for custom models, otherwise ignored in configure_component
-        model_params = cfg.models_params[model_name]
+        model_path = SRC_DIR + "models." + model_name 
         checkpoint_path = checkpoints[model_name]
         # Load model
-        model = configure_component(model_path, model_name, model_params).to(cfg.device)
+        model = configure_component(model_path, cfg.models_params[model_name]).to(cfg.device)
 
         #add iteration over all folds
         for k in range(cfg.data_splits.k):
@@ -61,9 +60,8 @@ def test(input_data):
             # Configure metrics
             metrics = {}
             for metric_name in cfg.metrics:
-                params = cfg.metrics_params[metric_name]
-                metric_path = SRC_DIR + "metrics." + metric_name[0].lower() + metric_name[1:]
-                metrics[metric_name] = configure_component(metric_path, metric_name, params)
+                metric_path = SRC_DIR + "metrics." + metric_name
+                metrics[metric_name] = configure_component(metric_path, cfg.metrics_params[metric_name])
 
             # Testing loop
             model.eval()
