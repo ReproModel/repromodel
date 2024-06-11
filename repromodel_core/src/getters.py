@@ -1,9 +1,14 @@
 import json
-import torch
 import importlib
 from torch.utils.tensorboard import SummaryWriter
 from src.utils import ensure_folder_exists
+import os
+import os.path
+from typing import Any, List
+from sklearn.model_selection import train_test_split, KFold
+import numpy as np
 
+from torch.utils.data import Dataset
 def load_json(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
@@ -13,7 +18,6 @@ def get_from_lib(module_name, class_name, params):
     cls = getattr(module, class_name, None)
     if not cls:
         raise ValueError(f"{class_name} not found in {module.__name__}")
-    print('params',params)
     return cls(**params)
 
 def get_from_module(module_path, class_name, params):
@@ -48,14 +52,16 @@ def get_lr_scheduler(optimizer, scheduler_name, params):
             f"LR scheduler '{scheduler_name}' not found in torch.optim.lr_scheduler")
     return scheduler_class(optimizer, **params)
 
-def configure_component(type, name, params):
+def configure_component(name, params):
     parts = name.split('.')
-    if len(parts) > 1:
-        name = parts[-1]
-        module = ".".join(parts[:-1])
+    name = parts[-1]
+    module = ".".join(parts[:-1])
+    try:
+        # looks first to find the class in the source code
+        return get_from_module(module, name, params)
+    except:
+        # if not found in the source code, look for the class in third-party libs
         return get_from_lib(module, name, params)
-    else:
-        return get_from_module(type, name, params)
 
 def configure_device_specific(component, device):
     if hasattr(component, 'to'):

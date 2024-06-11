@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class VGG19_BN(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class VGG19_BN(nn.Module):
             self.vgg.classifier[6] = nn.Linear(4096, self.num_classes)
 
     def forward(self, x):
-        return self.vgg(x)
+        return extract_output(self.vgg(x))
 
 class _TestVGG19_BN(unittest.TestCase):
     def test_vgg19_bn_initialization(self):

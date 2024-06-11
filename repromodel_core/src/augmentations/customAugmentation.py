@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from typing import Callable
 from ..decorators import enforce_types_and_ranges
 
 class CustomAugmentations(ABC):
@@ -17,7 +18,7 @@ class CustomAugmentations(ABC):
         self.kwargs = kwargs
 
     @abstractmethod
-    def get_transforms(self):
+    def get_transforms(self) -> Callable:
         """
         This abstract method should be implemented by all subclasses to return the specific set of transformations.
         """

@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class SqueezeNet1_1(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class SqueezeNet1_1(nn.Module):
             self.squeezenet.classifier[1] = nn.Conv2d(512, self.num_classes, kernel_size=1)
 
     def forward(self, x):
-        return self.squeezenet(x)
+        return extract_output(self.squeezenet(x))
 
 class _TestSqueezeNet1_1(unittest.TestCase):
     def test_squeezenet1_1_initialization(self):

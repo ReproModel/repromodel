@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class InceptionV3(nn.Module):
     @enforce_types_and_ranges({
@@ -32,7 +35,7 @@ class InceptionV3(nn.Module):
                 self.inception.AuxLogits.fc = nn.Linear(self.inception.AuxLogits.fc.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.inception(x)
+        return extract_output(self.inception(x))
 
 class _TestInceptionV3(unittest.TestCase):
     def test_inceptionv3_initialization(self):
@@ -60,7 +63,10 @@ class _TestInceptionV3(unittest.TestCase):
         model = InceptionV3(num_classes=10, pretrained=False)
         input_tensor = torch.randn(2, 3, 299, 299)  # Example input tensor for InceptionV3 with batch size 2
         output = model(input_tensor)
+        self.assertTrue(isinstance(output, tuple), "Output is not a tuple")
         self.assertEqual(output[0].shape, (2, 10), f"Output shape is not correct: {output[0].shape}")
+        if model.aux_logits:
+            self.assertEqual(output[1].shape, (2, 10), f"Auxiliary output shape is not correct: {output[1].shape}")
 
     def test_inceptionv3_tags(self):
         # Check if the class has the correct tags

@@ -3,6 +3,7 @@ import json
 import ast
 import torch
 from datetime import datetime
+import collections
 
 def parse_constructor_params(node):
     """Extract constructor parameters and type annotations from a class node."""
@@ -192,6 +193,58 @@ def delete_command_outputs():
     except Exception as e:
         print_to_file(f"Error occurred while deleting {file_path}: {e}")
 
+def extract_output(outputs, model_type=None):
+    """
+    Utility function to standardize model outputs.
+    
+    Args:
+    outputs (various): The raw outputs from the model.
+    model_type (str): The type of model to adjust output extraction logic.
+
+    Returns:
+    torch.Tensor or dict: The standardized primary output tensor or dict.
+    """
+    from torchvision.models.inception import InceptionOutputs
+    from torchvision.models.googlenet import GoogLeNetOutputs
+    
+    if model_type in ['maskrcnn', 'keypointrcnn', 'fasterrcnn']:
+        # For FasterRCNN, MaskRCNN, and KeypointRCNN, we expect a list of dictionaries with keys 'boxes', 'labels', 'scores', etc.
+        if isinstance(outputs, list):
+            if all(isinstance(elem, dict) for elem in outputs):
+                # Extract the primary tensor 'boxes'
+                return outputs[0]['boxes']
+            else:   
+                return outputs[0]
+        elif all(isinstance(elem, dict) for elem in outputs):
+            # Extract the primary tensor 'boxes'
+            return outputs['boxes']                
+        else:
+            raise TypeError(f"Unexpected output format for {model_type}: {type(outputs)}")
+
+    if isinstance(outputs, InceptionOutputs) or isinstance(outputs, GoogLeNetOutputs):
+        # For InceptionV3 and GoogLeNet, return the primary output (logits) and auxiliary logits if available
+        return outputs.logits, getattr(outputs, 'aux_logits', None)
+
+    if isinstance(outputs, torch.Tensor):
+        # If the output is already a tensor, return it directly
+        return outputs
+    elif isinstance(outputs, collections.OrderedDict):
+        # If the output is an OrderedDict, try to return the 'out' key or the first value
+        if 'out' in outputs:
+            return outputs['out']
+        else:
+            # Return the first tensor in the OrderedDict
+            return next(iter(outputs.values()))
+    elif isinstance(outputs, dict):
+        # If the output is a dictionary, try to return the 'out' key or the first value
+        if 'out' in outputs:
+            return outputs['out']
+        else:
+            # Return the first tensor in the dictionary
+            return next(iter(outputs.values()))
+    else:
+        raise TypeError(f"Unsupported output type: {type(outputs)}")
+        
 class TqdmFile:
     def __init__(self, config=None, model_num = None):
         self.config = config

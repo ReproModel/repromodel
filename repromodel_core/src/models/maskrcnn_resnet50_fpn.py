@@ -2,10 +2,15 @@
 import torch
 import torch.nn as nn
 import torchvision.models.detection as models
+from torchvision.models.detection.faster_rcnn import FastRCNNPredictor
+from torchvision.models.detection.mask_rcnn import MaskRCNNPredictor
 import unittest
 
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
+
+# standardize the output for torchvision models
+from ..utils import extract_output
 
 @tag(task=["object detection", "instance segmentation", "keypoint detection"], 
      subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
@@ -20,10 +25,21 @@ class MaskRCNNResNet50FPN(nn.Module):
         self.pretrained = pretrained
 
         # Load the Mask R-CNN ResNet50 FPN model with the specified parameters
-        self.maskrcnn = models.maskrcnn_resnet50_fpn(pretrained=self.pretrained, num_classes=self.num_classes)
+        self.maskrcnn = models.maskrcnn_resnet50_fpn(pretrained=self.pretrained)
+        
+        # Modify the box_predictor layer to have the specified number of classes
+        if num_classes != 91:
+            in_features = self.maskrcnn.roi_heads.box_predictor.cls_score.in_features
+            self.maskrcnn.roi_heads.box_predictor = FastRCNNPredictor(in_features, num_classes)
+
+            # If the model supports masks, modify the mask predictor layer as well
+            if self.maskrcnn.roi_heads.mask_predictor is not None:
+                in_features_mask = self.maskrcnn.roi_heads.mask_predictor.conv5_mask.in_channels
+                hidden_layer = 256
+                self.maskrcnn.roi_heads.mask_predictor = MaskRCNNPredictor(in_features_mask, hidden_layer, num_classes)
 
     def forward(self, x, targets=None):
-        return self.maskrcnn(x, targets)
+        return extract_output(self.maskrcnn(x, targets), model_type='maskrcnn')
 
 class _TestMaskRCNNResNet50FPN(unittest.TestCase):
     def test_maskrcnn_resnet50_fpn_initialization(self):
@@ -48,7 +64,7 @@ class _TestMaskRCNNResNet50FPN(unittest.TestCase):
         model.eval()  # Ensure the model is in evaluation mode
         input_tensor = [torch.randn(3, 224, 224), torch.randn(3, 224, 224)]  # Example input tensor for MaskRCNNResNet50FPN
         output = model(input_tensor)
-        self.assertTrue(isinstance(output, list) and isinstance(output[0], dict), "Output is not a list of dicts")
+        self.assertTrue(isinstance(output, torch.Tensor), "Output should be type torch.Tensor")
 
     def test_maskrcnn_resnet50_fpn_tags(self):
         # Check if the class has the correct tags

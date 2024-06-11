@@ -4,6 +4,9 @@ import torchvision.models.video as video_models
 import unittest
 from ..decorators import enforce_types_and_ranges, tag
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["video"])
 class ResNetMixedConvolution(nn.Module):
     @enforce_types_and_ranges({
@@ -21,7 +24,7 @@ class ResNetMixedConvolution(nn.Module):
             self.mc3_18.fc = nn.Linear(in_features, self.num_classes)
 
     def forward(self, x):
-        return self.mc3_18(x)
+        return extract_output(self.mc3_18(x))
 
 class _TestResNetMixedConvolution(unittest.TestCase):
     def test_resnet_mixed_convolution_initialization(self):

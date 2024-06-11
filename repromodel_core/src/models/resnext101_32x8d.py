@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class ResNeXt101_32x8d(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class ResNeXt101_32x8d(nn.Module):
             self.resnext.fc = nn.Linear(self.resnext.fc.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.resnext(x)
+        return extract_output(self.resnext(x))
 
 class _TestResNeXt101_32x8d(unittest.TestCase):
     def test_resnext101_32x8d_initialization(self):

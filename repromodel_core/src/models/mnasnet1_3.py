@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class MNASNet1_3(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class MNASNet1_3(nn.Module):
             self.mnasnet.classifier[1] = nn.Linear(self.mnasnet.classifier[1].in_features, self.num_classes)
 
     def forward(self, x):
-        return self.mnasnet(x)
+        return extract_output(self.mnasnet(x))
 
 class _TestMNASNet1_3(unittest.TestCase):
     def test_mnasnet1_3_initialization(self):

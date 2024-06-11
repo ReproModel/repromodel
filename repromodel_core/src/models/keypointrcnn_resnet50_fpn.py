@@ -5,6 +5,9 @@ import unittest
 
 from ..decorators import enforce_types_and_ranges, tag
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["object detection", "instance segmentation", "keypoint detection"], 
      subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class KeypointRCNNResNet50FPN(nn.Module):
@@ -28,7 +31,7 @@ class KeypointRCNNResNet50FPN(nn.Module):
             self.keypointrcnn.roi_heads.keypoint_predictor = models.keypoint_rcnn.KeypointRCNNPredictor(keypoint_predictor_in_channels, self.num_keypoints)
 
     def forward(self, x, targets=None):
-        return self.keypointrcnn(x, targets)
+        return extract_output(self.keypointrcnn(x, targets), model_type='keypointrcnn')
 
 class _TestKeypointRCNNResNet50FPN(unittest.TestCase):
     def test_keypointrcnn_resnet50_fpn_initialization(self):
@@ -53,7 +56,7 @@ class _TestKeypointRCNNResNet50FPN(unittest.TestCase):
         model.eval()  # Ensure the model is in evaluation mode
         input_tensor = [torch.randn(3, 224, 224), torch.randn(3, 224, 224)]  # Example input tensor for KeypointRCNNResNet50FPN
         output = model(input_tensor)
-        self.assertTrue(isinstance(output, list) and isinstance(output[0], dict), "Output is not a list of dicts")
+        self.assertTrue(isinstance(output, torch.Tensor), "Output should be type torch.Tensor")
 
     def test_keypointrcnn_resnet50_fpn_tags(self):
         model = KeypointRCNNResNet50FPN()
