@@ -199,9 +199,9 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
 def make_json_serializable(obj, leading_key=None):
     if isinstance(obj, dict):
         if leading_key is None:
-            return {k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
         else:
-            return {leading_key + ">" + k: make_json_serializable(v) for k, v in obj.items()}
+            return {k.split('>')[-1]: make_json_serializable(v) for k, v in obj.items()}
     elif isinstance(obj, list):
         return [make_json_serializable(i) for i in obj]
     elif isinstance(obj, tuple):
@@ -236,7 +236,7 @@ all_definitions["load_from_checkpoint"] = {
     "default": False
 }
 
-tag_definitions = {"tags": {}}
+tags_structure = {"tags_per_class": {}, "class_per_tag": {"task": {}, "subtask": {}, "modality": {}, "submodality": {}}}
 
 for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metrics', 'losses', 'early_stopping', 'postprocessing']:
     full_path = os.path.join(base_path, directory)
@@ -251,27 +251,37 @@ for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metri
                     file_name_without_extension = os.path.splitext(file)[0]
                     directory_definitions[file_name_without_extension] = definitions
                 if tags:
-                    if directory not in tag_definitions["tags"]:
-                        tag_definitions["tags"][directory] = {"task": {}, "subtask": {}, "modality": {}, "submodality": {}}
                     for class_name, class_info in tags.items():
+                        # Add to tags_per_class
+                        full_class_name = f"{class_info['filename']}>{class_name}"
+                        tags_structure["tags_per_class"][full_class_name] = class_info['tags']
+                        
+                        # Add to class_per_tag
                         for key, values in class_info['tags'].items():
-                            if key not in tag_definitions["tags"][directory]:
-                                tag_definitions["tags"][directory][key] = {}
                             for value in values:
-                                if value not in tag_definitions["tags"][directory][key]:
-                                    tag_definitions["tags"][directory][key][value] = set()
-                                tag_definitions["tags"][directory][key][value].add(f"{class_info['filename']}>{class_name}")
+                                if value not in tags_structure["class_per_tag"][key]:
+                                    tags_structure["class_per_tag"][key][value] = {}
+                                if directory not in tags_structure["class_per_tag"][key][value]:
+                                    tags_structure["class_per_tag"][key][value][directory] = []
+                                tags_structure["class_per_tag"][key][value][directory].append(full_class_name)
     if directory_definitions:
         all_definitions[directory] = directory_definitions
 
-# Convert tag sets to lists for JSON serialization
-for directory, tags in tag_definitions["tags"].items():
-    for key, values in tags.items():
-        for subkey, models in values.items():
-            tag_definitions["tags"][directory][key][subkey] = list(models)
+# Convert sets to lists for JSON serialization
+for key, value in tags_structure["class_per_tag"].items():
+    for subkey, subvalue in value.items():
+        for directory, models in subvalue.items():
+            tags_structure["class_per_tag"][key][subkey][directory] = list(models)
 
-# Merge tag_definitions with all_definitions
-all_definitions.update(tag_definitions)
+for key, value in tags_structure["tags_per_class"].items():
+    for subkey, subvalue in value.items():
+        if isinstance(subvalue, set):
+            tags_structure["tags_per_class"][key][subkey] = list(subvalue)
+        elif isinstance(subvalue, dict):
+            tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
+
+# Add tags_structure under "tags" key
+all_definitions["tags"] = tags_structure
 
 # Extract torchvision datasets
 all_tv_datasets = extract_classes_with_init_params(torchvision.datasets)
@@ -303,7 +313,7 @@ all_definitions['metrics'][leading_key] = make_json_serializable(all_torchmetric
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
 all_definitions['lr_schedulers'] = {}
 leading_key = 'torch>optim>lr_scheduler'
-all_definitions['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes, leading_key=leading_key)
+all_definitions['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes)
 
 loss_classes = [
     "L1Loss", "MSELoss", "CrossEntropyLoss", "CTCLoss", "NLLLoss", "PoissonNLLLoss",
@@ -385,14 +395,24 @@ all_definitions["training_name"] = {
 # Choose device
 all_definitions["device"] = get_devices()
 
-# Convert tag sets to lists for JSON serialization
-for directory, tags in tag_definitions["tags"].items():
-    for key, values in tags.items():
-        for subkey, models in values.items():
-            tag_definitions["tags"][directory][key][subkey] = list(models)
+# Convert sets to lists for JSON serialization
+for key, value in tags_structure["class_per_tag"].items():
+    for subkey, subvalue in value.items():
+        for directory, models in subvalue.items():
+            tags_structure["class_per_tag"][key][subkey][directory] = list(models)
+
+for key, value in tags_structure["tags_per_class"].items():
+    for subkey, subvalue in value.items():
+        if isinstance(subvalue, set):
+            tags_structure["tags_per_class"][key][subkey] = list(subvalue)
+        elif isinstance(subvalue, dict):
+            tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
+
+# Add tags_structure under "tags" key
+all_definitions["tags"] = tags_structure
 
 # Merge tag_definitions with all_definitions
-all_definitions.update(tag_definitions)
+all_definitions.update({"tags": tags_structure})
 
 # Save the collected data to a JSON file
 with open('repromodel_core/choices.json', 'w') as json_file:

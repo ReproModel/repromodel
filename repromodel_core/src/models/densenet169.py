@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class DenseNet169(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class DenseNet169(nn.Module):
             self.densenet.classifier = nn.Linear(self.densenet.classifier.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.densenet(x)
+        return extract_output(self.densenet(x))
 
 class _TestDenseNet169(unittest.TestCase):
     def test_densenet169_initialization(self):

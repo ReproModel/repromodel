@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class ShuffleNetV2_x2_0(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class ShuffleNetV2_x2_0(nn.Module):
             self.shufflenet.fc = nn.Linear(self.shufflenet.fc.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.shufflenet(x)
+        return extract_output(self.shufflenet(x))
 
 class _TestShuffleNetV2_x2_0(unittest.TestCase):
     def test_shufflenet_v2_x2_0_initialization(self):

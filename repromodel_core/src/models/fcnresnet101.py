@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["segmentation"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class FCNResNet101(nn.Module):
     @enforce_types_and_ranges({
@@ -22,7 +25,7 @@ class FCNResNet101(nn.Module):
         self.fcn = models.fcn_resnet101(pretrained=self.pretrained, num_classes=self.num_classes)
 
     def forward(self, x):
-        return self.fcn(x)
+        return extract_output(self.fcn(x))
 
 class _TestFCNResNet101(unittest.TestCase):
     def test_fcn_resnet101_initialization(self):
@@ -45,7 +48,7 @@ class _TestFCNResNet101(unittest.TestCase):
     def test_fcn_resnet101_forward_pass(self):
         model = FCNResNet101(num_classes=10, pretrained=False)
         input_tensor = torch.randn(2, 3, 224, 224)  # Example input tensor for FCNResNet101 with batch size 2
-        output = model(input_tensor)['out']
+        output = model(input_tensor)
         self.assertEqual(output.shape, (2, 10, 224, 224), f"Output shape is not correct: {output.shape}")
 
     def test_fcn_resnet101_tags(self):

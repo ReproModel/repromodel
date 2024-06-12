@@ -1,4 +1,6 @@
 import albumentations as A
+from albumentations.pytorch import ToTensorV2
+
 from .customAugmentation import CustomAugmentations
 from ..decorators import enforce_types_and_ranges
 
@@ -22,7 +24,8 @@ class ShiftScaleRotateFlip(CustomAugmentations):
         """
         return A.Compose([
             A.ShiftScaleRotate(shift_limit=self.shift_limit, scale_limit=self.scale_limit, rotate_limit=self.rotate_limit, p=self.p),
-            A.HorizontalFlip(p=self.p)  # Example of another transformation with its own probability
+            A.HorizontalFlip(p=self.p),  # Example of another transformation with its own probability
+            ToTensorV2()
         ])
 
 # if __name__ == '__main__':

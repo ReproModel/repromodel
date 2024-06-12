@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["segmentation"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class LRASPPMobileNetV3Large(nn.Module):
     @enforce_types_and_ranges({
@@ -22,7 +25,7 @@ class LRASPPMobileNetV3Large(nn.Module):
         self.lraspp = models.lraspp_mobilenet_v3_large(pretrained=self.pretrained, num_classes=self.num_classes)
 
     def forward(self, x):
-        return self.lraspp(x)
+        return extract_output(self.lraspp(x))
 
 class _TestLRASPPMobileNetV3Large(unittest.TestCase):
     def test_lraspp_mobilenet_v3_large_initialization(self):
@@ -45,7 +48,7 @@ class _TestLRASPPMobileNetV3Large(unittest.TestCase):
     def test_lraspp_mobilenet_v3_large_forward_pass(self):
         model = LRASPPMobileNetV3Large(num_classes=10, pretrained=False)
         input_tensor = torch.randn(2, 3, 224, 224)  # Example input tensor for LRASPPMobileNetV3Large with batch size 2
-        output = model(input_tensor)['out']
+        output = model(input_tensor)
         self.assertEqual(output.shape, (2, 10, 224, 224), f"Output shape is not correct: {output.shape}")
 
     def test_lraspp_mobilenet_v3_large_tags(self):

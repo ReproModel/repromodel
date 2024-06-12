@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class GoogLeNet(nn.Module):
     @enforce_types_and_ranges({
@@ -29,11 +32,15 @@ class GoogLeNet(nn.Module):
         if self.num_classes != 1000:
             self.googlenet.fc = nn.Linear(self.googlenet.fc.in_features, self.num_classes)
             if self.aux_logits:
-                self.googlenet.aux1 = models.inception.InceptionAux(512, self.num_classes)
-                self.googlenet.aux2 = models.inception.InceptionAux(528, self.num_classes)
+                self.googlenet.aux1.fc2 = nn.Linear(self.googlenet.aux1.fc2.in_features, self.num_classes)
+                self.googlenet.aux2.fc2 = nn.Linear(self.googlenet.aux2.fc2.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.googlenet(x)
+        outputs = self.googlenet(x)
+        if self.aux_logits:
+            return extract_output(outputs, model_type='googlenet')
+        else:
+            return outputs
 
 class _TestGoogLeNet(unittest.TestCase):
     def test_googlenet_initialization(self):
@@ -59,9 +66,12 @@ class _TestGoogLeNet(unittest.TestCase):
 
     def test_googlenet_forward_pass(self):
         model = GoogLeNet(num_classes=10, pretrained=False)
-        input_tensor = torch.randn(2, 3, 299, 299)  # Updated input tensor for GoogLeNet with batch size 2
+        input_tensor = torch.randn(2, 3, 224, 224)  # Example input tensor for GoogLeNet with batch size 2
         output = model(input_tensor)
+        self.assertTrue(isinstance(output, tuple), "Output is not a tuple")
         self.assertEqual(output[0].shape, (2, 10), f"Output shape is not correct: {output[0].shape}")
+        if model.aux_logits and output[1] is not None:
+            self.assertEqual(output[1].shape, (2, 10), f"Auxiliary output shape is not correct: {output[1].shape}")
 
     def test_googlenet_tags(self):
         # Check if the class has the correct tags

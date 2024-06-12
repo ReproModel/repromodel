@@ -7,6 +7,9 @@ import unittest
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
 from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
+#standardize the output for torchvision models
+from ..utils import extract_output
+
 @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 class WideResNet50_2(nn.Module):
     @enforce_types_and_ranges({
@@ -26,7 +29,7 @@ class WideResNet50_2(nn.Module):
             self.resnet.fc = nn.Linear(self.resnet.fc.in_features, self.num_classes)
 
     def forward(self, x):
-        return self.resnet(x)
+        return extract_output(self.resnet(x))
 
 class _TestWideResNet50_2(unittest.TestCase):
     def test_wide_resnet50_2_initialization(self):
