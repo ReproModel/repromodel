@@ -1,7 +1,7 @@
 import "./modality-options.css"
 
 import ModalityOptions from "./modality-options"
-import React from "react"
+import React, { useState } from 'react';
 
 import { Typography } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
@@ -20,28 +20,54 @@ const tasks = [
   { label: "Object Detecttion", image: "https://production-media.paperswithcode.com/icons/task/dd004e56-bc49-4cc1-b0d5-186f2dd17ce8.jpg", numPapers: "180 models", href: ""},
 ]
 
-const ModalitySection = (tags) => {
+const ModalitySection = (class_per_tag) => {
+  const [selectedOptions, setSelectedOptions] = useState({
+    task: [],
+    subtask: [],
+    modality: [],
+    submodality: []
+  });
+
+  const handleOptionClick = (group, option) => {
+    setSelectedOptions(prevSelectedOptions => {
+      const groupOptions = prevSelectedOptions[group];
   
+      // Check if the option is already selected for the group
+      if (groupOptions && groupOptions.includes(option)) {
+        // Deselect the option if it is already selected
+        return { ...prevSelectedOptions, [group]: [] };
+      } else {
+        // Select the new option, replacing any previously selected option
+        return { ...prevSelectedOptions, [group]: [option] };
+      }
+    });
+  };
+
   return (
 
     <div className = "container">
-      {console.log(tags)}
-      {/* For everything under tag. */}
-       {Object.entries(tags).map(([tag, tagContent]) => (
-            <>
-              {/* For every Category to choose from. */}
-              {Object.entries(tagContent).map(([category, content]) => (
-                <>
-                <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your {capitalizeFirstLetter(category)}</Typography>
-                <ModalityOptions cardOptions = {tasks} content={tagContent }/>
-                </>
-              ))}
-            </>
-         
-         
+      {Object.entries(class_per_tag).map(([tag, tagContent]) => (
         
+        <>
+        <p> Tag = {tag}</p>
+          {Object.entries(tagContent).map(([category, options]) => (
+            <>
+             <p> Category = {category}</p>
+              <Typography style={{ marginTop: '16px' }} variant="h6">
+                Choose your {category}
+              </Typography>
+               <ModalityOptions
+                options={options}
+                onOptionClick={handleOptionClick}
+                selectedOptions={selectedOptions[category] || []}
+                group={category}
+              />
+                  
+            </>
+          ))}
+        </>
       ))}
-
+      {console.log(selectedOptions)}
         <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your modality:</Typography>
         <ModalityOptions cardOptions = { modalities }/>
         

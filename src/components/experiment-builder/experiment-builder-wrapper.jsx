@@ -31,10 +31,12 @@ const ExperimentBuilderWrapper = ({
   return (
     <>
       {!filterChoosen && (
-        <>
-          <ModalitySection tags={newQuestions.tags}/>
-          <button onClick={() => setFilterChoosen(true)}>Start Building</button>
+        <><>
+          <ModalitySection tags={newQuestions.tags.class_per_tag}/>
+         
         </>
+         <Button style = {{right: "32px"}}onClick={() => setFilterChoosen(true)}>Start Building</Button>
+         </>
       )}
       {filterChoosen && (
         <ExperimentBuilder

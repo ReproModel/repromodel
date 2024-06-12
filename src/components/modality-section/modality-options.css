@@ -46,6 +46,14 @@
     margin-bottom: 50px;
 }
 
+.card.selected {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-color: #007bff;
+    background-color: #bcfcd5;
+
+}
+
 /* Media Queries - Responsive Styling */
 
 @media (min-width: 576px) {
