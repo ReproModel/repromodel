@@ -33,7 +33,7 @@ const ModalitySection = (tags) => {
               {Object.entries(tagContent).map(([category, content]) => (
                 <>
                 <Typography style = { { marginTop: "16px" } } variant = "h6"> Choose your {capitalizeFirstLetter(category)}</Typography>
-                <ModalityOptions cardOptions = { tasks }/>
+                <ModalityOptions cardOptions = {tasks} content={tagContent }/>
                 </>
               ))}
             </>
