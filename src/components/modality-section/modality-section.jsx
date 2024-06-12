@@ -119,6 +119,28 @@ function getModels(selectedOptions, jsonData) {
 
   return intersectedModels;
 }
+function filterModels(jsonData, intersectedModels) {
+  if (intersectedModels.length === 0) {
+      return jsonData;
+  }
+
+  const newModels = {};
+
+  Object.entries(jsonData.models).forEach(([modelKey, modelValue]) => {
+      Object.entries(modelValue).forEach(([innerModelKey, innerModelValue]) => {
+          const fullKey = `${modelKey}>${innerModelKey}`;
+          if (intersectedModels.includes(fullKey)) {
+              if (!newModels[modelKey]) {
+                  newModels[modelKey] = {};
+              }
+              newModels[modelKey][innerModelKey] = innerModelValue;
+          }
+      });
+  });
+
+  return { ...jsonData, models: newModels };
+}
+
 
 const ModalitySection = (class_per_tag) => {
   const [selectedOptions, setSelectedOptions] = useState({
