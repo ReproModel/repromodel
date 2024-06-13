@@ -33,7 +33,7 @@ class VOCSegmentationDataset(VOCSegmentation):
         self.mode = mode
 
     def set_transforms(self, transforms):
-        self.transforms = transforms
+        self.transforms = transforms.get_transforms()
 
     def set_fold(self, fold: int):
         if self.indices is None:
@@ -78,16 +78,15 @@ class VOCSegmentationDataset(VOCSegmentation):
         target = Image.open(self.masks[index])
 
         if self.transforms is not None:
-            transformations = self.transforms.get_transforms()
             try:
                 #torchvision transforms
-                img = transformations(img)
-                target = transformations(target)
+                img = self.transforms(img)
+                target = self.transforms(target)
             except:
                 #albumentation transforms 
                 img_np = np.array(img)
                 target_np = np.array(target)
-                transformed = transformations(image=img_np, mask=target_np)
+                transformed = self.transforms(image=img_np, mask=target_np)
                 img, target = transformed['image'], transformed['mask']
                 
         target = np.stack((target, 1-target), axis=-1)
@@ -99,7 +98,7 @@ class _TestVOCSegmentationDataset(unittest.TestCase):
         dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation", download=False)
         self.assertIsInstance(dataset, VOCSegmentationDataset, "Dataset is not an instance of VOCSegmentationDataset")
         self.assertEqual(dataset.year, "2012", "Default year is not 2012")
-        self.assertEqual(dataset.image_set, "train", "Default image_set is not 'train'")
+        self.assertEqual(dataset.image_set, "trainval", "Default image_set is not 'trainval'")
         self.assertFalse(dataset.download, "Default download is not False")
 
         # Test with custom parameters
