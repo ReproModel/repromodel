@@ -50,17 +50,18 @@ def train(input_data):
         print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
     # Get preprocessing, augmentation, and dataset configurations
-    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing
-    preprocessor = configure_component(preprocessor_path, cfg.preprocessing_params[cfg.preprocessing])
-    #preprocess the dataset
-    preprocessor.preprocess()
+    if "preprocessing" in cfg:
+        preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing
+        preprocessor = configure_component(preprocessor_path, cfg.preprocessing_params[cfg.preprocessing])
+        #preprocess the dataset
+        preprocessor.preprocess()
 
     augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations
     augmentor = configure_component(augmentor_path, cfg.augmentations_params[cfg.augmentations])
     dataset_path = SRC_DIR + "datasets." + cfg.datasets
     dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
-    dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     dataset.set_transforms(augmentor)
+    dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
     train_metrics, val_metrics = [], []
     

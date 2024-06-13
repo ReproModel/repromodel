@@ -1,5 +1,4 @@
 import os
-import json
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
@@ -11,7 +10,7 @@ from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_o
 
 SRC_DIR = "src."
 
-# Main testing function
+# Main crossvalidation testing function
 def test(input_data):
     # Reset the console output file
     delete_command_outputs()
@@ -34,8 +33,6 @@ def test(input_data):
     dataset_path = SRC_DIR + "datasets." + cfg.datasets
     test_dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
     test_dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
-    test_dataset.set_mode('test')
-    test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
 
     # TensorBoard writer
     writer = SummaryWriter(log_dir=cfg.tensorboard_log_path)
@@ -56,6 +53,11 @@ def test(input_data):
             print_to_file(f"Testing model {model_name} on fold {k}")
             checkpoint = torch.load(checkpoint_path[k], map_location=cfg.device)
             model = load_state(model, checkpoint)
+
+            #configure dataloader 
+            test_dataset.set_fold(k)
+            test_dataset.set_mode('test')
+            test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
 
             # Configure metrics
             metrics = {}
@@ -86,10 +88,10 @@ def test(input_data):
 
             # Log results to TensorBoard
             for metric_name, value in avg_metrics.items():
-                writer.add_scalar(f'Test/Fold_{k}/{model_name}/{metric_name}', value)
+                writer.add_scalar(f'CrossValTest/Fold_{k}/{model_name}/{metric_name}', value)
         
     writer.close()
-    print_to_file("Testing is completed and results are logged to TensorBoard successfully.")
+    print_to_file("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test multiple models")
