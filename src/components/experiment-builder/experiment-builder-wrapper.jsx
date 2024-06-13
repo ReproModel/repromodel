@@ -1,53 +1,41 @@
-import React from "react";
-import { useState } from "react";
+import "./experiment-builder-wrapper.css"
 
-import { Button, ButtonGroup, Typography } from "@mui/material";
-import { capitalizeFirstLetter } from "../../utils/string-helpers";
-import { Field, Form, Formik } from "formik";
-import { FolderField } from "../ui/folder-field";
-import ExperimentBuilder from "./experiment-builder";
-import ModalitySection from "../modality-section/modality-section";
+import ExperimentBuilder from "./experiment-builder"
+import ModalitySection from "../modality-section/modality-section"
+import React from "react"
 
-const nestedFolders = [
-  "models",
-  "datasets",
-  "preprocessing",
-  "postprocessing",
-  "metrics",
-  "losses",
-  "augmentations",
-  "lr_schedulers",
-  "optimizers",
-  "early_stopping",
-];
+import { Form } from "formik"
+import { useState } from "react"
 
-const ExperimentBuilderWrapper = ({
-  FormikProps,
-  handleFileChange,
-  newQuestions,
-  setFieldValue,
-}) => {
-  const [filterChoosen, setFilterChoosen] = useState(false);
+const ExperimentBuilderWrapper = ({ FormikProps, handleFileChange, newQuestions }) => {
+  
+  const [filterChoosen, setFilterChoosen] = useState(false)
   return (
     <>
-      {!filterChoosen && (
-        <><>
-          <ModalitySection tags={newQuestions.tags.class_per_tag}/>
-         
-        </>
-         <Button style = {{right: "32px"}}onClick={() => setFilterChoosen(true)}>Start Building</Button>
-         </>
+      { !filterChoosen && (
+        <Form>
+          <>
+            <ModalitySection tags = { newQuestions.tags.class_per_tag }/>
+
+            <button type = "submit" className = "start-building-button" onClick = { () => setFilterChoosen(true) }>
+              Start Building
+            </button>
+          </>
+        
+        </Form>
       )}
-      {filterChoosen && (
+      
+      { filterChoosen && (
         <ExperimentBuilder
-          FormikProps={FormikProps}
-          setFieldValue={FormikProps.setFieldValue}
-          handleFileChange={handleFileChange}
-          newQuestions={newQuestions}
+          FormikProps = { FormikProps }
+          setFieldValue = { FormikProps.setFieldValue }
+          handleFileChange = { handleFileChange }
+          newQuestions = { newQuestions }
         />
       )}
-    </>
-  );
-};
 
-export default ExperimentBuilderWrapper;
+    </>
+  )
+}
+
+export default ExperimentBuilderWrapper
