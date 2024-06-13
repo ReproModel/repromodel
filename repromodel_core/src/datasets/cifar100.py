@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from PIL import Image
-from torchvision.datasets import CIFAR10
+from torchvision.datasets import CIFAR100
 from sklearn.model_selection import KFold, train_test_split
 from typing import Any, Callable, List, Optional, Union, Tuple
 from ..decorators import enforce_types_and_ranges, tag
@@ -9,9 +9,9 @@ from ..utils import one_hot_encode
 import unittest
 
 @tag(task=["classification"], subtask=["image"], modality=["images"], submodality=["RGB"])
-class CIFAR10Dataset(CIFAR10):
+class CIFAR100Dataset(CIFAR100):
     @enforce_types_and_ranges({
-        'root': {'type': str, 'default': "repromodel_core/data/cifar10"},
+        'root': {'type': str, 'default': "repromodel_core/data/cifar100"},
         'train': {'type': bool, 'default': True},
         'transform': {'type': Callable, 'default': None},
         'target_transform': {'type': Callable, 'default': None},
@@ -97,28 +97,28 @@ class CIFAR10Dataset(CIFAR10):
         if self.target_transform is not None:
             target = self.target_transform(target)
 
-        target = one_hot_encode(labels=target, num_classes=10, type="numpy")
+        target = one_hot_encode(labels=target, num_classes=100, type="numpy")
         return img, target
     
-class _TestCIFAR10Dataset(unittest.TestCase):
+class _TestCIFAR100Dataset(unittest.TestCase):
     def test_initialization(self):
         # Test with default parameters
-        dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10", download=False)
-        self.assertIsInstance(dataset, CIFAR10Dataset, "Dataset is not an instance of CIFAR10Dataset")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", download=False)
+        self.assertIsInstance(dataset, CIFAR100Dataset, "Dataset is not an instance of CIFAR100Dataset")
         self.assertTrue(dataset.train, "Default train is not True")
         self.assertFalse(dataset.downloaded, "Default download is not False")
 
         # Test with custom parameters
-        dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10", train=False, download=True)
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", train=False, download=True)
         self.assertFalse(dataset.train, "Custom train is not False")
         self.assertTrue(dataset.downloaded, "Custom download is not True")
         # Check if the dataset files exist
-        data_dir = os.path.join("repromodel_core/data/cifar10", "cifar-10-batches-py")
+        data_dir = os.path.join("repromodel_core/data/cifar100", "cifar-100-python")
         self.assertTrue(os.path.isdir(data_dir), "Dataset directory does not exist after downloading")
         self.assertGreater(len(os.listdir(data_dir)), 0, "Dataset directory is empty after downloading")
 
     def test_set_mode(self):
-        dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
         dataset.set_mode('val')
         self.assertEqual(dataset.mode, 'val', "Mode is not set to 'val'")
 
@@ -126,7 +126,7 @@ class _TestCIFAR10Dataset(unittest.TestCase):
             dataset.set_mode('invalid')
 
     def test_generate_indices_and_set_fold(self):
-        dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
         dataset.generate_indices(k=5)
         self.assertEqual(len(dataset.indices), 5, "Number of generated folds is not 5")
 
@@ -137,20 +137,20 @@ class _TestCIFAR10Dataset(unittest.TestCase):
         self.assertIn('test', dataset.indices[0], "Test indices not found in fold 0")
 
         with self.assertRaises(RuntimeError, msg="Setting fold without generating indices did not raise an error"):
-            dataset_no_indices = CIFAR10Dataset(root="repromodel_core/data/cifar10")
+            dataset_no_indices = CIFAR100Dataset(root="repromodel_core/data/cifar100")
             dataset_no_indices.set_fold(0)
 
         with self.assertRaises(ValueError, msg="Setting fold to an out-of-range value did not raise an error"):
             dataset.set_fold(5)
 
-    def test_cifar10_tags(self):
-        dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10")
+    def test_cifar100_tags(self):
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
         self.assertEqual(dataset.task, ["classification"], "Task tag is incorrect")
         self.assertEqual(dataset.subtask, ["image"], "Subtask tag is incorrect")
         self.assertEqual(dataset.modality, ["images"], "Modality tag is incorrect")
         self.assertEqual(dataset.submodality, ["RGB"], "Submodality tag is incorrect")
 
 if __name__ == "__main__":
-    # for the first run
-    # dataset = CIFAR10Dataset(root="repromodel_core/data/cifar10", download=True)
+    #for the first run
+    #dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", download=True)
     unittest.main()
