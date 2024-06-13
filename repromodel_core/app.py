@@ -9,7 +9,8 @@ import ollama
 app = Flask(__name__)
 CORS(app)
 
-# FUNCTION: Get custom templates
+# Global variable to store the Training process ID
+training_process_pid = None
 
 # Define the base directory relative to the location of this script
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src')
@@ -26,7 +27,7 @@ file_paths = {
     'postprocessing': os.path.join(BASE_DIR, 'postprocessing/customPostprocessor.py')
 }
 
-    
+# FUNCTION: Get custom templates   
 @app.route('/get-custom-script-template', methods=['GET'])
 def get_custom_templates():
      # Get the parameter from the request
@@ -137,11 +138,15 @@ def submit_config_start_training_():
         script_path = 'repromodel_core/trainer.py'
         
         # Run the script and capture the output
-        result = subprocess.run(
+        result = subprocess.Popen(
             ['python', script_path, json_data],
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
             text=True
         )
+
+        # Store the process ID
+        training_process_pid = result.pid
         
         # Check subprocess result
         if result.returncode == 0:
@@ -151,6 +156,24 @@ def submit_config_start_training_():
             error_detail = f"Script execution failed with error: {result.stderr}"
             app.logger.error(error_detail)
             return jsonify({'output': result.stdout, 'error': error_detail}), 400
+
+    except Exception as e:
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+        return jsonify({'error': error_message}), 500
+
+# FUNCTION: Route for killing the TRAINING process started from frontend 
+@app.route('/kill-training-process', methods=['POST'])
+def kill_training_process():
+    
+    global training_process_pid
+
+    try:        
+        # Kill the process
+        os.kill(training_process_pid, signal.SIGTERM)
+        
+        app.logger.debug("Process with PID %s killed successfully", training_process_pid)
+        return jsonify({'message': f"Process with PID {training_process_pid} killed successfully"})
 
     except Exception as e:
         error_message = f"An internal error occurred: {str(e)}"
