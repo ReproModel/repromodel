@@ -1,19 +1,36 @@
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
+import { Form } from "formik"
 import { handleCustomScriptSubmit } from "../../utils/json-helpers"
 import { handleDownload } from "../../utils/download-helpers"
 import { highlight, languages } from "prismjs/components/prism-core"
+import { Typography } from "@mui/material"
 
+import axios from "axios"
+import CustomSelectComponent from "../ui/custom-select"
 import dedent from "dedent"
 import Editor from "react-simple-code-editor"
 import React from "react"
-import axios from "axios"
 
 import "./custom-script.css"
 import "prismjs/components/prism-clike"
 import "prismjs/components/prism-python"
 import "prismjs/themes/prism.css"
 
+const categories = [
+  { value: "augmentations", label: "augmentations" },
+  { value: "datasets", label: "datasets" },
+  { value: "early_stopping", label: "early_stopping" },
+  { value: "losses", label: "losses" },
+  { value: "metrics", label: "metrics" },
+  { value: "models", label: "models" },
+  { value: "postprocessing", label: "postprocessing" },
+  { value: "preprocessing", label: "preprocessing" }
+]
+
 const CustomScript = ({}) => {
+
+  // Category
+  const [category, setCategory] = React.useState(categories[0])
 
   const [code, setCode] = React.useState(
     dedent`
@@ -35,54 +52,58 @@ const CustomScript = ({}) => {
   }
 
   return (
-    <>
-      
-      <div className = "container">
-        
-        <div className = "category-container">
+    <Form>
+
+      <Typography className = "heading">What kind of custom script?</Typography>
+
+
+      {/* Supported Categories */}
+      <div className = "category-container">
+        <CustomSelectComponent
+          className = "category-dropdown"
+          isMulti = { false }
+          options = { categories }
+          value = { category }
+          onChange = { (option) => { setCategory(option) } }
+        />
+
+        <button
+          className = "load-template-button"
+          onClick = { () => {
+            fetchCustomScriptTemplate(category.value)
+          }}
+        >
+          Load Template
+        </button>
+      </div>
+
+
+      {/* Custom Script Editor */}
+      <div className = "container-content" style = { { width: "100%" } }>
+              
+        <div className = "container-editor-area">
           
-          <label className = "category-lable" htmlFor = "category">What kind of custom script?</label>
+          <Editor
+            className = "container-editor"
+            value = { code }
+            onValueChange = { (code) => setCode(code) }
+            highlight = { (code) => highlight(code, languages.py) }
+          />
 
-          <select id = "category-dropdown" className = "category-dropdown" name = "category">
-            <option value = "augmentations">augmentations</option>
-            <option value = "datasets">datasets</option>
-            <option value = "early_stopping">early_stopping</option>
-            <option value = "losses">losses</option>
-            <option value = "metrics">metrics</option>
-            <option value = "models">models</option>
-            <option value = "postprocessing">postprocessing</option>
-            <option value = "preprocessing">preprocessing</option>
-          </select>
-
-          <button
-            className = "load-template-button"
-            onClick = { () => {
-              const categoryElement = document.getElementById("category-dropdown")
-              const categoryValue = categoryElement.value
-              fetchCustomScriptTemplate(categoryValue)
-            }}
-          >
-            Load Template
-          </button>
         </div>
 
-        <div className = "container-content">
-          <div className = "container-editor-area">
-            <Editor
-              className = "container-editor"
-              value = { code }
-              onValueChange = { (code) => setCode(code) }
-              highlight = { (code) => highlight(code, languages.py) }
-            />
-          </div>
-        </div>
+      </div>
+        
 
-        <label className = "file-name-input-container">
-          Enter output file name:
-          <input id = "file-name-input" className = "file-name-input" type = "text" placeholder = "Enter output file name (without .py)"/>
-        </label>
-
-        <div className = "button-container">
+      {/* Output File */}
+      <label className = "file-name-input-container">
+        Enter output file name:
+        <input id = "file-name-input" className = "file-name-input" type = "text" placeholder = "Enter output file name (without .py)"/>
+      </label>
+        
+      
+      {/* Submit / Copy / Download Buttons */}
+      <div className = "button-container">
           <button
             type = "submit"
             className = "button"
@@ -116,11 +137,9 @@ const CustomScript = ({}) => {
             Download
           </button>
 
-        </div>
-
       </div>
 
-    </>
+    </Form>
   )
 }
 
