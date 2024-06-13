@@ -150,7 +150,7 @@ const ExperimentBuilder = ({
             <Button
               type = "submit"
               style = { { width: "170px" } }
-              onClick = { () => { setFieldValue("submitType", "training") } }
+              onClick = { () => { setTrainingInProgress(true); setFieldValue("submitType", "training") } }
             >
               <PlayArrowIcon />
               Train
@@ -163,7 +163,7 @@ const ExperimentBuilder = ({
             <Button
               type = "submit"
               style = { { width: "170px" } }
-              onClick = { () => { setFieldValue("submitType", "stop-training") } }
+              onClick = { () => { setTrainingInProgress(false); setFieldValue("submitType", "stop-training") } }
             >
               <PauseIcon/>
               Stop Training
