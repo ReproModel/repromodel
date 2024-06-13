@@ -1,6 +1,7 @@
 import os
 import json
 import ast
+import numpy as np
 import torch
 from datetime import datetime
 import collections
@@ -29,6 +30,27 @@ def get_classes_from_module(file_path, exclude_params={'transforms', 'mode', 'in
                     params.pop(param, None)
                 classes[n.name] = params
     return classes
+
+def one_hot_encode(labels, num_classes, type="numpy"):
+    if type=="numpy":
+        # Create an identity matrix of shape (num_classes, num_classes)
+        identity_matrix = np.eye(num_classes)
+        
+        # Use the labels to index into the identity matrix
+        one_hot_encoded = identity_matrix[labels]
+        
+        return one_hot_encoded
+    elif type=="tensor":
+        # Ensure labels are a tensor
+        labels = torch.tensor(labels, dtype=torch.long)
+        
+        # Create a tensor of zeros with shape (len(labels), num_classes)
+        one_hot_encoded = torch.zeros(labels.size(0), num_classes, dtype=torch.float)
+        
+        # Scatter 1s to the correct positions
+        one_hot_encoded.scatter_(1, labels.unsqueeze(1), 1.0)
+        
+        return one_hot_encoded
 
 def load_cfg(metadata_path):
     """
