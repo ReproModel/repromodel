@@ -223,7 +223,11 @@ def extract_output(outputs, model_type=None):
 
     if isinstance(outputs, InceptionOutputs) or isinstance(outputs, GoogLeNetOutputs):
         # For InceptionV3 and GoogLeNet, return the primary output (logits) and auxiliary logits if available
-        return outputs.logits, getattr(outputs, 'aux_logits', None)
+        aux_logits = getattr(outputs, 'aux_logits', None)
+        if aux_logits is not None:
+            return outputs.logits, aux_logits
+        else:
+            return outputs.logits
 
     if isinstance(outputs, torch.Tensor):
         # If the output is already a tensor, return it directly
