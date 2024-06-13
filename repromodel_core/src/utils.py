@@ -4,6 +4,8 @@ import ast
 import torch
 from datetime import datetime
 import collections
+from torchvision.models.inception import InceptionOutputs
+from torchvision.models.googlenet import GoogLeNetOutputs
 
 def parse_constructor_params(node):
     """Extract constructor parameters and type annotations from a class node."""
@@ -204,8 +206,6 @@ def extract_output(outputs, model_type=None):
     Returns:
     torch.Tensor or dict: The standardized primary output tensor or dict.
     """
-    from torchvision.models.inception import InceptionOutputs
-    from torchvision.models.googlenet import GoogLeNetOutputs
     
     if model_type in ['maskrcnn', 'keypointrcnn', 'fasterrcnn']:
         # For FasterRCNN, MaskRCNN, and KeypointRCNN, we expect a list of dictionaries with keys 'boxes', 'labels', 'scores', etc.
