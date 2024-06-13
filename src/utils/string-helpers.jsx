@@ -7,8 +7,8 @@ export function capitalizeFirstLetterOfEachWord(string) {
         return string
     }
     else {
-        return string.replace(/\w\S*/g, function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+        return string.replace(/(^|[\s-])\S/g, function(match) {
+            return match.toUpperCase();
         })
     }
 }
