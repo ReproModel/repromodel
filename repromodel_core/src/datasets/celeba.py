@@ -32,7 +32,7 @@ class CelebADataset(CelebA):
         self.current_fold = None
         self.mode = 'train'
         self.split = split
-
+        
         # Load split information
         split_map = {
             "train": 0,
@@ -69,8 +69,8 @@ class CelebADataset(CelebA):
             raise ValueError("Mode should be 'train', 'val', or 'test'")
         self.mode = mode
 
-    def set_transforms(self, transforms):
-        self.transforms = transforms
+    def set_transforms(self, transform):
+        self.transform = transform
 
     def set_fold(self, fold: int):
         if self.indices is None:
@@ -82,12 +82,12 @@ class CelebADataset(CelebA):
         self.val_indices = self.indices[fold]['val']
         self.test_indices = self.indices[fold]['test']
 
-    def generate_indices(self, k: int = 5):
-        kf = KFold(n_splits=k, shuffle=True)
+    def generate_indices(self, k: int = 5, test_size: float = 0.2, random_seed: int = 42):
+        kf = KFold(n_splits=k, shuffle=True, random_state=random_seed)
         self.indices = []
         all_indices = np.arange(len(self.filename))
         for train_val_idx, test_idx in kf.split(all_indices):
-            train_idx, val_idx = train_test_split(train_val_idx, test_size=0.2)
+            train_idx, val_idx = train_test_split(train_val_idx, test_size=test_size, random_state=random_seed)
             self.indices.append({
                 'train': train_idx.tolist(),
                 'val': val_idx.tolist(),
@@ -112,7 +112,6 @@ class CelebADataset(CelebA):
             index = self.test_indices[index]
 
         X = Image.open(os.path.join(self.root, self.base_folder, "img_align_celeba", self.filename[index]))
-
         target: Any = []
         for t in self.target_type:
             if t == "attr":
@@ -130,12 +129,16 @@ class CelebADataset(CelebA):
             transformations = self.transform.get_transforms()
             try:
                 # Try to apply torchvision transforms
-                X = self.transform(X)
+                X = transformations(X)
+                if not isinstance(X, torch.Tensor):
+                    X = torch.from_numpy(X)  # Ensure X is a tensor
             except TypeError:
                 # Apply albumentations transforms
                 X_np = np.array(X)
                 transformed = transformations(image=X_np)
-                X = Image.fromarray(transformed['image'])
+                X = transformed['image']
+                if not isinstance(X, torch.Tensor):
+                    X = torch.from_numpy(X)  # Ensure X is a tensor
 
         if target:
             target = tuple(target) if len(target) > 1 else target[0]
@@ -145,6 +148,8 @@ class CelebADataset(CelebA):
         else:
             target = None
 
+        if not isinstance(X, torch.Tensor):
+            X = torch.from_numpy(X)
         return X, target
 
 class _TestCelebADataset(unittest.TestCase):

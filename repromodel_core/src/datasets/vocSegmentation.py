@@ -45,15 +45,12 @@ class VOCSegmentationDataset(VOCSegmentation):
         self.val_indices = self.indices[fold]['val']
         self.test_indices = self.indices[fold]['test']
 
-    def generate_indices(self, k: int = 5, test_size=0.2, random_seed: int = 42):
-
-        np.random.seed(random_seed)
-
-        kf = KFold(n_splits=k, shuffle=True)
+    def generate_indices(self, k: int = 5, test_size: float = 0.2, random_seed: int = 42):
+        kf = KFold(n_splits=k, shuffle=True, random_state=random_seed)
         self.indices = []
         all_indices = np.arange(len(self.images))
         for train_val_idx, test_idx in kf.split(all_indices):
-            train_idx, val_idx = train_test_split(train_val_idx, test_size=test_size)
+            train_idx, val_idx = train_test_split(train_val_idx, test_size=test_size, random_state=random_seed)
             self.indices.append({
                 'train': train_idx.tolist(),
                 'val': val_idx.tolist(),
