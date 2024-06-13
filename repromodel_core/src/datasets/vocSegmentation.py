@@ -18,7 +18,7 @@ class VOCSegmentationDataset(VOCSegmentation):
         'target_transform': {'type': Callable, 'default': None},
         'transforms': {'type': Callable, 'default': None},
         })
-    def __init__(self, root, year="2012", image_set="train", download=False, transform=None, target_transform=None, transforms=None):
+    def __init__(self, root, year="2012", image_set="trainval", download=False, transform=None, target_transform=None, transforms=None):
         super().__init__(root, year, image_set, download, transform, target_transform, transforms)
         
         # Initialize indices for cross-validation
