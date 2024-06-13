@@ -9,8 +9,6 @@ import ollama
 app = Flask(__name__)
 CORS(app)
 
-# FUNCTION: Get custom templates   
-
 # Global variable to store the Training process ID
 training_process_pid = None
 
@@ -29,6 +27,7 @@ file_paths = {
     'postprocessing': os.path.join(BASE_DIR, 'postprocessing/customPostprocessor.py')
 }
 
+# FUNCTION: Get custom templates
 @app.route('/get-custom-script-template', methods=['GET'])
 def get_custom_templates():
      # Get the parameter from the request
