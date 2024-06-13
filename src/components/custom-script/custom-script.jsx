@@ -111,11 +111,8 @@ const CustomScript = ({}) => {
 
               const fileNameElement = document.getElementById("file-name-input")
               const fileNameValue = fileNameElement.value
-
-              const categoryElement = document.getElementById("category-dropdown")
-              const categoryValue = categoryElement.value
               
-              handleCustomScriptSubmit(code, fileNameValue, categoryValue)
+              handleCustomScriptSubmit(code, fileNameValue, category.value)
             }}
           >
             Submit
@@ -129,9 +126,7 @@ const CustomScript = ({}) => {
             type = "submit"
             className = "button right-button"
             onClick = { () => {
-              const categoryElement = document.getElementById("category-dropdown")
-              const categoryValue = categoryElement.value;
-              handleDownload(code, `Custom${capitalizeFirstLetter(categoryValue)}Script`, "py")
+              handleDownload(code, `Custom${capitalizeFirstLetter(category.value)}Script`, "py")
             }}
           >
             Download
