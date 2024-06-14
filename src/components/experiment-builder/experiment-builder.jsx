@@ -1,7 +1,7 @@
 import "./experiment-builder.css"
 
 import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
-import PauseIcon from '@mui/icons-material/Pause'
+import StopIcon from '@mui/icons-material/Stop'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React from "react"
 
@@ -165,7 +165,7 @@ const ExperimentBuilder = ({
               style = { { width: "170px" } }
               onClick = { () => { setTrainingInProgress(false); setFieldValue("submitType", "stop-training") } }
             >
-              <PauseIcon/>
+              <StopIcon/>
               Stop Training
             </Button>
         }
