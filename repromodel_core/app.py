@@ -316,7 +316,7 @@ def kill_testing_process():
 
     try:        
         
-        # Kill the training process.
+        # Kill the testing process.
         subprocess.run(['pkill', '-f', 'tester'])
         app.logger.info("Process with name 'tester' killed successfully.")
 
