@@ -1,21 +1,26 @@
 export const handleDownload = (content, outputName, type) => {
-  let json, blob;
+  
+  let json, blob
 
   if (type === "json") {
-    json = JSON.stringify(content, null, 2);
-    blob = new Blob([json], { type: "application/json" });
+    json = JSON.stringify(content, null, 2)
+    blob = new Blob([json], { type: "application/json" })
+  
   } else if (type === "py") {
-    blob = new Blob([content], { type: "text/plain" });
+    blob = new Blob([content], { type: "text/plain" })
+  
   } else {
-    console.log("Filetype currently not supported");
-    return;
+    console.log("Filetype currently not supported")
+    return
   }
 
-  const href = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = href;
-  link.download = `${outputName}.${type}`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+  const href = URL.createObjectURL(blob)
+  const link = document.createElement("a")
+  
+  link.href = href
+  link.download = `${outputName}.${type}`
+  
+  document.body.appendChild(link)
+  link.click()
+  document.body.removeChild(link)
+}

@@ -10,8 +10,8 @@ import React from "react"
 import trainConfig from "../../../repromodel_core/train_config.json"
 import Typography from "@mui/material/Typography"
 
-import { handleDownload } from "../../utils/download-helpers";
-import { useState } from "react";
+import { handleDownload } from "../../utils/download-helpers"
+import { useState } from "react"
 
 const FirstTimeModal = () => {
     
@@ -23,7 +23,7 @@ const FirstTimeModal = () => {
   const handleClose = () => {
     setOpen(false)
 
-    // Reset the confirmation message when the modal is closed
+    // Reset the confirmation message when the modal is closed.
     setConfirmationMessage("")
   }
   
@@ -40,50 +40,69 @@ const FirstTimeModal = () => {
   }
 
   return (
-    <div className="modal-container">
-      <Button variant="contained" onClick={handleOpen}>
+    <div className = "modal-container">
+      
+      <Button variant = "contained" onClick = { handleOpen }>
         First Time Here?
       </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-title"
-        aria-describedby="modal-description"
-      >
-        <Box className="modal">
-          <IconButton onClick={handleClose} style={{ position: "absolute", right: 8, top: 8 }}>
+      
+      <Modal open = { open } onClose = { handleClose }>
+        
+        <Box className = "modal">
+          
+          {/* Close Button */}
+          <IconButton onClick = { handleClose } style = { { position: "absolute", right: 8, top: 8 } }>
             <CloseIcon />
           </IconButton>
 
-          <Typography id="modal-title" variant="h6" component="h2" className="modal-title">
-            Hey, nice to have you here!
+          {/* Title */}
+          <Typography id = "modal-title" variant = "h5" component = "h2" className = "modal-title">
+            Quick Start
           </Typography>
-          <Typography id="modal-description" className="modal-description">
-            For a quick start and to try out ReproModel you can load some defaults.
+          
+          {/* Subtitle */}
+          <Typography id = "modal-description" className = "modal-description">
+            To get started with ReproModel, try loading some default data.
           </Typography>
-          <Typography className="modal-step-one">
-            1. Generate Dummy Data
+          
+          {/* Step 1 - Generate Dummy Data */}
+          <Typography className = "modal-step-one">
+            <strong>1. Generate dummy data.</strong>
+            &nbsp;
+            repromodel_core/data/dummyData/input
           </Typography>
-          <Button variant="contained" className="modal-button" onClick={handleGenerate}>
+          
+          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate }>
             Generate
           </Button>
-          <Typography className="modal-step-two">
-            2. Download a training config
+          
+          {/* Step 2 - Download Training Configuration */}
+          <Typography className = "modal-step-two">
+            <strong>2. Download training configuration.</strong>
+            &nbsp;
+            DemoTrainingConfig.json
           </Typography>
-          <Button variant="contained" className="modal-button" onClick={() => handleDownload(trainConfig, 'DemoTrainingConfig', 'json')}>
+          
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(trainConfig, 'DemoTrainingConfig', 'json') }>
             Download
           </Button>
-          {confirmationMessage && (
-            <Typography className="modal-confirmation" style={{ color: 'green' }}>
-              {confirmationMessage}
+          
+          {/* Confirmation Message */}
+          { confirmationMessage && (
+            <Typography className = "modal-confirmation" style = { { color: 'green' } }>
+              { confirmationMessage }
             </Typography>
           )}
 
-          <Typography className="modal-message">Happy developing with ReproModel.</Typography>
+          {/* Parting Message */}
+          <Typography className = "modal-message">Happy developing with ReproModel 😎</Typography>
+
         </Box>
+
       </Modal>
+
     </div>
   )
 }
 
-export default FirstTimeModal;
+export default FirstTimeModal
