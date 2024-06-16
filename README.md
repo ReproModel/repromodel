@@ -9,7 +9,7 @@
 <div align = "center">
   <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
   <a href = "https://github.com/ReproModel/repromodel/blob/dev/LICENSE.md"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <a href = "https://discord.gg/CdJzm8zmpu"><img alt = "Discord" src = "https://img.shields.io/badge/Discord-3-green?logo=discord&logoColor=white"></a>
+  <a href = "https://discord.gg/CdJzm8zmpu"><img alt = "Discord" src = "https://img.shields.io/badge/Discord-3-rgba%2851%2C%20170%2C%2051%2C%20%201%29?logo=discord&logoColor=white"></a>
 </div>
 
 <br/>
