@@ -1,8 +1,11 @@
-import time
 import os
+import time
+
 
 def update_progress_bar(file_path, total_time=10, update_interval=2):
-    progress_length = 50  # Length of the progress bar
+    
+    # Length of the progress bar.
+    progress_length = 50
     num_updates = total_time // update_interval
     
     with open(file_path, 'w') as file:
@@ -13,24 +16,24 @@ def update_progress_bar(file_path, total_time=10, update_interval=2):
             file.flush()
             time.sleep(update_interval)
 
+
 def main():
-    # Get the path of the script itself
+    
+    # Get the path of the script itself.
     script_path = os.path.abspath(__file__)
 
-    # Get the directory of the script
+    # Get the directory of the script.
     script_dir = os.path.dirname(script_path)
 
-    # Define the relative path
+    # Define the relative path.
     relative_path = "test_logs/Training_logs/progress.txt"
 
-    # Combine the script's directory with the relative path to get the absolute path
+    # Combine the script directory with the relative path to get the absolute path.
     absolute_path = os.path.join(script_dir, relative_path)
 
+    # Update progress bar.
+    update_progress_bar(file_path=absolute_path, total_time=30, update_interval=1)
 
-    file_path = absolute_path
-    total_time = 30
-    update_interval = 1
-    update_progress_bar(file_path, total_time, update_interval)
 
 if __name__ == "__main__":
     main()
