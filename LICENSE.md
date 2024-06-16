@@ -24,8 +24,7 @@ SOFTWARE.
 
 ## BSD 3-Clause License
 
-Copyright (c) Soumith Chintala 2016, 
-All rights reserved.
+Copyright (c) ReproModel
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -242,7 +241,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2019 Ross Wightman
+   Copyright (c) ReproModel
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
