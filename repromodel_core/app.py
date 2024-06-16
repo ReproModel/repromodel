@@ -58,10 +58,11 @@ TYPE_DIRS = {
 app = Flask(__name__)
 CORS(app)
 
-# Ensure base directory and type directories exist
+# Ensure the base directory exist.
 if not os.path.exists(BASE_DIR):
     os.makedirs(BASE_DIR)
 
+# Ensure the type directories exist.
 for type_dir in TYPE_DIRS.values():
     path = os.path.join(BASE_DIR, type_dir)
     if not os.path.exists(path):
