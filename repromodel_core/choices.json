@@ -848,80 +848,24 @@
         }
     },
     "datasets": {
-        "cifar100": {
+        "cifar100Dataset": {
             "CIFAR100Dataset": {
                 "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/cifar100"
+                    "type": "str"
                 },
                 "train": {
-                    "type": "bool",
-                    "default": true
+                    "type": "bool"
                 },
                 "transform": {
-                    "type": "Callable",
+                    "type": "<class 'function'>",
                     "default": null
                 },
                 "target_transform": {
-                    "type": "Callable",
+                    "type": "<class 'function'>",
                     "default": null
                 },
                 "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
-        "eurosat": {
-            "EuroSATDataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/eurosat"
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
-        "celeba": {
-            "CelebADataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/celeba"
-                },
-                "split": {
-                    "type": "str",
-                    "default": "train",
-                    "options": "['train', 'valid', 'test', 'trainval', 'all']"
-                },
-                "target_type": {
-                    "type": [
-                        "str",
-                        "list"
-                    ],
-                    "default": "attr",
-                    "options": "['attr', 'identity', 'bbox', 'landmarks']"
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
+                    "type": "bool"
                 }
             }
         },
@@ -950,133 +894,29 @@
                 }
             }
         },
-        "country211": {
-            "Country211Dataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/country211"
-                },
-                "split": {
-                    "type": "str",
-                    "default": "trainval",
-                    "options": "['train', 'valid', 'test', 'trainval']"
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
-        "dtd": {
-            "DTDDataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/dtd"
-                },
-                "split": {
-                    "type": "str",
-                    "default": "trainval",
-                    "options": "['train', 'val', 'test', 'trainval']"
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
-        "cifar10": {
+        "cifar10Dataset": {
             "CIFAR10Dataset": {
                 "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/cifar10"
+                    "type": "str"
                 },
                 "train": {
-                    "type": "bool",
-                    "default": true
+                    "type": "bool"
                 },
                 "transform": {
-                    "type": "Callable",
+                    "type": "Compose",
                     "default": null
                 },
                 "target_transform": {
-                    "type": "Callable",
+                    "type": "Compose",
                     "default": null
                 },
                 "download": {
-                    "type": "bool",
-                    "default": false
+                    "type": "bool"
                 }
             }
         },
-        "caltech101": {
-            "Caltech101Dataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/caltech101"
-                },
-                "target_type": {
-                    "type": "str",
-                    "default": "category",
-                    "options": "['category', 'annotation']"
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
-        },
-        "emnist": {
-            "EMNISTDataset": {
-                "root": {
-                    "type": "str",
-                    "default": "repromodel_core/data/emnist"
-                },
-                "split": {
-                    "type": "str",
-                    "default": "byclass",
-                    "options": "['byclass', 'bymerge', 'balanced', 'letters', 'digits', 'mnist']"
-                },
-                "expand_to_rgb": {
-                    "type": "bool",
-                    "default": false
-                },
-                "transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "target_transform": {
-                    "type": "Callable",
-                    "default": null
-                },
-                "download": {
-                    "type": "bool",
-                    "default": false
-                }
-            }
+        "extendedVisionDataset": {
+            "ExtendedVisionDataset": {}
         },
         "vocSegmentation": {
             "VOCSegmentationDataset": {
@@ -1140,28 +980,1822 @@
                 }
             }
         },
-        "caltech256": {
-            "Caltech256Dataset": {
+        "caltech101_RM": {
+            "Caltech101_RM": {
                 "root": {
                     "type": "str",
-                    "default": "repromodel_core/data/caltech256"
+                    "default": "repromodel_core/data/caltech101"
                 },
-                "target_type": {
+                "input_folder": {
                     "type": "str",
-                    "default": "category",
-                    "options": "['category']"
+                    "default": "101_ObjectCategories"
+                },
+                "target_folder": {
+                    "type": "str",
+                    "default": "Annotations"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            }
+        },
+        "torchvision>datasets": {
+            "CIFAR10": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
                 },
                 "transform": {
-                    "type": "Callable",
+                    "type": "typing.Optional[typing.Callable]",
                     "default": null
                 },
                 "target_transform": {
-                    "type": "Callable",
+                    "type": "typing.Optional[typing.Callable]",
                     "default": null
                 },
                 "download": {
                     "type": "bool",
                     "default": false
+                }
+            },
+            "CIFAR100": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "CLEVRClassification": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "CREStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Caltech101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "category"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Caltech256": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "CarlaStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "CelebA": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "attr"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Cityscapes": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "mode": {
+                    "type": "str",
+                    "default": "fine"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "instance"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "CocoCaptions": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annFile": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "CocoDetection": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annFile": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Country211": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "DTD": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "partition": {
+                    "type": "int",
+                    "default": 1
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "DatasetFolder": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": null
+                },
+                "extensions": {
+                    "type": "typing.Optional[typing.Tuple[str, ...]]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "is_valid_file": {
+                    "type": "typing.Optional[typing.Callable[[str], bool]]",
+                    "default": null
+                },
+                "allow_empty": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "EMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "ETH3DStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "EuroSAT": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "FER2013": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "FGVCAircraft": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "trainval"
+                },
+                "annotation_level": {
+                    "type": "str",
+                    "default": "variant"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "FakeData": {
+                "size": {
+                    "type": "int",
+                    "default": 1000
+                },
+                "image_size": {
+                    "type": "typing.Tuple[int, int, int]",
+                    "default": [
+                        3,
+                        224,
+                        224
+                    ]
+                },
+                "num_classes": {
+                    "type": "int",
+                    "default": 10
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "random_offset": {
+                    "type": "int",
+                    "default": 0
+                }
+            },
+            "FallingThingsStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "variant": {
+                    "type": "str",
+                    "default": "single"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "FashionMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Flickr30k": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "ann_file": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Flickr8k": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "ann_file": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Flowers102": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "FlyingChairs": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "FlyingThings3D": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "camera": {
+                    "type": "str",
+                    "default": "left"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Food101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "GTSRB": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "HD1K": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "HMDB51": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annotation_path": {
+                    "type": "str",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "fold": {
+                    "type": "int",
+                    "default": 1
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "INaturalist": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "version": {
+                    "type": "str",
+                    "default": "2021_train"
+                },
+                "target_type": {
+                    "type": "typing.Union[typing.List[str], str]",
+                    "default": "full"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "ImageFolder": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": "<function default_loader at 0x123a73ca0>"
+                },
+                "is_valid_file": {
+                    "type": "typing.Optional[typing.Callable[[str], bool]]",
+                    "default": null
+                },
+                "allow_empty": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "ImageNet": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "Imagenette": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "size": {
+                    "type": "str",
+                    "default": "full"
+                },
+                "download": {
+                    "type": "int, float",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "InStereo2k": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "KMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Kinetics": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "num_classes": {
+                    "type": "str",
+                    "default": "400"
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "extensions": {
+                    "type": "typing.Tuple[str, ...]",
+                    "default": [
+                        "avi",
+                        "mp4"
+                    ]
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "num_download_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_channels": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_legacy": {
+                    "type": "bool",
+                    "default": false
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "TCHW"
+                }
+            },
+            "Kitti": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Kitti2012Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Kitti2015Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "KittiFlow": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "LFWPairs": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "10fold"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "funneled"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "LFWPeople": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "10fold"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "funneled"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "LSUN": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "classes": {
+                    "type": "typing.Union[str, typing.List[str]]",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "LSUNClass": {
+                "root": {
+                    "type": "str",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "MNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Middlebury2014Stereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "calibration": {
+                    "type": "typing.Optional[str]",
+                    "default": "perfect"
+                },
+                "use_ambient_views": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "MovingMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                },
+                "split_ratio": {
+                    "type": "int",
+                    "default": 10
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Omniglot": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "background": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "OxfordIIITPet": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "trainval"
+                },
+                "target_types": {
+                    "type": "typing.Union[typing.Sequence[str], str]",
+                    "default": "category"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "PCAM": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "PhotoTour": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "name": {
+                    "type": "str",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "Places365": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train-standard"
+                },
+                "small": {
+                    "type": "bool",
+                    "default": false
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "loader": {
+                    "type": "typing.Callable[[str], typing.Any]",
+                    "default": "<function default_loader at 0x123a73ca0>"
+                }
+            },
+            "QMNIST": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "what": {
+                    "type": "typing.Optional[str]",
+                    "default": null
+                },
+                "compat": {
+                    "type": "bool",
+                    "default": true
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "kwargs": {
+                    "type": "typing.Any",
+                    "default": null
+                }
+            },
+            "RenderedSST2": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "SBDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "mode": {
+                    "type": "str",
+                    "default": "boundaries"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "SBU": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            },
+            "SEMEION": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": true
+                }
+            },
+            "STL10": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "folds": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "SUN397": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "SVHN": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "SceneFlowStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "variant": {
+                    "type": "str",
+                    "default": "FlyingThings3D"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "Sintel": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "clean"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "SintelStereo": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "pass_name": {
+                    "type": "str",
+                    "default": "final"
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "StanfordCars": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "UCF101": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "annotation_path": {
+                    "type": "str",
+                    "default": null
+                },
+                "frames_per_clip": {
+                    "type": "int",
+                    "default": null
+                },
+                "step_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "fold": {
+                    "type": "int",
+                    "default": 1
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 1
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "USPS": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "train": {
+                    "type": "bool",
+                    "default": true
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "VOCDetection": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "year": {
+                    "type": "str",
+                    "default": "2012"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "VOCSegmentation": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "year": {
+                    "type": "str",
+                    "default": "2012"
+                },
+                "image_set": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "VisionDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path, NoneType]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "WIDERFace": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "split": {
+                    "type": "str",
+                    "default": "train"
+                },
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "download": {
+                    "type": "bool",
+                    "default": false
+                }
+            },
+            "FlowDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "StereoMatchingDataset": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                },
+                "transforms": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                }
+            },
+            "CSV": {
+                "args": {
+                    "type": "unknown",
+                    "default": null
+                },
+                "kwargs": {
+                    "type": "unknown",
+                    "default": null
+                }
+            },
+            "Flickr8kParser": {
+                "root": {
+                    "type": "typing.Union[str, pathlib.Path]",
+                    "default": null
+                }
+            },
+            "DistributedSampler": {
+                "dataset": {
+                    "type": "typing.Sized",
+                    "default": null
+                },
+                "num_replicas": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "rank": {
+                    "type": "typing.Optional[int]",
+                    "default": null
+                },
+                "shuffle": {
+                    "type": "bool",
+                    "default": false
+                },
+                "group_size": {
+                    "type": "int",
+                    "default": 1
+                }
+            },
+            "RandomClipSampler": {
+                "video_clips": {
+                    "type": "VideoClips",
+                    "default": null
+                },
+                "max_clips_per_video": {
+                    "type": "int",
+                    "default": null
+                }
+            },
+            "UniformClipSampler": {
+                "video_clips": {
+                    "type": "VideoClips",
+                    "default": null
+                },
+                "num_clips_per_video": {
+                    "type": "int",
+                    "default": null
+                }
+            },
+            "VideoClips": {
+                "video_paths": {
+                    "type": "typing.List[str]",
+                    "default": null
+                },
+                "clip_length_in_frames": {
+                    "type": "int",
+                    "default": 16
+                },
+                "frames_between_clips": {
+                    "type": "int",
+                    "default": 1
+                },
+                "frame_rate": {
+                    "type": "typing.Optional[float]",
+                    "default": null
+                },
+                "_precomputed_metadata": {
+                    "type": "typing.Optional[typing.Dict[str, typing.Any]]",
+                    "default": null
+                },
+                "num_workers": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_width": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_height": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_min_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_video_max_dimension": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_samples": {
+                    "type": "int",
+                    "default": 0
+                },
+                "_audio_channels": {
+                    "type": "int",
+                    "default": 0
+                },
+                "output_format": {
+                    "type": "str",
+                    "default": "THWC"
+                }
+            },
+            "StandardTransform": {
+                "transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
+                },
+                "target_transform": {
+                    "type": "typing.Optional[typing.Callable]",
+                    "default": null
                 }
             }
         }
@@ -1263,7 +2897,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -1352,7 +2986,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -2138,19 +3772,19 @@
         "torchmetrics": {
             "AUROC": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Accuracy": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "AveragePrecision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2168,7 +3802,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2202,7 +3836,7 @@
                     "default": "poisson"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2232,13 +3866,13 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CalibrationError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2248,13 +3882,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CharErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2278,7 +3912,7 @@
             },
             "CohenKappa": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2288,23 +3922,23 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ConfusionMatrix": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CosineSimilarity": {
                 "reduction": {
-                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2318,7 +3952,7 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "typing_extensions.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -2326,7 +3960,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2340,7 +3974,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2358,7 +3992,7 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'none']]",
                     "default": "micro"
                 },
                 "mdmc_average": {
@@ -2378,7 +4012,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2388,33 +4022,33 @@
                     "default": 4
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExactMatch": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExplainedVariance": {
                 "multioutput": {
-                    "type": "typing.Literal['raw_values', 'uniform_average', 'variance_weighted']",
+                    "type": "typing_extensions.Literal['raw_values', 'uniform_average', 'variance_weighted']",
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExtendedEditDistance": {
                 "language": {
-                    "type": "typing.Literal['en', 'ja']",
+                    "type": "typing_extensions.Literal['en', 'ja']",
                     "default": "en"
                 },
                 "return_sentence_level_score": {
@@ -2438,47 +4072,47 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "F1Score": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FBetaScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FleissKappa": {
                 "mode": {
-                    "type": "typing.Literal['counts', 'probs']",
+                    "type": "typing_extensions.Literal['counts', 'probs']",
                     "default": "counts"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HammingDistance": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HingeLoss": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "JaccardIndex": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2488,17 +4122,17 @@
                     "default": false
                 },
                 "reduction": {
-                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['mean', 'sum', 'none', None]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "KendallRankCorrCoef": {
                 "variant": {
-                    "type": "typing.Literal['a', 'b', 'c']",
+                    "type": "typing_extensions.Literal['a', 'b', 'c']",
                     "default": "b"
                 },
                 "t_test": {
@@ -2506,7 +4140,7 @@
                     "default": false
                 },
                 "alternative": {
-                    "type": "typing.Optional[typing.Literal['two-sided', 'less', 'greater']]",
+                    "type": "typing.Optional[typing_extensions.Literal['two-sided', 'less', 'greater']]",
                     "default": "two-sided"
                 },
                 "num_outputs": {
@@ -2514,7 +4148,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2524,19 +4158,19 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MatchErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MatthewsCorrCoef": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2546,19 +4180,19 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAbsoluteError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2568,7 +4202,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2582,19 +4216,19 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanSquaredLogError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Metric": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2636,7 +4270,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2646,7 +4280,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2656,7 +4290,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2674,7 +4308,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2692,7 +4326,7 @@
                     "default": 1.5
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -2718,11 +4352,11 @@
                     ]
                 },
                 "normalize": {
-                    "type": "typing.Literal['relu', 'simple', None]",
+                    "type": "typing_extensions.Literal['relu', 'simple', None]",
                     "default": "relu"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2776,7 +4410,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2790,7 +4424,7 @@
                     "default": 10.0
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "dim": {
@@ -2798,7 +4432,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2808,7 +4442,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2818,7 +4452,7 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "typing_extensions.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -2826,7 +4460,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2836,15 +4470,15 @@
                     "default": null
                 },
                 "mode": {
-                    "type": "typing.Literal['speaker-wise', 'permutation-wise']",
+                    "type": "typing_extensions.Literal['speaker-wise', 'permutation-wise']",
                     "default": "speaker-wise"
                 },
                 "eval_func": {
-                    "type": "typing.Literal['max', 'min']",
+                    "type": "typing_extensions.Literal['max', 'min']",
                     "default": "max"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2860,19 +4494,19 @@
             },
             "Precision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "PrecisionAtFixedRecall": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "PrecisionRecallCurve": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2890,25 +4524,25 @@
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ROC": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Recall": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RecallAtFixedPrecision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2932,7 +4566,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2950,11 +4584,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2972,11 +4606,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2994,11 +4628,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3016,11 +4650,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3038,11 +4672,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3064,11 +4698,11 @@
                     "default": false
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3090,11 +4724,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3108,11 +4742,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3130,11 +4764,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3160,7 +4794,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3184,7 +4818,7 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3198,13 +4832,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SQuAD": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3218,7 +4852,7 @@
                     "default": false
                 },
                 "tokenize": {
-                    "type": "typing.Literal['none', '13a', 'zh', 'intl', 'char', 'ja-mecab', 'ko-mecab', 'flores101', 'flores200']",
+                    "type": "typing_extensions.Literal['none', '13a', 'zh', 'intl', 'char', 'ja-mecab', 'ko-mecab', 'flores101', 'flores200']",
                     "default": "13a"
                 },
                 "lowercase": {
@@ -3230,7 +4864,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3240,19 +4874,19 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ScaleInvariantSignalNoiseRatio": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SensitivityAtSpecificity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3274,7 +4908,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3284,7 +4918,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3294,29 +4928,29 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Specificity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SpecificityAtSensitivity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SpectralAngleMapper": {
                 "reduction": {
-                    "type": "typing.Optional[typing.Literal['elementwise_mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['elementwise_mean', 'sum', 'none']]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3326,17 +4960,17 @@
                     "default": 1
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "StatScores": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3354,7 +4988,7 @@
                     "default": 11
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -3378,7 +5012,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3388,13 +5022,13 @@
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SymmetricMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3404,7 +5038,7 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "typing_extensions.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -3412,17 +5046,17 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "TotalVariation": {
                 "reduction": {
-                    "type": "typing.Optional[typing.Literal['mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['mean', 'sum', 'none']]",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3448,7 +5082,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3462,7 +5096,7 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "typing_extensions.Literal['replace', 'drop']",
                     "default": "replace"
                 },
                 "nan_replace_value": {
@@ -3470,7 +5104,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3480,7 +5114,7 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3500,35 +5134,35 @@
                     ]
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none', None]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WeightedMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordInfoLost": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordInfoPreserved": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3550,7 +5184,7 @@
                     "default": "value"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3560,7 +5194,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3574,7 +5208,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3592,7 +5226,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3626,7 +5260,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3640,7 +5274,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3662,7 +5296,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3672,7 +5306,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3684,7 +5318,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3702,7 +5336,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3712,7 +5346,7 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing.Literal['l1', 'l2', 'max']",
+                    "type": "typing_extensions.Literal['l1', 'l2', 'max']",
                     "default": "l1"
                 },
                 "ignore_index": {
@@ -3724,7 +5358,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3738,7 +5372,7 @@
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -3746,7 +5380,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3760,7 +5394,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -3768,7 +5402,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3778,7 +5412,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3794,7 +5428,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3808,7 +5442,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3824,7 +5458,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3834,7 +5468,7 @@
                     "default": null
                 },
                 "task": {
-                    "type": "typing.Literal['demographic_parity', 'equal_opportunity', 'all']",
+                    "type": "typing_extensions.Literal['demographic_parity', 'equal_opportunity', 'all']",
                     "default": "all"
                 },
                 "threshold": {
@@ -3850,7 +5484,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3872,7 +5506,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3882,7 +5516,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3894,7 +5528,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3912,7 +5546,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3934,7 +5568,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3952,7 +5586,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3962,7 +5596,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -3974,7 +5608,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3996,7 +5630,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4014,7 +5648,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4032,7 +5666,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4042,7 +5676,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4054,7 +5688,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4076,7 +5710,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4098,7 +5732,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4108,7 +5742,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4120,7 +5754,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4142,7 +5776,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4152,7 +5786,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4164,7 +5798,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4174,7 +5808,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4190,7 +5824,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4204,11 +5838,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4220,7 +5854,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4230,7 +5864,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4246,7 +5880,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4260,7 +5894,7 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing.Literal['l1', 'l2', 'max']",
+                    "type": "typing_extensions.Literal['l1', 'l2', 'max']",
                     "default": "l1"
                 },
                 "ignore_index": {
@@ -4272,7 +5906,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4286,7 +5920,7 @@
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4294,7 +5928,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4308,7 +5942,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4316,7 +5950,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4326,7 +5960,7 @@
                     "default": null
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4338,7 +5972,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4352,11 +5986,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4372,7 +6006,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4390,11 +6024,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4410,7 +6044,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4424,11 +6058,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4440,7 +6074,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4454,7 +6088,7 @@
                     "default": false
                 },
                 "multiclass_mode": {
-                    "type": "typing.Literal['crammer-singer', 'one-vs-all']",
+                    "type": "typing_extensions.Literal['crammer-singer', 'one-vs-all']",
                     "default": "crammer-singer"
                 },
                 "ignore_index": {
@@ -4466,7 +6100,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4476,7 +6110,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
@@ -4492,7 +6126,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4510,7 +6144,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4524,11 +6158,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4540,7 +6174,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4566,7 +6200,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4580,7 +6214,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
@@ -4592,7 +6226,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4606,7 +6240,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
@@ -4618,7 +6252,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4632,11 +6266,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4648,7 +6282,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4674,7 +6308,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4700,7 +6334,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4714,11 +6348,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4730,7 +6364,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4756,7 +6390,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4770,11 +6404,11 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4786,7 +6420,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4796,7 +6430,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4812,7 +6446,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4826,11 +6460,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4842,7 +6476,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4852,7 +6486,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4868,7 +6502,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4886,7 +6520,7 @@
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4894,7 +6528,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4912,7 +6546,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4926,7 +6560,7 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4938,7 +6572,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4952,11 +6586,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -4972,7 +6606,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4990,11 +6624,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5010,7 +6644,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5024,11 +6658,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5040,7 +6674,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5054,7 +6688,7 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
@@ -5070,7 +6704,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5092,7 +6726,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5106,11 +6740,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5122,7 +6756,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5148,7 +6782,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5170,7 +6804,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5192,7 +6826,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5210,7 +6844,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5228,7 +6862,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5242,11 +6876,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5258,7 +6892,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5284,7 +6918,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5310,7 +6944,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5324,11 +6958,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5340,7 +6974,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5366,7 +7000,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5380,11 +7014,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "typing_extensions.Literal['global', 'samplewise']",
                     "default": "global"
                 },
                 "ignore_index": {
@@ -5396,7 +7030,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5406,31 +7040,31 @@
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "AdjustedRandScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CalinskiHarabaszScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CompletenessScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "DaviesBouldinScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5440,25 +7074,25 @@
                     "default": 2
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FowlkesMallowsIndex": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HomogeneityScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MutualInfoScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5468,13 +7102,13 @@
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RandScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5484,7 +7118,7 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5506,7 +7140,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5528,7 +7162,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5550,7 +7184,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5572,17 +7206,17 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAveragePrecision": {
                 "box_format": {
-                    "type": "typing.Literal['xyxy', 'xywh', 'cxcywh']",
+                    "type": "typing_extensions.Literal['xyxy', 'xywh', 'cxcywh']",
                     "default": "xyxy"
                 },
                 "iou_type": {
-                    "type": "typing.Union[typing.Literal['bbox', 'segm'], typing.Tuple[str]]",
+                    "type": "typing.Union[typing_extensions.Literal['bbox', 'segm'], typing.Tuple[str]]",
                     "default": "bbox"
                 },
                 "iou_thresholds": {
@@ -5606,15 +7240,15 @@
                     "default": false
                 },
                 "average": {
-                    "type": "typing.Literal['macro', 'micro']",
+                    "type": "typing_extensions.Literal['macro', 'micro']",
                     "default": "macro"
                 },
                 "backend": {
-                    "type": "typing.Literal['pycocotools', 'faster_coco_eval']",
+                    "type": "typing_extensions.Literal['pycocotools', 'faster_coco_eval']",
                     "default": "pycocotools"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5719,7 +7353,7 @@
                     "default": null
                 },
                 "tokenizer": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 },
                 "max_length": {
@@ -5728,7 +7362,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x12a944680>"
+                    "default": "<function _preprocess_text at 0x122d233a0>"
                 },
                 "idf": {
                     "type": "bool",
@@ -5759,11 +7393,11 @@
             },
             "LearnedPerceptualImagePatchSimilarity": {
                 "net_type": {
-                    "type": "typing.Literal['vgg', 'alex', 'squeeze']",
+                    "type": "typing_extensions.Literal['vgg', 'alex', 'squeeze']",
                     "default": "alex"
                 },
                 "reduction": {
-                    "type": "typing.Literal['sum', 'mean']",
+                    "type": "typing_extensions.Literal['sum', 'mean']",
                     "default": "mean"
                 },
                 "normalize": {
@@ -5771,7 +7405,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5793,7 +7427,7 @@
                     "default": 0.1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5803,7 +7437,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5845,7 +7479,7 @@
                     "default": "vgg"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5867,11 +7501,11 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5885,7 +7519,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5899,11 +7533,11 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "typing_extensions.Literal['elementwise_mean', 'sum', 'none']",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5913,7 +7547,7 @@
                     "default": 2.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5939,7 +7573,7 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5971,7 +7605,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6009,7 +7643,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6043,23 +7677,23 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CLIPScore": {
                 "model_name_or_path": {
-                    "type": "typing.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
+                    "type": "typing_extensions.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
                     "default": "openai/clip-vit-large-patch14"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RetrievalAUROC": {
                 "empty_target_action": {
-                    "type": "typing.Literal['error', 'skip', 'neg', 'pos']",
+                    "type": "typing_extensions.Literal['error', 'skip', 'neg', 'pos']",
                     "default": "neg"
                 },
                 "ignore_index": {
@@ -6075,11 +7709,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6093,11 +7727,11 @@
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6115,11 +7749,11 @@
                     "default": false
                 },
                 "weight_type": {
-                    "type": "typing.Literal['square', 'simple', 'linear']",
+                    "type": "typing_extensions.Literal['square', 'simple', 'linear']",
                     "default": "square"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6137,7 +7771,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6151,7 +7785,7 @@
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6169,7 +7803,7 @@
                     "default": null
                 },
                 "accumulate": {
-                    "type": "typing.Literal['avg', 'best']",
+                    "type": "typing_extensions.Literal['avg', 'best']",
                     "default": "best"
                 },
                 "rouge_keys": {
@@ -6182,7 +7816,7 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6256,7 +7890,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6270,7 +7904,7 @@
                     "default": 0.25
                 },
                 "information_measure": {
-                    "type": "typing.Literal['kl_divergence', 'alpha_divergence', 'beta_divergence', 'ab_divergence', 'renyi_divergence', 'l1_distance', 'l2_distance', 'l_infinity_distance', 'fisher_rao_distance']",
+                    "type": "typing_extensions.Literal['kl_divergence', 'alpha_divergence', 'beta_divergence', 'ab_divergence', 'renyi_divergence', 'l1_distance', 'l2_distance', 'l_infinity_distance', 'fisher_rao_distance']",
                     "default": "kl_divergence"
                 },
                 "idf": {
@@ -6319,7 +7953,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6329,7 +7963,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6339,7 +7973,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6349,7 +7983,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6359,7 +7993,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6369,7 +8003,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6379,7 +8013,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6426,7 +8060,7 @@
             },
             "WrapperMetric": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -7796,138 +9430,12 @@
                     "RGB"
                 ]
             },
-            "cifar100>CIFAR100Dataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "eurosat>EuroSATDataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "celeba>CelebADataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "attribute"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "country211>Country211Dataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "dtd>DTDDataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "texture"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "cifar10>CIFAR10Dataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "caltech101>Caltech101Dataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "emnist>EMNISTDataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "grayscale"
-                ]
-            },
             "vocSegmentation>VOCSegmentationDataset": {
                 "task": [
                     "segmentation"
                 ],
                 "subtask": [
                     "semantic"
-                ],
-                "modality": [
-                    "images"
-                ],
-                "submodality": [
-                    "RGB"
-                ]
-            },
-            "caltech256>Caltech256Dataset": {
-                "task": [
-                    "classification"
-                ],
-                "subtask": [
-                    "image"
                 ],
                 "modality": [
                     "images"
@@ -8013,17 +9521,6 @@
                         "resnet_mixed_convolution>ResNetMixedConvolution",
                         "vgg13_bn>VGG13_BN",
                         "resnet50>ResNet50"
-                    ],
-                    "datasets": [
-                        "cifar100>CIFAR100Dataset",
-                        "eurosat>EuroSATDataset",
-                        "celeba>CelebADataset",
-                        "country211>Country211Dataset",
-                        "dtd>DTDDataset",
-                        "cifar10>CIFAR10Dataset",
-                        "caltech101>Caltech101Dataset",
-                        "emnist>EMNISTDataset",
-                        "caltech256>Caltech256Dataset"
                     ]
                 },
                 "segmentation": {
@@ -8153,27 +9650,6 @@
                         "resnet50>ResNet50"
                     ]
                 },
-                "image": {
-                    "datasets": [
-                        "cifar100>CIFAR100Dataset",
-                        "eurosat>EuroSATDataset",
-                        "country211>Country211Dataset",
-                        "cifar10>CIFAR10Dataset",
-                        "caltech101>Caltech101Dataset",
-                        "emnist>EMNISTDataset",
-                        "caltech256>Caltech256Dataset"
-                    ]
-                },
-                "attribute": {
-                    "datasets": [
-                        "celeba>CelebADataset"
-                    ]
-                },
-                "texture": {
-                    "datasets": [
-                        "dtd>DTDDataset"
-                    ]
-                },
                 "semantic": {
                     "datasets": [
                         "vocSegmentation>VOCSegmentationDataset"
@@ -8234,16 +9710,7 @@
                         "resnet50>ResNet50"
                     ],
                     "datasets": [
-                        "cifar100>CIFAR100Dataset",
-                        "eurosat>EuroSATDataset",
-                        "celeba>CelebADataset",
-                        "country211>Country211Dataset",
-                        "dtd>DTDDataset",
-                        "cifar10>CIFAR10Dataset",
-                        "caltech101>Caltech101Dataset",
-                        "emnist>EMNISTDataset",
-                        "vocSegmentation>VOCSegmentationDataset",
-                        "caltech256>Caltech256Dataset"
+                        "vocSegmentation>VOCSegmentationDataset"
                     ]
                 },
                 "video": {
@@ -8308,20 +9775,7 @@
                         "resnet50>ResNet50"
                     ],
                     "datasets": [
-                        "cifar100>CIFAR100Dataset",
-                        "eurosat>EuroSATDataset",
-                        "celeba>CelebADataset",
-                        "country211>Country211Dataset",
-                        "dtd>DTDDataset",
-                        "cifar10>CIFAR10Dataset",
-                        "caltech101>Caltech101Dataset",
-                        "vocSegmentation>VOCSegmentationDataset",
-                        "caltech256>Caltech256Dataset"
-                    ]
-                },
-                "grayscale": {
-                    "datasets": [
-                        "emnist>EMNISTDataset"
+                        "vocSegmentation>VOCSegmentationDataset"
                     ]
                 }
             }
@@ -9540,7 +10994,7 @@
             },
             "MADGRAD": {
                 "params": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 },
                 "lr": {
