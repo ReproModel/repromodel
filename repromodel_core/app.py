@@ -245,7 +245,7 @@ def kill_training_process():
     try:        
         
         # Kill the training process.
-        subprocess.run(['pkill', '-f', 'trainer'])
+        subprocess.run(['pkill', '-f', 'trainer.py'])
         app.logger.info("Process with name 'trainer' killed successfully.")
 
         return jsonify({'message': "Process with name 'trainer' killed successfully."})
@@ -317,7 +317,7 @@ def kill_testing_process():
     try:        
         
         # Kill the testing process.
-        subprocess.run(['pkill', '-f', 'tester'])
+        subprocess.run(['pkill', '-f', 'tester.py'])
         app.logger.info("Process with name 'tester' killed successfully.")
 
         return jsonify({'message': "Process with name 'tester' killed successfully."})
