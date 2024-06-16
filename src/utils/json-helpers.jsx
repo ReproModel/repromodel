@@ -142,7 +142,7 @@ export const handleSubmit = async (values) => {
         alert("Warning: Error running script: " + errorMessage);
       }
   } else if (values.submitType === "testing") {
-    // Handle testing submit action.
+    // Handle testing submit action
     try {
       const response = await axios.post(
         "http://127.0.0.1:5005/submit-config-start-testing",

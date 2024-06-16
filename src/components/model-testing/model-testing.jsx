@@ -7,7 +7,7 @@ import React from "react"
 
 import { Button, ButtonGroup } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
-import { Field, Form, Formik } from "formik"
+import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
 import { Typography } from "@mui/material"
 
@@ -15,7 +15,7 @@ const foldersPartOfTesting = [
   "models",
   "datasets",
   "metrics",
-  "device",
+  "device"
 ]
 
 const nestedFolders = [
@@ -28,7 +28,7 @@ const nestedFolders = [
   "augmentations",
   "lr_schedulers",
   "optimizers",
-  "early_stopping",
+  "early_stopping"
 ]
 
 const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
