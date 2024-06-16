@@ -312,7 +312,7 @@ def submit_config_start_testing_():
 # POST /kill-testing-process
 # Description: Kill the testing process started from frontend.
 @app.route('/kill-testing-process', methods=['POST'])
-def kill_training_process():
+def kill_testing_process():
 
     try:        
         
