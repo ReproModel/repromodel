@@ -1,8 +1,11 @@
 import "./model-testing.css"
 
 import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
+import StopIcon from '@mui/icons-material/Stop'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React from "react"
 
+import { Button, ButtonGroup } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form, Formik } from "formik"
 import { FolderField } from "../ui/folder-field"
@@ -29,6 +32,8 @@ const nestedFolders = [
 ]
 
 const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+
+  const [testingInProgress, setTestingInProgress] = React.useState(false)
   
   return (
     <Form>
@@ -145,9 +150,34 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       ))}
   
 
-      <button type = "submit" className = "submit-button" onClick = { () => setFieldValue("submitType", "testing") }>
-        <Typography>Submit For Testing</Typography>
-      </button>
+  <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+        
+        {/* Start Testing Button */}
+        { testingInProgress == false &&
+            <Button
+              type = "submit"
+              style = { { width: "170px" } }
+              onClick = { () => { setTestingInProgress(true); setFieldValue("submitType", "testing") } }
+            >
+              <PlayArrowIcon />
+              Test
+            </Button>
+        
+        }
+
+        {/* Stop Testing Button */}
+        { testingInProgress == true &&
+            <Button
+              type = "submit"
+              style = { { width: "170px" } }
+              onClick = { () => { setTestingInProgress(false); setFieldValue("submitType", "stop-testing") } }
+            >
+              <StopIcon/>
+              Stop Testing
+            </Button>
+        }
+
+      </ButtonGroup>
 
     </Form>
   )
