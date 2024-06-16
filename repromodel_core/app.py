@@ -2,9 +2,9 @@ from flask import Flask, jsonify, Response, request, send_file
 from flask_cors import CORS
 
 import json
-import subprocess
 import ollama
 import os
+import subprocess
 
 
 
@@ -44,7 +44,6 @@ TYPE_DIRS = {
     'models': 'models',
     'postprocessing': 'postprocessing',
     'preprocessing': 'preprocessing'
-
 }
 
 
@@ -404,4 +403,4 @@ def generate_methodology_route():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5005,threaded=True, debug=True , use_reloader=True)
+    app.run(host='0.0.0.0', port=5005, threaded=True, debug=True, use_reloader=True)
