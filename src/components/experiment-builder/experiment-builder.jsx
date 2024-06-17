@@ -146,29 +146,29 @@ const ExperimentBuilder = ({
       <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
         
         {/* Start Training Button */}
-        { trainingInProgress == false &&
+      
             <Button
               type = "submit"
               style = { { width: "170px" } }
-              onClick = { () => { setTrainingInProgress(true); setFieldValue("submitType", "training") } }
+              onClick = { () => setFieldValue("submitType", "training") }
             >
               <PlayArrowIcon />
               Train
             </Button>
         
-        }
+        
 
         {/* Stop Training Button */}
-        { trainingInProgress == true &&
+        
             <Button
               type = "submit"
               style = { { width: "170px" } }
-              onClick = { () => { setTrainingInProgress(false); setFieldValue("submitType", "stop-training") } }
+              onClick = { () => setFieldValue("submitType", "stop-training") }
             >
               <StopIcon/>
               Stop Training
             </Button>
-        }
+        
 
         {/* Download Config Button */}
         <Button
