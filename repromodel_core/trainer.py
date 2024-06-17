@@ -40,14 +40,18 @@ def train(input_data):
 
     # load model from last checkpoint
     if cfg.load_from_checkpoint:
-        progress = load_json(cfg.progress_path)
-        cfg = edict(cfg)
+        try:
+            progress = load_json(cfg.progress_path)
+            cfg = edict(cfg)
 
-        # Get model index, fold, and epoch from metadata
-        model_min = cfg.models.index(progress['model_name'])
-        k_min = progress['fold']
-        epoch_min = progress['epoch']
-        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
+            # Get model index, fold, and epoch from metadata
+            model_min = cfg.models.index(progress['model_name'])
+            k_min = progress['fold']
+            epoch_min = progress['epoch']
+            print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
+
+        except Exception as e:
+            print_to_file(f"Loading from checkpoint failed with error {e}")
 
     # Get preprocessing, augmentation, and dataset configurations
     if "preprocessing" in cfg:
@@ -247,7 +251,14 @@ def train(input_data):
 
 # Example usage
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Train a PyTorch model')
-    parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
-    args = parser.parse_args()
-    train(args.input_data)
+    try:
+        parser = argparse.ArgumentParser(description='Train a PyTorch model')
+        parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
+        args = parser.parse_args()
+    except:
+        print_to_file("Parsing arguments failed")
+
+    try:
+        train(args.input_data)
+    except:
+        print_to_file("Trainer function failed. Exiting with an error!")

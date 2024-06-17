@@ -191,16 +191,19 @@ def load_and_replace_keys(file_path):
     # Parse the modified string back to JSON
     return json.loads(modified_data)
 
-def replace_in_string(data):
+def replace_in_string(data, replace_str='>', replace_with = '.'):
     # Convert the dict or JSON string to a JSON string
     if isinstance(data, dict):
         data_str = json.dumps(data)
     else:
         data_str = data
     
-    # Replace all '>' with '.'
-    modified_data_str = data_str.replace('>', '.')
-    
+    try:
+        # Replace all '>' with '.'
+        modified_data_str = data_str.replace(replace_str, replace_with)
+    except Exception as e:
+        print_to_file(f"Replacing {replace_str} with {replace_with} in config failed with error {e}.")
+
     # Convert the modified string back to a dict
     return json.loads(modified_data_str)
 
