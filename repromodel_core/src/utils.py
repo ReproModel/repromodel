@@ -1,6 +1,7 @@
 import os
 import json
 import ast
+import shutil
 import numpy as np
 import torch
 from datetime import datetime
@@ -157,6 +158,53 @@ def save_model(config, model, model_name, fold, epoch,
     with open(config.progress_path, 'w') as f:
         json.dump(progress, f, indent=4)
         print_to_file(f"Progress saved to {config.progress_path}")    
+
+def get_covered_filenames(coverage_json_path, additional_files=None):
+    """
+    Loads the coverage.json file from the given path and returns a list of filenames reported,
+    along with any additional files provided.
+    
+    :param coverage_json_path: Path to the coverage.json file
+    :param additional_files: List of additional filenames to include
+    :return: List of filenames covered in the report, combined with additional files
+    """
+    if not os.path.exists(coverage_json_path):
+        raise FileNotFoundError(f"The file {coverage_json_path} does not exist.")
+    
+    with open(coverage_json_path, 'r') as file:
+        coverage_data = json.load(file)
+
+    # Extracting filenames from the keys of the 'files' dictionary
+    filenames = list(coverage_data['files'].keys())
+    
+    # Add additional files if provided
+    if additional_files:
+        filenames.extend(additional_files)
+    
+    return filenames
+
+def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
+    """
+    Copies all the files listed in the coverage report and additional files to a specified root folder.
+    
+    :param coverage_json_path: Path to the coverage.json file
+    :param root_folder: Path to the root folder where files should be copied
+    :param additional_files: List of additional filenames to include
+    """
+    # Get the list of covered filenames
+    filenames = get_covered_filenames(coverage_json_path, additional_files)
+    
+    for filename in filenames:
+        # Determine the source and destination paths
+        src_path = os.path.abspath(filename)
+        dest_path = os.path.join(root_folder, filename)
+        
+        # Create directories if they do not exist
+        os.makedirs(os.path.dirname(dest_path), exist_ok=True)
+        
+        # Copy the file
+        shutil.copy2(src_path, dest_path)
+        print_to_file(f"Copied {src_path} to {dest_path}")
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
