@@ -5,7 +5,7 @@ import json
 import ollama
 import os
 import subprocess
-
+from src.utils import copy_covered_files
 
 
 ######################################################################
@@ -172,7 +172,7 @@ def save_custom_script():
     try:
         # Save the file.
         file.save(save_path)
-        
+
         # Once file save is successful, rerun the script generate_choices.py.
         command = ['python', 'repromodel_core/generate_choices.py']
         result = subprocess.run(command, capture_output=True, text=True)
@@ -210,19 +210,40 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+        with open("repromodel_core/experiment_config.json", 'w') as json_file:
+            json.dump(json_data, json_file, indent=4)
+
         app.logger.info("Received JSON data for processing.")
         
         # Run the script trainer.py and capture the output.
-        command = ['python', 'repromodel_core/trainer.py', json_data]
+        command = ['coverage', 'run', 'repromodel_core/trainer.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Check the subprocess result.
         if result.returncode == 0:
             app.logger.info("Script executed successfully with output: %s", result.stdout)
-            return jsonify({'output': result.stdout, 'error': None})
+            #return jsonify({'output': result.stdout, 'error': None})
         
         else: 
             error_detail = f"Script execution failed with error: {result.stderr}"
+            app.logger.error(error_detail)
+            
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'output': result.stdout, 'error': error_detail}), 400
+        
+        # Saving coverage file
+        os.makedirs('repromodel_core/extracted_code/', exist_ok=True)
+
+        command = ['coverage', 'json', '-o', 'repromodel_core/extracted_code/coverage.json']
+        result = subprocess.run(command, capture_output=True, text=True)
+        
+        # Check the subprocess result.
+        if result.returncode == 0:
+            app.logger.info("Coverage filenames successfully saved in the output folder with output: %s", result.stdout)
+            return jsonify({'output': result.stdout, 'error': None})
+        
+        else: 
+            error_detail = f"Coverage filename saving failed with error: {result.stderr}"
             app.logger.error(error_detail)
             
             # Return HTTP 400 Bad Request status code.
@@ -237,6 +258,20 @@ def submit_config_start_training_():
         return jsonify({'error': error_message}), 500
 
 
+@app.route('/copy-covered-files', methods=['POST'])
+def copy_files_endpoint():
+    try:
+        coverage_json_path = "repromodel_core/extracted_code/coverage.json"
+        root_folder = "repromodel_core/extracted_code"
+        additional_files = ["repromodel_core/tester.py", "repromodel_core/experiment_config.json"]
+        try:
+            copy_covered_files(coverage_json_path, root_folder, additional_files)
+            return jsonify({"status": "success", "message": "Files copied successfully"}), 200
+        except Exception as e:
+            return  jsonify({"status": "error", "message": "Copying files failed with error:" + str(e)}), 500
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+    
 
 ######################################################################
 # API ENDPOINTS - Model Testing

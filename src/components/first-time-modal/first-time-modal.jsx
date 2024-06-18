@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import Modal from "@mui/material/Modal"
 import React from "react"
-import trainConfig from "../../../repromodel_core/train_config.json"
+import experimentConfig from "../../../repromodel_core/experiment_config.json"
 import Typography from "@mui/material/Typography"
 
 import { handleDownload } from "../../utils/download-helpers"
@@ -83,7 +83,7 @@ const FirstTimeModal = () => {
             DemoTrainingConfig.json
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(trainConfig, 'DemoTrainingConfig', 'json') }>
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoTrainingConfig', 'json') }>
             Download
           </Button>
           
