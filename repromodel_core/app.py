@@ -225,7 +225,7 @@ def submit_config_start_training_():
             #return jsonify({'output': result.stdout, 'error': None})
         
         else: 
-            error_detail = f"Script execution failed with error: {result.stderr}"
+            error_detail = f"Training has been stopped: {result.stderr}"
             app.logger.error(error_detail)
             
             # Return HTTP 400 Bad Request status code.
