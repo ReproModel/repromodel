@@ -9,7 +9,12 @@ lerna-debug.log*
 
 # Data
 data/
+
+#Tmp files
+extracted_code/
 dev_tmp/
+
+# Checkpoints
 ckpts/
 
 # Node
