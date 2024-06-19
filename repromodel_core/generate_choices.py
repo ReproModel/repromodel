@@ -1,24 +1,29 @@
-import os
-import ast
-import json
-import torchmetrics
-import inspect
-import pkgutil
-import torch
-# import timm
 from timm import optim as timm_optim
 from timm import loss as timm_loss
-import torchvision
-# import segmentation_models_pytorch
-from torch.optim import lr_scheduler
-from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
-from torch.nn.modules import loss
+
 from torch import optim
+from torch.nn.modules import loss
+from torch.optim import lr_scheduler
 
-# Base path for your project
-base_path = 'repromodel_core/src/'
+from typing import Union, get_type_hints, Literal, Optional, List, Dict, Any
 
-# Function to safely evaluate AST literals to their respective Python types
+import ast
+import inspect
+import json
+import os
+import pkgutil
+
+import torch
+import torchmetrics
+import torchvision
+
+
+
+######################################################################
+# HELPER FUNCTIONS
+######################################################################
+
+# Function to safely evaluate AST literals to their respective Python types.
 def evaluate_ast_literal(node):
     if isinstance(node, ast.Constant):  # For Python 3.8+
         return node.value
@@ -54,7 +59,9 @@ def evaluate_ast_literal(node):
     else:
         return "<unsupported>"
 
-# Function to parse the decorator for types, default values, ranges, and options
+
+# Function to parse the @enforce_types_and_ranges decorator for types, default values, ranges, and options.
+# Example: @enforce_types_and_ranges({ 'weight': { 'type': float, 'range': (0.1, 1.0) })
 def parse_decorator(decorator):
     param_info = {}
     if isinstance(decorator, ast.Call) and hasattr(decorator.func, 'id') and decorator.func.id == 'enforce_types_and_ranges':
@@ -74,7 +81,9 @@ def parse_decorator(decorator):
                     param_info[key.s] = properties
     return param_info
 
-# Function to parse the tag decorator for tags
+
+# Function to parse the @tag decorator for task, subtask, modality, and submodality.
+# Example: @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 def parse_tag_decorator(decorator):
     tags = {}
     if isinstance(decorator, ast.Call) and hasattr(decorator.func, 'id') and decorator.func.id == 'tag':
@@ -88,7 +97,8 @@ def parse_tag_decorator(decorator):
                     tags[key] = [value]
     return tags
 
-# Function to parse Python files and extract classes, their __init__ parameters, and tags
+
+# Function to parse Python files and extract classes, their __init__ parameters, and tags.
 def parse_python_file(file_path):
     with open(file_path, 'r') as file:
         node = ast.parse(file.read(), filename=file_path)
@@ -110,7 +120,8 @@ def parse_python_file(file_path):
                 class_tags[n.name] = {'tags': tags, 'filename': filename}
     return class_definitions, class_tags
 
-# Function to format type annotations into a more readable form
+
+# Function to format type annotations into a more readable form.
 def format_type(annotation):
     if isinstance(annotation, type):
         return annotation.__name__
@@ -135,7 +146,8 @@ def format_type(annotation):
     else:
         return str(annotation)
 
-# Function to parse parameter details
+
+# Function to parse parameter details.
 def parse_parameter_details(param):
     details = {}
     if param.annotation != inspect.Parameter.empty:
@@ -146,7 +158,8 @@ def parse_parameter_details(param):
         details['default'] = param.default
     return details
 
-# Function to extract class definitions with __init__ parameters
+
+# Function to extract class definitions with __init__ parameters.
 def extract_classes_with_init_params(module, class_names: Optional[List[str]] = None) -> Dict[str, Dict[str, Any]]:
     classes = {}
 
@@ -196,6 +209,8 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
     inspect_module(module)
     return classes
 
+
+# Function to make object serializable.
 def make_json_serializable(obj, leading_key=None):
     if isinstance(obj, dict):
         if leading_key is None:
@@ -215,6 +230,8 @@ def make_json_serializable(obj, leading_key=None):
         except TypeError:
             return str(obj)
 
+
+# Function that returns devices.
 def get_devices():
     device_definitions = {
         "type": "str",
@@ -228,76 +245,27 @@ def get_devices():
             device_definitions["options"].append(cuda_key)
     return device_definitions
 
-# Collect all definitions from specified directories
-all_definitions = {}
 
-all_definitions["load_from_checkpoint"] = {
-    "type": "bool",
-    "default": False
-}
 
-tags_structure = {"tags_per_class": {}, "class_per_tag": {"task": {}, "subtask": {}, "modality": {}, "submodality": {}}}
 
-for directory in ['models', 'preprocessing', 'datasets', 'augmentations', 'metrics', 'losses', 'early_stopping', 'postprocessing']:
-    full_path = os.path.join(base_path, directory)
-    directory_definitions = {}
-    for root, dirs, files in os.walk(full_path, topdown=True):
-        dirs[:] = [d for d in dirs if '.ipynb_checkpoints' not in d]
-        for file in files:
-            if file.endswith('.py'):
-                file_path = os.path.join(root, file)
-                definitions, tags = parse_python_file(file_path)
-                if definitions:
-                    file_name_without_extension = os.path.splitext(file)[0]
-                    directory_definitions[file_name_without_extension] = definitions
-                if tags:
-                    for class_name, class_info in tags.items():
-                        # Add to tags_per_class
-                        full_class_name = f"{class_info['filename']}>{class_name}"
-                        tags_structure["tags_per_class"][full_class_name] = class_info['tags']
-                        
-                        # Add to class_per_tag
-                        for key, values in class_info['tags'].items():
-                            for value in values:
-                                if value not in tags_structure["class_per_tag"][key]:
-                                    tags_structure["class_per_tag"][key][value] = {}
-                                if directory not in tags_structure["class_per_tag"][key][value]:
-                                    tags_structure["class_per_tag"][key][value][directory] = []
-                                tags_structure["class_per_tag"][key][value][directory].append(full_class_name)
-    if directory_definitions:
-        all_definitions[directory] = directory_definitions
 
-# Convert sets to lists for JSON serialization
-for key, value in tags_structure["class_per_tag"].items():
-    for subkey, subvalue in value.items():
-        for directory, models in subvalue.items():
-            tags_structure["class_per_tag"][key][subkey][directory] = list(models)
 
-for key, value in tags_structure["tags_per_class"].items():
-    for subkey, subvalue in value.items():
-        if isinstance(subvalue, set):
-            tags_structure["tags_per_class"][key][subkey] = list(subvalue)
-        elif isinstance(subvalue, dict):
-            tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
 
-# Add tags_structure under "tags" key
-all_definitions["tags"] = tags_structure
 
-# Extract torchvision augmentations
-all_tv_augs = extract_classes_with_init_params(torchvision.transforms)
-leading_key = 'torchvision>transforms'
-all_definitions['augmentations'][leading_key] = make_json_serializable(all_tv_augs, leading_key=leading_key)
 
-# Extract torchmetric classes
-all_torchmetrics = extract_classes_with_init_params(torchmetrics)
-leading_key = 'torchmetrics'
-all_definitions['metrics'][leading_key] = make_json_serializable(all_torchmetrics, leading_key=leading_key)
 
-# Extract classes from torch.optim.lr_scheduler and add to all_classes
-lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
-all_definitions['lr_schedulers'] = {}
-leading_key = 'torch>optim>lr_scheduler'
-all_definitions['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes)
+######################################################################
+# CONSTANTS
+######################################################################
+
+base_path = "repromodel_core/src/"
+
+tags_structure = { "tags_per_class": {}, "class_per_tag": { "task": {}, "subtask": {}, "modality": {}, "submodality": {} } }
+
+directories = [
+    "models", "preprocessing", "datasets", "augmentations",
+    "metrics", "losses", "early_stopping", "postprocessing"
+]
 
 loss_classes = [
     "L1Loss", "MSELoss", "CrossEntropyLoss", "CTCLoss", "NLLLoss", "PoissonNLLLoss",
@@ -307,99 +275,264 @@ loss_classes = [
     "TripletMarginWithDistanceLoss"
 ]
 
-# Extract classes from torch.nn for the specified loss classes
-loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
-leading_key = 'torch>nn>modules>loss'
-all_definitions['losses'][leading_key] = make_json_serializable(loss_classes_extracted, leading_key=leading_key)
-
-# Extract classes from torch.nn for the specified loss classes
-timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
-leading_key = 'timm>loss'
-all_definitions['losses'][leading_key] = make_json_serializable(timm_loss_classes_extracted, leading_key=leading_key)
-
 optimizer_classes = [
     "Adadelta", "Adagrad", "Adam", "AdamW", "SparseAdam", "Adamax", "ASGD", "LBFGS",
     "NAdam", "RAdam", "RMSprop", "Rprop", "SGD"
 ]
 
-# Extract classes from torch.optim for the specified optimizer classes
-optimizer_classes_extracted = extract_classes_with_init_params(optim, optimizer_classes)
-all_definitions['optimizers'] = {}
-leading_key = 'torch>optim'
-all_definitions['optimizers'][leading_key] = make_json_serializable(optimizer_classes_extracted, leading_key=leading_key)
 
-# Extract classes from timm.optimizers
-timm_optimizer_classes_extracted = extract_classes_with_init_params(timm_optim)
-leading_key = 'timm>optim'
-all_definitions['optimizers'][leading_key] = make_json_serializable(timm_optimizer_classes_extracted, leading_key=leading_key)
+######################################################################
+# MAIN METHOD
+######################################################################
 
-# Static choices
-all_definitions["batch_size"] = {
-    "type": "int",
-    "default": 1,
-    "range": "(1, 1024)"
-}
 
-all_definitions["monitor"] = {
-    "type": "str",
-    "default": "val_loss",
-    "options": "['train_loss', 'val_loss']"
-}
+if __name__ == "__main__":
 
-all_definitions["data_splits"] = {
-    "k": {
+    # Construct choices.json file by collecting all definitions from specified directories.
+    json_obj = {}
+
+
+    ######################################################################
+    # Key: load_from_checkpoint
+    # Description:
+    ######################################################################
+
+    json_obj["load_from_checkpoint"] = {
+        "type": "bool",
+        "default": False
+    }
+
+
+    ########################################################################################################################
+    # Key: ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "early_stopping", "postprocessing"]
+    ########################################################################################################################
+
+    for directory in directories:
+        full_path = os.path.join(base_path, directory)
+        directory_definitions = {}
+        for root, dirs, files in os.walk(full_path, topdown=True):
+            dirs[:] = [d for d in dirs if '.ipynb_checkpoints' not in d]
+            for file in files:
+                if file.endswith('.py'):
+                    file_path = os.path.join(root, file)
+                    definitions, tags = parse_python_file(file_path)
+                    if definitions:
+                        file_name_without_extension = os.path.splitext(file)[0]
+                        directory_definitions[file_name_without_extension] = definitions
+                    if tags:
+                        for class_name, class_info in tags.items():
+                            # Add to tags_per_class.
+                            full_class_name = f"{class_info['filename']}>{class_name}"
+                            tags_structure["tags_per_class"][full_class_name] = class_info['tags']
+                            
+                            # Add to class_per_tag.
+                            for key, values in class_info['tags'].items():
+                                for value in values:
+                                    if value not in tags_structure["class_per_tag"][key]:
+                                        tags_structure["class_per_tag"][key][value] = {}
+                                    if directory not in tags_structure["class_per_tag"][key][value]:
+                                        tags_structure["class_per_tag"][key][value][directory] = []
+                                    tags_structure["class_per_tag"][key][value][directory].append(full_class_name)
+        if directory_definitions:
+            json_obj[directory] = directory_definitions
+
+    # Convert sets to lists for JSON serialization.
+    for key, value in tags_structure["class_per_tag"].items():
+        for subkey, subvalue in value.items():
+            for directory, models in subvalue.items():
+                tags_structure["class_per_tag"][key][subkey][directory] = list(models)
+
+    for key, value in tags_structure["tags_per_class"].items():
+        for subkey, subvalue in value.items():
+            if isinstance(subvalue, set):
+                tags_structure["tags_per_class"][key][subkey] = list(subvalue)
+            elif isinstance(subvalue, dict):
+                tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
+    
+    
+    # Key: augmentations  >  torchvision>transforms
+    # Description: Extract torchvision augmentations.
+    all_tv_augs = extract_classes_with_init_params(torchvision.transforms)
+    leading_key = 'torchvision>transforms'
+    json_obj['augmentations'][leading_key] = make_json_serializable(all_tv_augs, leading_key=leading_key)
+
+    
+    # Key: metrics  >  torchmetrics
+    # Description: Extract torchmetric classes.
+    all_torchmetrics = extract_classes_with_init_params(torchmetrics)
+    leading_key = 'torchmetrics'
+    json_obj['metrics'][leading_key] = make_json_serializable(all_torchmetrics, leading_key=leading_key)
+
+    # Key: losses  >  torch>nn>modules>loss
+    # Description: Extract classes from torch.nn for the specified loss classes.
+    loss_classes_extracted = extract_classes_with_init_params(loss, loss_classes)
+    leading_key = 'torch>nn>modules>loss'
+    json_obj['losses'][leading_key] = make_json_serializable(loss_classes_extracted, leading_key=leading_key)
+
+    # Key: losses  >  timm>loss
+    # Description: Extract classes from torch.nn for the specified loss classes.
+    timm_loss_classes_extracted = extract_classes_with_init_params(timm_loss)
+    leading_key = 'timm>loss'
+    json_obj['losses'][leading_key] = make_json_serializable(timm_loss_classes_extracted, leading_key=leading_key)
+
+
+    ######################################################################
+    # Key: tags
+    # Description: The associated tags for each Python class.
+    ######################################################################
+    json_obj["tags"] = tags_structure
+
+    
+    ######################################################################
+    # Key: lr_schedulers
+    # Description: Various learning rate schedulers.
+    ######################################################################
+
+    # Extract classes from torch.optim.lr_scheduler and add to all_classes
+    lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)
+    json_obj['lr_schedulers'] = {}
+    leading_key = 'torch>optim>lr_scheduler'
+    json_obj['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes)
+
+
+    ######################################################################
+    # Key: optimizers
+    # Description: Various optimization algorithms.
+    ######################################################################
+
+    # Key: optimizers  >  torch>optim
+    # Extract classes from torch.optim for the specified optimizer classes
+    optimizer_classes_extracted = extract_classes_with_init_params(optim, optimizer_classes)
+    json_obj['optimizers'] = {}
+    leading_key = 'torch>optim'
+    json_obj['optimizers'][leading_key] = make_json_serializable(optimizer_classes_extracted, leading_key=leading_key)
+
+    # Key: optimizers  >  timm>optim
+    # Extract classes from timm.optimizers
+    timm_optimizer_classes_extracted = extract_classes_with_init_params(timm_optim)
+    leading_key = 'timm>optim'
+    json_obj['optimizers'][leading_key] = make_json_serializable(timm_optimizer_classes_extracted, leading_key=leading_key)
+
+
+    ######################################################################
+    # Key: batch_size
+    # Description: The batch size for training.
+    ######################################################################
+    
+    json_obj["batch_size"] = {
         "type": "int",
-        "default": 5,
-        "range": "(1, 20)"
-    },
-    "random_seed": {
-        "type": "int",
-    },
-}
+        "default": 1,
+        "range": "(1, 1024)"
+    }
 
-all_definitions["model_save_path"] = {
-    "type": "str",
-    "default": "repromodel_core/ckpts/"
-}
 
-all_definitions["tensorboard_log_path"] = {
-    "type": "str",
-    "default": "repromodel_core/logs"
-}
+    ######################################################################
+    # Key: monitor
+    # Description: Monitor the performance of the model.
+    ######################################################################
 
-all_definitions["progress_path"] = {
-    "type": "str",
-    "default": "repromodel_core/ckpts/progress.json"
-}
+    json_obj["monitor"] = {
+        "type": "str",
+        "default": "val_loss",
+        "options": "['train_loss', 'val_loss']"
+    }
 
-all_definitions["training_name"] = {
-    "type": "str",
-}
 
-# Choose device
-all_definitions["device"] = get_devices()
+    ######################################################################
+    # Key: data_splits
+    # Description:
+    ######################################################################
 
-# Convert sets to lists for JSON serialization
-for key, value in tags_structure["class_per_tag"].items():
-    for subkey, subvalue in value.items():
-        for directory, models in subvalue.items():
-            tags_structure["class_per_tag"][key][subkey][directory] = list(models)
+    json_obj["data_splits"] = {
+        "k": {
+            "type": "int",
+            "default": 5,
+            "range": "(1, 20)"
+        },
+        "random_seed": {
+            "type": "int",
+        }
+    }
 
-for key, value in tags_structure["tags_per_class"].items():
-    for subkey, subvalue in value.items():
-        if isinstance(subvalue, set):
-            tags_structure["tags_per_class"][key][subkey] = list(subvalue)
-        elif isinstance(subvalue, dict):
-            tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
 
-# Add tags_structure under "tags" key
-all_definitions["tags"] = tags_structure
+    ######################################################################
+    # Key: model_save_path
+    # Description: Output location for model.
+    ######################################################################
 
-# Merge tag_definitions with all_definitions
-all_definitions.update({"tags": tags_structure})
+    json_obj["model_save_path"] = {
+        "type": "str",
+        "default": "repromodel_core/ckpts/"
+    }
 
-# Save the collected data to a JSON file
-with open('repromodel_core/choices.json', 'w') as json_file:
-    json.dump(all_definitions, json_file, indent=4, default=str)
 
-print("Class definitions with __init__ parameters, types, default values, and tags have been extracted and grouped by directory in choices.json")
+    ######################################################################
+    # Key: tensorboard_log_path
+    # Description: Output location of Tensorboard logs.
+    ######################################################################
+
+    json_obj["tensorboard_log_path"] = {
+        "type": "str",
+        "default": "repromodel_core/logs"
+    }
+
+
+    ######################################################################
+    # Key: progress_path
+    # Description: Output location of progress.json.
+    ######################################################################
+
+    json_obj["progress_path"] = {
+        "type": "str",
+        "default": "repromodel_core/ckpts/progress.json"
+    }
+
+
+    ######################################################################
+    # Key: training_name
+    # Description:
+    ######################################################################
+
+    json_obj["training_name"] = {
+        "type": "str"
+    }
+
+
+    ######################################################################
+    # Key: device
+    # Description:
+    ######################################################################
+
+    json_obj["device"] = get_devices()
+
+
+    ######################################################################
+    # Convert Sets to Lists
+    ######################################################################
+    
+    for key, value in tags_structure["class_per_tag"].items():
+        for subkey, subvalue in value.items():
+            for directory, models in subvalue.items():
+                tags_structure["class_per_tag"][key][subkey][directory] = list(models)
+
+    for key, value in tags_structure["tags_per_class"].items():
+        for subkey, subvalue in value.items():
+            if isinstance(subvalue, set):
+                tags_structure["tags_per_class"][key][subkey] = list(subvalue)
+            elif isinstance(subvalue, dict):
+                tags_structure["tags_per_class"][key][subkey] = { k: list(v) if isinstance(v, set) else v for k, v in subvalue.items() }
+
+    # Add tags_structure under "tags" key.
+    json_obj["tags"] = tags_structure
+
+    # Merge tag_definitions with json_obj.
+    json_obj.update({"tags": tags_structure})
+
+
+    ######################################################################
+    # Write JSON Object to File
+    ######################################################################
+    with open('repromodel_core/choices.json', 'w') as json_file:
+        json.dump(json_obj, json_file, indent=4, default=str)
+
+    print("Class definitions with __init__ parameters, types, default values, and tags have been extracted and grouped by directory in choices.json")
