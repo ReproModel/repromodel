@@ -172,7 +172,7 @@ const ExperimentBuilder = ({
       <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
         
         {/* Start Training Button */}
-        { ~trainingInProgress && 
+        { !trainingInProgress && 
           <Button
             type = "submit"
             style = { { width: "170px" } }

@@ -44,14 +44,14 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
         
         .then(response => {
           if (response.data.testingInProgress === true) {
-            testingInProgress(true)
+            setTestingInProgress(true)
           } else {
-            testingInProgress(false)
+            setTestingInProgress(false)
           }
         })      
 
         .catch(error => {
-          testingInProgress(false)
+          setTestingInProgress(false)
         })
 
     }, 3000)
