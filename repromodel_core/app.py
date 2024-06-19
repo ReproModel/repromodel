@@ -1,11 +1,12 @@
 from flask import Flask, jsonify, Response, request, send_file
 from flask_cors import CORS
+from src.utils import copy_covered_files
 
 import json
 import ollama
 import os
+import psutil
 import subprocess
-from src.utils import copy_covered_files
 
 
 ######################################################################
@@ -74,13 +75,38 @@ for type_dir in TYPE_DIRS.values():
 ######################################################################
 
 
+# FUNCTION: Helper function to if process is running.
+def is_process_running(process_name):
+
+    app.logger.info("process_name: %s", process_name)
+    
+    for proc in psutil.process_iter():
+
+        try:
+            if proc.cmdline() == ['python3', process_name]:
+                return True, proc.info
+
+        except Exception as e:
+            app.logger.info("error: %s", e)
+            return False, None
+
+    return False, None
+
 # GET /ping
 # Description: Returns whether backend is up and running.
 @app.route('/ping', methods=['GET'])
 def ping():
+
+    # Check if training is in progress.
+    trainingInProgress, process_info  = is_process_running("trainer.py")
+    app.logger.info("trainingInProgress: %s", trainingInProgress)
+
+    # Check if testing is in progress.
+    testingInProgress, process_info = is_process_running("tester.py")
+    app.logger.info("testingInProgress: %s", testingInProgress)
     
     # Return HTTP 200 OK status code.
-    return jsonify({"message": "pong"}), 200
+    return jsonify({ "message": "pong", "trainingInProgress": trainingInProgress, "testingInProgress": testingInProgress }), 200
 
 
 # GET /generate-dummy-data

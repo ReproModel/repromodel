@@ -1,5 +1,6 @@
 import "./experiment-builder.css"
 
+import axios from "axios"
 import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
 import StopIcon from '@mui/icons-material/Stop'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
@@ -32,8 +33,33 @@ const ExperimentBuilder = ({
 
   const [trainingInProgress, setTrainingInProgress] = React.useState(false)
 
+  React.useEffect(() => {
+    
+    const interval = setInterval(() => {
+      
+      axios.get("http://127.0.0.1:5005/ping")
+        
+        .then(response => {
+          if (response.data.trainingInProgress === true) {
+            setTrainingInProgress(true)
+          } else {
+            setTrainingInProgress(false)
+          }
+        })      
+
+        .catch(error => {
+          setTrainingInProgress(false)
+        })
+
+    }, 3000)
+
+    return () => clearInterval(interval)
+
+  }, [])
+
   return (
     <Form>
+      
       {/* Optional JSON file upload input. */}
       <Typography className="json-input-file-label">
         Optionally upload existing configuration file.
@@ -146,30 +172,29 @@ const ExperimentBuilder = ({
       <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
         
         {/* Start Training Button */}
-      
-            <Button
-              type = "submit"
-              style = { { width: "170px" } }
-              onClick = { () => setFieldValue("submitType", "training") }
-            >
-              <PlayArrowIcon />
-              Train
-            </Button>
-        
-        
+        { ~trainingInProgress && 
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => setFieldValue("submitType", "training") }
+          >
+            <PlayArrowIcon />
+            Train
+          </Button>  
+        }
 
         {/* Stop Training Button */}
+        { trainingInProgress && 
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => setFieldValue("submitType", "stop-training") }
+          >
+            <StopIcon/>
+            Stop Training
+          </Button>
+        }
         
-            <Button
-              type = "submit"
-              style = { { width: "170px" } }
-              onClick = { () => setFieldValue("submitType", "stop-training") }
-            >
-              <StopIcon/>
-              Stop Training
-            </Button>
-        
-
         {/* Download Config Button */}
         <Button
           type = "submit"
