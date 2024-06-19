@@ -59,14 +59,14 @@ function App() {
 
                 { selectedSection === "Custom Script" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
                     <CustomScript/>
                   </>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
                     <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -78,7 +78,7 @@ function App() {
 
                 { selectedSection === "Model Testing" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Model Testing</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Model Testing</Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -90,14 +90,14 @@ function App() {
 
                 { selectedSection === "Progress Viewer" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
                   </>
                 )}
                 
                 { selectedSection === "LLM Description" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>LLM Description</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>LLM Description</Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }

@@ -38,7 +38,10 @@
   height: 100%;
   max-height: calc(85vh - 32px);
   border-radius: 8px;
-  padding: 64px;
+  padding-left: 64px;
+  padding-right: 64px;
+  padding-top: 30px;
+  padding-bottom: 64px;
   overflow-y: scroll;
 }
 

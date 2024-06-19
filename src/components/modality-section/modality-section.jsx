@@ -100,10 +100,26 @@ const ModalitySection = ({
   const selectedModels = getModels(selectedOptions, class_per_tag);
 
   return (
-    <div className="container">
-      <div className="button-row">
-        {selectedModels.length > 0 ? (
-          <>
+    <div>
+      <p className = "model-count">Filtered Models: { selectedModels.length }</p>
+    
+      <div className="container">
+
+        {/* <div className="button-row">
+          {selectedModels.length > 0 ? (
+            <>
+              <button
+                type="submit"
+                className="start-building-button"
+                onClick={() => {
+                  setFilterChoosen(true);
+                  setSelectedModels(selectedModels);
+                }}
+              >
+                Start Building
+              </button>
+            </>
+          ) : (
             <button
               type="submit"
               className="start-building-button"
@@ -112,41 +128,60 @@ const ModalitySection = ({
                 setSelectedModels(selectedModels);
               }}
             >
-              Start Building
+              Skip Filter
             </button>
-          </>
-        ) : (
-          <button
-            type="submit"
-            className="start-building-button"
-            onClick={() => {
-              setFilterChoosen(true);
-              setSelectedModels(selectedModels);
-            }}
-          >
-            Skip Filter
-          </button>
-        )}
-        <p className="model-count">Filtered Models: {selectedModels.length}</p>
-      </div>
-      {Object.entries(class_per_tag).map(([category, options]) => (
-        <>
-          <Typography
-            style={{ marginTop: "16px", marginBottom: "4px" }}
-            variant="h7"
-          >
-            Choose {capitalizeFirstLetter(category)}
-          </Typography>
+          )}
+        </div> */}
+        {Object.entries(class_per_tag).map(([category, options]) => (
+          <>
+            <Typography
+              style={{ marginTop: "16px", marginBottom: "4px", fontSize: "10px", marginLeft: "2px" }}
+            >
+              Choose <strong>{capitalizeFirstLetter(category)}</strong>
+            </Typography>
 
-          <ModalityOptions
-            options={options}
-            onOptionClick={handleOptionClick}
-            selectedOptions={selectedOptions[category] || []}
-            group={category}
-          />
-        </>
-      ))}
+            <ModalityOptions
+              options={options}
+              onOptionClick={handleOptionClick}
+              selectedOptions={selectedOptions[category] || []}
+              group={category}
+            />
+          </>
+        ))}
+
+      </div>
+
+      <div className="button-row">
+          {selectedModels.length > 0 ? (
+            <>
+              <button
+                type="submit"
+                className="start-building-button"
+                onClick={() => {
+                  setFilterChoosen(true);
+                  setSelectedModels(selectedModels);
+                }}
+              >
+                Start Building
+              </button>
+            </>
+          ) : (
+            <button
+              type="submit"
+              className="start-building-button"
+              onClick={() => {
+                setFilterChoosen(true);
+                setSelectedModels(selectedModels);
+              }}
+            >
+              Skip Filter
+            </button>
+          )}
+        </div>
+
     </div>
+
+    
   );
 };
 
