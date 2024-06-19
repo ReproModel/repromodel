@@ -289,7 +289,7 @@ def create_repo():
         github_token = data['github_token']
         repo_name = data['repo_name']
         description = data.get('description', '')
-        private = data.get('private', False)
+        privacy = data.get('privacy', '')
         local_directory = 'repromodel_core/extracted_code/repromodel_core'  # Ensure this directory is correct
 
         app.logger.info(f"Creating GitHub repository '{repo_name}'")
@@ -299,12 +299,12 @@ def create_repo():
         json_data = {
             'name': repo_name,
             'description': description,
-            'private': private
+            'private': True if privacy=="private" else False
         }
         response = requests.post('https://api.github.com/user/repos', headers=headers, json=json_data)
         
         if response.status_code == 201:
-            message = f"Successfully created a {'private' if private else 'public'} repository '{repo_name}' on GitHub"
+            message = f"Successfully created a {privacy} repository '{repo_name}' on GitHub"
             app.logger.info(message)
         else:
             app.logger.error(f"Error creating repository: {response.json()}")
