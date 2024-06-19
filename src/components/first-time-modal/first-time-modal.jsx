@@ -68,31 +68,36 @@ const FirstTimeModal = () => {
           {/* Step 1 - Generate Dummy Data */}
           <Typography className = "modal-step-one">
             <strong>1. Generate dummy data.</strong>
-            &nbsp;
-            repromodel_core/data/dummyData/input
+            <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>repromodel_core/data/dummyData/input</Typography>
           </Typography>
           
           <Button variant = "contained" className = "modal-button" onClick = { handleGenerate }>
             Generate
           </Button>
           
-          {/* Step 2 - Download Training Configuration */}
+          {/* Step 2 - Download Configuration */}
           <Typography className = "modal-step-two">
-            <strong>2. Download training configuration.</strong>
-            &nbsp;
-            DemoTrainingConfig.json
+            <strong>2. Download configuration file.</strong>
+            <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>DemoConfig.json</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoTrainingConfig', 'json') }>
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') }>
             Download
           </Button>
-          
+                  
           {/* Confirmation Message */}
           { confirmationMessage && (
             <Typography className = "modal-confirmation" style = { { color: 'green' } }>
               { confirmationMessage }
             </Typography>
           )}
+
+          {/* Step 3 - Upload */}
+          <Typography className = "modal-step-two">
+            <strong>3. Upload the downloaded file in Export Builder.</strong>
+          </Typography>
+
+          <img src = "file_input.jpg" style = { { width: "75%" } } />
 
           {/* Parting Message */}
           <Typography className = "modal-message">Happy developing with ReproModel 😎</Typography>
