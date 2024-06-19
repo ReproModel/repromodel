@@ -320,7 +320,7 @@ def create_repo():
         run_command(['git', 'push', '-u', 'origin', 'main'])  # Push to the 'main' branch
 
         app.logger.info(f"Code from '{local_directory}' pushed to GitHub repository '{repo_name}'")
-        return jsonify({"status": "success", "message": message + ". Code is pushed successfully"}), 200
+        return jsonify({"status": "success", "message": f'{message}. Code available at https://github.com/{response.json()["owner"]["login"]}/{repo_name}'}), 200
 
     except Exception as e:
         app.logger.error(f"Error: {e}")
