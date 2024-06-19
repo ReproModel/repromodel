@@ -94,7 +94,7 @@ const FirstTimeModal = () => {
 
           {/* Step 3 - Upload */}
           <Typography className = "modal-step-two">
-            <strong>3. Upload the downloaded file in Export Builder.</strong>
+            <strong>3. Upload the downloaded file in Experiment Builder.</strong>
           </Typography>
 
           <img src = "file_input.jpg" style = { { width: "75%" } } />
