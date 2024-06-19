@@ -269,7 +269,9 @@ def copy_files_endpoint():
     try:
         coverage_json_path = "repromodel_core/extracted_code/coverage.json"
         root_folder = "repromodel_core/extracted_code"
-        additional_files = ["repromodel_core/tester.py", "repromodel_core/experiment_config.json"]
+        additional_files = ["repromodel_core/tester.py", 
+                            "repromodel_core/experiment_config.json",
+                            "repromodel_core/requirements.txt"]
         try:
             copy_covered_files(coverage_json_path, root_folder, additional_files)
             return jsonify({"status": "success", "message": "Files copied successfully"}), 200
@@ -306,7 +308,7 @@ def create_repo():
             app.logger.info(message)
         else:
             app.logger.error(f"Error creating repository: {response.json()}")
-            return jsonify({"status": "error", "message": response.json()}), 500
+            return jsonify({"status": "error", "message": f"Failed to create a GitHub repo. Make sure you entered the right API key and that the repository doesn't already exist. {response.json()}"}), 500
 
         # Initialize local repository and push to GitHub
         os.chdir(local_directory)
