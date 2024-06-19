@@ -1,9 +1,12 @@
 import os
 import json
 import ast
+import numpy as np
 import torch
 from datetime import datetime
 import collections
+from torchvision.models.inception import InceptionOutputs
+from torchvision.models.googlenet import GoogLeNetOutputs
 
 def parse_constructor_params(node):
     """Extract constructor parameters and type annotations from a class node."""
@@ -27,6 +30,27 @@ def get_classes_from_module(file_path, exclude_params={'transforms', 'mode', 'in
                     params.pop(param, None)
                 classes[n.name] = params
     return classes
+
+def one_hot_encode(labels, num_classes, type="numpy"):
+    if type=="numpy":
+        # Create an identity matrix of shape (num_classes, num_classes)
+        identity_matrix = np.eye(num_classes)
+        
+        # Use the labels to index into the identity matrix
+        one_hot_encoded = identity_matrix[labels]
+        
+        return one_hot_encoded
+    elif type=="tensor":
+        # Ensure labels are a tensor
+        labels = torch.tensor(labels, dtype=torch.long)
+        
+        # Create a tensor of zeros with shape (len(labels), num_classes)
+        one_hot_encoded = torch.zeros(labels.size(0), num_classes, dtype=torch.float)
+        
+        # Scatter 1s to the correct positions
+        one_hot_encoded.scatter_(1, labels.unsqueeze(1), 1.0)
+        
+        return one_hot_encoded
 
 def load_cfg(metadata_path):
     """
@@ -167,16 +191,19 @@ def load_and_replace_keys(file_path):
     # Parse the modified string back to JSON
     return json.loads(modified_data)
 
-def replace_in_string(data):
+def replace_in_string(data, replace_str='>', replace_with = '.'):
     # Convert the dict or JSON string to a JSON string
     if isinstance(data, dict):
         data_str = json.dumps(data)
     else:
         data_str = data
     
-    # Replace all '>' with '.'
-    modified_data_str = data_str.replace('>', '.')
-    
+    try:
+        # Replace all '>' with '.'
+        modified_data_str = data_str.replace(replace_str, replace_with)
+    except Exception as e:
+        print_to_file(f"Replacing {replace_str} with {replace_with} in config failed with error {e}.")
+
     # Convert the modified string back to a dict
     return json.loads(modified_data_str)
 
@@ -204,8 +231,6 @@ def extract_output(outputs, model_type=None):
     Returns:
     torch.Tensor or dict: The standardized primary output tensor or dict.
     """
-    from torchvision.models.inception import InceptionOutputs
-    from torchvision.models.googlenet import GoogLeNetOutputs
     
     if model_type in ['maskrcnn', 'keypointrcnn', 'fasterrcnn']:
         # For FasterRCNN, MaskRCNN, and KeypointRCNN, we expect a list of dictionaries with keys 'boxes', 'labels', 'scores', etc.
@@ -223,7 +248,11 @@ def extract_output(outputs, model_type=None):
 
     if isinstance(outputs, InceptionOutputs) or isinstance(outputs, GoogLeNetOutputs):
         # For InceptionV3 and GoogLeNet, return the primary output (logits) and auxiliary logits if available
-        return outputs.logits, getattr(outputs, 'aux_logits', None)
+        aux_logits = getattr(outputs, 'aux_logits', None)
+        if aux_logits is not None:
+            return outputs.logits, aux_logits
+        else:
+            return outputs.logits
 
     if isinstance(outputs, torch.Tensor):
         # If the output is already a tensor, return it directly

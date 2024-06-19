@@ -1,39 +1,54 @@
-.container {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: auto;
-    margin-left: 25px;
-}
-
-.label {
-    padding-top: 20px;
-    font-size: 2.2em;
-}
-
 .category-container {
-    padding-top: 20px;
-    margin-left: 30px;
+    display: flex;
 }
 
 .category-dropdown {
-    margin-left: 10px;
-    padding-left: 5px;
-    appearance: none;
-    -webkit-appearance: none;
-    width: 30%;
-    height: 25px;
-    font-size: 1.15rem;
-    background-color: #fff;
-    border: 1px solid #caced1;
-    border-radius: 0.25rem;
-    color: #000;
-    cursor: pointer;
+    width: 50%;
+    height: 50%;
+    padding-top: 16px;
 }
 
-.file-name-input-container {
-    margin-left: 30px;
+.load-template-button {
+    margin-top: 16px;
+    margin-left: 5px;
+    width: auto;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.775rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.load-template-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
+}
+
+
+.container-editor-area {
+    max-height: 800px;
+    tab-size: 4ch;
+    overflow: auto;
+    border: 3px dotted #ccc;
+    margin: 14px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.container-editor {
+    min-height: 800px;
+    overflow-y: scroll;
+    font-size: 12px;
+    font-variant-ligatures: common-ligatures;
+    background-color: #fafafa;
+    border-radius: 3px;
+    font-family: "Fira code", "Fira Mono", monospace;
+}
+
+.container-editor textarea {
+    outline: 0;
 }
 
 .file-name-input {
@@ -43,34 +58,12 @@
     -webkit-appearance: none;
     width: 45%;
     height: 25px;
-    font-size: 1.15rem;
+    font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: #000;
     cursor: pointer;
-}
-
-.load-template-button {
-    margin-left: 5px;
-    width: 120px;
-    height: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    font-size: 0.775rem;
-    font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
-    line-height: 0px;
-}
-
-.load-template-button:hover {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    opacity: 70%;
-}
-
-select, button {
-    vertical-align: top;
 }
 
 .container-content {
@@ -98,10 +91,6 @@ select, button {
 
 .container-editor textarea {
     outline: 0;
-}
-
-.button-container {
-    margin-left: 30px;
 }
 
 .button {

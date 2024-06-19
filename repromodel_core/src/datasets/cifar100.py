@@ -1,39 +1,45 @@
-from torchvision.datasets import VOCSegmentation
-from sklearn.model_selection import KFold, train_test_split
+import os
 import numpy as np
-from typing import Any, Callable, Dict, List, Optional, Tuple, Union
-from pathlib import Path
 from PIL import Image
-import unittest
+from torchvision.datasets import CIFAR100
+from sklearn.model_selection import KFold, train_test_split
+from typing import Any, Callable, List, Optional, Union, Tuple
 from ..decorators import enforce_types_and_ranges, tag
+from ..utils import one_hot_encode
+import unittest
 
-@tag(task=["segmentation"], subtask=["semantic"], modality=["images"], submodality=["RGB"])
-class VOCSegmentationDataset(VOCSegmentation):
+@tag(task=["classification"], subtask=["image"], modality=["images"], submodality=["RGB"])
+class CIFAR100Dataset(CIFAR100):
     @enforce_types_and_ranges({
-        'root': {'type': (str, Path), 'default': "repromodel_core/data/voc_dataset"},
-        'year': {'type': str, 'default': "2012", 'options': ["2007", "2008", "2009", "2010", "2011", "2012"]},
-        'image_set': {'type': str, 'default': "train", 'options': ["train", "trainval", "val", "test"]},
-        'download': {'type': bool, 'default': False},
+        'root': {'type': str, 'default': "repromodel_core/data/cifar100"},
+        'train': {'type': bool, 'default': True},
         'transform': {'type': Callable, 'default': None},
         'target_transform': {'type': Callable, 'default': None},
-        'transforms': {'type': Callable, 'default': None},
-        })
-    def __init__(self, root, year="2012", image_set="trainval", download=False, transform=None, target_transform=None, transforms=None):
-        super().__init__(root, year, image_set, download, transform, target_transform, transforms)
-        
+        'download': {'type': bool, 'default': False},
+    })
+    def __init__(self, root: str, train: bool = True, transform: Optional[Callable] = None,
+                 target_transform: Optional[Callable] = None, download: bool = False) -> None:
+        self.downloaded = download
+        super().__init__(root=root, train=train, transform=transform, target_transform=target_transform, download=download)
+
         # Initialize indices for cross-validation
-        self.download = download
         self.indices = None
         self.current_fold = None
         self.mode = 'train'
+        self.train_data = self.data
+        self.train_targets = self.targets
+
+        if not train:
+            self.test_data = self.data
+            self.test_targets = self.targets
 
     def set_mode(self, mode: str):
         if mode not in ['train', 'val', 'test']:
             raise ValueError("Mode should be 'train', 'val', or 'test'")
         self.mode = mode
 
-    def set_transforms(self, transforms):
-        self.transforms = transforms.get_transforms()
+    def set_transforms(self, transform):
+        self.transform = transform
 
     def set_fold(self, fold: int):
         if self.indices is None:
@@ -43,12 +49,11 @@ class VOCSegmentationDataset(VOCSegmentation):
         self.current_fold = fold
         self.train_indices = self.indices[fold]['train']
         self.val_indices = self.indices[fold]['val']
-        self.test_indices = self.indices[fold]['test']
 
     def generate_indices(self, k: int = 5, test_size: float = 0.2, random_seed: int = 42):
         kf = KFold(n_splits=k, shuffle=True, random_state=random_seed)
         self.indices = []
-        all_indices = np.arange(len(self.images))
+        all_indices = np.arange(len(self.data))
         for train_val_idx, test_idx in kf.split(all_indices):
             train_idx, val_idx = train_test_split(train_val_idx, test_size=test_size, random_state=random_seed)
             self.indices.append({
@@ -74,41 +79,46 @@ class VOCSegmentationDataset(VOCSegmentation):
         elif self.mode == 'test':
             index = self.test_indices[index]
 
-        img = Image.open(self.images[index]).convert("RGB")
-        target = Image.open(self.masks[index])
+        img, target = self.data[index], self.targets[index]
 
-        if self.transforms is not None:
+        img = Image.fromarray(img)
+
+        if self.transform is not None:
+            transformations = self.transform.get_transforms()
             try:
-                #torchvision transforms
-                img = self.transforms(img)
-                target = self.transforms(target)
-            except:
-                #albumentation transforms 
+                # Try to apply torchvision transforms
+                img = transformations(img)
+            except TypeError:
+                # Apply albumentations transforms
                 img_np = np.array(img)
-                target_np = np.array(target)
-                transformed = self.transforms(image=img_np, mask=target_np)
-                img, target = transformed['image'], transformed['mask']
-                
-        target = np.stack((target, 1-target), axis=-1)
-        return img, target
+                transformed = transformations(image=img_np)
+                img = Image.fromarray(transformed['image'])
 
-class _TestVOCSegmentationDataset(unittest.TestCase):
+        if self.target_transform is not None:
+            target = self.target_transform(target)
+
+        target = one_hot_encode(labels=target, num_classes=100, type="numpy")
+        return img, target
+    
+class _TestCIFAR100Dataset(unittest.TestCase):
     def test_initialization(self):
         # Test with default parameters
-        dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation", download=False)
-        self.assertIsInstance(dataset, VOCSegmentationDataset, "Dataset is not an instance of VOCSegmentationDataset")
-        self.assertEqual(dataset.year, "2012", "Default year is not 2012")
-        self.assertEqual(dataset.image_set, "trainval", "Default image_set is not 'trainval'")
-        self.assertFalse(dataset.download, "Default download is not False")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", download=False)
+        self.assertIsInstance(dataset, CIFAR100Dataset, "Dataset is not an instance of CIFAR100Dataset")
+        self.assertTrue(dataset.train, "Default train is not True")
+        self.assertFalse(dataset.downloaded, "Default download is not False")
 
         # Test with custom parameters
-        dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation", year="2010", image_set="val", download=True)
-        self.assertEqual(dataset.year, "2010", "Custom year is not 2010")
-        self.assertEqual(dataset.image_set, "val", "Custom image_set is not 'val'")
-        self.assertTrue(dataset.download, "Custom download is not True")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", train=False, download=True)
+        self.assertFalse(dataset.train, "Custom train is not False")
+        self.assertTrue(dataset.downloaded, "Custom download is not True")
+        # Check if the dataset files exist
+        data_dir = os.path.join("repromodel_core/data/cifar100", "cifar-100-python")
+        self.assertTrue(os.path.isdir(data_dir), "Dataset directory does not exist after downloading")
+        self.assertGreater(len(os.listdir(data_dir)), 0, "Dataset directory is empty after downloading")
 
     def test_set_mode(self):
-        dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
         dataset.set_mode('val')
         self.assertEqual(dataset.mode, 'val', "Mode is not set to 'val'")
 
@@ -116,7 +126,7 @@ class _TestVOCSegmentationDataset(unittest.TestCase):
             dataset.set_mode('invalid')
 
     def test_generate_indices_and_set_fold(self):
-        dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation")
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
         dataset.generate_indices(k=5)
         self.assertEqual(len(dataset.indices), 5, "Number of generated folds is not 5")
 
@@ -127,18 +137,20 @@ class _TestVOCSegmentationDataset(unittest.TestCase):
         self.assertIn('test', dataset.indices[0], "Test indices not found in fold 0")
 
         with self.assertRaises(RuntimeError, msg="Setting fold without generating indices did not raise an error"):
-            dataset_no_indices = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation")
+            dataset_no_indices = CIFAR100Dataset(root="repromodel_core/data/cifar100")
             dataset_no_indices.set_fold(0)
 
         with self.assertRaises(ValueError, msg="Setting fold to an out-of-range value did not raise an error"):
             dataset.set_fold(5)
-    
-    def test_voc_segmentation_tags(self):
-        dataset = VOCSegmentationDataset(root="repromodel_core/data/voc_segmentation")
-        self.assertEqual(dataset.task, ["segmentation"], "Task tag is incorrect")
-        self.assertEqual(dataset.subtask, ["semantic"], "Subtask tag is incorrect")
+
+    def test_cifar100_tags(self):
+        dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100")
+        self.assertEqual(dataset.task, ["classification"], "Task tag is incorrect")
+        self.assertEqual(dataset.subtask, ["image"], "Subtask tag is incorrect")
         self.assertEqual(dataset.modality, ["images"], "Modality tag is incorrect")
         self.assertEqual(dataset.submodality, ["RGB"], "Submodality tag is incorrect")
 
 if __name__ == "__main__":
+    #for the first run
+    #dataset = CIFAR100Dataset(root="repromodel_core/data/cifar100", download=True)
     unittest.main()

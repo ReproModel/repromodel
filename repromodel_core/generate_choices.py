@@ -283,11 +283,6 @@ for key, value in tags_structure["tags_per_class"].items():
 # Add tags_structure under "tags" key
 all_definitions["tags"] = tags_structure
 
-# Extract torchvision datasets
-all_tv_datasets = extract_classes_with_init_params(torchvision.datasets)
-leading_key = 'torchvision>datasets'
-all_definitions['datasets'][leading_key] = make_json_serializable(all_tv_datasets, leading_key=leading_key)
-
 # Extract torchvision augmentations
 all_tv_augs = extract_classes_with_init_params(torchvision.transforms)
 leading_key = 'torchvision>transforms'
@@ -297,17 +292,6 @@ all_definitions['augmentations'][leading_key] = make_json_serializable(all_tv_au
 all_torchmetrics = extract_classes_with_init_params(torchmetrics)
 leading_key = 'torchmetrics'
 all_definitions['metrics'][leading_key] = make_json_serializable(all_torchmetrics, leading_key=leading_key)
-
-# Extract segmentation-models-pytorch classes
-# smp_classes = ["Unet", "UnetPlusPlus", "MAnet", "Linknet", "FPN", "PSPNet", "DeepLabV3", "DeepLabV3Plus", "PAN"]
-# all_smp = extract_classes_with_init_params(segmentation_models_pytorch, smp_classes)
-# leading_key = 'segmentation_models_pytorch'
-# all_definitions['models'][leading_key] = make_json_serializable(all_smp, leading_key=leading_key)
-
-# Extract timm models classes
-# all_timm = extract_classes_with_init_params(timm.models)
-# leading_key = 'timm>models'
-# all_definitions['models'][leading_key] = make_json_serializable(all_timm, leading_key=leading_key)
 
 # Extract classes from torch.optim.lr_scheduler and add to all_classes
 lr_scheduler_classes = extract_classes_with_init_params(lr_scheduler)

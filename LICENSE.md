@@ -1,8 +1,8 @@
-# LICENSE
+# License - ReproModel
 
 ## MIT License
 
-Copyright (c) ReproModel
+Copyright (c) Dario Sitnik
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+# License - TorchVision
+[https://github.com/pytorch/vision/blob/main/LICENSE](https://github.com/pytorch/vision/blob/main/LICENSE)
 
 ## BSD 3-Clause License
 
@@ -51,6 +55,10 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+# License - PyTorch Image Models
+[https://github.com/huggingface/pytorch-image-models/blob/main/LICENSE](https://github.com/huggingface/pytorch-image-models/blob/main/LICENSE)
 
 ## Apache License 2.0
 

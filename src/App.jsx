@@ -59,7 +59,7 @@ function App() {
 
                 { selectedSection === "Custom Script" && (
                   <>
-                    <Typography variant = "h4" style = { { marginLeft: "10px", marginTop: "20px" } }>Create Custom Script</Typography>
+                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
                     <CustomScript/>
                   </>
                 )}

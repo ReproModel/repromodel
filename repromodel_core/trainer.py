@@ -40,27 +40,32 @@ def train(input_data):
 
     # load model from last checkpoint
     if cfg.load_from_checkpoint:
-        progress = load_json(cfg.progress_path)
-        cfg = edict(cfg)
+        try:
+            progress = load_json(cfg.progress_path)
+            cfg = edict(cfg)
 
-        # Get model index, fold, and epoch from metadata
-        model_min = cfg.models.index(progress['model_name'])
-        k_min = progress['fold']
-        epoch_min = progress['epoch']
-        print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
+            # Get model index, fold, and epoch from metadata
+            model_min = cfg.models.index(progress['model_name'])
+            k_min = progress['fold']
+            epoch_min = progress['epoch']
+            print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
+
+        except Exception as e:
+            print_to_file(f"Loading from checkpoint failed with error {e}")
 
     # Get preprocessing, augmentation, and dataset configurations
-    preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing
-    preprocessor = configure_component(preprocessor_path, cfg.preprocessing_params[cfg.preprocessing])
-    #preprocess the dataset
-    preprocessor.preprocess()
+    if "preprocessing" in cfg:
+        preprocessor_path = SRC_DIR + "preprocessing." + cfg.preprocessing
+        preprocessor = configure_component(preprocessor_path, cfg.preprocessing_params[cfg.preprocessing])
+        #preprocess the dataset
+        preprocessor.preprocess()
 
     augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations
     augmentor = configure_component(augmentor_path, cfg.augmentations_params[cfg.augmentations])
     dataset_path = SRC_DIR + "datasets." + cfg.datasets
     dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
-    dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     dataset.set_transforms(augmentor)
+    dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
     # Get metrics, model, optimizer, scheduler, loss function, and early stopper
     train_metrics, val_metrics = [], []
     
@@ -246,7 +251,14 @@ def train(input_data):
 
 # Example usage
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Train a PyTorch model')
-    parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
-    args = parser.parse_args()
-    train(args.input_data)
+    try:
+        parser = argparse.ArgumentParser(description='Train a PyTorch model')
+        parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
+        args = parser.parse_args()
+    except:
+        print_to_file("Parsing arguments failed")
+
+    try:
+        train(args.input_data)
+    except:
+        print_to_file("Trainer function failed. Exiting with an error!")

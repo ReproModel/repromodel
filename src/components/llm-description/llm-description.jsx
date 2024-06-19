@@ -33,7 +33,7 @@ const supportedLLMs = [
 
 const LLMDescription = () => {
 
-  // LLM Option
+  // Config File
   const [config, setConfig] = React.useState("")
 
   // LLM Model
@@ -205,6 +205,7 @@ const LLMDescription = () => {
             <Typography className = "textarea-llm-response-label">LLM Response</Typography>
 
             <div className = "container-content" style = {{width: "100%"}}>
+              
               <div className = "container-editor-area">
                 <Editor
                   className = "container-editor"

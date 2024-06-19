@@ -143,7 +143,7 @@ const ExperimentBuilder = ({
           type="submit"
           onClick={() => setFieldValue("submitType", "training")}
         >
-          Submit for Training
+          Train
         </Button>
 
         <Button
