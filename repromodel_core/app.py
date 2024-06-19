@@ -5,8 +5,8 @@ import json
 import ollama
 import os
 import subprocess
+import requests
 from src.utils import copy_covered_files
-
 
 ######################################################################
 # CONSTANTS
@@ -258,12 +258,20 @@ def submit_config_start_training_():
         return jsonify({'error': error_message}), 500
 
 
+######################################################################
+# API ENDPOINTS - Code Extractor
+######################################################################
+
+# POST /copy-covered-files
+# Description: Copies experiment-specific code and files to the extracted_code folder  
 @app.route('/copy-covered-files', methods=['POST'])
 def copy_files_endpoint():
     try:
         coverage_json_path = "repromodel_core/extracted_code/coverage.json"
         root_folder = "repromodel_core/extracted_code"
-        additional_files = ["repromodel_core/tester.py", "repromodel_core/experiment_config.json"]
+        additional_files = ["repromodel_core/tester.py", 
+                            "repromodel_core/experiment_config.json",
+                            "repromodel_core/requirements.txt"]
         try:
             copy_covered_files(coverage_json_path, root_folder, additional_files)
             return jsonify({"status": "success", "message": "Files copied successfully"}), 200
@@ -271,12 +279,65 @@ def copy_files_endpoint():
             return  jsonify({"status": "error", "message": "Copying files failed with error:" + str(e)}), 500
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
-    
+
+# POST /create-repo
+# Description: Creates a repository on user's GitHub profile      
+@app.route('/create-repo', methods=['POST'])
+def create_repo():
+    try:
+        data = request.get_json()
+        github_token = data['github_token']
+        repo_name = data['repo_name']
+        description = data.get('description', '')
+        private = data.get('private', False)
+        local_directory = 'repromodel_core/extracted_code/repromodel_core'  # Ensure this directory is correct
+
+        app.logger.info(f"Creating GitHub repository '{repo_name}'")
+
+        # Create the repository on GitHub
+        headers = {'Authorization': f'token {github_token}'}
+        json_data = {
+            'name': repo_name,
+            'description': description,
+            'private': private
+        }
+        response = requests.post('https://api.github.com/user/repos', headers=headers, json=json_data)
+        
+        if response.status_code == 201:
+            message = f"Successfully created a {'private' if private else 'public'} repository '{repo_name}' on GitHub"
+            app.logger.info(message)
+        else:
+            app.logger.error(f"Error creating repository: {response.json()}")
+            return jsonify({"status": "error", "message": f"Failed to create a GitHub repo. Make sure you entered the right API key and that the repository doesn't already exist. {response.json()}"}), 500
+
+        # Initialize local repository and push to GitHub
+        os.chdir(local_directory)
+        run_command(['git', 'init'])
+        run_command(['git', 'remote', 'add', 'origin', f'https://github.com/{response.json()["owner"]["login"]}/{repo_name}.git'])
+        run_command(['git', 'add', '.'])
+        run_command(['git', 'commit', '-m', 'Initial commit'])
+        run_command(['git', 'branch', '-M', 'main'])  # Rename the default branch to 'main'
+        run_command(['git', 'push', '-u', 'origin', 'main'])  # Push to the 'main' branch
+
+        app.logger.info(f"Code from '{local_directory}' pushed to GitHub repository '{repo_name}'")
+        return jsonify({"status": "success", "message": message + ". Code is pushed successfully"}), 200
+
+    except Exception as e:
+        app.logger.error(f"Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+def run_command(command):
+    try:
+        result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        app.logger.info(result.stdout.decode('utf-8'))
+    except subprocess.CalledProcessError as e:
+        app.logger.error(f"Command '{' '.join(e.cmd)}' returned non-zero exit status {e.returncode}")
+        app.logger.error(e.stderr.decode('utf-8'))
+        raise
 
 ######################################################################
 # API ENDPOINTS - Model Testing
 ######################################################################
-
 
 # POST /submit-config-start-testing
 # Description: Start the testing process from frontend.    

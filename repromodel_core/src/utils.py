@@ -194,6 +194,10 @@ def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
     # Get the list of covered filenames
     filenames = get_covered_filenames(coverage_json_path, additional_files)
     
+    # Delete previously extracted files
+    if os.path.exists(root_folder):
+        shutil.rmtree(root_folder)
+
     for filename in filenames:
         # Determine the source and destination paths
         src_path = os.path.abspath(filename)
