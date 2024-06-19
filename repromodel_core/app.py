@@ -258,6 +258,30 @@ def submit_config_start_training_():
         return jsonify({'error': error_message}), 500
 
 
+# POST /kill-training-process
+# Description: Kill the training process started from frontend.
+@app.route('/kill-training-process', methods=['POST'])
+def kill_training_process():
+
+    try:        
+
+        # Kill the training process.
+        subprocess.run(['pkill', '-f', 'trainer.py'])
+        app.logger.info("Process with name 'trainer' killed successfully.")
+
+        return jsonify({'message': "Process with name 'trainer' killed successfully."})
+
+    except Exception as e:
+
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
+
+
+# POST /copy-covered-files
+# Description:
 @app.route('/copy-covered-files', methods=['POST'])
 def copy_files_endpoint():
     try:
@@ -321,6 +345,27 @@ def submit_config_start_testing_():
         # Return HTTP 500 Internal Server Error status code.
         return jsonify({'error': error_message}), 500
 
+
+# POST /kill-testing-process
+# Description: Kill the testing process started from frontend.
+@app.route('/kill-testing-process', methods=['POST'])
+def kill_testing_process():
+
+    try:        
+
+        # Kill the testing process.
+        subprocess.run(['pkill', '-f', 'tester.py'])
+        app.logger.info("Process with name 'tester' killed successfully.")
+
+        return jsonify({'message': "Process with name 'tester' killed successfully."})
+
+    except Exception as e:
+
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
 
 
 ######################################################################

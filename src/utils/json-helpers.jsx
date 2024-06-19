@@ -126,6 +126,21 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
+  } else if (values.submitType === "stop-training") {
+      // Handle stop training submit action
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:5005/kill-training-process",
+          jsonTransformed
+        );
+        console.log("Script Output:", response.data);
+      } catch (error) {
+        const errorMessage = error.response
+          ? JSON.stringify(error.response.data)
+          : error.message;
+        console.warn("Warning: Error running script:", errorMessage);
+        alert("Warning: Error running script: " + errorMessage);
+      }
   } else if (values.submitType === "testing") {
     // Handle testing submit action
     try {
@@ -141,6 +156,21 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
+  } else if (values.submitType === "stop-testing") {
+      // Handle stop testing submit action.
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:5005/kill-testing-process",
+          jsonTransformed
+        );
+        console.log("Script Output:", response.data);
+      } catch (error) {
+        const errorMessage = error.response
+          ? JSON.stringify(error.response.data)
+          : error.message;
+        console.warn("Warning: Error running script:", errorMessage);
+        alert("Warning: Error running script: " + errorMessage);
+      }
   } else if (values.submitType === "download") {
     // Handle download action
     // Create a Blob for download
