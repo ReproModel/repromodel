@@ -11,6 +11,7 @@ charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
 comm==0.2.2
+coverage==7.5.3
 debugpy==1.8.1
 decorator==5.1.1
 easydict==1.13

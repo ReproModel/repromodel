@@ -1,7 +1,9 @@
 import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
-import ExperimentBuilderWrapper from "./components/experiment-builder/experiment-builder-wrapper"
+
+import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
+import ExtractCode from "./components/extract-code/extract-code"
 import Header from "./components/header/header"
 import LLMDescription from "./components/llm-description/llm-description"
 import ModelTesting from "./components/model-testing/model-testing"
@@ -45,13 +47,15 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
-              <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
-                <ButtonGroup variant = "contained" sx = {{width: "100%"}}>
-                  <Button variant = "outlined" style={{backgroundColor : "white", width: "20%"}} onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%", width: "20%"} }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { opacity: (selectedSection == "Model Testing") ? "100%" : "70%", width: "20%"} }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%", width: "20%"} }>Progress Viewer</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { opacity: (selectedSection == "LLM Description") ? "100%" : "70%", width: "20%"} }>LLM Description</Button>
+
+              <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
+                <ButtonGroup variant = "contained">
+                  <Button variant = "outlined" style = { { backgroundColor : "white", fontSize: "12px" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "12px", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "12px", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "12px", opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "12px", opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "12px", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 
@@ -92,6 +96,13 @@ function App() {
                   <>
                     <Typography variant = "h5" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
+                  </>
+                )}
+
+                { selectedSection === "Extract Code" && (
+                  <>
+                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Extract Code</Typography>
+                    <ExtractCode/>
                   </>
                 )}
                 

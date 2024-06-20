@@ -9,6 +9,7 @@ import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
 from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
 from copy import deepcopy
+import sys 
 
 SRC_DIR = "src."
 
@@ -87,6 +88,7 @@ def train(input_data):
     criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
+        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.models[m]}_{cfg.datasets}_" + "command_output.txt")
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Custom file object for TQDM
@@ -260,5 +262,5 @@ if __name__ == '__main__':
 
     try:
         train(args.input_data)
-    except:
-        print_to_file("Trainer function failed. Exiting with an error!")
+    except Exception as e:
+        print_to_file(f"Trainer function failed. Exiting with an error: {e}")

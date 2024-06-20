@@ -5,8 +5,8 @@ import json
 import ollama
 import os
 import subprocess
-
-
+import requests
+from src.utils import copy_covered_files
 
 ######################################################################
 # CONSTANTS
@@ -172,7 +172,7 @@ def save_custom_script():
     try:
         # Save the file.
         file.save(save_path)
-        
+
         # Once file save is successful, rerun the script generate_choices.py.
         command = ['python', 'repromodel_core/generate_choices.py']
         result = subprocess.run(command, capture_output=True, text=True)
@@ -210,19 +210,40 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+        with open("repromodel_core/experiment_config.json", 'w') as json_file:
+            json.dump(json_data, json_file, indent=4)
+
         app.logger.info("Received JSON data for processing.")
         
         # Run the script trainer.py and capture the output.
-        command = ['python', 'repromodel_core/trainer.py', json_data]
+        command = ['coverage', 'run', 'repromodel_core/trainer.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Check the subprocess result.
         if result.returncode == 0:
             app.logger.info("Script executed successfully with output: %s", result.stdout)
-            return jsonify({'output': result.stdout, 'error': None})
+            #return jsonify({'output': result.stdout, 'error': None})
         
         else: 
             error_detail = f"Script execution failed with error: {result.stderr}"
+            app.logger.error(error_detail)
+            
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'output': result.stdout, 'error': error_detail}), 400
+        
+        # Saving coverage file
+        os.makedirs('repromodel_core/extracted_code/', exist_ok=True)
+
+        command = ['coverage', 'json', '-o', 'repromodel_core/extracted_code/coverage.json']
+        result = subprocess.run(command, capture_output=True, text=True)
+        
+        # Check the subprocess result.
+        if result.returncode == 0:
+            app.logger.info("Coverage filenames successfully saved in the output folder with output: %s", result.stdout)
+            return jsonify({'output': result.stdout, 'error': None})
+        
+        else: 
+            error_detail = f"Coverage filename saving failed with error: {result.stderr}"
             app.logger.error(error_detail)
             
             # Return HTTP 400 Bad Request status code.
@@ -237,11 +258,86 @@ def submit_config_start_training_():
         return jsonify({'error': error_message}), 500
 
 
+######################################################################
+# API ENDPOINTS - Code Extractor
+######################################################################
+
+# POST /copy-covered-files
+# Description: Copies experiment-specific code and files to the extracted_code folder  
+@app.route('/copy-covered-files', methods=['POST'])
+def copy_files_endpoint():
+    try:
+        coverage_json_path = "repromodel_core/extracted_code/coverage.json"
+        root_folder = "repromodel_core/extracted_code"
+        additional_files = ["repromodel_core/tester.py", 
+                            "repromodel_core/experiment_config.json",
+                            "repromodel_core/requirements.txt"]
+        try:
+            copy_covered_files(coverage_json_path, root_folder, additional_files)
+            return jsonify({"status": "success", "message": "Files copied successfully"}), 200
+        except Exception as e:
+            return  jsonify({"status": "error", "message": "Copying files failed with error:" + str(e)}), 500
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+# POST /create-repo
+# Description: Creates a repository on user's GitHub profile      
+@app.route('/create-repo', methods=['POST'])
+def create_repo():
+    try:
+        data = request.get_json()
+        github_token = data['github_token']
+        repo_name = data['repo_name']
+        description = data.get('description', '')
+        privacy = data.get('privacy', '')
+        local_directory = 'repromodel_core/extracted_code/repromodel_core'  # Ensure this directory is correct
+
+        app.logger.info(f"Creating GitHub repository '{repo_name}'")
+
+        # Create the repository on GitHub
+        headers = {'Authorization': f'token {github_token}'}
+        json_data = {
+            'name': repo_name,
+            'description': description,
+            'private': True if privacy=="private" else False
+        }
+        response = requests.post('https://api.github.com/user/repos', headers=headers, json=json_data)
+        
+        if response.status_code == 201:
+            message = f"Successfully created a {privacy} repository '{repo_name}' on GitHub"
+            app.logger.info(message)
+        else:
+            app.logger.error(f"Error creating repository: {response.json()}")
+            return jsonify({"status": "error", "message": f"Failed to create a GitHub repo. Make sure you entered the right API key and that the repository doesn't already exist. {response.json()}"}), 500
+
+        # Initialize local repository and push to GitHub
+        os.chdir(local_directory)
+        run_command(['git', 'init'])
+        run_command(['git', 'remote', 'add', 'origin', f'https://github.com/{response.json()["owner"]["login"]}/{repo_name}.git'])
+        run_command(['git', 'add', '.'])
+        run_command(['git', 'commit', '-m', 'Initial commit'])
+        run_command(['git', 'branch', '-M', 'main'])  # Rename the default branch to 'main'
+        run_command(['git', 'push', '-u', 'origin', 'main'])  # Push to the 'main' branch
+
+        app.logger.info(f"Code from '{local_directory}' pushed to GitHub repository '{repo_name}'")
+        return jsonify({"status": "success", "message": f'{message}. Code available at https://github.com/{response.json()["owner"]["login"]}/{repo_name}'}), 200
+
+    except Exception as e:
+        app.logger.error(f"Error: {e}")
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+def run_command(command):
+    try:
+        result = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        app.logger.info(result.stdout.decode('utf-8'))
+    except subprocess.CalledProcessError as e:
+        app.logger.error(f"Command '{' '.join(e.cmd)}' returned non-zero exit status {e.returncode}")
+        app.logger.error(e.stderr.decode('utf-8'))
+        raise
 
 ######################################################################
 # API ENDPOINTS - Model Testing
 ######################################################################
-
 
 # POST /submit-config-start-testing
 # Description: Start the testing process from frontend.    

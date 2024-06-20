@@ -1,0 +1,105 @@
+.req {
+    color: red;
+}
+
+.tab-container {
+    margin-top: 24px;
+}
+
+.extract-code-header {
+    margin-top: 24px;
+    margin-left: 24px;
+}
+
+.extract-code-subheader {
+    margin-top: 12px;
+    margin-left: 24px;
+}
+
+.code-extractor-confirmation-one {
+    margin-top: 12px;
+    margin-left: 5px;
+}
+
+.code-extractor-confirmation-two {
+    margin-left: 5px;
+}
+
+.code-extractor-button {
+    margin-top: 8px;
+    margin-left: 24px;
+}
+
+.github-header {
+    margin-top: 24px;
+    margin-left: 24px;
+}
+
+.github-subheader {
+    margin-top: 12px;
+    margin-left: 24px;
+}
+
+.personal-access-token-container {
+    margin-top: 8px;
+    margin-left: 24px;
+}
+
+.personal-access-token-input {
+    margin-top: 12px;
+    margin-left: 24px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45%;
+    height: 18px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+}
+
+.repository-name-input-container {
+    margin-left: 24px;
+}
+
+.repository-name-input {
+    margin-left: 56px;
+    margin-top: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45%;
+    height: 18px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+}
+
+.repository-description-input-container {
+    margin-left: 24px;
+}
+
+.repository-description-input {
+    margin-left: 36px;
+    margin-top: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45%;
+    height: 18px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+}
+
+.radio-repo-visibility-container {
+    margin-left: 8px;
+}
+
+.github-button {
+    margin-top: 8px;
+    margin-left: 24px;
+}

@@ -49,8 +49,10 @@ For examples and step-by-step instructions, please visit our full documentation 
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
 
 **Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
+<br>
 ```
-npm run repromodel
+npm run repromodel            // Mac and Linux
+npm run repromodel-windows    // Windows
 ```
 
 **Launch the frontend instead individually:**
@@ -58,6 +60,15 @@ npm run repromodel
 npm install
 npm run dev
 ```
+
+
+**If you have Ollama installed and want to use the Methodology Generator:**
+```
+npm run repromodel-with-llm            // Mac and Linux
+npm run repromodel-with-llm-windows    // Windows
+```
+Note: You can get Ollama from their [website](https://ollama.com/download).
+
 
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
