@@ -62,7 +62,7 @@ npm run dev
 ```
 
 
-**If you have Ollama installed and want to use the Methodology Generator**
+**If you have Ollama installed and want to use the Methodology Generator:**
 ```
 npm run repromodel-with-llm            // Mac and Linux
 npm run repromodel-with-llm-windows    // Windows
