@@ -2,7 +2,7 @@ import "./extract-code.css"
 
 import React from "react"
 
-import { Button, Checkbox, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material"
+import { Button, Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography } from "@mui/material"
 import { Form } from "formik"
 
 const ExtractCode = ({}) => {
@@ -76,7 +76,7 @@ const ExtractCode = ({}) => {
             {/* Text Input - Personal Access Token */}
             <div className = "personal-access-token-container">
                 <label>
-                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Personal Access Token</span>
+                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Personal Access Token: <span className = "req">*</span></span>
                     <input id = "personal-access-token-input" className = "personal-access-token-input" type = "text" onChange = { (e) => { setPersonalAccessToken(e.target.value) }} value = { personalAccessToken } />
                 </label>
             </div>
@@ -84,7 +84,7 @@ const ExtractCode = ({}) => {
             {/* Text Input - GitHub Repository Name */}
             <div className = "repository-name-input-container">
                 <label>
-                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>Repository Name</span>
+                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>Repository Name: <span className = "req">*</span></span>
                     <input id = "repository-name-input" className = "repository-name-input" type = "text" onChange = { (e) => { setRepositoryName(e.target.value) }} />
                 </label>
             </div>
@@ -104,7 +104,7 @@ const ExtractCode = ({}) => {
 
                     control = {
 
-                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "40px", marginTop: "4px" } } row>
+                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "50px", marginTop: "4px" } } row>
 
                         <FormControlLabel value = "public" control = { <Radio checked = { visibility == "public" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Public</span> } />
 

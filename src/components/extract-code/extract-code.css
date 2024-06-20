@@ -1,3 +1,7 @@
+.req {
+    color: red;
+}
+
 .tab-container {
     margin-top: 24px;
 }
@@ -14,11 +18,11 @@
 
 .code-extractor-confirmation-one {
     margin-top: 12px;
-    margin-left: 4px;
+    margin-left: 5px;
 }
 
 .code-extractor-confirmation-two {
-    margin-left: 4px;
+    margin-left: 5px;
 }
 
 .code-extractor-button {
@@ -78,7 +82,7 @@
 }
 
 .repository-description-input {
-    margin-left: 24px !important;
+    margin-left: 36px;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
