@@ -50,7 +50,6 @@ You will need to have [Node.js](https://nodejs.org) installed.<br/>
 
 **Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
 <br>
-On Mac and Linux
 ```
 npm run repromodel            // Mac and Linux
 npm run repromodel-windows    // Windows
@@ -68,7 +67,7 @@ npm run dev
 npm run repromodel-with-llm            // Mac and Linux
 npm run repromodel-with-llm-windows    // Windows
 ```
-Note: You can get Ollama from [there Website](https://ollama.com/download).
+Note: You can get Ollama from their [website](https://ollama.com/download).
 
 
 ## Contributing
