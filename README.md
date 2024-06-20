@@ -50,7 +50,6 @@ You will need to have [Node.js](https://nodejs.org) installed.<br/>
 
 **Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
 <br>
-On Mac and Linux
 ```
 npm run repromodel            // Mac and Linux
 npm run repromodel-windows    // Windows
