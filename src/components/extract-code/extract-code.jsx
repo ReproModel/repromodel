@@ -2,7 +2,7 @@ import "./extract-code.css"
 
 import React from "react"
 
-import { Button, Checkbox, FormControlLabel, Radio, RadioGroup, TextField, Typography } from "@mui/material"
+import { Button, Checkbox, FormControlLabel, Radio, RadioGroup, Typography } from "@mui/material"
 import { Form } from "formik"
 
 const ExtractCode = ({}) => {
@@ -92,7 +92,7 @@ const ExtractCode = ({}) => {
             {/* Text Input - GitHub Repository Description */}
             <div className = "repository-description-input-container">
                 <label>
-                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>Repository Description</span>
+                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryDescription }>Repository Description</span>
                     <input id = "repository-description-input" className = "repository-description-input" type = "text" onChange = { (e) => { setRepositoryDescription(e.target.value) }} />
                 </label>
             </div>
