@@ -43,7 +43,7 @@
 
 .personal-access-token-input {
     margin-top: 12px;
-    margin-left: 34px;
+    margin-left: 24px;
     appearance: none;
     -webkit-appearance: none;
     width: 45%;
@@ -60,12 +60,30 @@
 }
 
 .repository-name-input {
+    margin-left: 56px;
+    margin-top: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45%;
+    height: 18px;
+    font-size: 14px;
+    background-color: #fff;
+    border: 1px solid #caced1;
+    border-radius: 0.25rem;
+    color: #000;
+}
+
+.repository-description-input-container {
+    margin-left: 24px;
+}
+
+.repository-description-input {
     margin-left: 24px !important;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
     width: 45%;
-    height: 17px;
+    height: 18px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;

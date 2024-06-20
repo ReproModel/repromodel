@@ -13,6 +13,9 @@ const ExtractCode = ({}) => {
     // Text Input - GitHub Repo Name
     const [repositoryName, setRepositoryName] = React.useState("")
 
+    // Text Input - GitHub Repo Description
+    const [repositoryDescription, setRepositoryDescription] = React.useState("")
+
     // Radio Buttons - GitHub Repo Visibility
     const [visibility, setVisibility] = React.useState("public")
 
@@ -81,8 +84,16 @@ const ExtractCode = ({}) => {
             {/* Text Input - GitHub Repository Name */}
             <div className = "repository-name-input-container">
                 <label>
-                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>GitHub Repository Name</span>
+                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>Repository Name</span>
                     <input id = "repository-name-input" className = "repository-name-input" type = "text" onChange = { (e) => { setRepositoryName(e.target.value) }} />
+                </label>
+            </div>
+
+            {/* Text Input - GitHub Repository Description */}
+            <div className = "repository-description-input-container">
+                <label>
+                    <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } } value = { repositoryName }>Repository Description</span>
+                    <input id = "repository-description-input" className = "repository-description-input" type = "text" onChange = { (e) => { setRepositoryDescription(e.target.value) }} />
                 </label>
             </div>
 
@@ -93,7 +104,7 @@ const ExtractCode = ({}) => {
 
                     control = {
 
-                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "48px", marginTop: "4px" } } row>
+                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "40px", marginTop: "4px" } } row>
 
                         <FormControlLabel value = "public" control = { <Radio checked = { visibility == "public" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Public</span> } />
 
