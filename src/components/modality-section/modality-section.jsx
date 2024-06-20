@@ -63,7 +63,39 @@ function getModels(selectedOptions, jsonData) {
     intersectedModels = intersect(intersectedModels, submodalityModels);
   }
 
+  
+
   return intersectedModels;
+}
+
+///////////////////////////////////////////////////////////
+// Get total number of models
+///////////////////////////////////////////////////////////
+
+function countUniqueModelsAndDatasets(data) {
+  const modelsSet = new Set();
+  const datasetsSet = new Set();
+
+  function extractModelsAndDatasets(section) {
+      if (typeof section === 'object' && section !== null) {
+          for (const key in section) {
+              const value = section[key];
+              if (value && typeof value === 'object') {
+                  if (Array.isArray(value.models)) {
+                      value.models.forEach(model => modelsSet.add(model));
+                  }
+                  if (Array.isArray(value.datasets)) {
+                      value.datasets.forEach(dataset => datasetsSet.add(dataset));
+                  }
+                  extractModelsAndDatasets(value);
+              }
+          }
+      }
+  }
+
+  extractModelsAndDatasets(data);
+
+  return { uniqueModels: modelsSet.size, uniqueDatasets: datasetsSet.size };
 }
 
 ///////////////////////////////////////////////////////////
@@ -97,11 +129,20 @@ const ModalitySection = ({
     });
   };
 
+
+
   const selectedModels = getModels(selectedOptions, class_per_tag);
+
+  const totalAvailable = countUniqueModelsAndDatasets(class_per_tag);
+  const modelsAvailable = totalAvailable.uniqueModels
+  const datasetsAvailable = totalAvailable.uniqueDatasets
+
 
   return (
     <div>
-      <p className = "model-count">Filtered Models: { selectedModels.length }</p>
+      <p className = "model-count">Available Models: { selectedModels.length }</p>
+      <p className = "model-count">Total Models: { modelsAvailable }</p>
+      <p className = "model-count">Total Datasets: { datasetsAvailable }</p>
     
       <div className="container">
 
