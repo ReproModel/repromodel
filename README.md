@@ -67,7 +67,7 @@ npm run dev
 npm run repromodel-with-llm            // Mac and Linux
 npm run repromodel-with-llm-windows    // Windows
 ```
-Note: You can get Ollama from [there Website](https://ollama.com/download).
+Note: You can get Ollama from their [website](https://ollama.com/download).
 
 
 ## Contributing
