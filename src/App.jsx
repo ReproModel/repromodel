@@ -2,6 +2,7 @@ import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
 import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
+import ExtractCode from "./components/extract-code/extract-code"
 import Header from "./components/header/header"
 import LLMDescription from "./components/llm-description/llm-description"
 import ModelTesting from "./components/model-testing/model-testing"
@@ -51,6 +52,7 @@ function App() {
                   <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "12px", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
                   <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "12px", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
                   <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "12px", opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "12px", opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
                   <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "12px", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
@@ -92,6 +94,13 @@ function App() {
                   <>
                     <Typography variant = "h4" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
+                  </>
+                )}
+
+                { selectedSection === "Extract Code" && (
+                  <>
+                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Extract Code</Typography>
+                    <ExtractCode/>
                   </>
                 )}
                 
