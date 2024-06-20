@@ -63,7 +63,13 @@ function getModels(selectedOptions, jsonData) {
     intersectedModels = intersect(intersectedModels, submodalityModels);
   }
 
-  
+  // Check if any of the models are greater than 0 but intersectedModels is 0
+if (
+  (taskModels.length > 0 || subtaskModels.length > 0 || modalityModels.length > 0 || submodalityModels.length > 0) &&
+  intersectedModels.length === 0
+) {
+  return -1;
+}
 
   return intersectedModels;
 }
@@ -138,11 +144,20 @@ const ModalitySection = ({
   const datasetsAvailable = totalAvailable.uniqueDatasets
 
 
+  const renderModelCount = () => {
+    if (selectedModels.length === 0) {
+      return modelsAvailable;
+    } else if (selectedModels === -1) {
+      return 0;
+    } else {
+      return selectedModels.length;
+    }
+  };
+
   return (
     <div>
-      <p className = "model-count">Available Models: { selectedModels.length }</p>
-      <p className = "model-count">Total Models: { modelsAvailable }</p>
-      <p className = "model-count">Total Datasets: { datasetsAvailable }</p>
+      <p className="model-count">Available Models: { renderModelCount() }</p>
+    
     
       <div className="container">
 
