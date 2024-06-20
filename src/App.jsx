@@ -2,7 +2,7 @@ import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
 
-import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
+import ExperimentBuilderWrapper from "./components/experiment-builder/experiment-builder-wrapper"
 import ExtractCode from "./components/extract-code/extract-code"
 import Header from "./components/header/header"
 import LLMDescription from "./components/llm-description/llm-description"
