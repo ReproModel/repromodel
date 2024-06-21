@@ -81,7 +81,7 @@ const FirstTimeModal = () => {
             <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>DemoConfig.json</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(trainConfig, 'DemoConfig', 'json') }>
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') }>
             Download
           </Button>
                   
