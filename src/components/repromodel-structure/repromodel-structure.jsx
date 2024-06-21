@@ -20,7 +20,7 @@ const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "
           <>
           {optionsToShow.includes(folder) && (
             FormikProps.touched && FormikProps.touched[folder] ? (
-              <FlexibleBlock key={folder} status="active" name={folder} />
+              <FlexibleBlock key={folder} status="passive" name={folder} />   //set to passive right now from active since it doesn't work as intended. Set back when fixed
             ) : (
               <FlexibleBlock key={folder} status="passive" name={folder} />
             )
