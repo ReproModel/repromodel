@@ -30,6 +30,10 @@
     margin-left: 24px;
 }
 
+.code-extractor-button:hover {
+    opacity: 80%;
+}
+
 .github-header {
     margin-top: 24px;
     margin-left: 24px;
@@ -102,4 +106,8 @@
 .github-button {
     margin-top: 8px;
     margin-left: 24px;
+}
+
+.github-button:hover {
+    opacity: 80%;
 }

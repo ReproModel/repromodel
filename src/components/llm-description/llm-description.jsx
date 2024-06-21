@@ -211,8 +211,8 @@ const LLMDescription = () => {
 
           {/* Button - Submit */}
           <div className = "copy-button">
-            <Button variant = "contained" onClick = { () => runQuery(config, additionalPrompt, voice, format) }>
-                <span style = { { marginTop: "4px", fontSize: "12px"} }>
+            <Button variant = "contained" onClick = { () => runQuery(config, additionalPrompt, voice, format) } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
+                <span style = { { marginTop: "2px", fontSize: "12px"} }>
                   Submit
                 </span>
             </Button>
@@ -240,8 +240,8 @@ const LLMDescription = () => {
 
           {/* Button - Copy Code */}
           <div className = "copy-button">
-            <Button variant = "contained" onClick = { () => navigator.clipboard.writeText(output) }>
-              <span style = { { marginTop: "4px", fontSize: "12px"} }>
+            <Button variant = "contained" onClick = { () => navigator.clipboard.writeText(output) } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
+              <span style = { { marginTop: "2px", fontSize: "12px"} }>
                 Copy
               </span>
             </Button>
