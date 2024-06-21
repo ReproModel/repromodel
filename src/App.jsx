@@ -50,12 +50,12 @@ function App() {
 
               <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
                 <ButtonGroup variant = "contained" sx = { { width: "100%", backgroundColor : "white" } }>
-                  <Button variant = "outlined" style = { { backgroundColor : "white", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
-                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "9px", width: "16.66%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+                  <Button variant = "outlined" style = { { backgroundColor: "white", color: "#38512f", borderColor: "#38512f", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 
