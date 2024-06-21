@@ -1,10 +1,14 @@
 import "./model-testing.css"
 
+import axios from "axios"
 import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
+import StopIcon from '@mui/icons-material/Stop'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React from "react"
 
+import { Button, ButtonGroup } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
-import { Field, Form, Formik } from "formik"
+import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
 import { Typography } from "@mui/material"
 
@@ -12,7 +16,7 @@ const foldersPartOfTesting = [
   "models",
   "datasets",
   "metrics",
-  "device",
+  "device"
 ]
 
 const nestedFolders = [
@@ -25,10 +29,36 @@ const nestedFolders = [
   "augmentations",
   "lr_schedulers",
   "optimizers",
-  "early_stopping",
+  "early_stopping"
 ]
 
 const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
+
+  const [testingInProgress, setTestingInProgress] = React.useState(false)
+
+  React.useEffect(() => {
+    
+    const interval = setInterval(() => {
+      
+      axios.get("http://127.0.0.1:5005/ping")
+        
+        .then(response => {
+          if (response.data.testingInProgress === true) {
+            setTestingInProgress(true)
+          } else {
+            setTestingInProgress(false)
+          }
+        })      
+
+        .catch(error => {
+          setTestingInProgress(false)
+        })
+
+    }, 3000)
+
+    return () => clearInterval(interval)
+
+  }, [])
   
   return (
     <Form>
@@ -145,9 +175,34 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       ))}
   
 
-      <button type = "submit" className = "submit-button" onClick = { () => setFieldValue("submitType", "testing") }>
-        <Typography>Submit For Testing</Typography>
-      </button>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+        
+        {/* Start Testing Button */}
+        
+        { !testingInProgress &&
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => { setFieldValue("submitType", "testing") } }
+          >
+            <PlayArrowIcon />
+            Test
+          </Button>
+        }
+
+        {/* Stop Testing Button */}
+        { testingInProgress &&
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => { setFieldValue("submitType", "stop-testing") } }
+          >
+            <StopIcon/>
+            Stop Testing
+          </Button>   
+        }
+
+      </ButtonGroup>
 
     </Form>
   )

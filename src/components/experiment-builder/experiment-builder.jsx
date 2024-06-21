@@ -1,12 +1,15 @@
-import "./experiment-builder.css";
+import "./experiment-builder.css"
 
-import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field";
-import React from "react";
+import axios from "axios"
+import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
+import StopIcon from '@mui/icons-material/Stop'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import React from "react"
 
-import { Button, ButtonGroup, Typography } from "@mui/material";
-import { capitalizeFirstLetter } from "../../utils/string-helpers";
-import { Field, Form, Formik } from "formik";
-import { FolderField } from "../ui/folder-field";
+import { Button, ButtonGroup, Typography } from "@mui/material"
+import { capitalizeFirstLetter } from "../../utils/string-helpers"
+import { Field, Form } from "formik"
+import { FolderField } from "../ui/folder-field"
 
 const nestedFolders = [
   "models",
@@ -18,17 +21,45 @@ const nestedFolders = [
   "augmentations",
   "lr_schedulers",
   "optimizers",
-  "early_stopping",
-];
+  "early_stopping"
+]
 
 const ExperimentBuilder = ({
   FormikProps,
   handleFileChange,
   newQuestions,
-  setFieldValue,
+  setFieldValue
 }) => {
+
+  const [trainingInProgress, setTrainingInProgress] = React.useState(false)
+
+  React.useEffect(() => {
+    
+    const interval = setInterval(() => {
+      
+      axios.get("http://127.0.0.1:5005/ping")
+        
+        .then(response => {
+          if (response.data.trainingInProgress === true) {
+            setTrainingInProgress(true)
+          } else {
+            setTrainingInProgress(false)
+          }
+        })      
+
+        .catch(error => {
+          setTrainingInProgress(false)
+        })
+
+    }, 3000)
+
+    return () => clearInterval(interval)
+
+  }, [])
+
   return (
     <Form>
+      
       {/* Optional JSON file upload input. */}
       <Typography className="json-input-file-label">
         Optionally upload existing configuration file.
@@ -138,23 +169,43 @@ const ExperimentBuilder = ({
         </div>
       ))}
 
-      <ButtonGroup variant="outlined" sx={{ marginTop: "16px" }}>
-        <Button
-          type="submit"
-          onClick={() => setFieldValue("submitType", "training")}
-        >
-          Train
-        </Button>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+        
+        {/* Start Training Button */}
+        { !trainingInProgress && 
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => setFieldValue("submitType", "training") }
+          >
+            <PlayArrowIcon />
+            Train
+          </Button>  
+        }
 
+        {/* Stop Training Button */}
+        { trainingInProgress && 
+          <Button
+            type = "submit"
+            style = { { width: "170px" } }
+            onClick = { () => setFieldValue("submitType", "stop-training") }
+          >
+            <StopIcon/>
+            Stop Training
+          </Button>
+        }
+        
+        {/* Download Config Button */}
         <Button
-          type="submit"
-          onClick={() => setFieldValue("submitType", "download")}
+          type = "submit"
+          onClick = { () => { setFieldValue("submitType", "download")} }
         >
           Download Config File
         </Button>
+
       </ButtonGroup>
     </Form>
-  );
-};
+  )
+}
 
-export default ExperimentBuilder;
+export default ExperimentBuilder

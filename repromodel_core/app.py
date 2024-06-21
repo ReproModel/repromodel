@@ -1,9 +1,11 @@
 from flask import Flask, jsonify, Response, request, send_file
 from flask_cors import CORS
+from src.utils import copy_covered_files
 
 import json
 import ollama
 import os
+import psutil
 import subprocess
 import requests
 from src.utils import copy_covered_files
@@ -74,13 +76,38 @@ for type_dir in TYPE_DIRS.values():
 ######################################################################
 
 
+# FUNCTION: Helper function to if process is running.
+def is_process_running(process_name):
+
+    app.logger.info("process_name: %s", process_name)
+    
+    for proc in psutil.process_iter():
+
+        try:
+            if proc.cmdline() == ['python3', process_name]:
+                return True, proc.info
+
+        except Exception as e:
+            app.logger.info("error: %s", e)
+            return False, None
+
+    return False, None
+
 # GET /ping
 # Description: Returns whether backend is up and running.
 @app.route('/ping', methods=['GET'])
 def ping():
+
+    # Check if training is in progress.
+    trainingInProgress, process_info  = is_process_running("trainer.py")
+    app.logger.info("trainingInProgress: %s", trainingInProgress)
+
+    # Check if testing is in progress.
+    testingInProgress, process_info = is_process_running("tester.py")
+    app.logger.info("testingInProgress: %s", testingInProgress)
     
     # Return HTTP 200 OK status code.
-    return jsonify({"message": "pong"}), 200
+    return jsonify({ "message": "pong", "trainingInProgress": trainingInProgress, "testingInProgress": testingInProgress }), 200
 
 
 # GET /generate-dummy-data
@@ -225,7 +252,7 @@ def submit_config_start_training_():
             #return jsonify({'output': result.stdout, 'error': None})
         
         else: 
-            error_detail = f"Script execution failed with error: {result.stderr}"
+            error_detail = f"Training has been stopped: {result.stderr}"
             app.logger.error(error_detail)
             
             # Return HTTP 400 Bad Request status code.
@@ -258,12 +285,30 @@ def submit_config_start_training_():
         return jsonify({'error': error_message}), 500
 
 
-######################################################################
-# API ENDPOINTS - Code Extractor
-######################################################################
+# POST /kill-training-process
+# Description: Kill the training process started from frontend.
+@app.route('/kill-training-process', methods=['POST'])
+def kill_training_process():
+
+    try:        
+
+        # Kill the training process.
+        subprocess.run(['pkill', '-f', 'trainer.py'])
+        app.logger.info("Process with name 'trainer' killed successfully.")
+
+        return jsonify({'message': "Process with name 'trainer' killed successfully."})
+
+    except Exception as e:
+
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
+
 
 # POST /copy-covered-files
-# Description: Copies experiment-specific code and files to the extracted_code folder  
+# Description:
 @app.route('/copy-covered-files', methods=['POST'])
 def copy_files_endpoint():
     try:
@@ -382,6 +427,27 @@ def submit_config_start_testing_():
         # Return HTTP 500 Internal Server Error status code.
         return jsonify({'error': error_message}), 500
 
+
+# POST /kill-testing-process
+# Description: Kill the testing process started from frontend.
+@app.route('/kill-testing-process', methods=['POST'])
+def kill_testing_process():
+
+    try:        
+
+        # Kill the testing process.
+        subprocess.run(['pkill', '-f', 'tester.py'])
+        app.logger.info("Process with name 'tester' killed successfully.")
+
+        return jsonify({'message': "Process with name 'tester' killed successfully."})
+
+    except Exception as e:
+
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
 
 
 ######################################################################
