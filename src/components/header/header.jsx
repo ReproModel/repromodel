@@ -14,7 +14,7 @@ function Header() {
       <StatusCheck/>
       
         <Typography variant = "h2" className = "title">ReproModel</Typography>
-        <Typography variant = "h6" className = "title">Reproducable and Comparable AI</Typography>  
+        <Typography variant = "h6" className = "title">Reproducible and Comparable AI</Typography>  
       
       </Box>
     </>
