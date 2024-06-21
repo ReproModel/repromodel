@@ -1,3 +1,7 @@
+.custom-script-heading {
+    padding-top: 16px;
+}
+
 .category-container {
     display: flex;
 }
@@ -5,11 +9,11 @@
 .category-dropdown {
     width: 50%;
     height: 50%;
-    padding-top: 16px;
+    padding-top: 4px;
 }
 
 .load-template-button {
-    margin-top: 16px;
+    margin-top: 4px;
     margin-left: 5px;
     width: auto;
     border: 1px solid rgba(0, 0, 0, 0.12);
@@ -56,10 +60,11 @@
 
 .file-name-input {
     margin-left: 10px;
+    margin-top: 12px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
-    width: 45%;
+    width: 39%;
     height: 25px;
     font-size: 14px;
     background-color: #fff;
