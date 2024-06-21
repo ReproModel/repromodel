@@ -13,8 +13,8 @@ function Header() {
       <FirstTimeModal/>
       <StatusCheck/>
       
-        <Typography variant = "h3" className = "title">ReproModel</Typography>
-        <Typography variant = "h6" className = "title">Reproducible and Comparable AI</Typography>  
+        <Typography variant = "h1" className = "title">ReproModel</Typography>
+        <Typography variant = "h4" className = "title">Reproducible and Comparable AI</Typography>  
       
       </Box>
     </>

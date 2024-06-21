@@ -63,14 +63,14 @@ function App() {
 
                 { selectedSection === "Custom Script" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Create Custom Script</Typography>
                     <CustomScript/>
                   </>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Experiment Builder</Typography>
                     <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -82,7 +82,7 @@ function App() {
 
                 { selectedSection === "Model Testing" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Model Testing</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Model Testing</Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -94,21 +94,21 @@ function App() {
 
                 { selectedSection === "Progress Viewer" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
                   </>
                 )}
 
                 { selectedSection === "Extract Code" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px", marginLeft: "24px" } }>Extract Code</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Extract Code</Typography>
                     <ExtractCode/>
                   </>
                 )}
                 
                 { selectedSection === "LLM Description" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px", marginLeft: "15px" } }>LLM Description</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>LLM Description</Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }

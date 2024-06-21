@@ -163,7 +163,7 @@ const ExtractCode = ({}) => {
 
                     control = {
 
-                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "50px", marginTop: "4px" } } row>
+                    <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "64px", marginTop: "4px" } } row>
 
                         <FormControlLabel value = "public" control = { <Radio checked = { visibility == "public" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Public</span> } />
 

@@ -156,15 +156,15 @@ const ModalitySection = ({
 
   return (
     <div>
-      <p className="model-count">Available Models: { renderModelCount() }</p>
+      <p className="model-count" style = { { fontSize: "22px" } }>Available Models: { renderModelCount() }</p>
     
     
       <div className="container">
 
-        {Object.entries(class_per_tag).map(([category, options]) => (
-          <>
+        {Object.entries(class_per_tag).map(([category, options], idx) => (
+          <div style = { { marginTop: (idx == 0) ? "0": "24px" } }>
             <Typography
-              style={{ marginTop: "16px", marginBottom: "4px", fontSize: "10px", marginLeft: "2px" }}
+              style = { { marginBottom: "12px", fontSize: "10px", marginLeft: "2px" } }
             >
               Choose <strong>{capitalizeFirstLetter(category)}</strong>
             </Typography>
@@ -175,17 +175,18 @@ const ModalitySection = ({
               selectedOptions={selectedOptions[category] || []}
               group={category}
             />
-          </>
+          </div>
         ))}
 
       </div>
 
-      <div className="button-row">
+      <div className="button-row" style = { { marginLeft: "96px", marginTop: "24px" } }>
           {selectedModels.length > 0 ? (
             <>
               <button
                 type="submit"
                 className="start-building-button"
+                style = { { width: "200px" } }
                 onClick={() => {
                   setFilterChoosen(true);
                   setSelectedModels(selectedModels);
@@ -198,7 +199,7 @@ const ModalitySection = ({
             <button
               type="submit"
               className="start-building-button"
-              style = { { padding: "0 !important" } }
+              style = { { width: "200px" } }
               onClick={() => {
                 setFilterChoosen(true);
                 setSelectedModels(selectedModels);
