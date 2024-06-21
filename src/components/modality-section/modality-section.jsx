@@ -161,33 +161,6 @@ const ModalitySection = ({
     
       <div className="container">
 
-        {/* <div className="button-row">
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
-                Start Building
-              </button>
-            </>
-          ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
-          )}
-        </div> */}
         {Object.entries(class_per_tag).map(([category, options]) => (
           <>
             <Typography
@@ -225,6 +198,7 @@ const ModalitySection = ({
             <button
               type="submit"
               className="start-building-button"
+              style = { { padding: "0 !important" } }
               onClick={() => {
                 setFilterChoosen(true);
                 setSelectedModels(selectedModels);

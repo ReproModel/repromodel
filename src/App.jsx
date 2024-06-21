@@ -59,7 +59,7 @@ function App() {
                 </ButtonGroup>
               </Box>
 
-              <Grid item className = "tabs" style={{marginTop : "32px"}}>
+              <Grid item className = "tabs" style = { { marginTop : "4px" } }>
 
                 { selectedSection === "Custom Script" && (
                   <>
