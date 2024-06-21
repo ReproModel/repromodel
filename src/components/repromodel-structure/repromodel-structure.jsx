@@ -7,12 +7,12 @@ import { Container, Stack, Typography } from "@mui/material"
 
 function RepromodelStructure({ FormikProps }) {
 
-const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "lr_schedulers", "monitor", "data_splits"]
+const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "lr_schedulers", "monitor", "data_splits", "early_stopping"]
   
   return (
     <Container maxWidth = "md">
        
-      <Typography variant = "h4" align = "center" gutterBottom>Your ReproModel Structure</Typography>
+      <Typography variant = "h4" align = "center" gutterBottom>Your ReproModel Pipeline</Typography>
       
       <Stack spacing = { 2 }>
         
@@ -20,7 +20,7 @@ const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "
           <>
           {optionsToShow.includes(folder) && (
             FormikProps.touched && FormikProps.touched[folder] ? (
-              <FlexibleBlock key={folder} status="active" name={folder} />
+              <FlexibleBlock key={folder} status="passive" name={folder} />   //set to passive right now from active since it doesn't work as intended. Set back when fixed
             ) : (
               <FlexibleBlock key={folder} status="passive" name={folder} />
             )

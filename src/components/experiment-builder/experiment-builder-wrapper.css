@@ -1,0 +1,18 @@
+.start-building-button {
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 150px;
+    letter-spacing: 0.02857em;
+    line-height: 1.75;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #e6f0f1;
+    color: #000000;
+}
+
+.start-building-button:hover {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    opacity: 70%;
+}

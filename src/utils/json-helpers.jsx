@@ -96,22 +96,98 @@ function nestJson(data) {
   }
 
   return result;
+
+}
+
+// Helper function to clean the config file before download
+function removeUnwantedParts(obj) {
+  // Keys to be removed
+  const keysToRemove = ["type", "default", "undefined", "submitType"];
+
+  // Recursive function to traverse and clean the object
+  function clean(obj) {
+    if (Array.isArray(obj)) {
+      // If it's an array, clean each item
+      obj.forEach(item => clean(item));
+    } else if (typeof obj === 'object' && obj !== null) {
+      // If it's an object, iterate through its keys
+      for (const key in obj) {
+        if (keysToRemove.includes(key)) {
+          // Remove the key if it's in the keysToRemove array
+          delete obj[key];
+        } else {
+          // Otherwise, continue cleaning nested objects
+          clean(obj[key]);
+        }
+      }
+    }
+  }
+
+  // Start the cleaning process
+  clean(obj);
+  return obj;
+}
+
+function filterParamsForExistingKeys(json) {
+  // Function to filter params
+  function filterParams(obj, listKey, paramsKey) {
+    let validKeys = new Set();
+    
+    if (Array.isArray(obj[listKey])) {
+      validKeys = new Set(obj[listKey]);
+    } else if (typeof obj[listKey] === 'string') {
+      validKeys.add(obj[listKey]);
+    }
+
+    const params = obj[paramsKey];
+    if (params) {
+      for (const key in params) {
+        if (!validKeys.has(key)) {
+          delete params[key];
+        }
+      }
+    }
+  }
+
+  // List of key pairs to filter
+  const filterKeys = [
+    { listKey: "models", paramsKey: "models_params" },
+    { listKey: "preprocessing", paramsKey: "preprocessing_params" },
+    { listKey: "datasets", paramsKey: "datasets_params" },
+    { listKey: "augmentations", paramsKey: "augmentations_params" },
+    { listKey: "metrics", paramsKey: "metrics_params" },
+    { listKey: "losses", paramsKey: "losses_params" },
+    { listKey: "early_stopping", paramsKey: "early_stopping_params" },
+    { listKey: "lr_schedulers", paramsKey: "lr_schedulers_params" },
+    { listKey: "optimizers", paramsKey: "optimizers_params" }
+  ];
+
+  // Apply filtering for each key pair
+  filterKeys.forEach(({ listKey, paramsKey }) => {
+    filterParams(json, listKey, paramsKey);
+  });
+  return json
 }
 
 // Export the handleSubmit function that also applies the nestJson transformation
 export const handleSubmit = async (values) => {
-  console.log("Submitted Values:", values);
+
+  const type = values.submitType
+  const clean_values = removeUnwantedParts(values)
+  console.log("Submitted Values:", clean_values);
 
   // Convert values to JSON string
-  const jsonString = JSON.stringify(values, null, 2);
+  const jsonString = JSON.stringify(clean_values, null, 2);
   // Parse it back to JSON object for transformation
   const jsonParsed = JSON.parse(jsonString);
   // Transform the JSON to nested structure
   const jsonTransformed = nestJson(jsonParsed);
+  // Remove params from options that are not selected anymore. 
+  const cleanedJson = filterParamsForExistingKeys(jsonTransformed);
   // Convert transformed JSON back to string for download
-  const finalJsonString = JSON.stringify(jsonTransformed, null, 2);
+  const finalJsonString = JSON.stringify(cleanedJson, null, 2);
 
-  if (values.submitType === "training") {
+  if (type === "training") {
     // Handle training submit action
     try {
       const response = await axios.post(
@@ -126,6 +202,21 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
+  } else if (values.submitType === "stop-training") {
+      // Handle stop training submit action
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:5005/kill-training-process",
+          jsonTransformed
+        );
+        console.log("Script Output:", response.data);
+      } catch (error) {
+        const errorMessage = error.response
+          ? JSON.stringify(error.response.data)
+          : error.message;
+        console.warn("Warning: Error running script:", errorMessage);
+        alert("Warning: Error running script: " + errorMessage);
+      }
   } else if (values.submitType === "testing") {
     // Handle testing submit action
     try {
@@ -141,6 +232,21 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
+  } else if (values.submitType === "stop-testing") {
+      // Handle stop testing submit action.
+      try {
+        const response = await axios.post(
+          "http://127.0.0.1:5005/kill-testing-process",
+          jsonTransformed
+        );
+        console.log("Script Output:", response.data);
+      } catch (error) {
+        const errorMessage = error.response
+          ? JSON.stringify(error.response.data)
+          : error.message;
+        console.warn("Warning: Error running script:", errorMessage);
+        alert("Warning: Error running script: " + errorMessage);
+      }
   } else if (values.submitType === "download") {
     // Handle download action
     // Create a Blob for download
@@ -157,5 +263,40 @@ export const handleSubmit = async (values) => {
     // Clean up: remove the link and revoke the blob URL
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  } else {
+    console.log("Undefined Type in Submit Type");
   }
 }
+
+// Export the handleSubmit function that also applies the nestJson transformation
+export const handleCustomScriptSubmit = async (code, filename, type) => {
+
+  // Create a blob from the code string
+  const file = new Blob([code], { type: "text/plain" });
+
+  // Create a FormData object
+  const formData = new FormData();
+  formData.append("file", file, filename);
+  formData.append("filename", filename);
+  formData.append("type", type);
+
+  try {
+    const response = await axios.post(
+      "http://127.0.0.1:5005/save-custom-script",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    console.log("Script Output:", response.data);
+    alert("New Script saved to the backend");
+  } catch (error) {
+    const errorMessage = error.response
+      ? JSON.stringify(error.response.data)
+      : error.message;
+    console.warn("Warning: Error running script:", errorMessage);
+    alert("Warning: Error running script: " + errorMessage);
+  }
+};

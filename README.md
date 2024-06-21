@@ -8,8 +8,8 @@
 
 <div align = "center">
   <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
-  <a href = "https://github.com/ReproModel/repromodel/blob/main/LICENSE"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <img alt = "Discord" src = "https://img.shields.io/discord/1151315619246002176">
+  <a href = "https://github.com/ReproModel/repromodel/blob/dev/LICENSE.md"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href = "https://discord.gg/CdJzm8zmpu"><img alt = "Discord" src = "https://img.shields.io/badge/Discord-3-brightgreen?logo=discord&logoColor=white"></a>
 </div>
 
 <br/>
@@ -49,8 +49,10 @@ For examples and step-by-step instructions, please visit our full documentation 
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
 
 **Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
+<br>
 ```
-npm run repromodel
+npm run repromodel            // Mac and Linux
+npm run repromodel-windows    // Windows
 ```
 
 **Launch the frontend instead individually:**
@@ -59,10 +61,19 @@ npm install
 npm run dev
 ```
 
+
+**If you have Ollama installed and want to use the Methodology Generator:**
+```
+npm run repromodel-with-llm            // Mac and Linux
+npm run repromodel-with-llm-windows    // Windows
+```
+Note: You can get Ollama from their [website](https://ollama.com/download).
+
+
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
-Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](Contributing.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
 <table>
   <tr>

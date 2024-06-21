@@ -1,16 +1,20 @@
 import json
-import torch
-import torch.nn as nn
 import importlib
 from torch.utils.tensorboard import SummaryWriter
-import torchmetrics
 from src.utils import ensure_folder_exists
+import os
+import os.path
+from typing import Any, List
+from sklearn.model_selection import train_test_split, KFold
+import numpy as np
 
+from torch.utils.data import Dataset
 def load_json(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
-def get_from_torch(module, class_name, params):
+def get_from_lib(module_name, class_name, params):
+    module = __import__(module_name, fromlist=[class_name])
     cls = getattr(module, class_name, None)
     if not cls:
         raise ValueError(f"{class_name} not found in {module.__name__}")
@@ -24,35 +28,40 @@ def get_from_module(module_path, class_name, params):
     return cls(**params)
 
 def get_optimizer(model, optimizer_name, optimizer_params):
-    if optimizer_name.split('.')[0] == 'torch':
-        optimizer_name = optimizer_name.split('.')[1]
-
-    optimizer_class = getattr(torch.optim, optimizer_name, None)
+    parts = optimizer_name.split('.')
+    if len(parts) > 1:
+        class_name = parts[-1]
+        module_name = ".".join(parts[:-1])
+    module = __import__(module_name, fromlist=[class_name])
+    optimizer_class = getattr(module, class_name, None)
     if not optimizer_class:
-        raise ValueError(f"Optimizer '{optimizer_name}' not found in torch.optim")
+        raise ValueError(f"Optimizer '{optimizer_name}' not found in library")
 
     return optimizer_class(params=model.parameters(), **optimizer_params)
 
 def get_lr_scheduler(optimizer, scheduler_name, params):
-    if scheduler_name.split('.')[0] == 'torch':
-        scheduler_name = scheduler_name.split('.')[1]
-    scheduler_class = getattr(torch.optim.lr_scheduler, scheduler_name, None)
+    parts = scheduler_name.split('.')
+    if len(parts) > 1:
+        class_name = parts[-1]
+        module_name = ".".join(parts[:-1])
+    module = __import__(module_name, fromlist=[class_name])
+    scheduler_class = getattr(module, class_name, None)
     
     if not scheduler_class:
         raise ValueError(
             f"LR scheduler '{scheduler_name}' not found in torch.optim.lr_scheduler")
     return scheduler_class(optimizer, **params)
 
-def configure_component(type, name, params):
-    if "torch" in type:
-        parts = name.split('.')
-        if len(parts) > 1:
-            name = parts[-1]
-        module = nn if 'loss' in type \
-                 else torchmetrics
-        return get_from_torch(module, name, params)
-    else:
-        return get_from_module(type, name, params)
+def configure_component(name, params):
+    parts = name.split('.')
+    name = parts[-1]
+    module = ".".join(parts[:-1])
+    try:
+        # looks first to find the class in the source code
+        return get_from_module(module, name, params)
+    except:
+        # if not found in the source code, look for the class in third-party libs
+        return get_from_lib(module, name, params)
 
 def configure_device_specific(component, device):
     if hasattr(component, 'to'):

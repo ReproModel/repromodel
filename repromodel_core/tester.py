@@ -1,5 +1,4 @@
 import os
-import json
 import torch
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
@@ -7,35 +6,36 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, TqdmFile
+from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, load_and_replace_keys, replace_in_string, TqdmFile
 
 SRC_DIR = "src."
 
-# Main testing function
+# Main crossvalidation testing function
 def test(input_data):
     # Reset the console output file
     delete_command_outputs()
     
     # Load config
-    if os.path.isfile(input_data):
-        with open(input_data, 'r') as file:
-            data = json.load(file)
+    # Check if input_data is a dictionary
+    if isinstance(input_data, dict):
+        data = replace_in_string(input_data)
     else:
-        # Assume input is a JSON string
-        data = json.loads(input_data)
+        # Load config
+        if os.path.isfile(input_data):
+            data = load_and_replace_keys(input_data)
+        else:
+            # Assume input is a JSON string
+            data = replace_in_string(input_data)
 
     cfg = edict(data)
 
     # Load test dataset
-    dataset_path = SRC_DIR + "datasets." + cfg.datasets[0].lower() + cfg.datasets[1:]
-    test_dataset = configure_component(dataset_path, cfg.datasets, cfg.datasets_params[cfg.datasets])
+    dataset_path = SRC_DIR + "datasets." + cfg.datasets
+    test_dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
     test_dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
-    test_dataset.set_mode('test')
-    test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
 
     # TensorBoard writer
     writer = SummaryWriter(log_dir=cfg.tensorboard_log_path)
-
 
     # get all saved checkpoints
     checkpoints = get_all_ckpts(cfg.model_save_path, cfg.models, cfg.data_splits.k)
@@ -43,11 +43,10 @@ def test(input_data):
         # Custom file object for TQDM
         tqdm_file = TqdmFile(config=cfg, model_num = m)
 
-        model_path = SRC_DIR + "models." + model_name[0].lower() + model_name[1:]
-        model_params = cfg.models_params[model_name]
+        model_path = SRC_DIR + "models." + model_name 
         checkpoint_path = checkpoints[model_name]
         # Load model
-        model = configure_component(model_path, model_name, model_params).to(cfg.device)
+        model = configure_component(model_path, cfg.models_params[model_name]).to(cfg.device)
 
         #add iteration over all folds
         for k in range(cfg.data_splits.k):
@@ -55,12 +54,16 @@ def test(input_data):
             checkpoint = torch.load(checkpoint_path[k], map_location=cfg.device)
             model = load_state(model, checkpoint)
 
+            #configure dataloader 
+            test_dataset.set_fold(k)
+            test_dataset.set_mode('test')
+            test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
+
             # Configure metrics
             metrics = {}
             for metric_name in cfg.metrics:
-                params = cfg.metrics_params[metric_name]
-                metric_path = SRC_DIR + "metrics." + metric_name[0].lower() + metric_name[1:]
-                metrics[metric_name] = configure_component(metric_path, metric_name, params)
+                metric_path = SRC_DIR + "metrics." + metric_name
+                metrics[metric_name] = configure_component(metric_path, cfg.metrics_params[metric_name])
 
             # Testing loop
             model.eval()
@@ -85,10 +88,10 @@ def test(input_data):
 
             # Log results to TensorBoard
             for metric_name, value in avg_metrics.items():
-                writer.add_scalar(f'Test/Fold_{k}/{model_name}/{metric_name}', value)
+                writer.add_scalar(f'CrossValTest/Fold_{k}/{model_name}/{metric_name}', value)
         
     writer.close()
-    print_to_file("Testing is completed and results are logged to TensorBoard successfully.")
+    print_to_file("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test multiple models")
