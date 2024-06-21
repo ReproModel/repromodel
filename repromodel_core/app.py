@@ -285,10 +285,10 @@ def copy_files_endpoint():
 @app.route('/create-repo', methods=['POST'])
 def create_repo():
     try:
-        app.logger.info(f"github_token: '{github_token}'")
-        app.logger.info(f"repo_name: '{repo_name}'")
-        app.logger.info(f"description: '{description}'")
-        app.logger.info(f"privacy: '{privacy}'")
+        github_token = request.form.get('github_token')
+        repo_name = request.form.get('repo_name')
+        description = request.form.get('description')
+        privacy = request.form.get('privacy')
 
         local_directory = 'repromodel_core/extracted_code/repromodel_core'  # Ensure this directory is correct
 
