@@ -71,7 +71,7 @@ const FirstTimeModal = () => {
             <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>repromodel_core/data/dummyData/input</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate }>
+          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Generate
           </Button>
           
@@ -81,7 +81,7 @@ const FirstTimeModal = () => {
             <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>DemoConfig.json</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') }>
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Download
           </Button>
                   
