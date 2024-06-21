@@ -35,7 +35,7 @@ const CustomScript = ({}) => {
   const [code, setCode] = React.useState(
     dedent`
     Select the kind of custom script you want to create. 
-    Make sure to have the backend up and running. 
+    Make sure you have the backend running. 
     `
   )
 

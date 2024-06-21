@@ -26,6 +26,9 @@
     opacity: 70%;
 }
 
+.container-content {
+    background-color: #fafafa;
+}
 
 .container-editor-area {
     max-height: 800px;
@@ -39,10 +42,10 @@
 
 .container-editor {
     min-height: 800px;
+    margin: 12px;
     overflow-y: scroll;
     font-size: 12px;
     font-variant-ligatures: common-ligatures;
-    background-color: #fafafa;
     border-radius: 3px;
     font-family: "Fira code", "Fira Mono", monospace;
 }
