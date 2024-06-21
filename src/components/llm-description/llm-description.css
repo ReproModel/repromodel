@@ -61,7 +61,7 @@
 
 .submit-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
-    opacity: 70%;
+    opacity: 80%;
 }
 
 /* LLM Response */
@@ -106,5 +106,5 @@
 }
 
 .copy-button:hover {
-    opacity: 70%;
+    opacity: 80%;
 }
