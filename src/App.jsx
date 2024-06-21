@@ -101,14 +101,14 @@ function App() {
 
                 { selectedSection === "Extract Code" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Extract Code</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px", marginLeft: "24px" } }>Extract Code</Typography>
                     <ExtractCode/>
                   </>
                 )}
                 
                 { selectedSection === "LLM Description" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>LLM Description</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px", marginLeft: "15px" } }>LLM Description</Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
