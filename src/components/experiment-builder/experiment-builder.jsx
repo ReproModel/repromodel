@@ -7,7 +7,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React from "react"
 
 import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../../utils/string-helpers"
+import { capitalizeAndRemoveUnderscore } from "../../utils/string-helpers"
 import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
 
@@ -79,7 +79,7 @@ const ExperimentBuilder = ({
       {/* Loop each folder. */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
         <div style={{ display: "flex", flexDirection: "column" }}>
-          {folder !== "tags" && <h4> {capitalizeFirstLetter(folder)}</h4>} 
+          {folder !== "tags" && <h4> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}
           {nestedFolders.includes(folder) ? (

@@ -92,7 +92,7 @@ const ExtractCode = ({}) => {
 
             {/* Subheader - Extract Code */}
             <div className = "extract-code-subheader">
-                <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Extract code files.</span>
+                <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Extract code files to the directory: repromodel_core {' > '} extracted_code</span>
             </div>
 
             {/* Checkbox - Confirmation One */}
