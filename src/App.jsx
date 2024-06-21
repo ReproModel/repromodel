@@ -1,7 +1,8 @@
 import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
-import ExperimentBuilder from "./components/experiment-builder/experiment-builder"
+
+import ExperimentBuilderWrapper from "./components/experiment-builder/experiment-builder-wrapper"
 import ExtractCode from "./components/extract-code/extract-code"
 import Header from "./components/header/header"
 import LLMDescription from "./components/llm-description/llm-description"
@@ -46,6 +47,7 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
+
               <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
                 <ButtonGroup variant = "contained">
                   <Button variant = "outlined" style = { { backgroundColor : "white", fontSize: "12px" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
@@ -61,15 +63,15 @@ function App() {
 
                 { selectedSection === "Custom Script" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
                     <CustomScript/>
                   </>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
-                    <ExperimentBuilder
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
+                    <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
@@ -80,7 +82,7 @@ function App() {
 
                 { selectedSection === "Model Testing" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Model Testing</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Model Testing</Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -92,7 +94,7 @@ function App() {
 
                 { selectedSection === "Progress Viewer" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
                   </>
                 )}
@@ -106,7 +108,7 @@ function App() {
                 
                 { selectedSection === "LLM Description" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>LLM Description</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "20px" } }>LLM Description</Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }

@@ -1,3 +1,14 @@
+.start-building-button {
+    margin-left: 0 !important;
+}
+
+.model-count {
+    margin-top: 1px;
+    margin-left: 1px;
+    opacity: 50%;
+    font-size: 14px;
+}
+
 .card-image-container, .card-title {
     position: relative;
     width: 100%;
@@ -5,7 +16,7 @@
 
 .container {
     width: 100%;
-    margin-top: 100px;
+    margin-top: 16px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -19,7 +30,7 @@
     border-radius: 10px;
     width: 100%;
     margin-top: 1rem;
-    min-height: 120px !important;
+    min-height: 80px !important;
 }
 
 .card:hover {
@@ -28,7 +39,8 @@
 }
 
 .card-title {
-    font-size: 15px;
+    font-size: 10px;
+    font-weight: 500;
     color: black;
     font-family: Lato;
 }
@@ -44,6 +56,12 @@
 
 .card-break {
     margin-bottom: 50px;
+}
+
+.card.selected {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #e6f0f1;
 }
 
 /* Media Queries - Responsive Styling */
@@ -105,7 +123,7 @@
         box-shadow: 0 0 .1rem rgba(0,0,0,.1),0 .15rem .9rem rgba(0,0,0,.1);
         border: 0;
         min-height: 267px;
-        max-width: 192px;
+        max-width: 120px;
     }
 
     .card-title {
@@ -149,7 +167,9 @@
         background-size: 50px auto;
         background-repeat: no-repeat;
         background-position: 50%;
-        margin: 15px auto;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
         border-radius: 5px;
     }
 

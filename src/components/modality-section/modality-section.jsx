@@ -1,38 +1,244 @@
-import "./modality-options.css"
+import "./modality-options.css";
 
-import ModalityOptions from "./modality-options"
-import React from "react"
+import ModalityOptions from "./modality-options";
+import React from "react";
 
-import { Typography } from "@mui/material"
+import { capitalizeFirstLetter } from "../../utils/string-helpers";
+import { Typography } from "@mui/material";
+import { useState } from "react";
 
-const modalities = [
-  { label: "Image", image: "https://production-media.paperswithcode.com/thumbnails/task/task-0000000509-66402dc1_C47uozM.jpg", numPapers: "2157 Datasets", href: "" },
-  { label: "Video", image: "https://production-media.paperswithcode.com/thumbnails/task/6f9c5c9e-b5fc-4ce3-b423-a3b196f0252c.jpg", numPapers: "2157 Datasets", href: "" },
-  { label: "Audio", image: "https://production-media.paperswithcode.com/thumbnails/method/method-0000000312-bb51f64c.jpg", numPapers: "2157 Datasets", href: ""},
-  { label: "3D", image: "https://production-media.paperswithcode.com/icons/task/48d55b59-3af2-4a6d-a195-572f1d4a1867.jpg", numPapers: "2157 Datasets", href: ""},
-  { label: "Text", image: "https://production-media.paperswithcode.com/icons/task/f3b5b381-ae14-4572-a44b-79c4aea62230.jpg", numPapers: "2157 Datasets", href: ""},
-]
+///////////////////////////////////////////////////////////
+// getModels()
+///////////////////////////////////////////////////////////
 
-const tasks = [
-  { label: "Semantic Segmentation", image: "https://production-media.paperswithcode.com/icons/task/b45b7a24-e2dd-47e2-9d1f-0f372e5d9074.jpg", numPapers: "180 models", href: "" },
-  { label: "Classification", image: "https://production-media.paperswithcode.com/icons/task/0aa45ecb-2bb1-4c8d-bd0c-16b4d9de739d.jpg", numPapers: "180 models", href: "" },
-  { label: "Object Detecttion", image: "https://production-media.paperswithcode.com/icons/task/dd004e56-bc49-4cc1-b0d5-186f2dd17ce8.jpg", numPapers: "180 models", href: ""},
-]
+function getModels(selectedOptions, jsonData) {
+  const { task, subtask, modality, submodality } = selectedOptions;
+  const data = jsonData;
 
-const ModalitySection = () => {
-  
-  return (
+  // Helper function to get models for a given key and values.
+  function getModelsForKey(key, values) {
+    // To be used dynamically in the future.
+    const typeOfWhatIWantToGet = "models";
 
-    <div className = "container">
+    let models = [];
 
-        <Typography style = { { marginBottom: "16px", marginTop: "16px" } } variant = "h4"> Choose your modality:</Typography>
-        <ModalityOptions cardOptions = { modalities }/>
-        
-        <Typography style = { { marginBottom: "16px", marginTop: "64px" } } variant="h4"> Choose your task:</Typography>
-        <ModalityOptions cardOptions = { tasks }/>
-    
-    </div>
-  )
+    if (
+      data[key] &&
+      data[key][values] &&
+      data[key][values][typeOfWhatIWantToGet]
+    ) {
+      models = data[key][values][typeOfWhatIWantToGet];
+    }
+
+    return models;
+  }
+
+  // Get models for each selected option.
+  const taskModels = getModelsForKey("task", task);
+  const subtaskModels = getModelsForKey("subtask", subtask);
+  const modalityModels = getModelsForKey("modality", modality);
+  const submodalityModels = getModelsForKey("submodality", submodality);
+
+  /*  console.log("Task Models:", taskModels);
+  console.log("Subtask Models:", subtaskModels);
+  console.log("Modality Models:", modalityModels);
+  console.log("Submodality Models:", submodalityModels);**/
+
+  // Intersect all model arrays.
+  function intersect(arr1, arr2) {
+    if (arr1.length === 0) return arr2;
+    if (arr2.length === 0) return arr1;
+    return arr1.filter((value) => arr2.includes(value));
+  }
+
+  let intersectedModels = taskModels;
+
+  if (subtaskModels.length > 0) {
+    intersectedModels = intersect(intersectedModels, subtaskModels);
+  }
+  if (modalityModels.length > 0) {
+    intersectedModels = intersect(intersectedModels, modalityModels);
+  }
+  if (submodalityModels.length > 0) {
+    intersectedModels = intersect(intersectedModels, submodalityModels);
+  }
+
+  // Check if any of the models are greater than 0 but intersectedModels is 0
+if (
+  (taskModels.length > 0 || subtaskModels.length > 0 || modalityModels.length > 0 || submodalityModels.length > 0) &&
+  intersectedModels.length === 0
+) {
+  return -1;
 }
 
-export default ModalitySection
+  return intersectedModels;
+}
+
+///////////////////////////////////////////////////////////
+// Get total number of models
+///////////////////////////////////////////////////////////
+
+function countUniqueModelsAndDatasets(data) {
+  const modelsSet = new Set();
+  const datasetsSet = new Set();
+
+  function extractModelsAndDatasets(section) {
+      if (typeof section === 'object' && section !== null) {
+          for (const key in section) {
+              const value = section[key];
+              if (value && typeof value === 'object') {
+                  if (Array.isArray(value.models)) {
+                      value.models.forEach(model => modelsSet.add(model));
+                  }
+                  if (Array.isArray(value.datasets)) {
+                      value.datasets.forEach(dataset => datasetsSet.add(dataset));
+                  }
+                  extractModelsAndDatasets(value);
+              }
+          }
+      }
+  }
+
+  extractModelsAndDatasets(data);
+
+  return { uniqueModels: modelsSet.size, uniqueDatasets: datasetsSet.size };
+}
+
+///////////////////////////////////////////////////////////
+// ModalitySection component
+///////////////////////////////////////////////////////////
+
+const ModalitySection = ({
+  class_per_tag,
+  setFilterChoosen,
+  setSelectedModels,
+}) => {
+  const [selectedOptions, setSelectedOptions] = useState({
+    task: [],
+    subtask: [],
+    modality: [],
+    submodality: [],
+  });
+
+  const handleOptionClick = (group, option) => {
+    setSelectedOptions((prevSelectedOptions) => {
+      const groupOptions = prevSelectedOptions[group];
+
+      // Check if the option is already selected for the group.
+      if (groupOptions && groupOptions.includes(option)) {
+        // Deselect the option if it is already selected.
+        return { ...prevSelectedOptions, [group]: [] };
+      } else {
+        // Select the new option, replacing any previously selected option.
+        return { ...prevSelectedOptions, [group]: [option] };
+      }
+    });
+  };
+
+
+
+  const selectedModels = getModels(selectedOptions, class_per_tag);
+
+  const totalAvailable = countUniqueModelsAndDatasets(class_per_tag);
+  const modelsAvailable = totalAvailable.uniqueModels
+  const datasetsAvailable = totalAvailable.uniqueDatasets
+
+
+  const renderModelCount = () => {
+    if (selectedModels.length === 0) {
+      return modelsAvailable;
+    } else if (selectedModels === -1) {
+      return 0;
+    } else {
+      return selectedModels.length;
+    }
+  };
+
+  return (
+    <div>
+      <p className="model-count">Available Models: { renderModelCount() }</p>
+    
+    
+      <div className="container">
+
+        {/* <div className="button-row">
+          {selectedModels.length > 0 ? (
+            <>
+              <button
+                type="submit"
+                className="start-building-button"
+                onClick={() => {
+                  setFilterChoosen(true);
+                  setSelectedModels(selectedModels);
+                }}
+              >
+                Start Building
+              </button>
+            </>
+          ) : (
+            <button
+              type="submit"
+              className="start-building-button"
+              onClick={() => {
+                setFilterChoosen(true);
+                setSelectedModels(selectedModels);
+              }}
+            >
+              Skip Filter
+            </button>
+          )}
+        </div> */}
+        {Object.entries(class_per_tag).map(([category, options]) => (
+          <>
+            <Typography
+              style={{ marginTop: "16px", marginBottom: "4px", fontSize: "10px", marginLeft: "2px" }}
+            >
+              Choose <strong>{capitalizeFirstLetter(category)}</strong>
+            </Typography>
+
+            <ModalityOptions
+              options={options}
+              onOptionClick={handleOptionClick}
+              selectedOptions={selectedOptions[category] || []}
+              group={category}
+            />
+          </>
+        ))}
+
+      </div>
+
+      <div className="button-row">
+          {selectedModels.length > 0 ? (
+            <>
+              <button
+                type="submit"
+                className="start-building-button"
+                onClick={() => {
+                  setFilterChoosen(true);
+                  setSelectedModels(selectedModels);
+                }}
+              >
+                Start Building
+              </button>
+            </>
+          ) : (
+            <button
+              type="submit"
+              className="start-building-button"
+              onClick={() => {
+                setFilterChoosen(true);
+                setSelectedModels(selectedModels);
+              }}
+            >
+              Skip Filter
+            </button>
+          )}
+        </div>
+
+    </div>
+
+    
+  );
+};
+
+export default ModalitySection;
