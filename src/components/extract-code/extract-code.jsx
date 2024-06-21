@@ -46,6 +46,19 @@ const ExtractCode = ({}) => {
         console.log("Text Area - Repository Name: ", repositoryName)
         console.log("Text Area - Repository Description", repositoryDescription)
         console.log("Radio Button - Visibility: ", visibility)
+
+        if (personalAccessToken.trim() == "" && repositoryName.trim() == "") {
+            alert("Required Fields:\n\nPlease enter your personal access token and a respository name for your new repo.")
+            return
+        }
+        else if (personalAccessToken.trim() == "") {
+            alert("Required Field:\n\nPlease enter your personal access token.")
+            return
+        }
+        else if (repositoryName.trim() == "") {
+            alert("Required Field:\n\nPlease enter a respository name for your new repo.")
+            return
+        }
     
         const formData = new FormData();
         formData.append('github_token', personalAccessToken);
