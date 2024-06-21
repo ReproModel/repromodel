@@ -64,22 +64,26 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <Typography className = "json-input-file-label">Upload existing training configuration file and reduce the selections if desired.</Typography>
-      
-      <input
-        type = "file"
-        id = "uploadedJson"
-        className = "json-input-file"
-        accept = ".json"
-        onChange = { (event) => handleFileChange(event, setFieldValue) }
-      />
+      <div style = { { marginLeft: "96px" } }>
+        <div className = "json-input-file-label">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "18px", fontWeight: "700" } }>Upload Existing Testing Configuration</span>
+        </div>
+
+        <input
+          type = "file"
+          id = "uploadedJson"
+          className = "json-input-file"
+          accept = ".json"
+          onChange = { (event) => handleFileChange(event, setFieldValue) }
+        />
+      </div>
 
       {/* Hidden field used to capture the submitType. */}
       <Field type = "hidden" name = "submitType" />
       
       {/* Loop each folder. */}
       { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <>
+        <div style = { { marginTop: "12px", paddingLeft: "96px" } }>
           { foldersPartOfTesting.includes(folder) && (
             
             <div style = { { display: "flex", flexDirection: "column" } }>
@@ -170,12 +174,12 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
 
           )}
 
-        </>
+        </div>
 
       ))}
   
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "36px", marginLeft: "96px" } }>
         
         {/* Start Testing Button */}
         

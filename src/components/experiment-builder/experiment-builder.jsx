@@ -58,7 +58,7 @@ const ExperimentBuilder = ({
   }, [])
 
   return (
-    <Form>
+    <Form> 
       
       {/* Optional JSON file upload input. */}
       <Typography className="json-input-file-label">

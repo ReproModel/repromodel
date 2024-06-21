@@ -1,9 +1,16 @@
 .header-tensorboard {
-    margin-top: 24px;
+    margin-top: 48px;
+    margin-left: 96px;
+}
+
+.subheader-tensorboard {
+    margin-top: 4px;
+    margin-left: 96px;
 }
 
 .tensorboard-button {
     margin-top: 24px;
+    margin-left: 96px;
     width: 250px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
@@ -22,8 +29,23 @@
 
 .header-output {
     margin-top: 24px;
+    margin-left: 96px;
+}
+
+.subheader-output {
+    margin-top: 4px;
+    margin-left: 96px;
 }
 
 .file-input-output {
     margin-top: 24px !important;
+    margin-left: 96px;
+}
+
+.file-reader {
+    margin-left: 96px;
+    width: 90%;
+    height: 600px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }

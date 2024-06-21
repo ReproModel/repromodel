@@ -1,9 +1,9 @@
 .json-input-file-label {
-    padding-top: 16px;
+    padding-top: 48px;
 }
 
 .json-input-file {
-    padding-top: 8px;
+    margin-top: 12px;
 }
 
 .param-box {

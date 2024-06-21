@@ -81,12 +81,12 @@ const CustomScript = ({}) => {
 
 
       {/* Custom Script Editor */}
-      <div className = "container-content" style = { { width: "100%" } }>
+      <div className = "custom-script-container-content" style = { { width: "100%" } }>
               
-        <div className = "container-editor-area">
+        <div className = "custom-script-container-editor-area">
           
           <Editor
-            className = "container-editor"
+            className = "custom-script-container-editor"
             value = { code }
             onValueChange = { (code) => setCode(code) }
             highlight = { (code) => highlight(code, languages.py) }

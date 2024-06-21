@@ -142,7 +142,7 @@ const LLMDescription = () => {
 
       
       {/* Additional LLM Prompting Rules */}
-      <div className = "textarea-additional-prompt-container" style = { { width: "98%" } }>
+      <div className = "textarea-additional-prompt-container" style = { { width: "88.5%" } }>
 
         <div className = "textarea-additional-prompt-label">
             <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Additional LLM Prompting Rules</span>
@@ -154,7 +154,7 @@ const LLMDescription = () => {
           value = { additionalPrompt }
           placeholder = " Describe my custom model in more detail while only briefly describe other models that are used.&#10;&#10; Do not describe optimizers and LR schedulers."
           minRows = { 4 }
-          style = { { width: "100%", height: "20px" } }
+          style = { { width: "90%", height: "20px" } }
           sx = { {
             "&::before": { display: "none" },
             "&:focus-within": { outline: "2px solid var(--Textarea-focusedHighlight)", outlineOffset: "2px" }
@@ -196,7 +196,7 @@ const LLMDescription = () => {
 
                 <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>LaTeX (.tex)</span> } />
 
-                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } style = { { opacity: "50%", color: "black", fontSize: "12px", marginLeft: "10px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
+                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "24px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
 
             </RadioGroup>
 
@@ -219,7 +219,7 @@ const LLMDescription = () => {
           </div>
 
           {/* LLM Response Output */}
-          <div className = "textarea-llm-response-container" style = { { width: "100%" } }>
+          <div className = "textarea-llm-response-container" style = { { width: "88.5%" } }>
             
             <div className = "textarea-llm-response-label">
               <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>LLM Response</span>

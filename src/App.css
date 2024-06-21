@@ -1,3 +1,7 @@
+body {
+  zoom: 50%
+}
+
 #root {
   width:100%;
   color: #38512f;
