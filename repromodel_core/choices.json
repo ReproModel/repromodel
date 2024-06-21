@@ -5728,7 +5728,7 @@
                 },
                 "preprocess_text_fn": {
                     "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x145ed0540>"
+                    "default": "<function _preprocess_text at 0x139bd0540>"
                 },
                 "idf": {
                     "type": "bool",
