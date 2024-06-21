@@ -100,7 +100,7 @@ const LLMDescription = () => {
   return (
     <Form>
 
-      <Typography className = "heading">Generate the methods section for your research paper.</Typography>
+      <Typography className = "llm-heading">Generate the methods section for your research paper.</Typography>
 
       
       {/* Configuration File */}

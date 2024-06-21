@@ -54,7 +54,9 @@ const CustomScript = ({}) => {
   return (
     <Form>
 
-      <Typography className = "heading">What kind of custom script?</Typography>
+      <div className = "custom-script-heading">
+        <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>What kind of custom script?</span>
+      </div>
 
 
       {/* Supported Categories */}
