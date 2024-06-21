@@ -115,7 +115,7 @@ const ExtractCode = ({}) => {
 
             {/* Button - Extract Code */}
             <div className = "code-extractor-button">
-                <Button variant = "contained" onClick = { extractCode } style = { { marginTop: "12px", backgroundColor: "#38512f", opacity: "90%" } } disabled = { !confirmationOne || !confirmationTwo }>
+                <Button variant = "contained" onClick = { extractCode } style = { { marginTop: "12px", backgroundColor: "#38512f", opacity: (!confirmationOne || !confirmationTwo) ? "40%" : "90" } } disabled = { !confirmationOne || !confirmationTwo }>
                     <span style= { { marginTop: "2px", fontSize: "12px", color: "white"} }>
                         Extract
                     </span>
