@@ -45,7 +45,7 @@ const StatusCheck = () => {
           borderRadius: "50%",
           backgroundColor: isBackendActive ? "green" : "red",
           marginRight: "10px", 
-          marginLeft: "8px"
+          marginLeft: "16px"
         }}
       />
 
