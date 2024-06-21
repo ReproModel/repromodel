@@ -2,7 +2,7 @@ import "./flexible-block.css"
 
 import React from "react"
 
-import { capitalizeFirstLetter } from "../../../utils/string-helpers"
+import { capitalizeAndRemoveUnderscore } from "../../../utils/string-helpers"
 import { Paper, Typography } from "@mui/material"
 
 function ActiveBlock({ id, name, status }) {
@@ -12,7 +12,7 @@ function ActiveBlock({ id, name, status }) {
       variant = "outlined"
       sx = { { backgroundColor: "#95e9fb", p: 0.5, boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
@@ -24,7 +24,7 @@ function CompletedBlock({ id, name, status }) {
       variant = "outlined"
       sx = { { backgroundColor: "#dff9fe", p: 0.5 } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
@@ -36,7 +36,7 @@ function PassiveBlock({ id, name, status }) {
       variant = "outlined"
       sx = { { backgroundColor: "#e6f0f1", p: 0.5 } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
