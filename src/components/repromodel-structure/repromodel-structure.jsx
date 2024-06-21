@@ -7,12 +7,12 @@ import { Container, Stack, Typography } from "@mui/material"
 
 function RepromodelStructure({ FormikProps }) {
 
-const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "lr_schedulers", "monitor", "data_splits"]
+const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "lr_schedulers", "monitor", "data_splits", "early_stopping"]
   
   return (
     <Container maxWidth = "md">
        
-      <Typography variant = "h4" align = "center" gutterBottom>Your ReproModel Structure</Typography>
+      <Typography variant = "h4" align = "center" gutterBottom>Your ReproModel Pipeline</Typography>
       
       <Stack spacing = { 2 }>
         

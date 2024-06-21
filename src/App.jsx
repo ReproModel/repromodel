@@ -48,18 +48,18 @@ function App() {
             <Grid item xs = { 8 } className = "tabs-container">
               
 
-              <Box sx = { { position: "absolute", top: 32, right: 48, zIndex: 100 } }>
-                <ButtonGroup variant = "contained">
+              <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
+                <ButtonGroup variant = "contained" sx = {{width: "100%", backgroundColor : "white"}}>
                   <Button variant = "outlined" style = { { backgroundColor : "white", fontSize: "12px" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "12px", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "12px", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "12px", opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
-                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "12px", opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "12px", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "12px" , width: "20%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "12px",width: "20%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "12px", width: "20%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "12px", width: "20%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "12px",width: "20%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 
-              <Grid item className = "tabs">
+              <Grid item className = "tabs" style={{marginTop : "32px"}}>
 
                 { selectedSection === "Custom Script" && (
                   <>
