@@ -4,7 +4,7 @@ import ModalityOptions from "./modality-options";
 import React from "react";
 
 import { capitalizeFirstLetter } from "../../utils/string-helpers";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 ///////////////////////////////////////////////////////////
@@ -180,39 +180,28 @@ const ModalitySection = ({
 
       </div>
 
-      <div className="button-row" style = { { marginLeft: "96px", marginTop: "24px" } }>
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                style = { { width: "200px" } }
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
-                Start Building
-              </button>
-            </>
+      <div className = "button-row" style = { { marginLeft: "96px", marginTop: "24px" } }>
+          { selectedModels.length > 0 ? (
+            <div>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+                  Start Building
+                </span>
+              </Button>
+            </div>
           ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              style = { { width: "200px" } }
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
+            <div>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+                  Skip Filter
+                </span>
+              </Button>
+            </div>
           )}
         </div>
 
     </div>
 
-    
   );
 };
 

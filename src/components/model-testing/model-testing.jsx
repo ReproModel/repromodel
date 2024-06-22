@@ -10,7 +10,6 @@ import { Button, ButtonGroup } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
-import { Typography } from "@mui/material"
 
 const foldersPartOfTesting = [
   "models",
@@ -184,26 +183,26 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
         {/* Start Testing Button */}
         
         { !testingInProgress &&
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => { setFieldValue("submitType", "testing") } }
-          >
-            <PlayArrowIcon />
-            Test
-          </Button>
+          <div>
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <PlayArrowIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+                Test
+              </span>
+            </Button>
+          </div>
         }
 
         {/* Stop Testing Button */}
         { testingInProgress &&
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => { setFieldValue("submitType", "stop-testing") } }
-          >
-            <StopIcon/>
-            Stop Testing
-          </Button>   
+          <div>
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "stop-testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <StopIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "4px", marginRight: "12px", fontSize: "10px", textAlign: "center"} }>
+                Stop Testing
+              </span>
+            </Button>
+          </div>
         }
 
       </ButtonGroup>
