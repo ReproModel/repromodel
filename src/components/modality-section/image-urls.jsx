@@ -18,8 +18,8 @@ const imageUrls = {
     "semantic": "url('https://production-media.paperswithcode.com/thumbnails/task/0d834282-fd21-4e57-be69-d5c2ed538690.jpg')",
 
     // Modality
-    "images": "url('https://www.customscene.co/wp-content/uploads/2022/09/Polaroid-Stack_3-04-PNG_Image-Isolated_Object.jpg')",
-    "video": "url('https://st4.depositphotos.com/4202565/24300/v/450/depositphotos_243005224-stock-illustration-video-player-vector-illustration.jpg')",
+    "images": "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9IpuHCgEjrmrr_cEMlm54bJgiIA1Sm80jlw&s')",
+    "video": "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSzsjFc3ep--2--rQAk0Rm77KFEUxB-_lRjBIZIWwuexp3GBCBXteBpjEPBU2UvtX_-Xw&usqp=CAU')",
 
     // Submodality
     "RGB": "url('https://pbs.twimg.com/profile_images/565252991561641984/KlUtwnF4_400x400.png')",
