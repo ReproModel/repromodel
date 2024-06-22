@@ -12,7 +12,7 @@ const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "
   return (
     <Container maxWidth = "md">
        
-      <Typography variant = "h4" align = "center" gutterBottom>Your ReproModel Pipeline</Typography>
+      <Typography variant = "h2" align = "center" gutterBottom style = { { fontWeight: "400" } } >Your ReproModel <br/>Pipeline</Typography>
       
       <Stack spacing = { 2 }>
         
