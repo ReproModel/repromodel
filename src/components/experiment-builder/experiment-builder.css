@@ -14,3 +14,15 @@
     padding: 8px;
     margin: 8px;
 }
+
+.experiment-builder-train-button:hover {
+    opacity: 70%;
+}
+
+.experiment-builder-stop-button:hover {
+    opacity: 70%;
+}
+
+.experiment-builder-download-config-button:hover {
+    opacity: 70%;
+}
