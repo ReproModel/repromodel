@@ -56,7 +56,7 @@ const FirstTimeModal = () => {
           </IconButton>
 
           {/* Title */}
-          <Typography id = "modal-title" variant = "h5" component = "h2" className = "modal-title">
+          <Typography id = "modal-title" variant = "h4" component = "h4" className = "modal-title" style = { { fontWeight: "600" } }>
             Quick Start
           </Typography>
           
