@@ -18,7 +18,9 @@
     width: 100%;
     margin-top: 48px;
     margin-left: 96px;
-    margin-right: auto;
+    margin-right: 0;
+    padding: 0 !important;
+    margin-right: 0 !important;
 }
 
 .row {
@@ -95,7 +97,7 @@
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px;
+        max-width: 100%;
     }
 }
 
@@ -122,9 +124,9 @@
         transition: background-color .25s,color .25s,box-shadow .25s;
         box-shadow: 0 0 .1rem rgba(0,0,0,.1),0 .15rem .9rem rgba(0,0,0,.1);
         border: 0;
-        min-height: 200px;
-        min-width: 150px;
-        max-width: 150px;
+        min-height: 250px;
+        min-width: 220px;
+        max-width: 220px;
     }
 
     .card-title {
