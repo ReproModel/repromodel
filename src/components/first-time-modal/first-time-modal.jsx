@@ -74,6 +74,13 @@ const FirstTimeModal = () => {
           <Button variant = "contained" className = "modal-button" onClick = { handleGenerate } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Generate
           </Button>
+
+          {/* Confirmation Message */}
+          { confirmationMessage && (
+            <Typography className = "modal-confirmation" style = { { color: 'green' } }>
+              { confirmationMessage }
+            </Typography>
+          )}
           
           {/* Step 2 - Download Configuration */}
           <Typography className = "modal-step-two">
@@ -84,13 +91,6 @@ const FirstTimeModal = () => {
           <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Download
           </Button>
-                  
-          {/* Confirmation Message */}
-          { confirmationMessage && (
-            <Typography className = "modal-confirmation" style = { { color: 'green' } }>
-              { confirmationMessage }
-            </Typography>
-          )}
 
           {/* Step 3 - Upload */}
           <Typography className = "modal-step-two">
