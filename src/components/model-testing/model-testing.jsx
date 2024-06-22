@@ -82,7 +82,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       
       {/* Loop each folder. */}
       { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style = { { marginTop: "12px", paddingLeft: "96px" } }>
+        <div style = { { marginTop: "12px", paddingLeft: "96px", width: "50%" } }>
           { foldersPartOfTesting.includes(folder) && (
             
             <div style = { { display: "flex", flexDirection: "column" } }>
