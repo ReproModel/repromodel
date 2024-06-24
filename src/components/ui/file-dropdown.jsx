@@ -7,7 +7,12 @@ import { useEffect, useState } from "react"
 const FileDropdown = ({ onSelectFile }) => {
   
   const [files, setFiles] = useState([])
-  const [selectedFile, setSelectedFile] = useState("")
+  const [selectedFile, setSelectedFile] = useState("command_output.txt")
+
+  // Load command_output.txt on page load.
+  useEffect(() => {
+    onSelectFile("command_output.txt")
+  }, [])
 
   useEffect(() => {
     const fetchFiles = async () => {
@@ -31,15 +36,13 @@ const FileDropdown = ({ onSelectFile }) => {
   return (
     <Box sx = { { width: 300, mt: 4 } }>
       
-      <strong>Output</strong>
-      
       <FormControl fullWidth>
         
         <InputLabel id = "file-select-label">Select file...</InputLabel>
         
         <Select
           labelId = "file-select-label"
-          label="Select a file"
+          label = "Select a file"
           value = { selectedFile }
           onChange = { handleChange }
         >

@@ -35,6 +35,7 @@ const StatusCheck = () => {
   }, []);
 
   return (
+
     <>
       <div className="status-wrapper-position">
         <div
@@ -85,5 +86,6 @@ const StatusCheck = () => {
     </>
   );
 };
+
 
 export default StatusCheck;

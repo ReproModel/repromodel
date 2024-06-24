@@ -1,5 +1,6 @@
-.heading {
+.llm-heading {
     padding-top: 16px;
+    padding-left: 96px;
 }
 
 /* Loading Animation */
@@ -9,11 +10,7 @@
 
 /* Configuration File */
 .json-input-file-container {
-    padding-top: 16px;
-}
-
-.json-input-file-label {
-    padding-top: 16px;
+    padding-left: 96px;
 }
 
 .json-input-file {
@@ -22,54 +19,59 @@
 
 /* Supported LLM Models */
 .supported-llm-container {
-    padding-top: 10px;
+    padding-top: 24px;
+    padding-left: 96px;
+    width: 80%;
+}
+
+.supported-llm-label {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.textarea-llm-response-label {
+    padding-bottom: 12px;
 }
 
 /* Additional LLM Prompting Rules */
 .textarea-additional-prompt-container {
-    padding-top: 10px;
+    padding-top: 24px;
+    padding-left: 96px;
+}
+
+.textarea-additional-prompt-label {
+    padding-top: 24px;
+    padding-bottom: 12px;
 }
 
 /* Writing Voice */
 .radio-writing-voice-container {
     padding-top: 10px;
+    padding-left: 86px;
 }
 
 /* Output Format */
 .radio-output-format-container {
     padding-top: 8px;
+    padding-left: 84px;
 }
 
 .radio-plain-text {
-    padding-left: 12px;
-}
-
-/* Submit Button */
-.submit-button {
-    padding-top: 10px;
-    width: 150px;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
-}
-
-.submit-button:hover {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    opacity: 70%;
+    padding-left: 24px;
 }
 
 /* LLM Response */
 .textarea-llm-response-container {
-    padding-top: 10px;
+    padding-top: 24px;
+    padding-left: 96px;
 }
 
 .textarea-llm-response-label {
     padding-top: 10px;
+}
+
+.container-content {
+    overflow-y: hidden;
 }
 
 .container-editor-area {
@@ -78,12 +80,14 @@
     overflow: auto;
     border: 3px dotted #ccc;
     margin: 14px;
+    margin: 0 !important;
     padding-left: 0;
-    margin-left: 0;
+    width: 90%;
+    overflow-y: scroll;
 }
 
 .container-editor {
-    min-height: 800px;
+    min-height: 210px;
     overflow-y: scroll;
     font-size: 12px;
     font-variant-ligatures: common-ligatures;
@@ -94,23 +98,15 @@
 
 .container-editor textarea {
     outline: 0;
+    overflow-y: scroll;
 }
 
 /* Copy Button */
 .copy-button {
-    padding-top: 10px;
-    width: 150px;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
+    margin-top: 24px;
+    margin-left: 96px !important;
 }
 
 .copy-button:hover {
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    opacity: 70%;
+    opacity: 80%;
 }

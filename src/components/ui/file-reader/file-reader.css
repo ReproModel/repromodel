@@ -1,6 +1,10 @@
+.file-reader-header {
+    margin-bottom: 0 !important;
+}
+
 .file-content {
-    width: 95%;
-    margin-top: 16px;
+    width: 100%;
+    margin-top: 12px;
     height: 55%;
     border: 2px solid #000;
     padding: 10px;

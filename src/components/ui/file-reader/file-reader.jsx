@@ -30,7 +30,7 @@ const FileReader = ({ fileName }) => {
 
   return (
     <>
-      <h4>Progress</h4>
+      <h4 className = "file-reader-header">Progress</h4>
       
       <div className = "file-content"> 
         <pre>{ fileContent }</pre>

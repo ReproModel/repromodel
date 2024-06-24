@@ -49,28 +49,28 @@ function App() {
               
 
               <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
-                <ButtonGroup variant = "contained" sx = {{width: "100%", backgroundColor : "white"}}>
-                  <Button variant = "outlined" style = { { backgroundColor : "white", fontSize: "12px" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
-                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { fontSize: "12px" , width: "20%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
-                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { fontSize: "12px",width: "20%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
-                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { fontSize: "12px", width: "20%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
-                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { fontSize: "12px", width: "20%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { fontSize: "12px",width: "20%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+                <ButtonGroup variant = "contained" sx = { { width: "100%", backgroundColor : "white" } }>
+                  <Button variant = "outlined" style = { { backgroundColor: "white", color: "#38512f", borderColor: "#38512f", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
+                  <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
+                  <Button onClick = { () => setSelectedSection("Model Testing") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
+                  <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
+                  <Button onClick = { () => setSelectedSection("Extract Code") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                 </ButtonGroup>
               </Box>
 
-              <Grid item className = "tabs" style={{marginTop : "32px"}}>
+              <Grid item className = "tabs" style = { { marginTop : "4px" } }>
 
                 { selectedSection === "Custom Script" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Create Custom Script</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Create Custom Script</Typography>
                     <CustomScript/>
                   </>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Experiment Builder</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Experiment Builder</Typography>
                     <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -82,7 +82,7 @@ function App() {
 
                 { selectedSection === "Model Testing" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Model Testing</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Model Testing</Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
@@ -94,21 +94,21 @@ function App() {
 
                 { selectedSection === "Progress Viewer" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>Progress Viewer</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Progress Viewer</Typography>
                     <ProgressViewer/>
                   </>
                 )}
 
                 { selectedSection === "Extract Code" && (
                   <>
-                    <Typography variant = "h4" style = { { marginTop: "20px" } }>Extract Code</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>Extract Code</Typography>
                     <ExtractCode/>
                   </>
                 )}
                 
                 { selectedSection === "LLM Description" && (
                   <>
-                    <Typography variant = "h5" style = { { marginTop: "20px" } }>LLM Description</Typography>
+                    <Typography variant = "h5" style = { { marginTop: "96px", marginLeft: "96px", fontWeight: "600" } }>LLM Description</Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }

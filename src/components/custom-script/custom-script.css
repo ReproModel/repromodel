@@ -1,17 +1,25 @@
+.custom-script-heading {
+    padding-top: 16px;
+    margin-left: 96px;
+}
+
 .category-container {
     display: flex;
+    margin-left: 96px;
 }
 
 .category-dropdown {
     width: 50%;
     height: 50%;
-    padding-top: 16px;
+    padding-top: 4px;
 }
 
 .load-template-button {
-    margin-top: 16px;
+    margin-top: 4px;
     margin-left: 5px;
     width: auto;
+    height: 42px;
+    line-height: 12px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     font-size: 0.775rem;
@@ -26,21 +34,25 @@
     opacity: 70%;
 }
 
-.container-content {
+.custom-script-container-content {
     background-color: #fafafa;
+    margin-left: 96px;
+    width: 90% !important;
 }
 
-.container-editor-area {
+.custom-script-container-editor-area {
     max-height: 800px;
     tab-size: 4ch;
-    overflow: auto;
     border: 3px dotted #ccc;
     margin: 14px;
+    margin-right: 0 !important;
     padding-left: 0;
+    padding-right: 0;
     margin-left: 0;
+    overflow: auto;
 }
 
-.container-editor {
+.custom-script-container-editor {
     min-height: 800px;
     margin: 12px;
     overflow-y: scroll;
@@ -50,17 +62,22 @@
     font-family: "Fira code", "Fira Mono", monospace;
 }
 
-.container-editor textarea {
+.custom-script-container-editor textarea {
     outline: 0;
+}
+
+.file-name-input-container {
+    margin-left: 96px;
 }
 
 .file-name-input {
     margin-left: 10px;
+    margin-top: 12px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
-    width: 45%;
-    height: 25px;
+    width: 24.5%;
+    height: 40px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -69,36 +86,10 @@
     cursor: pointer;
 }
 
-.container-content {
-    width: 800px;
-    max-width: 100%;
-    text-align: center;
-    padding-top: 8px;
-}
-
-.container-editor-area {
-    max-height: 400px;
-    tab-size: 4ch;
-    overflow: auto;
-    margin: 2em 2em;
-}
-
-.container-editor {
-    min-height: 400px;
-    font-size: 12px;
-    font-variant-ligatures: common-ligatures;
-    background-color: #fafafa;
-    border-radius: 3px;
-    font-family: "Fira code", "Fira Mono", monospace;
-}
-
-.container-editor textarea {
-    outline: 0;
-}
-
 .button {
     margin-top: 10px;
-    width: 150px;
+    margin-left: 96px;
+    width: 200px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
     border: 1px solid rgba(0, 0, 0, 0.12);

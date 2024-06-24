@@ -36,13 +36,39 @@ const ProgressViewer = ({}) => {
 
   return (
     <>
+      {/* Header - TensorBoard */}
+      <div className = "header-tensorboard">
+          <Typography variant = "h7" style = { { fontWeight: "600" } }>TensorBoard</Typography>
+      </div>
+
+      {/* Subheader - TensorBoard */}
+      <div className = "subheader-tensorboard">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>A suite of visualization tools to understand, debug, and optimize ML experiments.</span>
+      </div>
+
       <button className = "tensorboard-button" onClick = { startTensorBoard }>
         <Typography>Start TensorBoard</Typography>
       </button>
       
-      <FileDropdown onSelectFile = { setSelectedFile }/>
-    
-      { selectedFile && <FileReader fileName = { selectedFile }/> }
+      {/* Header - View Output */}
+      <div className = "header-output">
+          <Typography variant = "h7" style = { { fontWeight: "600" } }>View Output</Typography>
+      </div>
+
+      {/* Subheader - View Output */}
+      <div className = "subheader-output">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>View output logs and training progress.</span>
+      </div>
+      
+      {/* File Input - View Output */}
+      <div className = "file-input-output">
+        <FileDropdown onSelectFile = { setSelectedFile }/>
+      </div>
+
+      <div className = "file-reader">
+        { selectedFile && <FileReader fileName = { selectedFile }/> }
+      </div>
+
     </>
   )
 }

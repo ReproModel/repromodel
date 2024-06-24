@@ -54,7 +54,9 @@ const CustomScript = ({}) => {
   return (
     <Form>
 
-      <Typography className = "heading">What kind of custom script?</Typography>
+      <div className = "custom-script-heading">
+        <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>What kind of custom script?</span>
+      </div>
 
 
       {/* Supported Categories */}
@@ -79,12 +81,12 @@ const CustomScript = ({}) => {
 
 
       {/* Custom Script Editor */}
-      <div className = "container-content" style = { { width: "100%" } }>
+      <div className = "custom-script-container-content" style = { { width: "100%" } }>
               
-        <div className = "container-editor-area">
+        <div className = "custom-script-container-editor-area">
           
           <Editor
-            className = "container-editor"
+            className = "custom-script-container-editor"
             value = { code }
             onValueChange = { (code) => setCode(code) }
             highlight = { (code) => highlight(code, languages.py) }

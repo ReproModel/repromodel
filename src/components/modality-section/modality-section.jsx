@@ -4,7 +4,7 @@ import ModalityOptions from "./modality-options";
 import React from "react";
 
 import { capitalizeFirstLetter } from "../../utils/string-helpers";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 ///////////////////////////////////////////////////////////
@@ -156,42 +156,15 @@ const ModalitySection = ({
 
   return (
     <div>
-      <p className="model-count">Available Models: { renderModelCount() }</p>
+      <p className="model-count" style = { { fontSize: "22px" } }>Available Models: { renderModelCount() }</p>
     
     
       <div className="container">
 
-        {/* <div className="button-row">
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
-                Start Building
-              </button>
-            </>
-          ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
-          )}
-        </div> */}
-        {Object.entries(class_per_tag).map(([category, options]) => (
-          <>
+        {Object.entries(class_per_tag).map(([category, options], idx) => (
+          <div style = { { marginTop: (idx == 0) ? "0": "24px" } }>
             <Typography
-              style={{ marginTop: "16px", marginBottom: "4px", fontSize: "10px", marginLeft: "2px" }}
+              style = { { marginBottom: "12px", fontSize: "10px", marginLeft: "2px" } }
             >
               Choose <strong>{capitalizeFirstLetter(category)}</strong>
             </Typography>
@@ -202,42 +175,33 @@ const ModalitySection = ({
               selectedOptions={selectedOptions[category] || []}
               group={category}
             />
-          </>
+          </div>
         ))}
 
       </div>
 
-      <div className="button-row">
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
-                Start Building
-              </button>
-            </>
+      <div className = "button-row" style = { { marginLeft: "96px", marginTop: "24px" } }>
+          { selectedModels.length > 0 ? (
+            <div>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+                  Start Building
+                </span>
+              </Button>
+            </div>
           ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
+            <div>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+                  Skip Filter
+                </span>
+              </Button>
+            </div>
           )}
         </div>
 
     </div>
 
-    
   );
 };
 
