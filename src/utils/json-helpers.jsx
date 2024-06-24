@@ -202,8 +202,13 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
-  } else if (values.submitType === "stop-training") {
+  } else if (type === "stop-training") {
       // Handle stop training submit action
+      console.log("Trying to kill training")
+      const response = await axios.post(
+        "http://127.0.0.1:5005/kill-training-process",
+        jsonTransformed
+      );
       try {
         const response = await axios.post(
           "http://127.0.0.1:5005/kill-training-process",
@@ -217,7 +222,7 @@ export const handleSubmit = async (values) => {
         console.warn("Warning: Error running script:", errorMessage);
         alert("Warning: Error running script: " + errorMessage);
       }
-  } else if (values.submitType === "testing") {
+  } else if (type === "testing") {
     // Handle testing submit action
     try {
       const response = await axios.post(
@@ -232,7 +237,7 @@ export const handleSubmit = async (values) => {
       console.warn("Warning: Error running script:", errorMessage);
       alert("Warning: Error running script: " + errorMessage);
     }
-  } else if (values.submitType === "stop-testing") {
+  } else if (type === "stop-testing") {
       // Handle stop testing submit action.
       try {
         const response = await axios.post(
@@ -247,7 +252,7 @@ export const handleSubmit = async (values) => {
         console.warn("Warning: Error running script:", errorMessage);
         alert("Warning: Error running script: " + errorMessage);
       }
-  } else if (values.submitType === "download") {
+  } else if (type === "download") {
     // Handle download action
     // Create a Blob for download
     const blob = new Blob([finalJsonString], { type: "application/json" });
