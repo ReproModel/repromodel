@@ -43,7 +43,7 @@ const ProgressViewer = ({}) => {
 
       {/* Subheader - TensorBoard */}
       <div className = "subheader-tensorboard">
-          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>A suite of visualization tools to understand, debug, and optimize TensorFlow programs for ML experimentation.</span>
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>A suite of visualization tools to understand, debug, and optimize ML experiments.</span>
       </div>
 
       <button className = "tensorboard-button" onClick = { startTensorBoard }>
