@@ -15,6 +15,10 @@
   /* Ensure the button is on top of other elements */
   z-index: 50;
 }
+
+.position2 {
+  top: 64px;
+}
   
 .blinking {
   animation: blink 3s infinite;
