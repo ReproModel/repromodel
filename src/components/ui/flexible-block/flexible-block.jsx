@@ -10,9 +10,9 @@ function ActiveBlock({ id, name, status }) {
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#95e9fb", p: 0.5, height: "80px", boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" } }
+      sx = { { backgroundColor: "#95e9fb", height: "33px", boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" } }
     >
-      <Typography align = "center" style = { { fontWeight: "400", fontSize: "36px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
+      <Typography align = "center" style = { { fontWeight: "500", fontSize: "16px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
@@ -22,9 +22,9 @@ function CompletedBlock({ id, name, status }) {
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#dff9fe", p: 0.5, height: "80px" } }
+      sx = { { backgroundColor: "#dff9fe", height: "33px" } }
     >
-      <Typography align = "center" style = { { fontWeight: "400", fontSize: "36px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
+      <Typography align = "center" style = { { fontWeight: "500", fontSize: "16px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
@@ -34,9 +34,9 @@ function PassiveBlock({ id, name, status }) {
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#e6f0f1", p: 0.5, height: "80px" } }
+      sx = { { backgroundColor: "#e6f0f1", height: "33px" } }
     >
-      <Typography align = "center" style = { { fontWeight: "400", fontSize: "36px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
+      <Typography align = "center" style = { { fontWeight: "500", fontSize: "16px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }

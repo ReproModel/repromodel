@@ -156,7 +156,7 @@ const ModalitySection = ({
 
   return (
     <div>
-      <p className="model-count" style = { { fontSize: "22px" } }>Available Models: { renderModelCount() }</p>
+      <p className="model-count" style = { { fontSize: "14px" } }>Available Models: { renderModelCount() }</p>
     
     
       <div className="container">
@@ -180,19 +180,19 @@ const ModalitySection = ({
 
       </div>
 
-      <div className = "button-row" style = { { marginLeft: "96px", marginTop: "24px" } }>
+      <div className = "button-row" style = { { marginTop: "4px" } }>
           { selectedModels.length > 0 ? (
             <div>
-              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
-                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "120px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", fontSize: "10px", textAlign: "center"} }>
                   Start Building
                 </span>
               </Button>
             </div>
           ) : (
             <div>
-              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "230px" } }>
-                <span style = { { paddingTop: "4px", paddingBottom: "4px", paddingLeft: "18px", paddingRight: "24px", fontSize: "12px", textAlign: "center"} }>
+              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "120px" } }>
+                <span style = { { paddingTop: "4px", paddingBottom: "4px", fontSize: "10px", textAlign: "center"} }>
                   Skip Filter
                 </span>
               </Button>

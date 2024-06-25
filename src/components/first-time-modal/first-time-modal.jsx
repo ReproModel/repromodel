@@ -42,7 +42,7 @@ const FirstTimeModal = () => {
   return (
     <div className = "modal-container">
       
-      <Button variant = "contained" onClick = { handleOpen } style = { { backgroundColor: "#1b1212", opacity: "90%", borderRadius: "24px", width: "250px" } }>
+      <Button variant = "contained" onClick = { handleOpen } style = { { backgroundColor: "#1b1212", opacity: "90%", borderRadius: "24px" } }>
         First Time Here?
       </Button>
       
@@ -56,7 +56,7 @@ const FirstTimeModal = () => {
           </IconButton>
 
           {/* Title */}
-          <Typography id = "modal-title" variant = "h4" component = "h4" className = "modal-title" style = { { fontWeight: "600" } }>
+          <Typography id = "modal-title" variant = "h5" component = "h2" className = "modal-title">
             Quick Start
           </Typography>
           
@@ -74,13 +74,6 @@ const FirstTimeModal = () => {
           <Button variant = "contained" className = "modal-button" onClick = { handleGenerate } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Generate
           </Button>
-
-          {/* Confirmation Message */}
-          { confirmationMessage && (
-            <Typography className = "modal-confirmation" style = { { color: 'green' } }>
-              { confirmationMessage }
-            </Typography>
-          )}
           
           {/* Step 2 - Download Configuration */}
           <Typography className = "modal-step-two">
@@ -91,6 +84,13 @@ const FirstTimeModal = () => {
           <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Download
           </Button>
+                  
+          {/* Confirmation Message */}
+          { confirmationMessage && (
+            <Typography className = "modal-confirmation" style = { { color: 'green' } }>
+              { confirmationMessage }
+            </Typography>
+          )}
 
           {/* Step 3 - Upload */}
           <Typography className = "modal-step-two">

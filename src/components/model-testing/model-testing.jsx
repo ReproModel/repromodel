@@ -63,9 +63,9 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <div style = { { marginLeft: "96px" } }>
+      <div>
         <div className = "json-input-file-label">
-          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "18px", fontWeight: "700" } }>Upload Existing Testing Configuration</span>
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "700" } }>Upload Existing Testing Configuration</span>
         </div>
 
         <input
@@ -82,10 +82,10 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       
       {/* Loop each folder. */}
       { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style = { { marginTop: "12px", paddingLeft: "96px", width: "50%" } }>
+        <div style = { { width: "50%" } }>
           { foldersPartOfTesting.includes(folder) && (
             
-            <div style = { { display: "flex", flexDirection: "column" } }>
+            <div style = { { display: "flex", flexDirection: "column", fontSize: "12px" } }>
               
               <h4> {capitalizeFirstLetter(folder)}</h4>
 
@@ -178,7 +178,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
       ))}
   
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "36px", marginLeft: "96px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "36px"} }>
         
         {/* Start Testing Button */}
         

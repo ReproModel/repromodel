@@ -157,9 +157,9 @@ const ExtractCode = ({}) => {
             </div>
 
             {/* Radio Button - GitHub Repo Visibility */}
-            <div className = "radio-repo-visibility-container">
+            <div className = "radio-repo-visibility-container" style = { { paddingLeft: "0 !important" } }>
 
-                <FormControlLabel label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Repository Visibility</span>} labelPlacement = "start" 
+                <FormControlLabel label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", marginLeft: "0 !important" } }>Repository Visibility</span>} labelPlacement = "start" 
 
                     control = {
 

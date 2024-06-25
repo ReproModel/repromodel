@@ -1,9 +1,9 @@
 .json-input-file-label {
-    padding-top: 48px;
+    padding-top: 24px;
 }
 
 .json-input-file {
-    margin-top: 12px;
+    margin-top: 6px;
 }
 
 .param-box {
@@ -11,8 +11,6 @@
     flex-direction: column;
     border: 2px solid #000000;
     border-radius: 10px;
-    padding: 8px;
-    margin: 8px;
 }
 
 .submit-button {
