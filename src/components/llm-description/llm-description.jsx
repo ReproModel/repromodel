@@ -167,7 +167,7 @@ const LLMDescription = () => {
       {/* Writing Voice */}
       <div className = "radio-writing-voice-container">
         
-        <FormControlLabel label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Writing Voice</span>} labelPlacement = "start" 
+        <FormControlLabel sx = { { margin: "0 !important" } } label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Writing Voice</span>} labelPlacement = "start" 
 
             control = {
 
@@ -188,7 +188,7 @@ const LLMDescription = () => {
       {/* Output Format */}
       <div className = "radio-output-format-container">
         
-        <FormControlLabel label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Output Format</span>} labelPlacement = "start" 
+        <FormControlLabel sx = { { margin: "0 !important" } } label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Output Format</span>} labelPlacement = "start" 
 
             control = {
 
@@ -196,7 +196,7 @@ const LLMDescription = () => {
 
                 <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>LaTeX (.tex)</span> } />
 
-                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "24px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
+                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "21px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
 
             </RadioGroup>
 

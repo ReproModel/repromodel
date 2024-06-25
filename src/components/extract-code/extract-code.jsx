@@ -98,25 +98,25 @@ const ExtractCode = ({}) => {
             {/* Checkbox - Confirmation One */}
             <div className = "code-extractor-confirmation-one">
                 <FormControlLabel
-                    control = {<Checkbox onChange = { (e, value) => { setConfirmationOne(value) }} style = { { transform: "scale(.5)", padding: "0", marginLeft: "24px", pointerEvents: "none" } }/>}
-                    label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left", padding: "0" } }>I understand that the previous experiment code will be deleted in order to generate a new one.</Typography> }
-                    sx = {{ fontSize: "4px"}}
+                    control = {<Checkbox onChange = { (e, value) => { setConfirmationOne(value) }} style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
+                    label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left" } }>I understand that the previous experiment code will be deleted in order to generate a new one.</Typography> }
+                    sx = { { fontSize: "4px" } }
                 />
             </div>
             
             {/* Checkbox - Confirmation Two */}
             <div className = "code-extractor-confirmation-two">
                 <FormControlLabel
-                    control = {<Checkbox onChange = { (e, value) => { setConfirmationTwo(value) }}  style = { { transform: "scale(.5)", padding: "0", marginLeft: "24px", pointerEvents: "none" } }/>}
-                    label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left", padding: "0" } }>I also confirm that the training process has been finished.</Typography> }
-                    sx = {{ fontSize: "4px"}}
+                    control = {<Checkbox onChange = { (e, value) => { setConfirmationTwo(value) }}  style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
+                    label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left" } }>I also confirm that the training process has been finished.</Typography> }
+                    sx = { { fontSize: "4px" } }
                 />         
             </div>
 
             {/* Button - Extract Code */}
             <div className = "code-extractor-button">
                 <Button variant = "contained" onClick = { extractCode } style = { { marginTop: "12px", backgroundColor: "#38512f", width: "150px", opacity: (!confirmationOne || !confirmationTwo) ? "40%" : "90%" } } disabled = { !confirmationOne || !confirmationTwo }>
-                    <span style= { { marginTop: "2px", fontSize: "12px", color: "white"} }>
+                    <span style= { { marginTop: "2px", fontSize: "12px", color: "white" } }>
                         Extract
                     </span>
                 </Button>
@@ -157,9 +157,9 @@ const ExtractCode = ({}) => {
             </div>
 
             {/* Radio Button - GitHub Repo Visibility */}
-            <div className = "radio-repo-visibility-container" style = { { paddingLeft: "0 !important" } }>
+            <div className = "radio-repo-visibility-container">
 
-                <FormControlLabel label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", marginLeft: "0 !important" } }>Repository Visibility</span>} labelPlacement = "start" 
+                <FormControlLabel sx = { { margin: "0 !important" } } label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Repository Visibility</span>} labelPlacement = "start" 
 
                     control = {
 
