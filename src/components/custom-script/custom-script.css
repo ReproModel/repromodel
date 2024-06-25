@@ -24,6 +24,7 @@
     background-color: #e6f0f1;
     color: #000000;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .load-template-button:hover {
@@ -89,6 +90,7 @@
     font-weight: 500;
     background-color: #e6f0f1;
     color: #000000;
+    cursor: pointer;
 }
 
 .button:hover {

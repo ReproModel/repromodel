@@ -64,7 +64,7 @@ const ExperimentBuilder = ({
       <div>
         
         <div className = "json-input-file-label">
-          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "18px", fontWeight: "700" } }>Upload Existing Training Configuration</span>
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "700" } }>Upload Existing Training Configuration</span>
         </div>
 
         <input
@@ -81,7 +81,7 @@ const ExperimentBuilder = ({
 
       {/* Loop each folder. */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style={{ display: "flex", flexDirection: "column", marginTop: "24px", width: "50%" }}>
+        <div style={{ display: "flex", flexDirection: "column", fontSize: "12px" }}>
           {folder !== "tags" && <h4> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}
@@ -172,7 +172,7 @@ const ExperimentBuilder = ({
         </div>
       ))}
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "24px", marginLeft: "96px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "24px" } }>
         
         {/* Start Training Button */}
         { !trainingInProgress && 
