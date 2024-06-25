@@ -164,7 +164,7 @@ const ModalitySection = ({
         {Object.entries(class_per_tag).map(([category, options], idx) => (
           <div style = { { marginTop: (idx == 0) ? "0": "24px" } }>
             <Typography
-              style = { { marginBottom: "12px", fontSize: "10px", marginLeft: "2px" } }
+              style = { { marginBottom: "12px", fontSize: "24px", marginLeft: "2px" } }
             >
               Choose <strong>{capitalizeFirstLetter(category)}</strong>
             </Typography>
