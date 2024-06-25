@@ -13,32 +13,32 @@
 }
 
 .json-input-file {
-    padding-top: 8px;
+    padding-top: 6px;
 }
 
 /* Supported LLM Models */
 .supported-llm-container {
     padding-top: 12px;
+    padding-bottom: 8px;
     width: 80%;
 }
 
 .supported-llm-label {
     padding-top: 12px;
-    padding-bottom: 12px;
+    padding-bottom: 8px;
 }
 
 .textarea-llm-response-label {
-    padding-bottom: 12px;
+    padding-bottom: 8px;
 }
 
 /* Additional LLM Prompting Rules */
 .textarea-additional-prompt-container {
-    padding-top: 6px;
+    padding-top: 12px;
 }
 
 .textarea-additional-prompt-label {
-    padding-top: 6px;
-    padding-bottom: 12px;
+    padding-bottom: 8px;
 }
 
 /* Writing Voice */

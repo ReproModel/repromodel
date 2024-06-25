@@ -3,11 +3,11 @@
 }
 
 .file-content {
-    width: 100%;
-    margin-top: 12px;
-    height: 55%;
+    height: 30%;
     border: 2px solid #000;
-    padding: 10px;
+    padding-top: 1px;
+    padding-left: 4px;
     overflow: auto;
     border-radius: 10px;
+    font-size: 8px;
 }
