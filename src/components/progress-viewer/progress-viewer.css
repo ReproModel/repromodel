@@ -1,22 +1,19 @@
 .header-tensorboard {
-    margin-top: 48px;
-    margin-left: 96px;
+    margin-top: 12px;
 }
 
 .subheader-tensorboard {
     margin-top: 4px;
-    margin-left: 96px;
 }
 
 .tensorboard-button {
     margin-top: 24px;
-    margin-left: 96px;
-    width: 250px;
+    width: 200px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.875rem;
+    font-size: 0.675rem;
     font-weight: 500;
     background-color: #e6f0f1;
     color: #000000;
@@ -29,21 +26,17 @@
 
 .header-output {
     margin-top: 24px;
-    margin-left: 96px;
 }
 
 .subheader-output {
     margin-top: 4px;
-    margin-left: 96px;
 }
 
 .file-input-output {
     margin-top: 24px !important;
-    margin-left: 96px;
 }
 
 .file-reader {
-    margin-left: 96px;
     width: 90%;
     height: 600px;
     margin-bottom: 0 !important;

@@ -1,9 +1,5 @@
-body {
-  zoom: 50%
-}
-
 #root {
-  width:100%;
+  width: 100%;
   color: #38512f;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -17,11 +13,13 @@ body {
 }
 
 .repromodal-structure-container {
+  width: auto;
   height: 85vh;
   padding: 16px;
 }
 
 .repromodal-structure {
+  width: auto;
   background-color: rgb(255, 255, 255);
   height: 100%;
   border-radius: 8px;

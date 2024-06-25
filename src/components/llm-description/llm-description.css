@@ -1,6 +1,5 @@
 .llm-heading {
     padding-top: 16px;
-    padding-left: 96px;
 }
 
 /* Loading Animation */
@@ -10,7 +9,7 @@
 
 /* Configuration File */
 .json-input-file-container {
-    padding-left: 96px;
+    padding-left: 1px;
 }
 
 .json-input-file {
@@ -19,8 +18,7 @@
 
 /* Supported LLM Models */
 .supported-llm-container {
-    padding-top: 24px;
-    padding-left: 96px;
+    padding-top: 12px;
     width: 80%;
 }
 
@@ -35,35 +33,32 @@
 
 /* Additional LLM Prompting Rules */
 .textarea-additional-prompt-container {
-    padding-top: 24px;
-    padding-left: 96px;
+    padding-top: 6px;
 }
 
 .textarea-additional-prompt-label {
-    padding-top: 24px;
+    padding-top: 6px;
     padding-bottom: 12px;
 }
 
 /* Writing Voice */
 .radio-writing-voice-container {
-    padding-top: 10px;
-    padding-left: 86px;
+    padding-top: 4px;
+    padding-left: 0px !important;
 }
 
 /* Output Format */
 .radio-output-format-container {
-    padding-top: 8px;
-    padding-left: 84px;
+    padding-top: 4px;
 }
 
 .radio-plain-text {
-    padding-left: 24px;
+    padding-left: 1px;
 }
 
 /* LLM Response */
 .textarea-llm-response-container {
-    padding-top: 24px;
-    padding-left: 96px;
+    padding-top: 6px;
 }
 
 .textarea-llm-response-label {
@@ -103,8 +98,7 @@
 
 /* Copy Button */
 .copy-button {
-    margin-top: 24px;
-    margin-left: 96px !important;
+    margin-top: 6px;
 }
 
 .copy-button:hover {

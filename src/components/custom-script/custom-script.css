@@ -1,24 +1,21 @@
 .custom-script-heading {
     padding-top: 16px;
-    margin-left: 96px;
 }
 
 .category-container {
     display: flex;
-    margin-left: 96px;
 }
 
 .category-dropdown {
     width: 50%;
-    height: 50%;
     padding-top: 4px;
 }
 
 .load-template-button {
-    margin-top: 4px;
+    margin-top: 2px;
     margin-left: 5px;
     width: auto;
-    height: 42px;
+    height: 38px;
     line-height: 12px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
@@ -36,7 +33,6 @@
 
 .custom-script-container-content {
     background-color: #fafafa;
-    margin-left: 96px;
     width: 90% !important;
 }
 
@@ -66,18 +62,14 @@
     outline: 0;
 }
 
-.file-name-input-container {
-    margin-left: 96px;
-}
-
 .file-name-input {
     margin-left: 10px;
     margin-top: 12px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
-    width: 24.5%;
-    height: 40px;
+    width: 400px;
+    height: 20px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -88,7 +80,6 @@
 
 .button {
     margin-top: 10px;
-    margin-left: 96px;
     width: 200px;
     letter-spacing: 0.02857em;
     line-height: 1.75;

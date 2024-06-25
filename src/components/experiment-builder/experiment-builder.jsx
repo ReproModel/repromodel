@@ -61,7 +61,7 @@ const ExperimentBuilder = ({
     <Form> 
       
       {/* Optional JSON file upload input. */}
-      <div style = { { marginLeft: "96px" } }>
+      <div>
         
         <div className = "json-input-file-label">
           <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "18px", fontWeight: "700" } }>Upload Existing Training Configuration</span>
@@ -81,7 +81,7 @@ const ExperimentBuilder = ({
 
       {/* Loop each folder. */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style={{ display: "flex", flexDirection: "column", marginTop: "24px", marginLeft: "96px", width: "50%" }}>
+        <div style={{ display: "flex", flexDirection: "column", marginTop: "24px", width: "50%" }}>
           {folder !== "tags" && <h4> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}

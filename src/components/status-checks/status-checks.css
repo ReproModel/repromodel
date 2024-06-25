@@ -1,7 +1,7 @@
 .status-wrapper-position {
   top: 16px;
-  width: 190px;
-  height: 40px;
+  width: 166px;
+  height: 34px;
   left: 16px;
   background: white; 
   color: black; 
@@ -14,10 +14,6 @@
 
   /* Ensure the button is on top of other elements */
   z-index: 50;
-}
-
-.position2 {
-  top: 64px;
 }
   
 .blinking {

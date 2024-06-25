@@ -7,27 +7,24 @@
 }
 
 .extract-code-header {
-    margin-top: 48px;
-    margin-left: 96px;
+    margin-top: 16px;
 }
 
 .extract-code-subheader {
     margin-top: 4px;
-    margin-left: 96px;
 }
 
 .code-extractor-confirmation-one {
     margin-top: 12px;
-    margin-left: 72px;
 }
 
 .code-extractor-confirmation-two {
-    margin-left: 72px;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 .code-extractor-button {
     margin-top: 8px;
-    margin-left: 96px;
 }
 
 .code-extractor-button:hover {
@@ -35,18 +32,15 @@
 }
 
 .github-header {
-    margin-top: 96px;
-    margin-left: 96px;
+    margin-top: 36px;
 }
 
 .github-subheader {
     margin-top: 4px;
-    margin-left: 96px;
 }
 
 .personal-access-token-container {
     margin-top: 8px;
-    margin-left: 96px;
 }
 
 .personal-access-token-input {
@@ -55,7 +49,7 @@
     appearance: none;
     -webkit-appearance: none;
     width: 45%;
-    height: 36px;
+    height: 18px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -64,16 +58,16 @@
 }
 
 .repository-name-input-container {
-    margin-left: 96px;
+    margin-left: 1px;
 }
 
 .repository-name-input {
-    margin-left: 75px;
+    margin-left: 55px;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
     width: 45%;
-    height: 36px;
+    height: 18px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -82,16 +76,16 @@
 }
 
 .repository-description-input-container {
-    margin-left: 96px;
+    margin-left: 1px;
 }
 
 .repository-description-input {
-    margin-left: 44px;
+    margin-left: 35px;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
     width: 45%;
-    height: 36px;
+    height: 18px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -99,13 +93,8 @@
     color: #000;
 }
 
-.radio-repo-visibility-container {
-    margin-left: 80px;
-}
-
 .github-button {
     margin-top: 8px;
-    margin-left: 96px;
 }
 
 .github-button:hover {
