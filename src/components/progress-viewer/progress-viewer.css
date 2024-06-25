@@ -8,14 +8,15 @@
 
 .tensorboard-button {
     margin-top: 12px;
-    width: 200px;
+    width: 250px;
+    height: 37px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-weight: 600;
     background-color: #e6f0f1;
     color: #000000;
+    cursor: pointer;
 }
 
 .tensorboard-button:hover {

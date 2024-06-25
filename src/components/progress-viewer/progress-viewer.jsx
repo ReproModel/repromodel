@@ -47,7 +47,7 @@ const ProgressViewer = ({}) => {
       </div>
 
       <button className = "tensorboard-button" onClick = { startTensorBoard }>
-        <Typography style = { { fontSize: "12px", fontWeight: "550" } }>Start TensorBoard</Typography>
+        <Typography style = { { fontSize: "12px", fontWeight: "600" } }>Start TensorBoard</Typography>
       </button>
       
       {/* Header - View Output */}
