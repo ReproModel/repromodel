@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Custom Configs
-repromodel_core/demo_experiment_config.json
+repromodel_core/last_experiment_config.json
 
 # Data
 data/
@@ -166,3 +166,4 @@ dmypy.json
 
 # Cython Debug Symbols
 cython_debug/
+
