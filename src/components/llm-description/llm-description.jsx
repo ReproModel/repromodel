@@ -226,10 +226,12 @@ const LLMDescription = () => {
             <div className = "container-content" style = { { width: "100%" } }>
               
               <div className = "container-editor-area" style = { { position: "relative" } }>
-                <ContentCopyIcon
-                  onClick = { () => navigator.clipboard.writeText(output) }
-                  sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
-                />
+                <div title = "Copy">
+                  <ContentCopyIcon
+                    onClick = { () => navigator.clipboard.writeText(output) }
+                    sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+                  />
+                </div>
                 <Editor
                   className = "container-editor"
                   value = { output }
