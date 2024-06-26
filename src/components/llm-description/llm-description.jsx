@@ -3,6 +3,7 @@ import { Button, FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typograp
 import { highlight, languages } from "prismjs/components/prism-core"
 import { tailspin } from 'ldrs'
 
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import CustomSelectComponent from "../ui/custom-select"
 import Editor from "react-simple-code-editor"
 import React from "react"
@@ -101,8 +102,7 @@ const LLMDescription = () => {
     <Form>
 
       <Typography className = "llm-heading">Generate the methods section for your research paper.</Typography>
-
-      
+  
       {/* Configuration File */}
       <div className = "json-input-file-container">
 
@@ -112,12 +112,11 @@ const LLMDescription = () => {
         </div>
         
         <input
-                type = "file"
-                className = "json-input-file"
-                accept = ".json"
-                onChange = { (event) => handleFileUpload(event, setConfig) }
-              />
-
+          type = "file"
+          className = "json-input-file"
+          accept = ".json"
+          onChange = { (event) => handleFileUpload(event, setConfig) }
+        />
 
       </div>
       
@@ -152,7 +151,6 @@ const LLMDescription = () => {
           className = "textarea-additional-prompt"
           onChange = { (e) => { setAdditionalPrompt(e.target.value) } }
           value = { additionalPrompt }
-          placeholder = " Describe my custom model in more detail while only briefly describe other models that are used.&#10;&#10; Do not describe optimizers and LR schedulers."
           minRows = { 4 }
           style = { { width: "90%", height: "20px" } }
           sx = { {
@@ -204,7 +202,7 @@ const LLMDescription = () => {
 
       </div>
       
-       {/* Loading Animation */}
+      {/* Loading Animation */}
       { isLoading ?  <l-tailspin size = "40" stroke = "5" speed = "0.9"  color = "black" className = "loading-animation" /> :
         
         <div>
@@ -212,9 +210,9 @@ const LLMDescription = () => {
           {/* Button - Submit */}
           <div className = "copy-button">
             <Button variant = "contained" onClick = { () => runQuery(config, additionalPrompt, voice, format) } style = { { backgroundColor: "#38512f", opacity: "90%", width: "150px" } }>
-                <span style = { { marginTop: "2px", fontSize: "12px"} }>
-                  Submit
-                </span>
+              <span style = { { marginTop: "2px", fontSize: "12px"} }>
+                Submit
+              </span>
             </Button>
           </div>
 
@@ -227,7 +225,11 @@ const LLMDescription = () => {
 
             <div className = "container-content" style = { { width: "100%" } }>
               
-              <div className = "container-editor-area">
+              <div className = "container-editor-area" style = { { position: "relative" } }>
+                <ContentCopyIcon
+                  onClick = { () => navigator.clipboard.writeText(output) }
+                  sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+                />
                 <Editor
                   className = "container-editor"
                   value = { output }
@@ -236,15 +238,6 @@ const LLMDescription = () => {
                 />
               </div>
             </div>
-          </div>
-
-          {/* Button - Copy Code */}
-          <div className = "copy-button">
-            <Button variant = "contained" onClick = { () => navigator.clipboard.writeText(output) } style = { { backgroundColor: "#38512f", opacity: "90%", width: "150px" } }>
-              <span style = { { marginTop: "2px", fontSize: "12px"} }>
-                Copy
-              </span>
-            </Button>
           </div>
 
         </div>
