@@ -46,7 +46,7 @@ const StatusCheck = () => {
             borderRadius: "50%",
             backgroundColor: isBackendActive ? "green" : "red",
             marginRight: "10px",
-            marginLeft: "8px",
+            marginLeft: "14px",
           }}
         />
         <span>{isBackendActive ? "Backend Active" : "Backend Offline"}</span>
@@ -61,7 +61,7 @@ const StatusCheck = () => {
               borderRadius: "50%",
               backgroundColor: "blue",
               marginRight: "10px",
-              marginLeft: "8px",
+              marginLeft: "14px",
             }}
           />
           <span>Training Runs</span>
