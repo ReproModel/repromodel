@@ -87,7 +87,7 @@ const CustomScript = ({}) => {
 
           <ContentCopyIcon
             onClick = { () => navigator.clipboard.writeText(code) }
-            sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "10px", zIndex: "100", cursor: "pointer" } }
+            sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
           />
           <Editor
             className = "custom-script-container-editor"
