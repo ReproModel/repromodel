@@ -1,47 +1,35 @@
-import torch
-from ..decorators import enforce_types_and_ranges
+from ..decorators import enforce_types_and_ranges, tag
 
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
+# If two or more values are needed, add them to the list. 
+# For example, submodality=["RGB", "grayscale"].
+@tag(task=["classification"], subtask=["binary"], modality=["images"], submodality=["grayscale"])
 class CustomMetric:
+    # Specify here every input with:
+    # type: required
+    # default: optional but helpful to pre-fill the value in the frontend
+    # range: optional but helpful as it automatically makes a slider in the frontend
+    # options: optional but helpful as it automatically makes a dropdown in the frontend
     @enforce_types_and_ranges({
-        'weight': {'type': float, 'range': (0.0, 1.0)}  # Assuming weight should be between 0.0 and 1.0
+        'weight': {'type': float, 'range': (0.0, 1.0)},  
+        'smooth': {'type': float, 'range': (0.0, 1.0), 'default': 0.001}  
     })
-    def __init__(self, weight):
+    def __init__(self, weight, smooth):
         """
         Initialize any attributes or parameters needed for the metric computation.
         
         Args:
             weight (float): A weighting factor for the metric, between 0.0 and 1.0.
+            smooth (float): A smoothing factor for the metric, between 0.0 and 1.0.
         """
         self.weight = weight
+        self.smooth = smooth
         self.correct = 0
         self.total = 0
 
-    def update(self, outputs, labels):
-        """
-        Update the state of the metric with results from a new batch.
+    def forward(self, inputs, targets):
         
-        Args:
-            outputs (torch.Tensor): The model's predictions.
-            labels (torch.Tensor): The ground truth labels.
-        """
-        preds = torch.argmax(outputs, dim=1)
-        self.correct += (preds == labels).sum().item() * self.weight
-        self.total += labels.size(0)
-
-    def compute(self):
-        """
-        Compute the metric based on updates.
-        
-        Returns:
-            float: The computed metric.
-        """
-        if self.total == 0:
-            return 0.0  # To avoid division by zero
-        return self.correct / self.total
-
-    def reset(self):
-        """
-        Reset the metric state to start computing from scratch.
-        """
-        self.correct = 0
-        self.total = 0
+        # Calculate the score based on the desired method
+        # Example:
+        score = (inputs - targets) / self.smooth
+        return score
