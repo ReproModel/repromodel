@@ -5,10 +5,10 @@ from ..utils import one_hot_encode
 from ..decorators import enforce_types_and_ranges, tag
 from typing import Any, Tuple
 
-# In this decorator, specify custom task, subtask, modality, and submodality. 
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
 # If two or more values are needed, add them to the list. 
 # For example, submodality=["RGB", "grayscale"].
-@tag(task=["classification"], subtask=["image"], modality=["images"], submodality=["RGB"])
+@tag(task=["classification"], subtask=["multi-class"], modality=["images"], submodality=["RGB"])
 class CustomDataset(Dataset):
     # Specify here every input with:
     # type: required
