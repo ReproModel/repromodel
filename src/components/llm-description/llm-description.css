@@ -82,7 +82,7 @@
 }
 
 .container-editor {
-    min-height: 210px;
+    min-height: 300px;
     overflow-y: scroll;
     font-size: 12px;
     font-variant-ligatures: common-ligatures;
