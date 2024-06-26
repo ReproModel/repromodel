@@ -84,11 +84,12 @@ const CustomScript = ({}) => {
       <div className = "custom-script-container-content" style = { { width: "100%" } }>
               
         <div className = "custom-script-container-editor-area" style = { { position: "relative" } }>
-
-          <ContentCopyIcon
-            onClick = { () => navigator.clipboard.writeText(code) }
-            sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
-          />
+          <div title = "Copy">
+            <ContentCopyIcon
+              onClick = { () => navigator.clipboard.writeText(code) }
+              sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+            />
+          </div>
           <Editor
             className = "custom-script-container-editor"
             value = { code }
