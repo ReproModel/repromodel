@@ -251,7 +251,7 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
-        with open("repromodel_core/experiment_config.json", 'w') as json_file:
+        with open("repromodel_core/last_experiment_config.json", 'w') as json_file:
             json.dump(json_data, json_file, indent=4)
 
         app.logger.info("Received JSON data for processing.")
