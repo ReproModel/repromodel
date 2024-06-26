@@ -1,15 +1,22 @@
 import os
+import sys
 import multiprocessing
 from pathlib import Path
 from tqdm import tqdm
-from ..decorators import enforce_types_and_ranges
-
-import sys
+from ..decorators import enforce_types_and_ranges, tag
+from utils import print_to_file
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from utils import print_to_file
-
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
+# If two or more values are needed, add them to the list. 
+# For example, submodality=["RGB", "grayscale"].
+@tag(task=["classification"], subtask=["multi-class"], modality=["medical"], submodality=["CT"])
 class CustomPostprocessor:
+    # Specify here every input with:
+    # type: required
+    # default: optional but helpful to pre-fill the value in the frontend
+    # range: optional but helpful as it automatically makes a slider in the frontend
+    # options: optional but helpful as it automatically makes a dropdown in the frontend
     @enforce_types_and_ranges({
         'data_path': {'type': str},
         'output_path': {'type': str},
