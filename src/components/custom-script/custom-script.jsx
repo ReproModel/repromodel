@@ -87,7 +87,7 @@ const CustomScript = ({}) => {
           <div title = "Copy">
             <ContentCopyIcon
               onClick = { () => navigator.clipboard.writeText(code) }
-              sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+              sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
             />
           </div>
           <Editor
