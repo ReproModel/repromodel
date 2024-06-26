@@ -38,9 +38,9 @@ https://repromodel.netlify.app
 :white_check_mark: Early Stopping Criterion<br/>
 :white_check_mark: Training Device Selection<br/>
 :white_check_mark: Logging (Tensorboard ...)<br/>
-:black_square_button: AI Experiment Description Generator<br/>
-:black_square_button: Code Extractor<br/>
-:black_square_button: Custom Script Editor<br/>
+:white_check_mark: AI Experiment Description Generator<br/>
+:white_check_mark: Code Extractor<br/>
+:white_check_mark: Custom Script Editor<br/>
 
 ## Documentation
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs. (COMING SOON)
