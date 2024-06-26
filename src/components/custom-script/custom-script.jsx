@@ -1,11 +1,12 @@
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
+import { css } from '@emotion/react'
 import { Form } from "formik"
 import { handleCustomScriptSubmit } from "../../utils/json-helpers"
 import { handleDownload } from "../../utils/download-helpers"
 import { highlight, languages } from "prismjs/components/prism-core"
-import { Typography } from "@mui/material"
 
 import axios from "axios"
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import CustomSelectComponent from "../ui/custom-select"
 import dedent from "dedent"
 import Editor from "react-simple-code-editor"
@@ -29,7 +30,6 @@ const categories = [
 
 const CustomScript = ({}) => {
 
-  // Category
   const [category, setCategory] = React.useState(categories[0])
 
   const [code, setCode] = React.useState(
@@ -83,8 +83,12 @@ const CustomScript = ({}) => {
       {/* Custom Script Editor */}
       <div className = "custom-script-container-content" style = { { width: "100%" } }>
               
-        <div className = "custom-script-container-editor-area">
-          
+        <div className = "custom-script-container-editor-area" style = { { position: "relative" } }>
+
+          <ContentCopyIcon
+            onClick = { () => navigator.clipboard.writeText(code) }
+            sx = { { "&:hover": { opacity: "30%" }, position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+          />
           <Editor
             className = "custom-script-container-editor"
             value = { code }
@@ -118,10 +122,6 @@ const CustomScript = ({}) => {
             }}
           >
             Submit
-          </button>
-
-          <button type = "submit" className = "button right-button" onClick = { () => navigator.clipboard.writeText(code) }>
-            Copy
           </button>
 
           <button
