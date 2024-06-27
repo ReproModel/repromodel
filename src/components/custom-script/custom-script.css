@@ -41,7 +41,7 @@
 }
 
 .custom-script-container-editor-area {
-    max-height: 1000px;
+    max-height: 900px;
     tab-size: 4ch;
     border: 3px dotted #ccc;
     margin: 14px;
@@ -53,7 +53,7 @@
 }
 
 .custom-script-container-editor {
-    min-height: 1000px;
+    min-height: 900px;
     margin: 12px;
     overflow-y: scroll;
     font-size: 12px;
@@ -71,7 +71,7 @@
 }
 
 .custom-script-file-name-input {
-    margin-top: 12px;
+    margin-top: 4px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
@@ -90,7 +90,7 @@
 }
 
 .custom-script-save-button {
-    margin-top: 12px;
+    margin-top: 4px;
     margin-left: 5px;
     width: 200px;
     height: 44px;
