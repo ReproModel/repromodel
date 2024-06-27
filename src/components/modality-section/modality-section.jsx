@@ -39,10 +39,10 @@ function getModels(selectedOptions, jsonData) {
   const modalityModels = getModelsForKey("modality", modality);
   const submodalityModels = getModelsForKey("submodality", submodality);
 
-  /*  console.log("Task Models:", taskModels);
+  console.log("Task Models:", jsonData);
   console.log("Subtask Models:", subtaskModels);
   console.log("Modality Models:", modalityModels);
-  console.log("Submodality Models:", submodalityModels);**/
+  console.log("Submodality Models:", submodalityModels);
 
   // Intersect all model arrays.
   function intersect(arr1, arr2) {
@@ -183,19 +183,15 @@ const ModalitySection = ({
       <div className = "button-row" style = { { marginTop: "4px" } }>
           { selectedModels.length > 0 ? (
             <div>
-              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "120px" } }>
-                <span style = { { paddingTop: "4px", paddingBottom: "4px", fontSize: "10px", textAlign: "center"} }>
-                  Start Building
-                </span>
-              </Button>
+              <button type = "submit" className = "start-building-button" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } }>
+                Start Building
+              </button>
             </div>
           ) : (
             <div>
-              <Button type = "submit" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } } style = { { backgroundColor: "#38512f", color: "white", opacity: "90%", marginTop: "14px", width: "120px" } }>
-                <span style = { { paddingTop: "4px", paddingBottom: "4px", fontSize: "10px", textAlign: "center"} }>
-                  Skip Filter
-                </span>
-              </Button>
+              <button type = "submit" className = "skip-filter-button" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } }>
+                Skip Filter
+              </button>
             </div>
           )}
         </div>
