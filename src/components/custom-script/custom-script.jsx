@@ -1,5 +1,3 @@
-import { capitalizeFirstLetter } from "../../utils/string-helpers"
-import { css } from '@emotion/react'
 import { Form } from "formik"
 import { handleCustomScriptSubmit } from "../../utils/json-helpers"
 import { handleDownload } from "../../utils/download-helpers"
@@ -52,7 +50,7 @@ const CustomScript = ({}) => {
   }
 
   return (
-    <Form>
+    <Form className = "custom-script-container">
 
       <div className = "custom-script-heading">
         <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>What kind of custom script?</span>
@@ -61,6 +59,7 @@ const CustomScript = ({}) => {
 
       {/* Supported Categories */}
       <div className = "category-container">
+        
         <CustomSelectComponent
           className = "category-dropdown"
           isMulti = { false }
@@ -77,6 +76,7 @@ const CustomScript = ({}) => {
         >
           Load Template
         </button>
+
       </div>
 
 
@@ -99,33 +99,29 @@ const CustomScript = ({}) => {
 
         </div>
 
-      </div>
-        
-
-      {/* Output File */}
-      <label className = "file-name-input-container">
-        Enter output file name:
-        <input id = "file-name-input" className = "file-name-input" type = "text" placeholder = "Enter output file name (without .py)"/>
-      </label>
-        
+      </div>        
       
-      {/* Submit / Copy / Download Buttons */}
-      <div className = "button-container">
+      <div className = "custom-script-save-container">
+
+          {/* Output File */}
+          <input id = "custom-script-file-name-input" className = "custom-script-file-name-input" type = "text" placeholder = "File Name (without .py)"/>
+          
+          {/* Save Buttons */}
           <button
             type = "submit"
-            className = "button"
+            className = "custom-script-save-button"
             onClick = { () => {
 
-              const fileNameElement = document.getElementById("file-name-input")
+              const fileNameElement = document.getElementById("custom-script-file-name-input")
               const fileNameValue = fileNameElement.value
               
               handleCustomScriptSubmit(code, fileNameValue, category.value)
             }}
           >
-            Submit
+            Save
           </button>
 
-          <button
+          {/* <button
             type = "submit"
             className = "button right-button"
             onClick = { () => {
@@ -133,7 +129,7 @@ const CustomScript = ({}) => {
             }}
           >
             Download
-          </button>
+          </button> */}
 
       </div>
 

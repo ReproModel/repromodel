@@ -1,3 +1,7 @@
+.custom-script-container {
+    zoom: 50%;
+}
+
 .custom-script-heading {
     padding-top: 16px;
 }
@@ -14,15 +18,14 @@
 .load-template-button {
     margin-top: 2px;
     margin-left: 5px;
-    width: auto;
-    height: 38px;
-    line-height: 12px;
+    width: 200px;
+    height: auto;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     font-size: 0.775rem;
     font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
+    background-color: var(--color-one);
+    color: white;
     white-space: nowrap;
     cursor: pointer;
 }
@@ -34,11 +37,11 @@
 
 .custom-script-container-content {
     background-color: #fafafa;
-    width: 90% !important;
+    width: 80% !important;
 }
 
 .custom-script-container-editor-area {
-    max-height: 800px;
+    max-height: 1000px;
     tab-size: 4ch;
     border: 3px dotted #ccc;
     margin: 14px;
@@ -50,7 +53,7 @@
 }
 
 .custom-script-container-editor {
-    min-height: 800px;
+    min-height: 1000px;
     margin: 12px;
     overflow-y: scroll;
     font-size: 12px;
@@ -63,14 +66,17 @@
     outline: 0;
 }
 
-.file-name-input {
-    margin-left: 10px;
+.custom-script-save-container {
+    display: flex;
+}
+
+.custom-script-file-name-input {
     margin-top: 12px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
-    width: 227px;
-    height: 20px;
+    width: 500px;
+    height: 40px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -79,21 +85,26 @@
     cursor: pointer;
 }
 
-.button {
-    margin-top: 10px;
+.custom-script-file-name-input::placeholder {
+    margin-left: 2px;
+}
+
+.custom-script-save-button {
+    margin-top: 12px;
+    margin-left: 5px;
     width: 200px;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
+    height: 44px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.875rem;
+    font-size: 0.775rem;
     font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
+    background-color: var(--color-one);
+    color: white;
+    white-space: nowrap;
     cursor: pointer;
 }
 
-.button:hover {
+.custom-script-save-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
 }

@@ -219,7 +219,7 @@ def save_custom_script():
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Return HTTP 200 OK status code.
-        return jsonify({'message': 'File uploaded successfully.'}), 200
+        return jsonify({'message': 'File uploaded successfully.', 'path': save_path}), 200
     
     except Exception as e:
 
