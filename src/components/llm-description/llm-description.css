@@ -1,3 +1,6 @@
+.llm-container {
+    zoom: 50%;
+}
 .llm-heading {
     padding-top: 16px;
 }
@@ -35,6 +38,7 @@
 /* Additional LLM Prompting Rules */
 .textarea-additional-prompt-container {
     padding-top: 12px;
+    border: gray;
 }
 
 .textarea-additional-prompt-label {
@@ -62,7 +66,7 @@
 }
 
 .textarea-llm-response-label {
-    padding-top: 10px;
+    padding-top: 24px;
 }
 
 .container-content {
@@ -74,7 +78,6 @@
     tab-size: 4ch;
     overflow: auto;
     border: 3px dotted #ccc;
-    margin: 14px;
     margin: 0 !important;
     padding-left: 0;
     width: 90%;
@@ -82,7 +85,7 @@
 }
 
 .container-editor {
-    min-height: 300px;
+    min-height: 800px;
     overflow-y: scroll;
     font-size: 12px;
     font-variant-ligatures: common-ligatures;

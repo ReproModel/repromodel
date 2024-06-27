@@ -99,7 +99,7 @@ const LLMDescription = () => {
   }
 
   return (
-    <Form>
+    <Form className = "llm-container">
 
       <Typography className = "llm-heading">Generate the methods section for your research paper.</Typography>
   
@@ -152,7 +152,7 @@ const LLMDescription = () => {
           onChange = { (e) => { setAdditionalPrompt(e.target.value) } }
           value = { additionalPrompt }
           minRows = { 4 }
-          style = { { width: "90%", height: "20px" } }
+          style = { { width: "90%", height: "50px", borderColor: "lightgray"} }
           sx = { {
             "&::before": { display: "none" },
             "&:focus-within": { outline: "2px solid var(--Textarea-focusedHighlight)", outlineOffset: "2px" }
