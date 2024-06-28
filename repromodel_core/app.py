@@ -472,12 +472,16 @@ def kill_testing_process():
 # FUNCTION: Helper function to start TensorBoard.
 def start_tensorboard(logdir="logs"):
     
-    # Kill any existing TensorBoard instances.
-    subprocess.run(['pkill', '-f', 'tensorboard'])
+    # Check if there is a running TensorBoard instances.
+    tensorboardInProgress, process_info = is_process_running("tensorboard --logdir")
+    
+    if tensorboardInProgress:
+        return f"TensorBoard already running at http://localhost:6006 with logdir {logdir}"
     
     # Start a new TensorBoard instance.
     command = ['tensorboard', '--logdir', logdir]
     tensorboard_proc = subprocess.Popen(command)
+    
     
     return f"TensorBoard started at http://localhost:6006 with logdir {logdir}"
 
