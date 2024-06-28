@@ -180,9 +180,13 @@ const ModalitySection = ({
 
       </div>
       <p>
-      {selectedModels.map((str, index) => (
-        <span key={index}>{str}<br /></span>
-      ))}
+      {Array.isArray(selectedModels) && selectedModels.length > 0 ? (
+  selectedModels.map((str, index) => (
+    <span key={index}>{str}<br /></span>
+  ))
+) : (
+  <span>No models selected</span>
+)}
     </p>
       <div className = "button-row" style = { { marginTop: "4px" } }>
           { selectedModels.length > 0 ? (
