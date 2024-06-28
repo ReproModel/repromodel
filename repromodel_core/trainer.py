@@ -88,7 +88,7 @@ def train(input_data):
     criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.models[m]}_{cfg.datasets}_" + "command_output.txt")
+        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Custom file object for TQDM
