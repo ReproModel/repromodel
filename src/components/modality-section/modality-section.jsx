@@ -179,7 +179,11 @@ const ModalitySection = ({
         ))}
 
       </div>
-
+      <p>
+      {selectedModels.map((str, index) => (
+        <span key={index}>{str}<br /></span>
+      ))}
+    </p>
       <div className = "button-row" style = { { marginTop: "4px" } }>
           { selectedModels.length > 0 ? (
             <div>
