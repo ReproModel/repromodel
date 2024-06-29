@@ -1,21 +1,34 @@
+/* Tab Container */
 .custom-script-container {
     zoom: 50%;
 }
 
-.custom-script-heading {
+/* Category Label */
+.custom-script-category-label {
     padding-top: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
-.category-container {
+@media (prefers-color-scheme: dark) {
+    .custom-script-category-label {
+      color: white;
+    }
+}
+
+/* Category Dropdown */
+.custom-script-category-container {
     display: flex;
 }
 
-.category-dropdown {
+.custom-script-category-dropdown {
     width: 50%;
     padding-top: 4px;
 }
 
-.load-template-button {
+/* Load Template Button */
+.custom-script-load-template-button {
     margin-top: 2px;
     margin-left: 5px;
     width: 200px;
@@ -30,25 +43,39 @@
     cursor: pointer;
 }
 
-.load-template-button:hover {
+@media (prefers-color-scheme: dark) {
+    .custom-script-load-template-button {
+        background-color: #67687b;
+    }
+}
+
+.custom-script-load-template-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
 }
 
+/* Custom Script Editor */
 .custom-script-container-content {
     background-color: #fafafa;
-    width: 80% !important;
+    width: 80%;
+}
+
+@media (prefers-color-scheme: dark) {
+    .custom-script-container-content {
+      background-color: #1d1d22;
+    }
 }
 
 .custom-script-container-editor-area {
+    position: relative;
     max-height: 900px;
     tab-size: 4ch;
-    border: 3px dotted #ccc;
+    border: 3px dotted;
     margin: 14px;
+    margin-left: 0;
     margin-right: 0 !important;
     padding-left: 0;
     padding-right: 0;
-    margin-left: 0;
     overflow: auto;
 }
 
@@ -62,6 +89,12 @@
     font-family: "Fira code", "Fira Mono", monospace;
 }
 
+@media (prefers-color-scheme: dark) {
+    .custom-script-container-editor {
+      color: white;
+    }
+}
+
 .custom-script-container-editor textarea {
     outline: 0;
 }
@@ -70,6 +103,7 @@
     display: flex;
 }
 
+/* Output File Name */
 .custom-script-file-name-input {
     margin-top: 4px;
     padding-left: 5px;
@@ -89,6 +123,7 @@
     margin-left: 2px;
 }
 
+/* Save Button */
 .custom-script-save-button {
     margin-top: 4px;
     margin-left: 5px;
@@ -107,8 +142,4 @@
 .custom-script-save-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
-}
-
-.right-button {
-    margin-left: 10px;
 }
