@@ -2,10 +2,38 @@
     margin-left: 0 !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    .start-building-button {
+        background-color: #67687b;
+    }  
+}
+
+@media (prefers-color-scheme: dark) {
+    .skip-filter-button {
+        background-color: #67687b;
+    }  
+}
+
 .model-count {
     margin-top: 1px;
     opacity: 50%;
     font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .model-count {
+        color: white;
+    }
+}
+
+.choose-modality-label {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .choose-modality-label {
+        color: white;
+    }
 }
 
 .card-image-container, .card-title {
@@ -34,6 +62,12 @@
     min-height: 80px !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    .card {
+        background-color: black;
+    }
+}
+
 .card:hover {
     box-shadow: 0 10px 40px -10px rgba(0,0,0,.3);
     cursor: pointer;
@@ -44,6 +78,12 @@
     font-weight: 500;
     color: black;
     font-family: Lato;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-title {
+        color: white;
+    }
 }
 
 .card-subtitle {
@@ -65,8 +105,13 @@
     background-color: #e6f0f1;
 }
 
-/* Media Queries - Responsive Styling */
+@media (prefers-color-scheme: dark) {
+    .card.selected {
+        background-color: #333333;
+    }
+}
 
+/* Media Queries - Responsive Styling */
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
