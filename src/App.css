@@ -62,17 +62,17 @@
   }
 }
 
-.custom-script-tab {
+.tab-div {
   margin-top: 24px;
 }
 
-.custom-script-tab-header {
+.tab-header {
   color: black;
   font-weight: 600;
 }
 
 @media (prefers-color-scheme: dark) {
-  .custom-script-tab-header {
+  .tab-header {
     color: white;
   }
 }

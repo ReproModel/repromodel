@@ -60,62 +60,71 @@ function App() {
               <Grid item className = "tabs">
 
                 { selectedSection === "Custom Script" && (
-                  <div className = "custom-script-tab">
+                  <div className = "tab-div">
                     <Typography variant = "h6">
-                      <span className = "custom-script-tab-header">Create Custom Script</span>
+                      <span className = "tab-header">Create Custom Script</span>
                     </Typography>
-
                     <CustomScript/>
                   </div>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Experiment Builder</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Experiment Builder</span>
+                    </Typography>
                     <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                       newQuestions = { newQuestions }
                    />
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Model Testing" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Model Testing</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Model Testing</span>
+                    </Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                       newQuestions = { newQuestions }
                    />
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Progress Viewer" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>Progress Viewer</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Progress Viewer</span>
+                    </Typography>
                     <ProgressViewer/>
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Extract Code" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>Extract Code</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Extract Code</span>
+                    </Typography>
                     <ExtractCode/>
-                  </>
+                  </div>
                 )}
                 
                 { selectedSection === "LLM Description" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>LLM Description</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">LLM Description</span>
+                    </Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                     />
-                  </>
+                  </div>
                 )}
 
               </Grid>
