@@ -82,7 +82,7 @@ const ExperimentBuilder = ({
       {/* Loop each folder. */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
         <div style={{ display: "flex", flexDirection: "column", fontSize: "12px" }}>
-          {folder !== "tags" && <h4> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
+          {folder !== "tags" && <h4 className = "experiment-builder-folder-label"> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}
           {nestedFolders.includes(folder) ? (
@@ -112,6 +112,7 @@ const ExperimentBuilder = ({
                                 ([param, value]) => (
                                   <>
                                     <label
+                                      className = "param-label"
                                       htmlFor={`${folder}_params:${file}>${className}:${param}`}
                                     >
                                       {param}:
@@ -140,7 +141,7 @@ const ExperimentBuilder = ({
             <div className="param-box">
               {Object.entries(folderContent).map(([param, value]) => (
                 <>
-                  <label htmlFor={`${folder}:${param}`}>{param}:</label>
+                  <label className = "param-label" htmlFor={`${folder}:${param}`}>{param}:</label>
 
                   <FlexibleFormField
                     id={`${folder}:${param}`}
@@ -156,7 +157,7 @@ const ExperimentBuilder = ({
             <>
               {folder !== "tags" && ( // exclude the tags, since they are not supposed to be rednerde
                 <>
-                  <label htmlFor={`${folder}`}>{folder}:</label>
+                  <label className = "param-label" htmlFor={`${folder}`}>{folder}:</label>
 
                   <FlexibleFormField
                     id={`${folder}`}
@@ -200,7 +201,7 @@ const ExperimentBuilder = ({
         
         {/* Download Config Button */}
         <div className = "experiment-builder-download-config-button" style = { { marginLeft: "4px" } }>
-          <Button type = "submit" onClick = { () => { setFieldValue("submitType", "download") } } style = { { width: "auto", backgroundColor: "#38512f", color: "white", opacity: "90%" } }>
+          <Button type = "submit" onClick = { () => { setFieldValue("submitType", "download") } } style = { { width: "auto", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
             <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
               Download Config
             </span>

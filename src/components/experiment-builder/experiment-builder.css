@@ -26,3 +26,25 @@
 .experiment-builder-download-config-button:hover {
     opacity: 70%;
 }
+
+.experiment-builder-folder-label {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .experiment-builder-folder-label {
+        color: white;
+    }
+
+    .param-label {
+        color: white;
+    }
+
+    .param-box>p {
+        color: white;
+    }
+
+    label {
+        color: white;
+    }
+}

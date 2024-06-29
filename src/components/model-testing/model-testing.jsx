@@ -87,7 +87,7 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
             
             <div style = { { display: "flex", flexDirection: "column", fontSize: "12px" } }>
               
-              <h4> {capitalizeFirstLetter(folder)}</h4>
+              <h4 className = "model-testing-folder-label"> { capitalizeFirstLetter(folder) }</h4>
 
               {/* Case 1: Folder is nested and part of testing. */}
               { foldersPartOfTesting.includes(folder) && nestedFolders.includes(folder) ? (
