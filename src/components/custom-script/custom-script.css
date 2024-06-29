@@ -139,6 +139,12 @@
     cursor: pointer;
 }
 
+@media (prefers-color-scheme: dark) {
+    .custom-script-save-button {
+        background-color: #67687b;
+    }
+}
+
 .custom-script-save-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
