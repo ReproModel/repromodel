@@ -1,0 +1,9 @@
+.repromodel-structure-header {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .repromodel-structure-header {
+        color: white;
+    }
+}

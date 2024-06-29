@@ -1,3 +1,5 @@
+import "./repromodel-structure.css"
+
 import choices from "../../../repromodel_core/choices.json"
 import FlexibleBlock from "../ui/flexible-block/flexible-block"
 import React from "react"
@@ -12,7 +14,7 @@ const optionsToShow = ["models", "preprocessing", "datasets", "augmentations", "
   return (
     <Container maxWidth = "md">
        
-      <Typography variant = "h4" align = "center" gutterBottom style = { { fontWeight: "400" } } >Your ReproModel <br/>Pipeline</Typography>
+      <Typography className = "repromodel-structure-header" variant = "h4" align = "center" gutterBottom>Your ReproModel <br/>Pipeline</Typography>
       
       <Stack spacing = { 2 }>
         
