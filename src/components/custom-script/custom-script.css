@@ -29,7 +29,7 @@
 
 /* Load Template Button */
 .custom-script-load-template-button {
-    margin-top: 2px;
+    margin-top: 4px;
     margin-left: 5px;
     width: 200px;
     height: auto;
@@ -62,7 +62,7 @@
 
 @media (prefers-color-scheme: dark) {
     .custom-script-container-content {
-      background-color: #1d1d22;
+      background-color: black;
     }
 }
 
@@ -128,7 +128,7 @@
     margin-top: 4px;
     margin-left: 5px;
     width: 200px;
-    height: 44px;
+    height: 47px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     font-size: 0.775rem;

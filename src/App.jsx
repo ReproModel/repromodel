@@ -46,7 +46,6 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
-
               <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
                 <ButtonGroup variant = "contained" sx = { { width: "100%", backgroundColor : "white" } }>
                   <Button variant = "outlined" style = { { backgroundColor: "white", color: "#38512f", borderColor: "#38512f", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
@@ -58,13 +57,16 @@ function App() {
                 </ButtonGroup>
               </Box>
 
-              <Grid item className = "tabs" style = { { marginTop : "4px", backgroundColor: "white" } }>
+              <Grid item className = "tabs">
 
                 { selectedSection === "Custom Script" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Create Custom Script</Typography>
+                  <div className = "custom-script-tab">
+                    <Typography variant = "h6">
+                      <span className = "custom-script-tab-header">Create Custom Script</span>
+                    </Typography>
+
                     <CustomScript/>
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
