@@ -76,6 +76,14 @@
     color: #000;
 }
 
+@media (prefers-color-scheme: dark) {
+    .personal-access-token-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
+}
+
 .repository-name-input-container {
     margin-left: 1px;
 }
@@ -94,6 +102,14 @@
     color: #000;
 }
 
+@media (prefers-color-scheme: dark) {
+    .repository-name-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
+}
+
 .repository-description-input-container {
     margin-left: 1px;
 }
@@ -110,6 +126,14 @@
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .repository-description-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
 }
 
 .github-button {
