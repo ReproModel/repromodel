@@ -242,7 +242,7 @@ const LLMDescription = () => {
                 <div title = "Copy">
                   <ContentCopyIcon
                     onClick = { () => navigator.clipboard.writeText(output) }
-                    sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+                    sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer", color: (isDarkTheme ? "white" : "black") } }
                   />
                 </div>
                 <Editor

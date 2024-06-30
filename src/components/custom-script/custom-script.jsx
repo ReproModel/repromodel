@@ -27,6 +27,19 @@ const categories = [
 
 const CustomScript = ({}) => {
 
+  // Dark Theme
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
+
   const [category, setCategory] = React.useState(categories[0])
 
   const [code, setCode] = React.useState(
@@ -82,7 +95,7 @@ const CustomScript = ({}) => {
           <div title = "Copy">
             <ContentCopyIcon
               onClick = { () => navigator.clipboard.writeText(code) }
-              sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer" } }
+              sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer", color: (isDarkTheme ? "white" : "black") } }
             />
           </div>
 
