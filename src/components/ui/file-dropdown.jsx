@@ -5,6 +5,18 @@ import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material"
 import { useEffect, useState } from "react"
 
 const FileDropdown = ({ onSelectFile }) => {
+
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
   
   const [files, setFiles] = useState([])
   const [selectedFile, setSelectedFile] = useState("command_output.txt")
@@ -38,7 +50,7 @@ const FileDropdown = ({ onSelectFile }) => {
       
       <FormControl fullWidth>
         
-        <InputLabel id = "file-select-label">Select file...</InputLabel>
+        <InputLabel id = "file-select-label" style = { { color: isDarkTheme ? "white" : "black"} }>Select file...</InputLabel>
         
         <Select
           labelId = "file-select-label"
@@ -48,7 +60,7 @@ const FileDropdown = ({ onSelectFile }) => {
         >
           { files.map((file, index) => (
             <MenuItem key = { index } value = { file }>
-              { file }
+              <span style = { { color: isDarkTheme ? "white" : "black" } }>{ file }</span>
             </MenuItem>
           ))}
         </Select>

@@ -2,8 +2,20 @@
     margin-top: 12px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .header-tensorboard {
+        color: white;
+    }    
+}
+
 .subheader-tensorboard {
     margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .subheader-tensorboard {
+        color: white;
+    }    
 }
 
 .tensorboard-button {
@@ -28,9 +40,22 @@
     margin-top: 12px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .header-output {
+        color: white;
+    }    
+}
+
 .subheader-output {
     margin-top: 4px;
 }
+
+@media (prefers-color-scheme: dark) {
+    .subheader-output {
+        color: white;
+    }    
+}
+
 
 .file-input-output {
     margin-top: 4px !important;
