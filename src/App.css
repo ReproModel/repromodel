@@ -1,18 +1,20 @@
 :root {
-
   --color-background: #ffffff;
-
   --color-one: #38512f;
   --color-two: #e6f0f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: #000000;
+  }
 }
 
 #root {
   width: 100%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  color-scheme: light;
   background-color: var(--color-background);
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,7 +28,7 @@
 
 .repromodal-structure {
   width: auto;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--color-background);
   height: 100%;
   border-radius: 8px;
   padding: 16px;
@@ -50,6 +52,29 @@
   padding-top: 30px;
   padding-bottom: 64px;
   overflow-y: scroll;
+  margin-top: 4px;
+  background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tabs {
+    background-color: #1b1b1b;
+  }
+}
+
+.tab-div {
+  margin-top: 24px;
+}
+
+.tab-header {
+  color: black;
+  font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tab-header {
+    color: white;
+  }
 }
 
 body {

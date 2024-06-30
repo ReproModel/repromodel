@@ -156,17 +156,19 @@ const ModalitySection = ({
 
   return (
     <div>
-      <p className="model-count" style = { { fontSize: "14px" } }>Available Models: { renderModelCount() }</p>
+      <p className = "model-count" style = { { fontSize: "14px" } }>Available Models: { renderModelCount() }</p>
     
     
-      <div className="container">
+      <div className = "container">
 
         {Object.entries(class_per_tag).map(([category, options], idx) => (
           <div style = { { marginTop: (idx == 0) ? "0": "24px" } }>
             <Typography
               style = { { marginBottom: "12px", fontSize: "24px", marginLeft: "2px" } }
             >
-              Choose <strong>{capitalizeFirstLetter(category)}</strong>
+              <span className = "choose-modality-label">
+                Choose <strong>{capitalizeFirstLetter(category)}</strong>
+              </span>
             </Typography>
 
             <ModalityOptions

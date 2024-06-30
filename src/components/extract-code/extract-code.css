@@ -10,8 +10,20 @@
     margin-top: 16px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .extract-code-header {
+        color: white;
+    }
+}
+
 .extract-code-subheader {
     margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .extract-code-subheader {
+        color: white;
+    }
 }
 
 .code-extractor-confirmation-one {
@@ -30,8 +42,20 @@
     margin-top: 36px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .github-header {
+        color: white;
+    }
+}
+
 .github-subheader {
     margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .github-subheader {
+        color: white;
+    }
 }
 
 .personal-access-token-container {

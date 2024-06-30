@@ -1,7 +1,6 @@
 import "./App.css"
 
 import CustomScript from "./components/custom-script/custom-script"
-
 import ExperimentBuilderWrapper from "./components/experiment-builder/experiment-builder-wrapper"
 import ExtractCode from "./components/extract-code/extract-code"
 import Header from "./components/header/header"
@@ -47,7 +46,6 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
-
               <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
                 <ButtonGroup variant = "contained" sx = { { width: "100%", backgroundColor : "white" } }>
                   <Button variant = "outlined" style = { { backgroundColor: "white", color: "#38512f", borderColor: "#38512f", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
@@ -59,62 +57,74 @@ function App() {
                 </ButtonGroup>
               </Box>
 
-              <Grid item className = "tabs" style = { { marginTop : "4px" } }>
+              <Grid item className = "tabs">
 
                 { selectedSection === "Custom Script" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Create Custom Script</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Create Custom Script</span>
+                    </Typography>
                     <CustomScript/>
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Experiment Builder" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Experiment Builder</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Experiment Builder</span>
+                    </Typography>
                     <ExperimentBuilderWrapper
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                       newQuestions = { newQuestions }
                    />
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Model Testing" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "24px", fontWeight: "600" } }>Model Testing</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Model Testing</span>
+                    </Typography>
                     <ModelTesting
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                       newQuestions = { newQuestions }
                    />
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Progress Viewer" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>Progress Viewer</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Progress Viewer</span>
+                    </Typography>
                     <ProgressViewer/>
-                  </>
+                  </div>
                 )}
 
                 { selectedSection === "Extract Code" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>Extract Code</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Extract Code</span>
+                    </Typography>
                     <ExtractCode/>
-                  </>
+                  </div>
                 )}
                 
                 { selectedSection === "LLM Description" && (
-                  <>
-                    <Typography variant = "h6" style = { { marginTop: "36px", fontWeight: "600" } }>LLM Description</Typography>
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">LLM Description</span>
+                    </Typography>
                     <LLMDescription
                       FormikProps = { FormikProps }
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                     />
-                  </>
+                  </div>
                 )}
 
               </Grid>

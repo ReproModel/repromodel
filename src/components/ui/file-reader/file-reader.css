@@ -2,6 +2,12 @@
     margin-bottom: 8px !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    .file-reader-header {
+        color: white;
+    }    
+}
+
 .file-content {
     height: 30%;
     border: 2px solid #000;
@@ -10,4 +16,10 @@
     overflow: auto;
     border-radius: 10px;
     font-size: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .file-content {
+        color: white;
+    }    
 }

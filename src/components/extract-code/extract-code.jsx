@@ -24,6 +24,19 @@ const ExtractCode = ({}) => {
     const [ confirmationOne, setConfirmationOne ] = React.useState(false)
     const [ confirmationTwo, setConfirmationTwo ] = React.useState(false)
 
+    // Dark Theme
+    const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+  
+    const mqListener = (e => { setIsDarkTheme(e.matches) })
+  
+    React.useEffect(() => {
+      const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+      darkThemeMq.addListener(mqListener)
+      return () => darkThemeMq.removeListener(mqListener)
+    }, [])
+
     // Extract Code
     const extractCode = async () => { 
 
@@ -98,7 +111,7 @@ const ExtractCode = ({}) => {
             {/* Checkbox - Confirmation One */}
             <div className = "code-extractor-confirmation-one">
                 <FormControlLabel
-                    control = {<Checkbox onChange = { (e, value) => { setConfirmationOne(value) }} style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
+                    control = {<Checkbox onChange = { (e, value) => { setConfirmationOne(value) }} sx = { { color: isDarkTheme ? "white" : "black" } } style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
                     label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left" } }>I understand that the previous experiment code will be deleted in order to generate a new one.</Typography> }
                     sx = { { fontSize: "4px" } }
                 />
@@ -107,7 +120,7 @@ const ExtractCode = ({}) => {
             {/* Checkbox - Confirmation Two */}
             <div className = "code-extractor-confirmation-two">
                 <FormControlLabel
-                    control = {<Checkbox onChange = { (e, value) => { setConfirmationTwo(value) }}  style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
+                    control = {<Checkbox onChange = { (e, value) => { setConfirmationTwo(value) }} sx = { { color: isDarkTheme ? "white" : "black" } } style = { { transform: "scale(.5)", padding: "0", marginLeft: "6px", pointerEvents: "none" } }/>}
                     label = { <Typography style = { { opacity: "70%", fontSize: "10px", textAlign: "left" } }>I also confirm that the training process has been finished.</Typography> }
                     sx = { { fontSize: "4px" } }
                 />         
@@ -165,9 +178,9 @@ const ExtractCode = ({}) => {
 
                     <RadioGroup id = "radio-repo-visibility" className = "radio-repo-visibility" onChange = { (e, value) => { setVisibility(value) }} sx = { { marginLeft: "64px", marginTop: "4px" } } row>
 
-                        <FormControlLabel value = "public" control = { <Radio checked = { visibility == "public" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Public</span> } />
+                        <FormControlLabel value = "public" control = { <Radio checked = { visibility == "public" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Public</span> } />
 
-                        <FormControlLabel value = "private" control = { <Radio checked = { visibility == "private" } style = { { opacity: "50%", color: "black", fontSize: "12px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Private</span> } />
+                        <FormControlLabel value = "private" control = { <Radio checked = { visibility == "private" } sx = { { color: isDarkTheme ? "white !important" : "black", "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Private</span> } />
 
                     </RadioGroup>
 
@@ -181,7 +194,7 @@ const ExtractCode = ({}) => {
                     <svg height = "14" width = "14" viewBox = "0 0 14 14">
                         <path d = "M7 .175c-3.872 0-7 3.128-7 7 0 3.084 2.013 5.71 4.79 6.65.35.066.482-.153.482-.328v-1.181c-1.947.415-2.363-.941-2.363-.941-.328-.81-.787-1.028-.787-1.028-.634-.438.044-.416.044-.416.7.044 1.071.722 1.071.722.635 1.072 1.641.766 2.035.59.066-.459.24-.765.437-.94-1.553-.175-3.193-.787-3.193-3.456 0-.766.262-1.378.721-1.881-.065-.175-.306-.897.066-1.86 0 0 .59-.197 1.925.722a6.754 6.754 0 0 1 1.75-.24c.59 0 1.203.087 1.75.24 1.335-.897 1.925-.722 1.925-.722.372.963.131 1.685.066 1.86.46.48.722 1.115.722 1.88 0 2.691-1.641 3.282-3.194 3.457.24.219.481.634.481 1.29v1.926c0 .197.131.415.481.328C11.988 12.884 14 10.259 14 7.175c0-3.872-3.128-7-7-7z" fill = "white" fillRule = "nonzero"/>
                     </svg>
-                    <span style= { { marginLeft: "8px", marginTop: "4px", fontSize: "12px"} }>
+                    <span style= { { marginLeft: "8px", marginTop: "4px", fontSize: "12px" } }>
                         Push
                     </span>
                 </Button>

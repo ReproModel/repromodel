@@ -5,6 +5,12 @@
     padding-top: 16px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .llm-heading {
+        color: white;
+    }
+}
+
 /* Loading Animation */
 .loading-animation {
     margin-top: 32px;
@@ -31,8 +37,20 @@
     padding-bottom: 8px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .supported-llm-label {
+        color: white;
+    }
+}
+
 .textarea-llm-response-label {
     padding-bottom: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .textarea-llm-response-label {
+        color: white;
+    }
 }
 
 /* Additional LLM Prompting Rules */
@@ -43,6 +61,12 @@
 
 .textarea-additional-prompt-label {
     padding-bottom: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .textarea-additional-prompt-label {
+        color: white;
+    }
 }
 
 /* Writing Voice */
@@ -84,6 +108,12 @@
     overflow-y: scroll;
 }
 
+@media (prefers-color-scheme: dark) {
+    .container-editor-area {
+        border: 3px dotted gray;
+    }
+}
+
 .container-editor {
     min-height: 800px;
     overflow-y: scroll;
@@ -92,6 +122,13 @@
     background-color: #fafafa;
     border-radius: 3px;
     font-family: "Fira code", "Fira Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+    .container-editor {
+        background-color: #000000;
+        color: #ffffff;
+    }
 }
 
 .container-editor textarea {

@@ -42,7 +42,7 @@ const FirstTimeModal = () => {
   return (
     <div className = "modal-container">
       
-      <Button variant = "contained" onClick = { handleOpen } style = { { backgroundColor: "#1b1212", opacity: "90%", borderRadius: "24px", fontSize: "12px" } }>
+      <Button variant = "contained" onClick = { handleOpen } style = { { backgroundColor: "black", borderRadius: "24px", fontSize: "12px" } }>
         First Time Here?
       </Button>
       
