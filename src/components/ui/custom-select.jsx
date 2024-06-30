@@ -46,7 +46,7 @@ const CustomSelectComponent = ({ className, placeholder, field, form, options, i
       options = { options }
       isMulti = { isMulti }
       { ...props }
-      styles={{
+      styles = { {
         control: (baseStyles, state) => ({
           ...baseStyles,
           backgroundColor: isDarkTheme ? "gray" : "white",
