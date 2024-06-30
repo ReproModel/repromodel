@@ -46,21 +46,22 @@ const FileDropdown = ({ onSelectFile }) => {
   }
 
   return (
-    <Box sx = { { width: 300, mt: 4 } }>
+    <Box sx = { { width: 300, mt: 4, borderRadius: 2, backgroundColor: (isDarkTheme ? "hsl(0, 0%, 20%)" : "white") } }>
       
       <FormControl fullWidth>
         
-        <InputLabel id = "file-select-label" style = { { color: isDarkTheme ? "white" : "black"} }>Select file...</InputLabel>
+        <InputLabel id = "file-select-label" style = { { color: (isDarkTheme ? "white" : "black") } }>Select file...</InputLabel>
         
         <Select
           labelId = "file-select-label"
           label = "Select a file"
           value = { selectedFile }
           onChange = { handleChange }
+          style = { { color: (isDarkTheme ? "white" : "black") } }
         >
           { files.map((file, index) => (
             <MenuItem key = { index } value = { file }>
-              <span style = { { color: isDarkTheme ? "white" : "black" } }>{ file }</span>
+              <span>{ file }</span>
             </MenuItem>
           ))}
         </Select>

@@ -3,15 +3,20 @@ import Select from 'react-select'
 
 import { Field } from 'formik'
 
-const CustomSelectComponent = ({
-  className,
-  placeholder,
-  field,
-  form,
-  options,
-  isMulti = false,
-  ...props
-}) => {
+const CustomSelectComponent = ({ className, placeholder, field, form, options, isMulti = false, ...props }) => {
+
+  // Dark Theme
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
   
   const onChange = (option) => {
     form.setFieldValue(
@@ -41,6 +46,14 @@ const CustomSelectComponent = ({
       options = { options }
       isMulti = { isMulti }
       { ...props }
+      styles = { {
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          backgroundColor: isDarkTheme ? "gray" : "white",
+          borderColor: "gray",
+          "::placeholder": isDarkTheme ? "white" : "black"
+        }),
+      }}
     />
   )
 }
