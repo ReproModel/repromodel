@@ -46,7 +46,7 @@ function App() {
             
             <Grid item xs = { 8 } className = "tabs-container">
               
-              <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 100 } }>
+              <Box sx = { { position: "absolute", top: 16, right: 16, left: 0, zIndex: 500 } }>
                 <ButtonGroup variant = "contained" sx = { { width: "100%", backgroundColor : "white" } }>
                   <Button variant = "outlined" style = { { backgroundColor: "white", color: "#38512f", borderColor: "#38512f", fontSize: "9px", width: "16.66%" } } onClick = { () => setSelectedSection("Custom Script") }>Custom Script</Button>
                   <Button onClick = { () => setSelectedSection("Experiment Builder") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Experiment Builder") ? "100%" : "70%"} }>Experiment Builder</Button>
