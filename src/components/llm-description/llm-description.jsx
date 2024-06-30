@@ -56,6 +56,19 @@ const LLMDescription = () => {
   const [isLoading, setLoading] = React.useState(false)
   tailspin.register()
 
+  // Dark Theme
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
+
   const runQuery = async (config, additionalPrompt, voice, format) => { 
 
     console.log("Running LLM query...")
@@ -152,7 +165,7 @@ const LLMDescription = () => {
           onChange = { (e) => { setAdditionalPrompt(e.target.value) } }
           value = { additionalPrompt }
           minRows = { 4 }
-          style = { { width: "90%", height: "50px", borderColor: "lightgray"} }
+          style = { { width: "90%", height: "50px", borderColor: (isDarkTheme ? "black" : "lightgray"), backgroundColor: (isDarkTheme ? "black" : "white"), color: (isDarkTheme ? "white" : "black") } }
           sx = { {
             "&::before": { display: "none" },
             "&:focus-within": { outline: "2px solid var(--Textarea-focusedHighlight)", outlineOffset: "2px" }
@@ -171,9 +184,9 @@ const LLMDescription = () => {
 
             <RadioGroup id = "radio-writing-voice" className = "radio-writing-voice" onChange = { (e, value) => { setOutput(""); setVoice(value) }} sx = { { marginLeft: "50px", marginTop: "4px" } } row>
 
-                <FormControlLabel value = "passive" control = { <Radio checked = { voice == "passive" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Passive Voice</span> } />
+                <FormControlLabel value = "passive" control = { <Radio checked = { voice == "passive" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Passive Voice</span> } />
 
-                <FormControlLabel value = "active" control = { <Radio checked = { voice == "active" } style = { { opacity: "50%", color: "black", fontSize: "12px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Active Voice</span> } />
+                <FormControlLabel value = "active" control = { <Radio checked = { voice == "active" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Active Voice</span> } />
 
             </RadioGroup>
 
@@ -192,9 +205,9 @@ const LLMDescription = () => {
 
             <RadioGroup id = "radio-output-format" className = "radio-output-format" onChange = { (e, value) => { setOutput(""); setFormat(value) }} sx = { { marginLeft: "40px", marginTop: "4px" } } row>
 
-                <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>LaTeX (.tex)</span> } />
+                <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>LaTeX (.tex)</span> } />
 
-                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "21px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
+                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "21px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
 
             </RadioGroup>
 
