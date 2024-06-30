@@ -123,6 +123,17 @@
     margin-left: 2px;
 }
 
+@media (prefers-color-scheme: dark) {
+    .custom-script-file-name-input {
+        background-color: gray;
+        border-color: gray;
+    }
+    .custom-script-file-name-input::placeholder {
+        color: black;
+        opacity: 60%
+    }
+}
+
 /* Save Button */
 .custom-script-save-button {
     margin-top: 4px;
