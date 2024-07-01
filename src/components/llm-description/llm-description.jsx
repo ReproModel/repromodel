@@ -216,7 +216,7 @@ const LLMDescription = () => {
       </div>
       
       {/* Loading Animation */}
-      { isLoading ?  <l-tailspin size = "40" stroke = "5" speed = "0.9"  color = "black" className = "loading-animation" /> :
+      { isLoading ?  <l-tailspin size = "40" stroke = "5" speed = "0.9"  color = { isDarkTheme ? "white" : "black" } className = "loading-animation" /> :
         
         <div>
 
