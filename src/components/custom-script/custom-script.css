@@ -127,9 +127,10 @@
     .custom-script-file-name-input {
         background-color: gray;
         border-color: gray;
+        color: white;
     }
     .custom-script-file-name-input::placeholder {
-        color: black;
+        color: white;
         opacity: 60%
     }
 }
