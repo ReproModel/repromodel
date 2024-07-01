@@ -1,6 +1,7 @@
 import os
 import torch
 from torch.utils.data import DataLoader
+import json
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
 from easydict import EasyDict as edict
@@ -25,7 +26,11 @@ def test_final(input_data):
             data = load_and_replace_keys(input_data)
         else:
             # Assume input is a JSON string
-            data = replace_in_string(input_data)
+            try:
+                data = json.loads(input_data)
+                data = replace_in_string(data)
+            except json.JSONDecodeError:
+                raise ValueError("Input data is neither a valid file path nor a valid JSON string")
 
     cfg = edict(data)
 
@@ -84,7 +89,7 @@ def test_final(input_data):
     print_to_file("Final testing on unseen data is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Test multiple models")
+    parser = argparse.ArgumentParser(description="Test on unseen dataset")
     parser.add_argument("config", type=str, help="Path to the config file or JSON string")
     args = parser.parse_args()
     test_final(args.config)
