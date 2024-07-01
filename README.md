@@ -43,7 +43,7 @@ https://repromodel.netlify.app
 :white_check_mark: Custom Script Editor<br/>
 
 ## Documentation
-For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs. (COMING SOON)
+For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
 
 ## Running Locally
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
