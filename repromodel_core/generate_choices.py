@@ -236,14 +236,17 @@ def get_devices():
     device_definitions = {
         "type": "str",
         "default": "cpu",
-        "options": "['cpu']"
+        "options": ['cpu']
     }
     if torch.cuda.is_available():
         device_count = torch.cuda.device_count()
         for i in range(device_count):
-            cuda_key = 'cuda:{}'.format(i)
+            cuda_key = f'cuda:{i}'
             device_definitions["options"].append(cuda_key)
+    
+    device_definitions["options"] = str(device_definitions["options"])
     return device_definitions
+
 
 
 
