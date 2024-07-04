@@ -25,7 +25,7 @@ function App() {
     const checkIfMobile = () => {
       const userAgent =
         typeof window.navigator === "undefined" ? "" : navigator.userAgent;
-      const mobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+      const mobile = /iPhone|iPod|Android/i.test(userAgent);
       setIsMobile(mobile);
     };
 
