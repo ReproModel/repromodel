@@ -14,7 +14,7 @@
 
 <br/>
 
-**ReproModel**  helps the AI research community to <strong>reproduce and compare AI models</strong> faster.
+**ReproModel**  helps the AI research community to <strong>reproduce, compare, train, and test AI models</strong> faster.
 
 ReproModel toolbox revolutionizes research efficiency by providing standardized models, dataloaders, and processing procedures. It features a comprehensive suite of pre-existing experiments, a code extractor, and an LLM descriptor. This toolbox <strong>allows researchers to focus on new datasets and model development</strong>, significantly reducing time and computational costs.
 
@@ -41,6 +41,11 @@ https://repromodel.netlify.app
 :white_check_mark: AI Experiment Description Generator<br/>
 :white_check_mark: Code Extractor<br/>
 :white_check_mark: Custom Script Editor<br/>
+:black_square_button: GUI augmentation builder<br/>
+:black_square_button: Docker image<br/>
+:black_square_button: Conventional ML models workflow<br/>
+:black_square_button: Parallel training<br/>
+:black_square_button: Statistical testing<br/>
 
 ## Documentation
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
@@ -61,20 +66,20 @@ npm install
 npm run dev
 ```
 
-
-**If you have Ollama installed and want to use the Methodology Generator:**
+**If you want to use the Methodology Generator, you need to have Ollama installed**
+You can get Ollama from their [website](https://ollama.com/download) and pull the model of your choice.
 ```
+npm install
 npm run repromodel-with-llm            // Mac and Linux
 npm run repromodel-with-llm-windows    // Windows
 ```
-Note: You can get Ollama from their [website](https://ollama.com/download).
-
 
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
 
 Any contributions you make are greatly appreciated. If you have a suggestion that would make this better, please read our [Contribution Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
 
+### List of contributors
 <table>
   <tr>
     <td align = "center">
@@ -103,6 +108,12 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
     </td>
   </tr>
 </table>
+
+### Contributor of the month - June 2024
+<img src = "https://avatars.githubusercontent.com/u/20110627" width = "100px" alt = "Tomonari Feehan"/><br/>
+<sub><b>Tomonari Feehan</b></sub><br/>
+<sub>Developer</sub><br/>
+<a href = "https://github.com/tomonarifeehan">GitHub</a>
 
 ## Stats
 ![Alt](https://repobeats.axiom.co/api/embed/4595dc84d9863dd36d50711c399685b444e54d0e.svg "Repobeats Analytics Image")
