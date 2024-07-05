@@ -9,14 +9,32 @@ import ModelTesting from "./components/model-testing/model-testing"
 import newQuestions from "../repromodel_core/choices.json"
 import ProgressViewer from "./components/progress-viewer/progress-viewer"
 import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
+import MobileWarning from "./components/mobile/mobile-warning";
 
 import { Button, ButtonGroup } from "@mui/material"
 import { Box, Grid, Typography } from "@mui/material"
 import { Formik } from "formik"
 import { handleFileChange, handleSubmit } from "./utils/json-helpers"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      const userAgent =
+        typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+      const mobile = /iPhone|iPod|Android/i.test(userAgent);
+      setIsMobile(mobile);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
+
+    return () => {
+      window.removeEventListener("resize", checkIfMobile);
+    };
+  }, []);
 
   const [selectedSection, setSelectedSection] = useState("Experiment Builder")
   
@@ -31,6 +49,10 @@ function App() {
 
   return (
     <>
+      {isMobile ? (
+        <MobileWarning />
+      ) : (
+        <>
       <Header/>
 
       <Formik initialValues = { initialValues } onSubmit = { handleSubmit }>
@@ -136,6 +158,8 @@ function App() {
         )}
 
       </Formik>
+      </>
+      )}
     </>
   )
 }
