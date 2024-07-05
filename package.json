@@ -17,7 +17,7 @@
     "repromodel": "npm run check-venv && npm run install-deps && npm run generate-choices && concurrently \"npm run dev-frontend\" \"npm run dev-backend\"",
     "repromodel-windows": "npm run check-venv-windows && npm run install-deps-windows && npm run generate-choices-windows && concurrently \"npm run dev-frontend\" \"npm run dev-backend-windows\"",
     "dev-frontend": "npm run dev",
-    "dev-backend": "source ./.venv/bin/activate && python3 repromodel_core/app.py",
+    "dev-backend": ". ./.venv/bin/activate && python3 repromodel_core/app.py",
     "dev-backend-windows": ".\\.venv\\Scripts\\activate && python repromodel_core\\app.py",
     "repromodel-with-llm": "concurrently \"ollama run llama3\" \"npm run repromodel\"",
     "llm": "ollama run llama3"
