@@ -1,9 +1,22 @@
 .json-input-file-label {
-    padding-top: 16px;
+    padding-top: 24px;
+    color: black;
+}
+@media (prefers-color-scheme: dark) {
+    .json-input-file-label {
+        color: white;
+    }
 }
 
 .json-input-file {
-    padding-top: 8px;
+    margin-top: 6px;
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .json-input-file {
+        color: white;
+    }
 }
 
 .param-box {
@@ -11,8 +24,16 @@
     flex-direction: column;
     border: 2px solid #000000;
     border-radius: 10px;
-    padding: 8px;
-    margin: 8px;
+}
+
+.model-testing-folder-label {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .model-testing-folder-label {
+        color: white;
+    }
 }
 
 .submit-button {

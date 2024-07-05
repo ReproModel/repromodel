@@ -6,8 +6,8 @@ import StopIcon from '@mui/icons-material/Stop'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import React from "react"
 
-import { Button, ButtonGroup, Typography } from "@mui/material"
-import { capitalizeFirstLetter } from "../../utils/string-helpers"
+import { Button, ButtonGroup } from "@mui/material"
+import { capitalizeAndRemoveUnderscore } from "../../utils/string-helpers"
 import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
 
@@ -58,28 +58,31 @@ const ExperimentBuilder = ({
   }, [])
 
   return (
-    <Form>
+    <Form> 
       
       {/* Optional JSON file upload input. */}
-      <Typography className="json-input-file-label">
-        Optionally upload existing configuration file.
-      </Typography>
+      <div>
+        
+        <div className = "json-input-file-label">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "700" } }>Upload Existing Training Configuration</span>
+        </div>
 
-      <input
-        type="file"
-        id="uploadedJson"
-        className="json-input-file"
-        accept=".json"
-        onChange={(event) => handleFileChange(event, setFieldValue)}
-      />
+        <input
+          type="file"
+          id="uploadedJson"
+          className="json-input-file"
+          accept=".json"
+          onChange={(event) => handleFileChange(event, setFieldValue)}
+        />
+      </div>
 
       {/* Hidden field used to capture the submitType. */}
       <Field type="hidden" name="submitType" />
 
       {/* Loop each folder. */}
       {Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {folder !== "tags" && <h4> {capitalizeFirstLetter(folder)}</h4>} 
+        <div style={{ display: "flex", flexDirection: "column", fontSize: "12px" }}>
+          {folder !== "tags" && <h4 className = "experiment-builder-folder-label"> {capitalizeAndRemoveUnderscore(folder)}</h4>} 
 
           {/* Case 1: Folder is nested. */}
           {nestedFolders.includes(folder) ? (
@@ -109,6 +112,7 @@ const ExperimentBuilder = ({
                                 ([param, value]) => (
                                   <>
                                     <label
+                                      className = "param-label"
                                       htmlFor={`${folder}_params:${file}>${className}:${param}`}
                                     >
                                       {param}:
@@ -137,7 +141,7 @@ const ExperimentBuilder = ({
             <div className="param-box">
               {Object.entries(folderContent).map(([param, value]) => (
                 <>
-                  <label htmlFor={`${folder}:${param}`}>{param}:</label>
+                  <label className = "param-label" htmlFor={`${folder}:${param}`}>{param}:</label>
 
                   <FlexibleFormField
                     id={`${folder}:${param}`}
@@ -153,7 +157,7 @@ const ExperimentBuilder = ({
             <>
               {folder !== "tags" && ( // exclude the tags, since they are not supposed to be rednerde
                 <>
-                  <label htmlFor={`${folder}`}>{folder}:</label>
+                  <label className = "param-label" htmlFor={`${folder}`}>{folder}:</label>
 
                   <FlexibleFormField
                     id={`${folder}`}
@@ -169,39 +173,40 @@ const ExperimentBuilder = ({
         </div>
       ))}
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "24px" } }>
         
         {/* Start Training Button */}
         { !trainingInProgress && 
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => setFieldValue("submitType", "training") }
-          >
-            <PlayArrowIcon />
-            Train
-          </Button>  
+          <div className = "experiment-builder-train-button">
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "training") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <PlayArrowIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+                Train
+              </span>
+            </Button>
+          </div>
         }
 
         {/* Stop Training Button */}
         { trainingInProgress && 
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => setFieldValue("submitType", "stop-training") }
-          >
-            <StopIcon/>
-            Stop Training
-          </Button>
+          <div className = "experiment-builder-stop-button">
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "stop-training") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <StopIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+                Stop Training
+              </span>
+            </Button>
+          </div>
         }
         
         {/* Download Config Button */}
-        <Button
-          type = "submit"
-          onClick = { () => { setFieldValue("submitType", "download")} }
-        >
-          Download Config File
-        </Button>
+        <div className = "experiment-builder-download-config-button" style = { { marginLeft: "4px" } }>
+          <Button type = "submit" onClick = { () => { setFieldValue("submitType", "download") } } style = { { width: "auto", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+            <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+              Download Config
+            </span>
+          </Button>
+        </div>
 
       </ButtonGroup>
     </Form>

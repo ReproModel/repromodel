@@ -1,8 +1,9 @@
 import { Form } from "formik"
-import { FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material"
+import { Button, FormControlLabel, Radio, RadioGroup, TextareaAutosize, Typography } from "@mui/material"
 import { highlight, languages } from "prismjs/components/prism-core"
 import { tailspin } from 'ldrs'
 
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import CustomSelectComponent from "../ui/custom-select"
 import Editor from "react-simple-code-editor"
 import React from "react"
@@ -55,6 +56,19 @@ const LLMDescription = () => {
   const [isLoading, setLoading] = React.useState(false)
   tailspin.register()
 
+  // Dark Theme
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
+
   const runQuery = async (config, additionalPrompt, voice, format) => { 
 
     console.log("Running LLM query...")
@@ -98,30 +112,33 @@ const LLMDescription = () => {
   }
 
   return (
-    <Form>
+    <Form className = "llm-container">
 
-      <Typography className = "heading">Generate the methods section for your research paper.</Typography>
-
-      
+      <Typography className = "llm-heading">Generate the methods section for your research paper.</Typography>
+  
       {/* Configuration File */}
       <div className = "json-input-file-container">
 
-        <Typography className = "json-input-file-label">Upload existing configuration file to pass to LLM.</Typography>
+        {/* Subheader - Extract Code */}
+        <div className = "json-input-file-label">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Upload Existing Configuration</span>
+        </div>
         
         <input
-                type = "file"
-                className = "json-input-file"
-                accept = ".json"
-                onChange = { (event) => handleFileUpload(event, setConfig) }
-              />
-
+          type = "file"
+          className = "json-input-file"
+          accept = ".json"
+          onChange = { (event) => handleFileUpload(event, setConfig) }
+        />
 
       </div>
       
       {/* Supported LLM Models */}
       <div className = "supported-llm-container">
         
-        <Typography className = "supported-llm-label">LLM Model</Typography>
+        <div className = "supported-llm-label">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>LLM Model</span>
+        </div>
 
         <CustomSelectComponent
           className = "supported-llm"
@@ -137,17 +154,18 @@ const LLMDescription = () => {
 
       
       {/* Additional LLM Prompting Rules */}
-      <div className = "textarea-additional-prompt-container" style = { { width: "100%" } }>
+      <div className = "textarea-additional-prompt-container" style = { { width: "88.5%" } }>
 
-        <Typography className = "textarea-additional-prompt-label">Additional LLM Prompting Rules</Typography>
+        <div className = "textarea-additional-prompt-label">
+            <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Additional LLM Prompting Rules</span>
+        </div>
           
         <TextareaAutosize
           className = "textarea-additional-prompt"
           onChange = { (e) => { setAdditionalPrompt(e.target.value) } }
           value = { additionalPrompt }
-          placeholder = "• Describe my custom model in more detail while only briefly describe other models that are used.&#10;&#10;• Do not describe optimizers and LR schedulers."
           minRows = { 4 }
-          style = { { width: "100%", height: "40px" } }
+          style = { { width: "90%", height: "50px", borderColor: (isDarkTheme ? "black" : "lightgray"), backgroundColor: (isDarkTheme ? "black" : "white"), color: (isDarkTheme ? "white" : "black") } }
           sx = { {
             "&::before": { display: "none" },
             "&:focus-within": { outline: "2px solid var(--Textarea-focusedHighlight)", outlineOffset: "2px" }
@@ -159,16 +177,20 @@ const LLMDescription = () => {
       
       {/* Writing Voice */}
       <div className = "radio-writing-voice-container">
-            
-        <Typography className = "radio-writing-voice-label">Writing Voice</Typography>
-          
-        <RadioGroup className = "radio-writing-voice" onChange = { (e, value) => { setOutput(""); setVoice(value); }} row>
-          
-          <FormControlLabel value = "passive" control = { <Radio checked = { voice == "passive" }/> } label = "Passive Voice" />
-          
-          <FormControlLabel value = "active" control = { <Radio checked = { voice == "active" }/> } label = "Active Voice" />
         
-        </RadioGroup>
+        <FormControlLabel sx = { { margin: "0 !important" } } label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Writing Voice</span>} labelPlacement = "start" 
+
+            control = {
+
+            <RadioGroup id = "radio-writing-voice" className = "radio-writing-voice" onChange = { (e, value) => { setOutput(""); setVoice(value) }} sx = { { marginLeft: "50px", marginTop: "4px" } } row>
+
+                <FormControlLabel value = "passive" control = { <Radio checked = { voice == "passive" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Passive Voice</span> } />
+
+                <FormControlLabel value = "active" control = { <Radio checked = { voice == "active" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Active Voice</span> } />
+
+            </RadioGroup>
+
+        }/>
 
       </div>
 
@@ -177,36 +199,52 @@ const LLMDescription = () => {
       {/* Output Format */}
       <div className = "radio-output-format-container">
         
-        <Typography className = "radio-output-format-label">Output Format</Typography>
-          
-        <RadioGroup className = "radio-output-format" onChange = { (e, value) => { setOutput(""); setFormat(value); }} row>
-          
-          <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" }/> } label = "LaTeX (.tex)" />
-          
-          <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" }/> } label = "Plain Text (.txt)" className = "radio-plain-text" />
-        
-        </RadioGroup>
+        <FormControlLabel sx = { { margin: "0 !important" } } label = {<span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>Output Format</span>} labelPlacement = "start" 
+
+            control = {
+
+            <RadioGroup id = "radio-output-format" className = "radio-output-format" onChange = { (e, value) => { setOutput(""); setFormat(value) }} sx = { { marginLeft: "40px", marginTop: "4px" } } row>
+
+                <FormControlLabel value = "latex" control = { <Radio checked = { format == "latex" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>LaTeX (.tex)</span> } />
+
+                <FormControlLabel value = "plain-text" control = { <Radio checked = { format == "plain-text" } sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", paddingLeft: "21px" } }/> } label = { <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px" } }>Plain Text (.txt)</span> } />
+
+            </RadioGroup>
+
+        }/>
 
       </div>
       
-       {/* Loading Animation */}
-      { isLoading ?  <l-tailspin size = "40" stroke = "5" speed = "0.9"  color = "black" className = "loading-animation" /> :
+      {/* Loading Animation */}
+      { isLoading ?  <l-tailspin size = "40" stroke = "5" speed = "0.9"  color = { isDarkTheme ? "white" : "black" } className = "loading-animation" /> :
         
         <div>
 
-            {/* Submit Button */}
-            <button className = "submit-button" type="button" onClick = { () => runQuery(config, additionalPrompt, voice, format) }>
-              <Typography>Submit</Typography>
-            </button>
+          {/* Button - Submit */}
+          <div className = "copy-button">
+            <Button variant = "contained" onClick = { () => runQuery(config, additionalPrompt, voice, format) } style = { { backgroundColor: "#38512f", opacity: "90%", width: "150px" } }>
+              <span style = { { marginTop: "2px", fontSize: "12px"} }>
+                Submit
+              </span>
+            </Button>
+          </div>
 
           {/* LLM Response Output */}
-          <div className = "textarea-llm-response-container" style = { { width: "100%" } }>
+          <div className = "textarea-llm-response-container" style = { { width: "88.5%" } }>
+            
+            <div className = "textarea-llm-response-label">
+              <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "600" } }>LLM Response</span>
+            </div>
 
-            <Typography className = "textarea-llm-response-label">LLM Response</Typography>
-
-            <div className = "container-content" style = {{width: "100%"}}>
+            <div className = "container-content" style = { { width: "100%" } }>
               
-              <div className = "container-editor-area">
+              <div className = "container-editor-area" style = { { position: "relative" } }>
+                <div title = "Copy">
+                  <ContentCopyIcon
+                    onClick = { () => navigator.clipboard.writeText(output) }
+                    sx = { { "&:hover": { opacity: "30%" }, opacity: "50%", position: "absolute", top: "10px", right: "15px", zIndex: "100", cursor: "pointer", color: (isDarkTheme ? "white" : "black") } }
+                  />
+                </div>
                 <Editor
                   className = "container-editor"
                   value = { output }
@@ -216,11 +254,6 @@ const LLMDescription = () => {
               </div>
             </div>
           </div>
-
-          {/* Copy Button */}
-          <button type = "submit" className = "copy-button" onClick = { () => navigator.clipboard.writeText(output) }>
-            Copy
-          </button>
 
         </div>
 

@@ -1,9 +1,25 @@
+.file-reader-header {
+    margin-bottom: 8px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .file-reader-header {
+        color: white;
+    }    
+}
+
 .file-content {
-    width: 95%;
-    margin-top: 16px;
-    height: 55%;
+    height: 30%;
     border: 2px solid #000;
-    padding: 10px;
+    padding-top: 1px;
+    padding-left: 4px;
     overflow: auto;
     border-radius: 10px;
+    font-size: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .file-content {
+        color: white;
+    }    
 }

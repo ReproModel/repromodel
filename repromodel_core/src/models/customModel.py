@@ -1,8 +1,17 @@
 import torch
 import torch.nn as nn
-from ..decorators import enforce_types_and_ranges
+from ..decorators import enforce_types_and_ranges, tag
 
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
+# If two or more values are needed, add them to the list. 
+# For example, submodality=["RGB", "grayscale"].
+@tag(task=["classification"], subtask=["binary"], modality=["images"], submodality=["RGB"])
 class CustomModel(nn.Module):
+    # Specify here every input with:
+    # type: required
+    # default: optional but helpful to pre-fill the value in the frontend
+    # range: optional but helpful as it automatically makes a slider in the frontend
+    # options: optional but helpful as it automatically makes a dropdown in the frontend
     @enforce_types_and_ranges({
         'lr': {'type': float, 'default': 0.01, 'range': (0.0001, 1.0)},
         'activation': {'type': str, 'default': 'relu', 'options': ['relu', 'sigmoid', 'tanh']}
@@ -17,8 +26,3 @@ class CustomModel(nn.Module):
     def forward(self, x):
         # Define the forward pass using the activation function
         return x
-
-# Example of using the model:
-model = CustomModel(lr=0.005, activation='sigmoid')
-print("Model learning rate:", model.lr)
-print("Model activation function:", model.activation)

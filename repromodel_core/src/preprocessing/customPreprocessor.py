@@ -1,20 +1,27 @@
 import os
+import sys
 import multiprocessing
 from pathlib import Path
 from tqdm import tqdm
-from ..decorators import enforce_types_and_ranges
-
-import sys
+from ..decorators import enforce_types_and_ranges, tag
+from utils import print_to_file
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
-from utils import print_to_file
-
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
+# If two or more values are needed, add them to the list. 
+# For example, submodality=["RGB", "grayscale"].
+@tag(task=["classification"], subtask=["multi-class"], modality=["medical"], submodality=["MRI"])
 class CustomPreprocessor:
+    # Specify here every input with:
+    # type: required
+    # default: optional but helpful to pre-fill the value in the frontend
+    # range: optional but helpful as it automatically makes a slider in the frontend
+    # options: optional but helpful as it automatically makes a dropdown in the frontend
     @enforce_types_and_ranges({
         'data_path': {'type': str},
         'output_path': {'type': str},
         'input_type': {'type': str, 'options': ['input', 'output', 'temp']},
-        'num_workers': {'type': int, 'range': (1, 32)}  # Assuming a sensible range for number of workers
+        'num_workers': {'type': int, 'range': (1, 32)}
     })
     def __init__(self, data_path, output_path, input_type='input', num_workers=1):
         self.input_type = input_type

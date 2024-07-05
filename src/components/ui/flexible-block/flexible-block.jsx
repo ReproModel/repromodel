@@ -2,7 +2,7 @@ import "./flexible-block.css"
 
 import React from "react"
 
-import { capitalizeFirstLetter } from "../../../utils/string-helpers"
+import { capitalizeAndRemoveUnderscore } from "../../../utils/string-helpers"
 import { Paper, Typography } from "@mui/material"
 
 function ActiveBlock({ id, name, status }) {
@@ -10,9 +10,9 @@ function ActiveBlock({ id, name, status }) {
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#95e9fb", p: 0.5, boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" } }
+      sx = { { backgroundColor: "#95e9fb", height: "33px", boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)" } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" style = { { fontWeight: "500", fontSize: "16px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
@@ -22,21 +22,34 @@ function CompletedBlock({ id, name, status }) {
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#dff9fe", p: 0.5 } }
+      sx = { { backgroundColor: "#dff9fe", height: "33px" } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" style = { { fontWeight: "500", fontSize: "16px" } } gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }
 
 function PassiveBlock({ id, name, status }) {
+
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
+
   return (
     <Paper
       key = { id }
       variant = "outlined"
-      sx = { { backgroundColor: "#e6f0f1", p: 0.5 } }
+      sx = { { backgroundColor: (isDarkTheme ? "hsl(0, 0%, 20%)" : "#e6f0f1"), height: "33px" } }
     >
-      <Typography align = "center" variant = "h6" gutterBottom>{ capitalizeFirstLetter(name) }</Typography>
+      <Typography align = "center" className = "passive-block-text" gutterBottom>{ capitalizeAndRemoveUnderscore(name) }</Typography>
     </Paper>
   )
 }

@@ -1,7 +1,8 @@
 .header {
   display: flex;
   flex-direction: column;
-  background-image: url("/header-background.jpg");
+  background-image: linear-gradient(to bottom, transparent, black), url("/header-background.jpg");
+  background-size: 30%;
   width: 100%;
   height: 15vh;
   padding: auto;
@@ -9,4 +10,10 @@
   text-align: center;
   justify-content: center;
   color: #ffffff;  
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-image: linear-gradient(to bottom, transparent, black), url("/header-background-dark-mode.jpg");
+  }
 }

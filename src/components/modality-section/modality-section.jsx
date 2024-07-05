@@ -4,7 +4,7 @@ import ModalityOptions from "./modality-options";
 import React from "react";
 
 import { capitalizeFirstLetter } from "../../utils/string-helpers";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { useState } from "react";
 
 ///////////////////////////////////////////////////////////
@@ -39,10 +39,10 @@ function getModels(selectedOptions, jsonData) {
   const modalityModels = getModelsForKey("modality", modality);
   const submodalityModels = getModelsForKey("submodality", submodality);
 
-  /*  console.log("Task Models:", taskModels);
+  console.log("Task Models:", jsonData);
   console.log("Subtask Models:", subtaskModels);
   console.log("Modality Models:", modalityModels);
-  console.log("Submodality Models:", submodalityModels);**/
+  console.log("Submodality Models:", submodalityModels);
 
   // Intersect all model arrays.
   function intersect(arr1, arr2) {
@@ -156,44 +156,19 @@ const ModalitySection = ({
 
   return (
     <div>
-      <p className="model-count">Available Models: { renderModelCount() }</p>
+      <p className = "model-count" style = { { fontSize: "14px" } }>Available Models: { renderModelCount() }</p>
     
     
-      <div className="container">
+      <div className = "container">
 
-        {/* <div className="button-row">
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
-                Start Building
-              </button>
-            </>
-          ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
-          )}
-        </div> */}
-        {Object.entries(class_per_tag).map(([category, options]) => (
-          <>
+        {Object.entries(class_per_tag).map(([category, options], idx) => (
+          <div style = { { marginTop: (idx == 0) ? "0": "24px" } }>
             <Typography
-              style={{ marginTop: "16px", marginBottom: "4px", fontSize: "10px", marginLeft: "2px" }}
+              style = { { marginBottom: "12px", fontSize: "24px", marginLeft: "2px" } }
             >
-              Choose <strong>{capitalizeFirstLetter(category)}</strong>
+              <span className = "choose-modality-label">
+                Choose <strong>{capitalizeFirstLetter(category)}</strong>
+              </span>
             </Typography>
 
             <ModalityOptions
@@ -202,42 +177,29 @@ const ModalitySection = ({
               selectedOptions={selectedOptions[category] || []}
               group={category}
             />
-          </>
+          </div>
         ))}
 
       </div>
 
-      <div className="button-row">
-          {selectedModels.length > 0 ? (
-            <>
-              <button
-                type="submit"
-                className="start-building-button"
-                onClick={() => {
-                  setFilterChoosen(true);
-                  setSelectedModels(selectedModels);
-                }}
-              >
+      <div className = "button-row" style = { { marginTop: "4px" } }>
+          { selectedModels.length > 0 ? (
+            <div>
+              <button type = "submit" className = "start-building-button" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } }>
                 Start Building
               </button>
-            </>
+            </div>
           ) : (
-            <button
-              type="submit"
-              className="start-building-button"
-              onClick={() => {
-                setFilterChoosen(true);
-                setSelectedModels(selectedModels);
-              }}
-            >
-              Skip Filter
-            </button>
+            <div>
+              <button type = "submit" className = "skip-filter-button" onClick = { () => { setFilterChoosen(true); setSelectedModels(selectedModels) } }>
+                Skip Filter
+              </button>
+            </div>
           )}
         </div>
 
     </div>
 
-    
   );
 };
 

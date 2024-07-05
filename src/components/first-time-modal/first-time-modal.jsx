@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import Modal from "@mui/material/Modal"
 import React from "react"
-import experimentConfig from "../../../repromodel_core/experiment_config.json"
+import demoexperimentConfig from "../../../repromodel_core/demo_experiment_config.json"
 import Typography from "@mui/material/Typography"
 
 import { handleDownload } from "../../utils/download-helpers"
@@ -42,7 +42,7 @@ const FirstTimeModal = () => {
   return (
     <div className = "modal-container">
       
-      <Button variant = "contained" onClick = { handleOpen }>
+      <Button variant = "contained" onClick = { handleOpen } style = { { backgroundColor: "black", borderRadius: "24px", fontSize: "12px" } }>
         First Time Here?
       </Button>
       
@@ -71,17 +71,17 @@ const FirstTimeModal = () => {
             <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>repromodel_core/data/dummyData/input</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate }>
+          <Button variant = "contained" className = "modal-button" onClick = { handleGenerate } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Generate
           </Button>
           
           {/* Step 2 - Download Configuration */}
           <Typography className = "modal-step-two">
             <strong>2. Download configuration file.</strong>
-            <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>DemoConfig.json</Typography>
+            <Typography style = { { fontStyle: "italic", opacity: "40%", fontSize: "14px", paddingTop: "6px" } }>DemoExperimentConfig.json</Typography>
           </Typography>
           
-          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(experimentConfig, 'DemoConfig', 'json') }>
+          <Button variant = "contained" className = "modal-button" onClick = { () => handleDownload(demoexperimentConfig, 'DemoExperimentConfig', 'json') } style = { { backgroundColor: "#38512f", opacity: "90%" } }>
             Download
           </Button>
                   

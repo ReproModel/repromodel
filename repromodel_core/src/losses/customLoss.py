@@ -1,11 +1,19 @@
-import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from ..decorators import enforce_types_and_ranges
+from ..decorators import enforce_types_and_ranges, tag
 
+# In tag decorator, specify custom task, subtask, modality, and submodality. 
+# If two or more values are needed, add them to the list. 
+# For example, submodality=["RGB", "grayscale"].
+@tag(task=["regression"], subtask=["error"], modality=["tabular"], submodality=["financial"])
 class CustomLoss(nn.Module):
+    # Specify here every input with:
+    # type: required
+    # default: optional but helpful to pre-fill the value in the frontend
+    # range: optional but helpful as it automatically makes a slider in the frontend
+    # options: optional but helpful as it automatically makes a dropdown in the frontend
     @enforce_types_and_ranges({
-        'weight': {'type': float, 'range': (0.1, 1.0)}  # Assuming weight should be between 0.1 and 1.0
+        'weight': {'type': float, 'range': (0.1, 1.0), 'default': 1.0}  # Assuming weight should be between 0.1 and 1.0
     })
     def __init__(self, weight=1.0):
         super(CustomLoss, self).__init__()
@@ -26,10 +34,3 @@ class CustomLoss(nn.Module):
         loss = F.mse_loss(inputs, targets, reduction='none')
         weighted_loss = loss * self.weight
         return weighted_loss.mean()
-
-# Example usage:
-# model_output = torch.tensor([...], requires_grad=True)
-# true_values = torch.tensor([...])
-# loss_fn = CustomLoss(weight=0.5)
-# loss = loss_fn(model_output, true_values)
-# loss.backward()  # to compute gradients

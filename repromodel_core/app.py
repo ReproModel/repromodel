@@ -6,6 +6,7 @@ import json
 import ollama
 import os
 import psutil
+import logging
 import subprocess
 import requests
 from src.utils import copy_covered_files
@@ -74,24 +75,37 @@ for type_dir in TYPE_DIRS.values():
 ######################################################################
 # API ENDPOINTS - HEADER
 ######################################################################
-
-
 # FUNCTION: Helper function to if process is running.
 def is_process_running(process_name):
-
-    app.logger.info("process_name: %s", process_name)
+    logging.info("process_name: %s", process_name)
     
-    for proc in psutil.process_iter():
-
+    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
         try:
-            if proc.cmdline() == ['python3', process_name]:
+            # cmdline() returns a list of command line arguments
+            cmdline = proc.info.get('cmdline', [])
+            if any(process_name in cmd for cmd in cmdline):
                 return True, proc.info
 
         except Exception as e:
-            app.logger.info("error: %s", e)
-            return False, None
+            logging.info("error: %s", e)
 
     return False, None
+
+
+# Temp to get processes. Leave here for phase 3 when more sophisticated training controls are implemented
+@app.route('/processes', methods=['GET'])
+def list_processes():
+    # Retrieve a list of all running processes
+    processes = []
+    for proc in psutil.process_iter(['pid', 'name', 'username', 'status', 'cmdline']):
+        try:
+            process_info = proc.info
+            # Add command line information
+            process_info['cmdline'] = ' '.join(proc.cmdline())
+            processes.append(process_info)
+        except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
+            pass
+    return jsonify(processes)
 
 # GET /ping
 # Description: Returns whether backend is up and running.
@@ -99,12 +113,12 @@ def is_process_running(process_name):
 def ping():
 
     # Check if training is in progress.
-    trainingInProgress, process_info  = is_process_running("trainer.py")
-    app.logger.info("trainingInProgress: %s", trainingInProgress)
+    trainingInProgress, process_info = is_process_running("trainer.py")
+    #app.logger.info("trainingInProgress: %s", trainingInProgress)
 
     # Check if testing is in progress.
     testingInProgress, process_info = is_process_running("tester.py")
-    app.logger.info("testingInProgress: %s", testingInProgress)
+    # app.logger.info("testingInProgress: %s", testingInProgress)
     
     # Return HTTP 200 OK status code.
     return jsonify({ "message": "pong", "trainingInProgress": trainingInProgress, "testingInProgress": testingInProgress }), 200
@@ -205,7 +219,7 @@ def save_custom_script():
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Return HTTP 200 OK status code.
-        return jsonify({'message': 'File uploaded successfully.'}), 200
+        return jsonify({'message': 'File uploaded successfully.', 'path': save_path}), 200
     
     except Exception as e:
 
@@ -237,7 +251,7 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
-        with open("repromodel_core/experiment_config.json", 'w') as json_file:
+        with open("repromodel_core/last_experiment_config.json", 'w') as json_file:
             json.dump(json_data, json_file, indent=4)
 
         app.logger.info("Received JSON data for processing.")
@@ -458,12 +472,16 @@ def kill_testing_process():
 # FUNCTION: Helper function to start TensorBoard.
 def start_tensorboard(logdir="logs"):
     
-    # Kill any existing TensorBoard instances.
-    subprocess.run(['pkill', '-f', 'tensorboard'])
+    # Check if there is a running TensorBoard instances.
+    tensorboardInProgress, process_info = is_process_running("tensorboard --logdir")
+    
+    if tensorboardInProgress:
+        return f"TensorBoard already running at http://localhost:6006 with logdir {logdir}"
     
     # Start a new TensorBoard instance.
     command = ['tensorboard', '--logdir', logdir]
     tensorboard_proc = subprocess.Popen(command)
+    
     
     return f"TensorBoard started at http://localhost:6006 with logdir {logdir}"
 

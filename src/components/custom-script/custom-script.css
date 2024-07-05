@@ -1,47 +1,86 @@
-.category-container {
+/* Tab Container */
+.custom-script-container {
+    zoom: 50%;
+}
+
+/* Category Label */
+.custom-script-category-label {
+    padding-top: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    .custom-script-category-label {
+      color: white;
+    }
+}
+
+/* Category Dropdown */
+.custom-script-category-container {
     display: flex;
 }
 
-.category-dropdown {
+.custom-script-category-dropdown {
     width: 50%;
-    height: 50%;
-    padding-top: 16px;
+    padding-top: 4px;
 }
 
-.load-template-button {
-    margin-top: 16px;
+/* Load Template Button */
+.custom-script-load-template-button {
+    margin-top: 4px;
     margin-left: 5px;
-    width: auto;
+    width: 200px;
+    height: auto;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
     font-size: 0.775rem;
     font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
+    background-color: var(--color-one);
+    color: white;
     white-space: nowrap;
+    cursor: pointer;
 }
 
-.load-template-button:hover {
+@media (prefers-color-scheme: dark) {
+    .custom-script-load-template-button {
+        background-color: #67687b;
+    }
+}
+
+.custom-script-load-template-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
 }
 
-.container-content {
+/* Custom Script Editor */
+.custom-script-container-content {
     background-color: #fafafa;
+    width: 80%;
 }
 
-.container-editor-area {
-    max-height: 800px;
+@media (prefers-color-scheme: dark) {
+    .custom-script-container-content {
+      background-color: black;
+    }
+}
+
+.custom-script-container-editor-area {
+    position: relative;
+    max-height: 900px;
     tab-size: 4ch;
-    overflow: auto;
-    border: 3px dotted #ccc;
+    border: 3px dotted;
     margin: 14px;
-    padding-left: 0;
     margin-left: 0;
+    margin-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: auto;
 }
 
-.container-editor {
-    min-height: 800px;
+.custom-script-container-editor {
+    min-height: 900px;
     margin: 12px;
     overflow-y: scroll;
     font-size: 12px;
@@ -50,17 +89,28 @@
     font-family: "Fira code", "Fira Mono", monospace;
 }
 
-.container-editor textarea {
+@media (prefers-color-scheme: dark) {
+    .custom-script-container-editor {
+      color: white;
+    }
+}
+
+.custom-script-container-editor textarea {
     outline: 0;
 }
 
-.file-name-input {
-    margin-left: 10px;
+.custom-script-save-container {
+    display: flex;
+}
+
+/* Output File Name */
+.custom-script-file-name-input {
+    margin-top: 4px;
     padding-left: 5px;
     appearance: none;
     -webkit-appearance: none;
-    width: 45%;
-    height: 25px;
+    width: 500px;
+    height: 40px;
     font-size: 14px;
     background-color: #fff;
     border: 1px solid #caced1;
@@ -69,51 +119,45 @@
     cursor: pointer;
 }
 
-.container-content {
-    width: 800px;
-    max-width: 100%;
-    text-align: center;
-    padding-top: 8px;
+.custom-script-file-name-input::placeholder {
+    margin-left: 2px;
 }
 
-.container-editor-area {
-    max-height: 400px;
-    tab-size: 4ch;
-    overflow: auto;
-    margin: 2em 2em;
+@media (prefers-color-scheme: dark) {
+    .custom-script-file-name-input {
+        background-color: gray;
+        border-color: gray;
+        color: white;
+    }
+    .custom-script-file-name-input::placeholder {
+        color: white;
+        opacity: 60%
+    }
 }
 
-.container-editor {
-    min-height: 400px;
-    font-size: 12px;
-    font-variant-ligatures: common-ligatures;
-    background-color: #fafafa;
-    border-radius: 3px;
-    font-family: "Fira code", "Fira Mono", monospace;
-}
-
-.container-editor textarea {
-    outline: 0;
-}
-
-.button {
-    margin-top: 10px;
-    width: 150px;
-    letter-spacing: 0.02857em;
-    line-height: 1.75;
+/* Save Button */
+.custom-script-save-button {
+    margin-top: 4px;
+    margin-left: 5px;
+    width: 200px;
+    height: 47px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.875rem;
+    font-size: 0.775rem;
     font-weight: 500;
-    background-color: #e6f0f1;
-    color: #000000;
+    background-color: var(--color-one);
+    color: white;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-.button:hover {
+@media (prefers-color-scheme: dark) {
+    .custom-script-save-button {
+        background-color: #67687b;
+    }
+}
+
+.custom-script-save-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
-}
-
-.right-button {
-    margin-left: 10px;
 }

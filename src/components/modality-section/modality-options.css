@@ -2,11 +2,38 @@
     margin-left: 0 !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    .start-building-button {
+        background-color: #67687b;
+    }  
+}
+
+@media (prefers-color-scheme: dark) {
+    .skip-filter-button {
+        background-color: #67687b;
+    }  
+}
+
 .model-count {
     margin-top: 1px;
-    margin-left: 1px;
     opacity: 50%;
     font-size: 14px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .model-count {
+        color: white;
+    }
+}
+
+.choose-modality-label {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .choose-modality-label {
+        color: white;
+    }
 }
 
 .card-image-container, .card-title {
@@ -15,10 +42,12 @@
 }
 
 .container {
+    zoom: 50%;
     width: 100%;
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 24px;
+    margin-right: 0;
+    padding: 0 !important;
+    margin-right: 0 !important;
 }
 
 .row {
@@ -33,16 +62,28 @@
     min-height: 80px !important;
 }
 
+@media (prefers-color-scheme: dark) {
+    .card {
+        background-color: black;
+    }
+}
+
 .card:hover {
     box-shadow: 0 10px 40px -10px rgba(0,0,0,.3);
     cursor: pointer;
 }
 
 .card-title {
-    font-size: 10px;
+    font-size: 20px;
     font-weight: 500;
     color: black;
     font-family: Lato;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card-title {
+        color: white;
+    }
 }
 
 .card-subtitle {
@@ -64,8 +105,13 @@
     background-color: #e6f0f1;
 }
 
-/* Media Queries - Responsive Styling */
+@media (prefers-color-scheme: dark) {
+    .card.selected {
+        background-color: #333333;
+    }
+}
 
+/* Media Queries - Responsive Styling */
 @media (min-width: 576px) {
     .container {
         max-width: 540px;
@@ -95,7 +141,7 @@
 
 @media (min-width: 1200px) {
     .container {
-        max-width: 1140px;
+        max-width: 100%;
     }
 }
 
@@ -112,7 +158,7 @@
     }
 
     .card-title {
-        font-size: 18px !important;
+        font-size: 8px !important;
     }
 }
 
@@ -122,12 +168,13 @@
         transition: background-color .25s,color .25s,box-shadow .25s;
         box-shadow: 0 0 .1rem rgba(0,0,0,.1),0 .15rem .9rem rgba(0,0,0,.1);
         border: 0;
-        min-height: 267px;
-        max-width: 120px;
+        min-height: 250px;
+        min-width: 220px;
+        max-width: 220px;
+        margin-top: 12px;
     }
 
     .card-title {
-        text-align: left;
         padding-left: 18px;
         padding-right: 18px;
         align-items: center;
@@ -150,7 +197,6 @@
     }
     
     .card-title {
-        text-align: left;
         padding-left: 18px;
         padding-right: 18px;
         align-items: center;
@@ -161,10 +207,10 @@
 
 @media only screen and (min-width: 1200px) {
     .card-image {
-        width: 50px;
-        height: 50px;
-        opacity: .7;
-        background-size: 50px auto;
+        width: 75px;
+        height: 75px;
+        opacity: .8;
+        background-size: 75px auto;
         background-repeat: no-repeat;
         background-position: 50%;
         margin-top: 10px;
@@ -174,7 +220,6 @@
     }
 
     .card-title {
-        text-align: left;
         padding-left: 15px;
         padding-right: 10px;
         align-items: center;

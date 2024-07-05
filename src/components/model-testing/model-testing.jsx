@@ -10,7 +10,6 @@ import { Button, ButtonGroup } from "@mui/material"
 import { capitalizeFirstLetter } from "../../utils/string-helpers"
 import { Field, Form } from "formik"
 import { FolderField } from "../ui/folder-field"
-import { Typography } from "@mui/material"
 
 const foldersPartOfTesting = [
   "models",
@@ -64,27 +63,31 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
     <Form>
       
       {/* Optional JSON file upload input. */}
-      <Typography className = "json-input-file-label">Upload existing training configuration file and reduce the selections if desired.</Typography>
-      
-      <input
-        type = "file"
-        id = "uploadedJson"
-        className = "json-input-file"
-        accept = ".json"
-        onChange = { (event) => handleFileChange(event, setFieldValue) }
-      />
+      <div>
+        <div className = "json-input-file-label">
+          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "700" } }>Upload Existing Testing Configuration</span>
+        </div>
+
+        <input
+          type = "file"
+          id = "uploadedJson"
+          className = "json-input-file"
+          accept = ".json"
+          onChange = { (event) => handleFileChange(event, setFieldValue) }
+        />
+      </div>
 
       {/* Hidden field used to capture the submitType. */}
       <Field type = "hidden" name = "submitType" />
       
       {/* Loop each folder. */}
       { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <>
+        <div style = { { width: "50%" } }>
           { foldersPartOfTesting.includes(folder) && (
             
-            <div style = { { display: "flex", flexDirection: "column" } }>
+            <div style = { { display: "flex", flexDirection: "column", fontSize: "12px" } }>
               
-              <h4> {capitalizeFirstLetter(folder)}</h4>
+              <h4 className = "model-testing-folder-label"> { capitalizeFirstLetter(folder) }</h4>
 
               {/* Case 1: Folder is nested and part of testing. */}
               { foldersPartOfTesting.includes(folder) && nestedFolders.includes(folder) ? (
@@ -170,36 +173,36 @@ const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldVal
 
           )}
 
-        </>
+        </div>
 
       ))}
   
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "16px" } }>
+      <ButtonGroup variant = "outlined" sx = { { marginTop: "36px"} }>
         
         {/* Start Testing Button */}
         
         { !testingInProgress &&
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => { setFieldValue("submitType", "testing") } }
-          >
-            <PlayArrowIcon />
-            Test
-          </Button>
+          <div>
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <PlayArrowIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+                Test
+              </span>
+            </Button>
+          </div>
         }
 
         {/* Stop Testing Button */}
         { testingInProgress &&
-          <Button
-            type = "submit"
-            style = { { width: "170px" } }
-            onClick = { () => { setFieldValue("submitType", "stop-testing") } }
-          >
-            <StopIcon/>
-            Stop Testing
-          </Button>   
+          <div>
+            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "stop-testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
+              <StopIcon style = { { fontSize: "14px" } }/>
+              <span style = { { marginTop: "4px", marginLeft: "4px", marginRight: "12px", fontSize: "10px", textAlign: "center"} }>
+                Stop Testing
+              </span>
+            </Button>
+          </div>
         }
 
       </ButtonGroup>

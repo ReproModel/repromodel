@@ -213,7 +213,7 @@ def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
     if config is not None:
-        file_name = f"{config.tensorboard_log_path}/{config.models[model_num]}_{config.datasets}_" + "command_output.txt"
+        file_name = f"{config.tensorboard_log_path}/{config.training_name}_{config.models[model_num].split('.')[-1]}_{config.datasets.split('.')[-1]}" + ".txt"
     else:
         file_name = "repromodel_core/logs/command_output.txt"
 

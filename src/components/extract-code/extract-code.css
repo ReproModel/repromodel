@@ -7,42 +7,59 @@
 }
 
 .extract-code-header {
-    margin-top: 24px;
-    margin-left: 24px;
+    margin-top: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .extract-code-header {
+        color: white;
+    }
 }
 
 .extract-code-subheader {
-    margin-top: 12px;
-    margin-left: 24px;
+    margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .extract-code-subheader {
+        color: white;
+    }
 }
 
 .code-extractor-confirmation-one {
     margin-top: 12px;
-    margin-left: 5px;
-}
-
-.code-extractor-confirmation-two {
-    margin-left: 5px;
 }
 
 .code-extractor-button {
     margin-top: 8px;
-    margin-left: 24px;
+}
+
+.code-extractor-button:hover {
+    opacity: 40%;
 }
 
 .github-header {
-    margin-top: 24px;
-    margin-left: 24px;
+    margin-top: 36px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .github-header {
+        color: white;
+    }
 }
 
 .github-subheader {
-    margin-top: 12px;
-    margin-left: 24px;
+    margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .github-subheader {
+        color: white;
+    }
 }
 
 .personal-access-token-container {
     margin-top: 8px;
-    margin-left: 24px;
 }
 
 .personal-access-token-input {
@@ -59,12 +76,20 @@
     color: #000;
 }
 
+@media (prefers-color-scheme: dark) {
+    .personal-access-token-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
+}
+
 .repository-name-input-container {
-    margin-left: 24px;
+    margin-left: 1px;
 }
 
 .repository-name-input {
-    margin-left: 56px;
+    margin-left: 55px;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
@@ -75,14 +100,22 @@
     border: 1px solid #caced1;
     border-radius: 0.25rem;
     color: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    .repository-name-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
 }
 
 .repository-description-input-container {
-    margin-left: 24px;
+    margin-left: 1px;
 }
 
 .repository-description-input {
-    margin-left: 36px;
+    margin-left: 35px;
     margin-top: 12px;
     appearance: none;
     -webkit-appearance: none;
@@ -95,11 +128,18 @@
     color: #000;
 }
 
-.radio-repo-visibility-container {
-    margin-left: 8px;
+@media (prefers-color-scheme: dark) {
+    .repository-description-input {
+        background-color: gray;
+        border: 1px solid gray;
+        color: #ffffff;
+    }
 }
 
 .github-button {
     margin-top: 8px;
-    margin-left: 24px;
+}
+
+.github-button:hover {
+    opacity: 40%;
 }

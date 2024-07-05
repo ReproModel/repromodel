@@ -1,17 +1,69 @@
+.header-tensorboard {
+    margin-top: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header-tensorboard {
+        color: white;
+    }    
+}
+
+.subheader-tensorboard {
+    margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .subheader-tensorboard {
+        color: white;
+    }    
+}
+
 .tensorboard-button {
-    margin-top: 20px;
+    margin-top: 12px;
     width: 250px;
+    height: 37px;
     letter-spacing: 0.02857em;
     line-height: 1.75;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.875rem;
-    font-weight: 500;
     background-color: #e6f0f1;
     color: #000000;
+    cursor: pointer;
 }
 
 .tensorboard-button:hover {
     border: 1px solid rgba(0, 0, 0, 0.12);
     opacity: 70%;
+}
+
+.header-output {
+    margin-top: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header-output {
+        color: white;
+    }    
+}
+
+.subheader-output {
+    margin-top: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .subheader-output {
+        color: white;
+    }    
+}
+
+
+.file-input-output {
+    margin-top: 4px !important;
+}
+
+.file-reader {
+    width: 100%;
+    height: 600px;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }
