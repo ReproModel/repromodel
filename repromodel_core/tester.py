@@ -6,7 +6,9 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file, load_state, get_all_ckpts, delete_command_outputs, load_and_replace_keys, replace_in_string, TqdmFile
+from src.utils import load_state, get_all_ckpts, delete_command_outputs, load_and_replace_keys, replace_in_string, TqdmFile
+import traceback
+import sys
 
 SRC_DIR = "src."
 
@@ -50,7 +52,7 @@ def test(input_data):
 
         #add iteration over all folds
         for k in range(cfg.data_splits.k):
-            print_to_file(f"Testing model {model_name} on fold {k}")
+            print(f"Testing model {model_name} on fold {k}")
             checkpoint = torch.load(checkpoint_path[k], map_location=cfg.device)
             model = load_state(model, checkpoint)
 
@@ -91,10 +93,19 @@ def test(input_data):
                 writer.add_scalar(f'CrossValTest/Fold_{k}/{model_name}/{metric_name}', value)
         
     writer.close()
-    print_to_file("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
+    print("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Test multiple models")
-    parser.add_argument("config", type=str, help="Path to the config file or JSON string")
-    args = parser.parse_args()
-    test(args.config)
+    try:
+        parser = argparse.ArgumentParser(description="Test multiple models")
+        parser.add_argument("config", type=str, help="Path to the config file or JSON string")
+        args = parser.parse_args()
+    except:
+        traceback.print_exc(file=sys.stdout)
+        print("Parsing arguments failed")
+
+    try:
+        test(args.config)
+    except Exception as e:
+        traceback.print_exc(file=sys.stdout)
+        print(f"Tester function failed. Exiting with an error: {e}")

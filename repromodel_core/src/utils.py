@@ -67,7 +67,7 @@ def load_cfg(metadata_path):
     with open(metadata_path, 'r') as f:
         metadata = json.load(f)
     config = metadata['config']
-    print_to_file(f"Configuration and metadata {metadata_path} loaded")
+    print(f"Configuration and metadata {metadata_path} loaded")
     return config, metadata
 
 def load_state(obj, state_dict):
@@ -128,7 +128,7 @@ def save_model(config, model, model_name, fold, epoch,
 
     handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stopping, experiment_folder, suffix)
 
-    print_to_file(f"Saving model to {experiment_folder}/{model_name}{suffix}.pt")
+    print(f"Saving model to {experiment_folder}/{model_name}{suffix}.pt")
 
     # Prepare metadata with conversion
     metadata = {
@@ -147,7 +147,7 @@ def save_model(config, model, model_name, fold, epoch,
 
     with open(f"{experiment_folder}/{model_name}{suffix}_metadata.json", 'w') as f:
         json.dump(metadata, f, indent=4)
-        print_to_file(f"Metadata saved to {experiment_folder}/{model_name}{suffix}_metadata.json")
+        print(f"Metadata saved to {experiment_folder}/{model_name}{suffix}_metadata.json")
 
     progress = {
         'model_name': model_name,
@@ -157,7 +157,7 @@ def save_model(config, model, model_name, fold, epoch,
 
     with open(config.progress_path, 'w') as f:
         json.dump(progress, f, indent=4)
-        print_to_file(f"Progress saved to {config.progress_path}")    
+        print(f"Progress saved to {config.progress_path}")    
 
 def get_covered_filenames(coverage_json_path, additional_files=None):
     """
@@ -208,7 +208,7 @@ def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
         
         # Copy the file
         shutil.copy2(src_path, dest_path)
-        print_to_file(f"Copied {src_path} to {dest_path}")
+        print(f"Copied {src_path} to {dest_path}")
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
@@ -254,7 +254,7 @@ def replace_in_string(data, replace_str='>', replace_with = '.'):
         # Replace all '>' with '.'
         modified_data_str = data_str.replace(replace_str, replace_with)
     except Exception as e:
-        print_to_file(f"Replacing {replace_str} with {replace_with} in config failed with error {e}.")
+        print(f"Replacing {replace_str} with {replace_with} in config failed with error {e}.")
 
     # Convert the modified string back to a dict
     return json.loads(modified_data_str)
@@ -264,13 +264,13 @@ def delete_command_outputs():
 
     try:
         os.remove(file_path)
-        print_to_file(f"Command output {file_path} successfully restarted.")
+        print(f"Command output {file_path} successfully restarted.")
     except FileNotFoundError:
-        print_to_file(f"Old command output file {file_path} not found.")
+        print(f"Old command output file {file_path} not found.")
     except PermissionError:
-        print_to_file(f"Permission denied to delete {file_path}.")
+        print(f"Permission denied to delete {file_path}.")
     except Exception as e:
-        print_to_file(f"Error occurred while deleting {file_path}: {e}")
+        print(f"Error occurred while deleting {file_path}: {e}")
 
 def extract_output(outputs, model_type=None):
     """

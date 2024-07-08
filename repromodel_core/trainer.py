@@ -7,17 +7,16 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
+from src.utils import print_to_file, save_model, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
 from copy import deepcopy
-import sys 
+import traceback
+import sys
 
 SRC_DIR = "src."
 
 # Main training function
 def train(input_data):
-    #restart command outputs file
-    delete_command_outputs()
-
+    print_to_file("NOTICE: If the dataset is set to download, please be patient. The progress output is not implemented yet.")
     # Load config
     # Check if input_data is a dictionary
     if isinstance(input_data, dict):
@@ -52,7 +51,7 @@ def train(input_data):
             print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
         except Exception as e:
-            print_to_file(f"Loading from checkpoint failed with error {e}")
+            print(f"Loading from checkpoint failed with error {e}")
 
     # Get preprocessing, augmentation, and dataset configurations
     if "preprocessing" in cfg:
@@ -88,7 +87,7 @@ def train(input_data):
     criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+        print(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Custom file object for TQDM
@@ -119,7 +118,7 @@ def train(input_data):
                 lr_scheduler = load_state(lr_scheduler, checkpoint_scheduler)
                 checkpoint_es = torch.load(paths["es_path"], map_location=cfg.device)
                 early_stopper = load_state(early_stopper, checkpoint_es)
-                print_to_file("Checkpoint states loaded")
+                print("Checkpoint states loaded")
                 cfg.load_from_checkpoint = False
 
             dataset.set_fold(k)
@@ -258,9 +257,12 @@ if __name__ == '__main__':
         parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
         args = parser.parse_args()
     except:
-        print_to_file("Parsing arguments failed")
+        traceback.print_exc(file=sys.stdout)
+        print("Parsing arguments failed")
 
     try:
         train(args.input_data)
     except Exception as e:
-        print_to_file(f"Trainer function failed. Exiting with an error: {e}")
+        traceback.print_exc(file=sys.stdout)
+        print(f"Trainer function failed. Exiting with an error: {e}")
+        
