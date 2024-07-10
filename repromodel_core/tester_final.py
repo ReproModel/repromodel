@@ -7,15 +7,12 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import print_to_file, load_state, delete_command_outputs, load_and_replace_keys, replace_in_string
+from src.utils import load_state, load_and_replace_keys, replace_in_string
 
 SRC_DIR = "src."
 
 # Main final testing function
 def test_final(input_data):
-    # Reset the console output file
-    delete_command_outputs()
-    
     # Load config
     # Check if input_data is a dictionary
     if isinstance(input_data, dict):
@@ -31,7 +28,6 @@ def test_final(input_data):
                 data = replace_in_string(data)
             except json.JSONDecodeError:
                 raise ValueError("Input data is neither a valid file path nor a valid JSON string")
-
     cfg = edict(data)
 
     # Load test dataset
@@ -46,11 +42,11 @@ def test_final(input_data):
     # Load model
     model = configure_component(model_path, cfg.models_params[cfg.model_name ]).to(cfg.device)
 
-    print_to_file(f"Testing model {cfg.model_name} on an unseen test data")
+    print(f"Testing model {cfg.model_name} on an unseen test data")
 
     checkpoint = torch.load(cfg.model_checkpoint_path, map_location=cfg.device)
     model = load_state(model, checkpoint)
-    print_to_file(f"Model {cfg.model_name} checkpoint loaded")
+    print(f"Model {cfg.model_name} checkpoint loaded")
 
     #configure dataloader 
     test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
@@ -86,7 +82,7 @@ def test_final(input_data):
         writer.add_scalar(f'Final_Test/{cfg.model_name}/{metric_name}', value)
         
     writer.close()
-    print_to_file("Final testing on unseen data is completed and results are logged to TensorBoard successfully.")
+    print("Final testing on unseen data is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test on unseen dataset")
