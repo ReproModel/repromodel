@@ -6,8 +6,8 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
-from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import print_to_file, save_model, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
+from src.getters import configure_component, get_loss, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
+from src.utils import print_to_file, save_model, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
 from copy import deepcopy
 import traceback
 import sys
@@ -84,7 +84,7 @@ def train(input_data):
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping
 
     loss_path = SRC_DIR + "losses." + cfg.losses
-    criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
+    criterion = get_loss(loss_path, cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
         print(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
