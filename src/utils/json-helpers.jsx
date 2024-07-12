@@ -172,7 +172,12 @@ function filterParamsForExistingKeys(json) {
 // Export the handleSubmit function that also applies the nestJson transformation
 export const handleSubmit = async (values) => {
 
-  const type = values.submitType
+  let type = values.submitType;
+
+if (type === "testing" && values.testType) {
+    type = values.testType;
+}
+console.log(type)
   const clean_values = removeUnwantedParts(values)
   console.log("Submitted Values:", clean_values);
 
@@ -222,11 +227,30 @@ export const handleSubmit = async (values) => {
         console.warn("Warning: Error running script:", errorMessage);
         alert("Warning: Error running script: " + errorMessage);
       }
-  } else if (type === "testing") {
+  } else if (type === "testing-crossValidation") {
+
+
     // Handle testing submit action
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5005/submit-config-start-testing",
+        "http://127.0.0.1:5005/submit-config-start-crossValtesting",
+        jsonTransformed
+      );
+      console.log("Script Output:", response.data);
+    } catch (error) {
+      const errorMessage = error.response
+        ? JSON.stringify(error.response.data)
+        : error.message;
+      console.warn("Warning: Error running script:", errorMessage);
+      alert("Warning: Error running script: " + errorMessage);
+    }
+  } else if (type === "testing-final") {
+
+
+    // Handle testing submit action
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5005/submit-config-start-finaltesting",
         jsonTransformed
       );
       console.log("Script Output:", response.data);

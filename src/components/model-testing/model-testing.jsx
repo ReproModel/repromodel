@@ -1,22 +1,33 @@
-import "./model-testing.css"
+import "./model-testing.css";
 
-import axios from "axios"
-import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field"
-import StopIcon from '@mui/icons-material/Stop'
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import React from "react"
+import axios from "axios";
+import FlexibleFormField from "../ui/flexible-form-field/flexible-form-field";
+import StopIcon from "@mui/icons-material/Stop";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import React from "react";
 
-import { Button, ButtonGroup } from "@mui/material"
-import { capitalizeFirstLetter } from "../../utils/string-helpers"
-import { Field, Form } from "formik"
-import { FolderField } from "../ui/folder-field"
+import {
+  Button,
+  ButtonGroup,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  FormLabel,
+} from "@mui/material";
+import { capitalizeFirstLetter } from "../../utils/string-helpers";
+import { Field, Form } from "formik";
+import { FolderField } from "../ui/folder-field";
 
 const foldersPartOfTesting = [
   "models",
   "datasets",
   "metrics",
-  "device"
-]
+  "device",
+  "batch_size",
+  "tensorboard_log_path",
+  "model_save_path",
+];
 
 const nestedFolders = [
   "models",
@@ -28,187 +39,271 @@ const nestedFolders = [
   "augmentations",
   "lr_schedulers",
   "optimizers",
-  "early_stopping"
-]
+  "early_stopping",
+];
 
-const ModelTesting = ({ FormikProps, handleFileChange, newQuestions, setFieldValue }) => {
-
-  const [testingInProgress, setTestingInProgress] = React.useState(false)
+const ModelTesting = ({
+  FormikProps,
+  handleFileChange,
+  newQuestions,
+  setFieldValue,
+}) => {
+  const [testingInProgress, setTestingInProgress] = React.useState(false);
 
   React.useEffect(() => {
-    
     const interval = setInterval(() => {
-      
-      axios.get("http://127.0.0.1:5005/ping")
-        
-        .then(response => {
-          if (response.data.testingInProgress === true) {
-            setTestingInProgress(true)
-          } else {
-            setTestingInProgress(false)
-          }
-        })      
+      axios
+        .get("http://127.0.0.1:5005/ping")
 
-        .catch(error => {
-          setTestingInProgress(false)
+        .then((response) => {
+          if (response.data.testingInProgress === true) {
+            setTestingInProgress(true);
+          } else {
+            setTestingInProgress(false);
+          }
         })
 
-    }, 3000)
+        .catch((error) => {
+          setTestingInProgress(false);
+        });
+    }, 3000);
 
-    return () => clearInterval(interval)
+    return () => clearInterval(interval);
+  }, []);
 
-  }, [])
-  
   return (
     <Form>
-      
+      <p>
+        Please choose between Cross-Validation Testing and Final Testing on
+        unseen data.
+      </p>
+
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Test Type</FormLabel>
+        <Field
+          as={RadioGroup}
+          aria-label="testType"
+          name="testType"
+          value={FormikProps.values.testType}
+          onChange={(event) => {
+            setFieldValue("testType", event.target.value);
+          }}
+        >
+          <FormControlLabel
+            value="testing-final"
+            control={<Radio />}
+            label="Final Testing"
+          />
+          <FormControlLabel
+            value="testing-crossValidation"
+            control={<Radio />}
+            label="Cross-Validation Testing"
+          />
+        </Field>
+      </FormControl>
+
+      {FormikProps.values.testType === "testing-final" && (
+        <p
+          style={{
+            backgroundColor: "#f0f8ff",
+            color: "#31708f",
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #bce8f1",
+            fontSize: "14px",
+            fontStyle: "italic",
+          }}
+        >
+          Please be aware that you may only select a single model for final
+          testing.
+        </p>
+      )}
       {/* Optional JSON file upload input. */}
       <div>
-        <div className = "json-input-file-label">
-          <span style = { { fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif", fontSize: "12px", fontWeight: "700" } }>Upload Existing Testing Configuration</span>
+        <div className="json-input-file-label">
+          <span
+            style={{
+              fontFamily:
+                "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif",
+              fontSize: "12px",
+              fontWeight: "700",
+            }}
+          >
+            Upload Existing Testing Configuration
+          </span>
         </div>
 
         <input
-          type = "file"
-          id = "uploadedJson"
-          className = "json-input-file"
-          accept = ".json"
-          onChange = { (event) => handleFileChange(event, setFieldValue) }
+          type="file"
+          id="uploadedJson"
+          className="json-input-file"
+          accept=".json"
+          onChange={(event) => handleFileChange(event, setFieldValue)}
         />
       </div>
 
       {/* Hidden field used to capture the submitType. */}
-      <Field type = "hidden" name = "submitType" />
-      
+      <Field type="hidden" name="submitType" />
+
       {/* Loop each folder. */}
-      { Object.entries(newQuestions).map(([folder, folderContent]) => (
-        <div style = { { width: "50%" } }>
-          { foldersPartOfTesting.includes(folder) && (
-            
-            <div style = { { display: "flex", flexDirection: "column", fontSize: "12px" } }>
-              
-              <h4 className = "model-testing-folder-label"> { capitalizeFirstLetter(folder) }</h4>
+      {Object.entries(newQuestions).map(([folder, folderContent]) => (
+        <div style={{ width: "50%" }}>
+          {foldersPartOfTesting.includes(folder) && (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                fontSize: "12px",
+              }}
+            >
+              <h4 className="model-testing-folder-label">
+                {" "}
+                {capitalizeFirstLetter(folder)}
+              </h4>
 
               {/* Case 1: Folder is nested and part of testing. */}
-              { foldersPartOfTesting.includes(folder) && nestedFolders.includes(folder) ? (
-                
+              {foldersPartOfTesting.includes(folder) &&
+              nestedFolders.includes(folder) ? (
                 <>
-                  <FolderField folder = { folder } folderContent = { folderContent } />
+                  <FolderField folder={folder} folderContent={folderContent} />
 
                   {/* Loop each file in each folder. */}
-                  { Object.entries(folderContent).map(([file, fileContent]) => ( 
+                  {Object.entries(folderContent).map(([file, fileContent]) => (
                     <>
-                      
                       {/* Loop each class in each file. */}
-                      { Object.entries(fileContent).map(
-                        
+                      {Object.entries(fileContent).map(
                         ([className, classContent]) => (
-                          
-                          <div style = { { paddingLeft: "16px" } }>
-                            
-                            { FormikProps.values[folder] && folder === "metrics" &&
-                              ((Array.isArray(FormikProps.values[folder]) && FormikProps.values[folder].includes(className))
-                              || (typeof FormikProps.values[folder] === "string" && FormikProps.values[folder] === className)) &&
-                              
-                              (
-                                <div className = "param-box">
-                                  
-                                  <p>{ className } Params</p>
+                          <div style={{ paddingLeft: "16px" }}>
+                            {FormikProps.values[folder] &&
+                              folder === "metrics" &&
+                              ((Array.isArray(FormikProps.values[folder]) &&
+                                FormikProps.values[folder].includes(
+                                  className
+                                )) ||
+                                (typeof FormikProps.values[folder] ===
+                                  "string" &&
+                                  FormikProps.values[folder] ===
+                                    className)) && (
+                                <div className="param-box">
+                                  <p>{className} Params</p>
 
                                   {/* Conditionally render param questions if the class is selected. */}
-                                  { Object.entries(classContent).map(
+                                  {Object.entries(classContent).map(
                                     ([param, value]) => (
                                       <>
-                                        
-                                        <label htmlFor = { `${folder}_params:${className}:${param}` }>
-                                          { param }:
+                                        <label
+                                          htmlFor={`${folder}_params:${className}:${param}`}
+                                        >
+                                          {param}:
                                         </label>
-                                        
-                                        <FlexibleFormField
-                                          id = { `${folder}_params:${className}:${param}` }
-                                          object = { value }
-                                          type = { value.type }
-                                          name = { `${folder}_params:${className}:${param}` }
-                                          label = { param }
-                                        />
 
+                                        <FlexibleFormField
+                                          id={`${folder}_params:${className}:${param}`}
+                                          object={value}
+                                          type={value.type}
+                                          name={`${folder}_params:${className}:${param}`}
+                                          label={param}
+                                        />
                                       </>
                                     )
                                   )}
-
                                 </div>
-
                               )}
-
                           </div>
-
                         )
-
                       )}
-
                     </>
                   ))}
                 </>
-
-              // Case 2: Folder is flat and part of testing.
-              ): foldersPartOfTesting.includes(folder) ? (
+              ) : // Case 2: Folder is flat and part of testing.
+              foldersPartOfTesting.includes(folder) ? (
                 <>
-                  
-                  <label htmlFor = { `${folder}` }>{ folder }:</label>
-                  
-                  <FlexibleFormField
-                    id = { `${folder}` }
-                    object = { folderContent }
-                    type = { folderContent.type }
-                    name = { `${folder}` }
-                    label = { folder }
-                  />
+                  <label htmlFor={`${folder}`}>{folder}:</label>
 
+                  <FlexibleFormField
+                    id={`${folder}`}
+                    object={folderContent}
+                    type={folderContent.type}
+                    name={`${folder}`}
+                    label={folder}
+                  />
                 </>
               ) : (
                 <></>
               )}
-
             </div>
-
           )}
-
         </div>
-
       ))}
-  
 
-      <ButtonGroup variant = "outlined" sx = { { marginTop: "36px"} }>
-        
+      <ButtonGroup variant="outlined" sx={{ marginTop: "36px" }}>
         {/* Start Testing Button */}
-        
-        { !testingInProgress &&
+
+        {!testingInProgress && (
           <div>
-            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
-              <PlayArrowIcon style = { { fontSize: "14px" } }/>
-              <span style = { { marginTop: "4px", marginLeft: "12px", marginRight: "12px", fontSize: "12px", textAlign: "center"} }>
+            <Button
+              type="submit"
+              onClick={() => {
+                setFieldValue("submitType", "testing");
+              }}
+              style={{
+                width: "220px",
+                backgroundColor: "#38512f",
+                borderColor: "#38512f",
+                color: "white",
+                opacity: "90%",
+              }}
+            >
+              <PlayArrowIcon style={{ fontSize: "14px" }} />
+              <span
+                style={{
+                  marginTop: "4px",
+                  marginLeft: "12px",
+                  marginRight: "12px",
+                  fontSize: "12px",
+                  textAlign: "center",
+                }}
+              >
                 Test
               </span>
             </Button>
           </div>
-        }
+        )}
 
         {/* Stop Testing Button */}
-        { testingInProgress &&
+        {testingInProgress && (
           <div>
-            <Button type = "submit" onClick = { () => { setFieldValue("submitType", "stop-testing") } } style = { { width: "220px", backgroundColor: "#38512f", borderColor: "#38512f", color: "white", opacity: "90%" } }>
-              <StopIcon style = { { fontSize: "14px" } }/>
-              <span style = { { marginTop: "4px", marginLeft: "4px", marginRight: "12px", fontSize: "10px", textAlign: "center"} }>
+            <Button
+              type="submit"
+              onClick={() => {
+                setFieldValue("submitType", "stop-testing");
+              }}
+              style={{
+                width: "220px",
+                backgroundColor: "#38512f",
+                borderColor: "#38512f",
+                color: "white",
+                opacity: "90%",
+              }}
+            >
+              <StopIcon style={{ fontSize: "14px" }} />
+              <span
+                style={{
+                  marginTop: "4px",
+                  marginLeft: "4px",
+                  marginRight: "12px",
+                  fontSize: "10px",
+                  textAlign: "center",
+                }}
+              >
                 Stop Testing
               </span>
             </Button>
           </div>
-        }
-
+        )}
       </ButtonGroup>
-
     </Form>
-  )
-}
+  );
+};
 
-export default ModelTesting
+export default ModelTesting;
