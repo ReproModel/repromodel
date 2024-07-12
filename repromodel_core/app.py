@@ -400,10 +400,10 @@ def run_command(command):
 # API ENDPOINTS - Model Testing
 ######################################################################
 
-# POST /submit-config-start-testing
-# Description: Start the testing process from frontend.    
-@app.route('/submit-config-start-testing', methods=['POST'])
-def submit_config_start_testing_():
+# POST /submit-config-start-crossValtesting
+# Description: Start the testing process from frontend. CROSS VALIDATION!!!  
+@app.route('/submit-config-start-crossValtesting', methods=['POST'])
+def submit_config_start_crossValtesting_():
     try:
         
         # Get JSON data from the request.
@@ -419,6 +419,53 @@ def submit_config_start_testing_():
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
         app.logger.info("Received JSON data for processing.")
+        
+        # Run the script tester.py and capture the output.
+        command = ['python', 'repromodel_core/tester.py', json_data]
+        result = subprocess.run(command, capture_output=True, text=True)
+        
+        # Check the subprocess result.
+        if result.returncode == 0:
+            app.logger.info("Script executed successfully with output: %s", result.stdout)
+            return jsonify({'output': result.stdout, 'error': None})
+        
+        else:
+            error_detail = f"Script execution failed with error: {result.stderr}"
+            app.logger.error(error_detail)
+
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'output': result.stdout, 'error': error_detail}), 400
+
+    except Exception as e:
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
+
+
+# POST /submit-config-start-finalValtesting
+# Description: Start the testing process from frontend. FINAL TESTING!!!  
+@app.route('/submit-config-start-finaltesting', methods=['POST'])
+def submit_config_start_finaltesting_():
+    try:
+        
+        # Get JSON data from the request.
+        data = request.get_json()
+        
+        if not data:
+            error_message = "No data provided in request."
+            app.logger.error(error_message)
+
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'error': error_message}), 400
+        
+        # Convert the JSON data to a string to pass as an argument.
+        json_data = json.dumps(data)
+        app.logger.info("Received JSON data for processing.")
+        
+        #Temp Returning @DARIO HERE IS YOUR PART
+        return jsonify({'output': "Final Testing is the best", 'error': None})
         
         # Run the script tester.py and capture the output.
         command = ['python', 'repromodel_core/tester.py', json_data]
