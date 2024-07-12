@@ -170,7 +170,9 @@ function filterParamsForExistingKeys(json) {
 }
 
 // Export the handleSubmit function that also applies the nestJson transformation
-export const handleSubmit = async (values) => {
+export const handleSubmit = async (values, { setSelectedSection }) => {
+
+  setSelectedSection("Progress Viewer")
 
   const type = values.submitType
   const clean_values = removeUnwantedParts(values)

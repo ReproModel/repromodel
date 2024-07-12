@@ -55,7 +55,7 @@ function App() {
         <>
       <Header/>
 
-      <Formik initialValues = { initialValues } onSubmit = { handleSubmit }>
+      <Formik initialValues = { initialValues } onSubmit={(values, actions) => handleSubmit(values, { ...actions, setSelectedSection })}>
         
         { (FormikProps) => (
           <Grid container direction = { "row" }>
