@@ -23,6 +23,7 @@ const foldersPartOfTesting = [
   "models",
   "datasets",
   "metrics",
+  "augmentations",
   "device",
   "batch_size",
   "tensorboard_log_path",
@@ -90,15 +91,16 @@ const ModelTesting = ({
           }}
         >
           <FormControlLabel
-            value="testing-final"
-            control={<Radio />}
-            label="Final Testing"
-          />
-          <FormControlLabel
             value="testing-crossValidation"
             control={<Radio />}
             label="Cross-Validation Testing"
           />
+          <FormControlLabel
+            value="testing-final"
+            control={<Radio />}
+            label="Final Testing"
+          />
+          
         </Field>
       </FormControl>
 

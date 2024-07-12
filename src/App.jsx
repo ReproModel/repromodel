@@ -39,14 +39,13 @@ function App() {
   const [selectedSection, setSelectedSection] = useState("Experiment Builder")
   
   // Generate initial values from questions data.
-  const initialValues = Object.values(newQuestions).reduce(
-    (values, question) => {
-      // Set initial value as empty.
-      values[question.id] = ""
-      return values
-    }
-  )
+  const initialValues = Object.values(newQuestions).reduce((values, question) => {
+    // Set initial value as empty for other questions.
+    values[question.id] = "";
+    return values;
+  }, { testType: 'testing-crossValidation' }); // Set initial value for testType
 
+  
   return (
     <>
       {isMobile ? (
