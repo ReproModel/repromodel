@@ -147,8 +147,6 @@ def generate_data():
         # Return HTTP 500 Internal Server Error status code.
         return jsonify({'error': str(e)}), 500
 
-
-
 ######################################################################
 # API ENDPOINTS - Custom Script
 ######################################################################
@@ -251,8 +249,12 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
         with open("repromodel_core/last_experiment_config.json", 'w') as json_file:
-            json.dump(json_data, json_file, indent=4)
+            json.dump(json_parsed, json_file, indent=4)
 
         app.logger.info("Received JSON data for processing.")
         
@@ -473,13 +475,14 @@ def kill_testing_process():
 def start_tensorboard(logdir="logs"):
     
     # Check if there is a running TensorBoard instances.
-    tensorboardInProgress, process_info = is_process_running("tensorboard --logdir")
+    tensorboardInProgress, process_info = is_process_running("tensorboard")
     
     if tensorboardInProgress:
         return f"TensorBoard already running at http://localhost:6006 with logdir {logdir}"
     
     # Start a new TensorBoard instance.
     command = ['tensorboard', '--logdir', logdir]
+    print(command)
     tensorboard_proc = subprocess.Popen(command)
     
     
