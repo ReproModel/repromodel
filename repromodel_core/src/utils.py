@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 import ast
 import shutil
 import numpy as np
@@ -129,6 +130,7 @@ def save_model(config, model, model_name, fold, epoch,
     handle_saving_state(model, model_name, optimizer, lr_scheduler, early_stopping, experiment_folder, suffix)
 
     print(f"Saving model to {experiment_folder}/{model_name}{suffix}.pt")
+    sys.stdout.flush()
 
     # Prepare metadata with conversion
     metadata = {
@@ -148,6 +150,7 @@ def save_model(config, model, model_name, fold, epoch,
     with open(f"{experiment_folder}/{model_name}{suffix}_metadata.json", 'w') as f:
         json.dump(metadata, f, indent=4)
         print(f"Metadata saved to {experiment_folder}/{model_name}{suffix}_metadata.json")
+        sys.stdout.flush()
 
     progress = {
         'model_name': model_name,
@@ -209,6 +212,7 @@ def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
         # Copy the file
         shutil.copy2(src_path, dest_path)
         print(f"Copied {src_path} to {dest_path}")
+        sys.stdout.flush()
 
 def print_to_file(string, config = None, tqdm=False, model_num = None):
     """Print a string to a file, with optional tqdm compatibility."""
@@ -337,4 +341,3 @@ class TqdmFile:
 
     def flush(self):
         pass  # No-op to conform to file interface
-
