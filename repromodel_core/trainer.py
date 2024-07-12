@@ -51,7 +51,7 @@ def train(input_data):
             print_to_file(f"Continuing training from fold # {k_min} and epoch # {epoch_min} for model {model_min} ({cfg.models[model_min]}).", config=cfg, model_num=model_min)
 
         except Exception as e:
-            print(f"Loading from checkpoint failed with error {e}")
+            print_to_file(f"Loading from checkpoint failed with error {e}")
 
     # Get preprocessing, augmentation, and dataset configurations
     if "preprocessing" in cfg:
@@ -87,7 +87,7 @@ def train(input_data):
     criterion = get_loss(loss_path, cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-        print(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
         sys.stdout.flush()
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
@@ -119,7 +119,7 @@ def train(input_data):
                 lr_scheduler = load_state(lr_scheduler, checkpoint_scheduler)
                 checkpoint_es = torch.load(paths["es_path"], map_location=cfg.device)
                 early_stopper = load_state(early_stopper, checkpoint_es)
-                print("Checkpoint states loaded")
+                print_to_file("Checkpoint states loaded")
                 sys.stdout.flush()
                 cfg.load_from_checkpoint = False
 
@@ -261,13 +261,13 @@ if __name__ == '__main__':
         args = parser.parse_args()
     except:
         traceback.print_exc(file=sys.stdout)
-        print("Parsing arguments failed")
+        print_to_file("Parsing arguments failed")
         sys.stdout.flush()
 
     try:
         train(args.input_data)
     except Exception as e:
         traceback.print_exc(file=sys.stdout)
-        print(f"Trainer function failed. Exiting with an error: {e}")
+        print_to_file(f"Trainer function failed. Exiting with an error: {e}")
         sys.stdout.flush()
         
