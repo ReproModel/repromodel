@@ -88,6 +88,7 @@ def train(input_data):
 
     for m in range(model_min, len(cfg.models)):
         print(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+        sys.stdout.flush()
         print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Custom file object for TQDM
@@ -119,6 +120,7 @@ def train(input_data):
                 checkpoint_es = torch.load(paths["es_path"], map_location=cfg.device)
                 early_stopper = load_state(early_stopper, checkpoint_es)
                 print("Checkpoint states loaded")
+                sys.stdout.flush()
                 cfg.load_from_checkpoint = False
 
             dataset.set_fold(k)
@@ -225,15 +227,6 @@ def train(input_data):
                     writer.add_scalar(f'Train/{metric}', average_train_metrics[i], epoch)
                     writer.add_scalar(f'Validation/{metric}', average_val_metrics[i], epoch)
 
-                # Early stopping
-                early_stopper.step(epoch)
-                if early_stopper.should_stop:
-                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = m)
-                    writer.close()
-                    break
-
-                epoch += 1
-
                 # Save best model
                 if average_val_loss < best_val_loss:
                     best_val_loss = average_val_loss
@@ -248,6 +241,16 @@ def train(input_data):
                                train_loss=average_train_loss, 
                                val_loss=best_val_loss, 
                                is_best=True)
+
+                # Early stopping
+                early_stopper.step(epoch)
+                if early_stopper.should_stop:
+                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = m)
+                    writer.close()
+                    break
+
+                epoch += 1
+
         print_to_file(f"Model {cfg.models[m]} training finished", config=cfg, model_num=m)
 
 # Example usage
@@ -259,10 +262,12 @@ if __name__ == '__main__':
     except:
         traceback.print_exc(file=sys.stdout)
         print("Parsing arguments failed")
+        sys.stdout.flush()
 
     try:
         train(args.input_data)
     except Exception as e:
         traceback.print_exc(file=sys.stdout)
         print(f"Trainer function failed. Exiting with an error: {e}")
+        sys.stdout.flush()
         
