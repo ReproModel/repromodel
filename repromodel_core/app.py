@@ -418,6 +418,13 @@ def submit_config_start_crossValtesting_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
+        with open("repromodel_core/last_crossVal_test_config.json", 'w') as json_file:
+            json.dump(json_parsed, json_file, indent=4)
+
         app.logger.info("Received JSON data for processing.")
         
         # Run the script tester.py and capture the output.
@@ -462,13 +469,17 @@ def submit_config_start_finaltesting_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
+        with open("repromodel_core/last_final_test_config.json", 'w') as json_file:
+            json.dump(json_parsed, json_file, indent=4)
+
         app.logger.info("Received JSON data for processing.")
         
-        #Temp Returning @DARIO HERE IS YOUR PART
-        return jsonify({'output': "Final Testing is the best", 'error': None})
-        
         # Run the script tester.py and capture the output.
-        command = ['python', 'repromodel_core/tester.py', json_data]
+        command = ['python', 'repromodel_core/tester_final.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Check the subprocess result.

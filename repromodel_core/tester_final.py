@@ -7,7 +7,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import load_state, load_and_replace_keys, replace_in_string
+from src.utils import load_state, load_and_replace_keys, replace_in_string, print_to_file
 
 SRC_DIR = "src."
 
@@ -30,23 +30,28 @@ def test_final(input_data):
                 raise ValueError("Input data is neither a valid file path nor a valid JSON string")
     cfg = edict(data)
 
+    # Load transforms
+    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations
+    augmentor = configure_component(augmentor_path, cfg.augmentations_params[cfg.augmentations])
+
     # Load test dataset
     dataset_path = SRC_DIR + "datasets." + cfg.datasets
     test_dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
+    test_dataset.set_transforms(augmentor)
 
     # TensorBoard writer
     writer = SummaryWriter(log_dir=cfg.tensorboard_log_path)
 
-    model_path = SRC_DIR + "models." + cfg.model_name 
+    model_path = SRC_DIR + "models." + cfg.models[0]
 
     # Load model
-    model = configure_component(model_path, cfg.models_params[cfg.model_name ]).to(cfg.device)
+    model = configure_component(model_path, cfg.models_params[cfg.models[0]]).to(cfg.device)
 
-    print(f"Testing model {cfg.model_name} on an unseen test data")
+    print_to_file(f"Testing model {cfg.models} on an unseen test data")
 
     checkpoint = torch.load(cfg.model_checkpoint_path, map_location=cfg.device)
     model = load_state(model, checkpoint)
-    print(f"Model {cfg.model_name} checkpoint loaded")
+    print_to_file(f"Model {cfg.models} checkpoint loaded")
 
     #configure dataloader 
     test_loader = DataLoader(test_dataset, batch_size=cfg.batch_size, shuffle=False)
@@ -64,6 +69,7 @@ def test_final(input_data):
 
     with torch.no_grad():
         for batch_idx, (inputs, targets) in tqdm(enumerate(test_loader), total=len(test_loader)):
+            print_to_file(f"Progress: {batch_idx}/{len(test_loader)}")
             inputs, targets = inputs.to(cfg.device), targets.to(cfg.device)
             outputs = model(inputs)
 
@@ -79,10 +85,10 @@ def test_final(input_data):
 
     # Log results to TensorBoard
     for metric_name, value in avg_metrics.items():
-        writer.add_scalar(f'Final_Test/{cfg.model_name}/{metric_name}', value)
+        writer.add_scalar(f'Final_Test/{cfg.models}/{metric_name}', value)
         
     writer.close()
-    print("Final testing on unseen data is completed and results are logged to TensorBoard successfully.")
+    print_to_file("Final testing on unseen data is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Test on unseen dataset")
