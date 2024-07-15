@@ -13,7 +13,7 @@ class ResizePILToTensor(CustomAugmentations):
         super().__init__(p=p)
         self.height = height
         self.width = width
-        
+    
     def get_transforms(self):
         """
         Returns a composition of transforms that resizes images and converts them to tensors.
