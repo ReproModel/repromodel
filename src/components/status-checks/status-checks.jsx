@@ -17,7 +17,7 @@ const StatusCheck = () => {
           if (response.status === 200) {
             setIsBackendActive(true);
             setIsTrainingInProgress(response.data.trainingInProgress);
-            setIsTestingInProgress(response.data.testingInProgress);
+            setIsTestingInProgress(response.data.cvTestingInProgress || response.data.finalTestingInProgress);
           } else {
             setIsBackendActive(false);
             setIsTrainingInProgress(false);

@@ -116,12 +116,19 @@ def ping():
     trainingInProgress, process_info = is_process_running("trainer.py")
     #app.logger.info("trainingInProgress: %s", trainingInProgress)
 
-    # Check if testing is in progress.
-    testingInProgress, process_info = is_process_running("tester.py")
+    # Check if crossval testing is in progress.
+    cvTestingInProgress, process_info = is_process_running("tester_crossval.py")
+    # app.logger.info("testingInProgress: %s", testingInProgress)
+
+    # Check if final testing is in progress.
+    finalTestingInProgress, process_info = is_process_running("tester_final.py")
     # app.logger.info("testingInProgress: %s", testingInProgress)
     
     # Return HTTP 200 OK status code.
-    return jsonify({ "message": "pong", "trainingInProgress": trainingInProgress, "testingInProgress": testingInProgress }), 200
+    return jsonify({ "message": "pong", 
+                    "trainingInProgress": trainingInProgress, 
+                    "cvTestingInProgress": cvTestingInProgress,
+                    "finalTestingInProgress": finalTestingInProgress}), 200
 
 
 # GET /generate-dummy-data
@@ -330,8 +337,11 @@ def copy_files_endpoint():
     try:
         coverage_json_path = "repromodel_core/extracted_code/coverage.json"
         root_folder = "repromodel_core/extracted_code"
-        additional_files = ["repromodel_core/tester.py", 
-                            "repromodel_core/experiment_config.json",
+        additional_files = ["repromodel_core/tester_crossval.py", 
+                            "repromodel_core/tester_final.py"
+                            "repromodel_core/last_experiment_config.json",
+                            "repromodel_core/last_crossVal_test_config.json",
+                            "repromodel_core/last_final_test_config.json",
                             "repromodel_core/requirements.txt"]
         try:
             copy_covered_files(coverage_json_path, root_folder, additional_files)
@@ -427,8 +437,8 @@ def submit_config_start_crossValtesting_():
 
         app.logger.info("Received JSON data for processing.")
         
-        # Run the script tester.py and capture the output.
-        command = ['python', 'repromodel_core/tester.py', json_data]
+        # Run the script tester_crossval.py and capture the output.
+        command = ['python', 'repromodel_core/tester_crossval.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Check the subprocess result.
@@ -478,7 +488,7 @@ def submit_config_start_finaltesting_():
 
         app.logger.info("Received JSON data for processing.")
         
-        # Run the script tester.py and capture the output.
+        # Run the script tester_final.py and capture the output.
         command = ['python', 'repromodel_core/tester_final.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
@@ -510,7 +520,8 @@ def kill_testing_process():
     try:        
 
         # Kill the testing process.
-        subprocess.run(['pkill', '-f', 'tester.py'])
+        subprocess.run(['pkill', '-f', 'tester_final.py'])
+        subprocess.run(['pkill', '-f', 'tester_crossval.py'])
         app.logger.info("Process with name 'tester' killed successfully.")
 
         return jsonify({'message': "Process with name 'tester' killed successfully."})
