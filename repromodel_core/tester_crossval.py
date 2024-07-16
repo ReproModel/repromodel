@@ -6,7 +6,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import load_state, get_all_ckpts, delete_command_outputs, load_and_replace_keys, replace_in_string, TqdmFile
+from src.utils import load_state, print_to_file, get_all_ckpts, delete_command_outputs, load_and_replace_keys, replace_in_string, TqdmFile
 import traceback
 import sys
 
@@ -31,19 +31,27 @@ def test(input_data):
 
     cfg = edict(data)
 
+    # Load transforms
+    augmentor_path = SRC_DIR + "augmentations." + cfg.augmentations
+    augmentor = configure_component(augmentor_path, cfg.augmentations_params[cfg.augmentations])
+
     # Load test dataset
     dataset_path = SRC_DIR + "datasets." + cfg.datasets
     test_dataset = configure_component(dataset_path, cfg.datasets_params[cfg.datasets])
     test_dataset.generate_indices(k=cfg.data_splits.k, random_seed=cfg.data_splits.random_seed)
+    test_dataset.set_transforms(augmentor)
 
     # TensorBoard writer
     writer = SummaryWriter(log_dir=cfg.tensorboard_log_path)
 
     # get all saved checkpoints
     checkpoints = get_all_ckpts(cfg.model_save_path, cfg.models, cfg.data_splits.k)
+
+
     for m, model_name in enumerate(cfg.models):
         # Custom file object for TQDM
-        tqdm_file = TqdmFile(config=cfg, model_num = m)
+        tqdm_file = TqdmFile(config=cfg, model_num = m, mode="crossVal_test") 
+        print_to_file(f"Cross-validation testing started. \nOutput in file {cfg.tensorboard_log_path}/crossVal_test_{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
 
         model_path = SRC_DIR + "models." + model_name 
         checkpoint_path = checkpoints[model_name]
@@ -52,7 +60,7 @@ def test(input_data):
 
         #add iteration over all folds
         for k in range(cfg.data_splits.k):
-            print(f"Testing model {model_name} on fold {k}")
+            print_to_file(f"Testing model {model_name} on fold {k}")
             checkpoint = torch.load(checkpoint_path[k], map_location=cfg.device)
             model = load_state(model, checkpoint)
 
@@ -73,7 +81,7 @@ def test(input_data):
             num_samples = 0
 
             with torch.no_grad():
-                progress_bar = tqdm(enumerate(test_loader), total=len(test_loader), file=tqdm_file)
+                progress_bar = tqdm(enumerate(test_loader), total=len(test_loader), file=tqdm_file, desc="Testing progress")
                 for batch_idx, (inputs, targets) in progress_bar:
                     inputs, targets = inputs.to(cfg.device), targets.to(cfg.device)
                     outputs = model(inputs)
@@ -93,7 +101,7 @@ def test(input_data):
                 writer.add_scalar(f'CrossValTest/Fold_{k}/{model_name}/{metric_name}', value)
         
     writer.close()
-    print("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
+    print_to_file("Cross-validation testing is completed and results are logged to TensorBoard successfully.")
 
 if __name__ == "__main__":
     try:
@@ -102,10 +110,10 @@ if __name__ == "__main__":
         args = parser.parse_args()
     except:
         traceback.print_exc(file=sys.stdout)
-        print("Parsing arguments failed")
+        print_to_file("Parsing arguments failed")
 
     try:
         test(args.config)
     except Exception as e:
         traceback.print_exc(file=sys.stdout)
-        print(f"Tester function failed. Exiting with an error: {e}")
+        print_to_file(f"Tester function failed. Exiting with an error: {e}")

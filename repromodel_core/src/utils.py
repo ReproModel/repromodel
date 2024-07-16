@@ -214,10 +214,13 @@ def copy_covered_files(coverage_json_path, root_folder, additional_files=None):
         print_to_file(f"Copied {src_path} to {dest_path}")
         sys.stdout.flush()
 
-def print_to_file(string, config = None, tqdm=False, model_num = None):
+def print_to_file(string, config = None, tqdm=False, model_num = None, mode = "train"):
     """Print a string to a file, with optional tqdm compatibility."""
     if config is not None:
-        file_name = f"{config.tensorboard_log_path}/{config.training_name}_{config.models[model_num].split('.')[-1]}_{config.datasets.split('.')[-1]}" + ".txt"
+        if mode=="train":
+            file_name = f"{config.tensorboard_log_path}/{mode}_{config.training_name}_{config.models[model_num].split('.')[-1]}_{config.datasets.split('.')[-1]}" + ".txt"
+        else:
+            file_name = f"{config.tensorboard_log_path}/{mode}_{config.models[model_num].split('.')[-1]}_{config.datasets.split('.')[-1]}" + ".txt"
     else:
         file_name = "repromodel_core/logs/command_output.txt"
 
@@ -331,13 +334,14 @@ def extract_output(outputs, model_type=None):
         raise TypeError(f"Unsupported output type: {type(outputs)}")
         
 class TqdmFile:
-    def __init__(self, config=None, model_num = None):
+    def __init__(self, config=None, model_num = None, mode = "train"):
         self.config = config
         self.model_num = model_num
+        self.mode = mode
 
     def write(self, msg):
         # Append to the file in a TQDM-compatible way
-        print_to_file(msg, config=self.config, tqdm=True, model_num=self.model_num)
+        print_to_file(msg, config=self.config, tqdm=True, model_num=self.model_num, mode=self.mode)
 
     def flush(self):
         pass  # No-op to conform to file interface

@@ -57,7 +57,7 @@ const ModelTesting = ({
         .get("http://127.0.0.1:5005/ping")
 
         .then((response) => {
-          if (response.data.testingInProgress === true) {
+          if (response.data.cvTestingInProgress === true || response.data.finalTestingInProgress === true ) {
             setTestingInProgress(true);
           } else {
             setTestingInProgress(false);

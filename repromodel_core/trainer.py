@@ -87,12 +87,11 @@ def train(input_data):
     criterion = get_loss(loss_path, cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
-        sys.stdout.flush()
-        print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
-
         # Custom file object for TQDM
-        tqdm_file = TqdmFile(config=cfg, model_num = m) 
+        tqdm_file = TqdmFile(config=cfg, model_num = m, mode="train") 
+
+        print_to_file(f"Training started. \nOutput in file {cfg.tensorboard_log_path}/train_{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+        print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Training loop for each fold
         for k in range(k_min, cfg.data_splits.k):

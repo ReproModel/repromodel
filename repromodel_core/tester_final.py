@@ -7,7 +7,7 @@ from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
 from src.getters import configure_component
-from src.utils import load_state, load_and_replace_keys, replace_in_string, print_to_file
+from src.utils import load_state, load_and_replace_keys, replace_in_string, print_to_file, TqdmFile
 
 SRC_DIR = "src."
 
@@ -67,9 +67,12 @@ def test_final(input_data):
     total_metrics = {metric_name: 0.0 for metric_name in cfg.metrics}
     num_samples = 0
 
+    tqdm_file = TqdmFile(config=cfg, model_num = 0, mode="final_test") #model_num=0 because it is the only (final) model in a list of models
+    print_to_file(f"Final testing started. \nOutput in file {cfg.tensorboard_log_path}/final_test_{cfg.models[0].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+
     with torch.no_grad():
-        for batch_idx, (inputs, targets) in tqdm(enumerate(test_loader), total=len(test_loader)):
-            print_to_file(f"Progress: {batch_idx}/{len(test_loader)}")
+        progress_bar = tqdm(enumerate(test_loader), total=len(test_loader), file=tqdm_file, desc="Testing Progress")
+        for batch_idx, (inputs, targets) in progress_bar:
             inputs, targets = inputs.to(cfg.device), targets.to(cfg.device)
             outputs = model(inputs)
 
