@@ -177,15 +177,15 @@ const ModelTesting = ({
                         ([className, classContent]) => (
                           <div style={{ paddingLeft: "16px" }}>
                             {FormikProps.values[folder] &&
-                              folder === "metrics" &&
+                              (folder === "models" || folder === "datasets" || folder === "augmentations")  &&
                               ((Array.isArray(FormikProps.values[folder]) &&
                                 FormikProps.values[folder].includes(
-                                  className
+                                   `${file}>${className}`
                                 )) ||
                                 (typeof FormikProps.values[folder] ===
                                   "string" &&
                                   FormikProps.values[folder] ===
-                                    className)) && (
+                                  `${file}>${className}`)) && (
                                 <div className="param-box">
                                   <p>{className} Params</p>
 
@@ -194,17 +194,18 @@ const ModelTesting = ({
                                     ([param, value]) => (
                                       <>
                                         <label
-                                          htmlFor={`${folder}_params:${className}:${param}`}
+                                         className = "param-label"
+                                          htmlFor={`${folder}_params:${file}>${className}:${param}`}
                                         >
                                           {param}:
                                         </label>
 
                                         <FlexibleFormField
-                                          id={`${folder}_params:${className}:${param}`}
-                                          object={value}
-                                          type={value.type}
-                                          name={`${folder}_params:${className}:${param}`}
-                                          label={param}
+                                         id={`${folder}_params:${file}>${className}:${param}`}
+                                         object={value}
+                                         type={value.type}
+                                         name={`${folder}_params:${file}>${className}:${param}`}
+                                         label={param}
                                         />
                                       </>
                                     )
