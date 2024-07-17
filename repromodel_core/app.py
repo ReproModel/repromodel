@@ -540,36 +540,37 @@ def kill_testing_process():
 ######################################################################
 
 
+# FUNCTION: Helper function to check if a process is running.
+def is_process_running(process_name):
+    for proc in psutil.process_iter(['pid', 'name']):
+        if process_name in proc.info['name']:
+            return True, proc.info
+    return False, None
+
 # FUNCTION: Helper function to start TensorBoard.
-def start_tensorboard(logdir="logs"):
+def start_tensorboard(logdir="logs", port=6006):
+    # Check if there is a running TensorBoard instance.
+    tensorboard_in_progress, process_info = is_process_running("tensorboard")
     
-    # Check if there is a running TensorBoard instances.
-    tensorboardInProgress, process_info = is_process_running("tensorboard")
-    
-    if tensorboardInProgress:
-        return f"TensorBoard already running at http://localhost:6006 with logdir {logdir}"
+    if tensorboard_in_progress:
+        return f"TensorBoard already running at http://localhost:{port} with logdir {logdir}"
     
     # Start a new TensorBoard instance.
-    command = ['tensorboard', '--logdir', logdir]
-    print(command)
-    tensorboard_proc = subprocess.Popen(command)
-    
-    
-    return f"TensorBoard started at http://localhost:6006 with logdir {logdir}"
-
+    try:
+        command = ['tensorboard', '--logdir', logdir, '--host', '0.0.0.0', '--port', str(port)]
+        tensorboard_proc = subprocess.Popen(command)
+        return f"TensorBoard started at http://localhost:{port} with logdir {logdir}"
+    except Exception as e:
+        return f"Failed to start TensorBoard: {str(e)}"
 
 # GET /start-tensorboard
 # Description: Start TensorBoard.
-@app.route('/start-tensorboard')
+@app.route('/start-tensorboard', methods=['GET'])
 def tensorboard():
-
     # Customize this path to where your logs are.
     log_dir = "repromodel_core/logs"
-
     message = start_tensorboard(log_dir)
-
     return jsonify({"message": message})
-
 
 # GET /api/files
 # Description: Retrieve the names of the training output files.
