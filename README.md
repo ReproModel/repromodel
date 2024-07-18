@@ -1,10 +1,10 @@
 <p align = "center">
-  <img alt = "ReproModel - Model Comparison Tool for AI Researchers" src = "./public/readme-files/quick-overview.gif" width = "75%">
+  <img alt = "ReproModel - Open Source Toolbox for Boosting the AI Research Efficiency" src = "./public/readme-files/quick-overview.gif" width = "75%">
 </p>
 
 <h3 align = "center">ReproModel</h3>
 
-<p align = "center">Model Comparison Tool for AI Researchers</p>
+<p align = "center">Open Source Toolbox for Boosting the AI Research Efficiency</p>
 
 <div align = "center">
   <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
@@ -41,8 +41,8 @@ https://repromodel.netlify.app
 :white_check_mark: AI Experiment Description Generator<br/>
 :white_check_mark: Code Extractor<br/>
 :white_check_mark: Custom Script Editor<br/>
+:white_check_mark: Docker image<br/>
 :black_square_button: GUI augmentation builder<br/>
-:black_square_button: Docker image<br/>
 :black_square_button: Conventional ML models workflow<br/>
 :black_square_button: Parallel training<br/>
 :black_square_button: Statistical testing<br/>
@@ -51,6 +51,18 @@ https://repromodel.netlify.app
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
 
 ## Running Locally
+### Docker
+Please verify that you have [Docker](https://www.docker.com/get-started/) or Docker CLI installed on your system.<br>
+
+Pull the docker image:<br>
+`docker pull dsitnik1612/repromodel`<br>
+
+Run the container:<br>
+`docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 repromodel`<br>
+
+### Source code
+In case you want to run the ReproModel directly from the source code, here are the steps:<br>
+
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
 
 **Combines npm install, creation of a virtual environment, as well as the launch of the frontend and backend:**
@@ -60,13 +72,13 @@ npm run repromodel            // Mac and Linux
 npm run repromodel-windows    // Windows
 ```
 
-**Launch the frontend instead individually:**
+**If you want to launch the frontend only:**
 ```
 npm install
 npm run dev
 ```
 
-**If you want to use the Methodology Generator, you need to have Ollama installed**
+**For using the Methodology Generator, you need to have Ollama installed**
 You can get Ollama from their [website](https://ollama.com/download) and pull the model of your choice.
 ```
 npm install
@@ -123,7 +135,6 @@ For questions or any type of support, you can reach out to me via dario.sitnik@g
 
 ## License
 This project is licensed under the [MIT License](LICENSE.md).
-
 <br/>
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)

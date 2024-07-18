@@ -6,18 +6,17 @@ from torch.utils.data import DataLoader
 from tqdm import tqdm
 from easydict import EasyDict as edict
 import argparse
-from src.getters import configure_component, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
-from src.utils import save_model, print_to_file, delete_command_outputs, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
+from src.getters import configure_component, get_loss, get_optimizer, get_lr_scheduler, configure_device_specific, init_tensorboard_logging, load_json
+from src.utils import print_to_file, save_model, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
 from copy import deepcopy
-import sys 
+import traceback
+import sys
 
 SRC_DIR = "src."
 
 # Main training function
 def train(input_data):
-    #restart command outputs file
-    delete_command_outputs()
-
+    print_to_file("NOTICE: If the dataset is set to download, please be patient. The progress output is not implemented yet.")
     # Load config
     # Check if input_data is a dictionary
     if isinstance(input_data, dict):
@@ -85,14 +84,14 @@ def train(input_data):
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping
 
     loss_path = SRC_DIR + "losses." + cfg.losses
-    criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
+    criterion = get_loss(loss_path, cfg.losses, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
-        print_to_file(f"Training started. Output in file {cfg.tensorboard_log_path}/{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
-        print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
-
         # Custom file object for TQDM
-        tqdm_file = TqdmFile(config=cfg, model_num = m) 
+        tqdm_file = TqdmFile(config=cfg, model_num = m, mode="train") 
+
+        print_to_file(f"Training started. \nOutput in file {cfg.tensorboard_log_path}/train_{cfg.training_name}_{cfg.models[m].split('.')[-1]}_{cfg.datasets.split('.')[-1]}" + ".txt")
+        print_to_file("Training model " + cfg.models[m], config=cfg, model_num = m)
 
         # Training loop for each fold
         for k in range(k_min, cfg.data_splits.k):
@@ -120,6 +119,7 @@ def train(input_data):
                 checkpoint_es = torch.load(paths["es_path"], map_location=cfg.device)
                 early_stopper = load_state(early_stopper, checkpoint_es)
                 print_to_file("Checkpoint states loaded")
+                sys.stdout.flush()
                 cfg.load_from_checkpoint = False
 
             dataset.set_fold(k)
@@ -226,15 +226,6 @@ def train(input_data):
                     writer.add_scalar(f'Train/{metric}', average_train_metrics[i], epoch)
                     writer.add_scalar(f'Validation/{metric}', average_val_metrics[i], epoch)
 
-                # Early stopping
-                early_stopper.step(epoch)
-                if early_stopper.should_stop:
-                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = m)
-                    writer.close()
-                    break
-
-                epoch += 1
-
                 # Save best model
                 if average_val_loss < best_val_loss:
                     best_val_loss = average_val_loss
@@ -249,6 +240,16 @@ def train(input_data):
                                train_loss=average_train_loss, 
                                val_loss=best_val_loss, 
                                is_best=True)
+
+                # Early stopping
+                early_stopper.step(epoch)
+                if early_stopper.should_stop:
+                    print_to_file(f"Early stopping at epoch {epoch+1}", config=cfg, model_num = m)
+                    writer.close()
+                    break
+
+                epoch += 1
+
         print_to_file(f"Model {cfg.models[m]} training finished", config=cfg, model_num=m)
 
 # Example usage
@@ -258,9 +259,14 @@ if __name__ == '__main__':
         parser.add_argument('input_data', type=str, help='Path to the JSON request file or JSON string')
         args = parser.parse_args()
     except:
+        traceback.print_exc(file=sys.stdout)
         print_to_file("Parsing arguments failed")
+        sys.stdout.flush()
 
     try:
         train(args.input_data)
     except Exception as e:
+        traceback.print_exc(file=sys.stdout)
         print_to_file(f"Trainer function failed. Exiting with an error: {e}")
+        sys.stdout.flush()
+        

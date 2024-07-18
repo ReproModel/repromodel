@@ -27,6 +27,21 @@ def get_from_module(module_path, class_name, params):
         raise ValueError(f"{class_name} not found in {module_path}")
     return cls(**params)
 
+def get_loss(loss_path, loss_name, loss_params):
+    parts = loss_name.split('.')
+    if len(parts) > 1:
+        class_name = parts[-1]
+        module_name = ".".join(parts[:-1])
+    else:
+        return configure_component(loss_path, loss_params)
+    
+    module = __import__(module_name, fromlist=[class_name])
+    loss_class = getattr(module, class_name, None)
+    if not loss_class:
+        raise ValueError(f"Optimizer '{loss_name}' not found in library")
+
+    return loss_class(**loss_params)            
+
 def get_optimizer(model, optimizer_name, optimizer_params):
     parts = optimizer_name.split('.')
     if len(parts) > 1:

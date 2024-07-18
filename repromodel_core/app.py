@@ -116,12 +116,19 @@ def ping():
     trainingInProgress, process_info = is_process_running("trainer.py")
     #app.logger.info("trainingInProgress: %s", trainingInProgress)
 
-    # Check if testing is in progress.
-    testingInProgress, process_info = is_process_running("tester.py")
+    # Check if crossval testing is in progress.
+    cvTestingInProgress, process_info = is_process_running("tester_crossval.py")
+    # app.logger.info("testingInProgress: %s", testingInProgress)
+
+    # Check if final testing is in progress.
+    finalTestingInProgress, process_info = is_process_running("tester_final.py")
     # app.logger.info("testingInProgress: %s", testingInProgress)
     
     # Return HTTP 200 OK status code.
-    return jsonify({ "message": "pong", "trainingInProgress": trainingInProgress, "testingInProgress": testingInProgress }), 200
+    return jsonify({ "message": "pong", 
+                    "trainingInProgress": trainingInProgress, 
+                    "cvTestingInProgress": cvTestingInProgress,
+                    "finalTestingInProgress": finalTestingInProgress}), 200
 
 
 # GET /generate-dummy-data
@@ -146,8 +153,6 @@ def generate_data():
 
         # Return HTTP 500 Internal Server Error status code.
         return jsonify({'error': str(e)}), 500
-
-
 
 ######################################################################
 # API ENDPOINTS - Custom Script
@@ -251,8 +256,12 @@ def submit_config_start_training_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
         with open("repromodel_core/last_experiment_config.json", 'w') as json_file:
-            json.dump(json_data, json_file, indent=4)
+            json.dump(json_parsed, json_file, indent=4)
 
         app.logger.info("Received JSON data for processing.")
         
@@ -328,8 +337,11 @@ def copy_files_endpoint():
     try:
         coverage_json_path = "repromodel_core/extracted_code/coverage.json"
         root_folder = "repromodel_core/extracted_code"
-        additional_files = ["repromodel_core/tester.py", 
-                            "repromodel_core/experiment_config.json",
+        additional_files = ["repromodel_core/tester_crossval.py", 
+                            "repromodel_core/tester_final.py"
+                            "repromodel_core/last_experiment_config.json",
+                            "repromodel_core/last_crossVal_test_config.json",
+                            "repromodel_core/last_final_test_config.json",
                             "repromodel_core/requirements.txt"]
         try:
             copy_covered_files(coverage_json_path, root_folder, additional_files)
@@ -398,10 +410,10 @@ def run_command(command):
 # API ENDPOINTS - Model Testing
 ######################################################################
 
-# POST /submit-config-start-testing
-# Description: Start the testing process from frontend.    
-@app.route('/submit-config-start-testing', methods=['POST'])
-def submit_config_start_testing_():
+# POST /submit-config-start-crossValtesting
+# Description: Start the testing process from frontend. CROSS VALIDATION!!!  
+@app.route('/submit-config-start-crossValtesting', methods=['POST'])
+def submit_config_start_crossValtesting_():
     try:
         
         # Get JSON data from the request.
@@ -416,10 +428,68 @@ def submit_config_start_testing_():
         
         # Convert the JSON data to a string to pass as an argument.
         json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
+        with open("repromodel_core/last_crossVal_test_config.json", 'w') as json_file:
+            json.dump(json_parsed, json_file, indent=4)
+
         app.logger.info("Received JSON data for processing.")
         
-        # Run the script tester.py and capture the output.
-        command = ['python', 'repromodel_core/tester.py', json_data]
+        # Run the script tester_crossval.py and capture the output.
+        command = ['python', 'repromodel_core/tester_crossval.py', json_data]
+        result = subprocess.run(command, capture_output=True, text=True)
+        
+        # Check the subprocess result.
+        if result.returncode == 0:
+            app.logger.info("Script executed successfully with output: %s", result.stdout)
+            return jsonify({'output': result.stdout, 'error': None})
+        
+        else:
+            error_detail = f"Script execution failed with error: {result.stderr}"
+            app.logger.error(error_detail)
+
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'output': result.stdout, 'error': error_detail}), 400
+
+    except Exception as e:
+        error_message = f"An internal error occurred: {str(e)}"
+        app.logger.exception(error_message)
+
+        # Return HTTP 500 Internal Server Error status code.
+        return jsonify({'error': error_message}), 500
+
+
+# POST /submit-config-start-finalValtesting
+# Description: Start the testing process from frontend. FINAL TESTING!!!  
+@app.route('/submit-config-start-finaltesting', methods=['POST'])
+def submit_config_start_finaltesting_():
+    try:
+        
+        # Get JSON data from the request.
+        data = request.get_json()
+        
+        if not data:
+            error_message = "No data provided in request."
+            app.logger.error(error_message)
+
+            # Return HTTP 400 Bad Request status code.
+            return jsonify({'error': error_message}), 400
+        
+        # Convert the JSON data to a string to pass as an argument.
+        json_data = json.dumps(data)
+
+        # Parse the JSON string back into a dictionary
+        json_parsed = json.loads(json_data)
+
+        with open("repromodel_core/last_final_test_config.json", 'w') as json_file:
+            json.dump(json_parsed, json_file, indent=4)
+
+        app.logger.info("Received JSON data for processing.")
+        
+        # Run the script tester_final.py and capture the output.
+        command = ['python', 'repromodel_core/tester_final.py', json_data]
         result = subprocess.run(command, capture_output=True, text=True)
         
         # Check the subprocess result.
@@ -450,7 +520,8 @@ def kill_testing_process():
     try:        
 
         # Kill the testing process.
-        subprocess.run(['pkill', '-f', 'tester.py'])
+        subprocess.run(['pkill', '-f', 'tester_final.py'])
+        subprocess.run(['pkill', '-f', 'tester_crossval.py'])
         app.logger.info("Process with name 'tester' killed successfully.")
 
         return jsonify({'message': "Process with name 'tester' killed successfully."})
@@ -469,35 +540,37 @@ def kill_testing_process():
 ######################################################################
 
 
+# FUNCTION: Helper function to check if a process is running.
+def is_process_running(process_name):
+    for proc in psutil.process_iter(['pid', 'name']):
+        if process_name in proc.info['name']:
+            return True, proc.info
+    return False, None
+
 # FUNCTION: Helper function to start TensorBoard.
-def start_tensorboard(logdir="logs"):
+def start_tensorboard(logdir="logs", port=6006):
+    # Check if there is a running TensorBoard instance.
+    tensorboard_in_progress, process_info = is_process_running("tensorboard")
     
-    # Check if there is a running TensorBoard instances.
-    tensorboardInProgress, process_info = is_process_running("tensorboard --logdir")
-    
-    if tensorboardInProgress:
-        return f"TensorBoard already running at http://localhost:6006 with logdir {logdir}"
+    if tensorboard_in_progress:
+        return f"TensorBoard already running at http://localhost:{port} with logdir {logdir}"
     
     # Start a new TensorBoard instance.
-    command = ['tensorboard', '--logdir', logdir]
-    tensorboard_proc = subprocess.Popen(command)
-    
-    
-    return f"TensorBoard started at http://localhost:6006 with logdir {logdir}"
-
+    try:
+        command = ['tensorboard', '--logdir', logdir, '--host', '0.0.0.0', '--port', str(port)]
+        tensorboard_proc = subprocess.Popen(command)
+        return f"TensorBoard started at http://localhost:{port} with logdir {logdir}"
+    except Exception as e:
+        return f"Failed to start TensorBoard: {str(e)}"
 
 # GET /start-tensorboard
 # Description: Start TensorBoard.
-@app.route('/start-tensorboard')
+@app.route('/start-tensorboard', methods=['GET'])
 def tensorboard():
-
     # Customize this path to where your logs are.
     log_dir = "repromodel_core/logs"
-
     message = start_tensorboard(log_dir)
-
     return jsonify({"message": message})
-
 
 # GET /api/files
 # Description: Retrieve the names of the training output files.

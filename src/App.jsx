@@ -39,14 +39,13 @@ function App() {
   const [selectedSection, setSelectedSection] = useState("Experiment Builder")
   
   // Generate initial values from questions data.
-  const initialValues = Object.values(newQuestions).reduce(
-    (values, question) => {
-      // Set initial value as empty.
-      values[question.id] = ""
-      return values
-    }
-  )
+  const initialValues = Object.values(newQuestions).reduce((values, question) => {
+    // Set initial value as empty for other questions.
+    values[question.id] = "";
+    return values;
+  }, { testType: 'testing-crossValidation' }); // Set initial value for testType
 
+  
   return (
     <>
       {isMobile ? (
@@ -55,7 +54,7 @@ function App() {
         <>
       <Header/>
 
-      <Formik initialValues = { initialValues } onSubmit = { handleSubmit }>
+      <Formik initialValues = { initialValues } onSubmit={(values, actions) => handleSubmit(values, { ...actions, setSelectedSection })}>
         
         { (FormikProps) => (
           <Grid container direction = { "row" }>

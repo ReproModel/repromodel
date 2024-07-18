@@ -23,7 +23,7 @@ class VGG11(nn.Module):
         self.pretrained = pretrained
 
         # Load the VGG11 model with the specified parameters
-        self.vgg = models.vgg11(pretrained=self.pretrained, num_classes=self.num_classes)
+        self.vgg = models.vgg11(pretrained=self.pretrained)
 
         if self.num_classes != 1000:
             # Modify the classifier to use the specified number of classes

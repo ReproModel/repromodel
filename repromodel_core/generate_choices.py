@@ -17,8 +17,6 @@ import torch
 import torchmetrics
 import torchvision
 
-
-
 ######################################################################
 # HELPER FUNCTIONS
 ######################################################################
@@ -59,7 +57,6 @@ def evaluate_ast_literal(node):
     else:
         return "<unsupported>"
 
-
 # Function to parse the @enforce_types_and_ranges decorator for types, default values, ranges, and options.
 # Example: @enforce_types_and_ranges({ 'weight': { 'type': float, 'range': (0.1, 1.0) })
 def parse_decorator(decorator):
@@ -81,7 +78,6 @@ def parse_decorator(decorator):
                     param_info[key.s] = properties
     return param_info
 
-
 # Function to parse the @tag decorator for task, subtask, modality, and submodality.
 # Example: @tag(task=["classification"], subtask=["binary", "multi-class"], modality=["images"], submodality=["RGB"])
 def parse_tag_decorator(decorator):
@@ -96,7 +92,6 @@ def parse_tag_decorator(decorator):
                 else:
                     tags[key] = [value]
     return tags
-
 
 # Function to parse Python files and extract classes, their __init__ parameters, and tags.
 def parse_python_file(file_path):
@@ -120,17 +115,22 @@ def parse_python_file(file_path):
                 class_tags[n.name] = {'tags': tags, 'filename': filename}
     return class_definitions, class_tags
 
-
 # Function to format type annotations into a more readable form.
-def format_type(annotation):
+def format_type(annotation, default=None):
     if isinstance(annotation, type):
         return annotation.__name__
     if hasattr(annotation, '__origin__'):
         if annotation.__origin__ is Union:
             valid_types = [arg for arg in annotation.__args__ if arg is not type(None)]
-            return ", ".join(format_type(t) for t in valid_types)
+            if default is not None:
+                for valid_type in valid_types:
+                    if isinstance(default, valid_type):
+                        return valid_type.__name__
+            return format_type(valid_types[0])
         if annotation.__origin__ is Literal or 'Literal' in str(annotation):
             return "str"
+        if annotation.__origin__ is Optional:
+            return format_type(annotation.__args__[0])  # Handle Optional by using the inner type
         base = annotation.__origin__.__name__ if hasattr(annotation.__origin__, '__name__') else repr(annotation.__origin__).split(' ')[0].split('.')[-1]
         if hasattr(annotation, '__args__'):
             args = ", ".join([format_type(arg) for arg in annotation.__args__])
@@ -145,23 +145,52 @@ def format_type(annotation):
         return annotation.__name__
     else:
         return str(annotation)
-
-
+    
 # Function to parse parameter details.
 def parse_parameter_details(param):
     details = {}
     if param.annotation != inspect.Parameter.empty:
-        details['type'] = format_type(param.annotation)
+        details['type'] = format_type(param.annotation, param.default)
         if 'Literal' in str(param.annotation) and hasattr(param.annotation, '__args__'):
             details['options'] = [arg for arg in param.annotation.__args__]
     if param.default != inspect.Parameter.empty:
         details['default'] = param.default
     return details
 
-
 # Function to extract class definitions with __init__ parameters.
 def extract_classes_with_init_params(module, class_names: Optional[List[str]] = None) -> Dict[str, Dict[str, Any]]:
     classes = {}
+
+    def format_type(annotation, default=None):
+        if isinstance(annotation, type):
+            return annotation.__name__
+        if hasattr(annotation, '__origin__'):
+            if annotation.__origin__ is Union:
+                valid_types = [arg for arg in annotation.__args__ if arg is not type(None)]
+                if default is not None:
+                    default_type = type(default)
+                    for valid_type in valid_types:
+                        if isinstance(default, valid_type):
+                            return valid_type.__name__
+                return format_type(valid_types[0])
+            if annotation.__origin__ is Literal or 'Literal' in str(annotation):
+                return "str"
+            if annotation.__origin__ is Optional:
+                return format_type(annotation.__args__[0])  # Handle Optional by using the inner type
+            base = annotation.__origin__.__name__ if hasattr(annotation.__origin__, '__name__') else repr(annotation.__origin__).split(' ')[0].split('.')[-1]
+            if hasattr(annotation, '__args__'):
+                args = ", ".join([format_type(arg) for arg in annotation.__args__])
+                return f"{base}[{args}]"
+            else:
+                return base
+        elif hasattr(annotation, '__args__'):
+            args = ", ".join([format_type(arg) for arg in annotation.__args__])
+            base = annotation.__origin__.__name__ if hasattr(annotation.__origin__, '__name__') else str(annotation)
+            return f"{base}[{args}]"
+        elif hasattr(annotation, '__name__'):
+            return annotation.__name__
+        else:
+            return str(annotation)
 
     def inspect_module(mod):
         for name, obj in inspect.getmembers(mod, inspect.isclass):
@@ -174,7 +203,7 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
                 if init:
                     params = inspect.signature(init).parameters
                     param_info = {}
-                    for param_name, param in params.items():    
+                    for param_name, param in params.items():
                         if param_name == 'self' or param_name == 'optimizer':
                             continue
                         try:
@@ -185,13 +214,24 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
                                         param_type = "int, float"
                                     else:
                                         param_type = type(param.default).__name__
-                            elif isinstance(param_type, type):
-                                param_type = param_type.__name__
+                            elif hasattr(param_type, '__origin__'):
+                                if param_type.__origin__ is Union:
+                                    valid_types = [arg for arg in param_type.__args__ if arg is not type(None)]
+                                    if param.default is not inspect.Parameter.empty:
+                                        default_type = type(param.default)
+                                        for valid_type in valid_types:
+                                            if isinstance(param.default, valid_type):
+                                                param_type = valid_type
+                                                break
+                                    else:
+                                        param_type = valid_types[0]
+                                elif param_type.__origin__ is Optional:
+                                    param_type = param_type.__args__[0]
                         except Exception as e:
                             print(f"Failed to get type hint for {param_name} in {name}: {e}")
                             param_type = str(param.annotation)
                         param_info[param_name] = {
-                            "type": param_type if param_type is not inspect._empty else "unknown",
+                            "type": format_type(param_type) if param_type is not inspect._empty else "unknown",
                             "default": param.default if param.default is not inspect.Parameter.empty else None
                         }
                     classes[name] = param_info
@@ -208,7 +248,6 @@ def extract_classes_with_init_params(module, class_names: Optional[List[str]] = 
 
     inspect_module(module)
     return classes
-
 
 # Function to make object serializable.
 def make_json_serializable(obj, leading_key=None):
@@ -230,7 +269,6 @@ def make_json_serializable(obj, leading_key=None):
         except TypeError:
             return str(obj)
 
-
 # Function that returns devices.
 def get_devices():
     device_definitions = {
@@ -246,16 +284,6 @@ def get_devices():
     
     device_definitions["options"] = str(device_definitions["options"])
     return device_definitions
-
-
-
-
-
-
-
-
-
-
 
 ######################################################################
 # CONSTANTS
@@ -283,17 +311,14 @@ optimizer_classes = [
     "NAdam", "RAdam", "RMSprop", "Rprop", "SGD"
 ]
 
-
 ######################################################################
 # MAIN METHOD
 ######################################################################
-
 
 if __name__ == "__main__":
 
     # Construct choices.json file by collecting all definitions from specified directories.
     json_obj = {}
-
 
     ######################################################################
     # Key: load_from_checkpoint
@@ -304,7 +329,6 @@ if __name__ == "__main__":
         "type": "bool",
         "default": False
     }
-
 
     ########################################################################################################################
     # Key: ["models", "preprocessing", "datasets", "augmentations", "metrics", "losses", "early_stopping", "postprocessing"]
@@ -352,14 +376,12 @@ if __name__ == "__main__":
             elif isinstance(subvalue, dict):
                 tags_structure["tags_per_class"][key][subkey] = {k: list(v) if isinstance(v, set) else v for k, v in subvalue.items()}
     
-    
     # Key: augmentations  >  torchvision>transforms
     # Description: Extract torchvision augmentations.
     all_tv_augs = extract_classes_with_init_params(torchvision.transforms)
     leading_key = 'torchvision>transforms'
     json_obj['augmentations'][leading_key] = make_json_serializable(all_tv_augs, leading_key=leading_key)
 
-    
     # Key: metrics  >  torchmetrics
     # Description: Extract torchmetric classes.
     all_torchmetrics = extract_classes_with_init_params(torchmetrics)
@@ -378,14 +400,12 @@ if __name__ == "__main__":
     leading_key = 'timm>loss'
     json_obj['losses'][leading_key] = make_json_serializable(timm_loss_classes_extracted, leading_key=leading_key)
 
-
     ######################################################################
     # Key: tags
     # Description: The associated tags for each Python class.
     ######################################################################
     json_obj["tags"] = tags_structure
 
-    
     ######################################################################
     # Key: lr_schedulers
     # Description: Various learning rate schedulers.
@@ -396,7 +416,6 @@ if __name__ == "__main__":
     json_obj['lr_schedulers'] = {}
     leading_key = 'torch>optim>lr_scheduler'
     json_obj['lr_schedulers'][leading_key] = make_json_serializable(lr_scheduler_classes)
-
 
     ######################################################################
     # Key: optimizers
@@ -416,7 +435,6 @@ if __name__ == "__main__":
     leading_key = 'timm>optim'
     json_obj['optimizers'][leading_key] = make_json_serializable(timm_optimizer_classes_extracted, leading_key=leading_key)
 
-
     ######################################################################
     # Key: batch_size
     # Description: The batch size for training.
@@ -428,7 +446,6 @@ if __name__ == "__main__":
         "range": "(1, 1024)"
     }
 
-
     ######################################################################
     # Key: monitor
     # Description: Monitor the performance of the model.
@@ -439,7 +456,6 @@ if __name__ == "__main__":
         "default": "val_loss",
         "options": "['train_loss', 'val_loss']"
     }
-
 
     ######################################################################
     # Key: data_splits
@@ -457,7 +473,6 @@ if __name__ == "__main__":
         }
     }
 
-
     ######################################################################
     # Key: model_save_path
     # Description: Output location for model.
@@ -467,7 +482,6 @@ if __name__ == "__main__":
         "type": "str",
         "default": "repromodel_core/ckpts/"
     }
-
 
     ######################################################################
     # Key: tensorboard_log_path
@@ -479,7 +493,6 @@ if __name__ == "__main__":
         "default": "repromodel_core/logs"
     }
 
-
     ######################################################################
     # Key: progress_path
     # Description: Output location of progress.json.
@@ -490,7 +503,6 @@ if __name__ == "__main__":
         "default": "repromodel_core/ckpts/progress.json"
     }
 
-
     ######################################################################
     # Key: training_name
     # Description:
@@ -500,14 +512,12 @@ if __name__ == "__main__":
         "type": "str"
     }
 
-
     ######################################################################
     # Key: device
     # Description:
     ######################################################################
 
     json_obj["device"] = get_devices()
-
 
     ######################################################################
     # Convert Sets to Lists
@@ -530,7 +540,6 @@ if __name__ == "__main__":
 
     # Merge tag_definitions with json_obj.
     json_obj.update({"tags": tags_structure})
-
 
     ######################################################################
     # Write JSON Object to File
