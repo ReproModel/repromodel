@@ -41,8 +41,8 @@ https://repromodel.netlify.app
 :white_check_mark: AI Experiment Description Generator<br/>
 :white_check_mark: Code Extractor<br/>
 :white_check_mark: Custom Script Editor<br/>
-:black_square_button: GUI augmentation builder<br/>
 :white_check_mark: Docker image<br/>
+:black_square_button: GUI augmentation builder<br/>
 :black_square_button: Conventional ML models workflow<br/>
 :black_square_button: Parallel training<br/>
 :black_square_button: Statistical testing<br/>
@@ -72,13 +72,13 @@ npm run repromodel            // Mac and Linux
 npm run repromodel-windows    // Windows
 ```
 
-**Launch the frontend instead individually:**
+**If you want to launch the frontend only:**
 ```
 npm install
 npm run dev
 ```
 
-**If you want to use the Methodology Generator, you need to have Ollama installed**
+**For using the Methodology Generator, you need to have Ollama installed**
 You can get Ollama from their [website](https://ollama.com/download) and pull the model of your choice.
 ```
 npm install
