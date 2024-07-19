@@ -13,7 +13,7 @@ repromodel_core/last_final_test_config.json
 repromodel_core/last_crossVal_test_config.json
 
 # Dynamic Choices
-repromodel_core/choices.json
+choices.json
 
 # Data
 data/
