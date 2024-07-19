@@ -51,7 +51,7 @@ https://repromodel.netlify.app
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
 
 ## Running Locally
-### Docker
+### Docker (Option 1)
 Please verify that you have [Docker](https://www.docker.com/get-started/) or Docker CLI installed on your system.<br>
 
 Pull the docker image:<br>
@@ -60,7 +60,9 @@ Pull the docker image:<br>
 Run the container:<br>
 `docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 repromodel`<br>
 
-### Source code
+Then open the frontend under: http://localhost:5173/
+
+### Source code (Option 2)
 In case you want to run the ReproModel directly from the source code, here are the steps:<br>
 
 You will need to have [Node.js](https://nodejs.org) installed.<br/> 
@@ -85,6 +87,8 @@ npm install
 npm run repromodel-with-llm            // Mac and Linux
 npm run repromodel-with-llm-windows    // Windows
 ```
+
+Then open the frontend under: http://localhost:5173/
 
 ## Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
