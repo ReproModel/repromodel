@@ -557,7 +557,7 @@ def start_tensorboard(logdir="logs", port=6006):
     
     # Start a new TensorBoard instance.
     try:
-        command = ['tensorboard', '--logdir', logdir, '--host', '0.0.0.0', '--port', str(port)]
+        command = ['tensorboard', '--logdir', logdir, '--host', '0.0.0.0', '--port', str(port), '--bind_all']
         tensorboard_proc = subprocess.Popen(command)
         return f"TensorBoard started at http://localhost:{port} with logdir {logdir}"
     except Exception as e:

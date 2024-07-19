@@ -10,6 +10,7 @@ from src.getters import configure_component, get_loss, get_optimizer, get_lr_sch
 from src.utils import print_to_file, save_model, load_state, get_last_dict_paths, load_and_replace_keys, replace_in_string, TqdmFile
 from copy import deepcopy
 import traceback
+from src.tensorboard_utils import create_image
 import sys
 
 SRC_DIR = "src."
@@ -225,6 +226,15 @@ def train(input_data):
                 for i, metric in enumerate(cfg.metrics):
                     writer.add_scalar(f'Train/{metric}', average_train_metrics[i], epoch)
                     writer.add_scalar(f'Validation/{metric}', average_val_metrics[i], epoch)
+
+                # Log output
+                # For images only, needs optimization (takes inputs and outputs from the last batch). Can randomly choose 4 different images and show them.
+                if dataset.modality == "images":
+                    input_image, output_image = create_image(inputs.cpu().numpy(), outputs.cpu().numpy())
+                
+                    # Log images to TensorBoard
+                    writer.add_image('Validation/Input', input_image, epoch)
+                    writer.add_image('Validation/Output', output_image, epoch)
 
                 # Save best model
                 if average_val_loss < best_val_loss:
