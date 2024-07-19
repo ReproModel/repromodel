@@ -7,7 +7,7 @@ import CloseIcon from "@mui/icons-material/Close"
 import IconButton from "@mui/material/IconButton"
 import Modal from "@mui/material/Modal"
 import React from "react"
-import demoexperimentConfig from "../../../repromodel_core/demo_experiment_config.json"
+import demoexperimentConfig from "../../../repromodel_core/demo_config.json"
 import Typography from "@mui/material/Typography"
 
 import { handleDownload } from "../../utils/download-helpers"
