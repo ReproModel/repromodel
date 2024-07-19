@@ -85,7 +85,7 @@ def train(input_data):
     es_path = SRC_DIR + "early_stopping." + cfg.early_stopping
 
     loss_path = SRC_DIR + "losses." + cfg.losses
-    criterion = get_loss(loss_path, cfg.losses, cfg.losses_params[cfg.losses])
+    criterion = configure_component(loss_path, cfg.losses_params[cfg.losses])
 
     for m in range(model_min, len(cfg.models)):
         # Custom file object for TQDM
@@ -229,7 +229,7 @@ def train(input_data):
 
                 # Log output
                 # For images only, needs optimization (takes inputs and outputs from the last batch). Can randomly choose 4 different images and show them.
-                if dataset.modality == "images":
+                if "images" in dataset.modality:
                     input_image, output_image = create_image(inputs.cpu().numpy(), outputs.cpu().numpy())
                 
                     # Log images to TensorBoard
