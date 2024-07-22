@@ -133,7 +133,7 @@ class DummyDataset(Dataset):
             data, label = transformed['image'], transformed['mask']
 
         # Create a two-channel label by duplicating the negative label along the channel dimension
-        label = np.stack((label, 1-label), axis=-1)
+        label = np.stack((1-label, label), axis=-1)
 
         # Assuming the data and labels are stored as Height x Width x Channels
         # and we need them as Channels x Height x Width
