@@ -1,12 +1,11 @@
 import "./file-reader.css"
 
-import React from "react"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 
 const FileReader = ({ fileName }) => {
 
   const [fileContent, setFileContent] = useState("")
+  const fileContentRef = useRef(null)
 
   useEffect(() => {
     const fetchFileContent = async () => {
@@ -28,11 +27,17 @@ const FileReader = ({ fileName }) => {
 
   }, [fileName])
 
+  useEffect(() => {
+    if (fileContentRef.current) {
+      fileContentRef.current.scrollTop = fileContentRef.current.scrollHeight
+    }
+  }, [fileContent])
+
   return (
     <>
       <h4 className = "file-reader-header">Progress</h4>
       
-      <div className = "file-content"> 
+      <div className = "file-content" ref={fileContentRef}> 
         <pre>{ fileContent }</pre>
       </div>
     </>
