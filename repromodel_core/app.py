@@ -551,14 +551,14 @@ def is_process_running(process_name):
 def start_tensorboard(logdir="logs", port=6006):
     # Check if there is a running TensorBoard instance.
     tensorboard_in_progress, process_info = is_process_running("tensorboard")
-    
     if tensorboard_in_progress:
         return f"TensorBoard already running at http://localhost:{port} with logdir {logdir}"
     
     # Start a new TensorBoard instance.
     try:
-        command = ['tensorboard', '--logdir', logdir, '--host', '0.0.0.0', '--port', str(port), '--bind_all']
+        command = ['tensorboard', '--logdir', logdir, '--port', str(port), '--bind_all']
         tensorboard_proc = subprocess.Popen(command)
+        print(tensorboard_proc)
         return f"TensorBoard started at http://localhost:{port} with logdir {logdir}"
     except Exception as e:
         return f"Failed to start TensorBoard: {str(e)}"
