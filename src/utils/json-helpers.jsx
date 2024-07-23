@@ -299,7 +299,7 @@ console.log(type)
   }
 }
 
-// Export the handleSubmit function that also applies the nestJson transformation
+// Export the function that also applies the nestJson transformation
 export const handleCustomScriptSubmit = async (code, filename, type) => {
 
   // Create a blob from the code string

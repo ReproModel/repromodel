@@ -64,7 +64,7 @@ const ProgressViewer = ({}) => {
         <FileDropdown onSelectFile = { setSelectedFile }/>
       </div>
 
-      <div className = "file-reader">
+      <div className = "file-reader" >
         { selectedFile && <FileReader fileName = { selectedFile }/> }
       </div>
 
