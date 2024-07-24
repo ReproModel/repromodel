@@ -13,26 +13,25 @@ const ProgressViewer = ({}) => {
   const [selectedFile, setSelectedFile] = useState("")
   
   const startTensorBoard = () => {
-    
     // Send GET request to /start-tensorboard Flask endpoint.
     axios.get("http://localhost:5005/start-tensorboard")
       .then(response => {
-        
         // Display response data message.
-        alert(response.data.message)
+        alert(response.data.message);
         
-        // Open TensorBoard in a new tab.
-        window.open("http://localhost:6006", "_blank")
+        // Wait for 1 second before opening TensorBoard in a new tab.
+        setTimeout(() => {
+          window.open("http://localhost:6006", "_blank");
+        }, 1000);
       })
       .catch(error => {
-        
         // Log TensorBoard error in console.
-        console.error("Error starting TensorBoard: ", error)
-
-        // Display TensorBoard error occured.
-        alert("Failed to start TensorBoard. Check console for more details.")
-      })
-  }
+        console.error("Error starting TensorBoard: ", error);
+        
+        // Display TensorBoard error occurred.
+        alert("Failed to start TensorBoard. Check console for more details.");
+      });
+  };  
 
   return (
     <>
@@ -65,7 +64,7 @@ const ProgressViewer = ({}) => {
         <FileDropdown onSelectFile = { setSelectedFile }/>
       </div>
 
-      <div className = "file-reader">
+      <div className = "file-reader" >
         { selectedFile && <FileReader fileName = { selectedFile }/> }
       </div>
 

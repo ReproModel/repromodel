@@ -1,0 +1,95 @@
+{
+    "testType": "testing-crossValidation",
+    "load_from_checkpoint": false,
+    "batch_size": 32,
+    "monitor": "val_loss",
+    "data_splits": {
+        "k": 5,
+        "random_seed": 42
+    },
+    "model_save_path": "repromodel_core/ckpts/",
+    "tensorboard_log_path": "repromodel_core/logs",
+    "progress_path": "repromodel_core/ckpts/progress.json",
+    "device": "cpu",
+    "models": [
+        "deeplabv3_resnet101>DeepLabV3ResNet101"
+    ],
+    "models_params": {
+        "deeplabv3_resnet101>DeepLabV3ResNet101": {
+            "num_classes": 2,
+            "pretrained": false
+        }
+    },
+    "datasets": "dummyDataset>DummyDataset",
+    "datasets_params": {
+        "dummyDataset>DummyDataset": {
+            "input_path": "repromodel_core/data/dummyData_preprocessed/input",
+            "target_path": "repromodel_core/data/dummyData_preprocessed/target",
+            "in_channel": 3,
+            "mode": "train",
+            "extension": ".npy"
+        }
+    },
+    "augmentations": "toTensor>toTensor",
+    "augmentations_params": {
+        "toTensor>toTensor": {
+            "p": 1
+        }
+    },
+    "metrics": [
+        "diceScore>DiceScore"
+    ],
+    "metrics_params": {
+        "diceScore>DiceScore": {
+            "threshold": 0.5,
+            "smooth": 1
+        }
+    },
+    "losses": "diceLoss>DiceLoss",
+    "losses_params": {
+        "diceLoss>DiceLoss": {
+            "smooth": 1
+        }
+    },
+    "early_stopping": "scheduledStop>ScheduledStop",
+    "early_stopping_params": {
+        "scheduledStop>ScheduledStop": {
+            "max_epochs": 100
+        }
+    },
+    "lr_schedulers": "torch>optim>lr_scheduler>LinearLR",
+    "lr_schedulers_params": {
+        "torch>optim>lr_scheduler>LinearLR": {
+            "start_factor": 0.3333333333333333,
+            "end_factor": 1,
+            "total_iters": 100,
+            "last_epoch": -1,
+            "verbose": "False"
+        }
+    },
+    "optimizers": "torch>optim>Adam",
+    "optimizers_params": {
+        "torch>optim>Adam": {
+            "lr": 0.01,
+            "betas": [
+                0.9,
+                0.999
+            ],
+            "eps": 1e-08,
+            "weight_decay": 0,
+            "amsgrad": false,
+            "maximize": false,
+            "capturable": false,
+            "differentiable": false
+        }
+    },
+    "training_name": "Dummy_training",
+    "preprocessing": "dummyPreprocessor>DummyPreprocessor",
+    "preprocessing_params": {
+        "dummyPreprocessor>DummyPreprocessor": {
+            "parent_input_path": "repromodel_core/data/dummyData",
+            "parent_output_path": "repromodel_core/data/dummyData_preprocessed",
+            "num_workers": 20
+        }
+    }
+}

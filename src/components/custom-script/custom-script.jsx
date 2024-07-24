@@ -79,7 +79,7 @@ const CustomScript = ({}) => {
         />
 
         {/* Load Template Button */}
-        <button className = "custom-script-load-template-button" onClick = { () => { fetchCustomScriptTemplate(category.value) } }>
+        <button className = "custom-script-load-template-button" type = "button" onClick = { () => { fetchCustomScriptTemplate(category.value) } }>
           Load Template
         </button>
 
@@ -118,8 +118,8 @@ const CustomScript = ({}) => {
           
           {/* Save Buttons */}
           <button
-            type = "submit"
             className = "custom-script-save-button"
+            type = "button"
             onClick = { () => {
               const fileNameValue = document.getElementById("custom-script-file-name-input").value              
               handleCustomScriptSubmit(code, fileNameValue, category.value)

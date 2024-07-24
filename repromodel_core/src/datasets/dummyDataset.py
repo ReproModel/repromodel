@@ -2,8 +2,9 @@ import os
 from torch.utils.data import Dataset
 from sklearn.model_selection import KFold, train_test_split
 import numpy as np
-from ..decorators import enforce_types_and_ranges
+from ..decorators import enforce_types_and_ranges, tag
 
+@tag(task=["segmentation"], subtask=["instance"], modality=["images"], submodality=["RGB"])
 class DummyDataset(Dataset):
     @enforce_types_and_ranges({
         'input_path': {'type': str},
@@ -132,13 +133,13 @@ class DummyDataset(Dataset):
             data, label = transformed['image'], transformed['mask']
 
         # Create a two-channel label by duplicating the negative label along the channel dimension
-        label = np.stack((label, 1-label), axis=-1)
+        label = np.stack((1-label, label), axis=-1)
 
         # Assuming the data and labels are stored as Height x Width x Channels
         # and we need them as Channels x Height x Width
         if self.mode in ['val','test']:
             data = np.transpose(data, (2, 0, 1))
-            label = np.transpose(label, (2, 0, 1))
+        label = np.transpose(label, (2, 0, 1))
 
         return data, label
 
