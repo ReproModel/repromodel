@@ -6,15 +6,7 @@ import StopIcon from "@mui/icons-material/Stop";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import React from "react";
 
-import {
-  Button,
-  ButtonGroup,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  FormLabel,
-} from "@mui/material";
+import { Button, ButtonGroup, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material";
 import { capitalizeFirstLetter } from "../../utils/string-helpers";
 import { Field, Form } from "formik";
 import { FolderField } from "../ui/folder-field";
@@ -49,7 +41,21 @@ const ModelTesting = ({
   newQuestions,
   setFieldValue,
 }) => {
+  
   const [testingInProgress, setTestingInProgress] = React.useState(false);
+
+  // Dark Theme
+  const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  const [isDarkTheme, setIsDarkTheme] = React.useState(getCurrentTheme())
+
+  const mqListener = (e => { setIsDarkTheme(e.matches) })
+
+  React.useEffect(() => {
+    const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
+    darkThemeMq.addListener(mqListener)
+    return () => darkThemeMq.removeListener(mqListener)
+  }, [])
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -74,13 +80,13 @@ const ModelTesting = ({
 
   return (
     <Form>
-      <p>
+      <p className = "test-type-label">
         Please choose between Cross-Validation Testing and Final Testing on
         unseen data.
       </p>
 
       <FormControl component="fieldset">
-        <FormLabel component="legend">Test Type</FormLabel>
+        <FormLabel component="legend" sx = { { paddingTop: "10px", color: isDarkTheme ? "white" : "black" } }>Test Type</FormLabel>
         <Field
           as={RadioGroup}
           aria-label="testType"
@@ -240,8 +246,8 @@ const ModelTesting = ({
       ))}
 
       <ButtonGroup variant="outlined" sx={{ marginTop: "36px" }}>
+        
         {/* Start Testing Button */}
-
         {!testingInProgress && (
           <div>
             <Button
@@ -309,4 +315,4 @@ const ModelTesting = ({
   );
 };
 
-export default ModelTesting;
+export default ModelTesting
