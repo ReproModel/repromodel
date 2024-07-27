@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.header {
+    font-size: 2.5em;
+    margin: 0.5em;
+}
+
+.message {
+    font-size: 1.5em;
+    margin: 0.5em;
+}
+
+.footer {
+    font-size: 1.2em;
+    margin-top: 2em;
+    color: #6c757d;
+}

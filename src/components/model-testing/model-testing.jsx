@@ -98,12 +98,12 @@ const ModelTesting = ({
         >
           <FormControlLabel
             value="testing-crossValidation"
-            control={<Radio />}
+            control={<Radio sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } }/>}
             label="Cross-Validation Testing"
           />
           <FormControlLabel
             value="testing-final"
-            control={<Radio />}
+            control={<Radio sx = { { color: (isDarkTheme ? "white !important" : "black"), "&.Mui-checked": { color: isDarkTheme ? "white !important" : "black" } } } style = { { opacity: "50%", color: "black", fontSize: "12px", root: { "& .MuiSvgIcon-root": { height: "1.5em", width: "2.5em" } } } } />}
             label="Final Testing"
           />
           
