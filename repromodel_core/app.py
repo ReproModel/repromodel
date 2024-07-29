@@ -77,13 +77,14 @@ for type_dir in TYPE_DIRS.values():
 ######################################################################
 # FUNCTION: Helper function to if process is running.
 def is_process_running(process_name):
-    logging.info("process_name: %s", process_name)
+    # app.logger.info("process_name: %s", process_name)
+   
     
-    for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+    for proc in psutil.process_iter(['pid', 'cmdline']):
         try:
-            # cmdline() returns a list of command line arguments
-            cmdline = proc.info.get('cmdline', [])
-            if any(process_name in cmd for cmd in cmdline):
+            # Join the command line arguments into a single string
+            cmdline = ' '.join(proc.info.get('cmdline', []))
+            if process_name in cmdline:
                 return True, proc.info
 
         except Exception as e:
@@ -115,6 +116,7 @@ def ping():
     # Check if training is in progress.
     trainingInProgress, process_info = is_process_running("trainer.py")
     #app.logger.info("trainingInProgress: %s", trainingInProgress)
+   
 
     # Check if crossval testing is in progress.
     cvTestingInProgress, process_info = is_process_running("tester_crossval.py")
@@ -539,13 +541,6 @@ def kill_testing_process():
 # API ENDPOINTS - Progress Viewer
 ######################################################################
 
-
-# FUNCTION: Helper function to check if a process is running.
-def is_process_running(process_name):
-    for proc in psutil.process_iter(['pid', 'name']):
-        if process_name in proc.info['name']:
-            return True, proc.info
-    return False, None
 
 # FUNCTION: Helper function to start TensorBoard.
 def start_tensorboard(logdir="logs", port=6006):
