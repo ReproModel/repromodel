@@ -28,7 +28,7 @@ https://repromodel.netlify.app
 
 ## Features
 :white_check_mark: Standard Models Included<br/>
-:white_check_mark: Known Datasets<br/>
+:white_check_mark: Benchmark Datasets<br/>
 :white_check_mark: Metrics (100+)<br/>
 :white_check_mark: Losses (20+)<br/>
 :white_check_mark: Data Splitting<br/>
@@ -46,6 +46,8 @@ https://repromodel.netlify.app
 :black_square_button: Conventional ML models workflow<br/>
 :black_square_button: Parallel training<br/>
 :black_square_button: Statistical testing<br/>
+:black_square_button: Explainability<br/>
+:black_square_button: Interpretability<br/>
 
 ## Documentation
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
