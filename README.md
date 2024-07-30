@@ -26,7 +26,7 @@ The coming versions will help researchers build upon state-of-the-art research f
 
 https://repromodel.netlify.app
 
-## Features
+## Feature Roadmap
 :white_check_mark: Standard Models Included<br/>
 :white_check_mark: Benchmark Datasets<br/>
 :white_check_mark: Metrics (100+)<br/>
