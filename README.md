@@ -60,7 +60,7 @@ Pull the docker image:<br>
 `docker pull dsitnik1612/repromodel`<br>
 
 Run the container:<br>
-`docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 repromodel`<br>
+`docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 dsitnik1612/repromodel`<br>
 
 Then open the frontend under: http://localhost:5173/
 
