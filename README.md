@@ -127,12 +127,6 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
   </tr>
 </table>
 
-### Contributor of the month - June 2024
-<img src = "https://avatars.githubusercontent.com/u/20110627" width = "100px" alt = "Tomonari Feehan"/><br/>
-<sub><b>Tomonari Feehan</b></sub><br/>
-<sub>Developer</sub><br/>
-<a href = "https://github.com/tomonarifeehan">GitHub</a>
-
 ## Stats
 ![Alt](https://repobeats.axiom.co/api/embed/4595dc84d9863dd36d50711c399685b444e54d0e.svg "Repobeats Analytics Image")
 
