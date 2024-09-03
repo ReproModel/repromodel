@@ -144,7 +144,7 @@
     height: 47px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: calc(1.775rem + 0.5vw); 
+    font-size: calc(1.1rem + 0.5vw); 
     font-weight: 500;
     background-color: var(--color-one);
     color: white;
