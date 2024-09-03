@@ -65,7 +65,12 @@ const CustomScript = ({}) => {
     <Form className = "custom-script-container">
 
       {/* Category Label */}
-      <div className = "custom-script-category-label">What kind of custom script?</div>
+      <div 
+        className="custom-script-category-label" 
+        style={{ fontSize: 'calc(18px + 0.75vw)' }}
+      >
+        What kind of custom script?
+      </div>
 
       <div className = "custom-script-category-container">
         

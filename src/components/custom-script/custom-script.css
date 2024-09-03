@@ -6,7 +6,7 @@
 /* Category Label */
 .custom-script-category-label {
     padding-top: 16px;
-    font-size: 12px;
+    font-size: calc(16px + 0.5vw); 
     font-weight: bold;
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
@@ -20,6 +20,7 @@
 /* Category Dropdown */
 .custom-script-category-container {
     display: flex;
+    font-size: calc(18px + 0.5vw); 
 }
 
 .custom-script-category-dropdown {
@@ -35,7 +36,7 @@
     height: auto;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.775rem;
+    font-size: calc(1.1rem + 0.5vw); 
     font-weight: 500;
     background-color: var(--color-one);
     color: white;
@@ -83,7 +84,7 @@
     min-height: 900px;
     margin: 12px;
     overflow-y: scroll;
-    font-size: 12px;
+    font-size: calc(14px + 0.5vw); 
     font-variant-ligatures: common-ligatures;
     border-radius: 3px;
     font-family: "Fira code", "Fira Mono", monospace;
@@ -111,7 +112,7 @@
     -webkit-appearance: none;
     width: 500px;
     height: 40px;
-    font-size: 14px;
+    font-size: calc(18px + 0.5vw); 
     background-color: #fff;
     border: 1px solid #caced1;
     border-radius: 0.25rem;
@@ -143,7 +144,7 @@
     height: 47px;
     border: 1px solid rgba(0, 0, 0, 0.12);
     border-radius: 4px;
-    font-size: 0.775rem;
+    font-size: calc(1.775rem + 0.5vw); 
     font-weight: 500;
     background-color: var(--color-one);
     color: white;
