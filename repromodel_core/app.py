@@ -1,16 +1,34 @@
 from flask import Flask, jsonify, Response, request, send_file
 from flask_cors import CORS
 from src.utils import copy_covered_files
+import pandas as pd
+import numpy as np
+import sys
+import os
+from io import StringIO  # Add this import at the top of your file
+
+# Add the parent directory of repromodel_core to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from src.statistics.normality_tests import shapiro_wilk_test, kolmogorov_smirnov_test, anderson_darling_test, qq_plot, histogram
+from src.statistics.homogeneity_tests import levene_test, bartlett_test, box_plot
+from src.statistics.sphericity_tests import mauchly_test, greenhouse_geisser_correction
+from src.statistics.linearity_tests import scatter_plot, correlation_coefficient, durbin_watson_test
+from src.statistics.parametric_tests import paired_t_test, two_sample_t_test, one_way_anova, repeated_measures_anova, linear_regression, f_test, z_test
+from src.statistics.nonparametric_tests import wilcoxon_signed_rank_test, mann_whitney_u_test, kruskal_wallis_h_test, friedman_test, spearman_rank_correlation, chi_square_test, sign_test, kolmogorov_smirnov_test
 
 import json
 import ollama
-import os
 import psutil
 import logging
 import subprocess
 import requests
-from src.utils import copy_covered_files
-
+import io
+import base64
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from src.utils import print_to_file
+import matplotlib.pyplot as plt
+import base64
 ######################################################################
 # CONSTANTS
 ######################################################################
@@ -58,7 +76,7 @@ TYPE_DIRS = {
 
 # Initialize Flask app.
 app = Flask(__name__)
-CORS(app)
+CORS(app)  # This will enable CORS for all routes
 
 # Ensure the base directory exist.
 if not os.path.exists(BASE_DIR):
@@ -537,6 +555,7 @@ def kill_testing_process():
         return jsonify({'error': error_message}), 500
 
 
+
 ######################################################################
 # API ENDPOINTS - Progress Viewer
 ######################################################################
@@ -643,8 +662,159 @@ def generate_methodology_route():
     # Return the result as plain text.
     return Response(result, mimetype='text/plain')
 
+######################################################################
+# API ENDPOINTS - Statistical Tests
+######################################################################
 
 
+@app.route('/statistical_test', methods=['POST'])
+def perform_statistical_test():
+    data = request.json
+    csv_data = data['csvData']
+    test = data['test']
+    params = data.get('params', {})
+
+    try:
+        df = pd.read_csv(StringIO(csv_data))
+        columns = [df[col].values for col in df.columns]
+        model_names = df.columns.tolist()
+
+    except Exception as e:
+        print_to_file(f"Error reading CSV data: {str(e)}")
+        return jsonify({'error': f"Error reading CSV data: {str(e)}"}), 500  # More specific error message
+
+    result = None
+    plot = None
+    try:
+        if test in ['Shapiro-Wilk Test', 'Kolmogorov-Smirnov Test', 'Anderson-Darling Test', 'Q-Q Plot', 'Histogram']:
+            result = []
+            plot = []
+            for i, col in enumerate(columns):
+                if test == 'Shapiro-Wilk Test':
+                    result.append(shapiro_wilk_test(col, params.get('alpha', 0.05)))
+                elif test == 'Kolmogorov-Smirnov Test':
+                    result.append(kolmogorov_smirnov_test(col, params.get('alpha', 0.05)))
+                elif test == 'Anderson-Darling Test':
+                    result.append(anderson_darling_test(col, params.get('alpha', 0.05)))
+                elif test == 'Q-Q Plot':
+                    plot.append(qq_plot(col))
+                elif test == 'Histogram':
+                    plot.append(histogram(col))
+                
+                if result:
+                    result[-1]['model_name'] = model_names[i]
+        elif test == 'Durbin-Watson Test':
+            result = [durbin_watson_test(col) for col in columns]
+            for i, res in enumerate(result):
+                res['model_name'] = model_names[i]
+        elif test == "Levene's Test":
+            result = levene_test(*columns)
+        elif test == "Bartlett's Test":
+            result = bartlett_test(*columns)
+        elif test == 'Box Plot':
+            plot = box_plot(*columns, labels=model_names)
+        elif test == "Mauchly's Test of Sphericity":
+            result = mauchly_test(columns)
+        elif test == 'Greenhouse-Geisser Correction':
+            result = greenhouse_geisser_correction(columns)
+        elif test == 'Scatter Plot':
+            if len(columns) != 2:
+                return jsonify({'error': 'Scatter Plot requires exactly two columns'}), 400
+            plot = scatter_plot(columns[0], columns[1])
+        elif test == 'Correlation Coefficient':
+            if len(columns) != 2:
+                return jsonify({'error': 'Correlation Coefficient requires exactly two columns'}), 400
+            result = correlation_coefficient(columns[0], columns[1])
+        elif test == 'Paired t-test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Paired t-test requires exactly two columns'}), 400
+            result = paired_t_test(columns[0], columns[1], params.get('alpha', 0.05))
+        elif test == 'Two-sample t-test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Two-sample t-test requires exactly two columns'}), 400
+            result = two_sample_t_test(columns[0], columns[1], params.get('alpha', 0.05), params.get('equal_var', True))
+        elif test == 'Analysis of Variance (ANOVA)':
+            result = one_way_anova(*columns)
+        elif test == 'Repeated Measures ANOVA':
+            result = repeated_measures_anova(*columns)
+        elif test == 'Linear Regression Analysis':
+            if len(columns) != 2:
+                return jsonify({'error': 'Linear Regression Analysis requires exactly two columns'}), 400
+            result = linear_regression(columns[0], columns[1])
+        elif test == 'F-test for comparing variances':
+            if len(columns) != 2:
+                return jsonify({'error': 'F-test requires exactly two columns'}), 400
+            result = f_test(columns[0], columns[1])
+        elif test == 'Z-test':
+            if len(columns) != 1:
+                return jsonify({'error': 'Z-test requires exactly one column'}), 400
+            result = z_test(columns[0], params.get('population_mean'), params.get('population_std'))
+        elif test == 'Wilcoxon Signed-Rank Test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Wilcoxon Signed-Rank Test requires exactly two columns'}), 400
+            result = wilcoxon_signed_rank_test(columns[0], columns[1], params.get('alpha', 0.05))
+        elif test == 'Mann-Whitney U Test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Mann-Whitney U Test requires exactly two columns'}), 400
+            result = mann_whitney_u_test(columns[0], columns[1], params.get('alpha', 0.05))
+        elif test == 'Kruskal-Wallis H Test':
+            result = kruskal_wallis_h_test(*columns)
+        elif test == 'Friedman Test':
+            result = friedman_test(*columns)
+        elif test == "Spearman's Rank Correlation":
+            if len(columns) != 2:
+                return jsonify({'error': "Spearman's Rank Correlation requires exactly two columns"}), 400
+            result = spearman_rank_correlation(columns[0], columns[1])
+        elif test == 'Chi-Square Test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Chi-Square Test requires exactly two columns'}), 400
+            result = chi_square_test(columns[0], columns[1])
+        elif test == 'Sign Test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Sign Test requires exactly two columns'}), 400
+            result = sign_test(columns[0], columns[1])
+        elif test == 'Kolmogorov-Smirnov Test':
+            if len(columns) != 2:
+                return jsonify({'error': 'Kolmogorov-Smirnov Test requires exactly two columns'}), 400
+            result = kolmogorov_smirnov_test(columns[0], columns[1])
+        else:
+            return jsonify({'error': 'Unsupported test'}), 400
+    except Exception as e:
+        print_to_file(f"Error performing statistical test: {str(e)}")
+        return jsonify({'error': f"Error performing statistical test: {str(e)}"}), 500  # More specific error message
+
+
+    if isinstance(result, list):
+        for i, res in enumerate(result):
+            res['model_name'] = model_names[i]
+    elif result is None:
+        result = {}
+    else:
+        result['model_names'] = model_names
+
+    # Convert numpy boolean to Python boolean
+    if isinstance(result, np.bool_):
+        result = bool(result)
+
+    if plot is not None:
+        # Convert the plot to a base64-encoded string
+        try:
+            return jsonify({'result': result, 'plot': plot})
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+    else:
+        return jsonify({'result': convert_numpy_types(result)})
+
+def convert_numpy_types(data):
+    if isinstance(data, dict):
+        return {key: convert_numpy_types(value) for key, value in data.items()}
+    elif isinstance(data, list):
+        return [convert_numpy_types(item) for item in data]
+    elif isinstance(data, np.bool_):
+        return bool(data)
+    elif isinstance(data, np.ndarray):
+        return data.tolist()  # Convert numpy arrays to lists
+    return data
 ######################################################################
 # MAIN METHOD
 ######################################################################

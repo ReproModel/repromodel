@@ -10,6 +10,7 @@ import newQuestions from "../repromodel_core/choices.json"
 import ProgressViewer from "./components/progress-viewer/progress-viewer"
 import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
 import MobileWarning from "./components/mobile/mobile-warning";
+import StatisticalTests from "./components/statistics/StatisticalTests";
 
 import { Button, ButtonGroup } from "@mui/material"
 import { Box, Grid, Typography } from "@mui/material"
@@ -74,7 +75,8 @@ function App() {
                   <Button onClick = { () => setSelectedSection("Model Testing") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "Model Testing") ? "100%" : "70%"} }>Model Testing</Button>
                   <Button onClick = { () => setSelectedSection("Progress Viewer") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Progress Viewer") ? "100%" : "70%"} }>Progress Viewer</Button>
                   <Button onClick = { () => setSelectedSection("Extract Code") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
-                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+                  <Button onClick = { () => setSelectedSection("LLM Description") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "14.28%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
+                  <Button onClick = { () => setSelectedSection("Statistical Tests") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "14.28%", opacity: (selectedSection == "Statistical Tests") ? "100%" : "70%"} }>Statistical Tests</Button>
                 </ButtonGroup>
               </Box>
 
@@ -145,6 +147,15 @@ function App() {
                       setFieldValue = { FormikProps.setFieldValue }
                       handleFileChange = { handleFileChange }
                     />
+                  </div>
+                )}
+
+                { selectedSection === "Statistical Tests" && (
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Statistical Tests</span>
+                    </Typography>
+                    <StatisticalTests />
                   </div>
                 )}
 

@@ -3,7 +3,7 @@ import sys
 import multiprocessing
 from pathlib import Path
 from tqdm import tqdm
-from ..decorators import enforce_types_and_ranges, tag
+from repromodel_core.src.decorators import enforce_types_and_ranges, tag
 from utils import print_to_file
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 
