@@ -5,7 +5,7 @@ import torchvision.models.segmentation as models
 import unittest
 
 # Assuming the enforce_types_and_ranges and tag decorators are defined in decorators.py
-from ..decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
+from repromodel_core.src.decorators import enforce_types_and_ranges, tag  # Adjust the import path accordingly
 
 #standardize the output for torchvision models
 from ..utils import extract_output

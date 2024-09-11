@@ -2,7 +2,7 @@ from torch.utils.data import Dataset
 from sklearn.model_selection import KFold, train_test_split
 import numpy as np
 from ..utils import one_hot_encode
-from ..decorators import enforce_types_and_ranges, tag
+from repromodel_core.src.decorators import enforce_types_and_ranges, tag
 from typing import Any, Tuple
 
 # In tag decorator, specify custom task, subtask, modality, and submodality. 

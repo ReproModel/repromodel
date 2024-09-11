@@ -848,6 +848,27 @@
         }
     },
     "datasets": {
+        "cocahis": {
+            "CoCaHis": {
+                "hdf5_file_path": {
+                    "type": "str"
+                },
+                "in_channel": {
+                    "type": "int",
+                    "range": "(1, 1000)",
+                    "default": 3
+                },
+                "mode": {
+                    "type": "str",
+                    "options": "['train', 'test']",
+                    "default": "train"
+                },
+                "transforms": {
+                    "type": "Callable",
+                    "default": null
+                }
+            }
+        },
         "cifar100": {
             "CIFAR100Dataset": {
                 "root": {
@@ -935,7 +956,8 @@
                 },
                 "in_channel": {
                     "type": "int",
-                    "range": "(1, 1000)"
+                    "range": "(1, 1000)",
+                    "default": 3
                 },
                 "mode": {
                     "type": "str",
@@ -1167,6 +1189,33 @@
         }
     },
     "augmentations": {
+        "ResizePILToTensor": {
+            "ResizePILToTensor": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)"
+                },
+                "height": {
+                    "type": "int",
+                    "range": "(1, 10000)",
+                    "default": 224
+                },
+                "width": {
+                    "type": "int",
+                    "range": "(1, 10000)",
+                    "default": 224
+                }
+            }
+        },
+        "toTensor": {
+            "toTensor": {
+                "p": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)",
+                    "default": 1.0
+                }
+            }
+        },
         "customAugmentation": {
             "CustomAugmentations": {
                 "p": {
@@ -1236,7 +1285,7 @@
                     "default": true
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "fill": {
@@ -1250,7 +1299,7 @@
                     "default": "AutoAugmentPolicy.IMAGENET"
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.NEAREST"
                 },
                 "fill": {
@@ -1263,14 +1312,14 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
             },
             "CenterCrop": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 }
             },
@@ -1294,7 +1343,7 @@
             },
             "Compose": {
                 "transforms": {
-                    "type": "typing.Sequence[typing.Callable]",
+                    "type": "Sequence[Callable]",
                     "default": null
                 }
             },
@@ -1306,31 +1355,31 @@
             },
             "ElasticTransform": {
                 "alpha": {
-                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "type": "float",
                     "default": 50.0
                 },
                 "sigma": {
-                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "type": "float",
                     "default": 5.0
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 }
             },
             "FiveCrop": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 }
             },
             "GaussianBlur": {
                 "kernel_size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "sigma": {
@@ -1352,18 +1401,18 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
             },
             "Lambda": {
                 "lambd": {
-                    "type": "typing.Callable[[typing.Any], typing.Any]",
+                    "type": "Callable[typing.Any, typing.Any]",
                     "default": null
                 },
                 "types": {
-                    "type": "typing.Type",
+                    "type": "type",
                     "default": null
                 }
             },
@@ -1379,11 +1428,11 @@
             },
             "Normalize": {
                 "mean": {
-                    "type": "typing.Sequence[float]",
+                    "type": "Sequence[float]",
                     "default": null
                 },
                 "std": {
-                    "type": "typing.Sequence[float]",
+                    "type": "Sequence[float]",
                     "default": null
                 },
                 "inplace": {
@@ -1394,15 +1443,15 @@
             "PILToTensor": {},
             "Pad": {
                 "padding": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 },
                 "padding_mode": {
-                    "type": "typing.Literal['constant', 'edge', 'reflect', 'symmetric']",
+                    "type": "str",
                     "default": "constant"
                 }
             },
@@ -1420,7 +1469,7 @@
                     "default": 31
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.NEAREST"
                 },
                 "fill": {
@@ -1440,7 +1489,7 @@
             },
             "RandomAffine": {
                 "degrees": {
-                    "type": "typing.Union[numbers.Number, typing.Sequence]",
+                    "type": "Number",
                     "default": null
                 },
                 "translate": {
@@ -1456,11 +1505,11 @@
                     "default": null
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.NEAREST"
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 },
                 "center": {
@@ -1470,7 +1519,7 @@
             },
             "RandomApply": {
                 "transforms": {
-                    "type": "typing.Union[typing.Sequence[typing.Callable], torch.nn.modules.container.ModuleList]",
+                    "type": "Sequence[Callable]",
                     "default": null
                 },
                 "p": {
@@ -1486,7 +1535,7 @@
             },
             "RandomChoice": {
                 "transforms": {
-                    "type": "typing.Sequence[typing.Callable]",
+                    "type": "Sequence[Callable]",
                     "default": null
                 },
                 "p": {
@@ -1496,7 +1545,7 @@
             },
             "RandomCrop": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "padding": {
@@ -1508,11 +1557,11 @@
                     "default": false
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 },
                 "padding_mode": {
-                    "type": "typing.Literal['constant', 'edge', 'reflect', 'symmetric']",
+                    "type": "str",
                     "default": "constant"
                 }
             },
@@ -1528,14 +1577,14 @@
                     "default": 0.5
                 },
                 "scale": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.02,
                         0.33
                     ]
                 },
                 "ratio": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.3,
                         3.3
@@ -1570,7 +1619,7 @@
             },
             "RandomOrder": {
                 "transforms": {
-                    "type": "typing.Sequence[typing.Callable]",
+                    "type": "Sequence[Callable]",
                     "default": null
                 }
             },
@@ -1584,11 +1633,11 @@
                     "default": 0.5
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 }
             },
@@ -1604,39 +1653,39 @@
             },
             "RandomResizedCrop": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "scale": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.08,
                         1.0
                     ]
                 },
                 "ratio": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.75,
                         1.3333333333333333
                     ]
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "RandomRotation": {
                 "degrees": {
-                    "type": "typing.Union[numbers.Number, typing.Sequence]",
+                    "type": "Number",
                     "default": null
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.NEAREST"
                 },
                 "expand": {
@@ -1648,7 +1697,7 @@
                     "default": null
                 },
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 }
             },
@@ -1670,25 +1719,25 @@
             },
             "Resize": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "max_size": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "TenCrop": {
                 "size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 },
                 "vertical_flip": {
@@ -1698,7 +1747,7 @@
             },
             "ToPILImage": {
                 "mode": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 }
             },
@@ -1709,7 +1758,7 @@
                     "default": 31
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.NEAREST"
                 },
                 "fill": {
@@ -1727,7 +1776,7 @@
                     "default": 256
                 },
                 "mean": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.485,
                         0.456,
@@ -1735,7 +1784,7 @@
                     ]
                 },
                 "std": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.229,
                         0.224,
@@ -1747,7 +1796,7 @@
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
@@ -1773,11 +1822,11 @@
             },
             "SemanticSegmentation": {
                 "resize_size": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "mean": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.485,
                         0.456,
@@ -1785,7 +1834,7 @@
                     ]
                 },
                 "std": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.229,
                         0.224,
@@ -1797,21 +1846,21 @@
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "VideoClassification": {
                 "crop_size": {
-                    "type": "typing.Tuple[int, int]",
+                    "type": "tuple[int, int]",
                     "default": null
                 },
                 "resize_size": {
-                    "type": "typing.Tuple[int, int]",
+                    "type": "tuple[int, int]",
                     "default": null
                 },
                 "mean": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.43216,
                         0.394666,
@@ -1819,7 +1868,7 @@
                     ]
                 },
                 "std": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.22803,
                         0.22145,
@@ -1897,7 +1946,7 @@
             "ClampBoundingBoxes": {},
             "ConvertBoundingBoxFormat": {
                 "format": {
-                    "type": "typing.Union[str, torchvision.tv_tensors._bounding_boxes.BoundingBoxFormat]",
+                    "type": "str",
                     "default": null
                 }
             },
@@ -1918,7 +1967,7 @@
             "Identity": {},
             "JPEG": {
                 "quality": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": null
                 }
             },
@@ -1966,28 +2015,28 @@
             },
             "RandomPhotometricDistort": {
                 "brightness": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.875,
                         1.125
                     ]
                 },
                 "contrast": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.5,
                         1.5
                     ]
                 },
                 "saturation": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.5,
                         1.5
                     ]
                 },
                 "hue": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         -0.05,
                         0.05
@@ -2008,39 +2057,39 @@
                     "default": null
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "RandomShortestSize": {
                 "min_size": {
-                    "type": "typing.Union[typing.List[int], typing.Tuple[int], int]",
+                    "type": "list[int]",
                     "default": null
                 },
                 "max_size": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "RandomZoomOut": {
                 "fill": {
-                    "type": "typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType, typing.Dict[typing.Union[typing.Type, str], typing.Union[int, float, typing.Sequence[int], typing.Sequence[float], NoneType]]]",
+                    "type": "int",
                     "default": 0
                 },
                 "side_range": {
-                    "type": "typing.Sequence[float]",
+                    "type": "Sequence[float]",
                     "default": [
                         1.0,
                         4.0
@@ -2063,28 +2112,28 @@
             },
             "ScaleJitter": {
                 "target_size": {
-                    "type": "typing.Tuple[int, int]",
+                    "type": "tuple[int, int]",
                     "default": null
                 },
                 "scale_range": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.1,
                         2.0
                     ]
                 },
                 "interpolation": {
-                    "type": "typing.Union[torchvision.transforms.functional.InterpolationMode, int]",
+                    "type": "InterpolationMode",
                     "default": "InterpolationMode.BILINEAR"
                 },
                 "antialias": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "ToDtype": {
                 "dtype": {
-                    "type": "typing.Union[torch.dtype, typing.Dict[typing.Union[typing.Type, str], typing.Optional[torch.dtype]]]",
+                    "type": "dtype",
                     "default": null
                 },
                 "scale": {
@@ -2109,6 +2158,11 @@
                 "weight": {
                     "type": "float",
                     "range": "(0.0, 1.0)"
+                },
+                "smooth": {
+                    "type": "float",
+                    "range": "(0.0, 1.0)",
+                    "default": 0.001
                 }
             }
         },
@@ -2138,19 +2192,19 @@
         "torchmetrics": {
             "AUROC": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Accuracy": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "AveragePrecision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2168,7 +2222,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2190,7 +2244,7 @@
                     "default": true
                 },
                 "quantile": {
-                    "type": "typing.Union[float, torch.Tensor, NoneType]",
+                    "type": "float",
                     "default": null
                 },
                 "raw": {
@@ -2202,7 +2256,7 @@
                     "default": "poisson"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2232,29 +2286,29 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CalibrationError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CatMetric": {
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CharErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2268,17 +2322,17 @@
                     "default": null
                 },
                 "prefix": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "postfix": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 }
             },
             "CohenKappa": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2288,23 +2342,23 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ConfusionMatrix": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CosineSimilarity": {
                 "reduction": {
-                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2318,15 +2372,15 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "str",
                     "default": "replace"
                 },
                 "nan_replace_value": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2336,11 +2390,11 @@
                     "default": null
                 },
                 "keep_sequence_dim": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2350,7 +2404,7 @@
                     "default": 0
                 },
                 "num_classes": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "threshold": {
@@ -2358,27 +2412,27 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'none']]",
                     "default": "micro"
                 },
                 "mdmc_average": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "multiclass": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2388,33 +2442,33 @@
                     "default": 4
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExactMatch": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExplainedVariance": {
                 "multioutput": {
-                    "type": "typing.Literal['raw_values', 'uniform_average', 'variance_weighted']",
+                    "type": "str",
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ExtendedEditDistance": {
                 "language": {
-                    "type": "typing.Literal['en', 'ja']",
+                    "type": "str",
                     "default": "en"
                 },
                 "return_sentence_level_score": {
@@ -2438,47 +2492,47 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "F1Score": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FBetaScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FleissKappa": {
                 "mode": {
-                    "type": "typing.Literal['counts', 'probs']",
+                    "type": "str",
                     "default": "counts"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HammingDistance": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HingeLoss": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "JaccardIndex": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2488,17 +2542,17 @@
                     "default": false
                 },
                 "reduction": {
-                    "type": "typing.Literal['mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "KendallRankCorrCoef": {
                 "variant": {
-                    "type": "typing.Literal['a', 'b', 'c']",
+                    "type": "str",
                     "default": "b"
                 },
                 "t_test": {
@@ -2506,7 +2560,7 @@
                     "default": false
                 },
                 "alternative": {
-                    "type": "typing.Optional[typing.Literal['two-sided', 'less', 'greater']]",
+                    "type": "typing.Optional[typing_extensions.Literal['two-sided', 'less', 'greater']]",
                     "default": "two-sided"
                 },
                 "num_outputs": {
@@ -2514,7 +2568,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2524,51 +2578,51 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MatchErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MatthewsCorrCoef": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MaxMetric": {
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAbsoluteError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanMetric": {
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2582,25 +2636,25 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanSquaredLogError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Metric": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MetricCollection": {
                 "metrics": {
-                    "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
+                    "type": "Metric",
                     "default": null
                 },
                 "additional_metrics": {
@@ -2608,25 +2662,25 @@
                     "default": null
                 },
                 "prefix": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "postfix": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "compute_groups": {
-                    "type": "typing.Union[bool, typing.List[typing.List[str]]]",
+                    "type": "bool",
                     "default": true
                 }
             },
             "MetricTracker": {
                 "metric": {
-                    "type": "typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]",
+                    "type": "Metric",
                     "default": null
                 },
                 "maximize": {
-                    "type": "typing.Union[bool, typing.List[bool]]",
+                    "type": "bool",
                     "default": true
                 }
             },
@@ -2636,17 +2690,17 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MinMetric": {
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2656,17 +2710,17 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ModifiedPanopticQuality": {
                 "things": {
-                    "type": "typing.Collection[int]",
+                    "type": "Collection[int]",
                     "default": null
                 },
                 "stuffs": {
-                    "type": "typing.Collection[int]",
+                    "type": "Collection[int]",
                     "default": null
                 },
                 "allow_unknown_preds_category": {
@@ -2674,7 +2728,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2684,15 +2738,15 @@
                     "default": true
                 },
                 "kernel_size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": 11
                 },
                 "sigma": {
-                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "type": "float",
                     "default": 1.5
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -2708,7 +2762,7 @@
                     "default": 0.03
                 },
                 "betas": {
-                    "type": "typing.Tuple[float, ...]",
+                    "type": "tuple[float, Ellipsis]",
                     "default": [
                         0.0448,
                         0.2856,
@@ -2718,11 +2772,11 @@
                     ]
                 },
                 "normalize": {
-                    "type": "typing.Literal['relu', 'simple', None]",
+                    "type": "str",
                     "default": "relu"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2750,17 +2804,17 @@
             },
             "MultitaskWrapper": {
                 "task_metrics": {
-                    "type": "typing.Dict[str, typing.Union[torchmetrics.metric.Metric, torchmetrics.collections.MetricCollection]]",
+                    "type": "dict[str, Metric]",
                     "default": null
                 }
             },
             "PanopticQuality": {
                 "things": {
-                    "type": "typing.Collection[int]",
+                    "type": "Collection[int]",
                     "default": null
                 },
                 "stuffs": {
-                    "type": "typing.Collection[int]",
+                    "type": "Collection[int]",
                     "default": null
                 },
                 "allow_unknown_preds_category": {
@@ -2776,7 +2830,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2790,7 +2844,7 @@
                     "default": 10.0
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "dim": {
@@ -2798,7 +2852,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2808,7 +2862,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2818,61 +2872,61 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "str",
                     "default": "replace"
                 },
                 "nan_replace_value": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "PermutationInvariantTraining": {
                 "metric_func": {
-                    "type": "typing.Callable",
+                    "type": "Callable",
                     "default": null
                 },
                 "mode": {
-                    "type": "typing.Literal['speaker-wise', 'permutation-wise']",
+                    "type": "str",
                     "default": "speaker-wise"
                 },
                 "eval_func": {
-                    "type": "typing.Literal['max', 'min']",
+                    "type": "str",
                     "default": "max"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Perplexity": {
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "typing.Dict[str, typing.Any]",
+                    "type": "dict[str, typing.Any]",
                     "default": null
                 }
             },
             "Precision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "PrecisionAtFixedRecall": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "PrecisionRecallCurve": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2890,25 +2944,25 @@
                     "default": "uniform_average"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ROC": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Recall": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RecallAtFixedPrecision": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2918,7 +2972,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "typing.Dict[str, typing.Any]",
+                    "type": "dict[str, typing.Any]",
                     "default": null
                 }
             },
@@ -2932,7 +2986,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2942,19 +2996,19 @@
                     "default": "pos"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2964,19 +3018,19 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -2986,19 +3040,19 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3008,19 +3062,19 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3030,19 +3084,19 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3052,11 +3106,11 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "adaptive_k": {
@@ -3064,17 +3118,17 @@
                     "default": false
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RetrievalPrecisionRecallCurve": {
                 "max_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "adaptive_k": {
@@ -3086,15 +3140,15 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3104,15 +3158,15 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3122,19 +3176,19 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3144,7 +3198,7 @@
                     "default": 0.0
                 },
                 "max_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "adaptive_k": {
@@ -3156,11 +3210,11 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3170,7 +3224,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "typing.Dict[str, typing.Any]",
+                    "type": "dict[str, typing.Any]",
                     "default": null
                 }
             },
@@ -3180,11 +3234,11 @@
                     "default": 5
                 },
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3194,17 +3248,17 @@
                     "default": 5
                 },
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SQuAD": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3218,7 +3272,7 @@
                     "default": false
                 },
                 "tokenize": {
-                    "type": "typing.Literal['none', '13a', 'zh', 'intl', 'char', 'ja-mecab', 'ko-mecab', 'flores101', 'flores200']",
+                    "type": "str",
                     "default": "13a"
                 },
                 "lowercase": {
@@ -3230,7 +3284,7 @@
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3240,25 +3294,25 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "ScaleInvariantSignalNoiseRatio": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SensitivityAtSpecificity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SignalDistortionRatio": {
                 "use_cg_iter": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "filter_length": {
@@ -3270,11 +3324,11 @@
                     "default": false
                 },
                 "load_diag": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3284,7 +3338,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3294,29 +3348,29 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "Specificity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SpecificityAtSensitivity": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SpectralAngleMapper": {
                 "reduction": {
-                    "type": "typing.Optional[typing.Literal['elementwise_mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['elementwise_mean', 'sum', 'none']]",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3326,17 +3380,17 @@
                     "default": 1
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "StatScores": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3346,15 +3400,15 @@
                     "default": true
                 },
                 "sigma": {
-                    "type": "typing.Union[float, typing.Sequence[float]]",
+                    "type": "float",
                     "default": 1.5
                 },
                 "kernel_size": {
-                    "type": "typing.Union[int, typing.Sequence[int]]",
+                    "type": "int",
                     "default": 11
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "data_range": {
@@ -3378,23 +3432,23 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SumMetric": {
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "warn"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SymmetricMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3404,25 +3458,25 @@
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "str",
                     "default": "replace"
                 },
                 "nan_replace_value": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "TotalVariation": {
                 "reduction": {
-                    "type": "typing.Optional[typing.Literal['mean', 'sum', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['mean', 'sum', 'none']]",
                     "default": "sum"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3448,7 +3502,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3462,15 +3516,15 @@
                     "default": true
                 },
                 "nan_strategy": {
-                    "type": "typing.Literal['replace', 'drop']",
+                    "type": "str",
                     "default": "replace"
                 },
                 "nan_replace_value": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3480,69 +3534,69 @@
                     "default": 0.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "UniversalImageQualityIndex": {
                 "kernel_size": {
-                    "type": "typing.Sequence[int]",
+                    "type": "Sequence[int]",
                     "default": [
                         11,
                         11
                     ]
                 },
                 "sigma": {
-                    "type": "typing.Sequence[float]",
+                    "type": "Sequence[float]",
                     "default": [
                         1.5,
                         1.5
                     ]
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none', None]",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WeightedMeanAbsolutePercentageError": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordErrorRate": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordInfoLost": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "WordInfoPreserved": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "BaseAggregator": {
                 "fn": {
-                    "type": "typing.Union[typing.Callable, str]",
+                    "type": "Callable",
                     "default": null
                 },
                 "default_value": {
-                    "type": "typing.Union[torch.Tensor, typing.List]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "nan_strategy": {
-                    "type": "typing.Union[str, float]",
+                    "type": "str",
                     "default": "error"
                 },
                 "state_name": {
@@ -3550,7 +3604,7 @@
                     "default": "value"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3560,7 +3614,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3574,7 +3628,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3592,7 +3646,7 @@
                     "default": 1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3614,7 +3668,7 @@
                     "default": 4
                 },
                 "max_cf": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "norm": {
@@ -3626,7 +3680,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3640,13 +3694,13 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "BinaryAUROC": {
                 "max_fpr": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "thresholds": {
@@ -3654,7 +3708,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3662,7 +3716,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3672,11 +3726,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3684,7 +3738,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3694,7 +3748,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3702,7 +3756,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3712,11 +3766,11 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing.Literal['l1', 'l2', 'max']",
+                    "type": "str",
                     "default": "l1"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3724,7 +3778,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3734,11 +3788,11 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -3746,7 +3800,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3756,11 +3810,11 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -3768,7 +3822,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3778,11 +3832,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3794,7 +3848,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3808,11 +3862,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3824,7 +3878,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3834,7 +3888,7 @@
                     "default": null
                 },
                 "task": {
-                    "type": "typing.Literal['demographic_parity', 'equal_opportunity', 'all']",
+                    "type": "str",
                     "default": "all"
                 },
                 "threshold": {
@@ -3842,7 +3896,7 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3850,7 +3904,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3864,7 +3918,7 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3872,7 +3926,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3882,11 +3936,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3894,7 +3948,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3904,7 +3958,7 @@
                     "default": false
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3912,7 +3966,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3922,7 +3976,7 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3934,7 +3988,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3944,7 +3998,7 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3952,7 +4006,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3962,11 +4016,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3974,7 +4028,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -3988,7 +4042,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -3996,7 +4050,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4006,7 +4060,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4014,7 +4068,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4024,7 +4078,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4032,7 +4086,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4042,11 +4096,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4054,7 +4108,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4068,7 +4122,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4076,7 +4130,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4090,7 +4144,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4098,7 +4152,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4108,11 +4162,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4120,7 +4174,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4134,7 +4188,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4142,7 +4196,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4152,11 +4206,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4164,7 +4218,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4174,7 +4228,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4182,7 +4236,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4190,7 +4244,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4204,15 +4258,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4220,7 +4274,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4230,7 +4284,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4238,7 +4292,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4246,7 +4300,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4260,11 +4314,11 @@
                     "default": 15
                 },
                 "norm": {
-                    "type": "typing.Literal['l1', 'l2', 'max']",
+                    "type": "str",
                     "default": "l1"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4272,7 +4326,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4282,11 +4336,11 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "weights": {
-                    "type": "typing.Optional[typing.Literal['linear', 'quadratic', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['linear', 'quadratic', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4294,7 +4348,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4304,11 +4358,11 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4316,7 +4370,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4326,11 +4380,11 @@
                     "default": null
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4338,7 +4392,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4352,15 +4406,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4372,7 +4426,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4390,15 +4444,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4410,7 +4464,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4424,15 +4478,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4440,7 +4494,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4454,11 +4508,11 @@
                     "default": false
                 },
                 "multiclass_mode": {
-                    "type": "typing.Literal['crammer-singer', 'one-vs-all']",
+                    "type": "str",
                     "default": "crammer-singer"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4466,7 +4520,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4476,11 +4530,11 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4492,7 +4546,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4502,7 +4556,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4510,7 +4564,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4524,15 +4578,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4540,7 +4594,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4558,7 +4612,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4566,7 +4620,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4580,11 +4634,11 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4592,7 +4646,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4606,11 +4660,11 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro']]",
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4618,7 +4672,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4632,15 +4686,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4648,7 +4702,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4666,7 +4720,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4674,7 +4728,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4692,7 +4746,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4700,7 +4754,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4714,15 +4768,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4730,7 +4784,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4748,7 +4802,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4756,7 +4810,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4770,15 +4824,15 @@
                     "default": 1
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4786,7 +4840,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4796,7 +4850,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4804,7 +4858,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4812,7 +4866,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4826,15 +4880,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4842,7 +4896,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4852,7 +4906,7 @@
                     "default": null
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "thresholds": {
@@ -4860,7 +4914,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4868,7 +4922,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4882,11 +4936,11 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "normalize": {
-                    "type": "typing.Optional[typing.Literal['true', 'pred', 'all', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['true', 'pred', 'all', 'none']]",
                     "default": null
                 },
                 "validate_args": {
@@ -4894,7 +4948,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4904,7 +4958,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4912,7 +4966,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4926,11 +4980,11 @@
                     "default": 0.5
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4938,7 +4992,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4952,15 +5006,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -4972,7 +5026,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -4990,15 +5044,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5010,7 +5064,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5024,15 +5078,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5040,7 +5094,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5054,11 +5108,11 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5070,7 +5124,7 @@
                     "default": 0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5084,7 +5138,7 @@
                     "default": 0.5
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5092,7 +5146,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5106,15 +5160,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5122,7 +5176,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5140,7 +5194,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5148,7 +5202,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5162,7 +5216,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5170,7 +5224,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5184,7 +5238,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5192,7 +5246,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5202,7 +5256,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5210,7 +5264,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5220,7 +5274,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5228,7 +5282,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5242,15 +5296,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5258,7 +5312,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5276,7 +5330,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5284,7 +5338,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5302,7 +5356,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5310,7 +5364,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5324,15 +5378,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5340,7 +5394,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5358,7 +5412,7 @@
                     "default": null
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5366,7 +5420,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5380,15 +5434,15 @@
                     "default": 0.5
                 },
                 "average": {
-                    "type": "typing.Optional[typing.Literal['micro', 'macro', 'weighted', 'none']]",
+                    "type": "typing.Optional[typing_extensions.Literal['micro', 'macro', 'weighted', 'none']]",
                     "default": "macro"
                 },
                 "multidim_average": {
-                    "type": "typing.Literal['global', 'samplewise']",
+                    "type": "str",
                     "default": "global"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "validate_args": {
@@ -5396,41 +5450,41 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "AdjustedMutualInfoScore": {
                 "average_method": {
-                    "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
+                    "type": "str",
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "AdjustedRandScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CalinskiHarabaszScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CompletenessScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "DaviesBouldinScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5440,41 +5494,41 @@
                     "default": 2
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FowlkesMallowsIndex": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "HomogeneityScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MutualInfoScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "NormalizedMutualInfoScore": {
                 "average_method": {
-                    "type": "typing.Literal['min', 'geometric', 'arithmetic', 'max']",
+                    "type": "str",
                     "default": "arithmetic"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RandScore": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5484,7 +5538,7 @@
                     "default": 1.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5494,7 +5548,7 @@
                     "default": "xyxy"
                 },
                 "iou_threshold": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "class_metrics": {
@@ -5506,7 +5560,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5516,7 +5570,7 @@
                     "default": "xyxy"
                 },
                 "iou_threshold": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "class_metrics": {
@@ -5528,7 +5582,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5538,7 +5592,7 @@
                     "default": "xyxy"
                 },
                 "iou_threshold": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "class_metrics": {
@@ -5550,7 +5604,7 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5560,7 +5614,7 @@
                     "default": "xyxy"
                 },
                 "iou_threshold": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "class_metrics": {
@@ -5572,17 +5626,17 @@
                     "default": true
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MeanAveragePrecision": {
                 "box_format": {
-                    "type": "typing.Literal['xyxy', 'xywh', 'cxcywh']",
+                    "type": "str",
                     "default": "xyxy"
                 },
                 "iou_type": {
-                    "type": "typing.Union[typing.Literal['bbox', 'segm'], typing.Tuple[str]]",
+                    "type": "typing.Union[typing_extensions.Literal['bbox', 'segm'], typing.Tuple[str]]",
                     "default": "bbox"
                 },
                 "iou_thresholds": {
@@ -5606,15 +5660,15 @@
                     "default": false
                 },
                 "average": {
-                    "type": "typing.Literal['macro', 'micro']",
+                    "type": "str",
                     "default": "macro"
                 },
                 "backend": {
-                    "type": "typing.Literal['pycocotools', 'faster_coco_eval']",
+                    "type": "str",
                     "default": "pycocotools"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5715,11 +5769,11 @@
             },
             "TextDataset": {
                 "text": {
-                    "type": "typing.List[str]",
+                    "type": "list[str]",
                     "default": null
                 },
                 "tokenizer": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 },
                 "max_length": {
@@ -5727,8 +5781,8 @@
                     "default": 512
                 },
                 "preprocess_text_fn": {
-                    "type": "typing.Callable[[typing.List[str], typing.Any, int], typing.Union[typing.Dict[str, torch.Tensor], typing.Tuple[typing.Dict[str, torch.Tensor], typing.Optional[torch.Tensor]]]]",
-                    "default": "<function _preprocess_text at 0x16e0d0540>"
+                    "type": "Callable[list[str], typing.Any, int, dict[str, Tensor]]",
+                    "default": "<function _preprocess_text at 0x13e318040>"
                 },
                 "idf": {
                     "type": "bool",
@@ -5759,11 +5813,11 @@
             },
             "LearnedPerceptualImagePatchSimilarity": {
                 "net_type": {
-                    "type": "typing.Literal['vgg', 'alex', 'squeeze']",
+                    "type": "str",
                     "default": "alex"
                 },
                 "reduction": {
-                    "type": "typing.Literal['sum', 'mean']",
+                    "type": "str",
                     "default": "mean"
                 },
                 "normalize": {
@@ -5771,13 +5825,13 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "MemorizationInformedFrechetInceptionDistance": {
                 "feature": {
-                    "type": "typing.Union[int, torch.nn.modules.module.Module]",
+                    "type": "int",
                     "default": 2048
                 },
                 "reset_real_features": {
@@ -5793,7 +5847,7 @@
                     "default": 0.1
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5803,7 +5857,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5821,7 +5875,7 @@
                     "default": 128
                 },
                 "interpolation_method": {
-                    "type": "typing.Literal['lerp', 'slerp_any', 'slerp_unit']",
+                    "type": "str",
                     "default": "lerp"
                 },
                 "epsilon": {
@@ -5829,15 +5883,15 @@
                     "default": 0.0001
                 },
                 "resize": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": 64
                 },
                 "lower_discard": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.01
                 },
                 "upper_discard": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": 0.99
                 },
                 "sim_net": {
@@ -5845,7 +5899,7 @@
                     "default": "vgg"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5867,17 +5921,17 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "SpatialCorrelationCoefficient": {
                 "high_pass_filter": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "window_size": {
@@ -5885,7 +5939,7 @@
                     "default": 8
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5899,11 +5953,11 @@
                     "default": 7
                 },
                 "reduction": {
-                    "type": "typing.Literal['elementwise_mean', 'sum', 'none']",
+                    "type": "str",
                     "default": "elementwise_mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5913,13 +5967,13 @@
                     "default": 2.0
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "FrechetInceptionDistance": {
                 "feature": {
-                    "type": "typing.Union[int, torch.nn.modules.module.Module]",
+                    "type": "int",
                     "default": 2048
                 },
                 "reset_real_features": {
@@ -5931,7 +5985,7 @@
                     "default": false
                 },
                 "input_img_size": {
-                    "type": "typing.Tuple[int, int, int]",
+                    "type": "tuple[int, int, int]",
                     "default": [
                         3,
                         299,
@@ -5939,7 +5993,7 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -5949,17 +6003,17 @@
                     "default": null
                 },
                 "features_list": {
-                    "type": "typing.List[str]",
+                    "type": "list[str]",
                     "default": null
                 },
                 "feature_extractor_weights_path": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 }
             },
             "InceptionScore": {
                 "feature": {
-                    "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
+                    "type": "str",
                     "default": "logits_unbiased"
                 },
                 "splits": {
@@ -5971,13 +6025,13 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "KernelInceptionDistance": {
                 "feature": {
-                    "type": "typing.Union[str, int, torch.nn.modules.module.Module]",
+                    "type": "int",
                     "default": 2048
                 },
                 "subsets": {
@@ -5993,7 +6047,7 @@
                     "default": 3
                 },
                 "gamma": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "coef": {
@@ -6009,27 +6063,27 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CompositionalMetric": {
                 "operator": {
-                    "type": "typing.Callable",
+                    "type": "Callable",
                     "default": null
                 },
                 "metric_a": {
-                    "type": "typing.Union[torchmetrics.metric.Metric, float, torch.Tensor]",
+                    "type": "Metric",
                     "default": null
                 },
                 "metric_b": {
-                    "type": "typing.Union[torchmetrics.metric.Metric, float, torch.Tensor, NoneType]",
+                    "type": "Metric",
                     "default": null
                 }
             },
             "CLIPImageQualityAssessment": {
                 "model_name_or_path": {
-                    "type": "typing.Literal['clip_iqa', 'openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
+                    "type": "str",
                     "default": "clip_iqa"
                 },
                 "data_range": {
@@ -6037,49 +6091,49 @@
                     "default": 1.0
                 },
                 "prompts": {
-                    "type": "typing.Tuple[typing.Union[str, typing.Tuple[str, str]]]",
+                    "type": "tuple[str]",
                     "default": [
                         "quality"
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "CLIPScore": {
                 "model_name_or_path": {
-                    "type": "typing.Literal['openai/clip-vit-base-patch16', 'openai/clip-vit-base-patch32', 'openai/clip-vit-large-patch14-336', 'openai/clip-vit-large-patch14']",
+                    "type": "str",
                     "default": "openai/clip-vit-large-patch14"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "RetrievalAUROC": {
                 "empty_target_action": {
-                    "type": "typing.Literal['error', 'skip', 'neg', 'pos']",
+                    "type": "str",
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "top_k": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "max_fpr": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6089,15 +6143,15 @@
                     "default": "neg"
                 },
                 "ignore_index": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "aggregation": {
-                    "type": "typing.Union[typing.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
+                    "type": "typing.Union[typing_extensions.Literal['mean', 'median', 'min', 'max'], typing.Callable]",
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6115,11 +6169,11 @@
                     "default": false
                 },
                 "weight_type": {
-                    "type": "typing.Literal['square', 'simple', 'linear']",
+                    "type": "str",
                     "default": "square"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6137,7 +6191,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6151,7 +6205,7 @@
                     "default": "mean"
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6169,7 +6223,7 @@
                     "default": null
                 },
                 "accumulate": {
-                    "type": "typing.Literal['avg', 'best']",
+                    "type": "str",
                     "default": "best"
                 },
                 "rouge_keys": {
@@ -6182,17 +6236,17 @@
                     ]
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "BERTScore": {
                 "model_name_or_path": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "num_layers": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "all_layers": {
@@ -6200,7 +6254,7 @@
                     "default": false
                 },
                 "model": {
-                    "type": "typing.Optional[torch.nn.modules.module.Module]",
+                    "type": "Module",
                     "default": null
                 },
                 "user_tokenizer": {
@@ -6220,7 +6274,7 @@
                     "default": false
                 },
                 "device": {
-                    "type": "typing.Union[str, torch.device, NoneType]",
+                    "type": "str",
                     "default": null
                 },
                 "max_length": {
@@ -6248,21 +6302,21 @@
                     "default": false
                 },
                 "baseline_path": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "baseline_url": {
-                    "type": "typing.Optional[str]",
+                    "type": "str",
                     "default": null
                 },
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
             "InfoLM": {
                 "model_name_or_path": {
-                    "type": "typing.Union[str, os.PathLike]",
+                    "type": "str",
                     "default": "bert-base-uncased"
                 },
                 "temperature": {
@@ -6270,7 +6324,7 @@
                     "default": 0.25
                 },
                 "information_measure": {
-                    "type": "typing.Literal['kl_divergence', 'alpha_divergence', 'beta_divergence', 'ab_divergence', 'renyi_divergence', 'l1_distance', 'l2_distance', 'l_infinity_distance', 'fisher_rao_distance']",
+                    "type": "str",
                     "default": "kl_divergence"
                 },
                 "idf": {
@@ -6278,19 +6332,19 @@
                     "default": true
                 },
                 "alpha": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "beta": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "device": {
-                    "type": "typing.Union[str, torch.device, NoneType]",
+                    "type": "str",
                     "default": null
                 },
                 "max_length": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 },
                 "batch_size": {
@@ -6310,7 +6364,7 @@
                     "default": false
                 },
                 "kwargs": {
-                    "type": "typing.Dict[str, typing.Any]",
+                    "type": "dict[str, typing.Any]",
                     "default": null
                 }
             },
@@ -6319,7 +6373,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6329,7 +6383,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6339,7 +6393,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6349,7 +6403,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6359,7 +6413,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6369,7 +6423,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6379,7 +6433,7 @@
                     "type": "unknown",
                     "default": null
                 },
-                "kwds": {
+                "kwargs": {
                     "type": "unknown",
                     "default": null
                 }
@@ -6406,11 +6460,11 @@
             },
             "FeatureShare": {
                 "metrics": {
-                    "type": "typing.Union[torchmetrics.metric.Metric, typing.Sequence[torchmetrics.metric.Metric], typing.Dict[str, torchmetrics.metric.Metric]]",
+                    "type": "Metric",
                     "default": null
                 },
                 "max_cache_size": {
-                    "type": "typing.Optional[int]",
+                    "type": "int",
                     "default": null
                 }
             },
@@ -6426,7 +6480,7 @@
             },
             "WrapperMetric": {
                 "kwargs": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 }
             },
@@ -6456,14 +6510,15 @@
             "CustomLoss": {
                 "weight": {
                     "type": "float",
-                    "range": "(0.1, 1.0)"
+                    "range": "(0.1, 1.0)",
+                    "default": 1.0
                 }
             }
         },
         "torch>nn>modules>loss": {
             "BCELoss": {
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6481,7 +6536,7 @@
             },
             "BCEWithLogitsLoss": {
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6497,7 +6552,7 @@
                     "default": "mean"
                 },
                 "pos_weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 }
             },
@@ -6535,7 +6590,7 @@
             },
             "CrossEntropyLoss": {
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6681,7 +6736,7 @@
             },
             "MultiLabelSoftMarginLoss": {
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6707,7 +6762,7 @@
                     "default": 1.0
                 },
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6725,7 +6780,7 @@
             },
             "NLLLoss": {
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "size_average": {
@@ -6899,11 +6954,11 @@
                     "default": 0.1
                 },
                 "target_threshold": {
-                    "type": "typing.Optional[float]",
+                    "type": "float",
                     "default": null
                 },
                 "weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 },
                 "reduction": {
@@ -6911,7 +6966,7 @@
                     "default": "mean"
                 },
                 "pos_weight": {
-                    "type": "typing.Optional[torch.Tensor]",
+                    "type": "Tensor",
                     "default": null
                 }
             },
@@ -7338,6 +7393,20 @@
                 "subtask": [
                     "binary",
                     "multi-class"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "RGB"
+                ]
+            },
+            "customModel>CustomModel": {
+                "task": [
+                    "classification"
+                ],
+                "subtask": [
+                    "binary"
                 ],
                 "modality": [
                     "images"
@@ -7796,6 +7865,34 @@
                     "RGB"
                 ]
             },
+            "customPreprocessor>CustomPreprocessor": {
+                "task": [
+                    "classification"
+                ],
+                "subtask": [
+                    "multi-class"
+                ],
+                "modality": [
+                    "medical"
+                ],
+                "submodality": [
+                    "MRI"
+                ]
+            },
+            "cocahis>CoCaHis": {
+                "task": [
+                    "segmentation"
+                ],
+                "subtask": [
+                    "binary"
+                ],
+                "modality": [
+                    "medical"
+                ],
+                "submodality": [
+                    "pathology"
+                ]
+            },
             "cifar100>CIFAR100Dataset": {
                 "task": [
                     "classification"
@@ -7830,6 +7927,20 @@
                 ],
                 "subtask": [
                     "attribute"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "RGB"
+                ]
+            },
+            "customDataset>CustomDataset": {
+                "task": [
+                    "classification"
+                ],
+                "subtask": [
+                    "multi-class"
                 ],
                 "modality": [
                     "images"
@@ -7922,6 +8033,20 @@
                     "RGB"
                 ]
             },
+            "dummyDataset>DummyDataset": {
+                "task": [
+                    "segmentation"
+                ],
+                "subtask": [
+                    "instance"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "RGB"
+                ]
+            },
             "caltech256>Caltech256Dataset": {
                 "task": [
                     "classification"
@@ -7934,6 +8059,62 @@
                 ],
                 "submodality": [
                     "RGB"
+                ]
+            },
+            "customAugmentation>CustomAugmentations": {
+                "task": [
+                    "segmentation"
+                ],
+                "subtask": [
+                    "instance"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "RGB"
+                ]
+            },
+            "customMetrics>CustomMetric": {
+                "task": [
+                    "classification"
+                ],
+                "subtask": [
+                    "binary"
+                ],
+                "modality": [
+                    "images"
+                ],
+                "submodality": [
+                    "grayscale"
+                ]
+            },
+            "customLoss>CustomLoss": {
+                "task": [
+                    "regression"
+                ],
+                "subtask": [
+                    "error"
+                ],
+                "modality": [
+                    "tabular"
+                ],
+                "submodality": [
+                    "financial"
+                ]
+            },
+            "customPostprocessor>CustomPostprocessor": {
+                "task": [
+                    "classification"
+                ],
+                "subtask": [
+                    "multi-class"
+                ],
+                "modality": [
+                    "medical"
+                ],
+                "submodality": [
+                    "CT"
                 ]
             }
         },
@@ -7989,6 +8170,7 @@
                         "squeezenet1_1>SqueezeNet1_1",
                         "mobilenet_v2>MobileNetV2",
                         "mobilenet_v3_small>MobileNetV3_Small",
+                        "customModel>CustomModel",
                         "squeezenet1_0>SqueezeNet1_0",
                         "mnasnet0_75>MNASNet0_75",
                         "shufflenet_v2_x1_5>ShuffleNetV2_x1_5",
@@ -8014,16 +8196,26 @@
                         "vgg13_bn>VGG13_BN",
                         "resnet50>ResNet50"
                     ],
+                    "preprocessing": [
+                        "customPreprocessor>CustomPreprocessor"
+                    ],
                     "datasets": [
                         "cifar100>CIFAR100Dataset",
                         "eurosat>EuroSATDataset",
                         "celeba>CelebADataset",
+                        "customDataset>CustomDataset",
                         "country211>Country211Dataset",
                         "dtd>DTDDataset",
                         "cifar10>CIFAR10Dataset",
                         "caltech101>Caltech101Dataset",
                         "emnist>EMNISTDataset",
                         "caltech256>Caltech256Dataset"
+                    ],
+                    "metrics": [
+                        "customMetrics>CustomMetric"
+                    ],
+                    "postprocessing": [
+                        "customPostprocessor>CustomPostprocessor"
                     ]
                 },
                 "segmentation": {
@@ -8036,7 +8228,17 @@
                         "fcnresnet50>FCNResNet50"
                     ],
                     "datasets": [
-                        "vocSegmentation>VOCSegmentationDataset"
+                        "cocahis>CoCaHis",
+                        "vocSegmentation>VOCSegmentationDataset",
+                        "dummyDataset>DummyDataset"
+                    ],
+                    "augmentations": [
+                        "customAugmentation>CustomAugmentations"
+                    ]
+                },
+                "regression": {
+                    "losses": [
+                        "customLoss>CustomLoss"
                     ]
                 }
             },
@@ -8065,6 +8267,7 @@
                         "mobilenet_v2>MobileNetV2",
                         "mobilenet_v3_small>MobileNetV3_Small",
                         "deeplabv3_resnet50>DeepLabV3ResNet50",
+                        "customModel>CustomModel",
                         "squeezenet1_0>SqueezeNet1_0",
                         "mnasnet0_75>MNASNet0_75",
                         "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
@@ -8095,6 +8298,12 @@
                         "vgg13_bn>VGG13_BN",
                         "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN",
                         "resnet50>ResNet50"
+                    ],
+                    "datasets": [
+                        "cocahis>CoCaHis"
+                    ],
+                    "metrics": [
+                        "customMetrics>CustomMetric"
                     ]
                 },
                 "multi-class": {
@@ -8151,6 +8360,15 @@
                         "vgg13_bn>VGG13_BN",
                         "retinanet_resnet50_fpn_model>RetinaNetResNet50FPN",
                         "resnet50>ResNet50"
+                    ],
+                    "preprocessing": [
+                        "customPreprocessor>CustomPreprocessor"
+                    ],
+                    "datasets": [
+                        "customDataset>CustomDataset"
+                    ],
+                    "postprocessing": [
+                        "customPostprocessor>CustomPostprocessor"
                     ]
                 },
                 "image": {
@@ -8178,6 +8396,19 @@
                     "datasets": [
                         "vocSegmentation>VOCSegmentationDataset"
                     ]
+                },
+                "instance": {
+                    "datasets": [
+                        "dummyDataset>DummyDataset"
+                    ],
+                    "augmentations": [
+                        "customAugmentation>CustomAugmentations"
+                    ]
+                },
+                "error": {
+                    "losses": [
+                        "customLoss>CustomLoss"
+                    ]
                 }
             },
             "modality": {
@@ -8204,6 +8435,7 @@
                         "mobilenet_v2>MobileNetV2",
                         "mobilenet_v3_small>MobileNetV3_Small",
                         "deeplabv3_resnet50>DeepLabV3ResNet50",
+                        "customModel>CustomModel",
                         "squeezenet1_0>SqueezeNet1_0",
                         "mnasnet0_75>MNASNet0_75",
                         "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
@@ -8237,13 +8469,21 @@
                         "cifar100>CIFAR100Dataset",
                         "eurosat>EuroSATDataset",
                         "celeba>CelebADataset",
+                        "customDataset>CustomDataset",
                         "country211>Country211Dataset",
                         "dtd>DTDDataset",
                         "cifar10>CIFAR10Dataset",
                         "caltech101>Caltech101Dataset",
                         "emnist>EMNISTDataset",
                         "vocSegmentation>VOCSegmentationDataset",
+                        "dummyDataset>DummyDataset",
                         "caltech256>Caltech256Dataset"
+                    ],
+                    "augmentations": [
+                        "customAugmentation>CustomAugmentations"
+                    ],
+                    "metrics": [
+                        "customMetrics>CustomMetric"
                     ]
                 },
                 "video": {
@@ -8251,6 +8491,22 @@
                         "resnet3d>ResNet3D",
                         "resnet2plus1d>ResNet2Plus1D",
                         "resnet_mixed_convolution>ResNetMixedConvolution"
+                    ]
+                },
+                "medical": {
+                    "preprocessing": [
+                        "customPreprocessor>CustomPreprocessor"
+                    ],
+                    "datasets": [
+                        "cocahis>CoCaHis"
+                    ],
+                    "postprocessing": [
+                        "customPostprocessor>CustomPostprocessor"
+                    ]
+                },
+                "tabular": {
+                    "losses": [
+                        "customLoss>CustomLoss"
                     ]
                 }
             },
@@ -8278,6 +8534,7 @@
                         "mobilenet_v2>MobileNetV2",
                         "mobilenet_v3_small>MobileNetV3_Small",
                         "deeplabv3_resnet50>DeepLabV3ResNet50",
+                        "customModel>CustomModel",
                         "squeezenet1_0>SqueezeNet1_0",
                         "mnasnet0_75>MNASNet0_75",
                         "deeplabv3_mobilenet_v3_large>DeepLabV3MobileNetV3Large",
@@ -8311,17 +8568,45 @@
                         "cifar100>CIFAR100Dataset",
                         "eurosat>EuroSATDataset",
                         "celeba>CelebADataset",
+                        "customDataset>CustomDataset",
                         "country211>Country211Dataset",
                         "dtd>DTDDataset",
                         "cifar10>CIFAR10Dataset",
                         "caltech101>Caltech101Dataset",
                         "vocSegmentation>VOCSegmentationDataset",
+                        "dummyDataset>DummyDataset",
                         "caltech256>Caltech256Dataset"
+                    ],
+                    "augmentations": [
+                        "customAugmentation>CustomAugmentations"
+                    ]
+                },
+                "MRI": {
+                    "preprocessing": [
+                        "customPreprocessor>CustomPreprocessor"
+                    ]
+                },
+                "pathology": {
+                    "datasets": [
+                        "cocahis>CoCaHis"
                     ]
                 },
                 "grayscale": {
                     "datasets": [
                         "emnist>EMNISTDataset"
+                    ],
+                    "metrics": [
+                        "customMetrics>CustomMetric"
+                    ]
+                },
+                "financial": {
+                    "losses": [
+                        "customLoss>CustomLoss"
+                    ]
+                },
+                "CT": {
+                    "postprocessing": [
+                        "customPostprocessor>CustomPostprocessor"
                     ]
                 }
             }
@@ -8719,7 +9004,7 @@
                     "default": 0
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -8757,7 +9042,7 @@
                     "default": 0
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -8795,7 +9080,7 @@
                     "default": 1e-10
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -8809,15 +9094,15 @@
             },
             "Adam": {
                 "params": {
-                    "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
+                    "type": "Iterable[Tensor]",
                     "default": null
                 },
                 "lr": {
-                    "type": "typing.Union[float, torch.Tensor]",
+                    "type": "float",
                     "default": 0.001
                 },
                 "betas": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.9,
                         0.999
@@ -8836,7 +9121,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -8852,21 +9137,21 @@
                     "default": false
                 },
                 "fused": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 }
             },
             "AdamW": {
                 "params": {
-                    "type": "typing.Union[typing.Iterable[torch.Tensor], typing.Iterable[typing.Dict[str, typing.Any]]]",
+                    "type": "Iterable[Tensor]",
                     "default": null
                 },
                 "lr": {
-                    "type": "typing.Union[float, torch.Tensor]",
+                    "type": "float",
                     "default": 0.001
                 },
                 "betas": {
-                    "type": "typing.Tuple[float, float]",
+                    "type": "tuple[float, float]",
                     "default": [
                         0.9,
                         0.999
@@ -8889,7 +9174,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "capturable": {
@@ -8901,7 +9186,7 @@
                     "default": false
                 },
                 "fused": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 }
             },
@@ -8930,7 +9215,7 @@
                     "default": 0
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -9013,7 +9298,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "capturable": {
@@ -9054,7 +9339,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "capturable": {
@@ -9096,7 +9381,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -9132,7 +9417,7 @@
                     ]
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "maximize": {
@@ -9174,7 +9459,7 @@
                     "default": false
                 },
                 "foreach": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 },
                 "differentiable": {
@@ -9182,7 +9467,7 @@
                     "default": false
                 },
                 "fused": {
-                    "type": "typing.Optional[bool]",
+                    "type": "bool",
                     "default": null
                 }
             },
@@ -9540,7 +9825,7 @@
             },
             "MADGRAD": {
                 "params": {
-                    "type": "Any",
+                    "type": "typing.Any",
                     "default": null
                 },
                 "lr": {

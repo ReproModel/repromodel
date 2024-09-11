@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Callable
-from ..decorators import enforce_types_and_ranges, tag
+from repromodel_core.src.decorators import enforce_types_and_ranges, tag
 # Libraries already supported by ReproModel:
 # import torchvision.transforms as T
 # import albumentations as A
