@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
-import { Button, TextField, Select, MenuItem, FormControl, InputLabel, Typography, Box, Paper } from '@mui/material';
+import { Button, TextField, Select, MenuItem, FormControl, InputLabel, Typography, Box, Paper, Grid } from '@mui/material';
 
 const testCategories = {
   'Condition Tests': [
@@ -147,9 +147,9 @@ export default function StatisticalTests() {
   const renderTestResults = () => {
     if (!testResults) return null;
 
-    const tableStyle = { borderCollapse: 'collapse', width: '100%' }; // Added table style
-    const thStyle = { border: '1px solid #ddd', padding: '8px' }; // Added header cell style
-    const tdStyle = { border: '1px solid #ddd', padding: '8px' }; // Added data cell style
+    const tableStyle = { borderCollapse: 'collapse', width: '100%' };
+    const thStyle = { border: '1px solid #ddd', padding: '8px' };
+    const tdStyle = { border: '1px solid #ddd', padding: '8px' };
 
     if (Array.isArray(testResults)) {
       return (
@@ -186,6 +186,36 @@ export default function StatisticalTests() {
             ))}
           </tbody>
         </table>
+      );
+    }
+  };
+
+  const renderPlots = () => {
+    if (!plotImage) return null;
+
+    if (Array.isArray(plotImage)) {
+      return (
+        <Grid container spacing={2}>
+          {plotImage.map((plot, index) => (
+            <Grid item xs={12} sm={6} md={4} key={index}>
+              <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
+                <Typography variant="subtitle1" sx={{ mb: 1 }}>
+                  Plot for {selectedTest} - Model {index + 1}:
+                </Typography>
+                <img src={`data:image/png;base64,${plot}`} alt={`Test Plot ${index + 1}`} style={{ maxWidth: '100%' }} />
+              </Paper>
+            </Grid>
+          ))}
+        </Grid>
+      );
+    } else {
+      return (
+        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Plot for {selectedCategory} - {selectedTest}:
+          </Typography>
+          <img src={`data:image/png;base64,${plotImage}`} alt="Test Plot" style={{ maxWidth: '100%' }} />
+        </Paper>
       );
     }
   };
@@ -258,7 +288,7 @@ export default function StatisticalTests() {
         </Paper>
       )}
 
-      {testResults && Object.keys(testResults).length > 0 && ( // Check if testResults is not empty
+      {testResults && Object.keys(testResults).length > 0 && (
         <Paper elevation={3} sx={{ p: 3, mb: 4, overflow: 'auto', maxHeight: '400px' }}>
           <Typography variant="h6" sx={{ mb: 2, fontSize: '0.9rem', overflowWrap: 'break-word' }}>
             Test Results for {selectedCategory} - {selectedTest}:
@@ -267,14 +297,7 @@ export default function StatisticalTests() {
         </Paper>
       )}
 
-      {plotImage && (
-        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>
-            Plot for {selectedCategory} - {selectedTest}:
-          </Typography>
-          <img src={`data:image/png;base64,${plotImage}`} alt="Test Plot" style={{ maxWidth: '100%' }} />
-        </Paper>
-      )}
+      {plotImage && renderPlots()}
     </Box>
   );
 }

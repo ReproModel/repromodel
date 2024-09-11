@@ -686,16 +686,27 @@ def perform_statistical_test():
     result = None
     plot = None
     try:
-        if test == 'Shapiro-Wilk Test':
-            result = [shapiro_wilk_test(col, params.get('alpha', 0.05)) for col in columns]
-        elif test == 'Kolmogorov-Smirnov Test':
-            result = [kolmogorov_smirnov_test(col, params.get('alpha', 0.05)) for col in columns]
-        elif test == 'Anderson-Darling Test':
-            result = [anderson_darling_test(col, params.get('alpha', 0.05)) for col in columns]
-        elif test == 'Q-Q Plot':
-            plot = qq_plot(columns[0])
-        elif test == 'Histogram':
-            plot = histogram(columns[0])
+        if test in ['Shapiro-Wilk Test', 'Kolmogorov-Smirnov Test', 'Anderson-Darling Test', 'Q-Q Plot', 'Histogram']:
+            result = []
+            plot = []
+            for i, col in enumerate(columns):
+                if test == 'Shapiro-Wilk Test':
+                    result.append(shapiro_wilk_test(col, params.get('alpha', 0.05)))
+                elif test == 'Kolmogorov-Smirnov Test':
+                    result.append(kolmogorov_smirnov_test(col, params.get('alpha', 0.05)))
+                elif test == 'Anderson-Darling Test':
+                    result.append(anderson_darling_test(col, params.get('alpha', 0.05)))
+                elif test == 'Q-Q Plot':
+                    plot.append(qq_plot(col))
+                elif test == 'Histogram':
+                    plot.append(histogram(col))
+                
+                if result:
+                    result[-1]['model_name'] = model_names[i]
+        elif test == 'Durbin-Watson Test':
+            result = [durbin_watson_test(col) for col in columns]
+            for i, res in enumerate(result):
+                res['model_name'] = model_names[i]
         elif test == "Levene's Test":
             result = levene_test(*columns)
         elif test == "Bartlett's Test":
@@ -714,8 +725,6 @@ def perform_statistical_test():
             if len(columns) != 2:
                 return jsonify({'error': 'Correlation Coefficient requires exactly two columns'}), 400
             result = correlation_coefficient(columns[0], columns[1])
-        elif test == 'Durbin-Watson Test':
-            result = durbin_watson_test(columns[0])
         elif test == 'Paired t-test':
             if len(columns) != 2:
                 return jsonify({'error': 'Paired t-test requires exactly two columns'}), 400
