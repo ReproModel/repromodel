@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, TextField, Select, MenuItem, FormControl, InputLabel, Typography, Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import './interpretability.css';
 
 const interpretabilityMethods = [
   'Individual Conditional Expectation (ICE)',
@@ -147,8 +148,8 @@ export default function Interpretability() {
 
     if (selectedMethod === 'Feature Importance') {
       return (
-        <Paper elevation={3} sx={{ p: 3, mb: 4, overflow: 'auto', maxHeight: '400px' }}>
-          <Typography variant="h6" sx={{ mb: 2 }}>
+        <Paper elevation={3} className="paper-container overflow-auto">
+          <Typography variant="h6" className="mb-2">
             Feature Importance Results:
           </Typography>
           <TableContainer>
@@ -174,8 +175,8 @@ export default function Interpretability() {
     }
 
     return (
-      <Paper elevation={3} sx={{ p: 3, mb: 4, overflow: 'auto', maxHeight: '400px' }}>
-        <Typography variant="h6" sx={{ mb: 2 }}>
+      <Paper elevation={3} className="paper-container overflow-auto">
+        <Typography variant="h6" className="mb-2">
           Results for {selectedMethod}:
         </Typography>
         <pre>{JSON.stringify(results, null, 2)}</pre>
@@ -196,12 +197,12 @@ export default function Interpretability() {
     };
 
     return (
-      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-        <Typography variant="h6" sx={{ mb: 2 }}>
+      <Paper elevation={3} className="paper-container">
+        <Typography variant="h6" className="mb-2">
           Plot for {selectedMethod}:
         </Typography>
         <img src={`data:image/png;base64,${plotImage}`} alt="Interpretability Plot" style={{ maxWidth: '100%' }} />
-        <Button variant="contained" onClick={downloadImage} style={{ marginTop: '16px' }}>
+        <Button variant="contained" onClick={downloadImage} className="mt-16">
           Download Plot
         </Button>
       </Paper>
@@ -210,8 +211,8 @@ export default function Interpretability() {
 
   return (
     <Box className="space-y-8">
-      <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
-        <FormControl fullWidth sx={{ mb: 3 }}>
+      <Paper elevation={3} className="paper-container">
+        <FormControl fullWidth className="mb-3">
           <InputLabel>Interpretability Method</InputLabel>
           <Select value={selectedMethod} onChange={handleMethodChange}>
             <MenuItem value="">Select a method</MenuItem>
@@ -225,7 +226,7 @@ export default function Interpretability() {
       </Paper>
 
       {selectedMethod && (
-        <Paper elevation={3} sx={{ p: 3, mb: 4 }}>
+        <Paper elevation={3} className="paper-container">
           <Box className="space-y-4">
             <Typography variant="subtitle1">Upload a trained model file (.pkl)</Typography>
             <input type="file" accept=".pkl" onChange={handleModelFileChange} />
@@ -241,7 +242,7 @@ export default function Interpretability() {
                   value={iceState.feature}
                   onChange={handleIceChange('feature')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
                 <TextField
                   label="Grid Resolution"
@@ -249,16 +250,16 @@ export default function Interpretability() {
                   value={iceState.gridResolution}
                   onChange={handleIceChange('gridResolution')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
                 <TextField
                   label="Percentiles (comma-separated)"
                   value={iceState.percentiles}
                   onChange={handleIceChange('percentiles')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
-                <FormControl fullWidth sx={{ mb: 2 }}>
+                <FormControl fullWidth className="mb-2">
                   <InputLabel>Kind</InputLabel>
                   <Select value={iceState.kind} onChange={handleIceChange('kind')}>
                     <MenuItem value="individual">Individual</MenuItem>
@@ -272,14 +273,14 @@ export default function Interpretability() {
                   value={iceState.subsample}
                   onChange={handleIceChange('subsample')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
                 <TextField
                   label="Random State"
                   value={iceState.randomState}
                   onChange={handleIceChange('randomState')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
               </>
             )}
@@ -292,9 +293,9 @@ export default function Interpretability() {
                   value={pdpState.pdpFeatures}
                   onChange={handlePdpChange('pdpFeatures')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
-                <FormControl fullWidth sx={{ mb: 2 }}>
+                <FormControl fullWidth className="mb-2">
                   <InputLabel>Kind</InputLabel>
                   <Select value={pdpState.pdpKind} onChange={handlePdpChange('pdpKind')}>
                     <MenuItem value="average">Average</MenuItem>
@@ -308,7 +309,7 @@ export default function Interpretability() {
                   value={pdpState.pdpGridResolution}
                   onChange={handlePdpChange('pdpGridResolution')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
               </>
             )}
@@ -316,7 +317,7 @@ export default function Interpretability() {
             {/* Add input fields for surrogate model parameters */}
             {selectedMethod === 'Surrogate Models' && (
               <>
-                <FormControl fullWidth sx={{ mb: 2 }}>
+                <FormControl fullWidth className="mb-2">
                   <InputLabel>Surrogate Model Type</InputLabel>
                   <Select value={surrogateState.surrogateModelType} onChange={handleSurrogateChange('surrogateModelType')}>
                     <MenuItem value="decision_tree">Decision Tree</MenuItem>
@@ -332,7 +333,7 @@ export default function Interpretability() {
                   value={surrogateState.maxDepth}
                   onChange={handleSurrogateChange('maxDepth')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
                 <TextField
                   label="Number of Estimators"
@@ -340,9 +341,9 @@ export default function Interpretability() {
                   value={surrogateState.nEstimators}
                   onChange={handleSurrogateChange('nEstimators')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
-                <FormControl fullWidth sx={{ mb: 2 }}>
+                <FormControl fullWidth className="mb-2">
                   <InputLabel>Plot Performance</InputLabel>
                   <Select value={surrogateState.plotPerformance.toString()} onChange={handleSurrogateChange('plotPerformance')}>
                     <MenuItem value="true">Yes</MenuItem>
@@ -355,7 +356,7 @@ export default function Interpretability() {
                   value={surrogateState.sampleSize}
                   onChange={handleSurrogateChange('sampleSize')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
               </>
             )}
@@ -368,7 +369,7 @@ export default function Interpretability() {
                   value={fiState.fiFeatureNames}
                   onChange={handleFiChange('fiFeatureNames')}
                   fullWidth
-                  sx={{ mb: 2 }}
+                  className="mb-2"
                 />
               </>
             )}
@@ -376,8 +377,8 @@ export default function Interpretability() {
           <Button
             variant="contained"
             onClick={runInterpretability}
-            style={{ backgroundColor: '#38512f', marginTop: '24px' }}
-            fullWidth
+            style={{ backgroundColor: '#38512f' }}
+            className="full-width mt-24"
           >
             Run Interpretability
           </Button>

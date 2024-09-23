@@ -1,0 +1,33 @@
+.space-y-8 {
+  margin-bottom: 32px;
+}
+
+.paper-container {
+  padding: 24px;
+  margin-bottom: 32px;
+}
+
+.overflow-auto {
+  overflow: auto;
+  max-height: 400px;
+}
+
+.mb-4 {
+  margin-bottom: 16px;
+}
+
+.mb-2 {
+  margin-bottom: 8px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
