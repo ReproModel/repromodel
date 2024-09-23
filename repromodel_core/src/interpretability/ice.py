@@ -38,7 +38,7 @@ warnings.filterwarnings("ignore")
 
 
 def compute_ice(model, X, feature, grid_resolution=100, percentiles=(0.05, 0.95),
-                kind='individual', subsample=1.0, random_state=None):
+                kind='individual', subsample=1.0, random_state=None, target=None):
     """
     Computes ICE curves for a given feature.
 
@@ -52,6 +52,7 @@ def compute_ice(model, X, feature, grid_resolution=100, percentiles=(0.05, 0.95)
     - kind (str): 'individual' for ICE, 'average' for PDP, 'both' for both.
     - subsample (float): Fraction of data to use for ICE computation (between 0 and 1).
     - random_state (int, optional): Seed for random sampling.
+    - target (int, optional): The class for which the ICE is computed in a multi-class setting.
 
     Returns:
     - ice_disp: A PartialDependenceDisplay object containing the computed results.
@@ -81,7 +82,8 @@ def compute_ice(model, X, feature, grid_resolution=100, percentiles=(0.05, 0.95)
             grid_resolution=grid_resolution,
             response_method='auto',
             percentiles=percentiles,
-            n_jobs=None
+            n_jobs=None,
+            target=target
         )
         return ice_disp
     except NotFittedError as e:
@@ -114,41 +116,40 @@ def plot_ice(ice_disp, feature_name=None, plot_pdp=False, centered=False,
     - fig, ax: Matplotlib figure and axes objects.
     """
 
-    # Customize plot
-    fig, ax = plt.subplots(figsize=figsize)
-
-    ice_disp.plot(ax=ax, line_kw={'alpha': 0.2, 'color': 'grey'}, pd_line_kw={'color': 'red', 'linewidth': 2})
+    # Use the existing axes from the PartialDependenceDisplay object
+    axes = ice_disp.axes_
 
     # Center the ICE curves if requested
     if centered:
-        ice_values = ice_disp.deciles_[0][1]
-        ice_disp.plot(ax=ax, centered=centered, line_kw={'alpha': 0.2, 'color': 'grey'}, pd_line_kw={'color': 'red', 'linewidth': 2})
+        ice_disp.plot(ax=axes, centered=centered, line_kw={'alpha': 0.2, 'color': 'grey'}, pd_line_kw={'color': 'red', 'linewidth': 2})
+    else:
+        ice_disp.plot(ax=axes, line_kw={'alpha': 0.2, 'color': 'grey'}, pd_line_kw={'color': 'red', 'linewidth': 2})
 
     # Overlay PDP if requested
     if plot_pdp:
-        ice_disp.plot(ax=ax, pd_line_kw={'color': 'red', 'linewidth': 2})
+        ice_disp.plot(ax=axes, pd_line_kw={'color': 'red', 'linewidth': 2})
 
     # Set titles and labels
     if title:
-        ax.set_title(title, fontsize=14)
+        axes[0, 0].set_title(title, fontsize=14)
     else:
-        ax.set_title('Individual Conditional Expectation (ICE) Plot', fontsize=14)
+        axes[0, 0].set_title('Individual Conditional Expectation (ICE) Plot', fontsize=14)
 
     if xlabel:
-        ax.set_xlabel(xlabel, fontsize=12)
+        axes[0, 0].set_xlabel(xlabel, fontsize=12)
     elif feature_name:
-        ax.set_xlabel(feature_name, fontsize=12)
+        axes[0, 0].set_xlabel(feature_name, fontsize=12)
     else:
-        ax.set_xlabel('Feature Value', fontsize=12)
+        axes[0, 0].set_xlabel('Feature Value', fontsize=12)
 
     if ylabel:
-        ax.set_ylabel(ylabel, fontsize=12)
+        axes[0, 0].set_ylabel(ylabel, fontsize=12)
     else:
-        ax.set_ylabel('Predicted Response', fontsize=12)
+        axes[0, 0].set_ylabel('Predicted Response', fontsize=12)
 
     if not legend:
-        if hasattr(ax, 'legend_') and ax.legend_:
-            ax.legend_.remove()
+        if hasattr(axes[0, 0], 'legend_') and axes[0, 0].legend_:
+            axes[0, 0].legend_.remove()
 
     plt.tight_layout()
 
@@ -158,19 +159,20 @@ def plot_ice(ice_disp, feature_name=None, plot_pdp=False, centered=False,
     if show:
         plt.show()
 
-    return fig, ax
+    return ice_disp.figure_, axes
 
 '''
 # Example usage of ice.py
 
-from sklearn.datasets import load_boston, load_iris
+from sklearn.datasets import load_diabetes, load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+import pandas as pd
 from ice import compute_ice, plot_ice
 
 # For Regression Task
 # Load dataset
-data = load_boston()
+data = load_diabetes()
 X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
 
@@ -182,10 +184,10 @@ model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Compute ICE for a single feature
-ice_disp = compute_ice(model, X_test, feature='LSTAT', subsample=0.5, random_state=42)
+ice_disp = compute_ice(model, X_test, feature='bmi', subsample=0.5, random_state=42)
 
 # Plot ICE
-plot_ice(ice_disp, feature_name='LSTAT', plot_pdp=True, title='ICE Plot for LSTAT', xlabel='LSTAT')
+plot_ice(ice_disp, feature_name='BMI', plot_pdp=True, title='ICE Plot for BMI', xlabel='BMI')
 
 # For Classification Task
 # Load dataset
@@ -201,7 +203,7 @@ model = RandomForestClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Compute ICE for a single feature
-ice_disp = compute_ice(model, X_test, feature='petal width (cm)', subsample=0.5, random_state=42)
+ice_disp = compute_ice(model, X_test, feature='petal width (cm)', subsample=0.5, random_state=42, target=0)
 
 # Plot ICE
 plot_ice(ice_disp, feature_name='Petal Width (cm)', plot_pdp=True, title='ICE Plot for Petal Width', xlabel='Petal Width (cm)')
