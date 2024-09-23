@@ -1,3 +1,13 @@
+.test-type-label {
+    color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+    .test-type-label {
+        color: white;
+    }
+}
+
 .json-input-file-label {
     padding-top: 24px;
     color: black;

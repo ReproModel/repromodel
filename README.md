@@ -9,7 +9,7 @@
 <div align = "center">
   <a href = "https://github.com/ReproModel/repromodel/stargazers"><img alt = "GitHub Repo Stars" src = "https://img.shields.io/github/stars/ReproModel/repromodel"></a>
   <a href = "https://github.com/ReproModel/repromodel/blob/dev/LICENSE.md"><img alt = "License" src = "https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <a href = "https://discord.gg/CdJzm8zmpu"><img alt = "Discord" src = "https://img.shields.io/badge/Discord-3-brightgreen?logo=discord&logoColor=white"></a>
+  <a href = "https://discord.gg/CdJzm8zmpu"><img alt = "Discord" src = "https://img.shields.io/discord/1151315619246002176"></a>
 </div>
 
 <br/>
@@ -26,9 +26,9 @@ The coming versions will help researchers build upon state-of-the-art research f
 
 https://repromodel.netlify.app
 
-## Features
+## Feature Roadmap
 :white_check_mark: Standard Models Included<br/>
-:white_check_mark: Known Datasets<br/>
+:white_check_mark: Benchmark Datasets<br/>
 :white_check_mark: Metrics (100+)<br/>
 :white_check_mark: Losses (20+)<br/>
 :white_check_mark: Data Splitting<br/>
@@ -46,6 +46,8 @@ https://repromodel.netlify.app
 :black_square_button: Conventional ML models workflow<br/>
 :black_square_button: Parallel training<br/>
 :black_square_button: Statistical testing<br/>
+:black_square_button: Explainability<br/>
+:black_square_button: Interpretability<br/>
 
 ## Documentation
 For examples and step-by-step instructions, please visit our full documentation at https://www.repromodel.com/docs.
@@ -58,7 +60,7 @@ Pull the docker image:<br>
 `docker pull dsitnik1612/repromodel`<br>
 
 Run the container:<br>
-`docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 repromodel`<br>
+`docker run --name ReproModel -p 5173:5173 -p 6006:6006 -p 5005:5005 dsitnik1612/repromodel`<br>
 
 Then open the frontend under: http://localhost:5173/
 
@@ -124,12 +126,6 @@ Any contributions you make are greatly appreciated. If you have a suggestion tha
     </td>
   </tr>
 </table>
-
-### Contributor of the month - June 2024
-<img src = "https://avatars.githubusercontent.com/u/20110627" width = "100px" alt = "Tomonari Feehan"/><br/>
-<sub><b>Tomonari Feehan</b></sub><br/>
-<sub>Developer</sub><br/>
-<a href = "https://github.com/tomonarifeehan">GitHub</a>
 
 ## Stats
 ![Alt](https://repobeats.axiom.co/api/embed/4595dc84d9863dd36d50711c399685b444e54d0e.svg "Repobeats Analytics Image")

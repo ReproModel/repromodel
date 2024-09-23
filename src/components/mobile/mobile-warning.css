@@ -1,0 +1,32 @@
+.mobile-warning-container {
+    background-color: black;
+    height: 100vh;
+}
+
+.mobile-warning-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background-image: linear-gradient(to bottom, transparent, black), url("/header-background.jpg");
+}
+
+.mobile-warning-header {
+    font-size: 2.5em;
+    margin: 0.5em;
+    color: white;
+}
+
+.mobile-warning-message {
+    font-size: 1.5em;
+    margin: 0.5em;
+    color: white;
+}
+
+.mobile-warning-footer {
+    font-size: 1.2em;
+    margin-top: 2em;
+    color: white;
+}
