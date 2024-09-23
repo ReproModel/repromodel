@@ -94,55 +94,35 @@ def preprocess_data(X, y=None, categorical_features=None, numerical_features=Non
     return X_preprocessed, y, preprocessor
 
 
-def compute_feature_importance(model, feature_names=None, max_num_features=10, plot=True):
+def compute_feature_importance(model, feature_names):
     """
-    Computes global feature importance scores and optionally plots them.
+    Computes global feature importance scores.
 
     Parameters:
     - model: Trained model with feature_importances_ or coef_ attribute.
-    - feature_names (list, optional): List of feature names.
-    - max_num_features (int): Maximum number of features to display.
-    - plot (bool): Whether to plot the feature importances.
+    - feature_names (list): List of feature names.
 
     Returns:
     - importance_df: DataFrame containing feature names and their importance scores.
     """
 
-    # Check if model is fitted
-    try:
-        if hasattr(model, 'feature_importances_'):
-            importances = model.feature_importances_
-        elif hasattr(model, 'coef_'):
-            importances = np.abs(model.coef_)
-            if importances.ndim > 1:
-                importances = np.mean(importances, axis=0)
-        else:
-            raise ValueError("Model does not have feature_importances_ or coef_ attribute.")
-    except NotFittedError as e:
-        raise NotFittedError("The model must be fitted before computing feature importances.") from e
+    if hasattr(model, 'feature_importances_'):
+        importances = model.feature_importances_
+    elif hasattr(model, 'coef_'):
+        importances = np.abs(model.coef_)
+        if importances.ndim > 1:
+            importances = np.mean(importances, axis=0)
+    else:
+        raise ValueError("Model does not have feature_importances_ or coef_ attribute.")
 
-    # Create DataFrame
-    if feature_names is None:
-        feature_names = [f'Feature {i}' for i in range(len(importances))]
     importance_df = pd.DataFrame({
         'Feature': feature_names,
         'Importance': importances
     })
 
-    # Sort by importance
     importance_df = importance_df.sort_values(by='Importance', ascending=False).reset_index(drop=True)
 
-    if plot:
-        # Plot feature importances
-        importance_df.head(max_num_features).plot.barh(x='Feature', y='Importance', figsize=(8, 6), legend=False)
-        plt.gca().invert_yaxis()
-        plt.title('Feature Importances')
-        plt.xlabel('Importance Score')
-        plt.ylabel('Feature')
-        plt.tight_layout()
-        plt.show()
-
-    return importance_df
+    return importance_df.to_dict('records')
 
 
 def validate_inputs(model, X):

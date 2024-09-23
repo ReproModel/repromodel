@@ -10,12 +10,11 @@ import newQuestions from "../repromodel_core/choices.json"
 import ProgressViewer from "./components/progress-viewer/progress-viewer"
 import RepromodelStructure from "./components/repromodel-structure/repromodel-structure"
 import MobileWarning from "./components/mobile/mobile-warning";
-import StatisticalTests from "./components/statistics/StatisticalTests";
-
-import { Button, ButtonGroup } from "@mui/material"
-import { Box, Grid, Typography } from "@mui/material"
-import { Formik } from "formik"
-import { handleFileChange, handleSubmit } from "./utils/json-helpers"
+import StatisticalTests from "./components/statistics/statistical-tests";
+import Interpretability from "./components/interpretability/interpretability"; 
+import { Button, ButtonGroup, Box, Grid, Typography } from "@mui/material"; 
+import { Formik } from "formik";
+import { handleFileChange, handleSubmit } from "./utils/json-helpers";
 import { useState, useEffect } from "react"
 
 function App() {
@@ -77,6 +76,7 @@ function App() {
                   <Button onClick = { () => setSelectedSection("Extract Code") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "16.66%",opacity: (selectedSection == "Extract Code") ? "100%" : "70%"} }>Extract Code</Button>
                   <Button onClick = { () => setSelectedSection("LLM Description") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "14.28%", opacity: (selectedSection == "LLM Description") ? "100%" : "70%"} }>LLM Description</Button>
                   <Button onClick = { () => setSelectedSection("Statistical Tests") } style = { { backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "14.28%", opacity: (selectedSection == "Statistical Tests") ? "100%" : "70%"} }>Statistical Tests</Button>
+                  <Button onClick={() => setSelectedSection("Interpretability")} style={{ backgroundColor: "#38512f", borderColor: "#162012", borderStyle: "dotted", fontSize: "9px", width: "14.28%", opacity: (selectedSection == "Interpretability") ? "100%" : "70%" }}>Interpretability</Button>
                 </ButtonGroup>
               </Box>
 
@@ -156,6 +156,15 @@ function App() {
                       <span className = "tab-header">Statistical Tests</span>
                     </Typography>
                     <StatisticalTests />
+                  </div>
+                )}
+
+                { selectedSection === "Interpretability" && (
+                  <div className = "tab-div">
+                    <Typography variant = "h6">
+                      <span className = "tab-header">Interpretability</span>
+                    </Typography>
+                    <Interpretability />
                   </div>
                 )}
 

@@ -6,6 +6,13 @@ import numpy as np
 import sys
 import os
 from io import StringIO  # Add this import at the top of your file
+import pickle
+import pandas as pd
+from src.interpretability.ice import compute_ice, plot_ice
+from src.interpretability.pdp import compute_pdp, plot_pdp
+from src.interpretability.surrogate_models import train_surrogate_model, evaluate_surrogate_model, plot_surrogate_performance
+from src.interpretability.utilities import preprocess_data, compute_feature_importance
+
 
 # Add the parent directory of repromodel_core to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -815,6 +822,102 @@ def convert_numpy_types(data):
     elif isinstance(data, np.ndarray):
         return data.tolist()  # Convert numpy arrays to lists
     return data
+
+# interpretability
+
+@app.route('/interpretability', methods=['POST'])
+def interpretability():
+    model_file = request.files['model']
+    data_file = request.files['data']
+    method = request.form['method']
+    feature_names = request.form['feature_names'].split(',')
+    target_name = request.form['target_name']
+
+    model_path = 'uploaded_model.pkl'
+    data_path = 'uploaded_data.csv'
+
+    model_file.save(model_path)
+    data_file.save(data_path)
+
+    with open(model_path, 'rb') as file:
+        model = pickle.load(file)
+
+    if data_path.endswith('.csv'):
+        data = pd.read_csv(data_path)
+    elif data_path.endswith('.npy'):
+        data = np.load(data_path)
+        data = pd.DataFrame(data, columns=feature_names)
+    else:
+        return jsonify({'error': 'Unsupported data file format.'}), 400
+
+    X = data[feature_names]
+    y = data[target_name]
+
+    results = None
+    plot_image = None
+    feature_importance = None
+
+    try:
+        if method == 'Individual Conditional Expectation (ICE)':
+            feature = request.form['feature']
+            grid_resolution = int(request.form['grid_resolution'])
+            percentiles = tuple(map(float, request.form['percentiles'].split(',')))
+            kind = request.form['kind']
+            subsample = float(request.form['subsample'])
+            random_state = int(request.form['random_state']) if request.form['random_state'] else None
+
+            ice_disp = compute_ice(model, X, feature, grid_resolution=grid_resolution, percentiles=percentiles,
+                                   kind=kind, subsample=subsample, random_state=random_state)
+            fig, _ = plot_ice(ice_disp, feature_name=feature)
+            plot_image = fig_to_base64(fig)
+        elif method == 'Partial Dependence Plot (PDP)':
+            pdp_features = request.form['pdp_features'].split(',')
+            pdp_kind = request.form['pdp_kind']
+            pdp_grid_resolution = int(request.form['pdp_grid_resolution'])
+
+            pdp_disp = compute_pdp(model, X, features=pdp_features, kind=pdp_kind, grid_resolution=pdp_grid_resolution)
+            fig, _ = plot_pdp(pdp_disp, feature_names=pdp_features)
+            plot_image = fig_to_base64(fig)
+        elif method == 'Surrogate Models':
+            surrogate_model_type = request.form['surrogate_model_type']
+            max_depth = int(request.form['max_depth'])
+            n_estimators = int(request.form['n_estimators'])
+            plot_performance = request.form['plot_performance'] == 'true'
+            sample_size = int(request.form['sample_size'])
+
+            X_train, _, _ = preprocess_data(X, y)
+            surrogate_model = train_surrogate_model(model, X_train, y, model_type=surrogate_model_type,
+                                                    max_depth=max_depth, n_estimators=n_estimators)
+            results = evaluate_surrogate_model(model, surrogate_model, X)
+            if plot_performance:
+                fig = plot_surrogate_performance(model, surrogate_model, X, sample_size=sample_size)
+                plot_image = fig_to_base64(fig)
+        elif method == 'Feature Importance':
+            fi_feature_names = request.form['fi_feature_names'].split(',')
+            X_train, _, _ = preprocess_data(X, y)
+            feature_importance = compute_feature_importance(model, fi_feature_names)
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    finally:
+        os.remove(model_path)
+        os.remove(data_path)
+
+    return jsonify({
+        'results': results,
+        'plot_image': plot_image,
+        'feature_importance': feature_importance
+    })
+
+def fig_to_base64(fig):
+    from io import BytesIO
+    import base64
+
+    buf = BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    image_base64 = base64.b64encode(buf.getvalue()).decode('utf-8')
+    return image_base64
+
 ######################################################################
 # MAIN METHOD
 ######################################################################
