@@ -57,11 +57,15 @@ export default function StatisticalTests() {
     setSelectedCategory(event.target.value);
     setSelectedTest('');
     setTestParams({});
+    setTestResults(null); // Reset test results
+    setPlotImage(null);   // Reset plot image
   };
 
   const handleTestChange = (event) => {
     setSelectedTest(event.target.value);
     setTestParams({});
+    setTestResults(null); // Reset test results
+    setPlotImage(null);   // Reset plot image
   };
 
   const handleParamChange = (param, value) => {
@@ -193,6 +197,15 @@ export default function StatisticalTests() {
   const renderPlots = () => {
     if (!plotImage) return null;
 
+    const downloadImage = (base64Image, index) => {
+      const link = document.createElement('a');
+      link.href = `data:image/png;base64,${base64Image}`;
+      link.download = `plot_${index + 1}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+
     if (Array.isArray(plotImage)) {
       return (
         <Grid container spacing={2}>
@@ -203,6 +216,13 @@ export default function StatisticalTests() {
                   Plot for {selectedTest} - Model {index + 1}:
                 </Typography>
                 <img src={`data:image/png;base64,${plot}`} alt={`Test Plot ${index + 1}`} style={{ maxWidth: '100%' }} />
+                <Button
+                  variant="contained"
+                  onClick={() => downloadImage(plot, index)}
+                  style={{ marginTop: '8px' }}
+                >
+                  Download
+                </Button>
               </Paper>
             </Grid>
           ))}
@@ -215,9 +235,52 @@ export default function StatisticalTests() {
             Plot for {selectedCategory} - {selectedTest}:
           </Typography>
           <img src={`data:image/png;base64,${plotImage}`} alt="Test Plot" style={{ maxWidth: '100%' }} />
+          <Button
+            variant="contained"
+            onClick={() => downloadImage(plotImage, 0)}
+            style={{ marginTop: '8px' }}
+          >
+            Download
+          </Button>
         </Paper>
       );
     }
+  };
+
+  const convertToCSV = (data) => {
+    const array = [Object.keys(data[0])].concat(data);
+
+    return array.map(row => {
+      return Object.values(row).map(value => {
+        if (typeof value === 'object') {
+          value = JSON.stringify(value);
+        }
+        if (typeof value === 'string') {
+          if (value.includes('"')) {
+            value = value.replace(/"/g, '""'); // Escape double quotes
+          }
+          if (value.includes(',')) {
+            value = `"${value}"`; // Enclose in double quotes if it contains a comma
+          }
+        }
+        return value;
+      }).join(',');
+    }).join('\n');
+  };
+
+  const downloadCSV = () => {
+    if (!testResults) return;
+
+    const csvContent = Array.isArray(testResults) ? convertToCSV(testResults) : convertToCSV([testResults]);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'test_results.csv');
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -294,6 +357,13 @@ export default function StatisticalTests() {
             Test Results for {selectedCategory} - {selectedTest}:
           </Typography>
           {renderTestResults()}
+          <Button
+            variant="contained"
+            onClick={downloadCSV}
+            style={{ marginTop: '16px' }}
+          >
+            Download
+          </Button>
         </Paper>
       )}
 
