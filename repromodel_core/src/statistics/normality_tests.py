@@ -14,7 +14,7 @@ def shapiro_wilk_test(data, alpha=0.05):
         'test': 'Shapiro-Wilk',
         'statistic': statistic,
         'p_value': p_value,
-        'is_normal': p_value > alpha
+        'is_normal': bool(p_value > alpha)
     }
 
 def kolmogorov_smirnov_test(data, alpha=0.05):
@@ -23,7 +23,7 @@ def kolmogorov_smirnov_test(data, alpha=0.05):
         'test': 'Kolmogorov-Smirnov',
         'statistic': statistic,
         'p_value': p_value,
-        'is_normal': p_value > alpha
+        'is_normal': bool(p_value > alpha)
     }
 
 def anderson_darling_test(data, alpha=0.05):
@@ -37,7 +37,7 @@ def anderson_darling_test(data, alpha=0.05):
         'test': 'Anderson-Darling',
         'statistic': result.statistic,
         'critical_values': dict(zip(significance_levels, critical_values)),
-        'is_normal': is_normal
+        'is_normal': bool(is_normal)
     }
 
 def qq_plot(data):
