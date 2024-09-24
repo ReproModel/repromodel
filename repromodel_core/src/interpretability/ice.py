@@ -36,7 +36,6 @@ import warnings
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
 
-
 def compute_ice(model, X, feature, grid_resolution=100, percentiles=(0.05, 0.95),
                 kind='individual', subsample=1.0, random_state=None, target=None):
     """
@@ -90,7 +89,6 @@ def compute_ice(model, X, feature, grid_resolution=100, percentiles=(0.05, 0.95)
         raise NotFittedError("The model must be fitted before computing ICE.") from e
     except Exception as e:
         raise Exception("An error occurred while computing ICE.") from e
-
 
 def plot_ice(ice_disp, feature_name=None, plot_pdp=False, centered=False,
              title=None, xlabel=None, ylabel=None, figsize=(10, 6), legend=True,

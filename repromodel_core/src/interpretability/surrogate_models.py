@@ -35,7 +35,6 @@ import warnings
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
 
-
 def train_surrogate_model(black_box_model, X_train, y_train,
                           task_type='regression', model_type='decision_tree',
                           **kwargs):
@@ -186,13 +185,15 @@ def plot_surrogate_performance(black_box_model, surrogate_model, X_test,
 '''
 # Example usage of surrogate_models.py
 
-from sklearn.datasets import load_boston, load_iris
+from sklearn.datasets import fetch_california_housing, load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier
+from surrogate_models import train_surrogate_model, evaluate_surrogate_model, plot_surrogate_performance
+import pandas as pd
 
 # For Regression Task
 # Load dataset
-data = load_boston()
+data = fetch_california_housing()
 X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
 

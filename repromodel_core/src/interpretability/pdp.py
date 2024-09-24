@@ -33,8 +33,7 @@ import warnings
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
 
-
-def compute_pdp(model, X, features, kind='average', grid_resolution=100):
+def compute_pdp(model, X, features, kind='average', grid_resolution=100, target=None):
     """
     Computes partial dependence for given features.
 
@@ -68,6 +67,7 @@ def compute_pdp(model, X, features, kind='average', grid_resolution=100):
             kind=kind,
             grid_resolution=grid_resolution,
             response_method='auto',
+            target=target,
             percentiles=(0.05, 0.95),
             n_jobs=None
         )
@@ -76,7 +76,6 @@ def compute_pdp(model, X, features, kind='average', grid_resolution=100):
         raise NotFittedError("The model must be fitted before computing PDP.") from e
     except Exception as e:
         raise Exception("An error occurred while computing PDP.") from e
-
 
 def plot_pdp(pdp_disp, feature_names=None, plot_type='line', centered=False,
              title=None, xlabel=None, ylabel=None, figsize=(10, 6), legend=True,
@@ -145,14 +144,15 @@ def plot_pdp(pdp_disp, feature_names=None, plot_type='line', centered=False,
 '''
 # Example usage of pdp.py
 
-from sklearn.datasets import load_boston, load_iris
+from sklearn.datasets import fetch_california_housing, load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor, GradientBoostingClassifier
 from pdp import compute_pdp, plot_pdp
+import pandas as pd
 
 # For Regression Task
 # Load dataset
-data = load_boston()
+data = fetch_california_housing()
 X = pd.DataFrame(data.data, columns=data.feature_names)
 y = data.target
 
@@ -164,10 +164,10 @@ model = GradientBoostingRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Compute PDP for a single feature
-pdp_disp = compute_pdp(model, X_test, features=['LSTAT'])
+pdp_disp = compute_pdp(model, X_test, features=['MedInc'])
 
 # Plot PDP
-plot_pdp(pdp_disp, title='Partial Dependence of House Price on LSTAT', xlabel='LSTAT')
+plot_pdp(pdp_disp, title='Partial Dependence of House Price on MedInc', xlabel='MedInc')
 
 # For Classification Task
 # Load dataset
@@ -183,15 +183,14 @@ model = GradientBoostingClassifier(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)
 
 # Compute PDP for a single feature
-pdp_disp = compute_pdp(model, X_test, features=['petal width (cm)'])
+pdp_disp = compute_pdp(model, X_test, features=['petal width (cm)'], target=0)
 
 # Plot PDP
 plot_pdp(pdp_disp, title='Partial Dependence of Class Probability on Petal Width', xlabel='Petal Width (cm)')
 
-
 # Example with bivariate PDP
 # Compute PDP for two features
-pdp_disp = compute_pdp(model, X_test, features=[0, 1], kind='average')
+pdp_disp = compute_pdp(model, X_test, features=[0, 1], kind='average', target=0)
 
 # Plot PDP
 plot_pdp(pdp_disp, title='Partial Dependence of Target on Features 0 and 1',

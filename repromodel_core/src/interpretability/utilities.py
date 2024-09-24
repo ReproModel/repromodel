@@ -26,13 +26,11 @@ from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.impute import SimpleImputer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.base import is_classifier, is_regressor
 from sklearn.exceptions import NotFittedError
 import warnings
 
 # Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
-
 
 def preprocess_data(X, y=None, categorical_features=None, numerical_features=None,
                     impute_strategy='mean', scale_numerical=True, encode_categorical=True):
@@ -205,18 +203,11 @@ def get_categorical_features(X):
 '''
 # Example usage of utilities.py
 
-from sklearn.datasets import load_boston
+from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from utilities import preprocess_data, compute_feature_importance, validate_inputs
-
-# Load dataset
-data = load_boston()
-X = pd.DataFrame(data.data, columns=data.feature_names)
-y = data.target
-
-# Introduce missing values for demonstration
-X.iloc[5:10, 3] = np.nan
+import pandas as pd
 
 # Preprocess data
 X_preprocessed, y, preprocessor = preprocess_data(X, y, impute_strategy='median', scale_numerical=True)
